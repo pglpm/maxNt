@@ -201,12 +201,16 @@ population of two units, $\yM=2$, of which we consider one unit, $\yN=1$.
 \end{itemize}
 
 This simple example shows that the multiplicity inspection that must
-precede a \me\ application already involve probability considerations at
+precede a \me\ application already involves probability considerations at
 the level of the full network. The usual reasoning by enumeration
-implicitly assumes a uniform distribution, or a ***
+implicitly assumes a uniform distribution or at least a \emph{factorizable}
+distribution.
 
+***If the distribution is factorizable, however, it means that examination of
+the subnetwork \emph{cannot give us any insights about the network it is a
+  part of}. This is obviously contrary to the reason why we made neuronal observations.
 
-We:
+Consider the following ways of proceeding. We:
 \begin{enumerate}
 \item have a network with $\yN$ units, $2^{\yN}$ possible states
 \item expect averages of $\yxs$ active neurons and $\yxxs$ active pairs

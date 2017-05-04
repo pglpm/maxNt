@@ -194,6 +194,41 @@ outcomes of a die roll, and also for some sets of composite events, like
 the outcomes of the roll of two dice. In the latter case multiplicities
 appear.
 
+When applied to a subnetwork, the \me\ method assumes that the uniform over
+the larger network is uniform, and therefore factorizable. The new
+distribution of the subnetwork will not be uniform, but that of the full
+network will still be factorizable into the one for the subnetwork and the
+rest.
+
+A uniform distribution, however, is not the right one when we suppose that
+learning about an event may tell us something about a related event. For
+example, consider 1\,000 tosses of a particular coin and assume a uniform
+distribution over the possible $2^{1\,000}$ outcomes. If we learn that the
+first 999 tosses yielded all \enquote{heads}, the probability calculus
+tells us that the probability for the 1\,000th toss is still 50\%/50\%. It
+is a consequence of our choice of a uniform distribution: we have
+implicitly declared all tosses to be completely independent, completely
+\emph{irrelevant} to one another. This fact is well-known in sampling
+theory. A more telling example in fact is that of a presidential election
+with two candidates: each citizen will vote for one or the other. We do
+survey sampling on a large number of citizens to guess the election's
+outcome. If we assumed a uniform distribution over the possible
+combinations of choices of all citizens, our sampling would be completely
+irrelevant for the choices of the rest of the population.
+
+
+
+
+The latter example has many similarities with that of a neuronal binary
+network. When we record the neuronal activity of a sample of neurons from a
+brain area, we assume that our measurements can tell us something -- no
+matter how vague or imprecise -- about the whole brain area. This means
+that we are not assuming a uniform distribution over all possible states of
+the area.
+
+
+
+
 \mynote{Version 2}
 This may come as a surprise. The method simply requires a number of
 exhaustive and mutually exclusive events, and if these are composite events

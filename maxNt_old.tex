@@ -1,0 +1,327 @@
+\documentclass{article}
+
+% if you need to pass options to natbib, use, e.g.:
+% \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading nips_2017
+%
+% to avoid loading the natbib package, add option nonatbib:
+% \usepackage[nonatbib]{nips_2017}
+
+\usepackage[final,nonatbib]{nips_2017}
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+% \usepackage[final]{nips_2017}
+
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage[utf8]{inputenc} % allow utf-8 input
+%\usepackage{hyperref}       % hyperlinks
+%\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+%\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{textcomp}
+\usepackage{amsmath}
+
+\usepackage{mathtools}
+\setlength{\multlinegap}{0pt}
+% \newlength{\Normalbaselineskip}
+% \setlength{\Normalbaselineskip}{\baselineskip}
+% \appto\MultlinedHook{\setlength\baselineskip{\Normalbaselineskip}}
+
+\usepackage{amssymb}
+\usepackage{amsxtra}
+\usepackage{amsthm}
+\usepackage{bm}
+
+\usepackage[british]{babel}
+\selectlanguage{british}
+% \newcommand*{\langfrench}{\foreignlanguage{french}}
+% \newcommand*{\langgerman}{\foreignlanguage{german}}
+% \newcommand*{\langitalian}{\foreignlanguage{italian}}
+% \newcommand*{\langswedish}{\foreignlanguage{swedish}}
+% \newcommand*{\langlatin}{\foreignlanguage{latin}}
+% \newcommand*{\langnohyph}{\foreignlanguage{nohyphenation}}
+% \newcommand*{\latin}[1]{\langlatin{#1}}
+% \newcommand*{\french}[1]{\emph{\langfrench{#1}}}
+% \newcommand*{\german}[1]{\emph{\langgerman{#1}}}
+
+\usepackage[autostyle=false,autopunct=false,english=british]{csquotes}
+\setquotestyle{american}
+\iffalse
+\usepackage[shortlabels,inline]{enumitem}
+% to replace paralist environments with enumitem ones:
+\SetEnumitemKey{para}{itemindent=\parindent,leftmargin=0pt,listparindent=\parindent,parsep=0pt,itemsep=\topsep}
+\setlist[enumerate,2]{label=\alph*.}
+\setlist[enumerate]{leftmargin=\parindent}
+\setlist[itemize]{leftmargin=\parindent}
+\setlist[description]{leftmargin=\parindent}
+\fi
+
+\usepackage[backend=biber,mcite,subentry,citestyle=numeric-comp,bibstyle=numericbringhurst,autopunct=false,sorting=none,sortcites=false,natbib=false,maxnames=8,minnames=8,giveninits=true,block=space,hyperref=true,defernumbers=false,useprefix=true,language=british]{biblatex}
+\renewcommand*{\finalnamedelim}{, }
+\setcounter{biburlnumpenalty}{1}
+\setcounter{biburlucpenalty}{0}
+\setcounter{biburllcpenalty}{1}
+
+\usepackage{graphicx}
+
+\usepackage[usenames]{xcolor}
+\definecolor{myblue}{RGB}{51,34,136}
+\definecolor{mygreen}{RGB}{17,119,51}
+\definecolor{myred}{RGB}{136,34,85}
+\definecolor{myyellow}{RGB}{153,153,51}
+\definecolor{mylightyellow}{RGB}{221,204,119}
+\newcommand*{\mynote}[1]{ {\color[RGB]{68,170,153}\maltese\ #1}}
+
+\usepackage{hyperref}
+\providecommand{\href}[2]{#2}
+\providecommand{\eprint}[2]{\texttt{\href{#1}{#2}}}
+\providecommand*{\urlalt}{\href}
+\hypersetup{
+colorlinks=true,%
+bookmarksnumbered,%
+pdfborder={0 0 0.25},%
+citebordercolor={0.2 0.1333 0.5333},%bluish
+citecolor=myblue,%
+linkbordercolor={0.0667 0.4667 0.2},%greenish
+linkcolor=myred,%
+urlbordercolor={0.5333 0.1333 0.3333},%reddish
+urlcolor=mygreen,%
+breaklinks=true,%
+pdftitle = {Hidden network-size assumptions in the maximum-entropy method},%***
+pdfauthor = {Rostami, Porta Mana, Torre}%***
+}
+\usepackage[depth=4]{bookmark}
+\usepackage{mathdots}
+
+
+%%%%%%%%%%%%%% macros
+\newcommand*{\widebar}[1]{{\mkern 1.5mu\skew{2}\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}}
+\newcommand*{\av}{\overline} %pop average
+\newcommand*{\sav}{\widehat} %subpop average
+\newcommand*{\yxx}{x}
+\newcommand*{\yx}{\bm{\yxx}}%subpop state
+\newcommand*{\yxs}{\sav{\yx}}%subpop av state
+\newcommand*{\yxxs}{\sav{\yx\yx}}
+\newcommand*{\yX}{\bm{X}}%pop state
+\newcommand*{\yXf}{\av{\yX}}%pop av state
+\newcommand*{\yr}{\bm{r}}%subpop value
+\newcommand*{\yrs}{\sav{\yr}}%subpop av value
+\newcommand*{\yR}{\bm{R}}%pop value
+\newcommand*{\yRf}{\av{\yR}}%pop av value
+\newcommand*{\yN}{N}
+\newcommand*{\yM}{M}
+\newcommand*{\yee}{L}
+
+\newcommand*{\mee}{maximum entropy}
+\newcommand*{\me}{maximum-entropy}
+\title{Hidden network-size assumptions\\in the maximum-entropy method}
+
+% The \author macro works with any number of authors. There are two
+% commands used to separate the names and addresses of multiple
+% authors: \And and \AND.
+%
+% Using \And between authors leaves it to LaTeX to determine where to
+% break the lines. Using \AND forces a line break at that point. So,
+% if LaTeX puts 3 of 4 authors names on the first line, and the last
+% on the second line, try using \AND instead of \And before the third
+% author name.
+
+\author{ V. Rostami\\
+  Forschungszentrum Jülich INM-6\\
+  \texttt{v.rostami@fz-juelich.de}
+  \And
+  P.G.L. Porta Mana\\who knows
+  \And E. Torre\\Chocolateland
+  %
+% David S.~Hippocampus\thanks{Use footnote for providing further information
+%   about author (webpage, alternative
+%   address)---\emph{not} for acknowledging funding agencies.} \\
+% Department of Computer Science\\
+% Cranberry-Lemon University\\
+% Pittsburgh, PA 15213 \\
+% \texttt{hippo@cs.cranberry-lemon.edu} \\
+  %% examples of more authors
+  %% \And
+  %% Coauthor \\
+  %% Affiliation \\
+  %% Address \\
+  %% \texttt{email} \\
+  %% \AND
+  %% Coauthor \\
+  %% Affiliation \\
+  %% Address \\
+  %% \texttt{email} \\
+  %% \And
+  %% Coauthor \\
+  %% Affiliation \\
+  %% Address \\
+  %% \texttt{email} \\
+  %% \And
+  %% Coauthor \\
+  %% Affiliation \\
+  %% Address \\
+  %% \texttt{email} \\
+}
+
+\begin{document}
+% \nipsfinalcopy is no longer used
+
+\maketitle
+
+\begin{abstract}
+***%  The abstract must be limited to one paragraph.
+\end{abstract}
+
+\section{Implicit assumptions in the maximum-entropy method}
+
+The \me\ method is been used in neuroscience blahblah***
+
+In this note we would like to analyse and warn about a subtle assumption
+behind the \me\ method when it is applied to a network. It can informally
+be put this way:
+\begin{quote}
+  \emph{the \me\ method assumes that the network it is applied to is
+    completely isolated from any larger network.}
+\end{quote}
+
+\mynote{Version 1}
+The \me\ method does not construct a probability distribution out of
+nothing, but starting from a uniform distribution. A uniform distribution
+is an innocuous assumption for a set of non-composite events, like the
+outcomes of a die roll, and also for some sets of composite events, like
+the outcomes of the roll of two dice. In the latter case multiplicities
+appear.
+
+When applied to a subnetwork, the \me\ method assumes that the uniform over
+the larger network is uniform, and therefore factorizable. The new
+distribution of the subnetwork will not be uniform, but that of the full
+network will still be factorizable into the one for the subnetwork and the
+rest.
+
+A uniform distribution, however, is not the right one when we suppose that
+learning about an event may tell us something about a related event. For
+example, consider 1\,000 tosses of a particular coin and assume a uniform
+distribution over the possible $2^{1\,000}$ outcomes. If we learn that the
+first 999 tosses yielded all \enquote{heads}, the probability calculus
+tells us that the probability for the 1\,000th toss is still 50\%/50\%. It
+is a consequence of our choice of a uniform distribution: we have
+implicitly declared all tosses to be completely independent, completely
+\emph{irrelevant} to one another. This fact is well-known in sampling
+theory. A more telling example in fact is that of a presidential election
+with two candidates: each citizen will vote for one or the other. We do
+survey sampling on a large number of citizens to guess the election's
+outcome. If we assumed a uniform distribution over the possible
+combinations of choices of all citizens, our sampling would be completely
+irrelevant for the choices of the rest of the population.
+
+
+
+
+The latter example has many similarities with that of a neuronal binary
+network. When we record the neuronal activity of a sample of neurons from a
+brain area, we assume that our measurements can tell us something -- no
+matter how vague or imprecise -- about the whole brain area. This means
+that we are not assuming a uniform distribution over all possible states of
+the area.
+
+
+
+
+\mynote{Version 2}
+This may come as a surprise. The method simply requires a number of
+exhaustive and mutually exclusive events, and if these are composite events
+the final distribution may have a multiplicity factor. When we consider the
+$2^{\yN}$ states of $\yN$ units we are not excluding that these might be
+marginals of $2^{\yM}$ states of $\yM$ units. Each one has the same
+multiplicity $2^{\yM-\yN}$, but this constant multiplicity factor disappears
+by normalization. So the method applies just as in the case of $\yN$ units
+only, right?
+
+Right, but 
+
+Right, and that is where the problem lies. This way of counting of
+multiplicities assumes an underlying 
+
+Wrong. In our reasoning we have made subtle assumptions of independence
+between the full network and the subnetwork. The problem is that the
+counting of multiplicities is not based on simple enumeration, but already
+involves probability considerations. Consider three cases with a full
+population of two units, $\yM=2$, of which we consider one unit, $\yN=1$.
+\begin{itemize}
+\item First case: all four states are \emph{possible}. The two states of
+  the first unit have multiplicity $2$ each. The usual \me\ distribution
+  obtains.
+\item Second case: only the states with at most one active unit are
+  possible. The state $\yxx_1=1$ of the first unit has multiplicity
+  $2$, and $\yxx_1=1$ has multiplicity $1$. The \me\ distribution has
+  multiplicity factors.
+\item Third case: states with at most one active unit are, say, $10^{9}$
+  times more probable than the state with no active units. But all four
+  states are \emph{possible}. By enumeration this case is like the first:
+  multiplicities $(1,1)$. But by common sense it is more similar to the
+  second: multiplicities $(2,1)$ for most practical purposes.
+\end{itemize}
+
+This simple example shows that the multiplicity inspection that must
+precede a \me\ application already involves probability considerations at
+the level of the full network. The usual reasoning by enumeration
+implicitly assumes a uniform distribution or at least a \emph{factorizable}
+distribution.
+
+***If the distribution is factorizable, however, it means that examination of
+the subnetwork \emph{cannot give us any insights about the network it is a
+  part of}. This is obviously contrary to the reason why we made neuronal observations.
+
+Consider the following ways of proceeding. We:
+\begin{enumerate}
+\item have a network with $\yN$ units, $2^{\yN}$ possible states
+\item expect averages of $\yxs$ active neurons and $\yxxs$ active pairs
+\item use maximum-entropy to choose a probability distribution for the
+  states of the $\yN$ units conforming to our expectations.
+\end{enumerate}
+
+We:
+\begin{enumerate}
+\item have a network with $\yM$ units, $2^{\yM}$ possible states
+\item expect that any subpopulation of $\yN$ units has $\yxs$ active
+  neurons and $\yxxs$ active pairs
+\item use maximum-entropy to choose a probability distribution for the
+  states of the $\yM$ units conforming to our expectations
+\item marginalize to find the probability distribution for the states of
+  $\yN$ units.
+\end{enumerate}
+
+
+\subsection{***}
+
+
+\subsubsection{***}
+
+
+\paragraph{***}
+
+% do not change font sizes (except perhaps in the \textbf{References}
+% section; see below).
+
+
+\subsubsection*{Acknowledgments}
+
+% Do not include acknowledgments in the anonymized submission, only in the
+% final paper.
+
+\section*{References}
+
+blabla
+
+% References follow the acknowledgments. Use unnumbered first-level
+% heading for the references. Any choice of citation style is acceptable
+% as long as you are consistent. It is permissible to reduce the font
+% size to \verb+small+ (9 point) when listing the references. {\bf
+%   Remember that you can go over 8 pages as long as the subsequent ones contain
+%   \emph{only} cited references.}
+% \medskip
+
+
+\end{document}

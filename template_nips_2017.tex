@@ -8,20 +8,488 @@
 % \usepackage[nonatbib]{nips_2017}
 
 \usepackage[final,nonatbib]{nips_2017}
+\newcommand*{\firstdraft}{***}
+\newcommand*{\pdftitle}{***}
+\newcommand*{\headtitle}{\pdftitle}
+\newcommand*{\pdfauthor}{P.G.L.  Porta Mana}
+\newcommand*{\headauthor}{\ifnotnotes Porta Mana%
+\else\autanet\ Luca\fi}
+\newcommand*{\reporthead}{}
+
+%\usepackage{pifont}
+%\usepackage{fontawesome}
+\usepackage[T1]{fontenc} 
+\input{glyphtounicode} \pdfgentounicode=1
+\usepackage[utf8]{inputenx}
+\usepackage{newunicodechar}
+% \newunicodechar{Ĕ}{\u{E}}
+% \newunicodechar{ĕ}{\u{e}}
+% \newunicodechar{Ĭ}{\u{I}}
+% \newunicodechar{ĭ}{\u{\i}}
+% \newunicodechar{Ŏ}{\u{O}}
+% \newunicodechar{ŏ}{\u{o}}
+% \newunicodechar{Ŭ}{\u{U}}
+% \newunicodechar{ŭ}{\u{u}}
+% \newunicodechar{Ā}{\=A}
+% \newunicodechar{ā}{\=a}
+% \newunicodechar{Ē}{\=E}
+% \newunicodechar{ē}{\=e}
+% \newunicodechar{Ī}{\=I}
+% \newunicodechar{ī}{\={\i}}
+% \newunicodechar{Ō}{\=O}
+% \newunicodechar{ō}{\=o}
+% \newunicodechar{Ū}{\=U}
+% \newunicodechar{ū}{\=u}
+% \newunicodechar{Ȳ}{\=Y}
+% \newunicodechar{ȳ}{\=y}
+
+%\newcommand*{\bmmax}{0} % reduce number of bold fonts, before bm
+\newcommand*{\hmmax}{0} % reduce number of heavy fonts, before bm
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\setlength{\multlinegap}{0pt}
+
+\usepackage{amssymb}
+\usepackage{amsxtra}
+
+\usepackage[british]{babel}\selectlanguage{british}
+\newcommand*{\langfrench}{\foreignlanguage{french}}
+\newcommand*{\langgerman}{\foreignlanguage{german}}
+\newcommand*{\langitalian}{\foreignlanguage{italian}}
+\newcommand*{\langswedish}{\foreignlanguage{swedish}}
+\newcommand*{\langlatin}{\foreignlanguage{latin}}
+\newcommand*{\langnohyph}{\foreignlanguage{nohyphenation}}
+
+\usepackage[autostyle=false,autopunct=false,english=british]{csquotes}
+\setquotestyle{american}
+
+\usepackage{amsthm}
+\newcommand*{\QED}{\textsc{q.e.d.}}
+\renewcommand*{\qedsymbol}{\QED}
+\theoremstyle{remark}
+\newtheorem{note}{Note}
+\newtheorem*{remark}{Note}
+\newtheoremstyle{innote}{\parsep}{\parsep}{\footnotesize}{}{}{}{0pt}{}
+\theoremstyle{innote}
+\newtheorem*{innote}{}
+
+\usepackage{bm}
+
+\usepackage[shortlabels,inline]{enumitem}
+\SetEnumitemKey{para}{itemindent=\parindent,leftmargin=0pt,listparindent=\parindent,parsep=0pt,itemsep=\topsep}
+% \begin{asparaenum} = \begin{enumerate}[para]
+% \begin{inparaenum} = \begin{enumerate*}
+\setlist[enumerate,2]{label=\alph*.}
+\setlist[enumerate]{leftmargin=\parindent}
+\setlist[itemize]{leftmargin=\parindent}
+\setlist[description]{leftmargin=\parindent}
+
+%% With euler font cursive for Greek letters - the [1] means 100% scaling
+\DeclareFontFamily{U}{egreek}{\skewchar\font'177}%
+\DeclareFontShape{U}{egreek}{m}{n}{<-6>s*[1]eurm5 <6-8>s*[1]eurm7 <8->s*[1]eurm10}{}%
+\DeclareFontShape{U}{egreek}{m}{it}{<->s*[1]eurmo10}{}%
+\DeclareFontShape{U}{egreek}{b}{n}{<-6>s*[1]eurb5 <6-8>s*[1]eurb7 <8->s*[1]eurb10}{}%
+\DeclareFontShape{U}{egreek}{b}{it}{<->s*[1]eurbo10}{}%
+\DeclareSymbolFont{egreeki}{U}{egreek}{m}{it}%
+\SetSymbolFont{egreeki}{bold}{U}{egreek}{b}{it}% from the amsfonts package
+\DeclareSymbolFont{egreekr}{U}{egreek}{m}{n}%
+\SetSymbolFont{egreekr}{bold}{U}{egreek}{b}{n}% from the amsfonts package
+% Take also \sum, \prod, \coprod symbols from Euler fonts
+\DeclareFontFamily{U}{egreekx}{\skewchar\font'177}
+\DeclareFontShape{U}{egreekx}{m}{n}{%
+       <-7.5>s*[0.9]euex7%
+    <7.5-8.5>s*[0.9]euex8%
+    <8.5-9.5>s*[0.9]euex9%
+    <9.5->s*[0.9]euex10%
+}{}
+\DeclareSymbolFont{egreekx}{U}{egreekx}{m}{n}
+\DeclareMathSymbol{\sumop}{\mathop}{egreekx}{"50}
+\DeclareMathSymbol{\prodop}{\mathop}{egreekx}{"51}
+\DeclareMathSymbol{\coprodop}{\mathop}{egreekx}{"60}
+\makeatletter
+\def\sum{\DOTSI\sumop\slimits@}
+\def\prod{\DOTSI\prodop\slimits@}
+\def\coprod{\DOTSI\coprodop\slimits@}
+\makeatother
+% Greek letters not usually given in LaTeX. Comment the unneeded ones
+\DeclareMathSymbol{\varpartial}{\mathalpha}{egreeki}{"40}
+\DeclareMathSymbol{\partialup}{\mathalpha}{egreekr}{"40}
+\DeclareMathSymbol{\alpha}{\mathalpha}{egreeki}{"0B}
+\DeclareMathSymbol{\beta}{\mathalpha}{egreeki}{"0C}
+\DeclareMathSymbol{\gamma}{\mathalpha}{egreeki}{"0D}
+\DeclareMathSymbol{\delta}{\mathalpha}{egreeki}{"0E}
+\DeclareMathSymbol{\epsilon}{\mathalpha}{egreeki}{"0F}
+\DeclareMathSymbol{\zeta}{\mathalpha}{egreeki}{"10}
+\DeclareMathSymbol{\eta}{\mathalpha}{egreeki}{"11}
+\DeclareMathSymbol{\theta}{\mathalpha}{egreeki}{"12}
+\DeclareMathSymbol{\iota}{\mathalpha}{egreeki}{"13}
+\DeclareMathSymbol{\kappa}{\mathalpha}{egreeki}{"14}
+\DeclareMathSymbol{\lambda}{\mathalpha}{egreeki}{"15}
+\DeclareMathSymbol{\mu}{\mathalpha}{egreeki}{"16}
+\DeclareMathSymbol{\nu}{\mathalpha}{egreeki}{"17}
+\DeclareMathSymbol{\xi}{\mathalpha}{egreeki}{"18}
+\DeclareMathSymbol{\omicron}{\mathalpha}{egreeki}{"6F}
+\DeclareMathSymbol{\pi}{\mathalpha}{egreeki}{"19}
+\DeclareMathSymbol{\rho}{\mathalpha}{egreeki}{"1A}
+\DeclareMathSymbol{\sigma}{\mathalpha}{egreeki}{"1B}
+\DeclareMathSymbol{\tau}{\mathalpha}{egreeki}{"1C}
+\DeclareMathSymbol{\upsilon}{\mathalpha}{egreeki}{"1D}
+\DeclareMathSymbol{\phi}{\mathalpha}{egreeki}{"1E}
+\DeclareMathSymbol{\chi}{\mathalpha}{egreeki}{"1F}
+\DeclareMathSymbol{\psi}{\mathalpha}{egreeki}{"20}
+\DeclareMathSymbol{\omega}{\mathalpha}{egreeki}{"21}
+\DeclareMathSymbol{\varepsilon}{\mathalpha}{egreeki}{"22}
+\DeclareMathSymbol{\vartheta}{\mathalpha}{egreeki}{"23}
+\DeclareMathSymbol{\varpi}{\mathalpha}{egreeki}{"24}
+\let\varrho\rho 
+\let\varsigma\sigma
+\let\varkappa\kappa
+\DeclareMathSymbol{\varphi}{\mathalpha}{egreeki}{"27}
+%
+\DeclareMathSymbol{\varAlpha}{\mathalpha}{egreeki}{"41}
+\DeclareMathSymbol{\varBeta}{\mathalpha}{egreeki}{"42}
+\DeclareMathSymbol{\varGamma}{\mathalpha}{egreeki}{"00}
+\DeclareMathSymbol{\varDelta}{\mathalpha}{egreeki}{"01}
+\DeclareMathSymbol{\varEpsilon}{\mathalpha}{egreeki}{"45}
+\DeclareMathSymbol{\varZeta}{\mathalpha}{egreeki}{"5A}
+\DeclareMathSymbol{\varEta}{\mathalpha}{egreeki}{"48}
+\DeclareMathSymbol{\varTheta}{\mathalpha}{egreeki}{"02}
+\DeclareMathSymbol{\varIota}{\mathalpha}{egreeki}{"49}
+\DeclareMathSymbol{\varKappa}{\mathalpha}{egreeki}{"4B}
+\DeclareMathSymbol{\varLambda}{\mathalpha}{egreeki}{"03}
+\DeclareMathSymbol{\varMu}{\mathalpha}{egreeki}{"4D}
+\DeclareMathSymbol{\varNu}{\mathalpha}{egreeki}{"4E}
+\DeclareMathSymbol{\varXi}{\mathalpha}{egreeki}{"04}
+\DeclareMathSymbol{\varOmicron}{\mathalpha}{egreeki}{"4F}
+\DeclareMathSymbol{\varPi}{\mathalpha}{egreeki}{"05}
+\DeclareMathSymbol{\varRho}{\mathalpha}{egreeki}{"50}
+\DeclareMathSymbol{\varSigma}{\mathalpha}{egreeki}{"06}
+\DeclareMathSymbol{\varTau}{\mathalpha}{egreeki}{"54}
+\DeclareMathSymbol{\varUpsilon}{\mathalpha}{egreeki}{"07}
+\DeclareMathSymbol{\varPhi}{\mathalpha}{egreeki}{"08}
+\DeclareMathSymbol{\varChi}{\mathalpha}{egreeki}{"58}
+\DeclareMathSymbol{\varPsi}{\mathalpha}{egreeki}{"09}
+\DeclareMathSymbol{\varOmega}{\mathalpha}{egreeki}{"0A} 
+%
+\DeclareMathSymbol{\Alpha}{\mathalpha}{egreekr}{"41}
+\DeclareMathSymbol{\Beta}{\mathalpha}{egreekr}{"42}
+\DeclareMathSymbol{\Gamma}{\mathalpha}{egreekr}{"00}
+\DeclareMathSymbol{\Delta}{\mathalpha}{egreekr}{"01}
+\DeclareMathSymbol{\Epsilon}{\mathalpha}{egreekr}{"45}
+\DeclareMathSymbol{\Zeta}{\mathalpha}{egreekr}{"5A}
+\DeclareMathSymbol{\Eta}{\mathalpha}{egreekr}{"48}
+\DeclareMathSymbol{\Theta}{\mathalpha}{egreekr}{"02}
+\DeclareMathSymbol{\Iota}{\mathalpha}{egreekr}{"49}
+\DeclareMathSymbol{\Kappa}{\mathalpha}{egreekr}{"4B}
+\DeclareMathSymbol{\Lambda}{\mathalpha}{egreekr}{"03}
+\DeclareMathSymbol{\Mu}{\mathalpha}{egreekr}{"4D}
+\DeclareMathSymbol{\Nu}{\mathalpha}{egreekr}{"4E}
+\DeclareMathSymbol{\Xi}{\mathalpha}{egreekr}{"04}
+\DeclareMathSymbol{\Omicron}{\mathalpha}{egreekr}{"4F}
+\DeclareMathSymbol{\Pi}{\mathalpha}{egreekr}{"05}
+\DeclareMathSymbol{\Rho}{\mathalpha}{egreekr}{"50}
+\DeclareMathSymbol{\Sigma}{\mathalpha}{egreekr}{"06}
+\DeclareMathSymbol{\Tau}{\mathalpha}{egreekr}{"54}
+\DeclareMathSymbol{\Upsilon}{\mathalpha}{egreekr}{"07}
+\DeclareMathSymbol{\Phi}{\mathalpha}{egreekr}{"08}
+\DeclareMathSymbol{\Chi}{\mathalpha}{egreekr}{"58}
+\DeclareMathSymbol{\Psi}{\mathalpha}{egreekr}{"09}
+\DeclareMathSymbol{\Omega}{\mathalpha}{egreekr}{"0A}
+%
+\DeclareMathSymbol{\alphaup}{\mathalpha}{egreekr}{"0B}
+\DeclareMathSymbol{\betaup}{\mathalpha}{egreekr}{"0C}
+\DeclareMathSymbol{\gammaup}{\mathalpha}{egreekr}{"0D}
+\DeclareMathSymbol{\deltaup}{\mathalpha}{egreekr}{"0E}
+\DeclareMathSymbol{\epsilonup}{\mathalpha}{egreekr}{"0F}
+\DeclareMathSymbol{\zetaup}{\mathalpha}{egreekr}{"10}
+\DeclareMathSymbol{\etaup}{\mathalpha}{egreekr}{"11}
+\DeclareMathSymbol{\thetaup}{\mathalpha}{egreekr}{"12}
+\DeclareMathSymbol{\iotaup}{\mathalpha}{egreekr}{"13}
+\DeclareMathSymbol{\kappaup}{\mathalpha}{egreekr}{"14}
+\DeclareMathSymbol{\lambdaup}{\mathalpha}{egreekr}{"15}
+\DeclareMathSymbol{\muup}{\mathalpha}{egreekr}{"16}
+\DeclareMathSymbol{\nuup}{\mathalpha}{egreekr}{"17}
+\DeclareMathSymbol{\xiup}{\mathalpha}{egreekr}{"18}
+\DeclareMathSymbol{\omicronup}{\mathalpha}{egreekr}{"6F}
+ \DeclareMathSymbol{\piup}{\mathalpha}{egreekr}{"19}
+\DeclareMathSymbol{\rhoup}{\mathalpha}{egreekr}{"1A}
+\DeclareMathSymbol{\sigmaup}{\mathalpha}{egreekr}{"1B}
+\DeclareMathSymbol{\tauup}{\mathalpha}{egreekr}{"1C}
+\DeclareMathSymbol{\upsilonup}{\mathalpha}{egreekr}{"1D}
+\DeclareMathSymbol{\phiup}{\mathalpha}{egreekr}{"1E}
+\DeclareMathSymbol{\chiup}{\mathalpha}{egreekr}{"1F}
+\DeclareMathSymbol{\psiup}{\mathalpha}{egreekr}{"20}
+\DeclareMathSymbol{\omegaup}{\mathalpha}{egreekr}{"21}
+\DeclareMathSymbol{\varepsilonup}{\mathalpha}{egreekr}{"22}
+\DeclareMathSymbol{\varthetaup}{\mathalpha}{egreekr}{"23}
+\DeclareMathSymbol{\varpiup}{\mathalpha}{egreekr}{"24}
+\let\varrhoup\rhoup 
+\let\varsigmaup\sigmaup
+\let\varkappaup\kappaup
+\DeclareMathSymbol{\varphiup}{\mathalpha}{egreekr}{"27}
+
+%\newcommand*{\mathte}[1]{\textbf{\textit{\textsf{#1}}}}
+% Upright sans-serif math alphabet
+% \DeclareMathAlphabet{\mathsu}  {T1}{\sfdefault}{m}{n}
+% \SetMathAlphabet{\mathsu}{bold}{T1}{\sfdefault}{b}{n}
+
+\usepackage{mathdots}
+
+\usepackage[usenames]{xcolor}
+\definecolor{myblue}{RGB}{51,34,136}
+\definecolor{mygreen}{RGB}{17,119,51}
+\definecolor{myred}{RGB}{136,34,85}
+\definecolor{myyellow}{RGB}{153,153,51}
+\definecolor{mylightyellow}{RGB}{221,204,119}
+
+
+\usepackage{microtype}
+
+\usepackage[backend=biber,mcite,subentry,citestyle=numeric-comp,bibstyle=numericbringhurst,autopunct=false,sorting=none,sortcites=false,natbib=false,maxnames=8,minnames=8,giveninits=true,block=space,hyperref=true,defernumbers=false,useprefix=true,language=british]{biblatex}
+\renewcommand*{\finalnamedelim}{, }
+\setcounter{biburlnumpenalty}{1}
+\setcounter{biburlucpenalty}{0}
+\setcounter{biburllcpenalty}{1}
+\DeclareDelimFormat{multicitedelim}{\addsemicolon\space}
+\DeclareDelimFormat{postnotedelim}{\space}
+\addbibresource{portamanabib.bib}
+\renewcommand{\bibfont}{\footnotesize}
+\defbibheading{bibliography}[\bibname]{\section*{#1}\addcontentsline{toc}{section}{#1}%\markboth{#1}{#1}
+}
+\newcommand*{\citep}{\parencites}
+\newcommand*{\citey}{\parencites*}
+\renewcommand*{\cite}{\citep}
+\providecommand{\href}[2]{#2}
+\providecommand{\eprint}[2]{\texttt{\href{#1}{#2}}}
+\newcommand*{\amp}{\&}
+
+\def\arxivp{}
+\def\mparcp{}
+\def\philscip{}
+\def\biorxivp{}
+\newcommand*{\arxivsi}{\texttt{arXiv} eprints available at \url{http://arxiv.org/}.\\}
+\newcommand*{\mparcsi}{\texttt{mp\_arc} eprints available at \url{http://www.ma.utexas.edu/mp_arc/}.\\}
+\newcommand*{\philscisi}{\texttt{philsci} eprints available at \url{http://philsci-archive.pitt.edu/}.\\}
+\newcommand*{\biorxivsi}{\texttt{bioRxiv} eprints available at \url{http://biorxiv.org/}.\\}
+\newcommand*{\arxiveprint}[1]{\global\def\arxivp{\arxivsi}%\citeauthor{0arxivcite}\addtocategory{ifarchcit}{0arxivcite}%eprint
+\texttt{\urlalt{http://arxiv.org/abs/#1}{arXiv:\hspace{0pt}#1}}%
+%\texttt{\href{http://arxiv.org/abs/#1}{\protect\url{arXiv:#1}}}%
+%\renewcommand{\arxivnote}{\texttt{arXiv} eprints available at \url{http://arxiv.org/}.}
+}
+\newcommand*{\mparceprint}[1]{\global\def\mparcp{\mparcsi}%\citeauthor{0mparccite}\addtocategory{ifarchcit}{0mparccite}%eprint
+\texttt{\urlalt{http://www.ma.utexas.edu/mp_arc-bin/mpa?yn=#1}{mp\_arc:\hspace{0pt}#1}}%
+%\texttt{\href{http://www.ma.utexas.edu/mp_arc-bin/mpa?yn=#1}{\protect\url{mp_arc:#1}}}%
+%\providecommand{\mparcnote}{\texttt{mp_arc} eprints available at \url{http://www.ma.utexas.edu/mp_arc/}.}
+}
+\newcommand*{\philscieprint}[1]{\global\def\philscip{\philscisi}%\citeauthor{0philscicite}\addtocategory{ifarchcit}{0philscicite}%eprint
+\texttt{\urlalt{http://philsci-archive.pitt.edu/archive/#1}{PhilSci:\hspace{0pt}#1}}%
+%\texttt{\href{http://philsci-archive.pitt.edu/archive/#1}{\protect\url{PhilSci:#1}}}%
+%\providecommand{\mparcnote}{\texttt{philsci} eprints available at \url{http://philsci-archive.pitt.edu/}.}
+}
+\newcommand*{\biorxiveprint}[1]{\global\def\biorxivp{\biorxivsi}%\citeauthor{0arxivcite}\addtocategory{ifarchcit}{0arxivcite}%eprint
+\texttt{\urlalt{http://biorxiv.org/content/early/#1}{bioRxiv:\hspace{0pt}#1}}%
+%\texttt{\href{http://arxiv.org/abs/#1}{\protect\url{arXiv:#1}}}%
+%\renewcommand{\arxivnote}{\texttt{arXiv} eprints available at \url{http://arxiv.org/}.}
+}
+
+\usepackage{graphicx}
+
+\usepackage{hyperref}
+\usepackage[depth=4]{bookmark}
+\hypersetup{colorlinks=true,bookmarksnumbered,pdfborder={0 0 0.25},citebordercolor={0.2 0.1333 0.5333},%bluish
+citecolor=myblue,linkbordercolor={0.0667 0.4667 0.2},%greenish
+linkcolor=myred,urlbordercolor={0.5333 0.1333 0.3333},%reddish
+urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
+
+% \usepackage[vertfit=local]{breakurl}% only for arXiv
+\providecommand*{\urlalt}{\href}
+
+\usepackage{datetime2}
+\DTMnewdatestyle{mydate}%
+{% definitions
+\renewcommand*{\DTMdisplaydate}[4]{%
+\number##3\ \DTMenglishmonthname{##2} ##1}%
+\renewcommand*{\DTMDisplaydate}{\DTMdisplaydate}%
+}
+\DTMsetdatestyle{mydate}
+
+
+% handling orphan/widow lines:
+\clubpenalty=10000
+\widowpenalty=10000
+\raggedbottom
+
+\selectlanguage{british}\frenchspacing
 
 % to compile a camera-ready version, add the [final] option, e.g.:
 % \usepackage[final]{nips_2017}
 
-\usepackage[utf8]{inputenc} % allow utf-8 input
-\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
-\usepackage{hyperref}       % hyperlinks
-\usepackage{url}            % simple URL typesetting
+%\usepackage[utf8]{inputenc} % allow utf-8 input
+%\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+%\usepackage{hyperref}       % hyperlinks
+%\usepackage{url}            % simple URL typesetting
 \usepackage{booktabs}       % professional-quality tables
-\usepackage{amsfonts}       % blackboard math symbols
-\usepackage{nicefrac}       % compact symbols for 1/2, etc.
-\usepackage{microtype}      % microtypography
+%\usepackage{amsfonts}       % blackboard math symbols
+%\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+%\usepackage{microtype}      % microtypography
 
-\title{Formatting instructions for NIPS 2017}
+% @@@@@@@@@@ new macros @@@@@@@@@@
+% Common ones - uncomment as needed
+%\providecommand{\nequiv}{\not\equiv}
+%\providecommand{\coloneqq}{\mathrel{\mathop:}=}
+%\providecommand{\eqqcolon}{=\mathrel{\mathop:}}
+%\providecommand{\varprod}{\prod}
+%\newcommand*{\de}{\partialup}%partial diff
+%\newcommand*{\pu}{\piup}%constant pi
+%\newcommand*{\delt}{\deltaup}%Kronecker, Dirac
+%\newcommand*{\eps}{\varepsilonup}%Levi-Civita, Heaviside
+%\newcommand*{\riem}{\zetaup}%Riemann zeta
+%\providecommand{\degree}{\textdegree}% degree
+%\newcommand*{\celsius}{\textcelsius}% degree Celsius
+%\newcommand*{\micro}{\textmu}% degree Celsius
+%\newcommand*{\I}{\mathrm{i}}%imaginary unit
+%\newcommand*{\e}{\mathrm{e}}%Neper
+%\newcommand*{\di}{\mathrm{d}}%differential
+%\newcommand*{\Di}{\mathrm{D}}%capital differential
+%\newcommand*{\planckc}{\hslash}
+%\newcommand*{\avogn}{N_{\textrm{A}}}
+%\newcommand*{\NN}{\bm{\mathrm{N}}}
+%\newcommand*{\ZZ}{\bm{\mathrm{Z}}}
+%\newcommand*{\QQ}{\bm{\mathrm{Q}}}
+%\newcommand*{\RR}{\bm{\mathrm{R}}}
+%\newcommand*{\CC}{\bm{\mathrm{C}}}
+%\newcommand*{\nabl}{\bm{\nabla}}%nabla
+%\DeclareMathOperator{\lb}{lb}%base 2 log
+%\DeclareMathOperator{\tr}{tr}%trace
+%\DeclareMathOperator{\card}{card}%cardinality
+%\DeclareMathOperator{\im}{Im}%im part
+%\DeclareMathOperator{\re}{Re}%re part
+%\DeclareMathOperator{\sgn}{sgn}%signum
+%\DeclareMathOperator{\ent}{ent}%integer less or equal to
+%\DeclareMathOperator{\Ord}{O}%same order as
+%\DeclareMathOperator{\ord}{o}%lower order than
+%\newcommand*{\incr}{\triangle}%finite increment
+%\newcommand*{\defd}{\coloneqq}
+%\newcommand*{\defs}{\eqqcolon}
+%\newcommand*{\Land}{\bigwedge}
+%\newcommand*{\Lor}{\bigvee}
+%\newcommand*{\lland}{\mathbin{\ \land\ }}
+%\newcommand*{\llor}{\mathbin{\ \lor\ }}
+%\newcommand*{\lonlyif}{\mathbin{\Rightarrow}}%implies
+%\newcommand*{\limplies}{\mathbin{\Rightarrow}}%implies
+%\newcommand*{\mimplies}{\Rightarrow}%implies
+%\newcommand*{\liff}{\mathbin{\Leftrightarrow}}%if and only if
+%\newcommand*{\cond}{\mathpunct{|}}%conditional sign (in probabilities)
+%\newcommand*{\lcond}{\mathpunct{|\ }}%conditional sign (in probabilities)
+%\newcommand*{\bigcond}{\mathpunct{\big|}}%conditional sign (in probabilities)
+%\newcommand*{\lbigcond}{\mathpunct{\big|\ }}%conditional sign (in probabilities)
+%\newcommand*{\suchthat}{\mid}%{\mathpunct{|}}%such that (eg in sets)
+%\newcommand*{\bigst}{\mathpunct{\big|}}%such that (eg in sets)
+%\newcommand*{\with}{\colon}%with (list of indices)
+%\newcommand*{\mul}{\times}%multiplication
+%\newcommand*{\inn}{\cdot}%inner product
+%\newcommand*{\dotv}{\mathord{\,\cdot\,}}%variable place
+%\newcommand*{\comp}{\circ}%composition of functions
+%\newcommand*{\con}{\mathbin{:}}%scal prod of tensors
+%\newcommand*{\equi}{\sim}%equivalent to 
+%\newcommand*{\corr}{\mathrel{\hat{=}}}%corresponds to
+%\providecommand{\varparallel}{\ensuremath{\mathbin{/\mkern-7mu/}}}%parallel (tentative symbol)
+%\renewcommand{\le}{\leqslant}%less or equal
+%\renewcommand{\ge}{\geqslant}%greater or equal
+%\DeclarePairedDelimiter\clcl{[}{]}
+%\DeclarePairedDelimiter\clop{[}{[}
+%\DeclarePairedDelimiter\opcl{]}{]}
+%\DeclarePairedDelimiter\opop{]}{[}
+%\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+%\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+%\DeclarePairedDelimiter\set{\{}{\}}
+%\DeclareMathOperator{\pr}{P}%probability
+%\newcommand*{\pf}{\mathrm{p}}%probability
+%\newcommand*{\p}{\mathrm{P}}%probability
+%\newcommand*{\tf}{\mathrm{T}}%probability
+%\renewcommand*{\|}{\cond}
+%\newcommand*{\+}{\lor}
+%\renewcommand{\*}{\land}
+%\newcommand*{\sect}{\S}% Sect.~
+%\newcommand*{\sects}{\S\S}% Sect.~
+%\newcommand*{\chap}{ch.}%
+%\newcommand*{\chaps}{chs}%
+%\newcommand*{\fn}{fn}%
+%\newcommand*{\eqn}{eq.}%
+%\newcommand*{\eqns}{eqs}%
+%\newcommand*{\fig}{fig.}%
+%\newcommand*{\figs}{figs}%
+%\newcommand*{\vs}{{vs.}}
+%\newcommand*{\etc}{{etc.}}
+%\newcommand*{\ie}{{i.e.}}
+%\newcommand*{\ca}{{c.}}
+%\newcommand*{\Ie}{{I.e.}}
+%\newcommand*{\Eg}{{E.g.}}
+%\newcommand*{\eg}{{e.g.}}
+%\newcommand*{\viz}{{viz}}
+%\newcommand*{\cf}{{cf.}}
+%\newcommand*{\Cf}{{Cf.}}
+%\newcommand*{\vd}{{v.}}
+%\newcommand*{\Vd}{{V.}}
+%\newcommand*{\etal}{{et al.}}
+%\newcommand*{\etsim}{{et sim.}}
+%\newcommand*{\ibid}{{ibid.}}
+%\newcommand*{\sic}{{sic}}
+%\newcommand*{\id}{\mathte{I}}%id matrix
+%\newcommand*{\nbd}{\nobreakdash}%
+%\newcommand*{\bd}{\hspace{0pt}}%
+%\def\hy{-\penalty0\hskip0pt\relax}
+%\newcommand*{\labelbis}[1]{\tag*{(\ref{#1})$_\text{r}$}}
+%\newcommand*{\mathbox}[2][.8]{\parbox[t]{#1\columnwidth}{#2}}
+%\newcommand*{\zerob}[1]{\makebox[0pt][l]{#1}}
+%\newcommand*{\tprod}{\mathop{\textstyle\prod}\nolimits}
+%\newcommand*{\tsum}{\mathop{\textstyle\sum}\nolimits}
+%\newcommand*{\tint}{\begingroup\textstyle\int\endgroup\nolimits}
+%\newcommand*{\tland}{\mathop{\textstyle\bigwedge}\nolimits}
+%\newcommand*{\tlor}{\mathop{\textstyle\bigvee}\nolimits}
+%\newcommand*{\sprod}{\mathop{\textstyle\prod}}
+%\newcommand*{\ssum}{\mathop{\textstyle\sum}}
+%\newcommand*{\sint}{\begingroup\textstyle\int\endgroup}
+%\newcommand*{\sland}{\mathop{\textstyle\bigwedge}}
+%\newcommand*{\slor}{\mathop{\textstyle\bigvee}}
+%\newcommand*{\T}{^\intercal}%transpose
+%\newcommand*{\E}{\mathrm{E}}
+%\DeclarePairedDelimiter\expp{(}{)}
+%\newcommand*{\expe}{\E\expp}%round
+%\newcommand*{\expeb}{\E\clcl}%square
+%%\newcommand*{\QEM}%{\textnormal{$\Box$}}%{\ding{167}}
+%\newcommand*{\qem}{\leavevmode\unskip\penalty9999 \hbox{}\nobreak\hfill
+%\quad\hbox{\QEM}}
+\definecolor{notecolour}{RGB}{68,170,153}
+\newcommand*{\mynote}[1]{ {\color{notecolour}\maltese\ #1}}
+\newcommand*{\widebar}[1]{{\mkern1.5mu\skew{2}\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}}
+
+\newcommand*{\av}{\overline} %pop average
+\newcommand*{\sav}{\widehat} %subpop average
+\newcommand*{\yxx}{x}
+\newcommand*{\yx}{\bm{\yxx}}%subpop state
+\newcommand*{\yxs}{\sav{\yx}}%subpop av state
+\newcommand*{\yxxs}{\sav{\yx\yx}}
+\newcommand*{\yX}{\bm{X}}%pop state
+\newcommand*{\yXf}{\av{\yX}}%pop av state
+\newcommand*{\yr}{\bm{r}}%subpop value
+\newcommand*{\yrs}{\sav{\yr}}%subpop av value
+\newcommand*{\yR}{\bm{R}}%pop value
+\newcommand*{\yRf}{\av{\yR}}%pop av value
+\newcommand*{\yN}{N}
+\newcommand*{\yM}{M}
+\newcommand*{\yee}{L}
+
+\newcommand*{\mee}{maximum entropy}
+\newcommand*{\me}{maximum-entropy}
+
+%@@@@@@@@@@ new macros end @@@@@@@@@@
+
+\selectlanguage{british}\frenchspacing
+
+
+\title{\pdftitle}
 
 % The \author macro works with any number of authors. There are two
 % commands used to separate the names and addresses of multiple
@@ -33,14 +501,19 @@
 % on the second line, try using \AND instead of \And before the third
 % author name.
 
-\author{
-  David S.~Hippocampus\thanks{Use footnote for providing further
-    information about author (webpage, alternative
-    address)---\emph{not} for acknowledging funding agencies.} \\
-  Department of Computer Science\\
-  Cranberry-Lemon University\\
-  Pittsburgh, PA 15213 \\
-  \texttt{hippo@cs.cranberry-lemon.edu} \\
+\author{ V. Rostami\\
+  Forschungszentrum Jülich INM-6\\
+  \texttt{v.rostami@fz-juelich.de}
+  \And
+  P.G.L. Porta Mana\\who knows
+  \And E. Torre\\Chocolateland  
+  % David S.~Hippocampus\thanks{Use footnote for providing further
+  %   information about author (webpage, alternative
+  %   address)---\emph{not} for acknowledging funding agencies.} \\
+  % Department of Computer Science\\
+  % Cranberry-Lemon University\\
+  % Pittsburgh, PA 15213 \\
+  % \texttt{hippo@cs.cranberry-lemon.edu} \\
   %% examples of more authors
   %% \And
   %% Coauthor \\
@@ -70,304 +543,140 @@
 \maketitle
 
 \begin{abstract}
-  The abstract paragraph should be indented \nicefrac{1}{2}~inch
-  (3~picas) on both the left- and right-hand margins. Use 10~point
-  type, with a vertical spacing (leading) of 11~points.  The word
-  \textbf{Abstract} must be centered, bold, and in point size 12. Two
-  line spaces precede the abstract. The abstract must be limited to
-  one paragraph.
+  ***%  The abstract must be limited to one paragraph.
 \end{abstract}
 
-\section{Submission of papers to NIPS 2017}
+\section{Implicit assumptions in the maximum-entropy method}
 
-NIPS requires electronic submissions.  The electronic submission site
-is
-\begin{center}
-  \url{https://cmt.research.microsoft.com/NIPS2017/}
-\end{center}
+The \me\ method is been used in neuroscience blahblah***
 
-Please read carefully the instructions below and follow them
-faithfully.
-
-\subsection{Style}
-
-Papers to be submitted to NIPS 2017 must be prepared according to the
-instructions presented here. Papers may only be up to eight pages
-long, including figures. This does not include acknowledgments and
-cited references which are allowed on subsequent pages.
-Papers that exceed these limits will not be reviewed, or in any
-other way considered for presentation at the conference.
-
-The margins in 2017 are the same as since 2007, which allow for
-$\sim$$15\%$ more words in the paper compared to earlier years.
-
-Authors are required to use the NIPS \LaTeX{} style files obtainable
-at the NIPS website as indicated below. Please make sure you use the
-current files and not previous versions. Tweaking the style files may
-be grounds for rejection.
-
-\subsection{Retrieval of style files}
-
-The style files for NIPS and other conference information are
-available on the World Wide Web at
-\begin{center}
-  \url{http://www.nips.cc/}
-\end{center}
-The file \verb+nips_2017.pdf+ contains these instructions and
-illustrates the various formatting requirements your NIPS paper must
-satisfy.
-
-The only supported style file for NIPS 2017 is \verb+nips_2017.sty+,
-rewritten for \LaTeXe{}.  \textbf{Previous style files for \LaTeX{}
-  2.09, Microsoft Word, and RTF are no longer supported!}
-
-The new \LaTeX{} style file contains two optional arguments:
-\verb+final+, which creates a camera-ready copy, and \verb+nonatbib+,
-which will not load the \verb+natbib+ package for you in case of
-package clash.
-
-At submission time, please omit the \verb+final+ option. This will
-anonymize your submission and add line numbers to aid review.  Please
-do \emph{not} refer to these line numbers in your paper as they will
-be removed during generation of camera-ready copies.
-
-The file \verb+nips_2017.tex+ may be used as a ``shell'' for writing
-your paper. All you have to do is replace the author, title, abstract,
-and text of the paper with your own.
-
-The formatting instructions contained in these style files are
-summarized in Sections \ref{gen_inst}, \ref{headings}, and
-\ref{others} below.
-
-\section{General formatting instructions}
-\label{gen_inst}
-
-The text must be confined within a rectangle 5.5~inches (33~picas)
-wide and 9~inches (54~picas) long. The left margin is 1.5~inch
-(9~picas).  Use 10~point type with a vertical spacing (leading) of
-11~points.  Times New Roman is the preferred typeface throughout, and
-will be selected for you by default.  Paragraphs are separated by
-\nicefrac{1}{2}~line space (5.5 points), with no indentation.
-
-The paper title should be 17~point, initial caps/lower case, bold,
-centered between two horizontal rules. The top rule should be 4~points
-thick and the bottom rule should be 1~point thick. Allow
-\nicefrac{1}{4}~inch space above and below the title to rules. All
-pages should start at 1~inch (6~picas) from the top of the page.
-
-For the final version, authors' names are set in boldface, and each
-name is centered above the corresponding address. The lead author's
-name is to be listed first (left-most), and the co-authors' names (if
-different address) are set to follow. If there is only one co-author,
-list both author and co-author side by side.
-
-Please pay special attention to the instructions in Section \ref{others}
-regarding figures, tables, acknowledgments, and references.
-
-\section{Headings: first level}
-\label{headings}
-
-All headings should be lower case (except for first word and proper
-nouns), flush left, and bold.
-
-First-level headings should be in 12-point type.
-
-\subsection{Headings: second level}
-
-Second-level headings should be in 10-point type.
-
-\subsubsection{Headings: third level}
-
-Third-level headings should be in 10-point type.
-
-\paragraph{Paragraphs}
-
-There is also a \verb+\paragraph+ command available, which sets the
-heading in bold, flush left, and inline with the text, with the
-heading followed by 1\,em of space.
-
-\section{Citations, figures, tables, references}
-\label{others}
-
-These instructions apply to everyone.
-
-\subsection{Citations within the text}
-
-The \verb+natbib+ package will be loaded for you by default.
-Citations may be author/year or numeric, as long as you maintain
-internal consistency.  As to the format of the references themselves,
-any style is acceptable as long as it is used consistently.
-
-The documentation for \verb+natbib+ may be found at
-\begin{center}
-  \url{http://mirrors.ctan.org/macros/latex/contrib/natbib/natnotes.pdf}
-\end{center}
-Of note is the command \verb+\citet+, which produces citations
-appropriate for use in inline text.  For example,
-\begin{verbatim}
-   \citet{hasselmo} investigated\dots
-\end{verbatim}
-produces
+In this note we would like to analyse and warn about a subtle assumption
+behind the \me\ method when it is applied to a network. It can informally
+be put this way:
 \begin{quote}
-  Hasselmo, et al.\ (1995) investigated\dots
+  \emph{the \me\ method assumes that the network it is applied to is
+    completely isolated from any larger network.}
 \end{quote}
 
-If you wish to load the \verb+natbib+ package with options, you may
-add the following before loading the \verb+nips_2017+ package:
-\begin{verbatim}
-   \PassOptionsToPackage{options}{natbib}
-\end{verbatim}
+\mynote{Version 1}
+The \me\ method does not construct a probability distribution out of
+nothing, but starting from a uniform distribution. A uniform distribution
+is an innocuous assumption for a set of non-composite events, like the
+outcomes of a die roll, and also for some sets of composite events, like
+the outcomes of the roll of two dice. In the latter case multiplicities
+appear.
 
-If \verb+natbib+ clashes with another package you load, you can add
-the optional argument \verb+nonatbib+ when loading the style file:
-\begin{verbatim}
-   \usepackage[nonatbib]{nips_2017}
-\end{verbatim}
+When applied to a subnetwork, the \me\ method assumes that the uniform over
+the larger network is uniform, and therefore factorizable. The new
+distribution of the subnetwork will not be uniform, but that of the full
+network will still be factorizable into the one for the subnetwork and the
+rest.
 
-As submission is double blind, refer to your own published work in the
-third person. That is, use ``In the previous work of Jones et
-al.\ [4],'' not ``In our previous work [4].'' If you cite your other
-papers that are not widely available (e.g., a journal paper under
-review), use anonymous author names in the citation, e.g., an author
-of the form ``A.\ Anonymous.''
+A uniform distribution, however, is not the right one when we suppose that
+learning about an event may tell us something about a related event. For
+example, consider 1\,000 tosses of a particular coin and assume a uniform
+distribution over the possible $2^{1\,000}$ outcomes. If we learn that the
+first 999 tosses yielded all \enquote{heads}, the probability calculus
+tells us that the probability for the 1\,000th toss is still 50\%/50\%. It
+is a consequence of our choice of a uniform distribution: we have
+implicitly declared all tosses to be completely independent, completely
+\emph{irrelevant} to one another. This fact is well-known in sampling
+theory. A more telling example in fact is that of a presidential election
+with two candidates: each citizen will vote for one or the other. We do
+survey sampling on a large number of citizens to guess the election's
+outcome. If we assumed a uniform distribution over the possible
+combinations of choices of all citizens, our sampling would be completely
+irrelevant for the choices of the rest of the population.
 
-\subsection{Footnotes}
 
-Footnotes should be used sparingly.  If you do require a footnote,
-indicate footnotes with a number\footnote{Sample of the first
-  footnote.} in the text. Place the footnotes at the bottom of the
-page on which they appear.  Precede the footnote with a horizontal
-rule of 2~inches (12~picas).
 
-Note that footnotes are properly typeset \emph{after} punctuation
-marks.\footnote{As in this example.}
 
-\subsection{Figures}
+The latter example has many similarities with that of a neuronal binary
+network. When we record the neuronal activity of a sample of neurons from a
+brain area, we assume that our measurements can tell us something -- no
+matter how vague or imprecise -- about the whole brain area. This means
+that we are not assuming a uniform distribution over all possible states of
+the area.
 
-All artwork must be neat, clean, and legible. Lines should be dark
-enough for purposes of reproduction. The figure number and caption
-always appear after the figure. Place one line space before the figure
-caption and one line space after the figure. The figure caption should
-be lower case (except for first word and proper nouns); figures are
-numbered consecutively.
 
-You may use color figures.  However, it is best for the figure
-captions and the paper body to be legible if the paper is printed in
-either black/white or in color.
-\begin{figure}[h]
-  \centering
-  \fbox{\rule[-.5cm]{0cm}{4cm} \rule[-.5cm]{4cm}{0cm}}
-  \caption{Sample figure caption.}
-\end{figure}
 
-\subsection{Tables}
 
-All tables must be centered, neat, clean and legible.  The table
-number and title always appear before the table.  See
-Table~\ref{sample-table}.
+\mynote{Version 2}
+This may come as a surprise. The method simply requires a number of
+exhaustive and mutually exclusive events, and if these are composite events
+the final distribution may have a multiplicity factor. When we consider the
+$2^{\yN}$ states of $\yN$ units we are not excluding that these might be
+marginals of $2^{\yM}$ states of $\yM$ units. Each one has the same
+multiplicity $2^{\yM-\yN}$, but this constant multiplicity factor disappears
+by normalization. So the method applies just as in the case of $\yN$ units
+only, right?
 
-Place one line space before the table title, one line space after the
-table title, and one line space after the table. The table title must
-be lower case (except for first word and proper nouns); tables are
-numbered consecutively.
+Right, but 
 
-Note that publication-quality tables \emph{do not contain vertical
-  rules.} We strongly suggest the use of the \verb+booktabs+ package,
-which allows for typesetting high-quality, professional tables:
-\begin{center}
-  \url{https://www.ctan.org/pkg/booktabs}
-\end{center}
-This package was used to typeset Table~\ref{sample-table}.
+Right, and that is where the problem lies. This way of counting of
+multiplicities assumes an underlying 
 
-\begin{table}[t]
-  \caption{Sample table title}
-  \label{sample-table}
-  \centering
-  \begin{tabular}{lll}
-    \toprule
-    \multicolumn{2}{c}{Part}                   \\
-    \cmidrule{1-2}
-    Name     & Description     & Size ($\mu$m) \\
-    \midrule
-    Dendrite & Input terminal  & $\sim$100     \\
-    Axon     & Output terminal & $\sim$10      \\
-    Soma     & Cell body       & up to $10^6$  \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-\section{Final instructions}
-
-Do not change any aspects of the formatting parameters in the style
-files.  In particular, do not modify the width or length of the
-rectangle the text should fit into, and do not change font sizes
-(except perhaps in the \textbf{References} section; see below). Please
-note that pages should be numbered.
-
-\section{Preparing PDF files}
-
-Please prepare submission files with paper size ``US Letter,'' and
-not, for example, ``A4.''
-
-Fonts were the main cause of problems in the past years. Your PDF file
-must only contain Type 1 or Embedded TrueType fonts. Here are a few
-instructions to achieve this.
-
+Wrong. In our reasoning we have made subtle assumptions of independence
+between the full network and the subnetwork. The problem is that the
+counting of multiplicities is not based on simple enumeration, but already
+involves probability considerations. Consider three cases with a full
+population of two units, $\yM=2$, of which we consider one unit, $\yN=1$.
 \begin{itemize}
-
-\item You should directly generate PDF files using \verb+pdflatex+.
-
-\item You can check which fonts a PDF files uses.  In Acrobat Reader,
-  select the menu Files$>$Document Properties$>$Fonts and select Show
-  All Fonts. You can also use the program \verb+pdffonts+ which comes
-  with \verb+xpdf+ and is available out-of-the-box on most Linux
-  machines.
-
-\item The IEEE has recommendations for generating PDF files whose
-  fonts are also acceptable for NIPS. Please see
-  \url{http://www.emfield.org/icuwb2010/downloads/IEEE-PDF-SpecV32.pdf}
-
-\item \verb+xfig+ "patterned" shapes are implemented with bitmap
-  fonts.  Use "solid" shapes instead.
-
-\item The \verb+\bbold+ package almost always uses bitmap fonts.  You
-  should use the equivalent AMS Fonts:
-\begin{verbatim}
-   \usepackage{amsfonts}
-\end{verbatim}
-followed by, e.g., \verb+\mathbb{R}+, \verb+\mathbb{N}+, or
-\verb+\mathbb{C}+ for $\mathbb{R}$, $\mathbb{N}$ or $\mathbb{C}$.  You
-can also use the following workaround for reals, natural and complex:
-\begin{verbatim}
-   \newcommand{\RR}{I\!\!R} %real numbers
-   \newcommand{\Nat}{I\!\!N} %natural numbers
-   \newcommand{\CC}{I\!\!\!\!C} %complex numbers
-\end{verbatim}
-Note that \verb+amsfonts+ is automatically loaded by the
-\verb+amssymb+ package.
-
+\item First case: all four states are \emph{possible}. The two states of
+  the first unit have multiplicity $2$ each. The usual \me\ distribution
+  obtains.
+\item Second case: only the states with at most one active unit are
+  possible. The state $\yxx_1=1$ of the first unit has multiplicity
+  $2$, and $\yxx_1=1$ has multiplicity $1$. The \me\ distribution has
+  multiplicity factors.
+\item Third case: states with at most one active unit are, say, $10^{9}$
+  times more probable than the state with no active units. But all four
+  states are \emph{possible}. By enumeration this case is like the first:
+  multiplicities $(1,1)$. But by common sense it is more similar to the
+  second: multiplicities $(2,1)$ for most practical purposes.
 \end{itemize}
 
-If your file contains type 3 fonts or non embedded TrueType fonts, we
-will ask you to fix it.
+This simple example shows that the multiplicity inspection that must
+precede a \me\ application already involves probability considerations at
+the level of the full network. The usual reasoning by enumeration
+implicitly assumes a uniform distribution or at least a \emph{factorizable}
+distribution.
 
-\subsection{Margins in \LaTeX{}}
+***If the distribution is factorizable, however, it means that examination of
+the subnetwork \emph{cannot give us any insights about the network it is a
+  part of}. This is obviously contrary to the reason why we made neuronal observations.
 
-Most of the margin problems come from figures positioned by hand using
-\verb+\special+ or other commands. We suggest using the command
-\verb+\includegraphics+ from the \verb+graphicx+ package. Always
-specify the figure width as a multiple of the line width as in the
-example below:
-\begin{verbatim}
-   \usepackage[pdftex]{graphicx} ...
-   \includegraphics[width=0.8\linewidth]{myfile.pdf}
-\end{verbatim}
-See Section 4.4 in the graphics bundle documentation
-(\url{http://mirrors.ctan.org/macros/latex/required/graphics/grfguide.pdf})
+Consider the following ways of proceeding. We:
+\begin{enumerate}
+\item have a network with $\yN$ units, $2^{\yN}$ possible states
+\item expect averages of $\yxs$ active neurons and $\yxxs$ active pairs
+\item use maximum-entropy to choose a probability distribution for the
+  states of the $\yN$ units conforming to our expectations.
+\end{enumerate}
 
-A number of width problems arise when \LaTeX{} cannot properly
-hyphenate a line. Please give LaTeX hyphenation hints using the
-\verb+\-+ command when necessary.
+We:
+\begin{enumerate}
+\item have a network with $\yM$ units, $2^{\yM}$ possible states
+\item expect that any subpopulation of $\yN$ units has $\yxs$ active
+  neurons and $\yxxs$ active pairs
+\item use maximum-entropy to choose a probability distribution for the
+  states of the $\yM$ units conforming to our expectations
+\item marginalize to find the probability distribution for the states of
+  $\yN$ units.
+\end{enumerate}
+
+
+\subsection{***}
+
+
+\subsubsection{***}
+
+
+\paragraph{***}
+
+% do not change font sizes (except perhaps in the \textbf{References}
+% section; see below).
+
 
 \subsubsection*{Acknowledgments}
 
@@ -377,28 +686,28 @@ acknowledgments in the anonymized submission, only in the final paper.
 
 \section*{References}
 
-References follow the acknowledgments. Use unnumbered first-level
-heading for the references. Any choice of citation style is acceptable
-as long as you are consistent. It is permissible to reduce the font
-size to \verb+small+ (9 point) when listing the references. {\bf
-  Remember that you can go over 8 pages as long as the subsequent ones contain
-  \emph{only} cited references.}
-\medskip
+% References follow the acknowledgments. Use unnumbered first-level
+% heading for the references. Any choice of citation style is acceptable
+% as long as you are consistent. It is permissible to reduce the font
+% size to \verb+small+ (9 point) when listing the references. {\bf
+%   Remember that you can go over 8 pages as long as the subsequent ones contain
+%   \emph{only} cited references.}
+% \medskip
 
-\small
+% \small
 
-[1] Alexander, J.A.\ \& Mozer, M.C.\ (1995) Template-based algorithms
-for connectionist rule extraction. In G.\ Tesauro, D.S.\ Touretzky and
-T.K.\ Leen (eds.), {\it Advances in Neural Information Processing
-  Systems 7}, pp.\ 609--616. Cambridge, MA: MIT Press.
+% [1] Alexander, J.A.\ \& Mozer, M.C.\ (1995) Template-based algorithms
+% for connectionist rule extraction. In G.\ Tesauro, D.S.\ Touretzky and
+% T.K.\ Leen (eds.), {\it Advances in Neural Information Processing
+%   Systems 7}, pp.\ 609--616. Cambridge, MA: MIT Press.
 
-[2] Bower, J.M.\ \& Beeman, D.\ (1995) {\it The Book of GENESIS:
-  Exploring Realistic Neural Models with the GEneral NEural SImulation
-  System.}  New York: TELOS/Springer--Verlag.
+% [2] Bower, J.M.\ \& Beeman, D.\ (1995) {\it The Book of GENESIS:
+%   Exploring Realistic Neural Models with the GEneral NEural SImulation
+%   System.}  New York: TELOS/Springer--Verlag.
 
-[3] Hasselmo, M.E., Schnell, E.\ \& Barkai, E.\ (1995) Dynamics of
-learning and recall at excitatory recurrent synapses and cholinergic
-modulation in rat hippocampal region CA3. {\it Journal of
-  Neuroscience} {\bf 15}(7):5249-5262.
+% [3] Hasselmo, M.E., Schnell, E.\ \& Barkai, E.\ (1995) Dynamics of
+% learning and recall at excitatory recurrent synapses and cholinergic
+% modulation in rat hippocampal region CA3. {\it Journal of
+%   Neuroscience} {\bf 15}(7):5249-5262.
 
 \end{document}

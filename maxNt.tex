@@ -1,3 +1,8 @@
+%% Author: PGL  Porta Mana
+%% Created: 2015-11-04T09:20:08+0100
+%% Last-Updated: 2017-05-12T13:15:15+0200
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Report-no: ***
 \documentclass{article}
 
 % if you need to pass options to natbib, use, e.g.:
@@ -8,63 +13,232 @@
 % \usepackage[nonatbib]{nips_2017}
 
 \usepackage[final,nonatbib]{nips_2017}
+\newcommand*{\firstdraft}{4 November 2015}
+\newcommand*{\pdftitle}{Hidden network-size assumptions\\in the maximum-entropy method}
+\newcommand*{\headtitle}{\pdftitle}
+\newcommand*{\pdfauthor}{P.G.L.  Porta Mana, V. Rostami, E. Torre}
 
-% to compile a camera-ready version, add the [final] option, e.g.:
-% \usepackage[final]{nips_2017}
+%\usepackage{pifont}
+%\usepackage{fontawesome}
+\usepackage[T1]{fontenc} 
+\input{glyphtounicode} \pdfgentounicode=1
+\usepackage[utf8]{inputenx}
+\usepackage{newunicodechar}
+% \newunicodechar{Ĕ}{\u{E}}
+% \newunicodechar{ĕ}{\u{e}}
+% \newunicodechar{Ĭ}{\u{I}}
+% \newunicodechar{ĭ}{\u{\i}}
+% \newunicodechar{Ŏ}{\u{O}}
+% \newunicodechar{ŏ}{\u{o}}
+% \newunicodechar{Ŭ}{\u{U}}
+% \newunicodechar{ŭ}{\u{u}}
+% \newunicodechar{Ā}{\=A}
+% \newunicodechar{ā}{\=a}
+% \newunicodechar{Ē}{\=E}
+% \newunicodechar{ē}{\=e}
+% \newunicodechar{Ī}{\=I}
+% \newunicodechar{ī}{\={\i}}
+% \newunicodechar{Ō}{\=O}
+% \newunicodechar{ō}{\=o}
+% \newunicodechar{Ū}{\=U}
+% \newunicodechar{ū}{\=u}
+% \newunicodechar{Ȳ}{\=Y}
+% \newunicodechar{ȳ}{\=y}
 
-\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
-\usepackage[utf8]{inputenc} % allow utf-8 input
-%\usepackage{hyperref}       % hyperlinks
-%\usepackage{url}            % simple URL typesetting
-\usepackage{booktabs}       % professional-quality tables
-%\usepackage{amsfonts}       % blackboard math symbols
-\usepackage{nicefrac}       % compact symbols for 1/2, etc.
-\usepackage{microtype}      % microtypography
+%\newcommand*{\bmmax}{0} % reduce number of bold fonts, before bm
+\newcommand*{\hmmax}{0} % reduce number of heavy fonts, before bm
 \usepackage{textcomp}
 \usepackage{amsmath}
-
 \usepackage{mathtools}
 \setlength{\multlinegap}{0pt}
-% \newlength{\Normalbaselineskip}
-% \setlength{\Normalbaselineskip}{\baselineskip}
-% \appto\MultlinedHook{\setlength\baselineskip{\Normalbaselineskip}}
 
 \usepackage{amssymb}
 \usepackage{amsxtra}
-\usepackage{amsthm}
-\usepackage{bm}
 
-\usepackage[british]{babel}
-\selectlanguage{british}
-% \newcommand*{\langfrench}{\foreignlanguage{french}}
-% \newcommand*{\langgerman}{\foreignlanguage{german}}
-% \newcommand*{\langitalian}{\foreignlanguage{italian}}
-% \newcommand*{\langswedish}{\foreignlanguage{swedish}}
-% \newcommand*{\langlatin}{\foreignlanguage{latin}}
-% \newcommand*{\langnohyph}{\foreignlanguage{nohyphenation}}
-% \newcommand*{\latin}[1]{\langlatin{#1}}
-% \newcommand*{\french}[1]{\emph{\langfrench{#1}}}
-% \newcommand*{\german}[1]{\emph{\langgerman{#1}}}
+\usepackage[british]{babel}\selectlanguage{british}
+\newcommand*{\langfrench}{\foreignlanguage{french}}
+\newcommand*{\langgerman}{\foreignlanguage{german}}
+\newcommand*{\langitalian}{\foreignlanguage{italian}}
+\newcommand*{\langswedish}{\foreignlanguage{swedish}}
+\newcommand*{\langlatin}{\foreignlanguage{latin}}
+\newcommand*{\langnohyph}{\foreignlanguage{nohyphenation}}
 
 \usepackage[autostyle=false,autopunct=false,english=british]{csquotes}
 \setquotestyle{american}
+
+\usepackage{amsthm}
+\newcommand*{\QED}{\textsc{q.e.d.}}
+\renewcommand*{\qedsymbol}{\QED}
+\theoremstyle{remark}
+\newtheorem{note}{Note}
+\newtheorem*{remark}{Note}
+\newtheoremstyle{innote}{\parsep}{\parsep}{\footnotesize}{}{}{}{0pt}{}
+\theoremstyle{innote}
+\newtheorem*{innote}{}
+
+\usepackage{bm}
+
 \iffalse
 \usepackage[shortlabels,inline]{enumitem}
-% to replace paralist environments with enumitem ones:
 \SetEnumitemKey{para}{itemindent=\parindent,leftmargin=0pt,listparindent=\parindent,parsep=0pt,itemsep=\topsep}
+% \begin{asparaenum} = \begin{enumerate}[para]
+% \begin{inparaenum} = \begin{enumerate*}
 \setlist[enumerate,2]{label=\alph*.}
 \setlist[enumerate]{leftmargin=\parindent}
 \setlist[itemize]{leftmargin=\parindent}
 \setlist[description]{leftmargin=\parindent}
 \fi
 
-\usepackage[backend=biber,mcite,subentry,citestyle=numeric-comp,bibstyle=numericbringhurst,autopunct=false,sorting=none,sortcites=false,natbib=false,maxnames=8,minnames=8,giveninits=true,block=space,hyperref=true,defernumbers=false,useprefix=true,language=british]{biblatex}
-\renewcommand*{\finalnamedelim}{, }
-\setcounter{biburlnumpenalty}{1}
-\setcounter{biburlucpenalty}{0}
-\setcounter{biburllcpenalty}{1}
+%% With euler font cursive for Greek letters - the [1] means 100% scaling
+\DeclareFontFamily{U}{egreek}{\skewchar\font'177}%
+\DeclareFontShape{U}{egreek}{m}{n}{<-6>s*[0.95]eurm5 <6-8>s*[0.95]eurm7 <8->s*[0.95]eurm10}{}%
+\DeclareFontShape{U}{egreek}{m}{it}{<->s*[0.95]eurmo10}{}%
+\DeclareFontShape{U}{egreek}{b}{n}{<-6>s*[0.95]eurb5 <6-8>s*[0.95]eurb7 <8->s*[0.95]eurb10}{}%
+\DeclareFontShape{U}{egreek}{b}{it}{<->s*[0.95]eurbo10}{}%
+\DeclareSymbolFont{egreeki}{U}{egreek}{m}{it}%
+\SetSymbolFont{egreeki}{bold}{U}{egreek}{b}{it}% from the amsfonts package
+\DeclareSymbolFont{egreekr}{U}{egreek}{m}{n}%
+\SetSymbolFont{egreekr}{bold}{U}{egreek}{b}{n}% from the amsfonts package
+% Take also \sum, \prod, \coprod symbols from Euler fonts
+\DeclareFontFamily{U}{egreekx}{\skewchar\font'177}
+\DeclareFontShape{U}{egreekx}{m}{n}{%
+       <-7.5>s*[0.9]euex7%
+    <7.5-8.5>s*[0.9]euex8%
+    <8.5-9.5>s*[0.9]euex9%
+    <9.5->s*[0.9]euex10%
+}{}
+\DeclareSymbolFont{egreekx}{U}{egreekx}{m}{n}
+\DeclareMathSymbol{\sumop}{\mathop}{egreekx}{"50}
+\DeclareMathSymbol{\prodop}{\mathop}{egreekx}{"51}
+\DeclareMathSymbol{\coprodop}{\mathop}{egreekx}{"60}
+\makeatletter
+\def\sum{\DOTSI\sumop\slimits@}
+\def\prod{\DOTSI\prodop\slimits@}
+\def\coprod{\DOTSI\coprodop\slimits@}
+\makeatother
+% Greek letters not usually given in LaTeX. Comment the unneeded ones
+\DeclareMathSymbol{\varpartial}{\mathalpha}{egreeki}{"40}
+\DeclareMathSymbol{\partialup}{\mathalpha}{egreekr}{"40}
+\DeclareMathSymbol{\alpha}{\mathalpha}{egreeki}{"0B}
+\DeclareMathSymbol{\beta}{\mathalpha}{egreeki}{"0C}
+\DeclareMathSymbol{\gamma}{\mathalpha}{egreeki}{"0D}
+\DeclareMathSymbol{\delta}{\mathalpha}{egreeki}{"0E}
+\DeclareMathSymbol{\epsilon}{\mathalpha}{egreeki}{"0F}
+\DeclareMathSymbol{\zeta}{\mathalpha}{egreeki}{"10}
+\DeclareMathSymbol{\eta}{\mathalpha}{egreeki}{"11}
+\DeclareMathSymbol{\theta}{\mathalpha}{egreeki}{"12}
+\DeclareMathSymbol{\iota}{\mathalpha}{egreeki}{"13}
+\DeclareMathSymbol{\kappa}{\mathalpha}{egreeki}{"14}
+\DeclareMathSymbol{\lambda}{\mathalpha}{egreeki}{"15}
+\DeclareMathSymbol{\mu}{\mathalpha}{egreeki}{"16}
+\DeclareMathSymbol{\nu}{\mathalpha}{egreeki}{"17}
+\DeclareMathSymbol{\xi}{\mathalpha}{egreeki}{"18}
+\DeclareMathSymbol{\omicron}{\mathalpha}{egreeki}{"6F}
+\DeclareMathSymbol{\pi}{\mathalpha}{egreeki}{"19}
+\DeclareMathSymbol{\rho}{\mathalpha}{egreeki}{"1A}
+\DeclareMathSymbol{\sigma}{\mathalpha}{egreeki}{"1B}
+\DeclareMathSymbol{\tau}{\mathalpha}{egreeki}{"1C}
+\DeclareMathSymbol{\upsilon}{\mathalpha}{egreeki}{"1D}
+\DeclareMathSymbol{\phi}{\mathalpha}{egreeki}{"1E}
+\DeclareMathSymbol{\chi}{\mathalpha}{egreeki}{"1F}
+\DeclareMathSymbol{\psi}{\mathalpha}{egreeki}{"20}
+\DeclareMathSymbol{\omega}{\mathalpha}{egreeki}{"21}
+\DeclareMathSymbol{\varepsilon}{\mathalpha}{egreeki}{"22}
+\DeclareMathSymbol{\vartheta}{\mathalpha}{egreeki}{"23}
+\DeclareMathSymbol{\varpi}{\mathalpha}{egreeki}{"24}
+\let\varrho\rho 
+\let\varsigma\sigma
+\let\varkappa\kappa
+\DeclareMathSymbol{\varphi}{\mathalpha}{egreeki}{"27}
+%
+\DeclareMathSymbol{\varAlpha}{\mathalpha}{egreeki}{"41}
+\DeclareMathSymbol{\varBeta}{\mathalpha}{egreeki}{"42}
+\DeclareMathSymbol{\varGamma}{\mathalpha}{egreeki}{"00}
+\DeclareMathSymbol{\varDelta}{\mathalpha}{egreeki}{"01}
+\DeclareMathSymbol{\varEpsilon}{\mathalpha}{egreeki}{"45}
+\DeclareMathSymbol{\varZeta}{\mathalpha}{egreeki}{"5A}
+\DeclareMathSymbol{\varEta}{\mathalpha}{egreeki}{"48}
+\DeclareMathSymbol{\varTheta}{\mathalpha}{egreeki}{"02}
+\DeclareMathSymbol{\varIota}{\mathalpha}{egreeki}{"49}
+\DeclareMathSymbol{\varKappa}{\mathalpha}{egreeki}{"4B}
+\DeclareMathSymbol{\varLambda}{\mathalpha}{egreeki}{"03}
+\DeclareMathSymbol{\varMu}{\mathalpha}{egreeki}{"4D}
+\DeclareMathSymbol{\varNu}{\mathalpha}{egreeki}{"4E}
+\DeclareMathSymbol{\varXi}{\mathalpha}{egreeki}{"04}
+\DeclareMathSymbol{\varOmicron}{\mathalpha}{egreeki}{"4F}
+\DeclareMathSymbol{\varPi}{\mathalpha}{egreeki}{"05}
+\DeclareMathSymbol{\varRho}{\mathalpha}{egreeki}{"50}
+\DeclareMathSymbol{\varSigma}{\mathalpha}{egreeki}{"06}
+\DeclareMathSymbol{\varTau}{\mathalpha}{egreeki}{"54}
+\DeclareMathSymbol{\varUpsilon}{\mathalpha}{egreeki}{"07}
+\DeclareMathSymbol{\varPhi}{\mathalpha}{egreeki}{"08}
+\DeclareMathSymbol{\varChi}{\mathalpha}{egreeki}{"58}
+\DeclareMathSymbol{\varPsi}{\mathalpha}{egreeki}{"09}
+\DeclareMathSymbol{\varOmega}{\mathalpha}{egreeki}{"0A} 
+%
+\DeclareMathSymbol{\Alpha}{\mathalpha}{egreekr}{"41}
+\DeclareMathSymbol{\Beta}{\mathalpha}{egreekr}{"42}
+\DeclareMathSymbol{\Gamma}{\mathalpha}{egreekr}{"00}
+\DeclareMathSymbol{\Delta}{\mathalpha}{egreekr}{"01}
+\DeclareMathSymbol{\Epsilon}{\mathalpha}{egreekr}{"45}
+\DeclareMathSymbol{\Zeta}{\mathalpha}{egreekr}{"5A}
+\DeclareMathSymbol{\Eta}{\mathalpha}{egreekr}{"48}
+\DeclareMathSymbol{\Theta}{\mathalpha}{egreekr}{"02}
+\DeclareMathSymbol{\Iota}{\mathalpha}{egreekr}{"49}
+\DeclareMathSymbol{\Kappa}{\mathalpha}{egreekr}{"4B}
+\DeclareMathSymbol{\Lambda}{\mathalpha}{egreekr}{"03}
+\DeclareMathSymbol{\Mu}{\mathalpha}{egreekr}{"4D}
+\DeclareMathSymbol{\Nu}{\mathalpha}{egreekr}{"4E}
+\DeclareMathSymbol{\Xi}{\mathalpha}{egreekr}{"04}
+\DeclareMathSymbol{\Omicron}{\mathalpha}{egreekr}{"4F}
+\DeclareMathSymbol{\Pi}{\mathalpha}{egreekr}{"05}
+\DeclareMathSymbol{\Rho}{\mathalpha}{egreekr}{"50}
+\DeclareMathSymbol{\Sigma}{\mathalpha}{egreekr}{"06}
+\DeclareMathSymbol{\Tau}{\mathalpha}{egreekr}{"54}
+\DeclareMathSymbol{\Upsilon}{\mathalpha}{egreekr}{"07}
+\DeclareMathSymbol{\Phi}{\mathalpha}{egreekr}{"08}
+\DeclareMathSymbol{\Chi}{\mathalpha}{egreekr}{"58}
+\DeclareMathSymbol{\Psi}{\mathalpha}{egreekr}{"09}
+\DeclareMathSymbol{\Omega}{\mathalpha}{egreekr}{"0A}
+%
+\DeclareMathSymbol{\alphaup}{\mathalpha}{egreekr}{"0B}
+\DeclareMathSymbol{\betaup}{\mathalpha}{egreekr}{"0C}
+\DeclareMathSymbol{\gammaup}{\mathalpha}{egreekr}{"0D}
+\DeclareMathSymbol{\deltaup}{\mathalpha}{egreekr}{"0E}
+\DeclareMathSymbol{\epsilonup}{\mathalpha}{egreekr}{"0F}
+\DeclareMathSymbol{\zetaup}{\mathalpha}{egreekr}{"10}
+\DeclareMathSymbol{\etaup}{\mathalpha}{egreekr}{"11}
+\DeclareMathSymbol{\thetaup}{\mathalpha}{egreekr}{"12}
+\DeclareMathSymbol{\iotaup}{\mathalpha}{egreekr}{"13}
+\DeclareMathSymbol{\kappaup}{\mathalpha}{egreekr}{"14}
+\DeclareMathSymbol{\lambdaup}{\mathalpha}{egreekr}{"15}
+\DeclareMathSymbol{\muup}{\mathalpha}{egreekr}{"16}
+\DeclareMathSymbol{\nuup}{\mathalpha}{egreekr}{"17}
+\DeclareMathSymbol{\xiup}{\mathalpha}{egreekr}{"18}
+\DeclareMathSymbol{\omicronup}{\mathalpha}{egreekr}{"6F}
+ \DeclareMathSymbol{\piup}{\mathalpha}{egreekr}{"19}
+\DeclareMathSymbol{\rhoup}{\mathalpha}{egreekr}{"1A}
+\DeclareMathSymbol{\sigmaup}{\mathalpha}{egreekr}{"1B}
+\DeclareMathSymbol{\tauup}{\mathalpha}{egreekr}{"1C}
+\DeclareMathSymbol{\upsilonup}{\mathalpha}{egreekr}{"1D}
+\DeclareMathSymbol{\phiup}{\mathalpha}{egreekr}{"1E}
+\DeclareMathSymbol{\chiup}{\mathalpha}{egreekr}{"1F}
+\DeclareMathSymbol{\psiup}{\mathalpha}{egreekr}{"20}
+\DeclareMathSymbol{\omegaup}{\mathalpha}{egreekr}{"21}
+\DeclareMathSymbol{\varepsilonup}{\mathalpha}{egreekr}{"22}
+\DeclareMathSymbol{\varthetaup}{\mathalpha}{egreekr}{"23}
+\DeclareMathSymbol{\varpiup}{\mathalpha}{egreekr}{"24}
+\let\varrhoup\rhoup 
+\let\varsigmaup\sigmaup
+\let\varkappaup\kappaup
+\DeclareMathSymbol{\varphiup}{\mathalpha}{egreekr}{"27}
 
-\usepackage{graphicx}
+%\newcommand*{\mathte}[1]{\textbf{\textit{\textsf{#1}}}}
+% Upright sans-serif math alphabet
+% \DeclareMathAlphabet{\mathsu}  {T1}{\sfdefault}{m}{n}
+% \SetMathAlphabet{\mathsu}{bold}{T1}{\sfdefault}{b}{n}
+
+\usepackage{mathdots}
 
 \usepackage[usenames]{xcolor}
 \definecolor{myblue}{RGB}{51,34,136}
@@ -72,32 +246,230 @@
 \definecolor{myred}{RGB}{136,34,85}
 \definecolor{myyellow}{RGB}{153,153,51}
 \definecolor{mylightyellow}{RGB}{221,204,119}
-\newcommand*{\mynote}[1]{ {\color[RGB]{68,170,153}\maltese\ #1}}
 
-\usepackage{hyperref}
+
+\usepackage{microtype}
+
+\usepackage[backend=biber,mcite,subentry,citestyle=numeric-comp,bibstyle=numericbringhurst,autopunct=false,sorting=none,sortcites=false,natbib=false,maxnames=8,minnames=8,giveninits=true,block=space,hyperref=true,defernumbers=false,useprefix=true,language=british]{biblatex}
+\renewcommand*{\finalnamedelim}{, }
+\setcounter{biburlnumpenalty}{1}
+\setcounter{biburlucpenalty}{0}
+\setcounter{biburllcpenalty}{1}
+\DeclareDelimFormat{multicitedelim}{\addsemicolon\space}
+\DeclareDelimFormat{postnotedelim}{\space}
+\addbibresource{portamanabib.bib}
+\renewcommand{\bibfont}{\footnotesize}
+\defbibheading{bibliography}[\bibname]{\section*{#1}\addcontentsline{toc}{section}{#1}%\markboth{#1}{#1}
+}
+\newcommand*{\citep}{\parencites}
+\newcommand*{\citey}{\parencites*}
+\renewcommand*{\cite}{\citep}
 \providecommand{\href}[2]{#2}
 \providecommand{\eprint}[2]{\texttt{\href{#1}{#2}}}
-\providecommand*{\urlalt}{\href}
-\hypersetup{
-colorlinks=true,%
-bookmarksnumbered,%
-pdfborder={0 0 0.25},%
-citebordercolor={0.2 0.1333 0.5333},%bluish
-citecolor=myblue,%
-linkbordercolor={0.0667 0.4667 0.2},%greenish
-linkcolor=myred,%
-urlbordercolor={0.5333 0.1333 0.3333},%reddish
-urlcolor=mygreen,%
-breaklinks=true,%
-pdftitle = {Hidden network-size assumptions in the maximum-entropy method},%***
-pdfauthor = {Rostami, Porta Mana, Torre}%***
+\newcommand*{\amp}{\&}
+
+\def\arxivp{}
+\def\mparcp{}
+\def\philscip{}
+\def\biorxivp{}
+\newcommand*{\arxivsi}{\texttt{arXiv} eprints available at \url{http://arxiv.org/}.\\}
+\newcommand*{\mparcsi}{\texttt{mp\_arc} eprints available at \url{http://www.ma.utexas.edu/mp_arc/}.\\}
+\newcommand*{\philscisi}{\texttt{philsci} eprints available at \url{http://philsci-archive.pitt.edu/}.\\}
+\newcommand*{\biorxivsi}{\texttt{bioRxiv} eprints available at \url{http://biorxiv.org/}.\\}
+\newcommand*{\arxiveprint}[1]{\global\def\arxivp{\arxivsi}%\citeauthor{0arxivcite}\addtocategory{ifarchcit}{0arxivcite}%eprint
+\texttt{\urlalt{http://arxiv.org/abs/#1}{arXiv:\hspace{0pt}#1}}%
+%\texttt{\href{http://arxiv.org/abs/#1}{\protect\url{arXiv:#1}}}%
+%\renewcommand{\arxivnote}{\texttt{arXiv} eprints available at \url{http://arxiv.org/}.}
 }
+\newcommand*{\mparceprint}[1]{\global\def\mparcp{\mparcsi}%\citeauthor{0mparccite}\addtocategory{ifarchcit}{0mparccite}%eprint
+\texttt{\urlalt{http://www.ma.utexas.edu/mp_arc-bin/mpa?yn=#1}{mp\_arc:\hspace{0pt}#1}}%
+%\texttt{\href{http://www.ma.utexas.edu/mp_arc-bin/mpa?yn=#1}{\protect\url{mp_arc:#1}}}%
+%\providecommand{\mparcnote}{\texttt{mp_arc} eprints available at \url{http://www.ma.utexas.edu/mp_arc/}.}
+}
+\newcommand*{\philscieprint}[1]{\global\def\philscip{\philscisi}%\citeauthor{0philscicite}\addtocategory{ifarchcit}{0philscicite}%eprint
+\texttt{\urlalt{http://philsci-archive.pitt.edu/archive/#1}{PhilSci:\hspace{0pt}#1}}%
+%\texttt{\href{http://philsci-archive.pitt.edu/archive/#1}{\protect\url{PhilSci:#1}}}%
+%\providecommand{\mparcnote}{\texttt{philsci} eprints available at \url{http://philsci-archive.pitt.edu/}.}
+}
+\newcommand*{\biorxiveprint}[1]{\global\def\biorxivp{\biorxivsi}%\citeauthor{0arxivcite}\addtocategory{ifarchcit}{0arxivcite}%eprint
+\texttt{\urlalt{http://biorxiv.org/content/early/#1}{bioRxiv:\hspace{0pt}#1}}%
+%\texttt{\href{http://arxiv.org/abs/#1}{\protect\url{arXiv:#1}}}%
+%\renewcommand{\arxivnote}{\texttt{arXiv} eprints available at \url{http://arxiv.org/}.}
+}
+
+\usepackage{graphicx}
+
+\usepackage{hyperref}
 \usepackage[depth=4]{bookmark}
-\usepackage{mathdots}
+\hypersetup{colorlinks=true,bookmarksnumbered,pdfborder={0 0 0.25},citebordercolor={0.2 0.1333 0.5333},%bluish
+citecolor=myblue,linkbordercolor={0.0667 0.4667 0.2},%greenish
+linkcolor=myred,urlbordercolor={0.5333 0.1333 0.3333},%reddish
+urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
+
+% \usepackage[vertfit=local]{breakurl}% only for arXiv
+\providecommand*{\urlalt}{\href}
+
+\usepackage{datetime2}
+\DTMnewdatestyle{mydate}%
+{% definitions
+\renewcommand*{\DTMdisplaydate}[4]{%
+\number##3\ \DTMenglishmonthname{##2} ##1}%
+\renewcommand*{\DTMDisplaydate}{\DTMdisplaydate}%
+}
+\DTMsetdatestyle{mydate}
 
 
-%%%%%%%%%%%%%% macros
-\newcommand*{\widebar}[1]{{\mkern 1.5mu\skew{2}\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}}
+% handling orphan/widow lines:
+\clubpenalty=10000
+\widowpenalty=10000
+\raggedbottom
+
+\selectlanguage{british}\frenchspacing
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+% \usepackage[final]{nips_2017}
+
+%\usepackage[utf8]{inputenc} % allow utf-8 input
+%\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+%\usepackage{hyperref}       % hyperlinks
+%\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+%\usepackage{amsfonts}       % blackboard math symbols
+%\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+%\usepackage{microtype}      % microtypography
+
+% @@@@@@@@@@ new macros @@@@@@@@@@
+% Common ones - uncomment as needed
+%\providecommand{\nequiv}{\not\equiv}
+%\providecommand{\coloneqq}{\mathrel{\mathop:}=}
+%\providecommand{\eqqcolon}{=\mathrel{\mathop:}}
+%\providecommand{\varprod}{\prod}
+%\newcommand*{\de}{\partialup}%partial diff
+%\newcommand*{\pu}{\piup}%constant pi
+%\newcommand*{\delt}{\deltaup}%Kronecker, Dirac
+%\newcommand*{\eps}{\varepsilonup}%Levi-Civita, Heaviside
+%\newcommand*{\riem}{\zetaup}%Riemann zeta
+%\providecommand{\degree}{\textdegree}% degree
+%\newcommand*{\celsius}{\textcelsius}% degree Celsius
+%\newcommand*{\micro}{\textmu}% degree Celsius
+%\newcommand*{\I}{\mathrm{i}}%imaginary unit
+%\newcommand*{\e}{\mathrm{e}}%Neper
+%\newcommand*{\di}{\mathrm{d}}%differential
+%\newcommand*{\Di}{\mathrm{D}}%capital differential
+%\newcommand*{\planckc}{\hslash}
+%\newcommand*{\avogn}{N_{\textrm{A}}}
+%\newcommand*{\NN}{\bm{\mathrm{N}}}
+%\newcommand*{\ZZ}{\bm{\mathrm{Z}}}
+%\newcommand*{\QQ}{\bm{\mathrm{Q}}}
+%\newcommand*{\RR}{\bm{\mathrm{R}}}
+%\newcommand*{\CC}{\bm{\mathrm{C}}}
+%\newcommand*{\nabl}{\bm{\nabla}}%nabla
+%\DeclareMathOperator{\lb}{lb}%base 2 log
+%\DeclareMathOperator{\tr}{tr}%trace
+%\DeclareMathOperator{\card}{card}%cardinality
+%\DeclareMathOperator{\im}{Im}%im part
+%\DeclareMathOperator{\re}{Re}%re part
+%\DeclareMathOperator{\sgn}{sgn}%signum
+%\DeclareMathOperator{\ent}{ent}%integer less or equal to
+%\DeclareMathOperator{\Ord}{O}%same order as
+%\DeclareMathOperator{\ord}{o}%lower order than
+%\newcommand*{\incr}{\triangle}%finite increment
+%\newcommand*{\defd}{\coloneqq}
+%\newcommand*{\defs}{\eqqcolon}
+%\newcommand*{\Land}{\bigwedge}
+%\newcommand*{\Lor}{\bigvee}
+%\newcommand*{\lland}{\mathbin{\ \land\ }}
+%\newcommand*{\llor}{\mathbin{\ \lor\ }}
+%\newcommand*{\lonlyif}{\mathbin{\Rightarrow}}%implies
+%\newcommand*{\limplies}{\mathbin{\Rightarrow}}%implies
+%\newcommand*{\mimplies}{\Rightarrow}%implies
+%\newcommand*{\liff}{\mathbin{\Leftrightarrow}}%if and only if
+%\newcommand*{\cond}{\mathpunct{|}}%conditional sign (in probabilities)
+%\newcommand*{\lcond}{\mathpunct{|\ }}%conditional sign (in probabilities)
+%\newcommand*{\bigcond}{\mathpunct{\big|}}%conditional sign (in probabilities)
+%\newcommand*{\lbigcond}{\mathpunct{\big|\ }}%conditional sign (in probabilities)
+%\newcommand*{\suchthat}{\mid}%{\mathpunct{|}}%such that (eg in sets)
+%\newcommand*{\bigst}{\mathpunct{\big|}}%such that (eg in sets)
+%\newcommand*{\with}{\colon}%with (list of indices)
+%\newcommand*{\mul}{\times}%multiplication
+%\newcommand*{\inn}{\cdot}%inner product
+%\newcommand*{\dotv}{\mathord{\,\cdot\,}}%variable place
+%\newcommand*{\comp}{\circ}%composition of functions
+%\newcommand*{\con}{\mathbin{:}}%scal prod of tensors
+%\newcommand*{\equi}{\sim}%equivalent to 
+%\newcommand*{\corr}{\mathrel{\hat{=}}}%corresponds to
+%\providecommand{\varparallel}{\ensuremath{\mathbin{/\mkern-7mu/}}}%parallel (tentative symbol)
+%\renewcommand{\le}{\leqslant}%less or equal
+%\renewcommand{\ge}{\geqslant}%greater or equal
+%\DeclarePairedDelimiter\clcl{[}{]}
+%\DeclarePairedDelimiter\clop{[}{[}
+%\DeclarePairedDelimiter\opcl{]}{]}
+%\DeclarePairedDelimiter\opop{]}{[}
+%\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+%\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+%\DeclarePairedDelimiter\set{\{}{\}}
+%\DeclareMathOperator{\pr}{P}%probability
+%\newcommand*{\pf}{\mathrm{p}}%probability
+%\newcommand*{\p}{\mathrm{P}}%probability
+%\newcommand*{\tf}{\mathrm{T}}%probability
+%\renewcommand*{\|}{\cond}
+%\newcommand*{\+}{\lor}
+%\renewcommand{\*}{\land}
+%\newcommand*{\sect}{\S}% Sect.~
+%\newcommand*{\sects}{\S\S}% Sect.~
+%\newcommand*{\chap}{ch.}%
+%\newcommand*{\chaps}{chs}%
+%\newcommand*{\fn}{fn}%
+%\newcommand*{\eqn}{eq.}%
+%\newcommand*{\eqns}{eqs}%
+%\newcommand*{\fig}{fig.}%
+%\newcommand*{\figs}{figs}%
+%\newcommand*{\vs}{{vs.}}
+%\newcommand*{\etc}{{etc.}}
+%\newcommand*{\ie}{{i.e.}}
+%\newcommand*{\ca}{{c.}}
+%\newcommand*{\Ie}{{I.e.}}
+%\newcommand*{\Eg}{{E.g.}}
+%\newcommand*{\eg}{{e.g.}}
+%\newcommand*{\viz}{{viz}}
+%\newcommand*{\cf}{{cf.}}
+%\newcommand*{\Cf}{{Cf.}}
+%\newcommand*{\vd}{{v.}}
+%\newcommand*{\Vd}{{V.}}
+%\newcommand*{\etal}{{et al.}}
+%\newcommand*{\etsim}{{et sim.}}
+%\newcommand*{\ibid}{{ibid.}}
+%\newcommand*{\sic}{{sic}}
+%\newcommand*{\id}{\mathte{I}}%id matrix
+%\newcommand*{\nbd}{\nobreakdash}%
+%\newcommand*{\bd}{\hspace{0pt}}%
+%\def\hy{-\penalty0\hskip0pt\relax}
+%\newcommand*{\labelbis}[1]{\tag*{(\ref{#1})$_\text{r}$}}
+%\newcommand*{\mathbox}[2][.8]{\parbox[t]{#1\columnwidth}{#2}}
+%\newcommand*{\zerob}[1]{\makebox[0pt][l]{#1}}
+%\newcommand*{\tprod}{\mathop{\textstyle\prod}\nolimits}
+%\newcommand*{\tsum}{\mathop{\textstyle\sum}\nolimits}
+%\newcommand*{\tint}{\begingroup\textstyle\int\endgroup\nolimits}
+%\newcommand*{\tland}{\mathop{\textstyle\bigwedge}\nolimits}
+%\newcommand*{\tlor}{\mathop{\textstyle\bigvee}\nolimits}
+%\newcommand*{\sprod}{\mathop{\textstyle\prod}}
+%\newcommand*{\ssum}{\mathop{\textstyle\sum}}
+%\newcommand*{\sint}{\begingroup\textstyle\int\endgroup}
+%\newcommand*{\sland}{\mathop{\textstyle\bigwedge}}
+%\newcommand*{\slor}{\mathop{\textstyle\bigvee}}
+%\newcommand*{\T}{^\intercal}%transpose
+%\newcommand*{\E}{\mathrm{E}}
+%\DeclarePairedDelimiter\expp{(}{)}
+%\newcommand*{\expe}{\E\expp}%round
+%\newcommand*{\expeb}{\E\clcl}%square
+%%\newcommand*{\QEM}%{\textnormal{$\Box$}}%{\ding{167}}
+%\newcommand*{\qem}{\leavevmode\unskip\penalty9999 \hbox{}\nobreak\hfill
+%\quad\hbox{\QEM}}
+\definecolor{notecolour}{RGB}{68,170,153}
+\newcommand*{\puzzle}{{\fontencoding{U}\fontfamily{fontawesometwo}\selectfont\symbol{225}}}
+\newcommand*{\mynote}[1]{ {\color{notecolour}\puzzle\ #1}}
+\newcommand*{\widebar}[1]{{\mkern1.5mu\skew{2}\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}}
+
 \newcommand*{\av}{\overline} %pop average
 \newcommand*{\sav}{\widehat} %subpop average
 \newcommand*{\yxx}{x}
@@ -116,7 +488,13 @@ pdfauthor = {Rostami, Porta Mana, Torre}%***
 
 \newcommand*{\mee}{maximum entropy}
 \newcommand*{\me}{maximum-entropy}
-\title{Hidden network-size assumptions\\in the maximum-entropy method}
+
+%@@@@@@@@@@ new macros end @@@@@@@@@@
+
+\selectlanguage{british}\frenchspacing
+
+
+\title{\pdftitle}
 
 % The \author macro works with any number of authors. There are two
 % commands used to separate the names and addresses of multiple
@@ -133,15 +511,14 @@ pdfauthor = {Rostami, Porta Mana, Torre}%***
   \texttt{v.rostami@fz-juelich.de}
   \And
   P.G.L. Porta Mana\\who knows
-  \And E. Torre\\Chocolateland
-  %
-% David S.~Hippocampus\thanks{Use footnote for providing further information
-%   about author (webpage, alternative
-%   address)---\emph{not} for acknowledging funding agencies.} \\
-% Department of Computer Science\\
-% Cranberry-Lemon University\\
-% Pittsburgh, PA 15213 \\
-% \texttt{hippo@cs.cranberry-lemon.edu} \\
+  \And E. Torre\\Chocolateland  
+  % David S.~Hippocampus\thanks{Use footnote for providing further
+  %   information about author (webpage, alternative
+  %   address)---\emph{not} for acknowledging funding agencies.} \\
+  % Department of Computer Science\\
+  % Cranberry-Lemon University\\
+  % Pittsburgh, PA 15213 \\
+  % \texttt{hippo@cs.cranberry-lemon.edu} \\
   %% examples of more authors
   %% \And
   %% Coauthor \\
@@ -171,12 +548,53 @@ pdfauthor = {Rostami, Porta Mana, Torre}%***
 \maketitle
 
 \begin{abstract}
-***%  The abstract must be limited to one paragraph.
+  ***%  The abstract must be limited to one paragraph.
 \end{abstract}
 
 \section{Implicit assumptions in the maximum-entropy method}
 
-The \me\ method is been used in neuroscience blahblah***
+The \me\ method is used in neuroscience blahblah***
+
+Let's clarify at once that our discussion pertains to binary networks at
+one specific instant, or short window, in time. It is possible to
+generalize it to multi-state neuron models and network dynamics; but for
+simplicity neurons are here assumed to be in a fixed, active \enquote{$1$}
+or inactive \enquote{$0$} state; and evolution, change, time correlations,
+and similar concepts do not concern us.
+
+
+Maximum-entropy models are used for a variety of reasons, sometimes not
+completely clear. For our purposes we can simply say that the \me\ method
+is assumed to generate a \enquote{maximally noncommital} \cite{jaynes1963}
+probability distribution. We intend the quoted expression only as an
+umbrella term, also because it  means very little without further
+clarifications.
+
+The neurons recorded in these kinds of experiments are not usually
+specifically chosen, and from their observation we expect to learn
+something about all other neurons in the same brain area. That is, they are
+assumed to be a \enquote{representative random sample} of the neurons in
+that area. Our discussion hinges on this often just tacitly understood
+assumption.
+
+
+\mynote{V1 }In this note we would like to show that there is a contradiction in
+applying \me\ to a \enquote{representative random sample} of neurons to
+generate a \enquote{maximally noncommital} distribution.\\
+\mynote{V2 }In this note we would like to show that there is a clash between the
+\enquote{representative random sample} spirit and the \enquote{maximally
+  noncommital} spirit of \me\ models applied to such a sample of neurons.
+
+The contradiction is this. Assume that our sample of neurons is
+representative of some population. If we assign a \me\ distribution to the
+sample, then we cannot assign a \me\ distribution to the full population.
+Vice versa, If we assign a \me\ distribution to the full population, then
+we cannot assign a \me\ distribution to the sample. This impossibility
+holds at least for \me\ distribution with moment constraints, and even if
+the orders of the moments constrained in the sample and in the full
+population are different.
+
+
 
 In this note we would like to analyse and warn about a subtle assumption
 behind the \me\ method when it is applied to a network. It can informally
@@ -308,12 +726,11 @@ We:
 
 \subsubsection*{Acknowledgments}
 
-% Do not include acknowledgments in the anonymized submission, only in the
-% final paper.
+Use unnumbered third level headings for the acknowledgments. All
+acknowledgments go at the end of the paper. Do not include
+acknowledgments in the anonymized submission, only in the final paper.
 
 \section*{References}
-
-blabla
 
 % References follow the acknowledgments. Use unnumbered first-level
 % heading for the references. Any choice of citation style is acceptable
@@ -323,5 +740,20 @@ blabla
 %   \emph{only} cited references.}
 % \medskip
 
+% \small
+
+% [1] Alexander, J.A.\ \& Mozer, M.C.\ (1995) Template-based algorithms
+% for connectionist rule extraction. In G.\ Tesauro, D.S.\ Touretzky and
+% T.K.\ Leen (eds.), {\it Advances in Neural Information Processing
+%   Systems 7}, pp.\ 609--616. Cambridge, MA: MIT Press.
+
+% [2] Bower, J.M.\ \& Beeman, D.\ (1995) {\it The Book of GENESIS:
+%   Exploring Realistic Neural Models with the GEneral NEural SImulation
+%   System.}  New York: TELOS/Springer--Verlag.
+
+% [3] Hasselmo, M.E., Schnell, E.\ \& Barkai, E.\ (1995) Dynamics of
+% learning and recall at excitatory recurrent synapses and cholinergic
+% modulation in rat hippocampal region CA3. {\it Journal of
+%   Neuroscience} {\bf 15}(7):5249-5262.
 
 \end{document}

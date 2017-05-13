@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2017-05-12T13:33:42+0200
+%% Last-Updated: 2017-05-13T17:24:25+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -14,10 +14,11 @@
 
 \usepackage[final,nonatbib]{nips_2017}
 \newcommand*{\firstdraft}{4 November 2015}
-\newcommand*{\pdftitle}{Hidden network-size assumptions\\in the maximum-entropy method}
+\newcommand*{\pdftitle}{Hidden  assumptions on population size\\in the maximum-entropy method}
 \newcommand*{\headtitle}{\pdftitle}
 \newcommand*{\pdfauthor}{P.G.L.  Porta Mana, V. Rostami, E. Torre}
 
+\usepackage{newtxmath}
 %\usepackage{pifont}
 %\usepackage{fontawesome}
 \usepackage[T1]{fontenc} 
@@ -45,7 +46,7 @@
 % \newunicodechar{Ȳ}{\=Y}
 % \newunicodechar{ȳ}{\=y}
 
-%\newcommand*{\bmmax}{0} % reduce number of bold fonts, before bm
+\newcommand*{\bmmax}{3} % reduce number of bold fonts, before bm
 \newcommand*{\hmmax}{0} % reduce number of heavy fonts, before bm
 \usepackage{textcomp}
 \usepackage{amsmath}
@@ -66,6 +67,7 @@
 \usepackage[autostyle=false,autopunct=false,english=british]{csquotes}
 \setquotestyle{american}
 
+\let\openbox\relax
 \usepackage{amsthm}
 \newcommand*{\QED}{\textsc{q.e.d.}}
 \renewcommand*{\qedsymbol}{\QED}
@@ -361,7 +363,7 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 %\newcommand*{\NN}{\bm{\mathrm{N}}}
 %\newcommand*{\ZZ}{\bm{\mathrm{Z}}}
 %\newcommand*{\QQ}{\bm{\mathrm{Q}}}
-%\newcommand*{\RR}{\bm{\mathrm{R}}}
+\newcommand*{\RR}{\bm{\mathrm{R}}}
 %\newcommand*{\CC}{\bm{\mathrm{C}}}
 %\newcommand*{\nabl}{\bm{\nabla}}%nabla
 %\DeclareMathOperator{\lb}{lb}%base 2 log
@@ -374,17 +376,17 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 %\DeclareMathOperator{\Ord}{O}%same order as
 %\DeclareMathOperator{\ord}{o}%lower order than
 %\newcommand*{\incr}{\triangle}%finite increment
-%\newcommand*{\defd}{\coloneqq}
+\newcommand*{\defd}{\coloneqq}
 %\newcommand*{\defs}{\eqqcolon}
 %\newcommand*{\Land}{\bigwedge}
 %\newcommand*{\Lor}{\bigvee}
 %\newcommand*{\lland}{\mathbin{\ \land\ }}
 %\newcommand*{\llor}{\mathbin{\ \lor\ }}
 %\newcommand*{\lonlyif}{\mathbin{\Rightarrow}}%implies
-%\newcommand*{\limplies}{\mathbin{\Rightarrow}}%implies
+\newcommand*{\limplies}{\mathbin{\Rightarrow}}%implies
 %\newcommand*{\mimplies}{\Rightarrow}%implies
 %\newcommand*{\liff}{\mathbin{\Leftrightarrow}}%if and only if
-%\newcommand*{\cond}{\mathpunct{|}}%conditional sign (in probabilities)
+\renewcommand*{\|}{\mathpunct{|}}%conditional sign (in probabilities)
 %\newcommand*{\lcond}{\mathpunct{|\ }}%conditional sign (in probabilities)
 %\newcommand*{\bigcond}{\mathpunct{\big|}}%conditional sign (in probabilities)
 %\newcommand*{\lbigcond}{\mathpunct{\big|\ }}%conditional sign (in probabilities)
@@ -393,46 +395,46 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 %\newcommand*{\with}{\colon}%with (list of indices)
 %\newcommand*{\mul}{\times}%multiplication
 %\newcommand*{\inn}{\cdot}%inner product
-%\newcommand*{\dotv}{\mathord{\,\cdot\,}}%variable place
+\newcommand*{\dotv}{\mathord{\,\cdot\,}}%variable place
 %\newcommand*{\comp}{\circ}%composition of functions
 %\newcommand*{\con}{\mathbin{:}}%scal prod of tensors
 %\newcommand*{\equi}{\sim}%equivalent to 
 %\newcommand*{\corr}{\mathrel{\hat{=}}}%corresponds to
 %\providecommand{\varparallel}{\ensuremath{\mathbin{/\mkern-7mu/}}}%parallel (tentative symbol)
-%\renewcommand{\le}{\leqslant}%less or equal
-%\renewcommand{\ge}{\geqslant}%greater or equal
-%\DeclarePairedDelimiter\clcl{[}{]}
+\renewcommand{\le}{\leqslant}%less or equal
+\renewcommand{\ge}{\geqslant}%greater or equal
+\DeclarePairedDelimiter\clcl{[}{]}
 %\DeclarePairedDelimiter\clop{[}{[}
 %\DeclarePairedDelimiter\opcl{]}{]}
 %\DeclarePairedDelimiter\opop{]}{[}
 %\DeclarePairedDelimiter\abs{\lvert}{\rvert}
 %\DeclarePairedDelimiter\norm{\lVert}{\rVert}
-%\DeclarePairedDelimiter\set{\{}{\}}
+\DeclarePairedDelimiter\set{\{}{\}}
 %\DeclareMathOperator{\pr}{P}%probability
-%\newcommand*{\pf}{\mathrm{p}}%probability
-%\newcommand*{\p}{\mathrm{P}}%probability
+\newcommand*{\pf}{\mathrm{p}}%probability
+\newcommand*{\p}{\mathrm{P}}%probability
 %\newcommand*{\tf}{\mathrm{T}}%probability
-%\renewcommand*{\|}{\cond}
+%\renewcommand*{\|}{\|}
 %\newcommand*{\+}{\lor}
 %\renewcommand{\*}{\land}
-%\newcommand*{\sect}{\S}% Sect.~
-%\newcommand*{\sects}{\S\S}% Sect.~
-%\newcommand*{\chap}{ch.}%
-%\newcommand*{\chaps}{chs}%
+\newcommand*{\sect}{\S}% Sect.~
+\newcommand*{\sects}{\S\S}% Sect.~
+\newcommand*{\chap}{ch.}%
+\newcommand*{\chaps}{chs}%
 %\newcommand*{\fn}{fn}%
-%\newcommand*{\eqn}{eq.}%
-%\newcommand*{\eqns}{eqs}%
-%\newcommand*{\fig}{fig.}%
-%\newcommand*{\figs}{figs}%
+\newcommand*{\eqn}{eq.}%
+\newcommand*{\eqns}{eqs}%
+\newcommand*{\fig}{fig.}%
+\newcommand*{\figs}{figs}%
 %\newcommand*{\vs}{{vs.}}
 %\newcommand*{\etc}{{etc.}}
-%\newcommand*{\ie}{{i.e.}}
+\newcommand*{\ie}{{i.e.}}
 %\newcommand*{\ca}{{c.}}
 %\newcommand*{\Ie}{{I.e.}}
 %\newcommand*{\Eg}{{E.g.}}
-%\newcommand*{\eg}{{e.g.}}
+\newcommand*{\eg}{{e.g.}}
 %\newcommand*{\viz}{{viz}}
-%\newcommand*{\cf}{{cf.}}
+\newcommand*{\cf}{{cf.}}
 %\newcommand*{\Cf}{{Cf.}}
 %\newcommand*{\vd}{{v.}}
 %\newcommand*{\Vd}{{V.}}
@@ -458,33 +460,58 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 %\newcommand*{\sland}{\mathop{\textstyle\bigwedge}}
 %\newcommand*{\slor}{\mathop{\textstyle\bigvee}}
 %\newcommand*{\T}{^\intercal}%transpose
-%\newcommand*{\E}{\mathrm{E}}
-%\DeclarePairedDelimiter\expp{(}{)}
-%\newcommand*{\expe}{\E\expp}%round
-%\newcommand*{\expeb}{\E\clcl}%square
+\newcommand*{\E}{\mathrm{E}}
+\DeclarePairedDelimiter\expp{(}{)}
+\newcommand*{\expe}{\E\expp}%round
+\newcommand*{\expeb}{\E\clcl}%square
 %%\newcommand*{\QEM}%{\textnormal{$\Box$}}%{\ding{167}}
 %\newcommand*{\qem}{\leavevmode\unskip\penalty9999 \hbox{}\nobreak\hfill
 %\quad\hbox{\QEM}}
+
+\newtheoremstyle{simple}%
+{0\parsep}%
+{0\parsep}%
+{\footnotesize}%
+{}%
+{}%
+{}%
+{0pt}%
+{}%
+\theoremstyle{simple}
+\newtheorem*{simplenote}{}
+
 \definecolor{notecolour}{RGB}{68,170,153}
 \newcommand*{\puzzle}{{\fontencoding{U}\fontfamily{fontawesometwo}\selectfont\symbol{225}}}
 \newcommand*{\mynote}[1]{ {\color{notecolour}\puzzle\ #1}}
 \newcommand*{\widebar}[1]{{\mkern1.5mu\skew{2}\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}}
 
-\newcommand*{\av}{\overline} %pop average
+\newcommand*{\av}{\widebar} %pop average
 \newcommand*{\sav}{\widehat} %subpop average
-\newcommand*{\yxx}{x}
+
+\newcommand*{\yxx}{x}%subpop state
 \newcommand*{\yx}{\bm{\yxx}}%subpop state
 \newcommand*{\yxs}{\sav{\yx}}%subpop av state
-\newcommand*{\yxxs}{\sav{\yx\yx}}
+\newcommand*{\yxxs}{\sav{\yx\yx}}%subpop av state
 \newcommand*{\yX}{\bm{X}}%pop state
 \newcommand*{\yXf}{\av{\yX}}%pop av state
 \newcommand*{\yr}{\bm{r}}%subpop value
 \newcommand*{\yrs}{\sav{\yr}}%subpop av value
 \newcommand*{\yR}{\bm{R}}%pop value
 \newcommand*{\yRf}{\av{\yR}}%pop av value
-\newcommand*{\yN}{N}
-\newcommand*{\yM}{M}
-\newcommand*{\yee}{L}
+%conditional assumptions
+\newcommand*{\yH}{\varEta}
+\newcommand*{\yD}{\varDelta}
+\newcommand*{\yHa}{\varEta'}
+\newcommand*{\yHb}{\varEta''}
+%Lagr multipliers
+\newcommand*{\yL}{\varLambda}
+\newcommand*{\yl}{\lambda}
+\newcommand*{\yk}{\kappa}
+%entropies
+\newcommand*{\ysh}{H}
+\newcommand*{\ybu}{H_{\text{B}}}
+
+\newcommand*{\prop}[1]{`#1'}
 
 \newcommand*{\mee}{maximum entropy}
 \newcommand*{\me}{maximum-entropy}
@@ -555,35 +582,35 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 
 The \me\ method is used in neuroscience blahblah***
 
-Let's clarify at once that our discussion pertains to binary networks at
-one specific instant, or short window, in time. It is possible to
-generalize it to multi-state neuron models and network dynamics; but for
+Let's clarify at once that our discussion pertains to a binary population at
+one specific instant or short window in time. It is possible to
+similarly discuss multi-state neuron models and population dynamics; but for
 simplicity neurons are here assumed to be in a fixed, active \enquote{$1$}
 or inactive \enquote{$0$} state; and evolution, change, time correlations,
 and similar concepts do not concern us.
 
 
-Maximum-entropy models are used for a variety of reasons; sometimes not
-completely clear ones. For our purposes we can simply say that the \me\
-method is assumed to generate a \enquote{maximally noncommital}
-\cite{jaynes1963} probability distribution. We intend the quoted expression
-only as an umbrella term, also because it means very little without further
-clarifications.
+Maximum-entropy models are used for a variety of (sometimes not completely
+clear) reasons. For our purposes let's say that the \me\ method is assumed
+to generate a \enquote{maximally noncommital} \cite{jaynes1963} probability
+distribution. We intend the quoted expression only as an umbrella term,
+also because it means very little without further clarifications.
 
-The neurons recorded in these kinds of experiments are usually not
-specifically chosen, and from their observation we expect to learn
+The neurons recorded in these kinds of experiments are usually picked out
+in a way beyond our control, and from their observation we expect to learn
 something about all other neurons in the same brain area. That is, they are
 assumed to be a \enquote{representative random sample} of the neurons in
 that area. Our discussion hinges on this often just tacitly understood
 assumption.
 
 
-\mynote{V1 }In this note we would like to show that there is a contradiction in
+In this note we would like to show that there is a contradiction in
 applying \me\ to a \enquote{representative random sample} of neurons to
-generate a \enquote{maximally noncommital} distribution.\\
-\mynote{V2 }In this note we would like to show that there is a clash between the
-\enquote{representative random sample} spirit and the \enquote{maximally
-  noncommital} spirit of \me\ models applied to such a sample of neurons.
+generate a \enquote{maximally noncommital} distribution for that sample.
+% \\
+% \mynote{V2 }In this note we would like to show that there is a clash between the
+% \enquote{representative random sample} spirit and the \enquote{maximally
+%   noncommital} spirit of \me\ models applied to such a sample of neurons.
 
 The contradiction is this. Assume that our sample of neurons is
 representative of some population. If we assign a \me\ distribution to the
@@ -594,24 +621,578 @@ holds at least for \me\ distribution with moment constraints, and even if
 the orders of the moments constrained in the sample and in the full
 population are different.
 
-In other words, if our sample is \enquote{random} and
-\enquote{representative} of some population, then we must choose which of
-them has a \enquote{maximally noncommittal} distribution: the sample or the
-population. We can't choose both. Which choice is most meaningful? It goes
-without saying that if either is \enquote{maximally noncommittal}, the
-other must be somehow \enquote{committal}.
+In other words, if our sample is a \enquote{random representative} of some
+population, then we must choose which has a \enquote{maximally
+  noncommittal} distribution: the sample or the population. We can't choose
+both. It goes without saying that if one is \enquote{maximally
+  noncommittal}, the other must be somehow \enquote{committal}. Which
+choice is most meaningful?
 
+In the rest of the paper we will mathematically show the contradiction
+above and generate a \me\ distribution for the full population rather than
+the sample. We will also present some probability relations relevant to
+random sampling. These relations are well-known in survey sampling and in
+the pedagogic problem of drawing from an urn without replacement, yet they
+are somewhat hard to find explicitly written in the neuroscientific
+literature.
+
+Our notation follows ISO and ANSI standards
+\citep{iso1993,ieee1993,nist1995} but for the use of the comma \enquote{,}
+to denote logical conjunction. Probability notation follows Jaynes
+\citep{jaynes1994_r2003}.
+
+\section{Probability of random representative samples}
+\label{sec:prob_samples}
+
+\subsection{Setup}
+\label{sec:setup}
+
+Consider a population of $N$ binary neurons with states $(X_1,\dotsc,X_N)$
+having fixed but unknown binary values $(R_1,\dotsc,R_N)$, with
+$R_i \text{ in } \set{0,1}$, vectorially written $\yX=\yR$. For example,
+$\yX$ can represent the state of a population at a particular time. We call
+the neurons \enquote{units} to lend some generality to our discussion. We
+shall make statements about the whole population of $N$ units and about a
+subpopulation of $n$ units; the word \enquote{population} will always refer to
+the \emph{whole} population. The subpopulation states and their values are
+denoted by lowercase letters: $(x_1, \dotsc, x_n)\equiv\yx$ and
+$(r_1, \dotsc, r_n)\equiv\yr$; but note that $x_i \equiv X_{j_i}$ and
+$r_i \equiv R_{j_i}$ for some distinct $j_1,\dotsc,j_n$. We shall also make
+statements about the population-averaged state, or \emph{population average}:
+\begin{align}
+  \label{eq:population-av}
+   \yXf &\defd (X_1 + \dotsb + X_N)/N,
+\\
+\intertext{and the subpopulation-averaged state, or \emph{subpopulation average}:}
+\label{eq:subpopulation-av}
+\yxs &\defd (x_1 + \dotsc + x_n)/n.
+\end{align}
+The quantities $N\yXf$ and $n\yxs$ represent the total number of active
+units in the population and the subpopulation. Quantities like $\yRf$ and $\yrs$
+are defined analogously. The averaging operators $\sav{\dotv}$ and
+$\av{\dotv}$ are also extended to averages of $\tbinom{n}{m}$ or
+$\tbinom{N}{m}$ products of $m$ states; \eg,
+\begin{align}
+\av{\yX \yX} &\defd
+\tbinom{N}{2}^{-1} (X_1 X_2 + X_1 X_3  + \dotsb +  X_{N-1} X_N),
+\\[2\jot]
+\sav{\yx\yx\yx} &\defd
+\tbinom{n}{3}^{-1} (x_1 x_2 x_3 + x_1 x_2 x_4 + \dotsb + x_{n-2} x_{n-1} x_n),
+\end{align}
+and so on.
+
+
+\subsection{Assumptions}
+\label{sec:assumptions}
+
+Our uncertainty about the population state is represented by the joint
+probability distribution of the individual states, from which we can
+derive all other probabilities of interest. We denote it by
+\begin{equation}
+  \label{eq:joint_plaus}
+  \p(X_1=R_1, X_2=R_2, \dotsc, X_N=R_N \| \yH) \quad\text{or}\quad
+\p(\yX =\yR \| \yH).
+\end{equation}
+Such probability is conditional on our state of knowledge, \ie\ the
+evidence and assumptions backing our probability assignments, denoted by
+the proposition $\yH$.
+
+In the present discussion, $\yH$ is a state of knowledge that leads to two
+specific properties in our probability assignments:
+
+\medskip
+\begin{enumerate}%[wide,label=$\yH$\arabic*.]
+\item \emph{Permutation symmetry}, expressed as the invariance of the
+  joint distribution~\eqref{eq:joint_plaus} under arbitrary permutations of
+  the units's labels:
+\begin{multline}
+  \label{eq:homog_math}
+  \p(X_1=R_1, X_2=R_2, \dotsc, X_N=R_N \| \yH) ={}
+\\ 
+\shoveright{\p(X_1=R_{\pi(1)}, X_2=R_{\pi(2)}, \dotsc, X_N=R_{\pi(N)} \| \yH)}
+\\
+\text{for any permutation $\pi$}.
+\end{multline}
+This property can reflect two very different states of knowledge: physical
+homogeneity of the population, or symmetry in our ignorance about the population.
+This property is called \emph{finite exchangeability} in the Bayesian
+literature and its basis, consequences, and alternatives to it are discussed
+in \sect~\ref{sec:stoch_symm}.
+
+\medskip
+
+\item The population average $\yXf$ has a particular distribution $Q$:
+\begin{equation}
+  \label{eq:pop_average_Q}
+  \p(\yXf = A \| \yH)
+% \equiv \pr(x_1+ \dotsb + x_N = N A \| \varEta) 
+=  Q(A),
+\qquad
+A \in \set*{0,\tfrac{1}{N},\tfrac{2}{N},\dotsc,1}.
+\end{equation}
+For the moment we are not concerned about the specific form of $Q$ and
+about how it was assigned: it could, \eg, arise from maximum-entropy
+arguments
+\citep[\eg:][]{jaynes1957,jaynes1963,good1963,jaynes1967,aczeletal1975,jaynes1979b,vancampenhoutetal1981,sivia1990,fangetal1997,bretthorst2013}
+used with data on the population.
+\end{enumerate}
+
+\subsection{Formulae}
+%\section{\ding{41} {\itshape The mathematical relations} \ding{41}}
+%\section*{3.\hspace{\stretch{1}}The mathematical relations\hspace{\stretch{1}}\mbox{}}
+%\addcontentsline{toc}{section}{The mathematical relations}
+\label{sec:main_formulae}
+
+The state of knowledge $\yH$ has the following six (not independent) main
+consequences for our probability assignments:
+
+\begin{enumerate}%[wide,label=\textbf{\emph{\Roman*}}.]
+  \medskip\item\label{item:tot_plaus}Probability for the population state:
+\begin{equation}
+  \label{eq:joint_plaus_N_homog}
+  \p(\yX = \yR \| H) = \binom{N}{N\yRf}^{-1} Q(\yRf).
+\end{equation}
+
+\medskip
+\item\label{item:marginal}Probability for the state $\yx$ of any subpopulation
+  of $n$ units:
+\begin{equation}
+  \label{eq:marginal}
+    \p(\yx = \yr \| \yH) =
+\sum_{N A =0}^{N} 
+\binom{N-n}{N A-n\yrs}\binom{N}{N A}^{-1}\,
+Q(A).
+\end{equation}
+Note that the only summands contributing to this sum are those for which
+$n\yrs \le NA \le N$; the others are zero because by definition
+$\tbinom{M}{y}=0$ if $y<0$. This remark applies to all the sums of this
+kind in the rest of this Note.
+
+\medskip
+\item\label{item:conditional}Probability for the subpopulation
+  state conditional on a population state:
+\begin{equation}
+  \label{eq:conditional_total_state}
+  \p(\yx = \yr \| \yX = \yR, \yH)
+=
+\binom{N-n}{N \yRf-n \yrs}.
+\end{equation}
+
+\medskip
+\item\label{item:marginal_average}Probability for the
+  subpopulation average $\yxs$:
+\begin{multline}
+  \label{eq:subpop_average}
+  \p(\yxs = a  \| \yH) = \binom{n}{n a}
+ \sum_{N A=0}^{N}
+\binom{N-n}{N A-n a}\binom{N}{N A}^{-1}\,
+Q(A),
+\\
+a \in \set*{0,\tfrac{1}{n},\tfrac{2}{n},\dotsc,1}.
+\end{multline}
+
+\medskip
+\item\label{item:conditional_average}Probability for the subpopulation
+  average conditional on the population average:
+\begin{equation}
+  \label{eq:conditional_prob}
+  \p(\yxs = a \| \yXf = A, \yH)
+=
+\binom{n}{n a}\binom{N-n}{N A-n a}\binom{N}{N A}^{-1}.
+\end{equation}
+
+\medskip
+\item\label{item:moments}The product of the states of any $m$ distinct
+  units from a given subpopulation,
+  \begin{equation*}
+    x_{i_1} x_{i_2} \dotsm x_{i_m},
+    \qquad 1\le i_1 < i_2 < \dotsb < i_m \le n
+  \end{equation*}
+  has an expectation equal to that of the subpopulation average of such
+  products, is independent of the subpopulation size $n$:
+\begin{subequations}
+\label{eq:expe_products}
+\begin{align}
+  \expe{x_{i_1} \dotsm x_{i_m} \| \yH}
+&=
+\expe{\sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}} \| \yH}
+=
+\expe{\av{\underbrace{\yX \dotsm \yX}_{\text{$m$ factors}}} \| \yH},
+\\
+\intertext{and has an explicit expression in terms of $Q$:}
+  \begin{split}
+\expe{x_{i_1} \dotsm x_{i_m} \| \yH}
+&=
+\binom{N}{m}^{-1}
+%\frac{(N-m)!}{N!}
+\sum_{N A=0}^N %m!\, 
+\binom{N A}{m}\, Q(A)
+\\
+&\equiv
+%\frac{(N-m)!}{N!}
+\sum_{N A=0}^N %m!\, 
+\binom{N-m}{N A-m}
+\binom{N}{N A}^{-1} Q(A).
+\end{split}
+\end{align}
+\end{subequations}
+\end{enumerate}
+
+\medskip
+
+
+A useful relation connects the expectation of a
+product~\eqref{eq:expe_products} and the $m$th \emph{factorial moment}
+\citep{potts1953} of the probability distributions for the averages. The
+$m$th factorial moment of the subpopulation average $\yxs$ is defined by
+\begin{equation}
+  \label{eq:fact_mom_defin}
+\vphantom{\underbrace{\yxs}_{m}}\expeb*{
+\smash{\underbrace{n\yxs\,(n\yxs-1)\dotsm \bigl(n\yxs-(m-1)\bigr)}_{\text{$m$ factors}}}
+\| \yH}
+\equiv \expeb*{\frac{(n\yxs)!}{(n\yxs-m)!} \| \yH},
+\end{equation}
+an analogous definition holding for $\yXf$. We have that
+\begin{equation}
+  \label{eq:eq_factmom_prod}
+\expe{x_{i_1} \dotsm x_{i_m} \| \yH}
+=
+  \tfrac{(n-m)!}{n!}\expeb*{\frac{(n\yxs)!}{(n\yxs-m)!} \| \yH}
+=
+  \tfrac{(N-m)!}{N!}\expeb*{\frac{(N\yXf)!}{(N\yXf-m)!} \| \yH}.
+\end{equation}
+
+
+As a consequence of the above relation, the first three moments of the
+probability distributions $\p(\yxs=a\|\yH)$ and $\p(\yXf=A\|\yH)$,
+are related by
+\begin{subequations}\label{eq:moments}
+  \begin{align}
+    \expe{\yxs \| \yH} &= \expe{\yXf \| \yH},
+    \\[2\jot]
+    \begin{split}
+    \expe{\yxs^2 \| \yH} &= \expe{\yXf \| \yH}
+                                  \frac{N-n}{(N-1)n}
+ +{}
+\\&\quad\quad \expe{\yXf^2 \| \yH}\frac{N\,(n-1)}{(N-1)n},
+\end{split}
+    \\[2\jot]
+    \begin{split}
+    \expe{\yxs^3 \| \yH} &=
+                              \expe{\yXf \| \yH}\frac{(N-n)(N-2n)}{(N-1)(N-2)n^2}+{}
+                                    \\
+                                    &\quad\quad\expe{\yXf^2 \| \yH}
+                                    \frac{3N\,(N-n)(n-1)}{(N-1)(N-2)n^2} +{}
+                                    \\
+                                    &\quad\quad\quad\expe{\yXf^3 \| \yH}
+                                    \frac{N^2\,(n-1)(n-2)}{(N-1)(N-2)n^2}.
+                                  \end{split}
+                                    % \\[2\jot]
+                                    % \expe{\yxs^4 \| \varEta} &=
+                                    % \!\begin{aligned}[t] &\expe{\yxf
+                                    %   \| \varEta}
+                                    %   \frac{(N-n)(N^2+N-6Nn+6n^2)}{(N-1)(N-2)(N-3)n^3}+{}
+                                    %   \\%[1.5\jot]
+                                    %   &\quad\expe{\yxf^2 \| \varEta}
+                                    %   \frac{(7N-11n+1)(N-n)(n-1)N}{(N-1)(N-2)(N-3)n^3}+{}
+                                    %   \\
+                                    %   &\quad\expe{\yxf^3 \| \varEta}
+                                    %   \frac{6(n-1)(n-2)(N-n)N^2}{(N-1)(N-2)(N-3)n^3}
+                                    %   +{}
+                                    %   \\
+                                    %   &\quad\expe{\yxf^4 \| \varEta}
+                                    %   \frac{(n-1)(n-2)(n-3)N^3}{(N-1)(N-2)(N-3)n^3}.
+                                    % \end{aligned}
+  \end{align}
+\end{subequations}
+Relations for higher moments can be obtained recursively from
+\eqn~\eqref{eq:eq_factmom_prod}. In general, this means that the two sets of
+first $m$ moments are related by a homogeneous linear transformation,
+\begin{equation}
+  \label{eq:lin_transf_moments}
+  \expe{\yxs^m \| \yH} = \sum_{l=1}^m M_{ml}(n,N) \expe{\yXf^l \| \yH},
+\end{equation}
+with a universal, lower-triangular transformation matrix $M_{ml}(n,N)$ that
+depends only on $n$, $N$, and the condition of symmetry~\eqref{eq:homog_math}.
+
+As intuition suggests, we have 
+%$\expe{\yxs^m \| \yH} \xrightarrow{n\to N} \expe{\yXf^m \| \yH}$.
+\begin{equation}
+  \label{eq:limit_moments}
+  \expe{\yxs^m \| \yH} \xrightarrow{n\to N} 
+  \expe{\yXf^m \| \yH},
+\qquad
+  \expe{\yxs^m \| \yH} \xrightarrow{n\to 1} 
+  \expe{\yXf \| \yH},
+\end{equation}
+the latter because ${x_i}^m=x_i$, since states are $\set{0,1}$-valued.
+
+\bigskip
+
+The core of the six mathematical relations above are
+\eqns~\eqref{eq:marginal} and~\eqref{eq:subpop_average}. The latter
+expresses the probability for the subpopulation average as a mixture of
+hypergeometric distributions
+\cites[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968},
+with parameters $N,N\yXf,n$, weighted by the probabilities
+$\p(\yXf = A \|\yH)$ \citep[\cf][\sect~4, esp.\ \eqn~(22)]{kendall1967}.
+The connection between this mixture representation and the condition of
+symmetry~\eqref{eq:homog_math} is well-known in the Bayesian literature
+\citep{kendall1967,definetti1969b,heathetal1976,diaconis1977,diaconisetal1980,jaynes1986c}.
+
+
+\section{Examples of inferential use of the formulae}
+
+\subsection{From network to subnetwork}
+\label{sec:pop2sub_examples}
+
+
+Let us illustrate with an example how the probability distribution for the
+subnetwork average $\yxs$, determined by \eqn~\eqref{eq:subpop_average},
+changes with the subnetwork size $n$. Choose a network-average distribution
+$\p(\yXf=A\| \yH)$ belonging to the exponential family
+\cites[\sect~4.5.3]{bernardoetal1994}[see also][]{fortinietal2000}:
+\begin{equation}
+  \label{eq:full_pop_av_example_ME}
+  \p(\yXf = A \| \yH) = Q(A) \propto
+\binom{N}{N A}\exp[
+\yl_2\, N A\,(N A-1)/2 + \yl_1\, N A].
+\end{equation}
+This is the form obtained from the principle of maximum relative entropy
+\citep[\eg:][]{jaynes1957,jaynes1963,good1963,jaynes1967,aczeletal1975,jaynes1979b,vancampenhoutetal1981,sivia1990,fangetal1997,bretthorst2013}
+with first and second moments as constraints and the reference distribution
+$Q_0$ defined by $Q_0(A) = 2^{-N}\binom{N}{N A}$, corresponding to a
+uniform probability distribution for the network state $\yX$.
+%file: distr_scaling_from_full_population.nb
+\begin{figure}[!b]
+\centering
+\includegraphics[width=0.95\columnwidth]{scaled_subpop_probs.pdf}%
+\caption{Probability distributions $\p(\yxs = a \| \yH)$ for different
+  subnetwork sizes $n$, obtained from a network probability
+  distribution $\p(\yXf = A \| \yH)$ having the maximum-etropy
+  form~\eqref{eq:full_pop_av_example_ME}.}
+\label{scaling_distr}
+\end{figure}
+\begin{figure}[!b]
+\centering
+\includegraphics[width=0.95\columnwidth]{scaling_subpop_moments.pdf}%
+\caption{Moments of the probability distributions $\p(\yxs =a \|
+  \yH)$ as functions of the subnetwork size $n$.}
+\label{scaling_moments}
+\end{figure}
+
+The probability distribution of \eqn~\eqref{eq:full_pop_av_example_ME} is
+plotted in \fig~\ref{scaling_distr}, together with the resulting
+subnetwork-average distributions $\p(\yxs = a \|\yH)$, for the case in
+which $N = 1000$ units, $\lambda_1=-2.55$, $\lambda_2=0.005$, and
+$n=10, 50, 100, 250$. The distributions become broader as $n$ decreases,
+and the minimum of the original distribution disappears; at the same time
+the finite-difference 
+\[\frac{\p(\yxs=a+1/n\|\yH)-\p(\yxs=a\|\yH)}{1/n}\]
+presents a sharp jump at this minimum when $n\approx 100$.
+
+To the eye familiar with maximum-entropy distributions, the
+subnetwork-average distributions of \fig~\ref{scaling_distr} do not look
+like maximum-entropy ones with second-moment constraints. In fact,
+they are not and \emph{cannot} be:
+\begin{equation}
+  \label{eq:maxent_form_sub}
+  \p(\yxs =a  \| \yH)
+\ne\kappa\binom{n}{n a}\exp[\yk_2\, n a\,(n a-1)/2 + \yk_1\, n a]
+%\quad\text{(false)}
+\end{equation}
+for any $\kappa, \yk_1, \yk_2$, unless $n=2$. This impossibility holds more
+generally for any number of constraints $m$ and subnetwork size $n$ such
+that $m<n$. The reason is simple: suppose we have assigned a
+maximum-entropy distribution with $m$ moment constraints as the
+distribution for the network average. If we want the same kind of
+distribution for a subnetwork of size $n$, we are free to play with $m+1$
+parameters (normalization included), but we must also satisfy the $n+1$
+equations corresponding to the marginalization~\eqref{eq:subpop_average}.
+This is generally impossible unless $m \ge n$. (Impossibilities of a
+similar kind appear in statistical mechanics, see \eg\
+ref.~\citep{maesetal1999}.)
+%file: test_ME_same_under_scaling.nb
+
+This fact can be significant for recent works
+\citep[\eg,][]{schneidmanetal2006,shlensetal2006,tkaciketal2006,marreetal2009,tkaciketal2009,ganmoretal2011,shimazakietal2012,tkaciketal2013,shimazakietal2015}
+in which a maximum-entropy probability distribution with second- or
+third-moment constraints is assigned to relatively small subnetworks
+($n < 200$) of neurons. If we assume that such subnetwork is part of a
+larger network, and assume the condition of symmetry~\eqref{eq:homog_math},
+then the larger network \emph{cannot} be assigned a maximum-entropy
+distribution with the same number of constraints. Vice versa, if we assign
+such a maximum-entropy distribution to the larger network, then none of its
+subnetwork of enough large size $n$ can be assigned a similar
+maximum-entropy distribution. See ref.~\citep{rostamietal2016} for a
+broader discussion of this fact and of its consequences.
+
+\medskip
+
+The dependence of the first four moments $\expe{\yxs^m \| \yH}$ as a
+function of size $n$ is shown in \fig~\ref{scaling_moments}. The moments
+become practically constant when $n \approx 100$ or larger. The
+expectations of $m$-tuple products of states
+$\expe{x_{i_1}\dotsm x_{i_m} \| \yH}$, proportional to the factorial
+moments, are not shown as they do not depend on $n$.
+
+
+\subsection{From subnetwork to network}
+\label{sec:from_sub_to_full}
+
+We have seen that, given the condition of symmetry~\eqref{eq:homog_math},
+the probability $\p(\yXf = A \|\yH)$ for the network average determines
+that of each subnetwork average, $\p(\yxs \|\yH)$, by the
+marginalization \eqn~\eqref{eq:subpop_average}. The reverse is trivially
+not true, since \eqn~\eqref{eq:subpop_average}, as a linear mapping from
+$\RR^{N+1}$ to $\RR^{n+1}$, with $N$ larger than $n$, is onto but not into.
+Assigning a probability distribution $\p(\yxs = a \|\yH)$ to a
+subnetwork average $\yxs$ does not determine a network distribution
+$\p(\yXf = A\|\yH)$: it only restricts the set of possible ones; this
+set can in principle be determined via linear-programming methods
+\citep{hailperin1965,hailperin1984,hailperin1996,hailperin2006,hailperin2011}.
+\begin{innote}
+  Analogous situations appear in the truth-valued logical calculus: if the
+  composite proposition $\varAlpha\limplies \varBeta$ is assigned the
+  truth-value \enquote{true}, then assigning $\varAlpha$ the value
+  \enquote{true} also determines the value of $\varBeta$, whereas assigning
+  $\varBeta$ the value \enquote{true} leaves the value of $\varAlpha$
+  undetermined.
+\end{innote}
+The same linear-programming methods show that any inference from subnetwork
+properties to network ones must necessarily start from some assumptions
+$\varIota$ that assign a probability distribution
+$\p(\yX = \yR \| \varIota)$ for the network states. The approaches to
+this task and reformulations of it have become uncountable: they include
+exchangeable models, parametric and non-parametric models, hierarchical
+models, general linear models, models via sufficiency, maximum-entropy
+models, and whatnot
+\citep[\eg:][]{jeffreys1931_r1973,jeffreys1939_r2003,jaynes1994_r2003,bernardoetal1994,gelmanetal1995_r2014,ghoshetal1997,kallenberg2005,gregory2005,sivia1996_r2006,ferreiraetal2007,dawid2013,damienetal2013}.
+We now show two examples, based on a maximum-entropy approach, that to our
+knowledge have not yet been explored in the neuroscientific literature. For
+a concrete application see \citep{rostamietal2016b}.
+
+
+
+\paragraph{First example: moment constraints for the network.}
+\label{sec:maxent_moments}
+Consider a state of knowledge $\yHa$ leading to the following properties:
+\begin{enumerate}%[$\yHa$1.]
+\item the expectations of the single and pair averages $\yxs$ and
+  $\sav{\yx\yx}$ of a particular subnetwork have given values
+  \begin{equation}
+    \label{eq:constr_ex1}
+    \expe{\yxs \| \yHa} = c_1, \qquad \expe{\sav{x_i x_j}\|\yHa} = c_2;
+  \end{equation}
+\item the network probability distribution $\p(\yX = \yR \|\yHa)$
+  has maximum relative entropy with respect to the uniform one, given the
+  constraints above.
+\end{enumerate}
+
+\medskip Then the probability distribution for the network conditional on $\yHa$
+is completely determined: it satisfies the symmetry
+property~\eqref{eq:homog_math} and is defined by
+\begin{multline}
+  \label{eq:pop_distr_maxent1}
+  \pf(\yX =\yR \|\yHa) =
+\varKappa\exp[\yL_2 N\yRf\,(N\yRf-1)/2 + \yL_1 N\yRf]
+\\
+\!\begin{aligned}[b]
+&\text{with $\varKappa, \yL_m$, such that the distribution is normalized and}
+\\
+&\varKappa\sum_{N A=0}^N %m!\, 
+\binom{N-m}{N A-m}
+\exp[\yL_2 N A\,(N A-1)/2 + \yL_1 N A]
+= c_m, \quad m=1,2.
+\end{aligned}
+\end{multline}
+We omit the full proof of this statement: it is a standard application of
+the maximum-entropy procedure
+\citep[\eg:][]{jaynes1957,jaynes1963,good1963,jaynes1967,jaynes1979b,vancampenhoutetal1981,sivia1990,fangetal1997,bretthorst2013},
+combined with the equality~\eqref{eq:expe_products} of subnetwork and
+network expectations, \eg
+\begin{equation}
+  \label{eq:exploit_eq_expects}
+  c_2 = \expe{\sav{\yx\yx}\|\yHa} = 
+\binom{N}{2}^{-1}
+\sum_{N A=0}^N %m!\, 
+\binom{N A}{2} \, \p(\yXf = A\|\yHa),
+\end{equation}
+and with relations~\eqref{eq:joint_plaus_N_homog},
+\eqref{eq:conditional_total_state}. This example is easily generalized to
+any number $m$ of constraints such that  $m\le n$.
+
+Note again that, as remarked in \sect~\ref{sec:pop2sub_examples}, the
+subnetwork from which the averages in the
+expectations~\eqref{eq:constr_ex1} are calculated has a probability
+distribution $\p(\yxs =a \|\yH)$ determined by the
+marginalization~\eqref{eq:subpop_average} and does \emph{not} have a
+maximum-entropy form with the same number of constraints.
+%file: test_ME_same_under_scaling.nb
+
+
+\paragraph{Second example: subnetwork-distribution constraint.}
+\label{sec:maxent_fullsubpop}
+Consider another state of knowledge $\yHb$ leading to the following
+properties:
+\begin{enumerate}%[wide,label=$\yHb$\arabic*.]
+\item the average $\yxs$ of a particular
+  subnetwork has a probability distribution $q$:
+  \begin{equation}
+    \label{eq:constr_subpop_distr}
+    \p(\yxs =a \|\yHb) = q(a);
+  \end{equation}
+\item the probability distribution for the network, $\p(\yX = \yR
+  \|\yHb)$, has maximum relative entropy with respect to the uniform
+  one, given the constraint above.
+\end{enumerate}
+
+\medskip Then the probability distribution for the network given $\yHb$ is
+completely determined and satisfies the symmetry
+property~\eqref{eq:homog_math}:
+\begin{multline}
+  \label{eq:pop_distr_maxent2}
+  \p(\yX= \yR \|\yHb) =
+\exp\Biggl[
+\sum_{n a=0}^n \yL_{ a}
+%\binom{N}{N\yXf}^{-1}
+\binom{n}{n a}
+\binom{N-n}{N\yRf-n a}\Biggr]
+\\
+\!\begin{aligned}[b]
+&\text{with $\yL_{ a}$ such that}
+\\
+&\sum_{N A=0}^N 
+%\binom{N}{N A}^{-1}
+\binom{n}{n a}
+\binom{N-n}{N A-n a}\,
+\exp\Biggl[
+\sum_{n a=0}^n \yL_{ a}
+%\binom{N}{N A}^{-1}
+\binom{n}{n a}
+\binom{N-n}{N A-n a}\Biggr]
+=q( a)
+\end{aligned}
+\end{multline}
+(the normalization constraint being unnecessary since $q$ is normalized).
+This result is just another application of the maximum-entropy procedure
+with $n+1$ (linear) constraints given by \eqn~\eqref{eq:marginal}, where
+the left-hand side is now given and equal to $q(a)$.
+
+This example is equivalent to the generalization of the previous one with
+$n$ moment constraints, since knowledge of $\p(\yxs=a \| \yHb)$ is
+equivalent to knowledge its first $n$ moments.
 
 ***
 
 
 
 In this note we would like to analyse and warn about a subtle assumption
-behind the \me\ method when it is applied to a network. It can informally
+behind the \me\ method when it is applied to a population. It can informally
 be put this way:
 \begin{quote}
-  \emph{the \me\ method assumes that the network it is applied to is
-    completely isolated from any larger network.}
+  \emph{the \me\ method assumes that the population it is applied to is
+    completely isolated from any larger population.}
 \end{quote}
 
 \mynote{Version 1}
@@ -622,10 +1203,10 @@ outcomes of a die roll, and also for some sets of composite events, like
 the outcomes of the roll of two dice. In the latter case multiplicities
 appear.
 
-When applied to a subnetwork, the \me\ method assumes that the uniform over
-the larger network is uniform, and therefore factorizable. The new
-distribution of the subnetwork will not be uniform, but that of the full
-network will still be factorizable into the one for the subnetwork and the
+When applied to a subpopulation, the \me\ method assumes that the uniform over
+the larger population is uniform, and therefore factorizable. The new
+distribution of the subpopulation will not be uniform, but that of the full
+population will still be factorizable into the one for the subpopulation and the
 rest.
 
 A uniform distribution, however, is not the right one when we suppose that
@@ -648,7 +1229,7 @@ irrelevant for the choices of the rest of the population.
 
 
 The latter example has many similarities with that of a neuronal binary
-network. When we record the neuronal activity of a sample of neurons from a
+population. When we record the neuronal activity of a sample of neurons from a
 brain area, we assume that our measurements can tell us something -- no
 matter how vague or imprecise -- about the whole brain area. This means
 that we are not assuming a uniform distribution over all possible states of
@@ -661,10 +1242,10 @@ the area.
 This may come as a surprise. The method simply requires a number of
 exhaustive and mutually exclusive events, and if these are composite events
 the final distribution may have a multiplicity factor. When we consider the
-$2^{\yN}$ states of $\yN$ units we are not excluding that these might be
-marginals of $2^{\yM}$ states of $\yM$ units. Each one has the same
-multiplicity $2^{\yM-\yN}$, but this constant multiplicity factor disappears
-by normalization. So the method applies just as in the case of $\yN$ units
+$2^{N}$ states of $N$ units we are not excluding that these might be
+marginals of $2^{M}$ states of $M$ units. Each one has the same
+multiplicity $2^{M-N}$, but this constant multiplicity factor disappears
+by normalization. So the method applies just as in the case of $N$ units
 only, right?
 
 Right, but 
@@ -673,10 +1254,10 @@ Right, and that is where the problem lies. This way of counting of
 multiplicities assumes an underlying 
 
 Wrong. In our reasoning we have made subtle assumptions of independence
-between the full network and the subnetwork. The problem is that the
+between the full population and the subpopulation. The problem is that the
 counting of multiplicities is not based on simple enumeration, but already
 involves probability considerations. Consider three cases with a full
-population of two units, $\yM=2$, of which we consider one unit, $\yN=1$.
+population of two units, $M=2$, of which we consider one unit, $N=1$.
 \begin{itemize}
 \item First case: all four states are \emph{possible}. The two states of
   the first unit have multiplicity $2$ each. The usual \me\ distribution
@@ -694,31 +1275,31 @@ population of two units, $\yM=2$, of which we consider one unit, $\yN=1$.
 
 This simple example shows that the multiplicity inspection that must
 precede a \me\ application already involves probability considerations at
-the level of the full network. The usual reasoning by enumeration
+the level of the full population. The usual reasoning by enumeration
 implicitly assumes a uniform distribution or at least a \emph{factorizable}
 distribution.
 
 ***If the distribution is factorizable, however, it means that examination of
-the subnetwork \emph{cannot give us any insights about the network it is a
+the subpopulation \emph{cannot give us any insights about the population it is a
   part of}. This is obviously contrary to the reason why we made neuronal observations.
 
 Consider the following ways of proceeding. We:
 \begin{enumerate}
-\item have a network with $\yN$ units, $2^{\yN}$ possible states
-\item expect averages of $\yxs$ active neurons and $\yxxs$ active pairs
+\item have a population with $N$ units, $2^{N}$ possible states
+\item expect averages of $\yx$ active neurons and $\yxxs$ active pairs
 \item use maximum-entropy to choose a probability distribution for the
-  states of the $\yN$ units conforming to our expectations.
+  states of the $N$ units conforming to our expectations.
 \end{enumerate}
 
 We:
 \begin{enumerate}
-\item have a network with $\yM$ units, $2^{\yM}$ possible states
-\item expect that any subpopulation of $\yN$ units has $\yxs$ active
+\item have a population with $M$ units, $2^{M}$ possible states
+\item expect that any subpopulation of $N$ units has $\yxs$ active
   neurons and $\yxxs$ active pairs
 \item use maximum-entropy to choose a probability distribution for the
-  states of the $\yM$ units conforming to our expectations
+  states of the $M$ units conforming to our expectations
 \item marginalize to find the probability distribution for the states of
-  $\yN$ units.
+  $N$ units.
 \end{enumerate}
 
 

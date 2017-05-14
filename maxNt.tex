@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2017-05-14T12:06:05+0200
+%% Last-Updated: 2017-05-15T00:15:08+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -502,7 +502,7 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 \newcommand*{\yR}{\bm{R}}%pop value
 \newcommand*{\yRf}{\av{\yR}}%pop av value
 %conditional assumptions
-\newcommand*{\yH}{\varEta}
+\newcommand*{\yH}{\varIota}
 \newcommand*{\yD}{\varDelta}
 \newcommand*{\yHa}{\varEta'}
 \newcommand*{\yHb}{\varEta''}
@@ -724,7 +724,7 @@ probability distribution
   \p(X_1=R_1, X_2=R_2, \dotsc, X_N=R_N \| \yH) \quad\text{or}\quad
 \p(\yX =\yR \| \yH), \quad \yR \in \set{0,1}^N,
 \end{equation}
-where $\yH$ denotes our state of knowledge (the evidence and assumptions
+where $\yH$ denotes our initial state of knowledge (the evidence and assumptions
 backing our probability assignments). Our uncertainty about the state of
 the sample is likewise expressed by
 \begin{equation}
@@ -766,39 +766,105 @@ By marginalization we obtain the probability for the state of the sample:
   \\
   \shortintertext{with}
   \label{eq:subpop_average}
-  \p(\yxs=\yrs \| \yH) = \binom{n}{n\yrs}
-  \sum_{N \yRf =0}^{N} \binom{N-n}{N \yRf-n\yrs}\binom{N}{N \yRf}^{-1}\,
-  \p(\yXf=\yRf \| \yH).
+  \p(\yxs=\yrs \| \yH) = \sum_{N \yRf =0}^{N}
+    \p(\yxs = \yrs \|\yXf=\yRf, \yH)\,
+  \p(\yXf=\yRf \| \yH),
+  \\[2\jot]
+  \p(\yxs = \yrs \|\yXf=\yRf, \yH)=
+  \binom{n}{n\yrs}\binom{N-n}{N \yRf-n\yrs}\binom{N}{N \yRf}^{-1}.
 \end{gather}
-The combinatorial proof is the same as for the theory of drawing without
-replacement, leading to the hypergeometric distribution, and can be found
-in many texts
+The latter conditional probability is a hypergeometric distribution,
+typical of \enquote{drawing without replacement} problems. The
+combinatorial proof of the formulae above is in fact the same as for this
+class of problems
 \cites[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}.
-The symmetry of our initial ignorance should intuitively also apply to the
+
+The symmetry present in the probabilities above is not a physical property
+of the neuronal population. It only expresses the symmetry of our initial
+ignorance about the population, and does not imply any sort of physical
+similarity between the neurons. Subsequent observations may in fact break
+this symmetry. The initial symmetry should intuitively also apply to the
 sample. This is indeed the case: the probability for the state of the
 sample~\eqref{eq:subpop_average} automatically satisfies the representation
 theorem~\eqref{eq:joint_plaus_N_homog} as well.
 
-Formula~\eqref{eq:subpop_average}, connecting our initial probabilities for
-the population and sample averages, has a very important consequence: \emph{our
-expectations for all averages of the sample and the full population are the
-same}:
-\begin{multline}
+Our initial knowledge (or ignorance) $\yH$ has two very important
+properties derivable from the formulae above. First, \emph{our initial
+  expectations for all averages of the sample and the full population are
+  the same}:
+\begin{equation}
   \label{eq:expe_products}
 \expe{\sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}} \| \yH}
 =
 \expe{\av{\underbrace{\yX \dotsm \yX}_{\text{$m$ factors}}} \| \yH}
-\\[2\jot]
-{}=\sum_{N \yRf=0}^N %m!\, 
-\binom{N-m}{N \yRf-m}
-\binom{N}{N \yRf}^{-1} \p(\yXf=\yRf \| \yH)
+%\\[2\jot]
+%{}
+=
+\binom{n}{m}^{-1}
+%\frac{(n-m)!}{n!}
+\sum_{n \yrs=0}^n %m!\, 
+\binom{n \yrs}{m}\, \p(\yxs=\yrs \| \yH)
+% \sum_{N \yRf=0}^N %m!\, 
+% \binom{N-m}{N \yRf-m}
+% \binom{N}{N \yRf}^{-1} \p(\yXf=\yRf \| \yH)
 \equiv
 \binom{N}{m}^{-1}
 %\frac{(N-m)!}{N!}
 \sum_{N \yRf=0}^N %m!\, 
 \binom{N \yRf}{m}\, \p(\yXf=\yRf \| \yH).
-\end{multline}
+\end{equation}
+Second, upon observation of a sample average, say $\yxxs=a$, the updated
+expectations for such average in the population \emph{and in any new
+  sample} will usually be shifted towards the observed value, as follows
+from Bayes's theorem and the formulae above.
 
+These two properties express the fact that the sample is
+\emph{representative} of the population. Our initial knowledge $\yH$ thus
+assumes that we can make predictions about the population by observing a
+sample. Contrast this with an assumption that assigns an independent
+probability to each neuron: in this case, the observation of one sample
+does not change our initial probability about another; we can't learn from
+observation.
+
+\subsection{Specifying the initial probability}
+\label{sec:specific_initial_probability}
+
+Formulae \eqref{eq:joint_plaus_N_homog}--\eqref{eq:expe_products} are
+constraints on our initial probability assignment, but do not determine it
+numerically yet. The probability $\p(\yXf=\yRf \| \yH)$ for the population
+average needs to be numerically specified, and by \eqref{eq:subpop_average}
+it will determine that of the sample average, $\p(\yxs=\yrs \| \yH)$. If we
+numerically specify the latter, the former is not completely specified,
+because \eqn~\eqref{eq:subpop_average} linearly constrains $N+1$ unknowns
+by only $n+1$ equations in this case.
+
+We may want to specify the probability by enforcing several of its sample
+expectations to have specific values, for example $\expe{\yxs}=a$,
+$\expe{\yxxs}=b$. But this is still and underdetermined linear problem
+because several distributions can have the same desired expectations, as
+clear from \eqns~\eqref{eq:expe_products}.
+
+It is at this point that the \me\ method enters the scene. It selects one
+distribution, purported to be \enquote{maximally noncommittal}, among those
+that have the desired expectations. But we are in a quandary:
+formulae~\eqref{eq:expe_products} allow us to apply the method to find the
+probability of the population $\p(\yXf=\yRf \| \yH)$, or of the sample
+$\p(\yxs=\yrs \| \yH)$; the two applications, however, are
+\emph{inequivalent}. They lead to numerically different
+$\p(\yxs=\yrs \| \yH)$; see \fig~\ref{fig:diff_maxent_pop_sample}. Which
+should we choose?
+
+\begin{figure}[!b]
+\centering
+\includegraphics[width=0.95\columnwidth]{different_maxent_pop_sample.pdf}%
+\caption{Example of discrepancy in the probability $\p(\yxs = \yrs \| \yH)$
+  constructed by \me\ at the population level followed by sample
+  marginalization (blue triangles), and at the sample level (red circles).
+  The constraints are the same in both applications:
+  $\expe{\yxs \|\yH}=0.45$, $\expe{\yxxs \|\yH}=0.35$, and $N=5\,000$,
+  $n=200$.}
+\label{fig:diff_maxent_pop_sample}
+\end{figure}%maxent_pop_or_sample.nb
 \iffalse
 \begin{align}
   \expe{x_{i_1} \dotsm x_{i_m} \| \yH}

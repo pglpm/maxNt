@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2017-05-13T17:24:25+0200
+%% Last-Updated: 2017-05-14T12:06:05+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -348,7 +348,7 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 %\providecommand{\varprod}{\prod}
 %\newcommand*{\de}{\partialup}%partial diff
 %\newcommand*{\pu}{\piup}%constant pi
-%\newcommand*{\delt}{\deltaup}%Kronecker, Dirac
+\newcommand*{\delt}{\deltaup}%Kronecker, Dirac
 %\newcommand*{\eps}{\varepsilonup}%Levi-Civita, Heaviside
 %\newcommand*{\riem}{\zetaup}%Riemann zeta
 %\providecommand{\degree}{\textdegree}% degree
@@ -377,7 +377,7 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 %\DeclareMathOperator{\ord}{o}%lower order than
 %\newcommand*{\incr}{\triangle}%finite increment
 \newcommand*{\defd}{\coloneqq}
-%\newcommand*{\defs}{\eqqcolon}
+\newcommand*{\defs}{\eqqcolon}
 %\newcommand*{\Land}{\bigwedge}
 %\newcommand*{\Lor}{\bigvee}
 %\newcommand*{\lland}{\mathbin{\ \land\ }}
@@ -446,7 +446,7 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 %\newcommand*{\nbd}{\nobreakdash}%
 %\newcommand*{\bd}{\hspace{0pt}}%
 %\def\hy{-\penalty0\hskip0pt\relax}
-%\newcommand*{\labelbis}[1]{\tag*{(\ref{#1})$_\text{r}$}}
+\newcommand*{\labelbis}[1]{\tag*{(\ref{#1})$_\text{r}$}}
 %\newcommand*{\mathbox}[2][.8]{\parbox[t]{#1\columnwidth}{#2}}
 %\newcommand*{\zerob}[1]{\makebox[0pt][l]{#1}}
 %\newcommand*{\tprod}{\mathop{\textstyle\prod}\nolimits}
@@ -469,8 +469,8 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 %\quad\hbox{\QEM}}
 
 \newtheoremstyle{simple}%
-{0\parsep}%
-{0\parsep}%
+{}%.5\baselineskip plusminus.2\baselineskip % \parsep
+{}%
 {\footnotesize}%
 {}%
 {}%
@@ -486,15 +486,18 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 \newcommand*{\widebar}[1]{{\mkern1.5mu\skew{2}\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}}
 
 \newcommand*{\av}{\widebar} %pop average
-\newcommand*{\sav}{\widehat} %subpop average
+\newcommand*{\sav}{\widebar} %subpop average
 
 \newcommand*{\yxx}{x}%subpop state
 \newcommand*{\yx}{\bm{\yxx}}%subpop state
 \newcommand*{\yxs}{\sav{\yx}}%subpop av state
-\newcommand*{\yxxs}{\sav{\yx\yx}}%subpop av state
 \newcommand*{\yX}{\bm{X}}%pop state
+\newcommand*{\yy}{\bm{y}}%pop state
 \newcommand*{\yXf}{\av{\yX}}%pop av state
+\newcommand*{\yxxs}{\sav{\yx\yx}}%subpop av state
+\newcommand*{\yXXf}{\av{\yX\yX}}%subpop av state
 \newcommand*{\yr}{\bm{r}}%subpop value
+\newcommand*{\ys}{\bm{s}}%subpop value
 \newcommand*{\yrs}{\sav{\yr}}%subpop av value
 \newcommand*{\yR}{\bm{R}}%pop value
 \newcommand*{\yRf}{\av{\yR}}%pop av value
@@ -582,6 +585,23 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 
 The \me\ method is used in neuroscience blahblah***
 
+The present note has three nested purposes.
+
+The first and more general is to remind our readers that the \me\ method
+rests on subtle assumptions that may be contradictory with other
+assumptions we want to make on the data under study.
+
+As a concrete example we show -- and this is the second purpose -- that a
+sample of a neuronal population cannot be assigned a \enquote{maximally
+  noncommittal} \me\ distribution and at the same time be considered a
+\enquote{random representative} of the population.
+
+The proof of the example above rests on some probability relations from
+classical random sampling. These relations are somewhat hard to find
+explicitly stated in the neuroscientific literature; the third, minor
+purpose of this note is to state them explicitly.
+
+
 Let's clarify at once that our discussion pertains to a binary population at
 one specific instant or short window in time. It is possible to
 similarly discuss multi-state neuron models and population dynamics; but for
@@ -592,16 +612,16 @@ and similar concepts do not concern us.
 
 Maximum-entropy models are used for a variety of (sometimes not completely
 clear) reasons. For our purposes let's say that the \me\ method is assumed
-to generate a \enquote{maximally noncommital} \cite{jaynes1963} probability
+to generate a \enquote{maximally noncommittal} \cite{jaynes1963} probability
 distribution. We intend the quoted expression only as an umbrella term,
 also because it means very little without further clarifications.
 
 The neurons recorded in these kinds of experiments are usually picked out
-in a way beyond our control, and from their observation we expect to learn
-something about all other neurons in the same brain area. That is, they are
-assumed to be a \enquote{representative random sample} of the neurons in
-that area. Our discussion hinges on this often just tacitly understood
-assumption.
+according to an unknown process, and from their observation we expect to
+learn something about all other neurons in the same brain area. That is,
+they are assumed to be a \enquote{representative random sample} of the
+neurons in that area. Our discussion hinges on this often just tacitly
+understood assumption.
 
 
 In this note we would like to show that there is a contradiction in
@@ -647,18 +667,199 @@ to denote logical conjunction. Probability notation follows Jaynes
 \subsection{Setup}
 \label{sec:setup}
 
-Consider a population of $N$ binary neurons with states $(X_1,\dotsc,X_N)$
-having fixed but unknown binary values $(R_1,\dotsc,R_N)$, with
-$R_i \text{ in } \set{0,1}$, vectorially written $\yX=\yR$. For example,
-$\yX$ can represent the state of a population at a particular time. We call
-the neurons \enquote{units} to lend some generality to our discussion. We
-shall make statements about the whole population of $N$ units and about a
-subpopulation of $n$ units; the word \enquote{population} will always refer to
-the \emph{whole} population. The subpopulation states and their values are
-denoted by lowercase letters: $(x_1, \dotsc, x_n)\equiv\yx$ and
+We have a population of $N$ binary neurons. Let's assume that the
+identities of the neurons can be distinguished, by their spike shapes for
+example; but other details, like their locations, are unknown. The neurons
+have a joint state $(X_1,\dotsc,X_N) \defs \yX$ having fixed but unknown
+binary values $(R_1,\dotsc,R_N)\defs \yR \in \set{0,1}^N$. A particular
+sample of $n$ neurons from this population has joint state
+$(x_1, \dotsc, x_n) \defs \yx$ having fixed binary values
+$(r_1, \dotsc, r_n)\defs\yr$. We will consider various averages for the
+population and the sample. For this purpose we introduce a general
+averaging operator $\sav{\dotv}$ defined by
+\begin{align}
+  \av{\yX}  &\defd \tfrac{1}{N} (X_1 + X_2 + \dotsb + X_N),
+  &
+  \sav{\yx}  &\defd \tfrac{1}{n} (x_1 + x_2 + \dotsb + x_n),
+    \\[2\jot]
+  \av{\yX \yX} &\defd
+\tbinom{N}{2}^{-1} (X_1 X_2 + X_1 X_3  + \dotsb +  X_{N-1} X_N),
+  &
+    \sav{\yx \yx} &\defd
+\tbinom{n}{2}^{-1} (x_1 x_2 + x_1 x_3  + \dotsb +  x_{n-1} x_n),
+\\[2\jot]
+\av{\yX\yX\yX} &\defd
+                  \tbinom{N}{3}^{-1}
+                  (X_1 X_2 X_3 +% X_1 X_2 X_4
+                   \dotsb + X_{N-2} X_{N-1}X_N),
+  &
+    \sav{\yx\yx\yx} &\defd
+                      \tbinom{n}{3}^{-1} (x_1 x_2 x_3 + %x_1 x_2 x_4
+                       \dotsb + x_{n-2} x_{n-1} x_n),
+\end{align}
+and so on; analogously for the quantities $\yR$ and $\yr$. These formulae
+say that $\yXf$ is the fraction of active neurons, $\yXXf$ the fraction of
+simultaneously active pairs out of all $\binom{N}{2}$ pairs, $\av{\yX\yX\yX}$
+the fraction of simultaneously active triplets, and so on.
+
+
+
+\begin{simplenote}
+  A sample can be \enquote{random} in two different ways. Consider the
+  population of neurons named $\set{1,2,3}$ for example. The sample
+  $\set{1,3}$ is random because neurons $1$ and $3$ were chosen according
+  to an unknown process. The sample $\set{\textrm{X}_1, \textrm{X}_2}$ is
+  random because we don't know the identity of neurons $\textrm{X}_1$ and
+  $\textrm{X}_2$. Given the probability for the population, the
+  probabilities for the states of these two samples are different: the
+  former is obtained by marginalization, the latter by symmetrization and
+  marginalization.
+\end{simplenote}
+
+
+Our uncertainty about the state of the population is completely expressed by the
+probability distribution
+\begin{equation}
+  \label{eq:joint_plaus}
+  \p(X_1=R_1, X_2=R_2, \dotsc, X_N=R_N \| \yH) \quad\text{or}\quad
+\p(\yX =\yR \| \yH), \quad \yR \in \set{0,1}^N,
+\end{equation}
+where $\yH$ denotes our state of knowledge (the evidence and assumptions
+backing our probability assignments). Our uncertainty about the state of
+the sample is likewise expressed by
+\begin{equation}
+  \label{eq:sample_plaus}
+  \p(x_1=r_1, x_2=r_2, \dotsc, x_n=r_n \| \yH) \quad\text{or}\quad
+\p(\yx =\yr \| \yH), \quad \yr \in \set{0,1}^n.
+\end{equation}
+
+
+\subsection{Initial assumptions}
+\label{sec:initial_assumptions}
+
+Before any experimental observations are made we need to make an initial
+probability assignment, no matter what kinds of predictions we are
+interested in. This initial assignment will be modified by the experimental
+observations.
+
+We yet know very little about the physical details of the individual
+neurons, like their locations. Our state of knowledge is therefore
+symmetric, or \enquote{exchangeable}, under their permutations. This
+symmetry must be reflected in our initial probability, and the
+\emph{representation theorem for finite exchangeability} states that it
+must obey
+\begin{equation}
+  \label{eq:joint_plaus_N_homog}
+  \p(\yX = \yR \| \yH) = \binom{N}{N\yRf}^{-1} \p(\yXf=\yRf \| \yH),
+\end{equation}
+the latter being the probability for the population average $\yX$. Proof
+and generalizations to non-binary and continuum cases are given by
+de~Finetti \cite{definetti1959b}, Ericson \cite{ericson1976}, Diaconis
+\cite{diaconis1977}, Heath \amp\ Sudderth \cite{heathetal1976}. This
+theorem is intuitive: owing to symmetry, all states with $N\yRf$ active
+neurons must have equal probabilities.
+
+By marginalization we obtain the probability for the state of the sample:
+\begin{gather}
+  \label{eq:marginal}
+  \p(\yx = \yr \| \yH) = \binom{n}{n\yrs}^{-1} \p(\yxs=\yrs \| \yH),
+  \\
+  \shortintertext{with}
+  \label{eq:subpop_average}
+  \p(\yxs=\yrs \| \yH) = \binom{n}{n\yrs}
+  \sum_{N \yRf =0}^{N} \binom{N-n}{N \yRf-n\yrs}\binom{N}{N \yRf}^{-1}\,
+  \p(\yXf=\yRf \| \yH).
+\end{gather}
+The combinatorial proof is the same as for the theory of drawing without
+replacement, leading to the hypergeometric distribution, and can be found
+in many texts
+\cites[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}.
+The symmetry of our initial ignorance should intuitively also apply to the
+sample. This is indeed the case: the probability for the state of the
+sample~\eqref{eq:subpop_average} automatically satisfies the representation
+theorem~\eqref{eq:joint_plaus_N_homog} as well.
+
+Formula~\eqref{eq:subpop_average}, connecting our initial probabilities for
+the population and sample averages, has a very important consequence: \emph{our
+expectations for all averages of the sample and the full population are the
+same}:
+\begin{multline}
+  \label{eq:expe_products}
+\expe{\sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}} \| \yH}
+=
+\expe{\av{\underbrace{\yX \dotsm \yX}_{\text{$m$ factors}}} \| \yH}
+\\[2\jot]
+{}=\sum_{N \yRf=0}^N %m!\, 
+\binom{N-m}{N \yRf-m}
+\binom{N}{N \yRf}^{-1} \p(\yXf=\yRf \| \yH)
+\equiv
+\binom{N}{m}^{-1}
+%\frac{(N-m)!}{N!}
+\sum_{N \yRf=0}^N %m!\, 
+\binom{N \yRf}{m}\, \p(\yXf=\yRf \| \yH).
+\end{multline}
+
+\iffalse
+\begin{align}
+  \expe{x_{i_1} \dotsm x_{i_m} \| \yH}
+&=
+\expe{\sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}} \| \yH}
+=
+\expe{\av{\underbrace{\yX \dotsm \yX}_{\text{$m$ factors}}} \| \yH},
+\\
+\intertext{and has an explicit expression in terms of $Q$:}
+  \begin{split}
+\expe{x_{i_1} \dotsm x_{i_m} \| \yH}
+&=
+\binom{N}{m}^{-1}
+%\frac{(N-m)!}{N!}
+\sum_{N A=0}^N %m!\, 
+\binom{N A}{m}\, Q(A)
+\\
+&\equiv
+%\frac{(N-m)!}{N!}
+\sum_{N A=0}^N %m!\, 
+\binom{N-m}{N A-m}
+\binom{N}{N A}^{-1} Q(A).
+\end{split}
+\end{align}
+\end{subequations}
+\fi
+***
+
+
+What do we mean by saying that we can learn something about the population
+by observing the sample? At the very least we mean that our uncertainty
+about the rest of the population can change upon observing the sample. That
+is, the probability for the state $\yy$ of the rest of the population is
+conditionally dependent on the sample's values:
+\begin{equation}
+  \label{eq:conditionally_dependent_sample}
+  \p(\yy =\ys \| \yx=\yr,\yH) \ne \p(\yy =\ys \|\yH)
+  \qquad\text{for some $\ys,\yr$},
+\end{equation}
+This also means that the probability for the population cannot be
+factorized into that of the sample times that of the complement.
+
+What do we mean when we say that the sample is representative of the
+population? It means that we expect some collective properties of the
+sample, like the fraction of active neurons, or the fraction of
+simultaneously active pairs, to be roughly equal to those of the full
+population.
+
+***
+
+For example, $\yX$ can
+represent the state of a population at a particular time. We call the
+neurons \enquote{units} to lend some generality to our discussion. We shall
+make statements about the whole population of $N$ units and about a
+subpopulation of $n$ units; the word \enquote{population} will always refer
+to the \emph{whole} population. The subpopulation states and their values
+are denoted by lowercase letters: $(x_1, \dotsc, x_n)\equiv\yx$ and
 $(r_1, \dotsc, r_n)\equiv\yr$; but note that $x_i \equiv X_{j_i}$ and
 $r_i \equiv R_{j_i}$ for some distinct $j_1,\dotsc,j_n$. We shall also make
-statements about the population-averaged state, or \emph{population average}:
+statements about the population-averaged state, or \emph{population
+  average}:
 \begin{align}
   \label{eq:population-av}
    \yXf &\defd (X_1 + \dotsb + X_N)/N,
@@ -1302,6 +1503,179 @@ We:
   $N$ units.
 \end{enumerate}
 
+
+
+  \section{Sketched proofs}
+  \label{sec:derivations}
+
+  Variants of the following derivations and combinatorial considerations
+  can be found \eg\ in
+  \cites[\chaps~I--IV]{whitworth1867_r1965}[\chap~II]{feller1950_r1968}[\chap~3]{jaynes1994_r2003};
+  see also \citep{whitworth1897}.
+
+  To derive the joint probability distribution
+  \eqref{eq:joint_plaus_N_homog} from that for the network
+  average~\eqref{eq:pop_average_Q}, consider that if the network total
+  is $N\yXf$, then $N\yXf$ out of $N$ units are active, and there are
+  $\tbinom{N}{N\yXf}$ possible states for which this can be true; therefore
+  \begin{equation}
+    \labelbis{eq:joint_plaus_N_homog}
+    \p(\yX = \yR \| H) = \binom{N}{N\yRf}^{-1}Q(\yRf).
+  \end{equation}
+An analogous reasoning for $n$ and $\yxs$ leads to an analogous equality,
+\begin{equation}
+  \label{eq:aver_subpop}
+  \p(\yx=\yr \| H) = \binom{n}{n\yrs}^{-1} \p(\yxs=\yrs\|\yH),
+\end{equation}
+for the subnetwork.
+
+\bigskip 
+
+Let us next consider the probability $\p(\yxs =a \| \yXf = A,\yH)$ for
+the subnetwork average $\yxs$ conditional on the network average $\yXf$.
+There are $\tbinom{N}{N\yXf}$ possible network states if the network
+average is $\yXf$, \ie\ if $N\yXf$ units are in state $1$; the conditional
+probability of each is therefore $1/\tbinom{N}{N\yXf}$, owing to the
+symmetry assumption~\eqref{eq:homog_math}. Now consider the subnetwork of the
+first $n$ units. The conditional probability of having $n\yxs$ specific
+ones in state $1$ is the sum of the probabilities of all states for
+which $N\yXf-n\yxs$ of the remaining $N-n$ units are in state $1$; there are
+$\tbinom{N-n}{N\yXf-n\yxs}$ such states, all equally probable. Finally,
+there are $\tbinom{n}{n\yxs}$ possible ways, all equally probable, in which
+$n\yxs$ of the first $n$ units can be in state $1$. In formulae,
+\begin{equation}
+\label{eq:conditional_prob_explained}
+\begin{split}
+      \p(\yxs =a \| \yXf=A, \yH)
+      &=
+      \sum_{\yr}^{\yrs=a} \sum_{\yR}^{\yRf=A} 
+      \p(\yx =\yr \|  \yX = \yR, \yH) \,
+      \p(\yX =\yR  \| \yXf=A,\yH),
+      \\
+      &=
+      \sum_{\yr}^{\yrs=a} \sum_{\yR}^{\yRf=A} 
+      \p(\yx=\yr \|  \yX =\yR, \yH) \,
+      \binom{N}{N A}^{-1},
+      \\
+      &=\sum_{\yr}^{\yrs=a} 
+      \binom{N-n}{N A-n a}\binom{N}{N A}^{-1},
+      \\
+      &=
+      \binom{n}{n a}\binom{N-n}{N A-n a}\binom{N}{N A}^{-1},
+\end{split}
+\end{equation}
+  which is the conditional probability~\eqref{eq:conditional_prob}. Note
+  that this is just a derivation of the hypergeometric distribution
+  \cites[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968},
+  which describes the probability of, say, drawing a proportion of $\yxs$
+  blue balls in $n$ drawings without replacement from an urn with $N$
+  balls, a fraction $\yXf$ of which are blue.
+
+  \bigskip The probability of a subnetwork average $\yxs$ is then, by
+  marginalization,
+  \begin{equation}
+    \label{eq:subpop_average_explained}
+    \begin{split}
+      \p(\yxs =a \| \yH)
+      &= \sum_{N A=0}^N\p(\yxs = a \| \yXf = A, \yH)\,
+      \p(\yXf = A \| \yH),
+      \\
+      &=\sum_{N A=0}^N
+      \binom{n}{n a}\binom{N-n}{N A-n a}\binom{N}{N A}^{-1}
+      Q(A).
+    \end{split}
+  \end{equation}
+  which proves the subnetwork-average formula~\eqref{eq:subpop_average}.
+  This formula, combined with \eqns~\eqref{eq:aver_subpop} and
+  \eqref{eq:joint_plaus_N_homog}, leads to the conditional
+  probability~\eqref{eq:conditional_total_state}.
+
+
+
+  \bigskip The independence of the expectation of products of states from
+  the subnetwork size is trivial by marginalization:
+  \begin{multline}
+    \label{eq:margin_products}
+    \sum_{\yx} x_1\dotsm x_m \p(\yx =\yr \| \yH)
+      =\sum_{\yr,\yR}  r_1\dotsm r_m \p(\yx=\yr \| \yX=\yR,\yH)
+      \, \p(\yX=\yR \| \yH),
+      \\
+      \begin{aligned}
+      &=\sum_{\yr,\yR} r_1\dotsm r_m\,\delt(R_1-r_1)\dotsm\delt(R_m-R_m)
+      \p(\yX = \yR \| \yH),
+      \\
+      &=\sum_{\yR} R_1\dotsm R_m \p(\yX =\yR \| \yH).
+    \end{aligned}
+  \end{multline}
+  All such $m$-fold products have the same expectation by symmetry,
+  therefore their subnetwork average will do, too, being an average of
+  equal terms.
+
+  Now consider the sum of all distinct products of states of two units in
+  the subnetwork:
+  \begin{equation*}
+    x_1 x_2 + x_1 x_3 + \dotsb + x_{n-1} x_n.
+  \end{equation*}
+  The terms in this sum are either $0$ or $1$. The non-vanishing ones are
+  those with index pairs chosen from the $n\yxs$ units of the subnetwork
+  which are in state $1$, and there are $\tbinom{n\yxs}{2}$ such choices,
+  so the sum above is equal to $\tbinom{n\yxs}{2}$. The sum has
+  $\tbinom{n}{2}$ terms, so their average is
+  $\tbinom{n\yxs}{2}/\tbinom{n}{2}$. Generalizing the argument to products
+  of $m$ units, we have that
+  \begin{equation}
+    \sav{x_{i_1} \dotsm x_{i_m}} = \binom{n\yxs}{m} \binom{n}{m}^{-1}.
+  \end{equation}
+  Then, using \eqn~\eqref{eq:subpop_average},
+  \begin{multline}
+    \label{eq:expect_product_m}
+    \expe*{\sav{x_{i_1} \dotsm x_{i_m}} \| \yH}
+    \\
+    \begin{aligned}[b]
+      &=\tfrac{(n-m)!}{n!}
+      \expe*{m!\,\tbinom{n\yxs}{m}  \| \yH}
+      \\
+      &\equiv\frac{(n-m)!}{n!}
+      \sum_{n a=0}^n m!\, \binom{n a}{m} \p(\yxs =a \|\yH),
+      \\
+      &=\frac{(n-m)!}{n!} \sum_{N A=0}^N
+      Q( A)
+      \Biggl[ 
+      \sum_{n a=0}^n 
+      m!\,\binom{n a}{m}\, \binom{n}{n a}\binom{N-n}{N A-n a}\binom{N}{N A}^{-1} 
+      \Biggr].
+    \end{aligned}
+  \end{multline}
+  The expression in brackets is the $m$th factorial moment of the
+  hypergeometric function, and is given by \citep{potts1953}
+%file: factorial_moments_etc.nb
+  \begin{equation}
+    \sum_{n a=0}^n m!\,\binom{n a}{m} \binom{n}{n a}\binom{N-n}{N\yXf-n a}
+    \binom{N}{N\yXf}^{-1} 
+    =
+    m!\,\binom{n}{m} \binom{n a}{m}\binom{N}{m},
+  \end{equation}
+  which combined with the previous equation yields the second line of
+  \eqn~\eqref{eq:expe_products}; its last equality comes from the identity
+  \begin{equation}
+    \label{eq:binom_identity}
+    \binom{N}{M}\binom{M}{m}=\binom{N}{m}\binom{N-m}{M-m},
+  \end{equation}
+  easily derived by writing the binomial coefficients in terms of
+  factorials. Finally, \eqns~\eqref{eq:moments}, relating the moments of
+  the distributions for subnetwork and network averages, is obtained
+  from the definition of moments,
+  \begin{equation}
+    \label{eq:moments_def}
+    \expe*{\yxs^m \| \yH} \defd
+    \sum_{n a=0}^{n} a^m \p(\yxs = a  \| H),
+    \quad
+    \expe{\yXf^m \| \yH} \defd
+    \sum_{N A=0}^{N} A^m \p(\yXf = A  \| H),
+  \end{equation}
+  replaced in the equalities for the factorial
+  moments~\eqref{eq:eq_factmom_prod}, by recursively solving in terms of
+  the moments of the network distribution.
 
 \subsection{***}
 

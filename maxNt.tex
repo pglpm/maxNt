@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2017-05-15T00:15:08+0200
+%% Last-Updated: 2017-05-15T01:20:54+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -851,18 +851,53 @@ formulae~\eqref{eq:expe_products} allow us to apply the method to find the
 probability of the population $\p(\yXf=\yRf \| \yH)$, or of the sample
 $\p(\yxs=\yrs \| \yH)$; the two applications, however, are
 \emph{inequivalent}. They lead to numerically different
-$\p(\yxs=\yrs \| \yH)$; see \fig~\ref{fig:diff_maxent_pop_sample}. Which
-should we choose?
+$\p(\yxs=\yrs \| \yH)$; see \fig~\ref{fig:diff_maxent_pop_sample} for an
+example. Suppose our constraints are $\expe{\yxs \|\yH}$ and
+$\expe{\yxxs \|\yH}$. Application of \me\ at the population level leads to
+the distribution
+\begin{equation}
+  \label{eq:full_pop_av_example_ME}
+  \p(\yXf = \yRf \| \yH)  \propto
+\binom{N}{N \yRf}\exp\biggl[
+\yL_2\, \frac{\yRf\,(N \yRf-1)}{N-1} + \yL_1\, \yRf\biggr]
+\end{equation}
+with such parameters $\yL_1$, $\yL_2$ as to satisfy the constraints.
+Marginalization by \eqn~\eqref{eq:marginal} leads to 
+\begin{equation}
+  \label{eq:full_pop_av_example_ME_marg}
+  \p(\yxs = \yrs \| \yH)  \propto
+  \sum_{N\yRf=0}^N
+  \binom{n}{n\yrs} \binom{N-n}{N\yRf-n\yrs} \exp\biggl[
+\yL_2\, \frac{\yRf\,(N \yRf-1)}{N-1} + \yL_1\, \yRf\biggr].
+\end{equation}
+Application of \me\ at the sample level leads to the distribution
+\begin{equation}
+  \label{eq:sample_av_example_ME}
+  \p(\yxs = \yrs \| \yH)  \propto
+  \binom{n}{n\yrs}
+  \exp\biggl[\yl_2\, \frac{\yrs\,(n \yrs-1)}{n-1} + \yl_1\, \yrs\biggr]
+\end{equation}
+with such parameters $\yl_1$, $\yl_2$ as to satisfy the constraints.
+Expressions \eqref{eq:full_pop_av_example_ME_marg} and
+\eqref{eq:sample_av_example_ME} cannot be equal when $n>6$ because, even if
+we could choose their four parameters and two normalization constants
+freely (and we can't), for their equality we should still satisfy $n+1$ equations,
+\ie\ more than six.
 
-\begin{figure}[!b]
+Which should we choose?
+
+
+
+
+
+\begin{figure}[!t]
 \centering
-\includegraphics[width=0.95\columnwidth]{different_maxent_pop_sample.pdf}%
-\caption{Example of discrepancy in the probability $\p(\yxs = \yrs \| \yH)$
-  constructed by \me\ at the population level followed by sample
-  marginalization (blue triangles), and at the sample level (red circles).
-  The constraints are the same in both applications:
-  $\expe{\yxs \|\yH}=0.45$, $\expe{\yxxs \|\yH}=0.35$, and $N=5\,000$,
-  $n=200$.}
+\includegraphics[width=0.95\columnwidth]{different_maxent_pop_sample_100.pdf}%
+\caption{Example of discrepancy in $\p(\yxs = \yrs \| \yH)$ constructed by
+  \me\ at the population level followed by sample marginalization (blue
+  triangles), and at the sample level (red circles). The constraints are
+  the same in either case: $\expe{\yxs \|\yH}=0.45$,
+  $\expe{\yxxs \|\yH}=0.35$, and $N=5\,000$, $n=100$.}
 \label{fig:diff_maxent_pop_sample}
 \end{figure}%maxent_pop_or_sample.nb
 \iffalse

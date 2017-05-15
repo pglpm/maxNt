@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2017-05-15T17:33:02+0200
+%% Last-Updated: 2017-05-15T17:53:53+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -894,28 +894,45 @@ third term of \eqn~\eqref{eq:expe_products}, we find
   \binom{n}{n\yrs}
   \exp\biggl[\yl_2\, \frac{\yrs\,(n \yrs-1)}{n-1} + \yl_1\, \yrs\biggr]
 \end{equation}
+with such parameters $\yl$, $\yl_1$, $\yl_2$ as to satisfy the constraints.
+We call this state of knowledge $\yHb$.
 %\setlength{\intextsep}{0.5ex}%
 %\begin{wrapfigure}{r}{0.5\linewidth}
 \begin{figure}[!t]
 \centering
-\includegraphics[width=0.95\linewidth]{different_maxent_pop_sample_100.pdf}%
-\caption{Example of discrepancy in $\p(\yxs = \yrs \| \yH)$ constructed by
+\includegraphics[width=0.99\linewidth]{different_maxent_pop_sample_100.pdf}%
+\caption{\mynote{shorten }Example of discrepancy in $\p(\yxs = \yrs \| \yH)$ constructed by
   \me\ at the population level followed by sample marginalization (blue
   triangles), and at the sample level (red circles). The constraints are
   the same in either case: $\expe{\yxs \|\yH}=0.45$,
   $\expe{\yxxs \|\yH}=0.35$, and $N=5\,000$, $n=100$.}
 \label{fig:diff_maxent_pop_sample}
 \end{figure}%maxent_pop_or_sample.nb
-%\end{wrapfigure}
-with such parameters $\yl$, $\yl_1$, $\yl_2$ as to satisfy the constraints.
-We call this state of knowledge $\yHb$.
+% \end{wrapfigure}
+\begin{figure}[!t]
+\centering
+\includegraphics[width=0.99\linewidth]{different_maxent_pop_sample_200_realdata_both.pdf}
+% 
+\caption{\mynote{shorten }Example of discrepancy in $\p(\yxs = \yrs \| \yH)$ constructed by
+  \me\ at the population level followed by sample marginalization (blue
+  triangles), and at the sample level (red circles). The constraints are
+  the same in either case: $\expe{\yxs \|\yH}=0.045$,
+  $\expe{\yxxs \|\yH}=0.0025$, and $N=5\,000$, $n=200$.}
+\label{fig:diff_maxent_pop_sample_realdata}
+\end{figure}%maxent_pop_or_sample.nb
 
 The resulting distributions $\p(\yxs = \yrs \| \yHa)$,
 $\p(\yxs = \yrs \| \yHb)$ are different.
-Figure~\ref{fig:diff_maxent_pop_sample} shows an example, for values
+
+Figure~\ref{fig:diff_maxent_pop_sample} shows one example, for values
 $N=5\,000$, $n=100$, $c_1=0.45$, $c_2=0.35$, yielding $\yL_1 = -13\,321.9$,
 $\yL_2 = 13\,321.5$, $\yl_1=-269.3$, $\yl_2 = 268.9$, and appropriate
-normalization constants.
+normalization constants. Another example is shown in
+\fig~\ref{fig:diff_maxent_pop_sample_realdata}, for neurobiologically more
+realistic constraints $c_1=0.045$, $c_2=0.0025$, and $N=5\,000$, $n=200$,
+yielding $\yL_1 = -16\,834.0$, $\yL_2 = 16\,825.7$, $\yl_1=-673.5$,
+$\yl_2 = 665.1$. The discrepancy, although not as large as in the previous
+example, is still relevant for the tails of the distributions.
 
 
 The inequivalence of the two \me\ applications is generally valid for small
@@ -949,6 +966,7 @@ physical assumption behind the former distribution. Such assumption,
 intuitively, is that the sample is part of a larger population, of which it
 is representative. And this assumption may affect our predictions.
 
+\iffalse
 The quandary we found in the present note has at least two bright sides.
 The first is that the two different \me\ applications may give numerically
 similar results in some cases. One could thus be used as an approximation
@@ -966,7 +984,9 @@ example.
   $\expe{\yxxs \|\yH}=0.0025$, and $N=5\,000$, $n=200$.}
 \label{fig:diff_maxent_pop_sample_realdata}
 \end{figure}%maxent_pop_or_sample.nb
-The second is that the possibility of using two different distributions is
+The second is that
+\fi
+The possibility of using two different distributions is
 not a physical contradiction. Similar situations arise in statistical
 mechanics. It is known that if a system is described by a \me\ Gibbs state,
 its subsystems need not be \cite{maesetal1999}. A quandary somehow similar

@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2017-05-15T11:42:02+0200
+%% Last-Updated: 2017-05-15T11:52:06+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -482,7 +482,7 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 
 \definecolor{notecolour}{RGB}{68,170,153}
 \newcommand*{\puzzle}{{\fontencoding{U}\fontfamily{fontawesometwo}\selectfont\symbol{225}}}
-\newcommand*{\mynote}[1]{ {\color{notecolour}\puzzle\ #1}}
+\newcommand{\mynote}[1]{ {\color{notecolour}\puzzle\ #1}}
 \newcommand*{\widebar}[1]{{\mkern1.5mu\skew{2}\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}}
 
 \newcommand*{\av}{\widebar} %pop average
@@ -921,6 +921,13 @@ Which application of the \me\ method should we choose, then?
 \mynote{We don't give an answer. Different purposes. Bright side: no real
   contradiction because we are expressing two states of knowledge, not
   physical situations. Also, in some case numerically very similar results.
+
+  The distribution obtained from the population-level application has lower
+  entropy; this usually means that in includes additional assumptions than
+  the other. Intuitively, this additional assumption is that the $n$
+  neurons are part of a larger population, of which they are
+  representative.
+
   Same phenomenon in statistical mechanics \cite{maesetal1999}. Somehow
   similar quandary for equilibrium state at the end of non-equilibrium
   process: Gibbs state vs initial Gibbs state + Liouville

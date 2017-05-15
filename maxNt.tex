@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2017-05-15T13:30:44+0200
+%% Last-Updated: 2017-05-15T14:30:55+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -918,6 +918,31 @@ Which application of the \me\ method should we choose, then?
 \section{Discussion}
 \label{sec:discussion}
 
+We prefer not to answer the question that closed the preceding section,
+because the optimal answer can only be given case by case, depending on the
+inferences we are trying to make, on the assumptions needed and negligible,
+and on our computational power. We would just like to stress that the
+answer is not unique, and some answers may imply assumptions we were not
+aware of.
+
+The quandary we found in the present note has at least two bright sides.
+The first is that the two different \me\ applications may give numerically
+similar results in some cases of interest, especially with numerically
+small constraints. One could thus be used as an approximation of the other
+depending on the circumstances -- \eg\ if probability tails are
+unimportant. See \fig~\ref{fig:diff_maxent_pop_sample_realdata} for an
+example.
+\begin{figure}[!t]
+\centering
+\includegraphics[width=0.95\columnwidth]{different_maxent_pop_sample_200_realdata_both.pdf}
+% 
+\caption{Example of discrepancy in $\p(\yxs = \yrs \| \yH)$ constructed by
+  \me\ at the population level followed by sample marginalization (blue
+  triangles), and at the sample level (red circles). The constraints are
+  the same in either case: $\expe{\yxs \|\yH}=0.045$,
+  $\expe{\yxxs \|\yH}=0.0025$, and $N=5\,000$, $n=200$.}
+\label{fig:diff_maxent_pop_sample_realdata}
+\end{figure}%maxent_pop_or_sample.nb
 
 
 \mynote{We don't give an answer. Different purposes. Bright side: no real

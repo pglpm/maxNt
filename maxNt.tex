@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2017-05-15T17:05:34+0200
+%% Last-Updated: 2017-05-15T17:29:54+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -539,12 +539,12 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 % on the second line, try using \AND instead of \And before the third
 % author name.
 
-\author{ V. Rostami\\
-  Forschungszentrum Jülich INM-6\\Hitlerland\\
-  \texttt{v.rostami@fz-juelich.de}
+\author{
+  V. Rostami\\Hitlerland\\\texttt{v.rostami@fz-juelich.de}
   \And
-  P.G.L. Porta Mana\\Mussoliniland
-  \And E. Torre\\Moneylaunderingland  
+  P.G.L. Porta Mana\\Mussoliniland\\\texttt{pgl@portamana.org}
+  \And
+E. Torre\\Moneylaunderingland  
   % David S.~Hippocampus\thanks{Use footnote for providing further
   %   information about author (webpage, alternative
   %   address)---\emph{not} for acknowledging funding agencies.} \\
@@ -837,14 +837,14 @@ assumes that by observing a sample we can make predictions about the full
 population and about new samples. Contrast this with an assumption that
 assigns an independent probability to each neuron: in this case, the
 observation of one sample does not change our initial probability about
-another; we can't learn from observation.
+another -- we can't learn from observation.
 
 \section{Enter maximum-entropy: quandary}
 \label{sec:specific_initial_probability}
 
 Formulae \eqref{eq:joint_plaus_N_homog}--\eqref{eq:expe_products} are
 constraints on our initial probability assignment, but do not determine it
-numerically yet. The probability $\p(\yXf=\yRf \| \yH)$ for the population
+numerically. The probability $\p(\yXf=\yRf \| \yH)$ for the population
 average needs to be numerically specified, and by \eqref{eq:subpop_average}
 it will determine that of the sample average, $\p(\yxs=\yrs \| \yH)$. If we
 numerically specify the latter, the former is not completely specified,
@@ -852,17 +852,17 @@ because \eqn~\eqref{eq:subpop_average} linearly constrains $N+1$ unknowns
 by only $n+1$ equations in this case.
 
 We may want to specify the probability by enforcing several of its sample
-expectations to have specific values, for example $\expe{\yxs}=a$,
-$\expe{\yxxs}=b$. But this is still and underdetermined linear problem
-because several distributions can have the same desired expectations, as
+expectations to have specific values, for example $\expe{\yxs}=c_1$,
+$\expe{\yxxs}=c_2$. This is still an underdetermined linear problem:
+ several distributions can have the same desired expectations, as
 clear from \eqns~\eqref{eq:expe_products}.
 
-It is at this point that the \me\ method enters the scene. It selects one
-distribution, purported to be \enquote{maximally noncommittal}, among those
-that have the desired expectations. But we are in a quandary:
+The \me\ method is brought into play to solve this indeterminacy. It selects
+one distribution, purported to be \enquote{maximally noncommittal}, among
+those that have the desired expectations. But we are in a quandary:
 formulae~\eqref{eq:expe_products} allow us to apply the method to find the
 probability of the population $\p(\yXf=\yRf \| \yH)$, or of the sample
-$\p(\yxs=\yrs \| \yH)$; \emph{the two applications, however, are
+$\p(\yxs=\yrs \| \yH)$. \emph{The two applications, however, are
   inequivalent}. They lead to numerically different $\p(\yxs=\yrs \| \yH)$.
 Here is an example.
 
@@ -886,8 +886,8 @@ and constraints. We call this state of knowledge $\yHa$. Marginalization by
   \binom{n}{n\yrs} \binom{N-n}{N\yRf-n\yrs} \exp\biggl[
 \yL_2\, \frac{\yRf\,(N \yRf-1)}{N-1} + \yL_1\, \yRf\biggr].
 \end{equation}
-Applying \me\ at the sample level, using the third term of
-\eqn~\eqref{eq:expe_products}, we find
+Applying \me\ to the distribution of the average of the sample, using the
+third term of \eqn~\eqref{eq:expe_products}, we find
 \begin{equation}
   \label{eq:sample_av_example_ME}
   \p(\yxs = \yrs \| \yHb)  = \yl\,
@@ -908,20 +908,22 @@ Applying \me\ at the sample level, using the third term of
 \end{figure}%maxent_pop_or_sample.nb
 %\end{wrapfigure}
 with such parameters $\yl$, $\yl_1$, $\yl_2$ as to satisfy the constraints.
-We call this state of knowledge $\yHb$. For example, with $N=5\,000$,
-$n=100$, $c_1=0.45$, $c_2=0.35$, we find $\yL_1 = -13\,321.9$,
+We call this state of knowledge $\yHb$.
+
+The resulting distributions $\p(\yxs = \yrs \| \yHa)$,
+$\p(\yxs = \yrs \| \yHb)$ are different.
+Figure~\ref{fig:diff_maxent_pop_sample} shows an example, for values
+$N=5\,000$, $n=100$, $c_1=0.45$, $c_2=0.35$, yielding $\yL_1 = -13\,321.9$,
 $\yL_2 = 13\,321.5$, $\yl_1=-269.3$, $\yl_2 = 268.9$, and appropriate
-normalization constants. The resulting distributions
-$\p(\yxs = \yrs \| \yHa)$, $\p(\yxs = \yrs \| \yHb)$ are shown in
-\fig~\ref{fig:diff_maxent_pop_sample}; they are clearly different.
+normalization constants.
 
 
 The inequivalence of the two \me\ applications is generally valid for small
 number of constraints, even if the two states of knowledge $\yHa$, $\yHb$
 use different numbers $m'$, $m''$ \emph{and values} of constraints. The
-equality of the third and fourth term of \eqn~\eqref{eq:expe_products} in
-this case implies $n+1$ equations in $m'+m''+1$ unknowns (one normalization
-is taken care of), and in general can only be satisfied if $n\le m'+m''$.
+equality $\p(\yxs = \yrs \| \yHa) = \p(\yxs = \yrs \| \yHb)$ in this case
+requires solving $n$ equations in $m'+m''$ unknowns (normalization
+is taken care of), so in general it can only be satisfied if $n\le m'+m''$.
 
 \medskip
 

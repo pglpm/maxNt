@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2017-05-15T14:30:55+0200
+%% Last-Updated: 2017-05-15T15:53:25+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -311,6 +311,7 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 % \usepackage[vertfit=local]{breakurl}% only for arXiv
 \providecommand*{\urlalt}{\href}
 
+\usepackage{wrapfig}
 \usepackage{datetime2}
 \DTMnewdatestyle{mydate}%
 {% definitions
@@ -885,16 +886,11 @@ Applying \me\ at the sample level, using the third term of
   \binom{n}{n\yrs}
   \exp\biggl[\yl_2\, \frac{\yrs\,(n \yrs-1)}{n-1} + \yl_1\, \yrs\biggr]
 \end{equation}
-with such parameters $\yl$, $\yl_1$, $\yl_2$ as to satisfy the constraints.
-We call this state of knowledge $\yHb$. For example, with $N=5\,000$,
-$n=100$, $c_1=0.45$, $c_2=0.35$, we find $\yL_1 = -13\,321.9$,
-$\yL_2 = 13\,321.5$, $\yl_1=-269.3$, $\yl_2 = 268.9$, and appropriate
-normalization constants. The resulting distributions
-$\p(\yxs = \yrs \| \yHa)$, $\p(\yxs = \yrs \| \yHb)$ are shown in
-\fig~\ref{fig:diff_maxent_pop_sample}; they are clearly different.
+%\setlength{\intextsep}{0.5ex}%
+%\begin{wrapfigure}{r}{0.5\linewidth}
 \begin{figure}[!t]
 \centering
-\includegraphics[width=0.95\columnwidth]{different_maxent_pop_sample_100.pdf}%
+\includegraphics[width=0.95\linewidth]{different_maxent_pop_sample_100.pdf}%
 \caption{Example of discrepancy in $\p(\yxs = \yrs \| \yH)$ constructed by
   \me\ at the population level followed by sample marginalization (blue
   triangles), and at the sample level (red circles). The constraints are
@@ -902,6 +898,14 @@ $\p(\yxs = \yrs \| \yHa)$, $\p(\yxs = \yrs \| \yHb)$ are shown in
   $\expe{\yxxs \|\yH}=0.35$, and $N=5\,000$, $n=100$.}
 \label{fig:diff_maxent_pop_sample}
 \end{figure}%maxent_pop_or_sample.nb
+%\end{wrapfigure}
+with such parameters $\yl$, $\yl_1$, $\yl_2$ as to satisfy the constraints.
+We call this state of knowledge $\yHb$. For example, with $N=5\,000$,
+$n=100$, $c_1=0.45$, $c_2=0.35$, we find $\yL_1 = -13\,321.9$,
+$\yL_2 = 13\,321.5$, $\yl_1=-269.3$, $\yl_2 = 268.9$, and appropriate
+normalization constants. The resulting distributions
+$\p(\yxs = \yrs \| \yHa)$, $\p(\yxs = \yrs \| \yHb)$ are shown in
+\fig~\ref{fig:diff_maxent_pop_sample}; they are clearly different.
 
 
 The inequivalence of the two \me\ applications is generally valid for small
@@ -925,12 +929,20 @@ and on our computational power. We would just like to stress that the
 answer is not unique, and some answers may imply assumptions we were not
 aware of.
 
+The probability distribution for the sample average obtained by applying
+\me\ at the population level has by construction a lower entropy than the
+one obtained by application at the sample level. It says that some sample
+states $\yx$ should be considered less likely than in the other
+distribution. The lower entropy signals the presence of an additional
+physical assumption behind the former distribution. Such assumption,
+intuitively, is that the sample is part of a larger population, of which it
+is representative. And this assumption may affect our predictions.
+
 The quandary we found in the present note has at least two bright sides.
 The first is that the two different \me\ applications may give numerically
-similar results in some cases of interest, especially with numerically
-small constraints. One could thus be used as an approximation of the other
-depending on the circumstances -- \eg\ if probability tails are
-unimportant. See \fig~\ref{fig:diff_maxent_pop_sample_realdata} for an
+similar results in some cases. One could thus be used as an approximation
+of the other, depending on the circumstances -- \eg\ if probability tails
+are unimportant. See \fig~\ref{fig:diff_maxent_pop_sample_realdata} for an
 example.
 \begin{figure}[!t]
 \centering
@@ -943,24 +955,83 @@ example.
   $\expe{\yxxs \|\yH}=0.0025$, and $N=5\,000$, $n=200$.}
 \label{fig:diff_maxent_pop_sample_realdata}
 \end{figure}%maxent_pop_or_sample.nb
+The second is that the possibility of using two different distributions is
+not a physical contradiction. Similar situations arise in statistical
+mechanics. It is known that if a system is described by a \me\ Gibbs state,
+its subsystems need not be \cite{maesetal1999}. A quandary somehow similar
+to ours also appears in the statistical description of an equilibrium state
+at the end of a non-equilibrium process: we can describe our knowledge
+about it either by a Gibbs distribution, or by the Liouville-evolved Gibbs
+distribution associated with equilibrium state at the beginning of the
+process. The two descriptions differ -- even though the final physical
+state is exactly the same \cite[\sect~4]{jaynes1985d_r1993}. The appearance
+of this difference is natural: in one case we can make sharper predictions
+about the state thanks to our knowledge of its preceding dynamics.
+\mynote{but in this case both distributions are immensely sharp, and this
+  doesn't affect predictions}
+
+\mynote{Importance of the formulae relating sample and population.}
 
 
-\mynote{We don't give an answer. Different purposes. Bright side: no real
-  contradiction because we are expressing two states of knowledge, not
-  physical situations. Also, in some case numerically very similar results.
 
-  The distribution obtained from the population-level application has lower
-  entropy; this usually means that in includes additional assumptions than
-  the other. Intuitively, this additional assumption is that the $n$
-  neurons are part of a larger population, of which they are
-  representative.
+% do not change font sizes (except perhaps in the \textbf{References}
+% section; see below).
 
-  Same phenomenon in statistical mechanics \cite{maesetal1999}. Somehow
-  similar quandary for equilibrium state at the end of non-equilibrium
-  process: Gibbs state vs initial Gibbs state + Liouville
-  evolution \cite[\sect~4]{jaynes1985d_r1993}; but in this case both
-  distributions are immensely sharp, and this doesn't affect predictions}
 
+\subsubsection*{Acknowledgments}
+
+PGLPM thanks Mari \amp\ Miri for continuous encouragement and affection,
+Buster Keaton for filling life with awe and inspiration, and the developers
+and maintainers of \LaTeX, Emacs, AUC\TeX, MiK\TeX, arXiv, biorXiv,
+PhilSci, Hal archives, Python, Inkscape, Sci-Hub for making a free and
+unfiltered scientific exchange possible.
+
+% Use unnumbered third level headings for the acknowledgments. All
+% acknowledgments go at the end of the paper. Do not include
+% acknowledgments in the anonymized submission, only in the final paper.
+
+%\section*{References}
+\renewcommand*{\bibname}{References}
+\defbibheading{bibliography}[\bibname]{\section*{#1}\addcontentsline{toc}{section}{#1}%\markboth{#1}{#1}
+}
+
+% References follow the acknowledgments. Use unnumbered first-level
+% heading for the references. Any choice of citation style is acceptable
+% as long as you are consistent. It is permissible to reduce the font
+% size to \verb+small+ (9 point) when listing the references. {\bf
+%   Remember that you can go over 8 pages as long as the subsequent ones contain
+%   \emph{only} cited references.}
+% \medskip
+
+% \small
+
+% [1] Alexander, J.A.\ \& Mozer, M.C.\ (1995) Template-based algorithms
+% for connectionist rule extraction. In G.\ Tesauro, D.S.\ Touretzky and
+% T.K.\ Leen (eds.), {\it Advances in Neural Information Processing
+%   Systems 7}, pp.\ 609--616. Cambridge, MA: MIT Press.
+
+% [2] Bower, J.M.\ \& Beeman, D.\ (1995) {\it The Book of GENESIS:
+%   Exploring Realistic Neural Models with the GEneral NEural SImulation
+%   System.}  New York: TELOS/Springer--Verlag.
+
+% [3] Hasselmo, M.E., Schnell, E.\ \& Barkai, E.\ (1995) Dynamics of
+% learning and recall at excitatory recurrent synapses and cholinergic
+% modulation in rat hippocampal region CA3. {\it Journal of
+%   Neuroscience} {\bf 15}(7):5249-5262.
+\defbibnote{postnote}{\small\par\medskip\noindent{\footnotesize% Note:
+\arxivp \mparcp \philscip \biorxivp}%
+}
+
+\newcommand*{\citein}[2][]{\textnormal{\textcite[#1]{#2}}%\addtocategory{extras}{#2}
+}
+\newcommand*{\citebi}[2][]{ref.\ \citep[#1]{#2}%\addtocategory{extras}{#2}
+}
+\newcommand*{\subtitleproc}[1]{}
+
+
+\printbibliography[postnote=postnote]
+
+\newrefsection
 \bigskip
 {\centering\mynote{*** From here down old text to be discarded ***}\par}
 \section{***}
@@ -1841,63 +1912,5 @@ $n\yxs$ of the first $n$ units can be in state $1$. In formulae,
   replaced in the equalities for the factorial
   moments~\eqref{eq:eq_factmom_prod}, by recursively solving in terms of
   the moments of the network distribution.
-
-
-% do not change font sizes (except perhaps in the \textbf{References}
-% section; see below).
-
-
-\subsubsection*{Acknowledgments}
-
-PGLPM thanks Mari \amp\ Miri for continuous encouragement and affection,
-Buster Keaton for filling life with awe and inspiration, and the developers
-and maintainers of \LaTeX, Emacs, AUC\TeX, MiK\TeX, arXiv, biorXiv,
-PhilSci, Hal archives, Python, Inkscape, Sci-Hub for making a free and
-unfiltered scientific exchange possible.
-
-% Use unnumbered third level headings for the acknowledgments. All
-% acknowledgments go at the end of the paper. Do not include
-% acknowledgments in the anonymized submission, only in the final paper.
-
-%\section*{References}
-\renewcommand*{\bibname}{References}
-\defbibheading{bibliography}[\bibname]{\section*{#1}\addcontentsline{toc}{section}{#1}%\markboth{#1}{#1}
-}
-
-% References follow the acknowledgments. Use unnumbered first-level
-% heading for the references. Any choice of citation style is acceptable
-% as long as you are consistent. It is permissible to reduce the font
-% size to \verb+small+ (9 point) when listing the references. {\bf
-%   Remember that you can go over 8 pages as long as the subsequent ones contain
-%   \emph{only} cited references.}
-% \medskip
-
-% \small
-
-% [1] Alexander, J.A.\ \& Mozer, M.C.\ (1995) Template-based algorithms
-% for connectionist rule extraction. In G.\ Tesauro, D.S.\ Touretzky and
-% T.K.\ Leen (eds.), {\it Advances in Neural Information Processing
-%   Systems 7}, pp.\ 609--616. Cambridge, MA: MIT Press.
-
-% [2] Bower, J.M.\ \& Beeman, D.\ (1995) {\it The Book of GENESIS:
-%   Exploring Realistic Neural Models with the GEneral NEural SImulation
-%   System.}  New York: TELOS/Springer--Verlag.
-
-% [3] Hasselmo, M.E., Schnell, E.\ \& Barkai, E.\ (1995) Dynamics of
-% learning and recall at excitatory recurrent synapses and cholinergic
-% modulation in rat hippocampal region CA3. {\it Journal of
-%   Neuroscience} {\bf 15}(7):5249-5262.
-\defbibnote{postnote}{\small\par\medskip\noindent{\footnotesize% Note:
-\arxivp \mparcp \philscip \biorxivp}%
-}
-
-\newcommand*{\citein}[2][]{\textnormal{\textcite[#1]{#2}}%\addtocategory{extras}{#2}
-}
-\newcommand*{\citebi}[2][]{ref.\ \citep[#1]{#2}%\addtocategory{extras}{#2}
-}
-\newcommand*{\subtitleproc}[1]{}
-
-
-\printbibliography[postnote=postnote]
 
 \end{document}

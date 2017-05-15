@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2017-05-15T01:23:16+0200
+%% Last-Updated: 2017-05-15T11:15:45+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -504,12 +504,13 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 %conditional assumptions
 \newcommand*{\yH}{\varIota}
 \newcommand*{\yD}{\varDelta}
-\newcommand*{\yHa}{\varEta'}
-\newcommand*{\yHb}{\varEta''}
+\newcommand*{\yHa}{\varIota'}
+\newcommand*{\yHb}{\varIota''}
 %Lagr multipliers
 \newcommand*{\yL}{\varLambda}
 \newcommand*{\yl}{\lambda}
 \newcommand*{\yk}{\kappa}
+\newcommand*{\yK}{\varKappa}
 %entropies
 \newcommand*{\ysh}{H}
 \newcommand*{\ybu}{H_{\text{B}}}
@@ -585,6 +586,7 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 
 The \me\ method is used in neuroscience blahblah***
 
+\mynote{Version 1}
 The present note has three nested purposes.
 
 The first and more general is to remind our readers that the \me\ method
@@ -624,9 +626,11 @@ neurons in that area. Our discussion hinges on this often just tacitly
 understood assumption.
 
 
-In this note we would like to show that there is a contradiction in
-applying \me\ to a \enquote{representative random sample} of neurons to
-generate a \enquote{maximally noncommital} distribution for that sample.
+\mynote{Version 2 }
+In this note we would like to show that there is a
+contradiction in applying \me\ to a \enquote{representative random sample}
+of neurons to generate a \enquote{maximally noncommital} distribution for
+that sample.
 % \\
 % \mynote{V2 }In this note we would like to show that there is a clash between the
 % \enquote{representative random sample} spirit and the \enquote{maximally
@@ -702,18 +706,20 @@ say that $\yXf$ is the fraction of active neurons, $\yXXf$ the fraction of
 simultaneously active pairs out of all $\binom{N}{2}$ pairs, $\av{\yX\yX\yX}$
 the fraction of simultaneously active triplets, and so on.
 
+\mynote{Add formula $\av{\underbrace{\yX\dotsm\yX}_{\text{$m$ factors}}} = \binom{N\yXf}{m}/\binom{N}{m}$.}
+
 
 
 \begin{simplenote}
-  A sample can be \enquote{random} in two different ways. Consider the
-  population of neurons named $\set{1,2,3}$ for example. The sample
-  $\set{1,3}$ is random because neurons $1$ and $3$ were chosen according
-  to an unknown process. The sample $\set{\textrm{X}_1, \textrm{X}_2}$ is
-  random because we don't know the identity of neurons $\textrm{X}_1$ and
-  $\textrm{X}_2$. Given the probability for the population, the
-  probabilities for the states of these two samples are different: the
-  former is obtained by marginalization, the latter by symmetrization and
-  marginalization.
+  \mynote{Remove this} A sample can be \enquote{random} in two different
+  ways. Consider the population of neurons named $\set{1,2,3}$ for example.
+  The sample $\set{1,3}$ is random because neurons $1$ and $3$ were chosen
+  according to an unknown process. The sample
+  $\set{\textrm{X}_1, \textrm{X}_2}$ is random because we don't know the
+  identity of neurons $\textrm{X}_1$ and $\textrm{X}_2$. Given the
+  probability for the population, the probabilities for the states of these
+  two samples are different: the former is obtained by marginalization, the
+  latter by symmetrization and marginalization.
 \end{simplenote}
 
 
@@ -818,6 +824,8 @@ expectations for such average in the population \emph{and in any new
   sample} will usually be shifted towards the observed value, as follows
 from Bayes's theorem and the formulae above.
 
+\mynote{Add paragraph on moments}
+
 These two properties express the fact that the sample is
 \emph{representative} of the population. Our initial knowledge $\yH$ thus
 assumes that we can make predictions about the population by observing a
@@ -849,47 +857,45 @@ distribution, purported to be \enquote{maximally noncommittal}, among those
 that have the desired expectations. But we are in a quandary:
 formulae~\eqref{eq:expe_products} allow us to apply the method to find the
 probability of the population $\p(\yXf=\yRf \| \yH)$, or of the sample
-$\p(\yxs=\yrs \| \yH)$; the two applications, however, are
-\emph{inequivalent}. They lead to numerically different
-$\p(\yxs=\yrs \| \yH)$; see \fig~\ref{fig:diff_maxent_pop_sample} for an
-example. Suppose our constraints are $\expe{\yxs \|\yH}$ and
-$\expe{\yxxs \|\yH}$. Application of \me\ at the population level leads to
-the distribution
+$\p(\yxs=\yrs \| \yH)$; \emph{the two applications, however, are
+  inequivalent}. They lead to numerically different $\p(\yxs=\yrs \| \yH)$.
+Here is an example.
+
+Suppose our desired constraints are $\expe{\yxs } = c_1$ and
+$\expe{\yxxs} = c_2$, the expectations being given by the fourth term of
+\eqn~\eqref{eq:expe_products}. Applying \me\ to the distribution of the
+average of the full population we find
 \begin{equation}
   \label{eq:full_pop_av_example_ME}
-  \p(\yXf = \yRf \| \yH)  \propto
+  \p(\yXf = \yRf \| \yHa)  = \yL\,
 \binom{N}{N \yRf}\exp\biggl[
 \yL_2\, \frac{\yRf\,(N \yRf-1)}{N-1} + \yL_1\, \yRf\biggr]
 \end{equation}
-with such parameters $\yL_1$, $\yL_2$ as to satisfy the constraints.
-Marginalization by \eqn~\eqref{eq:marginal} leads to 
+with such parameters $\yL$, $\yL_1$, $\yL_2$ as to satisfy normalization
+and constraints. We call this state of knowledge $\yHa$. Marginalization by
+\eqn~\eqref{eq:marginal} then gives
 \begin{equation}
   \label{eq:full_pop_av_example_ME_marg}
-  \p(\yxs = \yrs \| \yH)  \propto
+  \p(\yxs = \yrs \| \yHa)  = \yL
   \sum_{N\yRf=0}^N
   \binom{n}{n\yrs} \binom{N-n}{N\yRf-n\yrs} \exp\biggl[
 \yL_2\, \frac{\yRf\,(N \yRf-1)}{N-1} + \yL_1\, \yRf\biggr].
 \end{equation}
-Application of \me\ at the sample level leads to the distribution
+Applying \me\ at the sample level, using the third term of
+\eqn~\eqref{eq:expe_products}, we find
 \begin{equation}
   \label{eq:sample_av_example_ME}
-  \p(\yxs = \yrs \| \yH)  \propto
+  \p(\yxs = \yrs \| \yHb)  = \yl\,
   \binom{n}{n\yrs}
   \exp\biggl[\yl_2\, \frac{\yrs\,(n \yrs-1)}{n-1} + \yl_1\, \yrs\biggr]
 \end{equation}
-with such parameters $\yl_1$, $\yl_2$ as to satisfy the constraints.
-Expressions \eqref{eq:full_pop_av_example_ME_marg} and
-\eqref{eq:sample_av_example_ME} cannot be equal when $n>6$ because, even if
-we could choose their four parameters and two normalization constants
-freely (and we can't), for their equality we should still satisfy $n+1$ equations,
-\ie\ more than six.
-
-Which should we choose?
-
-
-
-
-
+with such parameters $\yl$, $\yl_1$, $\yl_2$ as to satisfy the constraints.
+We call this state of knowledge $\yHb$. For example, with $N=5\,000$,
+$n=100$, $c_1=0.45$, $c_2=0.35$, we find $\yL_1 = -13\,321.9$,
+$\yL_2 = 13\,321.5$, $\yl_1=-269.3$, $\yl_2 = 268.9$, and appropriate
+normalization constants. The resulting distributions
+$\p(\yxs = \yrs \| \yHa)$, $\p(\yxs = \yrs \| \yHb)$ are shown in
+\fig~\ref{fig:diff_maxent_pop_sample}; they are clearly different.
 \begin{figure}[!t]
 \centering
 \includegraphics[width=0.95\columnwidth]{different_maxent_pop_sample_100.pdf}%
@@ -900,6 +906,24 @@ Which should we choose?
   $\expe{\yxxs \|\yH}=0.35$, and $N=5\,000$, $n=100$.}
 \label{fig:diff_maxent_pop_sample}
 \end{figure}%maxent_pop_or_sample.nb
+
+
+The inequivalence of the two \me\ applications is generally valid for small
+number of constraints, even if the two states of knowledge $\yHa$, $\yHb$
+use different numbers $m'$, $m''$ \emph{and values} of constraints. The
+equality of the third and fourth term of \eqn~\eqref{eq:expe_products} in
+this case implies $n+1$ equations in $m'+m''+1$ unknowns (one normalization
+is taken care of), and in general can only be satisfied if $n\le m'+m''$.
+
+\medskip
+
+Which application of the \me\ method should we choose, then?
+
+\section{Discussion}
+\label{sec:discussion}
+
+{\centering\mynote{*** From here down old text to be discarded ***}\par}
+
 \iffalse
 \begin{align}
   \expe{x_{i_1} \dotsm x_{i_m} \| \yH}
@@ -926,7 +950,6 @@ Which should we choose?
 \end{align}
 \end{subequations}
 \fi
-***
 
 
 What do we mean by saying that we can learn something about the population

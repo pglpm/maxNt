@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2017-05-15T11:15:45+0200
+%% Last-Updated: 2017-05-15T11:32:25+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -261,8 +261,8 @@
 \DeclareDelimFormat{postnotedelim}{\space}
 \addbibresource{portamanabib.bib}
 \renewcommand{\bibfont}{\footnotesize}
-\defbibheading{bibliography}[\bibname]{\section*{#1}\addcontentsline{toc}{section}{#1}%\markboth{#1}{#1}
-}
+%\defbibheading{bibliography}[\bibname]{\section*{#1}\addcontentsline{toc}{section}{#1}%\markboth{#1}{#1}
+%}
 \newcommand*{\citep}{\parencites}
 \newcommand*{\citey}{\parencites*}
 \renewcommand*{\cite}{\citep}
@@ -665,10 +665,7 @@ Our notation follows ISO and ANSI standards
 to denote logical conjunction. Probability notation follows Jaynes
 \citep{jaynes1994_r2003}.
 
-\section{Probability of random representative samples}
-\label{sec:prob_samples}
-
-\subsection{Setup}
+\section{Setup}
 \label{sec:setup}
 
 We have a population of $N$ binary neurons. Let's assume that the
@@ -739,9 +736,8 @@ the sample is likewise expressed by
 \p(\yx =\yr \| \yH), \quad \yr \in \set{0,1}^n.
 \end{equation}
 
-
-\subsection{Initial assumptions}
-\label{sec:initial_assumptions}
+\section{Initial assumptions: the probability of random representative samples}
+\label{sec:prob_samples}
 
 Before any experimental observations are made we need to make an initial
 probability assignment, no matter what kinds of predictions we are
@@ -834,7 +830,7 @@ probability to each neuron: in this case, the observation of one sample
 does not change our initial probability about another; we can't learn from
 observation.
 
-\subsection{Specifying the initial probability}
+\section{Enter maximum-entropy: quandary}
 \label{sec:specific_initial_probability}
 
 Formulae \eqref{eq:joint_plaus_N_homog}--\eqref{eq:expe_products} are
@@ -922,7 +918,10 @@ Which application of the \me\ method should we choose, then?
 \section{Discussion}
 \label{sec:discussion}
 
+
+
 {\centering\mynote{*** From here down old text to be discarded ***}\par}
+\section{***}
 
 \iffalse
 \begin{align}
@@ -1801,13 +1800,6 @@ $n\yxs$ of the first $n$ units can be in state $1$. In formulae,
   moments~\eqref{eq:eq_factmom_prod}, by recursively solving in terms of
   the moments of the network distribution.
 
-\subsection{***}
-
-
-\subsubsection{***}
-
-
-\paragraph{***}
 
 % do not change font sizes (except perhaps in the \textbf{References}
 % section; see below).
@@ -1819,7 +1811,10 @@ Use unnumbered third level headings for the acknowledgments. All
 acknowledgments go at the end of the paper. Do not include
 acknowledgments in the anonymized submission, only in the final paper.
 
-\section*{References}
+%\section*{References}
+\renewcommand*{\bibname}{References}
+\defbibheading{bibliography}[\bibname]{\section*{#1}\addcontentsline{toc}{section}{#1}%\markboth{#1}{#1}
+}
 
 % References follow the acknowledgments. Use unnumbered first-level
 % heading for the references. Any choice of citation style is acceptable
@@ -1844,5 +1839,17 @@ acknowledgments in the anonymized submission, only in the final paper.
 % learning and recall at excitatory recurrent synapses and cholinergic
 % modulation in rat hippocampal region CA3. {\it Journal of
 %   Neuroscience} {\bf 15}(7):5249-5262.
+\defbibnote{postnote}{\small\par\medskip\noindent{\footnotesize% Note:
+\arxivp \mparcp \philscip \biorxivp}%
+}
+
+\newcommand*{\citein}[2][]{\textnormal{\textcite[#1]{#2}}%\addtocategory{extras}{#2}
+}
+\newcommand*{\citebi}[2][]{ref.\ \citep[#1]{#2}%\addtocategory{extras}{#2}
+}
+\newcommand*{\subtitleproc}[1]{}
+
+
+\printbibliography[postnote=postnote]
 
 \end{document}

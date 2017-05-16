@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2017-05-15T18:21:39+0200
+%% Last-Updated: 2017-05-15T22:57:55+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -916,11 +916,12 @@ We call this state of knowledge $\yHb$.
 \begin{figure}[!t]
 \centering
 \includegraphics[width=0.99\linewidth]{different_maxent_pop_sample_100.pdf}%
-\caption{\mynote{shorten }Example of discrepancy in $\p(\yxs = \yrs \| \yH)$ constructed by
-  \me\ at the population level followed by sample marginalization (blue
-  triangles), and at the sample level (red circles). The constraints are
-  the same in either case: $\expe{\yxs \|\yH}=0.45$,
-  $\expe{\yxxs \|\yH}=0.35$, and $N=5\,000$, $n=100$.}
+\caption{Plots of $\p(\yxs = \yrs)$ constructed by \me\ at the population
+  level followed by sample marginalization (blue triangles),
+  \eqn~\eqref{eq:full_pop_av_example_ME_marg}, and at the sample level (red
+  circles), \eqn~\eqref{eq:sample_av_example_ME}. In this case $N=5\,000$,
+  $n=100$, $\expe{\yxs}=0.45$, $\expe{\yxxs}=0.35$, $\yL_1 = -13\,321.9$,
+  $\yL_2 = 13\,321.5$, $\yl_1=-269.3$, $\yl_2 = 268.9$.}
 \label{fig:diff_maxent_pop_sample}
 \end{figure}%maxent_pop_or_sample.nb
 % \end{wrapfigure}
@@ -928,26 +929,27 @@ We call this state of knowledge $\yHb$.
 \centering
 \includegraphics[width=0.99\linewidth]{different_maxent_pop_sample_200_realdata_both.pdf}
 % 
-\caption{\mynote{shorten }Example of discrepancy in $\p(\yxs = \yrs \| \yH)$ constructed by
-  \me\ at the population level followed by sample marginalization (blue
-  triangles), and at the sample level (red circles). The constraints are
-  the same in either case: $\expe{\yxs \|\yH}=0.045$,
-  $\expe{\yxxs \|\yH}=0.0025$, and $N=5\,000$, $n=200$.}
+\caption{Linear and log-plots of $\p(\yxs = \yrs)$ constructed by \me\ at
+  the population level followed by sample marginalization (blue triangles),
+  \eqn~\eqref{eq:full_pop_av_example_ME_marg}, and at the sample level (red
+  circles), \eqn~\eqref{eq:sample_av_example_ME}. In this case $N=5\,000$,
+  $n=200$, $\expe{\yxs}=0.045$, $\expe{\yxxs}=0.0025$,
+  $\yL_1 = -16\,834.0$, $\yL_2 = 16\,825.7$, $\yl_1=-673.5$,
+  $\yl_2 = 665.1$.}
 \label{fig:diff_maxent_pop_sample_realdata}
 \end{figure}%maxent_pop_or_sample.nb
 
 The resulting distributions $\p(\yxs = \yrs \| \yHa)$,
 $\p(\yxs = \yrs \| \yHb)$ are different.
-
-Figure~\ref{fig:diff_maxent_pop_sample} shows one example, for values
-$N=5\,000$, $n=100$, $c_1=0.45$, $c_2=0.35$, yielding $\yL_1 = -13\,321.9$,
-$\yL_2 = 13\,321.5$, $\yl_1=-269.3$, $\yl_2 = 268.9$, and appropriate
-normalization constants. Another example is shown in
-\fig~\ref{fig:diff_maxent_pop_sample_realdata}, for neurobiologically more
-realistic constraints $c_1=0.045$, $c_2=0.0025$, and $N=5\,000$, $n=200$,
-yielding $\yL_1 = -16\,834.0$, $\yL_2 = 16\,825.7$, $\yl_1=-673.5$,
-$\yl_2 = 665.1$. The discrepancy, although not as large as in the previous
-example, is still relevant for the tails of the distributions.
+Figure~\ref{fig:diff_maxent_pop_sample} shows one example, for $N=5\,000$,
+$n=100$, $c_1=0.45$, $c_2=0.35$. The two distributions have slightly
+different modes and the one obtained from \me\ at the population level is
+more peaked. Another example is shown in
+\fig~\ref{fig:diff_maxent_pop_sample_realdata}, for $N=5\,000$, $n=200$,
+and neurobiologically more realistic constraints $c_1=0.045$, $c_2=0.0025$
+\cite{rostamietal2016}. The discrepancy is maybe not as large as in the
+previous example, but the tails of the distributions are still very
+different.
 
 
 The inequivalence of the two \me\ applications is generally valid for small

@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2017-05-16T01:37:28+0200
+%% Last-Updated: 2017-05-16T16:44:08+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -588,34 +588,46 @@ E. Torre\\Moneylaunderingland
 %\section{Implicit assumptions in the maximum-entropy method}
 \section{Introduction}
 
-Recent advances in electrophysiological techniques allow to
-record from large population of neurons [\cite]. The recorded neurons
-are usually picked out from a specific brain area according to an unknown process, and from their
-observation in relation to stimuli or behavioral task, we strive for
-understanding the mechanism behind neuronal coding. That is, they are assumed to be a
-\enquote{representative random sample} of the neurons in that area.
+Recent advances in electrophysiological techniques allow to record from
+large\mynote{\enquote{from large} or just \enquote{large}? But is the
+  largeness relevant in our paper?} population of neurons [\cite]. The recorded
+neurons are usually picked out from a specific brain area according to an
+unknown process, and from their observation in relation to stimuli or
+behavioral task, we strive for understanding the mechanism behind neuronal
+coding\mynote{LM still don't know what people mean by this, can we find an
+  unambiguous term or rephrase?}. That is, they are assumed to be a
+\enquote{representative random sample} of the neurons in that
+area.\mynote{This assumption says that from the sample we can learn about
+  the population. The relation of population activity with stimuli or
+  behaviour is a separate problem, so \enquote{this is} doesn't really fit...}
 
-Huge amounts of parallel recordings from hundreds of neurons,
-available today, are accompanied by the statistical challenges
-to be employed for shedding light on the mechanism behind neuronal coding. 
-The principle of \me\ was proposed as a way to overcome these challenges by
-constructing a full description of the 
-neuronal firing patterns. The \me\ method employs only first and second
-order statistics of the representative random sample to construct 
-a \enquote{maximally noncommittal} \cite{jaynes1963} 
-probability distribution of the firing patterns [\cite].
+Huge amounts of parallel recordings from hundreds of neurons, available
+today, are accompanied by the statistical challenges to be employed for
+shedding light on the mechanism behind neuronal coding. The principle of
+\me\ was proposed as a way to overcome these challenges by constructing a
+full description of the neuronal firing patterns. The \me\ method employs
+only first and second order statistics of the representative random sample
+to construct a \enquote{maximally noncommittal} \cite{jaynes1963}
+probability distribution of the firing patterns [\cite]. \mynote{LM:
+  \enquote{noncommittal} doesn't mean anything to me to be honest, even if
+  Jaynes used that term. I would like to openly say this, backed up by
+  references, as done some paragraphs below.\\It seems they have used \me\
+  for other purposes too, sometimes unclear ones. And with all kinds of
+  constraints. So we shouldn't be too specific here in relation to purpose
+  and constraints. I'd rather give references and the readers can form
+  their own ideas about its use.}
 
-Using the pairwise \me\ models many studies investigated the
- questions such as, which level of interaction (pairwise or higher-order) between neurons
- is suffiecient to explain the observed experimental data [\cite]? Or how collective behavior
- of neurons can be related to stimuli or behavioral tasks [\cite]? add more **
+Using the pairwise \me\ models many studies investigated the questions such
+as, which level of interaction\mynote{ambiguous word} (pairwise or higher-order)
+between neurons is suffiecient to explain the observed experimental data
+[\cite]? Or how collective behavior of neurons can be related to stimuli or
+behavioral tasks [\cite]? add more **
 
-Here we show that there is a
-contradiction in applying \me\ to the representative random sample
-of neurons to generate a maximally noncommital distribution for
-that sample.
+Here we show that there is a quandary in applying \me\ to a representative
+random sample of neurons to generate a maximally noncommital distribution
+for that sample.
 
-The contradiction is this. Assume that our sample of neurons is
+The quandary is this. Assume that our sample of neurons is
 representative of some population. If we assign a \me\ distribution to the
 sample, then we cannot assign a \me\ distribution to the full population.
 Vice versa, If we assign a \me\ distribution to the full population, then

@@ -584,8 +584,8 @@ E. Torre\\Moneylaunderingland
   ***%  The abstract must be limited to one paragraph.
 \end{abstract}
 
-\section{Implicit assumptions in the maximum-entropy method}
-
+%\section{Implicit assumptions in the maximum-entropy method}
+\section{Introduction}
 
 Recent advances in electrophysiological recordings allow to
  study the collective behavior of large population of neurons 
@@ -595,12 +595,41 @@ in relation to stimuli and bahavioral tasks [\cite]. Huge amount of parallel
 The principle of \me\ was proposed as a way to overcome these challenges by constructing a full description of the 
 neuronal firing patterns based on only first and second order statistics of the observed data [\cite].
 
- These studies strive for answering 
+ Using the pairwise \me\ models many studies strived for answering 
  questions such as, which level of interaction (pairwise or higher-order) between neurons
  is suffiecient to explain the observed experimental data [\cite]? Or how collective behavior
- of neurons can be related to stimuli or behavioral tasks [\cite]? These questions 
-**********
-\mynote{Version 1}
+ of neurons can be related to stimuli or behavioral tasks [\cite]?
+
+Here we show that there is a
+contradiction in applying \me\ to the observed data \enquote{representative random sample}
+of neurons to generate a \enquote{maximally noncommital} distribution for
+that sample.
+
+The contradiction is this. Assume that our sample of neurons is
+representative of some population. If we assign a \me\ distribution to the
+sample, then we cannot assign a \me\ distribution to the full population.
+Vice versa, If we assign a \me\ distribution to the full population, then
+we cannot assign a \me\ distribution to the sample. This impossibility
+holds at least for \me\ distribution with moment constraints, and even if
+the orders of the moments constrained in the sample and in the full
+population are different.
+
+In other words, if our sample is a \enquote{random representative} of some
+population, then we must choose which has a \enquote{maximally
+  noncommittal} distribution: the sample or the population. We can't choose
+both. It goes without saying that if one is \enquote{maximally
+  noncommittal}, the other must be somehow \enquote{committal}. Which
+choice is most meaningful?
+
+In the rest of the paper we will mathematically show the contradiction
+above and generate a \me\ distribution for the full population rather than
+the sample. We will also present some probability relations relevant to
+random sampling. These relations are well-known in survey sampling and in
+the pedagogic problem of drawing from an urn without replacement, yet they
+are somewhat hard to find explicitly written in the neuroscientific
+literature.
+
+ \mynote{Version 1}
 The present note has three nested purposes.
 
 The first and more general is to remind our readers that the \me\ method

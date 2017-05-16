@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2017-05-15T22:57:55+0200
+%% Last-Updated: 2017-05-16T01:37:28+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -581,6 +581,7 @@ E. Torre\\Moneylaunderingland
 \maketitle
 
 \begin{abstract}
+  \mynote{Better title?}
   ***%  The abstract must be limited to one paragraph.
 \end{abstract}
 
@@ -874,7 +875,7 @@ average of the full population we find
   \label{eq:full_pop_av_example_ME}
   \p(\yXf = \yRf \| \yHa)  = \yL\,
 \binom{N}{N \yRf}\exp\biggl[
-\yL_2\, \frac{\yRf\,(N \yRf-1)}{N-1} + \yL_1\, \yRf\biggr]
+\yL_2 \yRf \,\frac{N \yRf-1}{N-1} + \yL_1\, \yRf\biggr]
 \end{equation}
 with such parameters $\yL$, $\yL_1$, $\yL_2$ as to satisfy normalization
 and constraints. We call this state of knowledge $\yHa$. Marginalization by
@@ -884,7 +885,7 @@ and constraints. We call this state of knowledge $\yHa$. Marginalization by
   \p(\yxs = \yrs \| \yHa)  = \yL
   \sum_{N\yRf=0}^N
   \binom{n}{n\yrs} \binom{N-n}{N\yRf-n\yrs} \exp\biggl[
-\yL_2\, \frac{\yRf\,(N \yRf-1)}{N-1} + \yL_1\, \yRf\biggr].
+\yL_2 \yRf \,\frac{N \yRf-1}{N-1} + \yL_1\, \yRf\biggr].
 \end{equation}
 Applying \me\ to the distribution of the average of the sample, using the
 third term of \eqn~\eqref{eq:expe_products}, we find
@@ -892,7 +893,7 @@ third term of \eqn~\eqref{eq:expe_products}, we find
   \label{eq:sample_av_example_ME}
   \p(\yxs = \yrs \| \yHb)  = \yl\,
   \binom{n}{n\yrs}
-  \exp\biggl[\yl_2\, \frac{\yrs\,(n \yrs-1)}{n-1} + \yl_1\, \yrs\biggr]
+  \exp\biggl[\yl_2 \yrs \,\frac{n \yrs-1}{n-1} + \yl_1\, \yrs\biggr]
 \end{equation}
 with such parameters $\yl$, $\yl_1$, $\yl_2$ as to satisfy the constraints.
 We call this state of knowledge $\yHb$.
@@ -1020,11 +1021,12 @@ Bayesian treatment of which \me\ is a limit? \cite[***]{mackay1995_r2003}}
 
 \subsubsection*{Acknowledgments}
 
-PGLPM thanks Mari \amp\ Miri for continuous encouragement and affection,
+To be added after review.
+\iffalse PGLPM thanks Mari \amp\ Miri for continuous encouragement and affection,
 Buster Keaton for filling life with awe and inspiration, and the developers
 and maintainers of \LaTeX, Emacs, AUC\TeX, MiK\TeX, arXiv, biorXiv,
 PhilSci, Hal archives, Python, Inkscape, Sci-Hub for making a free and
-unfiltered scientific exchange possible.
+unfiltered scientific exchange possible.\fi
 
 % Use unnumbered third level headings for the acknowledgments. All
 % acknowledgments go at the end of the paper. Do not include

@@ -587,15 +587,22 @@ E. Torre\\Moneylaunderingland
 %\section{Implicit assumptions in the maximum-entropy method}
 \section{Introduction}
 
-Recent advances in electrophysiological recordings allow to
- study the activity of large population of neurons 
-in relation to stimuli and bahavioral tasks [\cite]. Huge amount of parallel
- recordings from hundreds of neurons, available today, is accompanied by
- the statistical challenges to be employed for shedding light on the mechanism behind neuronal coding. 
-The principle of \me\ was proposed as a way to overcome these challenges by constructing a full description of the 
-neuronal firing patterns. The \me\ method exploits only first and second
-order statistics of the observed data and construct a least structured or
-a \enquote{maximally noncommital} probability distribution of firing patterns [\cite].
+Recent advances in electrophysiological techniques allow to
+record from large population of neurons [\cite]. The recorded neurons
+are usually picked out according to an unknown process, and from their
+observation we expect to learn something about all other neurons in the
+same brain area. That is, they are assumed to be a
+\enquote{representative random sample} of the neurons in that area.
+
+Huge amount of parallel recordings from hundreds of neurons,
+available today, is accompanied by the statistical challenges
+to be employed for shedding light on the mechanism behind neuronal coding. 
+The principle of \me\ was proposed as a way to overcome these challenges by
+constructing a full description of the 
+neuronal firing patterns. The \me\ method employs only first and second
+order statistics of the representative random sample to construct 
+a \enquote{maximally noncommittal} \cite{jaynes1963} 
+probability distribution of the firing patterns [\cite].
 
 Using the pairwise \me\ models many studies strived for answering 
  questions such as, which level of interaction (pairwise or higher-order) between neurons
@@ -603,8 +610,8 @@ Using the pairwise \me\ models many studies strived for answering
  of neurons can be related to stimuli or behavioral tasks [\cite]? add more **
 
 Here we show that there is a
-contradiction in applying \me\ to the observed data \enquote{representative random sample}
-of neurons to generate a \enquote{maximally noncommital} distribution for
+contradiction in applying \me\ to the representative random sample
+of neurons to generate a maximally noncommital distribution for
 that sample.
 
 The contradiction is this. Assume that our sample of neurons is

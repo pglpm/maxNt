@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2017-05-16T16:44:08+0200
+%% Last-Updated: 2017-05-17T00:18:49+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -963,37 +963,36 @@ We call this state of knowledge $\yHb$.
 %\begin{wrapfigure}{r}{0.5\linewidth}
 \begin{figure}[!t]
 \centering
-\includegraphics[width=0.99\linewidth]{different_maxent_pop_sample_100.pdf}%
+\includegraphics[width=0.99\linewidth]{different_maxent_pop_sample_200_realdata_2mom.pdf}%
 \caption{Plots of $\p(\yxs = \yrs)$ constructed by \me\ at the population
   level followed by sample marginalization (blue triangles),
   \eqn~\eqref{eq:full_pop_av_example_ME_marg}, and at the sample level (red
-  circles), \eqn~\eqref{eq:sample_av_example_ME}. In this case $N=5\,000$,
-  $n=100$, $\expe{\yxs}=0.45$, $\expe{\yxxs}=0.35$, $\yL_1 = -13\,321.9$,
-  $\yL_2 = 13\,321.5$, $\yl_1=-269.3$, $\yl_2 = 268.9$.}
+  circles), \eqn~\eqref{eq:sample_av_example_ME}. In this case $N=5000$,
+  $n=200$, $\expe{\yxs}=0.0478$, $\expe{\yxxs}=0.00257$.}
 \label{fig:diff_maxent_pop_sample}
 \end{figure}%maxent_pop_or_sample.nb
 % \end{wrapfigure}
 \begin{figure}[!t]
 \centering
-\includegraphics[width=0.99\linewidth]{different_maxent_pop_sample_200_realdata_both.pdf}
+\includegraphics[width=0.99\linewidth]{different_maxent_pop_sample_200_realdata_4mom.pdf}
 % 
 \caption{Linear and log-plots of $\p(\yxs = \yrs)$ constructed by \me\ at
   the population level followed by sample marginalization (blue triangles),
   \eqn~\eqref{eq:full_pop_av_example_ME_marg}, and at the sample level (red
-  circles), \eqn~\eqref{eq:sample_av_example_ME}. In this case $N=5\,000$,
-  $n=200$, $\expe{\yxs}=0.045$, $\expe{\yxxs}=0.0025$,
-  $\yL_1 = -16\,834.0$, $\yL_2 = 16\,825.7$, $\yl_1=-673.5$,
-  $\yl_2 = 665.1$.}
+  circles), \eqn~\eqref{eq:sample_av_example_ME}. In this case $N=5000$,
+  $n=200$, $\expe{\yxs}=0.0478$, $\expe{\yxxs}=0.00257$,
+  $\expe{\sav{\yx\yx\yx}}=1.48\times10^{-4}$,
+  $\expe{\sav{\yx\yx\yx\yx}}=8.81\times 10^{-6}$.}
 \label{fig:diff_maxent_pop_sample_realdata}
 \end{figure}%maxent_pop_or_sample.nb
 
 The resulting distributions $\p(\yxs = \yrs \| \yHa)$,
 $\p(\yxs = \yrs \| \yHb)$ are different.
-Figure~\ref{fig:diff_maxent_pop_sample} shows one example, for $N=5\,000$,
+Figure~\ref{fig:diff_maxent_pop_sample} shows one example, for $N=5000$,
 $n=100$, $c_1=0.45$, $c_2=0.35$. The two distributions have slightly
 different modes and the one obtained from \me\ at the population level is
 more peaked. Another example is shown in
-\fig~\ref{fig:diff_maxent_pop_sample_realdata}, for $N=5\,000$, $n=200$,
+\fig~\ref{fig:diff_maxent_pop_sample_realdata}, for $N=5000$, $n=200$,
 and neurobiologically more realistic constraints $c_1=0.045$, $c_2=0.0025$
 \cite{rostamietal2016}. The discrepancy is maybe not as large as in the
 previous example, but the tails of the distributions are still very
@@ -1050,7 +1049,7 @@ example.
   \me\ at the population level followed by sample marginalization (blue
   triangles), and at the sample level (red circles). The constraints are
   the same in either case: $\expe{\yxs \|\yH}=0.045$,
-  $\expe{\yxxs \|\yH}=0.0025$, and $N=5\,000$, $n=200$.}
+  $\expe{\yxxs \|\yH}=0.0025$, and $N=5000$, $n=200$.}
 \label{fig:diff_maxent_pop_sample_realdata}
 \end{figure}%maxent_pop_or_sample.nb
 The second is that
@@ -1752,10 +1751,10 @@ rest.
 
 A uniform distribution, however, is not the right one when we suppose that
 learning about an event may tell us something about a related event. For
-example, consider 1\,000 tosses of a particular coin and assume a uniform
-distribution over the possible $2^{1\,000}$ outcomes. If we learn that the
+example, consider 1000 tosses of a particular coin and assume a uniform
+distribution over the possible $2^{1000}$ outcomes. If we learn that the
 first 999 tosses yielded all \enquote{heads}, the probability calculus
-tells us that the probability for the 1\,000th toss is still 50\%/50\%. It
+tells us that the probability for the 1000th toss is still 50\%/50\%. It
 is a consequence of our choice of a uniform distribution: we have
 implicitly declared all tosses to be completely independent, completely
 \emph{irrelevant} to one another. This fact is well-known in sampling

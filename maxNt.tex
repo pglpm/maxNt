@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2017-05-17T12:40:23+0200
+%% Last-Updated: 2017-05-17T14:42:01+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -842,41 +842,51 @@ By marginalization we obtain the probability for the state of the sample:
     \p(\yxs = \yrs \|\yXf=\yRf, \yH)\,
   \p(\yXf=\yRf \| \yH),
   \\[2\jot]
+  \label{eq:conditional_hypergeometric}
   \p(\yxs = \yrs \|\yXf=\yRf, \yH)=
   \binom{n}{n\yrs}\binom{N-n}{N \yRf-n\yrs}\binom{N}{N \yRf}^{-1}
   \defs \ypp(\yrs\|\yRf).
 \end{gather}
 
-The latter conditional probability is a hypergeometric distribution,
-typical of \enquote{drawing without replacement} problems. The
-combinatorial proof of the formulae above is in fact the same as for this
-class of problems
+The latter conditional probability is a hypergeometric distribution
+$\ypp(\yrs\|\yRf)$, typical of \enquote{drawing without replacement}
+problems. The combinatorial proof of the formulae above is in fact the same
+as for this class of problems
 \cites[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}.
 
 The conditional probability $\ypp(\yrs,\yRf)$ connects the spaces of the
-sample variable $\yXf$ and of the population variable $\yxs$. It is a
-projector $\ypp$ of probabilities $p$ for $\yXf$ onto marginal
-probabilities for $\yxs$:
+sample average $\yXf\in\set{0,\dotsc,N}$ and of the population average
+$\yxs\in\set{0,\dotsc,n}$. It is a projector $\ypp$ of any probability $p$
+for $\yXf$ onto a marginal probability $p_*$ for $\yxs$:
 \begin{equation}
   \label{eq:projection_P}
-  \ypp\colon p(\yXf=\dotv) \to p_*(\yxs=\dotv)
-  \defd \sum_{N\yRf=0}^N \ypp(\dotv\|\yRf) p(\yRf).
+  % \ypp\colon p(\yXf=\dotv) \to
+  p_*(\yxs=\yrs)
+  = \sum_{N\yRf=0}^N \ypp(\yrs\|\yRf) p(\yXf=\yRf).
 \end{equation}
-It is also a pull-back $\ypp^*$ of functions $f$ of $\yxs$ to functions of
+Therefore it also a pulls back expectations of functions $f$ of the sample
+average $\yxs$ to expectations of functions $f^*$ the population average
 $\yXf$:
 \begin{equation}
   \label{eq:pullback_P}
-  \ypp^*\colon f(\yxs=\dotv) \to f^*(\yXf=\dotv) \defd \sum_{N\yrs=0}^n f(\yrs)\ypp(\yrs\|\dotv),
+%  \ypp^*\colon f(\yxs=\dotv) \to f^*(\yXf=\dotv) \defd \sum_{N\yrs=0}^n
+%  f(\yrs)\ypp(\yrs\|\dotv),
+  \begin{gathered}
+    f^*(\yXf) \defd \sum_{n\yrs=0}^n f(\yrs)\ypp(\yrs\|\yXf),
+    \\
+   \expeb{f(\yxs)}= \expeb{f^*(\yXf)}
+    =
+    \sum_{n\yrs=0}^n f(\yrs)\,\p(\yxs=\yrs \| \yH)
+    =
+    \sum_{N\yRf=0}^N f^*(\yRf)\,\p(\yXf=\yRf \| \yH).
+  \end{gathered}
 \end{equation}
-with a caveat: if $f$ is a physical quantity and doesn't depend on our
-knowledge, $f_*$ is \emph{not} a physical quantity but a conditional
-expectation, $f^*(\yRf) \equiv \expe{f(\yxs)\|\yXf=\yRf,\yH}$, and depends
-on our knowledge.
+
 
 \begin{figure}[!t]
 \centering
-%\includegraphics[width=0.99\linewidth]{pop_sample_projection.pdf}\\
-\includegraphics[width=0.99\linewidth]{pop_sample_projection2.pdf}%
+%\includegraphics[width=0.75\linewidth]{pop_sample_projection.pdf}\\
+\includegraphics[width=0.75\linewidth]{pop_sample_projection2.pdf}%
 \caption{Log-plot of the hypergeometric distribution
   $%\p(\yxs = \yrs \|\yXf=\yRf, \yH)=
   \binom{n}{n\yrs}\binom{N-n}{N \yRf-n\yrs}\binom{N}{N \yRf}^{-1} \defs
@@ -884,99 +894,96 @@ on our knowledge.
   colourbar depending on your \textsc{pdf} viewer.)}
 \label{fig:hypergeom_proj}
 \end{figure}%hypergeometric_identity.nb
-A look at a plot of the hypergeometric distribution $\ypp(\yrs\|\yXf)$, for
-example \fig~\ref{fig:hypergeom_proj}, reveals that the maps $\ypp$ and
-$\ypp^*$ are \enquote{fuzzy identities} between the $\yXf$ space
-$\set{0,\dotsc,N}$ and $\yxs$-space $\set{0,\dotsc,n}$. When $n=N$ they are
-exact identities. We thus have very roughly that
+A look at a plot of the hypergeometric distribution $\ypp(\yrs\|\yRf)$, for
+example \fig~\ref{fig:hypergeom_proj}, reveals that it is a sort of
+\enquote{fuzzy identity matrix} between the $\yXf$-space $\set{0,\dotsc,N}$
+and $\yxs$-space $\set{0,\dotsc,n}$. When $n=N$ it is the identity matrix.
+We thus have that, very roughly,
 \begin{equation}
   \label{eq:roughly_equal_nN}
   \p(\yxs=a) \sim \p(\yXf=a),\qquad
 \expeb{f(\yxs)} \sim \expeb{f(\yXf)}.
 \end{equation}
-These formulae express the fact that \emph{the sample is representative of
-  the population}, and vice versa. Our initial knowledge $\yH$, which fully
-determines $\ypp$, thus assumes that by observing a sample we can make
-predictions about the full population, and thence about new samples.
-Upon observation of a sample average, say $\yxxs=a$, the updated
-expectations for such average in the population and in any new sample will
-usually be shifted towards the observed value, as follows from Bayes's
-theorem and the formulae above.
+These formulae express the fact that \emph{our uncertainty about the sample
+  is representative of our uncertainty about the population and about other
+  samples}, and vice versa. Upon observation of a sample average, say
+$\yxxs=a$, the updated expectations for such average in the population and
+in any new sample will usually be shifted towards the observed value, as
+follows from Bayes's theorem and the formulae above.
 
 Note that the approximate formulae~\eqref{eq:roughly_equal_nN} say more
 than the limits $\p(\yxs=a) \to \p(\yXf=a)$,
 $\expeb{f(\yxs)} \to \expeb{f(\yXf)}$ as $n\to N$. These limits are
-trivially valid because as $n\to N$ the sample becomes the full population.
-For conditional probabilities $\p(\yxs = \yrs \|\yXf=\yRf)$ very different
-from the fuzzy identity $\ypp(\yrs\|\yRf)$ (see
-\fig~\ref{fig:hypergeom_proj}) these limits would hold, but the
-probabilities and expectations from a small sample could wildly differ from those
-from the population.
-
-\bigskip***
-
-with the property that
-\begin{equation}
-  \label{eq:expectation_pullback}
-  \expeb{f(\yxs) \|\yH} = \expeb{f^*(\yXf)\|\yH},
-  \qquad\text{that is,}\qquad
-  \sum_{n\yrs=0}^n f(\yrs)\,p_*(\yxs=\yrs) = \sum_{N\yRf=0}^N f^*(\yRf)\,p(\yXf=\yRf).
-\end{equation}
-
-A special case of the pull-back above is the function
-$f(\yxs) \defd \sav{\yx\dots\yx}=\binom{\yxs}{m}/\binom{n}{m}$, for which
-\begin{equation}
-  \label{eq:pullback_m_expectations}
-  \ypp^*\colon \sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}}
-  \mapsto \bigl( \sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}}\bigr)^*
-  \equiv
-  \av{\underbrace{\yX \dotsm \yX}_{\text{$m$ factors}}};
-\end{equation}
-thus, the averages of activity products \emph{are the same for the sample
-  and for the full population}:
-\begin{equation}
-  \label{eq:expe_products}
-\expe{\sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}} \| \yH}
-=
-\expe{\av{\underbrace{\yX \dotsm \yX}_{\text{$m$ factors}}} \| \yH}
-%\\[2\jot]
-%{}
-=
-\binom{n}{m}^{-1}
-%\frac{(n-m)!}{n!}
-\sum_{n \yrs=0}^n %m!\, 
-\binom{n \yrs}{m}\, \p(\yxs=\yrs \| \yH)
-% \sum_{N \yRf=0}^N %m!\, 
-% \binom{N-m}{N \yRf-m}
-% \binom{N}{N \yRf}^{-1} \p(\yXf=\yRf \| \yH)
-=
-\binom{N}{m}^{-1}
-%\frac{(N-m)!}{N!}
-\sum_{N \yRf=0}^N %m!\, 
-\binom{N \yRf}{m}\, \p(\yXf=\yRf \| \yH).
-\end{equation}
-
-
-This is true, for example, for the raw moments $\expe{\yxs^m}$ and
-$\expe{\yXf^m}$, which can be written in terms of the product expectations
-via \eqn~\eqref{eq:expe_products}.
-
+trivially valid because the sample becomes the full population as $n\to N$.
+In particular, these limits hold even in cases where the conditional
+probability $\p(\yxs = \yrs \|\yXf=\yRf)$ is not a fuzzy identity and our
+uncertainties about sample and about population can differ wildly.
 
 The symmetry present in the probabilities above is not a physical property
 of the neuronal population. It only expresses the symmetry of our initial
-ignorance about the population, and does not imply any sort of physical
+uncertainty about the population, and does not imply any sort of physical
 similarity between the neurons. Subsequent observations may in fact break
 this symmetry. The initial symmetry should intuitively also apply to the
 sample, and this is indeed the case: the probability for the state of the
 sample~\eqref{eq:subpop_average} automatically satisfies the representation
 theorem~\eqref{eq:joint_plaus_N_homog} as well.
 
+\bigskip
+
+% The projection~\eqref{eq:projection_P} and pull-back~\eqref{eq:pullback_P}
+% have the property
+% \begin{equation}
+%   \label{eq:expectation_pullback}
+%   \expeb{f(\yxs) \|\yH} = \expeb{f^*(\yXf)\|\yH}
+%   \qquad\text{or}\qquad
+%   \sum_{n\yrs=0}^n f(\yrs)\,p_*(\yxs=\yrs) = \sum_{N\yRf=0}^N f^*(\yRf)\,p(\yXf=\yRf).
+% \end{equation}
+For functions representing averaged products,
+$f(\yxs) \defd \sav{\yx\dots\yx}=\binom{\yxs}{m}/\binom{n}{m}$,
+formulae~\eqref{eq:pullback_P} have the useful form
+\begin{equation}
+  \label{eq:expe_products}
+%  \label{eq:pullback_m_expectations}
+%  \ypp^*\colon \sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}}
+%  \mapsto
+  \begin{gathered}
+    \bigl( \sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}}\bigr)^* =
+    \av{\underbrace{\yX \dotsm \yX}_{\text{$m$ factors}}},
+    \\[2\jot]
+    % \expe{\sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}} \| \yH} =
+    % \expe{\av{\underbrace{\yX \dotsm \yX}_{\text{$m$ factors}}} \| \yH}
+    \expe{\yx \dotsm \yx \| \yH} =
+    \expe{\yX \dotsm \yX \| \yH}
+    % \\[2\jot]
+    % {}
+    = \binom{n}{m}^{-1}
+    % \frac{(n-m)!}{n!}
+    \sum_{n \yrs=0}^n %m!\,
+    \binom{n \yrs}{m}\, \p(\yxs=\yrs \| \yH)
+    % \sum_{N \yRf=0}^N %m!\,
+    % \binom{N-m}{N \yRf-m} \binom{N}{N \yRf}^{-1} \p(\yXf=\yRf \| \yH)
+    = \binom{N}{m}^{-1}
+    % \frac{(N-m)!}{N!}
+    \sum_{N \yRf=0}^N %m!\,
+    \binom{N \yRf}{m}\, \p(\yXf=\yRf \| \yH).
+  \end{gathered}
+\end{equation}
+The proof uses the expression for the $m$th factorial moment of the
+hypergeometric distribution \cite{potts1953}. Thus, the averages of
+activity products \emph{are the same for the sample and for the full
+  population}. Similar relations can be found for the raw moments
+$\expe{\yxs^m}$ and $\expe{\yXf^m}$, which can be written in terms of the
+product expectations via \eqn~\eqref{eq:products_intermsof_average}.
+
+
+
 
 
 \section{Enter maximum-entropy: quandary}
 \label{sec:specific_initial_probability}
 
-Formulae \eqref{eq:joint_plaus_N_homog}--\eqref{eq:expe_products} are
+Formulae
+\eqref{eq:joint_plaus_N_homog}--~\eqref{eq:conditional_hypergeometric} are
 constraints on our initial probability assignment, but do not determine it
 numerically. The probability $\p(\yXf=\yRf \| \yH)$ for the population
 average needs to be numerically specified, and by \eqref{eq:subpop_average}
@@ -985,16 +992,16 @@ numerically specify the latter, the former is not completely specified,
 because \eqn~\eqref{eq:subpop_average} linearly constrains $N+1$ unknowns
 by only $n+1$ equations in this case.
 
-We may want to specify the probability by enforcing several of its sample
-expectations to have specific values, for example $\expe{\yxs}=c_1$,
-$\expe{\yxxs}=c_2$. This is still an underdetermined linear problem:
- several distributions can have the same desired expectations, as
-clear from \eqns~\eqref{eq:expe_products}.
+We may want to specify the probability by enforcing the sample expectations
+of several functions to have specific values, for example
+$\expe{\yxs}=c_1$, $\expe{\yxxs}=c_2$. This is still an underdetermined
+linear problem: several distributions can have the same desired
+expectations, as clear from \eqns~\eqref{eq:expe_products}.
 
 The \me\ method is brought into play to solve this indeterminacy. It selects
 one distribution, purported to be \enquote{maximally noncommittal}, among
 those that have the desired expectations. But we are in a quandary:
-formulae~\eqref{eq:expe_products} allow us to apply the method to find the
+formulae~\eqref{eq:pullback_P} allow us to apply the method to find the
 probability of the population $\p(\yXf=\yRf \| \yH)$, or of the sample
 $\p(\yxs=\yrs \| \yH)$. \emph{The two applications, however, are
   inequivalent}. They lead to numerically different $\p(\yxs=\yrs \| \yH)$.

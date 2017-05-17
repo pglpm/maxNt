@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2017-05-17T00:18:49+0200
+%% Last-Updated: 2017-05-17T10:31:16+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -744,25 +744,24 @@ various averages of the population and the sample. For this purpose we
 introduce a general averaging operator $\sav{\dotv}$ defined by
 \begin{align}
   \av{\yX}  &\defd \tfrac{1}{N} (X_1 + X_2 + \dotsb + X_N),
-  &
-  \sav{\yx}  &\defd \tfrac{1}{n} (x_1 + x_2 + \dotsb + x_n),
+%  &
+%  \sav{\yx}  &\defd \tfrac{1}{n} (x_1 + x_2 + \dotsb + x_n),
     \\[2\jot]
   \av{\yX \yX} &\defd
 \tbinom{N}{2}^{-1} (X_1 X_2 + X_1 X_3  + \dotsb +  X_{N-1} X_N),
-  &
-    \sav{\yx \yx} &\defd
-\tbinom{n}{2}^{-1} (x_1 x_2 + x_1 x_3  + \dotsb +  x_{n-1} x_n),
+%  &
+%    \sav{\yx \yx} &\defd\tbinom{n}{2}^{-1} (x_1 x_2 + x_1 x_3  + \dotsb +  x_{n-1} x_n),
 \\[2\jot]
 \av{\yX\yX\yX} &\defd
                   \tbinom{N}{3}^{-1}
                   (X_1 X_2 X_3 +% X_1 X_2 X_4
                    \dotsb + X_{N-2} X_{N-1}X_N),
-  &
-    \sav{\yx\yx\yx} &\defd
-                      \tbinom{n}{3}^{-1} (x_1 x_2 x_3 + %x_1 x_2 x_4
-                       \dotsb + x_{n-2} x_{n-1} x_n),
+%  &
+%    \sav{\yx\yx\yx} &\defd
+%                      \tbinom{n}{3}^{-1} (x_1 x_2 x_3 + %x_1 x_2 x_4
+%                       \dotsb + x_{n-2} x_{n-1} x_n),
 \end{align}
-and so on; analogously for the quantities like $\yRf$ and $\sav{\yr\yr}$.
+and so on
 These formulae say that $\yXf$ is the fraction of active neurons, $\yXXf$
 the fraction of simultaneously active pairs out of all $\binom{N}{2}$
 pairs, $\av{\yX\yX\yX}$ the fraction of simultaneously active triplets, and
@@ -771,9 +770,9 @@ $\set{0,1}$; from this it can combinatorially be proved that
 \begin{equation}
   \label{eq:products_intermsof_average}
   \av{\underbrace{\yX\dotsm\yX}_{\text{$m$ factors}}}
-  = \binom{N}{m}^{-1}\binom{N\yXf}{m}
+  = \binom{N}{m}^{-1}\binom{N\yXf}{m}.
 \end{equation}
-and similarly for $\yx$, $\yR$, $\yr$.
+Analogous formulae  hold for quantities like $\yx$, $\yRf$, $\yrs$.
 
 \iffalse
 \begin{simplenote}
@@ -844,11 +843,16 @@ By marginalization we obtain the probability for the state of the sample:
   \p(\yxs = \yrs \|\yXf=\yRf, \yH)=
   \binom{n}{n\yrs}\binom{N-n}{N \yRf-n\yrs}\binom{N}{N \yRf}^{-1}.
 \end{gather}
+
 The latter conditional probability is a hypergeometric distribution,
 typical of \enquote{drawing without replacement} problems. The
 combinatorial proof of the formulae above is in fact the same as for this
 class of problems
 \cites[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}.
+This conditional probability acts a
+
+
+
 
 The symmetry present in the probabilities above is not a physical property
 of the neuronal population. It only expresses the symmetry of our initial
@@ -859,6 +863,14 @@ sample, and this is indeed the case: the probability for the state of the
 sample~\eqref{eq:subpop_average} automatically satisfies the representation
 theorem~\eqref{eq:joint_plaus_N_homog} as well.
 
+\begin{figure}[!t]
+\centering
+%\includegraphics[width=0.99\linewidth]{pop_sample_projection.pdf}\\
+\includegraphics[width=0.99\linewidth]{pop_sample_projection2.pdf}%
+\caption{hyperg}
+\label{fig:hypergeom_proj}
+\end{figure}%hypergeometric_identity.nb
+% \end{wrapfigure}
 Our initial knowledge (ignorance) $\yH$ has two important properties
 derivable from the formulae above.
 

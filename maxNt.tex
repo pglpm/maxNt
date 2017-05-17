@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2017-05-17T17:54:56+0200
+%% Last-Updated: 2017-05-17T21:23:29+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -588,20 +588,59 @@ E. Torre\\Moneylaunderingland
 \end{abstract}
 
 %\section{Implicit assumptions in the maximum-entropy method}
-\section{Introduction}
+\section{Introduction: \me\ and sampling in neuroscience}
 
-Recent advances in electrophysiological techniques allow to record from
-large\mynote{\enquote{from large} or just \enquote{large}? But is the
-  largeness relevant in our paper?} population of neurons [\cite]. The recorded
-neurons are usually picked out from a specific brain area according to an
-unknown process, and from their observation in relation to stimuli or
-behavioral task, we strive for understanding the mechanism behind neuronal
-coding\mynote{LM still don't know what people mean by this, can we find an
-  unambiguous term or rephrase?}. That is, they are assumed to be a
-\enquote{representative random sample} of the neurons in that
-area.\mynote{This assumption says that from the sample we can learn about
-  the population. The relation of population activity with stimuli or
-  behaviour is a separate problem, so \enquote{this is} doesn't really fit...}
+% LM: I'd like to avoid common beginnings like "Today blah blah is
+% important" or "Blah blah is interesting/fundamental". They feel more like
+% a mechanical ritual than a real tentative of connecting with the reader.
+This note is mainly addressed to neuroscientists interested in \me\
+methods, but its discussion of \enquote{random sampling} formulae may be
+useful to all neuroscientists involved in understanding the physical and
+dynamical characteristics of brain areas via neuronal recording.
+
+Recent electrophysiological techniques in fact allow experimenters to
+record samples of even a couple hundreds neurons from specific brain areas.
+We don't elaborate on the various important purposes of such recordings
+here, but stress that these sample sizes can be considered \enquote{large},
+because their statistical analysis requires considerable computational
+power.
+
+These computational costs are one, probably not the earliest, of the many
+reasons why \me\ methods have been introduced in neuroscience. It would be
+useful to somehow compress the statistical wealth of large neuronal
+recordings into few quantities, like sample moments for example. This
+compression would also entail interesting physico-biological properties of
+neuronal activity. Maximum-entropy methods make this kind of compression:
+they associate a unique probability distribution with few experimental
+quantities. This distribution is usually said to be \enquote{maximally
+  noncommittal} \cite{jaynes1963}. 
+
+
+We intend the quoted expression only as
+an umbrella term, also because it means very little without further
+clarifications.
+
+
+The neurons recorded in these kinds of experiments are usually picked out
+according to an unknown process, and from their observation we expect to
+learn something about all other neurons in the same brain area. That is,
+they are assumed to be a \enquote{representative random sample} of the
+neurons in that area. Our discussion hinges on this often just tacitly
+understood assumption.
+
+One of the uses of \me\ methods
+
+number. It is large from large
+population of neurons [\cite]. The recorded neurons are usually picked out
+from a specific brain area according to an unknown process, and from their
+observation in relation to stimuli or behavioral task, we strive for
+understanding the mechanism behind neuronal coding\mynote{LM still don't
+  know what people mean by this, can we find an unambiguous term or
+  rephrase?}. That is, they are assumed to be a \enquote{representative
+  random sample} of the neurons in that area.\mynote{This assumption says
+  that from the sample we can learn about the population. The relation of
+  population activity with stimuli or behaviour is a separate problem, so
+  \enquote{this is} doesn't really fit...}
 
 Huge amounts of parallel recordings from hundreds of neurons, available
 today, are accompanied by the statistical challenges to be employed for

@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2017-05-17T21:23:29+0200
+%% Last-Updated: 2017-05-17T22:40:04+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -509,8 +509,10 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 \newcommand*{\yHb}{\varIota''}
 \newcommand*{\yHc}{\varKappa}
 %Lagr multipliers
-\newcommand*{\yL}{\varLambda}
-\newcommand*{\yl}{\lambda}
+\newcommand*{\yf}{\bm{f}}
+\newcommand*{\yc}{\bm{c}}
+\newcommand*{\yL}{\bm{\varLambda}}
+\newcommand*{\yl}{\bm{\lambda}}
 \newcommand*{\yk}{\kappa}
 \newcommand*{\yK}{\varKappa}
 %entropies
@@ -598,173 +600,63 @@ methods, but its discussion of \enquote{random sampling} formulae may be
 useful to all neuroscientists involved in understanding the physical and
 dynamical characteristics of brain areas via neuronal recording.
 
-Recent electrophysiological techniques in fact allow experimenters to
-record samples of even a couple hundreds neurons from specific brain areas.
+Recent electrophysiological techniques \cite{***} in fact allow
+experimenters to record samples of even a couple hundreds neurons from
+specific brain areas. These samples are usually picked out according to an
+unknown process, but from their observation we expect to learn something
+about all other neurons in the same brain area. That is, we assumed
+that they are a \enquote{representative random sample}.
+
 We don't elaborate on the various important purposes of such recordings
-here, but stress that these sample sizes can be considered \enquote{large},
-because their statistical analysis requires considerable computational
-power.
+here \cite{?***}, but stress that these sample sizes can be considered
+\enquote{large}, because their statistical analysis requires considerable
+computational power.
 
 These computational costs are one, probably not the earliest, of the many
 reasons why \me\ methods have been introduced in neuroscience. It would be
 useful to somehow compress the statistical wealth of large neuronal
 recordings into few quantities, like sample moments for example. This
 compression would also entail interesting physico-biological properties of
-neuronal activity. Maximum-entropy methods make this kind of compression:
-they associate a unique probability distribution with few experimental
-quantities. This distribution is usually said to be \enquote{maximally
-  noncommittal} \cite{jaynes1963}. 
+neuronal activity. The standard \me\ method
+\cite{jaynes1954_r1974,sivia1996_r2006,meadetal1984} achieve this kind of
+compression: they associate a unique probability distribution with few
+experimental quantities \cite{***}. But this is only one of their uses.
+They are also used for various information-theoretic purposes or to
+generate reference probability distributions \cite{***}. In all these uses
+the \me\ distribution is chosen as the \enquote{maximally noncommittal} one
+\cite{jaynes1963}. This adjective means little without further technical
+characterizations. Different works give different characterizations, and in
+this paper we will use the quoted expression as an umbrella term for all of
+them. Our results will not depend on the specific characterization of
+\enquote{noncommittal}.
+
+\bigskip
+
+In this note we want to show that we have to face a dilemma if we want to
+apply the \me\ method to a representative random sample to find a maximally
+noncommittal distribution.
+
+The dilemma is this. We can apply the \me\ method to the sample, using a
+specified set of experimental constraints, and generate a probability
+distribution for its state. But our sample is representative of a larger
+population. We can apply the \me\ method to the larger population, using
+the same constraints, and generate a probability distribution for its
+larger state, and then find the distribution for the sample by
+marginalization. Either application seems to have some commendable
+features. However, \emph{the distributions obtained by these two
+  applications differ}. It goes without saying that if one is
+\enquote{maximally noncommittal}, the other must be somehow
+\enquote{committal}. Which choice is most meaningful?
 
 
-We intend the quoted expression only as
-an umbrella term, also because it means very little without further
-clarifications.
+In the rest of the paper we mathematically formulate this dilemma. To this
+purpose we also present some probability relations relevant to
+\enquote{random sampling}. These relations are well-known in survey
+sampling and in the pedagogic problem of drawing from an urn without
+replacement, yet they are somewhat hard to find explicitly written in the
+neuroscientific literature, so they may be of interest on their own. 
 
 
-The neurons recorded in these kinds of experiments are usually picked out
-according to an unknown process, and from their observation we expect to
-learn something about all other neurons in the same brain area. That is,
-they are assumed to be a \enquote{representative random sample} of the
-neurons in that area. Our discussion hinges on this often just tacitly
-understood assumption.
-
-One of the uses of \me\ methods
-
-number. It is large from large
-population of neurons [\cite]. The recorded neurons are usually picked out
-from a specific brain area according to an unknown process, and from their
-observation in relation to stimuli or behavioral task, we strive for
-understanding the mechanism behind neuronal coding\mynote{LM still don't
-  know what people mean by this, can we find an unambiguous term or
-  rephrase?}. That is, they are assumed to be a \enquote{representative
-  random sample} of the neurons in that area.\mynote{This assumption says
-  that from the sample we can learn about the population. The relation of
-  population activity with stimuli or behaviour is a separate problem, so
-  \enquote{this is} doesn't really fit...}
-
-Huge amounts of parallel recordings from hundreds of neurons, available
-today, are accompanied by the statistical challenges to be employed for
-shedding light on the mechanism behind neuronal coding. The principle of
-\me\ was proposed as a way to overcome these challenges by constructing a
-full description of the neuronal firing patterns. The \me\ method employs
-only first and second order statistics of the representative random sample
-to construct a \enquote{maximally noncommittal} \cite{jaynes1963}
-probability distribution of the firing patterns [\cite]. \mynote{LM:
-  \enquote{noncommittal} doesn't mean anything to me to be honest, even if
-  Jaynes used that term. I would like to openly say this, backed up by
-  references, as done some paragraphs below.\\It seems they have used \me\
-  for other purposes too, sometimes unclear ones. And with all kinds of
-  constraints. So we shouldn't be too specific here in relation to purpose
-  and constraints. I'd rather give references and the readers can form
-  their own ideas about its use.}
-
-Using the pairwise \me\ models many studies investigated the questions such
-as, which level of interaction\mynote{ambiguous word} (pairwise or higher-order)
-between neurons is suffiecient to explain the observed experimental data
-[\cite]? Or how collective behavior of neurons can be related to stimuli or
-behavioral tasks [\cite]? add more **
-
-Here we show that there is a quandary in applying \me\ to a representative
-random sample of neurons to generate a maximally noncommital distribution
-for that sample.
-
-The quandary is this. Assume that our sample of neurons is
-representative of some population. If we assign a \me\ distribution to the
-sample, then we cannot assign a \me\ distribution to the full population.
-Vice versa, If we assign a \me\ distribution to the full population, then
-we cannot assign a \me\ distribution to the sample. This impossibility
-holds at least for \me\ distribution with moment constraints, and even if
-the orders of the moments constrained in the sample and in the full
-population are different.
-
-In other words, if our sample is a \enquote{random representative} of some
-population, then we must choose which has a \enquote{maximally
-  noncommittal} distribution: the sample or the population. We can't choose
-both. It goes without saying that if one is \enquote{maximally
-  noncommittal}, the other must be somehow \enquote{committal}. Which
-choice is most meaningful?
-
-In the rest of the paper we will mathematically show the contradiction
-above and generate a \me\ distribution for the full population rather than
-the sample. We will also present some probability relations relevant to
-random sampling. These relations are well-known in survey sampling and in
-the pedagogic problem of drawing from an urn without replacement, yet they
-are somewhat hard to find explicitly written in the neuroscientific
-literature.
-
- \mynote{Version 1}
-The present note has three nested purposes.
-
-The first and more general is to remind our readers that the \me\ method
-rests on subtle assumptions that may be contradictory with other
-assumptions we want to make on the data under study.
-
-As a concrete example we show -- and this is the second purpose -- that a
-sample of a neuronal population cannot be assigned a \enquote{maximally
-  noncommittal} \me\ distribution and at the same time be considered a
-\enquote{random representative} of the population.
-
-The proof of the example above rests on some probability relations from
-classical random sampling. These relations are somewhat hard to find
-explicitly stated in the neuroscientific literature; the third, minor
-purpose of this note is to state them explicitly.
-
-
-Let's clarify at once that our discussion pertains to a binary population at
-one specific instant or short window in time. It is possible to
-similarly discuss multi-state neuron models and population dynamics; but for
-simplicity neurons are here assumed to be in a fixed, active \enquote{$1$}
-or inactive \enquote{$0$} state; and evolution, change, time correlations,
-and similar concepts do not concern us.
-
-
-Maximum-entropy models are used for a variety of (sometimes not completely
-clear) reasons. For our purposes let's say that the \me\ method is assumed
-to generate a \enquote{maximally noncommittal} \cite{jaynes1963} probability
-distribution. We intend the quoted expression only as an umbrella term,
-also because it means very little without further clarifications.
-
-The neurons recorded in these kinds of experiments are usually picked out
-according to an unknown process, and from their observation we expect to
-learn something about all other neurons in the same brain area. That is,
-they are assumed to be a \enquote{representative random sample} of the
-neurons in that area. Our discussion hinges on this often just tacitly
-understood assumption.
-
-
-\mynote{Version 2 }
-In this note we would like to show that there is a
-contradiction in applying \me\ to a \enquote{representative random sample}
-of neurons to generate a \enquote{maximally noncommital} distribution for
-that sample.
-% \\
-% \mynote{V2 }In this note we would like to show that there is a clash between the
-% \enquote{representative random sample} spirit and the \enquote{maximally
-%   noncommital} spirit of \me\ models applied to such a sample of neurons.
-
-The contradiction is this. Assume that our sample of neurons is
-representative of some population. If we assign a \me\ distribution to the
-sample, then we cannot assign a \me\ distribution to the full population.
-Vice versa, If we assign a \me\ distribution to the full population, then
-we cannot assign a \me\ distribution to the sample. This impossibility
-holds at least for \me\ distribution with moment constraints, and even if
-the orders of the moments constrained in the sample and in the full
-population are different.
-
-In other words, if our sample is a \enquote{random representative} of some
-population, then we must choose which has a \enquote{maximally
-  noncommittal} distribution: the sample or the population. We can't choose
-both. It goes without saying that if one is \enquote{maximally
-  noncommittal}, the other must be somehow \enquote{committal}. Which
-choice is most meaningful?
-
-In the rest of the paper we will mathematically show the contradiction
-above and generate a \me\ distribution for the full population rather than
-the sample. We will also present some probability relations relevant to
-random sampling. These relations are well-known in survey sampling and in
-the pedagogic problem of drawing from an urn without replacement, yet they
-are somewhat hard to find explicitly written in the neuroscientific
-literature.
 
 Our notation follows ISO and ANSI standards
 \citep{iso1993,ieee1993,nist1995} but for the use of the comma \enquote{,}
@@ -1055,13 +947,14 @@ $\p(\yxs=\yrs \| \yH)$. \emph{The two applications, however, are
   inequivalent}. They lead to numerically different $\p(\yxs=\yrs \| \yH)$.
 
 Suppose we want to constrain the sample expectations of a vector function
-$f$ to the vector values $c$, that is, $\expeb{f(\yxs)}=c$. Application of
-\me\ at the population level, denoted by $\yHa$, gives
+$\yf = (f_1,\dotsc,f_m)$ to the vector values $\yc=(c_1,\dotsc,c_m)$, that
+is, $\expeb{\yf(\yxs)}=\yc$. Application of \me\ at the population level,
+denoted by $\yHa$, gives
 \begin{equation}
   \label{eq:app_maxent_pop}
   \p(\yXf = \yRf \| \yHa)  = \yK\,
   \binom{N}{N \yRf}\exp\Bigl[\yL\T
-  \sum_{n\yrs=0}^n f(\yrs)\ypp(\yrs\|\yRf)\Bigr],
+  \sum_{n\yrs=0}^n \yf(\yrs)\ypp(\yrs\|\yRf)\Bigr],
 \end{equation}
 and then by marginalization with \eqn~\eqref{eq:marginal}
 \begin{equation}
@@ -1070,16 +963,17 @@ and then by marginalization with \eqn~\eqref{eq:marginal}
   \sum_{N\yRf=0}^N \ypp(\yrs \|\yRf)
 \,
   \binom{N}{N \yRf}\exp\Bigl[\yL\T
-  \sum_{n\yrs=0}^n f(\yrs)\ypp(\yrs\|\yRf)\Bigr],
+  \sum_{n\yrs=0}^n \yf(\yrs)\ypp(\yrs\|\yRf)\Bigr],
 \end{equation}
-where $\yK$ is a normalization constant and $\yL\T$ are Lagrange
-multipliers such that
+where $\yK$ is a normalization constant and
+$\yL\T=(\varLambda_1,\dotsc,\varLambda_m)\T$ are Lagrange multipliers such
+that
 \begin{equation}
   \label{eq:app_maxent_pop_constraints}
-c = \yK\sum_{n\yrs=0}^n \sum_{N\yRf=0}^N f(\yrs) \ypp(\yrs \|\yRf)
+\yc = \yK\sum_{n\yrs=0}^n \sum_{N\yRf=0}^N \yf(\yrs) \ypp(\yrs \|\yRf)
 \,
   \binom{N}{N \yRf}\exp\Bigl[\yL\T
-  \sum_{n\yrs=0}^n f(\yrs)\ypp(\yrs\|\yRf)\Bigr].
+  \sum_{n\yrs=0}^n \yf(\yrs)\ypp(\yrs\|\yRf)\Bigr].
 \end{equation}
 Application of \me\ at the sample level, denoted by $\yHb$, gives
 \begin{equation}
@@ -1087,21 +981,21 @@ Application of \me\ at the sample level, denoted by $\yHb$, gives
   \p(\yxs=\yrs \|\yHb)
   =\yk\,
   \binom{n}{n\yrs}
-  \exp[\yl\T f(\yrs)]
+  \exp[\yl\T \yf(\yrs)]
 \end{equation}
 where $\yk$ is a normalization constant and $\yl\T$ are Lagrange
 multipliers such that
 \begin{equation}
   \label{eq:app_maxent_sample_constraints}
-c = \yk\sum_{n\yrs=0}^n  f(\yrs) \binom{n}{n\yrs}
-  \exp[\yl\T f(\yrs)].
+\yc = \yk\sum_{n\yrs=0}^n  \yf(\yrs) \binom{n}{n\yrs}
+  \exp[\yl\T \yf(\yrs)].
 \end{equation}
 
 The probabilities for the sample average obtained from application at the
 population level~\eqref{eq:app_maxent_pop_marg} and at the sample level
 \eqref{eq:app_maxent_sample} will be approximately equal, by our previous
 observation~\eqref{eq:roughly_equal_nN} and also by the fact that they must
-satisfy the same expectations for $f$. But the latter may miss important
+satisfy the same expectations for $\yf$. But the latter may miss important
 features present in the former, like additional modes or particular tail
 behaviour.
 
@@ -2214,5 +2108,155 @@ and neurobiologically more realistic constraints $c_1=0.045$, $c_2=0.0025$
 \cite{rostamietal2016}. The discrepancy is maybe not as large as in the
 previous example, but the tails of the distributions are still very
 different.
-  
+
+
+**********************************************************
+
+
+
+The neurons recorded in these kinds of experiments are usually picked out
+according to an unknown process, and from their observation we expect to
+learn something about all other neurons in the same brain area. That is,
+they are assumed to be a \enquote{representative random sample} of the
+neurons in that area. Our discussion hinges on this often just tacitly
+understood assumption.
+
+One of the uses of \me\ methods
+
+number. It is large from large
+population of neurons [\cite]. The recorded neurons are usually picked out
+from a specific brain area according to an unknown process, and from their
+observation in relation to stimuli or behavioral task, we strive for
+understanding the mechanism behind neuronal coding\mynote{LM still don't
+  know what people mean by this, can we find an unambiguous term or
+  rephrase?}. That is, they are assumed to be a \enquote{representative
+  random sample} of the neurons in that area.\mynote{This assumption says
+  that from the sample we can learn about the population. The relation of
+  population activity with stimuli or behaviour is a separate problem, so
+  \enquote{this is} doesn't really fit...}
+
+Huge amounts of parallel recordings from hundreds of neurons, available
+today, are accompanied by the statistical challenges to be employed for
+shedding light on the mechanism behind neuronal coding. The principle of
+\me\ was proposed as a way to overcome these challenges by constructing a
+full description of the neuronal firing patterns. The \me\ method employs
+only first and second order statistics of the representative random sample
+to construct a \enquote{maximally noncommittal} \cite{jaynes1963}
+probability distribution of the firing patterns [\cite]. \mynote{LM:
+  \enquote{noncommittal} doesn't mean anything to me to be honest, even if
+  Jaynes used that term. I would like to openly say this, backed up by
+  references, as done some paragraphs below.\\It seems they have used \me\
+  for other purposes too, sometimes unclear ones. And with all kinds of
+  constraints. So we shouldn't be too specific here in relation to purpose
+  and constraints. I'd rather give references and the readers can form
+  their own ideas about its use.}
+
+Using the pairwise \me\ models many studies investigated the questions such
+as, which level of interaction\mynote{ambiguous word} (pairwise or higher-order)
+between neurons is suffiecient to explain the observed experimental data
+[\cite]? Or how collective behavior of neurons can be related to stimuli or
+behavioral tasks [\cite]? add more **
+
+Here we show that there is a quandary in applying \me\ to a representative
+random sample of neurons to generate a maximally noncommital distribution
+for that sample.
+
+The quandary is this. Assume that our sample of neurons is
+representative of some population. If we assign a \me\ distribution to the
+sample, then we cannot assign a \me\ distribution to the full population.
+Vice versa, If we assign a \me\ distribution to the full population, then
+we cannot assign a \me\ distribution to the sample. This impossibility
+holds at least for \me\ distribution with moment constraints, and even if
+the orders of the moments constrained in the sample and in the full
+population are different.
+
+In other words, if our sample is a \enquote{random representative} of some
+population, then we must choose which has a \enquote{maximally
+  noncommittal} distribution: the sample or the population. We can't choose
+both. It goes without saying that if one is \enquote{maximally
+  noncommittal}, the other must be somehow \enquote{committal}. Which
+choice is most meaningful?
+
+In the rest of the paper we will mathematically show the contradiction
+above and generate a \me\ distribution for the full population rather than
+the sample. We will also present some probability relations relevant to
+random sampling. These relations are well-known in survey sampling and in
+the pedagogic problem of drawing from an urn without replacement, yet they
+are somewhat hard to find explicitly written in the neuroscientific
+literature.
+
+ \mynote{Version 1}
+The present note has three nested purposes.
+
+The first and more general is to remind our readers that the \me\ method
+rests on subtle assumptions that may be contradictory with other
+assumptions we want to make on the data under study.
+
+As a concrete example we show -- and this is the second purpose -- that a
+sample of a neuronal population cannot be assigned a \enquote{maximally
+  noncommittal} \me\ distribution and at the same time be considered a
+\enquote{random representative} of the population.
+
+The proof of the example above rests on some probability relations from
+classical random sampling. These relations are somewhat hard to find
+explicitly stated in the neuroscientific literature; the third, minor
+purpose of this note is to state them explicitly.
+
+
+Let's clarify at once that our discussion pertains to a binary population at
+one specific instant or short window in time. It is possible to
+similarly discuss multi-state neuron models and population dynamics; but for
+simplicity neurons are here assumed to be in a fixed, active \enquote{$1$}
+or inactive \enquote{$0$} state; and evolution, change, time correlations,
+and similar concepts do not concern us.
+
+
+Maximum-entropy models are used for a variety of (sometimes not completely
+clear) reasons. For our purposes let's say that the \me\ method is assumed
+to generate a \enquote{maximally noncommittal} \cite{jaynes1963} probability
+distribution. We intend the quoted expression only as an umbrella term,
+also because it means very little without further clarifications.
+
+The neurons recorded in these kinds of experiments are usually picked out
+according to an unknown process, and from their observation we expect to
+learn something about all other neurons in the same brain area. That is,
+they are assumed to be a \enquote{representative random sample} of the
+neurons in that area. Our discussion hinges on this often just tacitly
+understood assumption.
+
+
+\mynote{Version 2 }
+In this note we would like to show that there is a
+contradiction in applying \me\ to a \enquote{representative random sample}
+of neurons to generate a \enquote{maximally noncommital} distribution for
+that sample.
+% \\
+% \mynote{V2 }In this note we would like to show that there is a clash between the
+% \enquote{representative random sample} spirit and the \enquote{maximally
+%   noncommital} spirit of \me\ models applied to such a sample of neurons.
+
+The contradiction is this. Assume that our sample of neurons is
+representative of some population. If we assign a \me\ distribution to the
+sample, then we cannot assign a \me\ distribution to the full population.
+Vice versa, If we assign a \me\ distribution to the full population, then
+we cannot assign a \me\ distribution to the sample. This impossibility
+holds at least for \me\ distribution with moment constraints, and even if
+the orders of the moments constrained in the sample and in the full
+population are different.
+
+In other words, if our sample is a \enquote{random representative} of some
+population, then we must choose which has a \enquote{maximally
+  noncommittal} distribution: the sample or the population. We can't choose
+both. It goes without saying that if one is \enquote{maximally
+  noncommittal}, the other must be somehow \enquote{committal}. Which
+choice is most meaningful?
+
+In the rest of the paper we will mathematically show the contradiction
+above and generate a \me\ distribution for the full population rather than
+the sample. We will also present some probability relations relevant to
+random sampling. These relations are well-known in survey sampling and in
+the pedagogic problem of drawing from an urn without replacement, yet they
+are somewhat hard to find explicitly written in the neuroscientific
+literature.
+
 \end{document}

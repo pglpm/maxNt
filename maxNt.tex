@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2017-05-17T23:04:18+0200
+%% Last-Updated: 2017-05-18T01:18:11+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -14,8 +14,8 @@
 
 \usepackage[final,nonatbib]{nips_2017}
 \newcommand*{\firstdraft}{4 November 2015}
-\newcommand*{\pdftitle}{Maximum-entropy distributions\\ and representative
-  random samples: a dilemma}
+\newcommand*{\pdftitle}{Representative random samples\\ and maximum-entropy
+  distributions:\\ a dilemma}
 \newcommand*{\headtitle}{\pdftitle}
 \newcommand*{\pdfauthor}{P.G.L.  Porta Mana, V. Rostami, E. Torre}
 
@@ -545,9 +545,9 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 % author name.
 
 \author{
-  V. Rostami\\Hitlerland\\\texttt{v.rostami@fz-juelich.de}
+  P.G.L. Porta Mana\thanks{Equally contributing first authors}\\Independent researcher\\\texttt{pgl@portamana.org}
   \And
-  P.G.L. Porta Mana\\Mussoliniland\\\texttt{pgl@portamana.org}
+  V. Rostami$^*$\\Forschungszentrum J{\"u}lich INM-6\\Germany\\\texttt{v.rostami@fz-juelich.de}
   \And
 E. Torre\\Moneylaunderingland  
   % David S.~Hippocampus\thanks{Use footnote for providing further
@@ -620,7 +620,7 @@ useful to somehow compress the statistical wealth of large neuronal
 recordings into few quantities, like sample moments for example. This
 compression would also entail interesting physico-biological properties of
 neuronal activity. The standard \me\ method
-\cite{jaynes1954_r1974,sivia1996_r2006,meadetal1984} accomplishes this kind of
+\cite{jaynes1957,sivia1996_r2006,meadetal1984} accomplishes this kind of
 compression: it associates a unique probability distribution with few
 experimental quantities \cite{***}. But this is only one of its uses. It is
 also used for various information-theoretic purposes or to generate
@@ -658,19 +658,29 @@ sampling and in the pedagogic problem of drawing from an urn without
 replacement, yet they are somewhat hard to find explicitly written in the
 neuroscientific literature, so they may be of interest on their own. 
 
-Our discussion pertains to a neurons modelled as binary units at one
-specific instant or short window in time. It is possible to similarly
+In the final discussion we present some arguments in favour of one choice
+in our dilemma, but we do not mean that to be our final answer. This note,
+and its dilemma,  also have the more general purpose of reminding our
+readers the importance of asking \emph{what is the question we're trying to
+  answer with probability theory?} and \emph{which assumptions do we want
+  or need to make?}
+
+Our mathematical analysis pertains to a neurons modelled as binary units at
+one specific instant or short window in time. It is possible to similarly
 discuss multi-state neuron models and population dynamics; but for
 simplicity neurons are here assumed to be in a fixed, active \enquote{$1$}
 or inactive \enquote{$0$} state; and evolution, change, time correlations,
-and similar concepts do not concern us.
+and similar concepts do not concern us. We consider \me\ models that have
+constraints based on some kinds of sample or population averages; they are
+often called \enquote{homogeneous}. The final discussion touches upon
+\enquote{inhomogeneous} models as well.
 
 
-Our notation follows ISO and ANSI standards
+The notation in this note follows ISO and ANSI standards
 \citep{iso1993,ieee1993,nist1995} but for the use of the comma \enquote{,}
 to denote logical conjunction. Probability notation follows Jaynes
 \citep{jaynes1994_r2003}. We intend \enquote{probability} as the degree of
-belief that \enquote{would be agreed by all rational men if there were any
+belief which \enquote{would be agreed by all rational men if there were any
   rational men} \cite{good1966}.
 
 \section{Setup}
@@ -685,37 +695,35 @@ neurons from this population has joint state $(x_1, \dotsc, x_n) \defs \yx$
 having fixed binary values $(r_1, \dotsc, r_n)\defs\yr$. We will consider
 various averages of the population and the sample. For this purpose we
 introduce a general averaging operator $\sav{\dotv}$ defined by
-\begin{align}
-  \av{\yX}  &\defd \tfrac{1}{N} (X_1 + X_2 + \dotsb + X_N),
-%  &
-%  \sav{\yx}  &\defd \tfrac{1}{n} (x_1 + x_2 + \dotsb + x_n),
+\begin{equation}
+  \begin{gathered}
+    \av{\yX} \defd \tfrac{1}{N} (X_1 + X_2 + \dotsb + X_N),
+    % & \sav{\yx} &\defd \tfrac{1}{n} (x_1 + x_2 + \dotsb + x_n),
+   \qquad% \\[2\jot]
+    \av{\yX \yX} \defd \tbinom{N}{2}^{-1} (X_1 X_2 + X_1 X_3 + \dotsb +
+    X_{N-1} X_N),
+    % & \sav{\yx \yx} &\defd\tbinom{n}{2}^{-1} (x_1 x_2 + x_1 x_3 + \dotsb
+    % + x_{n-1} x_n),
     \\[2\jot]
-  \av{\yX \yX} &\defd
-\tbinom{N}{2}^{-1} (X_1 X_2 + X_1 X_3  + \dotsb +  X_{N-1} X_N),
-%  &
-%    \sav{\yx \yx} &\defd\tbinom{n}{2}^{-1} (x_1 x_2 + x_1 x_3  + \dotsb +  x_{n-1} x_n),
-\\[2\jot]
-\av{\yX\yX\yX} &\defd
-                  \tbinom{N}{3}^{-1}
-                  (X_1 X_2 X_3 +% X_1 X_2 X_4
-                   \dotsb + X_{N-2} X_{N-1}X_N),
-%  &
-%    \sav{\yx\yx\yx} &\defd
-%                      \tbinom{n}{3}^{-1} (x_1 x_2 x_3 + %x_1 x_2 x_4
-%                       \dotsb + x_{n-2} x_{n-1} x_n),
-\end{align}
-and so on
+    \av{\yX\yX\yX} \defd \tbinom{N}{3}^{-1} (X_1 X_2 X_3 +% X_1 X_2 X_4
+    \dotsb + X_{N-2} X_{N-1}X_N),
+    % & \sav{\yx\yx\yx} &\defd \tbinom{n}{3}^{-1} (x_1 x_2 x_3
+    % + %x_1 x_2 x_4
+    % \dotsb + x_{n-2} x_{n-1} x_n),
+  \end{gathered}
+\end{equation}
+and so on.
 These formulae say that $\yXf$ is the fraction of active neurons, $\yXXf$
 the fraction of simultaneously active pairs out of all $\binom{N}{2}$
 pairs, $\av{\yX\yX\yX}$ the fraction of simultaneously active triplets, and
 so on. Products of states like $X_i \dotsm X_j$ also have values in
-$\set{0,1}$; from this it can combinatorially be proved that
+$\set{0,1}$; from this we can combinatorially  prove that
 \begin{equation}
   \label{eq:products_intermsof_average}
   \av{\underbrace{\yX\dotsm\yX}_{\text{$m$ factors}}}
   = \binom{N}{m}^{-1}\binom{N\yXf}{m}.
 \end{equation}
-Analogous formulae  hold for quantities like $\yx$, $\yRf$, $\yrs$.
+Analogous formulae  hold for quantities like $\yx$, $\yR$, $\yr$.
 
 \iffalse
 \begin{simplenote}
@@ -751,12 +759,12 @@ about the state of the sample is likewise expressed by
 \label{sec:prob_samples}
 
 We need to make an initial probability assignment before any experimental
-observations are made, no matter what kinds of predictions we are
-interested in. This initial assignment will be modified by the experimental
+observations are made. %, no matter what kinds of predictions we are interested in.
+This initial assignment will be modified by our experimental
 observations.
 
 We yet know very little about the physical details of the individual
-neurons, their locations for example. Our initial state of knowledge $\yH$
+neurons; their locations for example. Our initial state of knowledge $\yH$
 is therefore symmetric, or \enquote{exchangeable}, under their
 permutations. This symmetry must be reflected in our initial probability:
 the \emph{representation theorem for finite exchangeability} states that it
@@ -765,12 +773,12 @@ must obey
   \label{eq:joint_plaus_N_homog}
   \p(\yX = \yR \| \yH) = \binom{N}{N\yRf}^{-1} \p(\yXf=\yRf \| \yH),
 \end{equation}
-the latter being the probability for the population average $\yX$. Proof
-and generalizations to non-binary and continuum cases are given by
-de~Finetti \cite{definetti1959b}, Ericson \cite{ericson1976}, Diaconis
-\cite{diaconis1977}, Heath \amp\ Sudderth \cite{heathetal1976}. This
-theorem is intuitive: owing to symmetry, all states with $N\yRf$ active
-neurons must have equal probabilities.
+the latter being the probability for the population average $\yX$. Proof of
+this theorem and generalizations to non-binary and continuum cases are
+given by de~Finetti \cite{definetti1959b}, Ericson \cite{ericson1976},
+Diaconis \cite{diaconis1977}, Heath \amp\ Sudderth \cite{heathetal1976}.
+This theorem is intuitive: owing to symmetry, all states with $N\yRf$
+active neurons must have equal probabilities.
 
 By marginalization we obtain the probability for the state of the sample:
 \begin{gather}
@@ -795,18 +803,19 @@ problems. The combinatorial proof of the formulae above is in fact the same
 as for this class of problems
 \cites[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}.
 
-The conditional probability $\ypp(\yrs,\yRf)$ connects the spaces of the
+The conditional probability $\ypp(\yrs,\yRf)$ relates the spaces of the
 sample average $\yXf\in\set{0,\dotsc,N}$ and of the population average
-$\yxs\in\set{0,\dotsc,n}$. It is a coarsening projector of any probability
-$p$ for $\yXf$ onto a marginal probability $p_*$ for $\yxs$:
+$\yxs\in\set{0,\dotsc,n}$ in a special way. It is a coarsening projector of
+any probability $p$ for $\yXf$ onto a marginal probability $p_*$ for
+$\yxs$:
 \begin{equation}
   \label{eq:projection_P}
   % \ypp\colon p(\yXf=\dotv) \to
   p_*(\yxs=\yrs)
   = \sum_{N\yRf=0}^N \ypp(\yrs\|\yRf) p(\yXf=\yRf).
 \end{equation}
-Therefore it also a pulls back expectations of functions $f$ of the sample
-average $\yxs$ to expectations of functions $f^*$ the population average
+Conversely it also a pulls back expectations of functions $f$ of the sample
+average $\yxs$ to expectations of functions $f^*$ of the population average
 $\yXf$:
 \begin{equation}
   \label{eq:pullback_P}
@@ -846,12 +855,13 @@ We thus have that
 \expeb{f(\yxs)} \approx \expeb{f(\yXf)}.
 \end{equation}
 These are only very approximate equalities; they may miss important
-features of the two probability distributions. If the distribution for the
-population average $\yXf$ is bimodal, for example, the bimodality can be
-lost in the distribution for the sample average $\yxs$, owing to the
-coarsening effect of $\ypp(\yrs\|\yRf)$.
+features of the two probability distributions. In the next section we will
+in fact emphasize their differences. If the distribution for the population
+average $\yXf$ is bimodal, for example, the bimodality can be lost in the
+distribution for the sample average $\yxs$, owing to the coarsening effect
+of $\ypp(\yrs\|\yRf)$.
 
-The approximate equalities above express the fact that \emph{our
+Yet the approximate equalities above express the fact that \emph{our
   uncertainty about the sample is representative of our uncertainty about
   the population and about other samples}, and vice versa. Upon observation
 of a sample average, say $\yxxs=a$, the updated expectations for such
@@ -1064,25 +1074,41 @@ population?
 \section{Discussion}
 \label{sec:discussion}
 
-We prefer not to answer the question that closed the preceding section,
-because the optimal answer can only be given case by case, depending on the
-inferences we are trying to make, on the assumptions needed and negligible,
-and on our computational power. We would just like to stress that the
-answer is not unique, and some answers may imply assumptions we were not
-aware of.
+The question that closed the preceding section cannot receive a categorical
+answer. An answer can only be given case by case, depending on the
+inferences we are trying to make, on the assumptions needed and those
+negligible, and on our computational power. We want to stress, in fact, the
+extreme importance and priority of the following two questions:
+\begin{itemize}
+\item Of which quantities do we need to quantify the uncertainty? and why?
+\item What are the assumptions we need or want to make to answer the
+  question above?
+\end{itemize}
+
+The first purpose of this note was to remind our readers that probability
+models can have hidden assumptions that we don't want to make or that are
+in contradiction with assumptions we want to make. The dilemma generated by
+the \me\ method and the assumption of random representative sampling is an
+example. The usual application of \me\ at the sample level generates a
+different distribution than the application at the population level. Then
+the former application must implicitly assume that no larger population
+exist; or in other words that the neurons of the sample are isolated from
+their environment.
 
 The probability distribution for the sample average obtained by applying
 \me\ at the population level has by construction a lower entropy than the
-one obtained by application at the sample level. It says that some sample
-states $\yx$ should be considered less likely than in the other
-distribution. The lower entropy signals the presence of an additional
-physical assumption behind the former distribution. Such assumption,
-intuitively, is that the sample is part of a larger population, of which it
-is representative. And this assumption may affect our predictions.
-\mynote{It is a very natural assumption in the neuroscientific context and
-  therefore we find it preferable. In fact, also physical neuronal network
-  model add an external input to the neurons, mimicking their embedding in a
-  larger network}
+one obtained by application at the sample level. The former distribution
+says that some sample states $\yx$ should be considered less likely than in
+the latter distribution. A lower entropy signals the presence of an
+additional assumption. Such assumption, intuitively, is that the sample is
+part of a larger population, and our ignorance about the former is
+representative of our ignorance about the latter. This assumption may
+affect our predictions.
+
+In a neuroscientific context we find this assumption very natural, and
+therefore the \me\ method at the population level preferable. Also
+\emph{physical} neuronal-network models add indeed an external input to the
+neurons, mimicking their embedding in a larger network.
 
 \iffalse
 The quandary we found in the present note has at least two bright sides.
@@ -1116,8 +1142,8 @@ process. The two descriptions differ -- even though the final physical
 state is exactly the same \cite[\sect~4]{jaynes1985d_r1993}. The appearance
 of this difference is natural: in one case we can make sharper predictions
 about the state thanks to our knowledge of its preceding dynamics.
-\mynote{but in this case both distributions are immensely sharp, and this
-  doesn't affect predictions}
+%\mynote{but in this case both distributions are immensely sharp, and this
+%  doesn't affect predictions}
 
 \mynote{Importance of the formulae relating sample and population.}
 

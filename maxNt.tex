@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2017-05-17T15:27:36+0200
+%% Last-Updated: 2017-05-17T15:41:05+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -1064,52 +1064,11 @@ satisfy the same expectations for $f$. But the latter may miss important
 features present in the former, like additional modes or particular tail
 behaviour.
 
-We show two examples of this discrepancy in
-\figs~\ref{fig:diff_maxent_pop_sample}
-and~\ref{fig:diff_maxent_pop_sample_realdata}. In the former the
-constraints are $\expe{\yxs} = c_1$ and
-$\expe{\yxxs} = c_2$, with 
-
-
-
-
-Here is an example.
-
-Suppose our desired constraints are $\expe{\yxs } = c_1$ and
-$\expe{\yxxs} = c_2$, the expectations being given by the fourth term of
-\eqn~\eqref{eq:expe_products}. Applying \me\ to the distribution of the
-average of the full population we find
-\begin{equation}
-  \label{eq:full_pop_av_example_ME}
-  \p(\yXf = \yRf \| \yHa)  = \yL\,
-\binom{N}{N \yRf}\exp\biggl[
-\yL_2 \yRf \,\frac{N \yRf-1}{N-1} + \yL_1\, \yRf\biggr]
-\end{equation}
-with such parameters $\yL$, $\yL_1$, $\yL_2$ as to satisfy normalization
-and constraints. We call this state of knowledge $\yHa$. Marginalization by
-\eqn~\eqref{eq:marginal} then gives
-\begin{equation}
-  \label{eq:full_pop_av_example_ME_marg}
-  \p(\yxs = \yrs \| \yHa)  = \yL
-  \sum_{N\yRf=0}^N
-  \binom{n}{n\yrs} \binom{N-n}{N\yRf-n\yrs} \exp\biggl[
-\yL_2 \yRf \,\frac{N \yRf-1}{N-1} + \yL_1\, \yRf\biggr].
-\end{equation}
-Applying \me\ to the distribution of the average of the sample, using the
-third term of \eqn~\eqref{eq:expe_products}, we find
-\begin{equation}
-  \label{eq:sample_av_example_ME}
-  \p(\yxs = \yrs \| \yHb)  = \yl\,
-  \binom{n}{n\yrs}
-  \exp\biggl[\yl_2 \yrs \,\frac{n \yrs-1}{n-1} + \yl_1\, \yrs\biggr]
-\end{equation}
-with such parameters $\yl$, $\yl_1$, $\yl_2$ as to satisfy the constraints.
-We call this state of knowledge $\yHb$.
 %\setlength{\intextsep}{0.5ex}%
 %\begin{wrapfigure}{r}{0.5\linewidth}
 \begin{figure}[!t]
 \centering
-\includegraphics[width=0.99\linewidth]{different_maxent_pop_sample_200_realdata_2mom.pdf}%
+\includegraphics[width=0.75\linewidth]{different_maxent_pop_sample_200_realdata_2mom.pdf}%
 \caption{Plots of $\p(\yxs = \yrs)$ constructed by \me\ at the population
   level followed by sample marginalization (blue triangles),
   \eqn~\eqref{eq:full_pop_av_example_ME_marg}, and at the sample level (red
@@ -1120,7 +1079,7 @@ We call this state of knowledge $\yHb$.
 % \end{wrapfigure}
 \begin{figure}[!t]
 \centering
-\includegraphics[width=0.99\linewidth]{different_maxent_pop_sample_200_realdata_4mom.pdf}
+\includegraphics[width=0.75\linewidth]{different_maxent_pop_sample_200_realdata_4mom.pdf}
 % 
 \caption{Linear and log-plots of $\p(\yxs = \yrs)$ constructed by \me\ at
   the population level followed by sample marginalization (blue triangles),
@@ -1131,18 +1090,20 @@ We call this state of knowledge $\yHb$.
   $\expe{\sav{\yx\yx\yx\yx}}=8.81\times 10^{-6}$.}
 \label{fig:diff_maxent_pop_sample_realdata}
 \end{figure}%maxent_pop_or_sample.nb
-
-The resulting distributions $\p(\yxs = \yrs \| \yHa)$,
-$\p(\yxs = \yrs \| \yHb)$ are different.
-Figure~\ref{fig:diff_maxent_pop_sample} shows one example, for $N=5000$,
-$n=100$, $c_1=0.45$, $c_2=0.35$. The two distributions have slightly
-different modes and the one obtained from \me\ at the population level is
-more peaked. Another example is shown in
-\fig~\ref{fig:diff_maxent_pop_sample_realdata}, for $N=5000$, $n=200$,
-and neurobiologically more realistic constraints $c_1=0.045$, $c_2=0.0025$
-\cite{rostamietal2016}. The discrepancy is maybe not as large as in the
-previous example, but the tails of the distributions are still very
-different.
+We show two examples of this discrepancy in
+\figs~\ref{fig:diff_maxent_pop_sample}
+and~\ref{fig:diff_maxent_pop_sample_realdata}, for $N=5000$, $n=200$. In
+the first example the constraints are $\expe{\yxs} = c_1$ and
+$\expe{\yxxs} = c_2$, with $c_1=0.0478$ and $c_2=0.00257$. The distribution
+obtained at the sample level is broader than the one obtained at the
+population level; the tails of the two distributions are very different.
+The second example includes two additional constraints
+$\expe{\sav{\yx\yx\yx}}= c_3$, $\expe{\sav{\yx\yx\yx\yx}}=c_4$ with
+$c_3=0.000148$, $c_4=8.81\times 10^{-6}$. The distribution obtained at the
+population level has two modes, replaced by only one in the distribution
+obtained at the sample level; the tails are very different also in this
+case. The constraints used in these examples have neurobiologically
+realistic values \cite{rostamietal2016}.
 
 
 The inequivalence of the two \me\ applications is generally valid for small
@@ -2162,4 +2123,55 @@ $n\yxs$ of the first $n$ units can be in state $1$. In formulae,
   moments~\eqref{noeq:eq_factmom_prod}, by recursively solving in terms of
   the moments of the network distribution.
 
+  *******
+
+
+  
+
+Here is an example.
+
+Suppose our desired constraints are $\expe{\yxs } = c_1$ and
+$\expe{\yxxs} = c_2$, the expectations being given by the fourth term of
+\eqn~\eqref{eq:expe_products}. Applying \me\ to the distribution of the
+average of the full population we find
+\begin{equation}
+  \label{eq:full_pop_av_example_ME}
+  \p(\yXf = \yRf \| \yHa)  = \yL\,
+\binom{N}{N \yRf}\exp\biggl[
+\yL_2 \yRf \,\frac{N \yRf-1}{N-1} + \yL_1\, \yRf\biggr]
+\end{equation}
+with such parameters $\yL$, $\yL_1$, $\yL_2$ as to satisfy normalization
+and constraints. We call this state of knowledge $\yHa$. Marginalization by
+\eqn~\eqref{eq:marginal} then gives
+\begin{equation}
+  \label{eq:full_pop_av_example_ME_marg}
+  \p(\yxs = \yrs \| \yHa)  = \yL
+  \sum_{N\yRf=0}^N
+  \binom{n}{n\yrs} \binom{N-n}{N\yRf-n\yrs} \exp\biggl[
+\yL_2 \yRf \,\frac{N \yRf-1}{N-1} + \yL_1\, \yRf\biggr].
+\end{equation}
+Applying \me\ to the distribution of the average of the sample, using the
+third term of \eqn~\eqref{eq:expe_products}, we find
+\begin{equation}
+  \label{eq:sample_av_example_ME}
+  \p(\yxs = \yrs \| \yHb)  = \yl\,
+  \binom{n}{n\yrs}
+  \exp\biggl[\yl_2 \yrs \,\frac{n \yrs-1}{n-1} + \yl_1\, \yrs\biggr]
+\end{equation}
+with such parameters $\yl$, $\yl_1$, $\yl_2$ as to satisfy the constraints.
+We call this state of knowledge $\yHb$.
+
+
+The resulting distributions $\p(\yxs = \yrs \| \yHa)$,
+$\p(\yxs = \yrs \| \yHb)$ are different.
+Figure~\ref{fig:diff_maxent_pop_sample} shows one example, for $N=5000$,
+$n=100$, $c_1=0.45$, $c_2=0.35$. The two distributions have slightly
+different modes and the one obtained from \me\ at the population level is
+more peaked. Another example is shown in
+\fig~\ref{fig:diff_maxent_pop_sample_realdata}, for $N=5000$, $n=200$,
+and neurobiologically more realistic constraints $c_1=0.045$, $c_2=0.0025$
+\cite{rostamietal2016}. The discrepancy is maybe not as large as in the
+previous example, but the tails of the distributions are still very
+different.
+  
 \end{document}

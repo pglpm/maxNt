@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2017-05-17T15:41:05+0200
+%% Last-Updated: 2017-05-17T17:54:56+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -730,7 +730,9 @@ literature.
 Our notation follows ISO and ANSI standards
 \citep{iso1993,ieee1993,nist1995} but for the use of the comma \enquote{,}
 to denote logical conjunction. Probability notation follows Jaynes
-\citep{jaynes1994_r2003}.
+\citep{jaynes1994_r2003}. We intend \enquote{probability} as the degree of
+belief that \enquote{would be agreed by all rational men if there were any
+  rational men} \cite{good1966}.
 
 \section{Setup}
 \label{sec:setup}
@@ -959,8 +961,8 @@ formulae~\eqref{eq:pullback_P} have the useful form
     \\[2\jot]
     % \expe{\sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}} \| \yH} =
     % \expe{\av{\underbrace{\yX \dotsm \yX}_{\text{$m$ factors}}} \| \yH}
-    \expe{\yx \dotsm \yx \| \yH} =
-    \expe{\yX \dotsm \yX \| \yH}
+    \expe{\sav{\yx \dotsm \yx} \| \yH} =
+    \expe{\av{\yX \dotsm \yX} \| \yH}
     % \\[2\jot]
     % {}
     = \binom{n}{m}^{-1}

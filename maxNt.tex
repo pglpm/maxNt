@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2017-05-17T10:31:16+0200
+%% Last-Updated: 2017-05-17T12:40:23+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -517,6 +517,8 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 \newcommand*{\ysh}{H}
 \newcommand*{\ybu}{H_{\text{B}}}
 
+\newcommand*{\ypp}{\varPi}
+
 \newcommand*{\prop}[1]{`#1'}
 
 \newcommand*{\mee}{maximum entropy}
@@ -841,7 +843,8 @@ By marginalization we obtain the probability for the state of the sample:
   \p(\yXf=\yRf \| \yH),
   \\[2\jot]
   \p(\yxs = \yrs \|\yXf=\yRf, \yH)=
-  \binom{n}{n\yrs}\binom{N-n}{N \yRf-n\yrs}\binom{N}{N \yRf}^{-1}.
+  \binom{n}{n\yrs}\binom{N-n}{N \yRf-n\yrs}\binom{N}{N \yRf}^{-1}
+  \defs \ypp(\yrs\|\yRf).
 \end{gather}
 
 The latter conditional probability is a hypergeometric distribution,
@@ -849,33 +852,88 @@ typical of \enquote{drawing without replacement} problems. The
 combinatorial proof of the formulae above is in fact the same as for this
 class of problems
 \cites[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}.
-This conditional probability acts a
 
-
-
-
-The symmetry present in the probabilities above is not a physical property
-of the neuronal population. It only expresses the symmetry of our initial
-ignorance about the population, and does not imply any sort of physical
-similarity between the neurons. Subsequent observations may in fact break
-this symmetry. The initial symmetry should intuitively also apply to the
-sample, and this is indeed the case: the probability for the state of the
-sample~\eqref{eq:subpop_average} automatically satisfies the representation
-theorem~\eqref{eq:joint_plaus_N_homog} as well.
+The conditional probability $\ypp(\yrs,\yRf)$ connects the spaces of the
+sample variable $\yXf$ and of the population variable $\yxs$. It is a
+projector $\ypp$ of probabilities $p$ for $\yXf$ onto marginal
+probabilities for $\yxs$:
+\begin{equation}
+  \label{eq:projection_P}
+  \ypp\colon p(\yXf=\dotv) \to p_*(\yxs=\dotv)
+  \defd \sum_{N\yRf=0}^N \ypp(\dotv\|\yRf) p(\yRf).
+\end{equation}
+It is also a pull-back $\ypp^*$ of functions $f$ of $\yxs$ to functions of
+$\yXf$:
+\begin{equation}
+  \label{eq:pullback_P}
+  \ypp^*\colon f(\yxs=\dotv) \to f^*(\yXf=\dotv) \defd \sum_{N\yrs=0}^n f(\yrs)\ypp(\yrs\|\dotv),
+\end{equation}
+with a caveat: if $f$ is a physical quantity and doesn't depend on our
+knowledge, $f_*$ is \emph{not} a physical quantity but a conditional
+expectation, $f^*(\yRf) \equiv \expe{f(\yxs)\|\yXf=\yRf,\yH}$, and depends
+on our knowledge.
 
 \begin{figure}[!t]
 \centering
 %\includegraphics[width=0.99\linewidth]{pop_sample_projection.pdf}\\
 \includegraphics[width=0.99\linewidth]{pop_sample_projection2.pdf}%
-\caption{hyperg}
+\caption{Log-plot of the hypergeometric distribution
+  $%\p(\yxs = \yrs \|\yXf=\yRf, \yH)=
+  \binom{n}{n\yrs}\binom{N-n}{N \yRf-n\yrs}\binom{N}{N \yRf}^{-1} \defs
+  \ypp(\yrs\|\yRf)$ for $N=5000$, $n=200$. (Band artifacts may appear in the
+  colourbar depending on your \textsc{pdf} viewer.)}
 \label{fig:hypergeom_proj}
 \end{figure}%hypergeometric_identity.nb
-% \end{wrapfigure}
-Our initial knowledge (ignorance) $\yH$ has two important properties
-derivable from the formulae above.
+A look at a plot of the hypergeometric distribution $\ypp(\yrs\|\yXf)$, for
+example \fig~\ref{fig:hypergeom_proj}, reveals that the maps $\ypp$ and
+$\ypp^*$ are \enquote{fuzzy identities} between the $\yXf$ space
+$\set{0,\dotsc,N}$ and $\yxs$-space $\set{0,\dotsc,n}$. When $n=N$ they are
+exact identities. We thus have very roughly that
+\begin{equation}
+  \label{eq:roughly_equal_nN}
+  \p(\yxs=a) \sim \p(\yXf=a),\qquad
+\expeb{f(\yxs)} \sim \expeb{f(\yXf)}.
+\end{equation}
+These formulae express the fact that \emph{the sample is representative of
+  the population}, and vice versa. Our initial knowledge $\yH$, which fully
+determines $\ypp$, thus assumes that by observing a sample we can make
+predictions about the full population, and thence about new samples.
+Upon observation of a sample average, say $\yxxs=a$, the updated
+expectations for such average in the population and in any new sample will
+usually be shifted towards the observed value, as follows from Bayes's
+theorem and the formulae above.
 
-First, our initial expectations for the averages of activity products
-\emph{are the same for the sample and for the full population}:
+Note that the approximate formulae~\eqref{eq:roughly_equal_nN} say more
+than the limits $\p(\yxs=a) \to \p(\yXf=a)$,
+$\expeb{f(\yxs)} \to \expeb{f(\yXf)}$ as $n\to N$. These limits are
+trivially valid because as $n\to N$ the sample becomes the full population.
+For conditional probabilities $\p(\yxs = \yrs \|\yXf=\yRf)$ very different
+from the fuzzy identity $\ypp(\yrs\|\yRf)$ (see
+\fig~\ref{fig:hypergeom_proj}) these limits would hold, but the
+probabilities and expectations from a small sample could wildly differ from those
+from the population.
+
+\bigskip***
+
+with the property that
+\begin{equation}
+  \label{eq:expectation_pullback}
+  \expeb{f(\yxs) \|\yH} = \expeb{f^*(\yXf)\|\yH},
+  \qquad\text{that is,}\qquad
+  \sum_{n\yrs=0}^n f(\yrs)\,p_*(\yxs=\yrs) = \sum_{N\yRf=0}^N f^*(\yRf)\,p(\yXf=\yRf).
+\end{equation}
+
+A special case of the pull-back above is the function
+$f(\yxs) \defd \sav{\yx\dots\yx}=\binom{\yxs}{m}/\binom{n}{m}$, for which
+\begin{equation}
+  \label{eq:pullback_m_expectations}
+  \ypp^*\colon \sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}}
+  \mapsto \bigl( \sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}}\bigr)^*
+  \equiv
+  \av{\underbrace{\yX \dotsm \yX}_{\text{$m$ factors}}};
+\end{equation}
+thus, the averages of activity products \emph{are the same for the sample
+  and for the full population}:
 \begin{equation}
   \label{eq:expe_products}
 \expe{\sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}} \| \yH}
@@ -897,22 +955,23 @@ First, our initial expectations for the averages of activity products
 \sum_{N \yRf=0}^N %m!\, 
 \binom{N \yRf}{m}\, \p(\yXf=\yRf \| \yH).
 \end{equation}
-Raw moments like $\expe{\yxs^m}$, which can be written in terms of the
-product expectations above via \eqn~\eqref{eq:expe_products}, similarly
-satisfy $\expe{\yxs^m} \to \expe{\yXf^m}$ as $n \to N$.
 
-Second, upon observation of a sample average, say $\yxxs=a$, the updated
-expectations for such average in the population \emph{and in any new
-  sample} will usually be shifted towards the observed value, as follows
-from Bayes's theorem and the formulae above.
 
-These two properties express the fact that the sample is
-\emph{representative} of the population. Our initial knowledge $\yH$ thus
-assumes that by observing a sample we can make predictions about the full
-population and about new samples. Contrast this with an assumption that
-assigns an independent probability to each neuron: in this case, the
-observation of one sample does not change our initial probability about
-another -- we can't learn from observation.
+This is true, for example, for the raw moments $\expe{\yxs^m}$ and
+$\expe{\yXf^m}$, which can be written in terms of the product expectations
+via \eqn~\eqref{eq:expe_products}.
+
+
+The symmetry present in the probabilities above is not a physical property
+of the neuronal population. It only expresses the symmetry of our initial
+ignorance about the population, and does not imply any sort of physical
+similarity between the neurons. Subsequent observations may in fact break
+this symmetry. The initial symmetry should intuitively also apply to the
+sample, and this is indeed the case: the probability for the state of the
+sample~\eqref{eq:subpop_average} automatically satisfies the representation
+theorem~\eqref{eq:joint_plaus_N_homog} as well.
+
+
 
 \section{Enter maximum-entropy: quandary}
 \label{sec:specific_initial_probability}

@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2017-05-17T14:42:01+0200
+%% Last-Updated: 2017-05-17T15:27:36+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -460,7 +460,7 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 %\newcommand*{\sint}{\begingroup\textstyle\int\endgroup}
 %\newcommand*{\sland}{\mathop{\textstyle\bigwedge}}
 %\newcommand*{\slor}{\mathop{\textstyle\bigvee}}
-%\newcommand*{\T}{^\intercal}%transpose
+\newcommand*{\T}{^\intercal}%transpose
 \newcommand*{\E}{\mathrm{E}}
 \DeclarePairedDelimiter\expp{(}{)}
 \newcommand*{\expe}{\E\expp}%round
@@ -856,8 +856,8 @@ as for this class of problems
 
 The conditional probability $\ypp(\yrs,\yRf)$ connects the spaces of the
 sample average $\yXf\in\set{0,\dotsc,N}$ and of the population average
-$\yxs\in\set{0,\dotsc,n}$. It is a projector $\ypp$ of any probability $p$
-for $\yXf$ onto a marginal probability $p_*$ for $\yxs$:
+$\yxs\in\set{0,\dotsc,n}$. It is a coarsening projector of any probability
+$p$ for $\yXf$ onto a marginal probability $p_*$ for $\yxs$:
 \begin{equation}
   \label{eq:projection_P}
   % \ypp\colon p(\yXf=\dotv) \to
@@ -898,26 +898,33 @@ A look at a plot of the hypergeometric distribution $\ypp(\yrs\|\yRf)$, for
 example \fig~\ref{fig:hypergeom_proj}, reveals that it is a sort of
 \enquote{fuzzy identity matrix} between the $\yXf$-space $\set{0,\dotsc,N}$
 and $\yxs$-space $\set{0,\dotsc,n}$. When $n=N$ it is the identity matrix.
-We thus have that, very roughly,
+We thus have that
 \begin{equation}
   \label{eq:roughly_equal_nN}
-  \p(\yxs=a) \sim \p(\yXf=a),\qquad
-\expeb{f(\yxs)} \sim \expeb{f(\yXf)}.
+  \p(\yxs=a) \approx \p(\yXf=a),\qquad
+\expeb{f(\yxs)} \approx \expeb{f(\yXf)}.
 \end{equation}
-These formulae express the fact that \emph{our uncertainty about the sample
-  is representative of our uncertainty about the population and about other
-  samples}, and vice versa. Upon observation of a sample average, say
-$\yxxs=a$, the updated expectations for such average in the population and
-in any new sample will usually be shifted towards the observed value, as
-follows from Bayes's theorem and the formulae above.
+These are only very approximate equalities; they may miss important
+features of the two probability distributions. If the distribution for the
+population average $\yXf$ is bimodal, for example, the bimodality can be
+lost in the distribution for the sample average $\yxs$, owing to the
+coarsening effect of $\ypp(\yrs\|\yRf)$.
 
-Note that the approximate formulae~\eqref{eq:roughly_equal_nN} say more
-than the limits $\p(\yxs=a) \to \p(\yXf=a)$,
-$\expeb{f(\yxs)} \to \expeb{f(\yXf)}$ as $n\to N$. These limits are
-trivially valid because the sample becomes the full population as $n\to N$.
-In particular, these limits hold even in cases where the conditional
-probability $\p(\yxs = \yrs \|\yXf=\yRf)$ is not a fuzzy identity and our
-uncertainties about sample and about population can differ wildly.
+The approximate equalities above express the fact that \emph{our
+  uncertainty about the sample is representative of our uncertainty about
+  the population and about other samples}, and vice versa. Upon observation
+of a sample average, say $\yxxs=a$, the updated expectations for such
+average in the population and in any new sample will usually be shifted
+towards the observed value, as follows from Bayes's theorem and the
+formulae above.
+
+Note that formulae~\eqref{eq:roughly_equal_nN} say more than the limits
+$\p(\yxs=a) \to \p(\yXf=a)$, $\expeb{f(\yxs)} \to \expeb{f(\yXf)}$ as
+$n\to N$. These limits are trivially valid because the sample becomes the
+full population as $n\to N$. In particular, these limits hold even in cases
+where the conditional probability $\p(\yxs = \yrs \|\yXf=\yRf)$ is not a
+fuzzy identity and our uncertainties about sample and about population can
+differ wildly.
 
 The symmetry present in the probabilities above is not a physical property
 of the neuronal population. It only expresses the symmetry of our initial
@@ -958,13 +965,13 @@ formulae~\eqref{eq:pullback_P} have the useful form
     % {}
     = \binom{n}{m}^{-1}
     % \frac{(n-m)!}{n!}
-    \sum_{n \yrs=0}^n %m!\,
+    \sum_{\mathclap{n \yrs=0}}^n %m!\,
     \binom{n \yrs}{m}\, \p(\yxs=\yrs \| \yH)
     % \sum_{N \yRf=0}^N %m!\,
     % \binom{N-m}{N \yRf-m} \binom{N}{N \yRf}^{-1} \p(\yXf=\yRf \| \yH)
     = \binom{N}{m}^{-1}
     % \frac{(N-m)!}{N!}
-    \sum_{N \yRf=0}^N %m!\,
+    \sum_{\mathclap{N \yRf=0}}^N %m!\,
     \binom{N \yRf}{m}\, \p(\yXf=\yRf \| \yH).
   \end{gathered}
 \end{equation}
@@ -983,7 +990,7 @@ product expectations via \eqn~\eqref{eq:products_intermsof_average}.
 \label{sec:specific_initial_probability}
 
 Formulae
-\eqref{eq:joint_plaus_N_homog}--~\eqref{eq:conditional_hypergeometric} are
+\eqref{eq:joint_plaus_N_homog}--\eqref{eq:conditional_hypergeometric} are
 constraints on our initial probability assignment, but do not determine it
 numerically. The probability $\p(\yXf=\yRf \| \yH)$ for the population
 average needs to be numerically specified, and by \eqref{eq:subpop_average}
@@ -998,13 +1005,74 @@ $\expe{\yxs}=c_1$, $\expe{\yxxs}=c_2$. This is still an underdetermined
 linear problem: several distributions can have the same desired
 expectations, as clear from \eqns~\eqref{eq:expe_products}.
 
-The \me\ method is brought into play to solve this indeterminacy. It selects
-one distribution, purported to be \enquote{maximally noncommittal}, among
-those that have the desired expectations. But we are in a quandary:
+The \me\ method is brought into play to solve this indeterminacy. It
+selects one distribution, purported to be \enquote{maximally noncommittal},
+among those that have the desired expectations. But we are in a quandary:
 formulae~\eqref{eq:pullback_P} allow us to apply the method to find the
 probability of the population $\p(\yXf=\yRf \| \yH)$, or of the sample
 $\p(\yxs=\yrs \| \yH)$. \emph{The two applications, however, are
   inequivalent}. They lead to numerically different $\p(\yxs=\yrs \| \yH)$.
+
+Suppose we want to constrain the sample expectations of a vector function
+$f$ to the vector values $c$, that is, $\expeb{f(\yxs)}=c$. Application of
+\me\ at the population level, denoted by $\yHa$, gives
+\begin{equation}
+  \label{eq:app_maxent_pop}
+  \p(\yXf = \yRf \| \yHa)  = \yK\,
+  \binom{N}{N \yRf}\exp\Bigl[\yL\T
+  \sum_{n\yrs=0}^n f(\yrs)\ypp(\yrs\|\yRf)\Bigr],
+\end{equation}
+and then by marginalization with \eqn~\eqref{eq:marginal}
+\begin{equation}
+  \label{eq:app_maxent_pop_marg}
+  \p(\yxs = \yrs \| \yHa)  = \yK\, 
+  \sum_{N\yRf=0}^N \ypp(\yrs \|\yRf)
+\,
+  \binom{N}{N \yRf}\exp\Bigl[\yL\T
+  \sum_{n\yrs=0}^n f(\yrs)\ypp(\yrs\|\yRf)\Bigr],
+\end{equation}
+where $\yK$ is a normalization constant and $\yL\T$ are Lagrange
+multipliers such that
+\begin{equation}
+  \label{eq:app_maxent_pop_constraints}
+c = \yK\sum_{n\yrs=0}^n \sum_{N\yRf=0}^N f(\yrs) \ypp(\yrs \|\yRf)
+\,
+  \binom{N}{N \yRf}\exp\Bigl[\yL\T
+  \sum_{n\yrs=0}^n f(\yrs)\ypp(\yrs\|\yRf)\Bigr].
+\end{equation}
+Application of \me\ at the sample level, denoted by $\yHb$, gives
+\begin{equation}
+  \label{eq:app_maxent_sample}
+  \p(\yxs=\yrs \|\yHb)
+  =\yk\,
+  \binom{n}{n\yrs}
+  \exp[\yl\T f(\yrs)]
+\end{equation}
+where $\yk$ is a normalization constant and $\yl\T$ are Lagrange
+multipliers such that
+\begin{equation}
+  \label{eq:app_maxent_sample_constraints}
+c = \yk\sum_{n\yrs=0}^n  f(\yrs) \binom{n}{n\yrs}
+  \exp[\yl\T f(\yrs)].
+\end{equation}
+
+The probabilities for the sample average obtained from application at the
+population level~\eqref{eq:app_maxent_pop_marg} and at the sample level
+\eqref{eq:app_maxent_sample} will be approximately equal, by our previous
+observation~\eqref{eq:roughly_equal_nN} and also by the fact that they must
+satisfy the same expectations for $f$. But the latter may miss important
+features present in the former, like additional modes or particular tail
+behaviour.
+
+We show two examples of this discrepancy in
+\figs~\ref{fig:diff_maxent_pop_sample}
+and~\ref{fig:diff_maxent_pop_sample_realdata}. In the former the
+constraints are $\expe{\yxs} = c_1$ and
+$\expe{\yxxs} = c_2$, with 
+
+
+
+
 Here is an example.
 
 Suppose our desired constraints are $\expe{\yxs } = c_1$ and

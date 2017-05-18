@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2017-05-18T13:36:45+0200
+%% Last-Updated: 2017-05-18T14:02:33+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -166,14 +166,14 @@
  \DeclareMathSymbol{\varKappa}{\mathalpha}{egreeki}{"4B}
 % \DeclareMathSymbol{\varLambda}{\mathalpha}{egreeki}{"03}
 % \DeclareMathSymbol{\varMu}{\mathalpha}{egreeki}{"4D}
- \DeclareMathSymbol{\varNu}{\mathalpha}{egreeki}{"4E}
+% \DeclareMathSymbol{\varNu}{\mathalpha}{egreeki}{"4E}
 % \DeclareMathSymbol{\varXi}{\mathalpha}{egreeki}{"04}
 % \DeclareMathSymbol{\varOmicron}{\mathalpha}{egreeki}{"4F}
 % \DeclareMathSymbol{\varPi}{\mathalpha}{egreeki}{"05}
 % \DeclareMathSymbol{\varRho}{\mathalpha}{egreeki}{"50}
 % \DeclareMathSymbol{\varSigma}{\mathalpha}{egreeki}{"06}
 % \DeclareMathSymbol{\varTau}{\mathalpha}{egreeki}{"54}
-% \DeclareMathSymbol{\varUpsilon}{\mathalpha}{egreeki}{"07}
+ \DeclareMathSymbol{\varUpsilon}{\mathalpha}{egreeki}{"07}
 % \DeclareMathSymbol{\varPhi}{\mathalpha}{egreeki}{"08}
 % \DeclareMathSymbol{\varChi}{\mathalpha}{egreeki}{"58}
 % \DeclareMathSymbol{\varPsi}{\mathalpha}{egreeki}{"09}
@@ -511,7 +511,7 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 \newcommand*{\yHa}{\varIota'}
 \newcommand*{\yHb}{\varIota''}
 \newcommand*{\yHc}{\varKappa}
-\newcommand*{\yHd}{\Hat{\varIota}}
+\newcommand*{\yHd}{\varUpsilon}
 %Lagr multipliers
 \newcommand*{\yf}{\bm{f}}
 \newcommand*{\yc}{\bm{c}}
@@ -1124,17 +1124,38 @@ larger population exists? In the latter case it would not be the correct
 model to use in our problem.
 
 A perfunctory intuitive reasoning seems insufficient for clarifying this
-point. Suppose we do not know whether the sample is really part of a larger
-population; we do not know if $N=n$ or how large is $N$ otherwise. Call
-this state of ignorance $\yHd$. From the
-point of view of probability theory, th
- ignorance about the
-value of $N$ is expressed by assigning a probability distribution
-$\p(N \| \yH)$ that vanishes if $N<n$, since we know that $N\ge n$. Let's
-call thi
-Probability assignments for the sample state that do not assume a specific
-value of $N$ are then obtained by marginalization
+point. Let's express it via the probability calculus. Suppose we do not
+know whether the sample is really part of a larger population; we do not
+know if $N=n$ or how large is $N$ otherwise. Call this state of ignorance
+$\yHd$. From the point of view of the probability calculus, this ignorance
+about $N$ is expressed by assigning a probability distribution
+$\p(N \| \yHd)$ that vanishes if $N<n$, since we know that $N\ge n$.
+Maintaining our assumption of symmetric ignorance, probability assignments
+that do not assume a specific value of $N$ are then obtained by
+multiplication of all $N$-dependent probabilities by $\p(N \| \yHd)$ and
+subsequent marginalization over $N$ -- technically speaking, $N$ is a
+\emph{nuisance parameter} that we eliminate. The probability obtained from
+\me\ at the population level, \eqn~\eqref{eq:app_maxent_pop_marg} then
+generalizes to
+\begin{equation}
+  \label{eq:app_maxent_pop_marg_unknown_N}
+  \p(\yxs = \yrs \| \yHd)  = \sum_N \biggl\{\yK_N\, 
+  \sum_{N\yRf=0}^N \ypp_N(\yrs \|\yRf)
+\,
+  \binom{N}{N \yRf}\exp\Bigl[{\yL_N}\T
+  \sum_{n\yrs=0}^n \yf(\yrs)\ypp_N(\yrs\|\yRf)\Bigr]\biggr\}
+  \,\p(N \| \yHd).
+\end{equation}
+This is a formidable expression. But the answer to our question, whether
+the usual \me\ at the sample level~\eqref{eq:app_maxent_sample} does not
+assume anything about a larger population, translates into the precise
+mathematical question: are the
+distributions~\eqref{eq:app_maxent_pop_marg_unknown_N} and
+\eqref{eq:app_maxent_sample} equal, for some choice of $\p(N \| \yHd)$? We
+leave this mathematical problem for future work.
 
+
+\iffalse
 The former application must therefore implicitly assume that no
 larger population exist, or that the neurons of the sample are isolated
 from their environment.
@@ -1152,6 +1173,7 @@ presence of additional assumptions or constraints. In this case the
 assumption is that the sample is part of a larger population, and our
 ignorance about the sample should be representative of our ignorance about
 a larger population. This assumption affects our predictions.
+\fi
 
 In a neuroscientific context we find this assumption very natural, and
 therefore the \me\ method at the population level preferable. After all,

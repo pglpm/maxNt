@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2017-05-18T14:18:19+0200
+%% Last-Updated: 2017-05-18T16:09:42+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -12,12 +12,14 @@
 % to avoid loading the natbib package, add option nonatbib:
 % \usepackage[nonatbib]{nips_2017}
 
-\usepackage[final,nonatbib]{nips_2017}
+\usepackage[%final,
+nonatbib]{nips_2017}
+
 \newcommand*{\firstdraft}{4 November 2015}
-\newcommand*{\pdftitle}{Representative random samples\\ and maximum-entropy
-  distributions:\\ a dilemma}
-\newcommand*{\headtitle}{\pdftitle}
-\newcommand*{\pdfauthor}{P.G.L.  Porta Mana, V. Rostami, E. Torre}
+
+\newcommand*{\pdftitle}{Representative samples\\ and maximum-entropy distributions\\ in neuroscience: a dilemma}
+
+\newcommand*{\headtitle}{\pdftitle} \newcommand*{\pdfauthor}{P.G.L. Porta Mana, V. Rostami, E. Torre}
 
 \usepackage{newtxmath}
 %\usepackage{pifont}
@@ -610,7 +612,7 @@ E. Torre\\ETH Z{\"u}rich\\Switzerland\\
 % a mechanical ritual than a real tentative of connecting with the reader.
 This note is mainly addressed to neuroscientists interested in \me\
 methods, but we would be pleased if its discussion of the probability of
-\enquote{random sampling} were useful to neuroscientists that use other
+\enquote{sampling} were useful to neuroscientists that use other
 statistical methods to study the physical and dynamical characteristics of
 brain areas via neuronal recording.
 
@@ -618,11 +620,11 @@ Recent electrophysiological techniques \cite{berenyietal2014} in fact allow
 experimenters to record samples of even a couple hundreds neurons from
 specific brain areas. These samples are usually picked out according to an
 unknown process, but from their observation we expect to learn something
-about all other neurons in the same brain area. That is, we assumed
+about all other neurons in the same brain area. That is, we assume
 that they are a \enquote{representative random sample}.
 
 We don't elaborate on the various important purposes of such recordings
-here \cite{?***}, but stress that these sample sizes can be considered
+here, but stress that these sample sizes can be considered
 \enquote{large}, because their statistical analysis requires considerable
 computational power.
 
@@ -634,22 +636,21 @@ compression would also entail interesting physico-biological properties of
 neuronal activity. The standard \me\ method
 \cite{jaynes1957,sivia1996_r2006,meadetal1984} accomplishes this kind of
 compression: it associates a unique probability distribution with few
-experimental quantities \cite{***}.
-But this is only one of its uses. It is
-also used for various information-theoretic purposes or to generate
-reference probability distributions \cite{schneidmanetal2006,shlensetal2006,roudietal2009b,tkaciketal2014b}.
-In all these uses the \me\
-distribution is chosen as the \enquote{maximally noncommittal} one
-\cite{jaynes1963}. This adjective means little without further technical
-characterizations. Different works give different characterizations, but in
-this paper we will use the quoted expression as an umbrella term for all of
-them. Our results will not depend on the specific characterization of
-\enquote{noncommittal}.
+experimental quantities. But this is only one of its uses. It is also used
+for various information-theoretic purposes or to generate reference
+probability distributions
+\cite{bohteetal2000,schneidmanetal2006,shlensetal2006,roudietal2009b,mackeetal2011,tkaciketal2014b,shimazakietal2015}.
+In all these uses the \me\ distribution is chosen as the \enquote{maximally
+  noncommittal} one \cite{jaynes1963}. This adjective means little without
+further technical characterizations. Different works give different
+characterizations, but in this paper we will use the quoted expression as
+an umbrella term for all of them. Our results will not depend on the
+specific characterization of \enquote{noncommittal}.
 
 \bigskip
 
 In this note we want to show that we have to face a dilemma if we want to
-apply the \me\ method to a representative random sample to find a maximally
+apply the \me\ method to a representative  sample to find a maximally
 noncommittal distribution.
 
 The dilemma is this. We can apply the \me\ method to the sample, using a
@@ -667,7 +668,7 @@ features. However, \emph{the distributions obtained by these two
 
 In the rest of the paper we mathematically formulate this dilemma. To this
 purpose we also present some probability relations relevant to
-\enquote{random sampling}. These relations are well-known in survey
+sampling. These relations are well-known in survey
 sampling and in the pedagogic problem of drawing from an urn without
 replacement, yet they are somewhat hard to find explicitly written in the
 neuroscientific literature, so they may be of interest on their own. 
@@ -859,7 +860,7 @@ $\yXf$:
 \includegraphics[width=0.99\linewidth]{pop_sample_projection3.pdf}%
 \caption{Log-plot of the hypergeometric distribution
   $%\p(\yxs = \yrs \|\yXf=\yRf, \yH)=
-\ypp(\yrs\|\yRf) \defd  \binom{n}{n\yrs}\binom{N-n}{N \yRf-n\yrs}\binom{N}{N \yRf}^{-1}$ for $N=5000$, $n=200$. (Band artifacts may appear in the
+\ypp(\yrs\|\yRf) \defd  \raisebox{0pt}[0pt][1ex]{}\binom{n}{n\yrs}\binom{N-n}{N \yRf-n\yrs}\binom{N}{N \yRf}^{-1}$ for $N=5000$, $n=200$. (Band artifacts may appear in the
   colourbar depending on your \textsc{pdf} viewer.)}
 \label{fig:hypergeom_proj}
 \end{figure}%hypergeometric_identity.nb
@@ -989,7 +990,7 @@ $\yHa$, gives
 \begin{equation}
   \label{eq:app_maxent_pop}
   \p(\yXf = \yRf \| \yHa)  = \yK\,
-  \binom{N}{N \yRf}\exp\Bigl[\yL\T
+  \binom{N}{N \yRf}\,\exp\Bigl[\yL\T
   \sum_{n\yrs=0}^n \yf(\yrs)\ypp(\yrs\|\yRf)\Bigr],
 \end{equation}
 and then by marginalization with \eqn~\eqref{eq:marginal}
@@ -998,7 +999,7 @@ and then by marginalization with \eqn~\eqref{eq:marginal}
   \p(\yxs = \yrs \| \yHa)  = \yK\, 
   \sum_{N\yRf=0}^N \ypp(\yrs \|\yRf)
 \,
-  \binom{N}{N \yRf}\exp\Bigl[\yL\T
+  \binom{N}{N \yRf}\,\exp\Bigl[\yL\T
   \sum_{n\yrs=0}^n \yf(\yrs)\ypp(\yrs\|\yRf)\Bigr],
 \end{equation}
 where $\yK$ is a normalization constant and
@@ -1008,7 +1009,7 @@ that
   \label{eq:app_maxent_pop_constraints}
 \yc = \yK\sum_{n\yrs=0}^n \sum_{N\yRf=0}^N \yf(\yrs) \ypp(\yrs \|\yRf)
 \,
-  \binom{N}{N \yRf}\exp\Bigl[\yL\T
+  \binom{N}{N \yRf}\,\exp\Bigl[\yL\T
   \sum_{n\yrs=0}^n \yf(\yrs)\ypp(\yrs\|\yRf)\Bigr].
 \end{equation}
 Application of \me\ at the sample level, denoted by $\yHb$, gives
@@ -1131,33 +1132,38 @@ A perfunctory intuitive reasoning seems insufficient for clarifying this
 point. Let's express it in the language of the probability calculus.
 Suppose we do not know whether the sample is really part of a larger
 population: we do not know whether $N=n$ or how large is $N$ otherwise.
-Call this state of ignorance $\yHd$. From the point of view of the
-probability calculus, this ignorance about $N$ is expressed by assigning a
-probability distribution $\p(N \| \yHd)$ that vanishes if $N<n$, since we
-know that $N\ge n$. Maintaining our assumption of symmetric ignorance,
-probability assignments that do not assume a specific value of $N$ are then
-obtained by multiplication of all $N$-dependent probabilities by
-$\p(N \| \yHd)$ and subsequent marginalization over $N$ -- technically
-speaking, $N$ is a \emph{nuisance parameter} that we eliminate
+Call this state of ignorance $\yHd$. In the probability calculus, this
+ignorance about $N$ is expressed by assigning a probability distribution
+$\p(N \| \yHd)$ that vanishes if $N<n$, since we know that $N\ge n$; see
+Good \cite{good1965,good1967b} and Rissanen \cite{rissanen1983} for
+examples of such distributions over the integers. Maintaining our
+assumption of symmetric ignorance, probability assignments that do not
+assume a specific value of $N$ are then obtained by multiplication of all
+$N$-dependent probabilities by $\p(N \| \yHd)$ and subsequent
+marginalization over $N$. Technically speaking, $N$ becomes a
+\emph{nuisance parameter}
 \cite{jaynes1994_r2003,lindley1965b_r2008,bernardoetal1994_r2000}. The
 probability obtained from \me\ at the population level,
-\eqn~\eqref{eq:app_maxent_pop_marg} then generalizes to
+\eqn~\eqref{eq:app_maxent_pop_marg}, then generalizes to
 \begin{equation}
   \label{eq:app_maxent_pop_marg_unknown_N}
   \p(\yxs = \yrs \| \yHd)  = \sum_N \biggl\{\yK_N\, 
   \sum_{N\yRf=0}^N \ypp_N(\yrs \|\yRf)
 \,
-  \binom{N}{N \yRf}\exp\Bigl[{\yL_N}\T
+  \binom{N}{N \yRf}\,\exp\Bigl[{\yL_N}\T
   \sum_{n\yrs=0}^n \yf(\yrs)\ypp_N(\yrs\|\yRf)\Bigr]\biggr\}
-  \,\p(N \| \yHd).
+  \,\p(N \| \yHd),
 \end{equation}
-This is a formidable expression. But the answer to our question, whether
-the usual \me\ at the sample level~\eqref{eq:app_maxent_sample} does not
-assume anything about a larger population, translates into the precise
-mathematical question: are the
-distributions~\eqref{eq:app_maxent_pop_marg_unknown_N} and
-\eqref{eq:app_maxent_sample} equal, for some choice of $\p(N \| \yHd)$? We
-leave this mathematical problem for future work.
+where $N$-dependencies have been made explicit. This is a formidable
+expression. But the answer to our question, whether the usual \me\ at the
+sample level~\eqref{eq:app_maxent_sample} does not assume anything about a
+larger population, translates now into the precise mathematical question:
+are the distributions~\eqref{eq:app_maxent_pop_marg_unknown_N} and
+\eqref{eq:app_maxent_sample} equal for some choice of $\p(N \| \yHd)$, with
+$\p(N \| \yHd)\ne 0$ for $N>n$? We leave this mathematical problem for
+future work. Note, however, that this equality is satisfied if
+$\p(N=1 \| \yHd)=1$, which means that the usual \me\ model can also be
+interpreted as assuming that \emph{no} larger population exists.
 
 
 \iffalse
@@ -1180,11 +1186,13 @@ ignorance about the sample should be representative of our ignorance about
 a larger population. This assumption affects our predictions.
 \fi
 
-In a neuroscientific context we find this assumption very natural, and
-therefore the \me\ method at the population level preferable. After all,
-also \emph{physical} neuronal-network models usually include some sort of
-external input to the neurons, mimicking their embedding in a larger
-network.
+Rough estimates of $N$ may be available in neuroscientific contexts, so we
+find the \me\ model constructed at the population level very natural and
+preferable. After all, \emph{physical} neuronal-network models usually
+include some sort of external input to the neurons as well, mimicking their
+embedding in a larger network. The distribution of this \me\ model, when
+used as a reference distribution for surprise analysis, may reveal features
+in a dataset that were unnoticed by the standard \me\ model.
 
 \iffalse
 The quandary we found in the present note has at least two bright sides.
@@ -1204,11 +1212,13 @@ example.
   $\expe{\yxxs \|\yH}=0.0025$, and $N=5000$, $n=200$.}
 \label{fig:diff_maxent_pop_sample_realdata}
 \end{figure}%maxent_pop_or_sample.nb
-The second is that \fi The possibility of using two different distributions
-is not a physical contradiction. Similar situations arise in statistical
-mechanics. It is known that if a system is described by a \me\ Gibbs state,
-its subsystems need not be \cite{maesetal1999}. A dilemma quite similar to
-ours also appears in the statistical description of the final state of a
+The second is that \fi
+
+The possibility of using two different distributions is not a physical
+contradiction. Similar situations arise in statistical mechanics. It is
+known that if a system is described by a \me\ Gibbs state, its subsystems
+need not be \cite{maesetal1999}. A dilemma quite similar to ours also
+appears in the statistical description of the final state of a
 non-equilibrium process starting and ending in two equilibrium states: we
 can describe our knowledge about the final state either by a Gibbs
 distribution, or by the distribution obtained from the Liouville evolution
@@ -1219,14 +1229,33 @@ difference in the two descriptions appears because in one case we can make
 sharper predictions about the state thanks to our knowledge of its
 preceding dynamics. In this example, though, both distributions are usually
 immensely sharp and practically lead to the same predictions. In the cases
-considered in this note the difference in predictions may be relevant, and
-the ones made by \me\ at the population level are more informed.
+considered in this note the difference in predictions may be relevant
+instead.
 
-\mynote{Importance of the formulae relating sample and population.}
+Our analysis touched only constraints of the sample average. The
+corresponding models are usually called \enquote{homogeneous} in the
+literature. Purely \enquote{inhomogeneous} models have also been used
+\cite{schneidmanetal2006,shlensetal2006,roudietal2009b}, in which
+expectations for individual neurons or groups of neurons are constrained,
+for example $\expe{x_2}$ or $\expe{x_1x_8x_9}$. A short computation shows
+that the \me\ method with this kind of constraints gives the same result
+whether applied at the sample or at the population level: the states of any
+unconstrained neurons marginalize out. This is understandable: expressing
+different uncertainties about neurons $2$ and $5$ we are breaking the
+symmetry of our uncertainty, which thus cannot be representative of other
+neurons in the sample or in the population.
 
-\mynote{Discussion of case when individual $X_i\dotsm X_j$ are constrained.
-Likely breakdown of \me\ in this case \cite{portamana2009}. Hints at full
-Bayesian treatment of which \me\ is a limit? \cite[***]{mackay1995_r2003}}
+Inhomogeneous models, however, require enormous computational power for
+large sample sizes; homogeneous models therefore retain their importance.
+Our analysis and dilemma also persist for hybrid homogeneous-inhomogeneous
+models \cite{tkaciketal2014b,shimazakietal2015}.
+
+
+%\mynote{Importance of the formulae relating sample and population.}
+
+% \mynote{Discussion of case when individual $X_i\dotsm X_j$ are constrained.
+% Likely breakdown of \me\ in this case \cite{portamana2009}. Hints at full
+% Bayesian treatment of which \me\ is a limit? \cite[***]{mackay1995_r2003}}
 
 
 % do not change font sizes (except perhaps in the \textbf{References}

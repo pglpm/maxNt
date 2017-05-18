@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2017-05-18T14:02:33+0200
+%% Last-Updated: 2017-05-18T14:18:19+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -981,8 +981,9 @@ $\p(\yxs=\yrs \| \yH)$. \emph{The two applications, however, are
 
 Suppose we want to constrain the sample expectations of a vector function
 $\yf = (f_1,\dotsc,f_m)$ to the vector values $\yc=(c_1,\dotsc,c_m)$, that
-is, $\expeb{\yf(\yxs)}=\yc$. Application of \me\ at the population level,
-denoted by $\yHa$, gives
+is, $\expeb{\yf(\yxs)}=\yc$. Application of \me\
+\cite{sivia1996_r2006,meadetal1984} at the population level, denoted by
+$\yHa$, gives
 \begin{equation}
   \label{eq:app_maxent_pop}
   \p(\yXf = \yRf \| \yHa)  = \yK\,
@@ -1035,8 +1036,9 @@ Lagrange multipliers $\yL$ and $\yl$ to satisfy equations
 \eqref{eq:app_maxent_pop_constraints},
 \eqref{eq:app_maxent_sample_constraints}, and
 $\p(\yxs = \yrs \| \yHa) = \p(\yxs = \yrs \| \yHb)$ -- that is, $2m+n$
-equations in $m$ unknowns. This could be possible, if at all, only for very
-special choices of constraints functions $\yf$ and values $\yc$.
+equations (normalization is taken care of) in $2m$ unknowns. A solution can
+exist, if at all, only for very special choices of constraints functions
+$\yf$ and values $\yc$.
 
 The sample distribution obtained from \me\ at the sample level will
 therefore likely miss important features present in the one obtained at the
@@ -1124,19 +1126,20 @@ larger population exists? In the latter case it would not be the correct
 model to use in our problem.
 
 A perfunctory intuitive reasoning seems insufficient for clarifying this
-point. Let's express it via the probability calculus. Suppose we do not
-know whether the sample is really part of a larger population; we do not
-know if $N=n$ or how large is $N$ otherwise. Call this state of ignorance
-$\yHd$. From the point of view of the probability calculus, this ignorance
-about $N$ is expressed by assigning a probability distribution
-$\p(N \| \yHd)$ that vanishes if $N<n$, since we know that $N\ge n$.
-Maintaining our assumption of symmetric ignorance, probability assignments
-that do not assume a specific value of $N$ are then obtained by
-multiplication of all $N$-dependent probabilities by $\p(N \| \yHd)$ and
-subsequent marginalization over $N$ -- technically speaking, $N$ is a
-\emph{nuisance parameter} that we eliminate. The probability obtained from
-\me\ at the population level, \eqn~\eqref{eq:app_maxent_pop_marg} then
-generalizes to
+point. Let's express it in the language of the probability calculus.
+Suppose we do not know whether the sample is really part of a larger
+population: we do not know whether $N=n$ or how large is $N$ otherwise.
+Call this state of ignorance $\yHd$. From the point of view of the
+probability calculus, this ignorance about $N$ is expressed by assigning a
+probability distribution $\p(N \| \yHd)$ that vanishes if $N<n$, since we
+know that $N\ge n$. Maintaining our assumption of symmetric ignorance,
+probability assignments that do not assume a specific value of $N$ are then
+obtained by multiplication of all $N$-dependent probabilities by
+$\p(N \| \yHd)$ and subsequent marginalization over $N$ -- technically
+speaking, $N$ is a \emph{nuisance parameter} that we eliminate
+\cite{jaynes1994_r2003,lindley1965b_r2008,bernardoetal1994_r2000}. The
+probability obtained from \me\ at the population level,
+\eqn~\eqref{eq:app_maxent_pop_marg} then generalizes to
 \begin{equation}
   \label{eq:app_maxent_pop_marg_unknown_N}
   \p(\yxs = \yrs \| \yHd)  = \sum_N \biggl\{\yK_N\, 

@@ -1,0 +1,425 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head><title>
+	Reviews For Paper
+</title>
+<style>
+body
+{
+	font-family:verdana,arial,helvetica;
+}
+#header
+{
+    width: 100%;
+    font-size: small;
+    background-color:#F7F7F7;
+}
+.headerSeparator
+{
+    background-color: #105586;
+}
+.printThemeText
+{
+    font-size:small;
+}
+.printThemeTable td
+{
+    vertical-align:top;
+}
+.printThemeGrid th
+{
+    color:white;
+    background:#5D7B9D;
+    font-weight:bold;
+}
+.printThemeGrid
+{
+    border-collapse:collapse;
+}
+.printThemeGrid td, .printThemeGrid th
+{
+    border:solid 1px #D6D3CE;
+    padding:4px 4px 4px 4px;
+}
+.printThemeGrid .row
+{ 
+    background-color:#F7F6F3;
+    color:#333333;
+    vertical-align:top;
+}
+.printThemeGrid .altrow
+{ 
+    background-color:White;
+    color:#284775;
+    vertical-align:top;
+}
+.cellprompt
+{
+	font-weight:bold;
+	white-space:nowrap;
+    width:100px;	
+}
+.paperHeader
+{
+    background-color:#dee3e7;
+    margin:5px 5px 15px 0px;
+    width:99%;
+    font-family:Verdana;
+    font-size:medium;
+    font-weight:bold;
+}
+.sectionHeader
+{
+    background-color:#dee3e7;
+    padding:5px 5px 5px 0px;
+    width:99%;
+    text-decoration:underline;
+    font-family:Verdana;
+    font-size:small;
+    font-weight:bold;
+}
+.underlineheader
+{
+    text-decoration:underline;
+    font-weight:bold;
+    padding:5px 0px;
+}
+.response
+{
+    padding:5px 0px;
+}
+.reviewerlabel
+{
+    padding-right:20px;
+}
+.pageTitle
+{
+    background-color:#dee3e7;
+    padding:5px 5px 5px 5px;
+    margin-top:10px;
+    width:99%;
+    font-family:Verdana;
+    font-size:medium;
+    font-weight:bold;
+}
+.submissionDetailsView
+{
+}
+.submissionDetailsView tr
+{
+    vertical-align:top;
+}
+.submissionDetailsView td.prompt
+{
+    font-weight:bold;
+}
+.submissionDetailsView tr.sectionSeparator
+{
+
+}
+.submissionDetailsView tr.sectionSeparator td
+{
+    background-color:#dee3e7;
+    padding:5px 5px 5px 5px;
+    font-family:Verdana;
+    font-size:small;
+    font-weight:bold;
+    color:Navy;
+}
+/*CSS Grid View General Definitions*/
+.CssGridView
+{
+    font-size:small; 
+}
+
+.CssGridView td, .CssGridView th
+{
+    padding:4px 4px 4px 4px;
+}
+
+/*CSS Compact Grid View General Definitions*/
+.CssGridViewCompact img
+{
+    border-style:none;
+    border-width:0px;
+}
+
+.CssGridViewCompact
+{
+    font-size:1em;
+    border-style:solid;
+    border-color:#D6D3CE;
+    border-width:1px;
+}
+
+.CssGridViewCompact .hrow a
+{
+    font-size:1em;
+}
+
+.CssGridViewCompact .row a, .CssGridViewCompact .altrow a
+{
+    font-size:0.8em;
+}
+
+.CssGridViewCompact .row .normal a, .CssGridViewCompact .row .normal, .CssGridViewCompact .altrow .normal a, .CssGridViewCompact .altrow .normal
+{
+    font-size:1em;
+}
+
+/*CSS Grid View Header Styles*/
+.CssGridView .hrow, .CssGridViewCompact .hrow
+{ 
+    background-color:#5D7B9D;
+    font-weight:bold;
+    color:White;
+}
+
+
+.CssGridViewCompact .hrow td
+{ 
+    border-bottom-width:0px;
+}
+
+.CssGridViewCompact .hrow th
+{ 
+    border-top-width:0px;
+    font-size:0.8em;
+    vertical-align:top;
+    border-left-width:0px;
+    border-right-width:0px;
+}
+
+.CssGridViewCompact .smaller
+{
+    font-size:0.8em;
+}
+
+/*CSS Grid View Row Styles*/
+.CssGridViewCompact .row, .CssGridViewCompact .altrow
+{
+    border-top-style:solid;
+    border-top-color:#D6D3CE;
+    border-top-width:1px;
+    border-bottom-style:solid;
+    border-bottom-color:#D6D3CE;
+    border-bottom-width:1px;
+}
+
+/*CSS Grid View Header Styles*/
+.CssGridViewCompact .hrow .leftborder, .CssGridViewCompact .row .leftborder, .CssGridViewCompact .altrow .leftborder
+{
+    border-left-width:1px;
+    border-left-color:#D6D3CE;
+    border-left-style:solid;
+}
+
+.CssGridViewCompact .hrow .rightborder, .CssGridViewCompact .row .rightborder, .CssGridViewCompact .altrow .rightborder
+{
+    border-right-width:1px;
+    border-right-color:#D6D3CE;
+    border-right-style:solid;
+}
+
+.CssGridView .hrow a, .CssGridViewCompact .hrow a
+{ 
+    color:White;
+}
+ 
+.CssGridView .row, .CssGridViewCompact .row
+{ 
+    background-color:#F7F6F3;
+    color:#333333;
+    vertical-align:top;
+}
+
+.CssGridView .altrow, .CssGridViewCompact .altrow
+{ 
+    vertical-align:top;
+}
+
+.CssGridViewCompact .row td
+{ 
+    border-left-width:0px;
+    border-right-width:0px;
+}
+ 
+.CssGridViewCompact .altrow
+{ 
+    background-color:White;
+    color:#284775;
+    vertical-align:top;
+}
+
+.CssGridView .altrow tr, .CssGridViewCompact .altrow tr, .CssGridView .row tr, .CssGridViewCompact .row tr
+{ 
+    vertical-align:top;
+}
+</style>
+</head>
+<body>
+<form name="aspnetForm" method="post" action="./ViewReviewsForPaper.aspx?paperId=2011" id="aspnetForm">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTAxNDM4ODU3Ng9kFgJmD2QWAgIDD2QWAmYPZBYCAgUPDxYCHgdWaXNpYmxlZ2QWBgIBD2QWAmYPZBYCZg9kFgZmDxYCHwBnFgICAQ9kFgJmDw8WAh4EVGV4dAUEQmx1ZWRkAgEPZBYCAgEPZBYCZg8PFgIfAQUEMjAxMWRkAgIPZBYCAgEPZBYCZg8PFgIfAQVHUmVwcmVzZW50YXRpdmUgc2FtcGxlcyBhbmQgbWF4aW11bS1lbnRyb3B5IGRpc3RyaWJ1dGlvbnMmIzU4OyBhIGRpbGVtbWFkZAIDDw8WAh8AaGRkAgUPFgIeC18hSXRlbUNvdW50AgMWBmYPZBYGAgMPZBYCZg8VARNBc3NpZ25lZF9SZXZpZXdlcl8xZAIHDzwrABEDAA8WBB4LXyFEYXRhQm91bmRnHwICA2QBEBYAFgAWAAwUKwAAFgJmD2QWCAIBD2QWBGYPDxYCHwEFD092ZXJhbGwgcmF0aW5nOmRkAgEPZBYCZg8VASVNYXJnaW5hbGx5IGJlbG93IGFjY2VwdGFuY2UgdGhyZXNob2xkZAICD2QWBGYPDxYCHwEFEUNvbmZpZGVuY2Ugc2NvcmU6ZGQCAQ9kFgJmDxUBiAFUaGUgcmV2aWV3ZXIgaXMgd2lsbGluZyB0byBkZWZlbmQgdGhlIGV2YWx1YXRpb24sIGJ1dCBpdCBpcyBxdWl0ZSBsaWtlbHkgdGhhdCB0aGUgcmV2aWV3ZXIgZGlkIG5vdCB1bmRlcnN0YW5kIGNlbnRyYWwgcGFydHMgb2YgdGhlIHBhcGVyZAIDD2QWBGYPDxYCHwEFEkRldGFpbGVkIENvbW1lbnRzOmRkAgEPZBYCZg8VAdcTSW4gdGhpcyBwYXBlciwgdGhlIGF1dGhvcnMgcHJlc2VudCBhIGRpbGVtbWEgc3Vycm91bmRpbmcgdGhlIHVzZSBvZiBtYXhpbXVtIGVudHJvcHkgbWV0aG9kcyBmb3IgdGhlIGFuYWx5c2lzIG9mIGludHJhY2VsbHVsYXIgcmVjb3JkaW5ncyBmcm9tIG5ldXJvbnMuIFRoZSBwYXBlciBpcyB2ZXJ5IGNsZWFybHkgYW5kIHByZWNpc2VseSB3cml0dGVuIGFuZCBzZWVtcyB0byBiZSB0YXJnZXR0ZWQgcHJpbWFyaWx5IGF0IGNvbXB1dGF0aW9uYWwgbmV1cm9zY2llbnRpc3Qgd2hvIGFyZSBhbHJlYWR5IHVzaW5nIHRoZSBtZXRob2QuIFRoZSBiYXNpYyBwb2ludCBpcyB0aGF0IHRoZSBkaXN0cmlidXRpb24gb2J0YWluZWQgd2hlbiBhcHBseWluZyB0byB0aGUgc2FtcGxlIGRpcmVjdGx5IGlzIGRpZmZlcmVudCB0byB0aGUgZGlzdHJpYnV0aW9uIG9idGFpbmVkIHdoZW4gYXBwbHlpbmcgdG8gdGhlIHBvcHVsYXRpb24gdGhlbiBtYXJnaW5hbGlzaW5nLiBUaGUgYXV0aG9ycyBvdXRsaW5lIHRoZSBwcm9ibGVtIGFuZCBnaXZlIHNvbWUgY29tbWVudHMgYWJvdXQgd2hpY2ggYXBwcm9hY2ggc2hvdWxkIGJlIHByZWZlcnJlZCBpbiBwcmFjdGljZS4gPGJyIC8+PGJyIC8+SSBhbSBhIGNvbXB1dGF0aW9uYWwgbmV1cm9zY2llbnRpc3QgYW5kIHdpbGwgYWxzbyBub3RlIHRoYXQgSSBhbSBub3QgYW4gZXhwZXJ0IGluIG1heGltdW0gZW50cm9weSBtZXRob2RzLCBzbyBteSBjb21tZW50cyBhcmUgdGFyZ2V0dGVkIHByaW1hcmlseSB0byB0aGUgYXBwbGllZCBhc3BlY3RzIG9mIHRoZSBwYXBlci4gVGhlIG1haW4gaXNzdWVzIEkgc2VlIGlzIHRoYXQgSSBhbSBub3Qgc3VyZSBob3cgYnJvYWRseSBhcHBsaWNhYmxlIHRoaXMgcGFwZXIgaXMgYW5kIHdoZXRoZXIgTklQUyBpcyB0aGUgYmVzdCBmb3J1bSBmb3IgaXRzIHByZXNlbnRhdGlvbi4gVGhlIHBvaW50IHRoZSBhdXRob3JzIG1ha2Ugc2VlbXMgZmFpcmx5IHRlY2huaWNhbCBhbmQgaXMgcHJvYmFibHkgb25seSBhY2Nlc3NpYmxlIHRvIGEgcmVsYXRpdmVseSBuYXJyb3cgc2V0IG9mIHJlYWRlcnMuIFRoaXMgY291bGQgYmUgaGVscGVkIGJ5IGdpdmluZyBhIGJyb2FkZXIgYW5kIG1vcmUgYWNjZXNzaWJsZSBpbnRyb2R1Y3Rpb24gdG8gbWF4aW11bSBlbnRyb3B5IG1ldGhvZHMgaW4gbmV1cm9zY2llbmNlIGJlZm9yZSBkaXZpbmcgc3RyYWlnaHQgaW50byB0aGUgdGVjaG5pY2FsIGRldGFpbHMgYXMgdGhleSBkbyBpbiB0aGUgY3VycmVudCBtYW51c2NyaXB0LiA8YnIgLz48YnIgLz5JbiBteSBtaW5kLCB0aGUgY2hvaWNlIG9mIGFzc3VtcHRpb25zIG1hZGUgcHJpb3IgdG8gYW5hbHlzaXMgc2hvdWxkIGJlIGRldGVybWluZWQgYnkgdGhlIGRvbWFpbiBrbm93bGVkZ2UgdGhhdCBpcyBhdmFpbGFibGUuIFRoZXJlZm9yZSwgdGhlIGNlbnRyYWwgcXVlc3Rpb24gaXMgaG93IGNlcnRhaW4gY2FuIHdlIGJlIGZvciB0aGUgZGF0YSBhdCBoYW5kIHRoYXQgdGhlIG5ldXJvbnMgcmVjb3JkZWQgZnJvbSBhcmUgYmlvbG9naWNhbGx5IG9yIGZ1bmN0aW9uYWxseSBzaW1pbGFyIChkZW5vdGVkIGJ5IHRoZSBhdXRob3JzIGFzIEknKT8gV291bGQgdGhhdCBiZSB0aGUgY2FzZSBkdXJpbmcgaW4gdml0cm8gcmVjb3JkaW5ncz8gIFNvbWUgZGlzY3Vzc2lvbiBvbiB0aGlzIHBvaW50IHdvdWxkIGJlIGhlbHBmdWwgdG8gdW5kZXJzdGFuZCB0aGUgY29uc2VxdWVuY2VzIG9mIHRoaXMgYXNzdW1wdGlvbiBpbiBwcmFjdGljZSwgc2luY2UgdGhpcyBpcyB0aGUgYXBwcm9hY2ggdGhlIGF1dGhvcnMgcmVjb21tZW5kLiBPciBvbiB0aGUgb3RoZXIgaGFuZCwgd2hlbiBpcyBpdCBuZWNlc3NhcnkgdG8gYXNzdW1lIGFic29sdXRlIGlnbm9yYW5jZSAoSScnKT88YnIgLz48YnIgLz5Bbm90aGVyIGNvbW1lbnQgSSB3b3VsZCBtYWtlIGlzIHRoYXQgSSBhbSBub3Qgc3VyZSB0aGUgYXV0aG9ycyB0YWtlIHRoZWlyIHRoZW9yZXRpY2FsIGFuYWx5c2lzIGZhciBlbm91Z2ggdG8gZ2l2ZSBjbGVhciBndWlkYW5jZSwgc2luY2UgdGhleSBkbyBub3QgcmVhbGx5IHByb3ZpZGUgYW4gYW5hbHlzaXMgdG8gZGV0ZXJtaW5lIHdoZXRoZXIgdGhlIGRpc3RyaWJ1dGlvbnMgKDE5KSBhZG5kICgxNykgYXJlIGVxdWFsIHVuZGVyIGNlcnRhaW4gY2hvaWNlcyBvZiBQKE58XGdhbW1hKS4gSW5zdGVhZCwgdGhlIGF1dGhvcnMgb25seSBnbyBzbyBmYXIgZW5vdWdoIHRvIHNheSB0aGF0IG1heGVudCBtb2RlbHMgY2FuIGJlIGludGVycHJldGVkIGFzIGFzc3VtaW5nIG5vIGxhcmdlciBwb3B1bGF0aW9uIGV4aXN0cy4gQWdhaW4sIHdoYXQgZG9lcyB0aGlzIG1lYW4gaW4gcHJhY3RpY2U/PGJyIC8+PGJyIC8+RmluYWxseSwgdGhlIGF1dGhvcnMgc2hvdWxkIGltcHJvdmUgdGhlIGNsYXJpdHkgb2YgdGhlIHByZXNlbnRhdGlvbnMgb2YgdGhlaXIgZmlndXJlcyAoZS5nLiBsYWJlbGxpbmcgb2YgYXhlcykuIFRoZSBhdXRob3JzIGFsc28gZG8gbm90IGRlc2NyaWJlIHdoYXQgYWxsIHRocmVlIHBsb3RzIGFyZSBpbiB0aGUgZmlndXJlIGxlZ2VuZC5kAgQPDxYCHwBoZGQCCA8VAQBkAgEPZBYGAgMPZBYCZg8VARNBc3NpZ25lZF9SZXZpZXdlcl8yZAIHDzwrABEDAA8WBB8DZx8CAgNkARAWABYAFgAMFCsAABYCZg9kFggCAQ9kFgRmDw8WAh8BBQ9PdmVyYWxsIHJhdGluZzpkZAIBD2QWAmYPFQEPQ2xlYXIgcmVqZWN0aW9uZAICD2QWBGYPDxYCHwEFEUNvbmZpZGVuY2Ugc2NvcmU6ZGQCAQ9kFgJmDxUBiAFUaGUgcmV2aWV3ZXIgaXMgd2lsbGluZyB0byBkZWZlbmQgdGhlIGV2YWx1YXRpb24sIGJ1dCBpdCBpcyBxdWl0ZSBsaWtlbHkgdGhhdCB0aGUgcmV2aWV3ZXIgZGlkIG5vdCB1bmRlcnN0YW5kIGNlbnRyYWwgcGFydHMgb2YgdGhlIHBhcGVyZAIDD2QWBGYPDxYCHwEFEkRldGFpbGVkIENvbW1lbnRzOmRkAgEPZBYCZg8VAf8SU3VtbWFyeTxiciAvPjxiciAvPlRoZSBwYXBlciBjb21wYXJlcyB0d28gYXBwcm9hY2hlcyBmb3IgYXBwbHlpbmcgdGhlIG1heGltdW0gZW50cm9weSBtZXRob2Q6IG9idGFpbmluZyB0aGUgTWF4RW50IGRpc3RyaWJ1dGlvbiBmb3IgdGhlIHNhbXBsZSBkaXJlY3RseSBvciB2aWEgdGhlIHBvcHVsYXRpb24gYnkgbWFyZ2luYWxpemF0aW9uIHRvIHRoZSBzYW1wbGUuIFRoZSByYWlzZWQgZGlsZW1tYSBpcyB0aGF0IHRoZSB0d28gYXBwcm9hY2hlcyBnaXZlcyBkaWZmZXJlbnQgcmVzdWx0cywgYW5kIGl0IGlzIGFyZ3VlZCB0aGF0IGl0IGlzIG5vdCBvYnZpb3VzIHdoaWNoIG9uZSB0byBjaG9vc2UuPGJyIC8+PGJyIC8+Q29tbWVudHM8YnIgLz48YnIgLz4xLiBUaGUgcGFwZXIgZG9lcyBub3QgZ2l2ZSB0aGUgbmVjZXNzYXJ5IGJhY2tncm91bmQgdGhlIHByb2JsZW0gaW4gdGhlIGRpbGVtbWEuIFdoYXQgYXJlIG1heGVudCByZXNlYXJjaGVycyB1c2luZywgbWFyZ2luYWxpemVkIHBvcHVsYXRpb24gbGV2ZWwgb3Igc2FtcGxlIGxldmVsPyBTb21lIHJlZmVyZW5jZXMgd291bGQgaGVscCBhbmQgZ2l2ZSBzb21lIHdlaWdodCB0byB0aGUgKGNsYWltZWQpIGltcG9ydGFuY2Ugb2YgdGhpcyBwcm9ibGVtLiBGb3IgZXhhbXBsZSwgb24gbGluZSAxODUtMTg2IGl0IGlzIGNsYWltZWQgdGhhdCAnIC4uLiBhcyBvZnRlbiBjbGFpbWVkIGluIHRoZSBsaXRlcmF0dXJlJywgYnV0IG5vdCBhIHNpbmdsZSByZWZlcmVuY2UgaXMgZ2l2ZW4gdG8gYmFjayB0aGlzIHVwLjxiciAvPjxiciAvPjIuIFRvIGJlIGludGVyZXN0ZWQgaW4gdGhlIGRpbGVtbWEgZXhwb3NlZCBpbiB0aGUgcGFwZXIsIG9uZSBtdXN0IHJlYWxseSBidXkgdGhhdCBib3RoIGFwcHJvYWNoZXMgYXJlIHJlYXNvbmFibGUgYWx0ZXJuYXRpdmVzLiBUaGUgYXV0aG9ycyBhcmUgcmVhbGx5IHZhZ3VlIGFib3V0IHRoZSBtb3RpdmF0aW9uIGZvciB0aGUgc2FtcGxlIGxldmVsIGFwcHJvYWNoLiBUaGUgcGFwZXIganVzdCBzYXlzIHRoYXQgdGhpcyBhcHByb2FjaCBpcyBlaXRoZXIgInVuYXNzdW1pbmciIGFib3V0IHRoZSBleGlzdGVuY2Ugb2YgYSBsYXJnZXIgcG9wdWxhdGlvbiBvciB0aGF0IG5vIGxhcmdlciBwb3B1bGF0aW9uIGV4aXN0cyAoaW4gd2hpY2ggY2FzZSB0aGVyZSBpcyBub3QgaW5mZXJlbmNlIHByb2JsZW0gdG8gYmUgc29sdmVkKS4gVGhlIHBhcGVyIG5lZWQgdG8gYmV0dGVyIGV4cGxhaW4gd2h5IHRoZSBzYW1wbGUgbGV2ZWwgYXBwcm9hY2ggaXMgZXZlbiBhbiBvcHRpb24uIDxiciAvPklmIGZpbmQgdGhhdCB0aGUgbW9yZSBpbnRlcmVzdGluZyBjYXNlIGlzIHdoZW4gdGhlIHBvcHVsYXRpb24gc2l6ZSBpcyB1bmtub3duLCBhcyBkaXNjdXNzZWQgaW4gdGhlIGNvbmNsdXNpb25zLiBVbmZvcnR1bmF0ZWx5LCB0aGlzIGlzIG5vdCBtdWNoIGVsYWJvcmF0ZWQgb24gaW4gdGhlIHBhcGVyLCBidXQgbGVmdCBmb3IgZnV0dXJlIHdvcmsuIDxiciAvPjxiciAvPjMuIEEgbGFyZ2UgcGFydCBvZiB0aGUgcGFwZXIgaXMgc3BlbnQgb24gZGVyaXZpbmcgcmVzdWx0cyB0aGF0IGFyZSBhbHJlYWR5IHdlbGwgZXN0YWJsaXNoZWQgaW4gdGhlIHNhbXBsaW5nLXdpdGhvdXQtcmVwbGFjZW1lbnQgbGl0ZXJhdHVyZSwgYnV0IHRoZSBtb3JlIGRpZmZpY3VsdCBhbmQgZGVjaXNpdmUgcmVzdWx0cyBhcmUgJ2xlZnQgZm9yIGZ1dHVyZSB3b3JrJyAoZS5nLiBQYWdlIDMsIExpbmUgMTA3IGFuZCBQYWdlIDggMjAxLTIwMikuIDxiciAvPjxiciAvPjQuIEVxdWF0aW9uICgxMikuIFRoZXNlIHR3byBhcHByb3hpbWF0aW9ucyB3aXRoIHVua25vd24gYWNjdXJhY3kgaXMgcmVmZXJyZWQgdG8gbGF0ZXIgaW4gdGhlIHRleHQgKGUuZy4gTGluZSAxMjYpLiBJIGRvbid0IHVuZGVyc3RhbmQgaG93IHRoZXNlIGhhbmQtd2F2eSBhcHByb3hpbWF0aW9ucyBjYW4gYmUgdXNlZCBmb3IgYXJndW1lbnRzIGFib3V0IHRoZSBmb3VuZGF0aW9ucyBvZiBtYXhpbXVtIGVudHJvcHkuIDxiciAvPjxiciAvPjUuIEZpZ3VyZSAyLiBJdCB3b3VsZCBiZSB1c2VmdWwgdG8gYWxzbyBwbG90IEJheWVzaWFuIHBvc3RlcmlvciBkaXN0cmlidXRpb25zIGZvciBjb21wYXJpc29uLiBQZXJoYXBzIGJhc2VkIG9uIGEgQmV0YSgxLDEpIGFuZCBCZXRhKDEvMiwgMS8yKSBwcmlvcnMgKHdoaWNoIGhhdmUgYmVlbiBwcm9wb3NlZCBhcyBvYmplY3RpdmUgaW4gdGhlIGxpdGVyYXR1cmUpLiBUaGlzIHdvdWxkIGhlbHAgdGhlIHJlYWRlciB0byBhc3Nlc3MgaWYgdGhlIGRpZmZlcmVuY2UgYmV0d2VlbiB0aGUgdHdvIG1heGVudCBhcHByb2FjaGVzIGFyZSBsYXJnZS48YnIgLz48YnIgLz5NaW5vciBjb21tZW50cyBhbmQgbWlzcHJpbnRzPGJyIC8+PGJyIC8+TGluZSAxMDguIHNhbXBsZSAtPiBwb3B1bGF0aW9uIDxiciAvPkxpbmUgMTA5LiBwb3B1bGF0aW9uIC0+IHNhbXBsZWQCBA8PFgIfAGhkZAIIDxUBAGQCAg9kFgYCAw9kFgJmDxUBE0Fzc2lnbmVkX1Jldmlld2VyXzVkAgcPPCsAEQMADxYEHwNnHwICA2QBEBYAFgAWAAwUKwAAFgJmD2QWCAIBD2QWBGYPDxYCHwEFD092ZXJhbGwgcmF0aW5nOmRkAgEPZBYCZg8VAShUb3AgNTAlIG9mIGFjY2VwdGVkIHBhcGVycywgY2xlYXIgYWNjZXB0ZAICD2QWBGYPDxYCHwEFEUNvbmZpZGVuY2Ugc2NvcmU6ZGQCAQ9kFgJmDxUBcFRoZSByZXZpZXdlciBpcyBhYnNvbHV0ZWx5IGNlcnRhaW4gdGhhdCB0aGUgZXZhbHVhdGlvbiBpcyBjb3JyZWN0IGFuZCB2ZXJ5IGZhbWlsaWFyIHdpdGggdGhlIHJlbGV2YW50IGxpdGVyYXR1cmVkAgMPZBYEZg8PFgIfAQUSRGV0YWlsZWQgQ29tbWVudHM6ZGQCAQ9kFgJmDxUBhAxSZWFkaW5nIHRoaXMgbm90ZSB3YXMgYSBicmVlemUgZm9yIG1lLiBJdCBpcyBleHRyZW1lbHkgd2VsbCB3cml0dGVuLCBjbGVhcmx5IGV4cGxhaW5pbmcgZWFjaCBtYXRoZW1hdGljYWwgY29uY2VwdCBib3RoIHdpdGggcHJvcGVyIG1hdGhlbWF0aWNhbCBub3RhdGlvbiBhbmQgaW4gd29yZHMgZ2l2aW5nIGludHVpdGl2ZSBleHBsYW5hdGlvbnMgYW5kIHZpc3VhbCBhaWRzIHRvIGlsbHVzdHJhdGUuIEkgZXNwZWNpYWxseSBhcHByZWNpYXRlIHRoZSBhdXRob3JzIG5vdCBiZWluZyBjb25mdXNlZCB0aGF0ICJpbGx1c3RyYXRpb24gb2YgdGhlb3JldGljYWwgZmFjdHMgdXNpbmcgbnVtZXJpY2FsIHNpbXVsYXRpb25zIiBpcyBOT1QgInZhbGlkYXRpb24gb2YgdGhlb3JldGljYWwgcmVzdWx0cyB3aXRoIHNpbXVsYXRpb25zIChvciBtYW55IGV4YW1wbGVzIG9uIG1hbnkgZGF0YXNldHMpIiwgd2hpY2ggc2VlbXMgdG8gYmUgYW4gaW5jcmVhc2luZ2x5IHNpZ25pZmljYW50IGNvbmNlcHR1YWwgbWlzdGFrZS48YnIgLz48YnIgLz5UaGUgcGFwZXIgb2ZmZXJzIHZhbHVhYmxlIHRoZW9yZXRpY2FsIGluc2lnaHRzIGZvciBub3Qgb25seSBuZXVyb3NjaWVudGlzdHMgaW50ZXJlc3RlZCBpbiBtb2RlbGluZyB0aGUgZmlyaW5nIHJhdGVzIG9mIG5ldXJvbnMgZW1iZWRkZWQgaW4gYSBsYXJnZXIgcG9wdWxhdGlvbiwgYnV0IGZvciBhbnkgc3RhdGlzdGljYWwgbW9kZWxpbmcgYW5kIGluZmVyZW5jZSBwcm9mZXNzaW9uYWwgd2hvIHdvdWxkIGxpa2UgdG8gcHJvcGVybHkgZGVzaWduIG1vZGVscyBmb3IgQmF5ZXNpYW4gaW5mZXJlbmNlIGluIHRoZSBwcmVzZW5jZSBvZiBkaXNjcmV0ZSBtZWFzdXJlbWVudHMgZnJvbSBzZW5zb3IgbmV0d29ya3Mgb2YgYW55IGtpbmQgKGUuZy4gZnJvbSBhIHN1YnNldCBvZiBzZW5zb3JzIGFtb25nIG1hbnkgbW9yZSBzZW5zb3JzLCBwZXJoYXBzIGR1ZSB0byBjb21tdW5pY2F0aW9uLCBwb3dlciwgb3Igb3RoZXIgcmVzb3VyY2UgY29uc3RyYWludHMgcHJldmVudGluZyBhY2Nlc3MgdG8gYWxsIHNlbnNvcnMgYXQgYW55IGdpdmVuIHRpbWUpLiA8YnIgLz48YnIgLz5JIGVzcGVjaWFsbHkgYXBwcmVjaWF0ZSB0aGF0IHRoZSBhdXRob3JzIGtlcHQgdGhlIGRpc2N1c3Npb24gY2xlYXIgYW5kIGF2b2lkZWQgc2hvd2luZyBjb3VudGxlc3MgbnVtZXJpY2FsIGlsbHVzdHJhdGlvbnMgb24gYSBnYXppbGxpb24gZGF0YXNldHMuIFRoZSBwYXBlciBtYWRlIG1lIHRoaW5rLCBhbmQgSSBmZWx0IEkgbGVhcm5lZCBzb21ldGhpbmcgaW50ZXJlc3RpbmcgaW4gdGhlIGpvdXJuZXkuPGJyIC8+PGJyIC8+T24gdGhlIGRvd25zaWRlLCB0aGlzIGlzIG5vdCB0aGUgdHlwaWNhbCBOSVBTIHBhcGVyLiBBbHNvIGhhdmluZyBzb21lIG1vZGVsIGZpdHMgdG8gYWN0dWFsIG5ldXJhbCBhY3Rpdml0eSBkYXRhIHdvdWxkIGJlIG5pY2UgLSBlc3BlY2lhbGx5IGlmIHRoZXNlIGZpdHMgaWxsdXN0cmF0ZWQgdGhhdCByZXN1bHRzIHdvdWxkIGxlYWQgdG8gcXVhbGl0YXRpdmVseSBkaWZmZXJlbnQgY29uY2x1c2lvbnMuZAIEDw8WAh8AaGRkAggPFQEAZBgDBR9jdGwwMCRjcGgkZ3ZSZXZpZXdzJGN0bDAyJGN0bDAwDzwrAAwBCAIBZAUfY3RsMDAkY3BoJGd2UmV2aWV3cyRjdGwwMSRjdGwwMA88KwAMAQgCAWQFH2N0bDAwJGNwaCRndlJldmlld3MkY3RsMDAkY3RsMDAPPCsADAEIAgFkGSVhSkJGfE7hFlLJwRzZv+9XsDU=" />
+</div>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="C4A66E18" />
+</div>
+<table id="header">
+<tr>
+<td width="100%"><a href='http&#58;&#47;&#47;nips.cc' target='_blank'>NIPS2017</a><br /><b>Neural Information Processing Systems 2017</b><br />Dec 4 , 2017 - Dec 9 , 2017, Long Beach, United States</td>
+</tr>
+<tr class='headerSeparator'>
+    <td style='height:5px'></td>
+</tr>
+</table>
+<table id="content"><tr><td class='contentBorder'>&nbsp;</td><td class="contentContainer">
+<span id="ctl00_cph_Label4" style="font-size:Small;font-weight:bold;">Reviews For Paper</span>
+<span id="ctl00_cph_lblErrorMessage" class="error" style="font-size:Small;"></span>
+<div id="ctl00_cph_pnlReviews">
+	
+    <span style="font-size:Small;"><table id="ctl00_cph_infoSubmission_tblInfo" class="nicetable2" style="text-align:left; width: 100%;">
+		<tr id="ctl00_cph_infoSubmission_trTrack">
+			<td><b>Track</b></td>
+			<td><span id="ctl00_cph_infoSubmission_lblTrack" style="font-size:Small;">Blue</span></td>
+		</tr>
+		<tr>
+			<td width="100px"><b>Paper ID</b></td>
+			<td><span id="ctl00_cph_infoSubmission_lblPaperId" style="font-size:Small;">2011</span></td>
+		</tr>
+		<tr>
+			<td><b>Title</b></td>
+			<td><span id="ctl00_cph_infoSubmission_lblPaperTitle" style="font-size:Small;">Representative samples and maximum-entropy distributions&#58; a dilemma</span></td>
+		</tr>
+	</table>
+	</span>
+    
+    
+            <hr />
+            <table>
+                <tr>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl00_Label2" style="font-size:Small;font-weight:bold;">Masked Reviewer ID:</span>
+                    </td>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl00_Label1" style="font-size:Small;">Assigned_Reviewer_1</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl00_Label3" style="font-size:Small;font-weight:bold;">Review:</span>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </table>
+            <div>
+		<table cellspacing="0" cellpadding="4" rules="all" border="1" style="color:#333333;border-width:1px;border-style:None;font-family:Verdana;font-size:Small;border-collapse:collapse;">
+			<tr style="color:White;background-color:#5D7B9D;font-weight:bold;">
+				<th scope="col">Question</th><th scope="col">&nbsp;</th>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td style="width:20%;">Overall rating:</td><td style="width:80%;">
+                            Marginally below acceptance threshold
+                        </td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td style="width:20%;">Confidence score:</td><td style="width:80%;">
+                            The reviewer is willing to defend the evaluation, but it is quite likely that the reviewer did not understand central parts of the paper
+                        </td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td style="width:20%;">Detailed Comments:</td><td style="width:80%;">
+                            In this paper, the authors present a dilemma surrounding the use of maximum entropy methods for the analysis of intracellular recordings from neurons. The paper is very clearly and precisely written and seems to be targetted primarily at computational neuroscientist who are already using the method. The basic point is that the distribution obtained when applying to the sample directly is different to the distribution obtained when applying to the population then marginalising. The authors outline the problem and give some comments about which approach should be preferred in practice. <br /><br />I am a computational neuroscientist and will also note that I am not an expert in maximum entropy methods, so my comments are targetted primarily to the applied aspects of the paper. The main issues I see is that I am not sure how broadly applicable this paper is and whether NIPS is the best forum for its presentation. The point the authors make seems fairly technical and is probably only accessible to a relatively narrow set of readers. This could be helped by giving a broader and more accessible introduction to maximum entropy methods in neuroscience before diving straight into the technical details as they do in the current manuscript. <br /><br />In my mind, the choice of assumptions made prior to analysis should be determined by the domain knowledge that is available. Therefore, the central question is how certain can we be for the data at hand that the neurons recorded from are biologically or functionally similar (denoted by the authors as I')? Would that be the case during in vitro recordings?  Some discussion on this point would be helpful to understand the consequences of this assumption in practice, since this is the approach the authors recommend. Or on the other hand, when is it necessary to assume absolute ignorance (I'')?<br /><br />Another comment I would make is that I am not sure the authors take their theoretical analysis far enough to give clear guidance, since they do not really provide an analysis to determine whether the distributions (19) adnd (17) are equal under certain choices of P(N|\gamma). Instead, the authors only go so far enough to say that maxent models can be interpreted as assuming no larger population exists. Again, what does this mean in practice?<br /><br />Finally, the authors should improve the clarity of the presentations of their figures (e.g. labelling of axes). The authors also do not describe what all three plots are in the figure legend.
+                        </td>
+			</tr>
+		</table>
+	</div>
+            
+        
+            <hr />
+            <table>
+                <tr>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl01_Label2" style="font-size:Small;font-weight:bold;">Masked Reviewer ID:</span>
+                    </td>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl01_Label1" style="font-size:Small;">Assigned_Reviewer_2</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl01_Label3" style="font-size:Small;font-weight:bold;">Review:</span>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </table>
+            <div>
+		<table cellspacing="0" cellpadding="4" rules="all" border="1" style="color:#333333;border-width:1px;border-style:None;font-family:Verdana;font-size:Small;border-collapse:collapse;">
+			<tr style="color:White;background-color:#5D7B9D;font-weight:bold;">
+				<th scope="col">Question</th><th scope="col">&nbsp;</th>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td style="width:20%;">Overall rating:</td><td style="width:80%;">
+                            Clear rejection
+                        </td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td style="width:20%;">Confidence score:</td><td style="width:80%;">
+                            The reviewer is willing to defend the evaluation, but it is quite likely that the reviewer did not understand central parts of the paper
+                        </td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td style="width:20%;">Detailed Comments:</td><td style="width:80%;">
+                            Summary<br /><br />The paper compares two approaches for applying the maximum entropy method: obtaining the MaxEnt distribution for the sample directly or via the population by marginalization to the sample. The raised dilemma is that the two approaches gives different results, and it is argued that it is not obvious which one to choose.<br /><br />Comments<br /><br />1. The paper does not give the necessary background the problem in the dilemma. What are maxent researchers using, marginalized population level or sample level? Some references would help and give some weight to the (claimed) importance of this problem. For example, on line 185-186 it is claimed that ' ... as often claimed in the literature', but not a single reference is given to back this up.<br /><br />2. To be interested in the dilemma exposed in the paper, one must really buy that both approaches are reasonable alternatives. The authors are really vague about the motivation for the sample level approach. The paper just says that this approach is either "unassuming" about the existence of a larger population or that no larger population exists (in which case there is not inference problem to be solved). The paper need to better explain why the sample level approach is even an option. <br />If find that the more interesting case is when the population size is unknown, as discussed in the conclusions. Unfortunately, this is not much elaborated on in the paper, but left for future work. <br /><br />3. A large part of the paper is spent on deriving results that are already well established in the sampling-without-replacement literature, but the more difficult and decisive results are 'left for future work' (e.g. Page 3, Line 107 and Page 8 201-202). <br /><br />4. Equation (12). These two approximations with unknown accuracy is referred to later in the text (e.g. Line 126). I don't understand how these hand-wavy approximations can be used for arguments about the foundations of maximum entropy. <br /><br />5. Figure 2. It would be useful to also plot Bayesian posterior distributions for comparison. Perhaps based on a Beta(1,1) and Beta(1/2, 1/2) priors (which have been proposed as objective in the literature). This would help the reader to assess if the difference between the two maxent approaches are large.<br /><br />Minor comments and misprints<br /><br />Line 108. sample -> population <br />Line 109. population -> sample
+                        </td>
+			</tr>
+		</table>
+	</div>
+            
+        
+            <hr />
+            <table>
+                <tr>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl02_Label2" style="font-size:Small;font-weight:bold;">Masked Reviewer ID:</span>
+                    </td>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl02_Label1" style="font-size:Small;">Assigned_Reviewer_5</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl02_Label3" style="font-size:Small;font-weight:bold;">Review:</span>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </table>
+            <div>
+		<table cellspacing="0" cellpadding="4" rules="all" border="1" style="color:#333333;border-width:1px;border-style:None;font-family:Verdana;font-size:Small;border-collapse:collapse;">
+			<tr style="color:White;background-color:#5D7B9D;font-weight:bold;">
+				<th scope="col">Question</th><th scope="col">&nbsp;</th>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td style="width:20%;">Overall rating:</td><td style="width:80%;">
+                            Top 50% of accepted papers, clear accept
+                        </td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td style="width:20%;">Confidence score:</td><td style="width:80%;">
+                            The reviewer is absolutely certain that the evaluation is correct and very familiar with the relevant literature
+                        </td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td style="width:20%;">Detailed Comments:</td><td style="width:80%;">
+                            Reading this note was a breeze for me. It is extremely well written, clearly explaining each mathematical concept both with proper mathematical notation and in words giving intuitive explanations and visual aids to illustrate. I especially appreciate the authors not being confused that "illustration of theoretical facts using numerical simulations" is NOT "validation of theoretical results with simulations (or many examples on many datasets)", which seems to be an increasingly significant conceptual mistake.<br /><br />The paper offers valuable theoretical insights for not only neuroscientists interested in modeling the firing rates of neurons embedded in a larger population, but for any statistical modeling and inference professional who would like to properly design models for Bayesian inference in the presence of discrete measurements from sensor networks of any kind (e.g. from a subset of sensors among many more sensors, perhaps due to communication, power, or other resource constraints preventing access to all sensors at any given time). <br /><br />I especially appreciate that the authors kept the discussion clear and avoided showing countless numerical illustrations on a gazillion datasets. The paper made me think, and I felt I learned something interesting in the journey.<br /><br />On the downside, this is not the typical NIPS paper. Also having some model fits to actual neural activity data would be nice - especially if these fits illustrated that results would lead to qualitatively different conclusions.
+                        </td>
+			</tr>
+		</table>
+	</div>
+            
+        
+    <br />
+    <br />
+
+</div>
+</td><td class='contentBorder'>&nbsp;</td></tr></table>
+</form>
+</body>
+</html>

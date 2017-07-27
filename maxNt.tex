@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2017-05-19T02:51:01+0200
+%% Last-Updated: 2017-05-19T15:42:30+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -17,10 +17,10 @@ nonatbib]{nips_2017}
 
 \newcommand*{\firstdraft}{4 November 2015}
 
-\newcommand*{\pdftitle}{Representative samples\\ and maximum-entropy distributions\\ in neuroscience: a dilemma}
+\newcommand*{\pdftitle}{Representative samples\\ and maximum-entropy distributions:\\ a dilemma}
 
-\newcommand*{\headtitle}{\pdftitle} \newcommand*{\pdfauthor}{P.G.L. Porta Mana, V. Rostami, E. Torre}
-
+\newcommand*{\headtitle}{\pdftitle} \newcommand*{\pdfauthor}{%P.G.L. Porta Mana, V. Rostami, E. Torre
+Anonymous Author(s)}
 \usepackage{newtxmath}
 %\usepackage{pifont}
 %\usepackage{fontawesome}
@@ -129,12 +129,12 @@ nonatbib]{nips_2017}
 % \DeclareMathSymbol{\gamma}{\mathalpha}{egreeki}{"0D}
 % \DeclareMathSymbol{\delta}{\mathalpha}{egreeki}{"0E}
 % \DeclareMathSymbol{\epsilon}{\mathalpha}{egreeki}{"0F}
-% \DeclareMathSymbol{\zeta}{\mathalpha}{egreeki}{"10}
+ \DeclareMathSymbol{\zeta}{\mathalpha}{egreeki}{"10}
 % \DeclareMathSymbol{\eta}{\mathalpha}{egreeki}{"11}
 % \DeclareMathSymbol{\theta}{\mathalpha}{egreeki}{"12}
 % \DeclareMathSymbol{\iota}{\mathalpha}{egreeki}{"13}
-% \DeclareMathSymbol{\kappa}{\mathalpha}{egreeki}{"14}
-% \DeclareMathSymbol{\lambda}{\mathalpha}{egreeki}{"15}
+ \DeclareMathSymbol{\kappa}{\mathalpha}{egreeki}{"14}
+ \DeclareMathSymbol{\lambda}{\mathalpha}{egreeki}{"15}
 % \DeclareMathSymbol{\mu}{\mathalpha}{egreeki}{"16}
 % \DeclareMathSymbol{\nu}{\mathalpha}{egreeki}{"17}
 % \DeclareMathSymbol{\xi}{\mathalpha}{egreeki}{"18}
@@ -161,12 +161,12 @@ nonatbib]{nips_2017}
 % \DeclareMathSymbol{\varGamma}{\mathalpha}{egreeki}{"00}
 % \DeclareMathSymbol{\varDelta}{\mathalpha}{egreeki}{"01}
 % \DeclareMathSymbol{\varEpsilon}{\mathalpha}{egreeki}{"45}
-% \DeclareMathSymbol{\varZeta}{\mathalpha}{egreeki}{"5A}
+ \DeclareMathSymbol{\varZeta}{\mathalpha}{egreeki}{"5A}
 % \DeclareMathSymbol{\varEta}{\mathalpha}{egreeki}{"48}
 % \DeclareMathSymbol{\varTheta}{\mathalpha}{egreeki}{"02}
  \DeclareMathSymbol{\varIota}{\mathalpha}{egreeki}{"49}
  \DeclareMathSymbol{\varKappa}{\mathalpha}{egreeki}{"4B}
-% \DeclareMathSymbol{\varLambda}{\mathalpha}{egreeki}{"03}
+ \DeclareMathSymbol{\varLambda}{\mathalpha}{egreeki}{"03}
 % \DeclareMathSymbol{\varMu}{\mathalpha}{egreeki}{"4D}
 % \DeclareMathSymbol{\varNu}{\mathalpha}{egreeki}{"4E}
 % \DeclareMathSymbol{\varXi}{\mathalpha}{egreeki}{"04}
@@ -521,8 +521,8 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 \newcommand*{\yc}{\bm{c}}
 \newcommand*{\yL}{\bm{\varLambda}}
 \newcommand*{\yl}{\bm{\lambda}}
-\newcommand*{\yk}{\kappa}
-\newcommand*{\yK}{\varKappa}
+\newcommand*{\yk}{\zeta}
+\newcommand*{\yK}{\varZeta}
 %entropies
 \newcommand*{\ysh}{H}
 \newcommand*{\ybu}{H_{\text{B}}}
@@ -592,17 +592,14 @@ E. Torre\\ETH Z{\"u}rich\\Switzerland\\
 \maketitle
 
 \begin{abstract}
-  This note has three nested purposes. The first purpose is to show that
-  the \me\ method can be applied to a representative random sample of a
-  population, to generate its probability distribution, along two different
-  routes. Both routes appear legitimate, but they give inequivalent
-  results. Which route should be chosen? Some arguments are presented in
-  favour of one. The second more general purpose, motivated by the above
-  dilemma, is to remind readers that models like \me\ may contain hidden
-  assumptions; in this case the hidden an unnatural assumption that the
-  sample modelled is isolated from the rest of the population. The third
-  purpose is to promote some old but possibly forgotten probability
-  formulae that may be useful in neuroscientific sampling contexts.
+  This note shows that the \me\ method can be applied to a representative
+  sample from a neuronal population along two different routes: (1) apply
+  to the sample; or (2) apply to the population and marginalize to the
+  sample. These two routes give inequivalent results. Which route should be
+  chosen? Some arguments are presented in favour of the second. The note
+  also touches upon probability formulae of representative sampling and
+  discusses their possible meanings, a discussion that may be useful for
+   sampling problems in neuroscience.
   % The abstract must be limited to one paragraph.
 \end{abstract}
 
@@ -616,23 +613,23 @@ This note is mainly addressed to neuroscientists interested in \me\
 methods, but we would be pleased if its discussion of the probability of
 \enquote{sampling} were useful to neuroscientists that use other
 statistical methods to study the physical and dynamical characteristics of
-brain areas via neuronal recording.
+brain areas via neuronal recordings.
 
 Recent electrophysiological techniques \cite{berenyietal2014} in fact allow
 experimenters to record samples comprising even a couple hundreds neurons
 from specific brain areas. From the observation of these samples we expect
 to learn something about all other neurons in the same brain area. That is,
-we assume that they are a \enquote{representative sample}. We don't
+we assume that they are a \enquote{representative sample}. We do not
 elaborate on the various important purposes of such recordings here, but
-stress that these sample sizes can be considered \enquote{large}, because
+stress that these sample sizes can be considered \enquote{large} because
 their statistical analysis requires considerable computational power.
 
 These computational costs are one, probably not the earliest, of the many
 reasons why \me\ methods have been introduced in neuroscience. It would be
 useful to somehow compress the statistical wealth of large neuronal
 recordings into few quantities, like sample moments for example. This
-compression would also entail interesting physico-biological properties of
-neuronal activity. The standard \me\ method
+compression might also entail interesting biological or functional
+properties of neuronal activity. The standard \me\ method
 \cite{jaynes1957,sivia1996_r2006,meadetal1984} accomplishes this kind of
 compression: it associates a unique probability distribution with few
 experimental quantities. But this is only one of its uses. It is also used
@@ -654,26 +651,25 @@ distribution.
 
 The dilemma is this. We can apply the \me\ method to the sample, using a
 specified set of experimental constraints, and generate a probability
-distribution for its state. But our sample is representative of a larger
-population. We can apply the \me\ method to the larger population, using
-the same constraints, and generate a probability distribution for its
-larger state, and then find the distribution for the sample by
-marginalization. Either application seems to have some commendable
-features. However, \emph{the distributions obtained by these two
-  applications differ}. It goes without saying that if one is
-\enquote{maximally noncommittal}, the other must be somehow
-\enquote{committal}. Which choice is most meaningful?
+distribution for the state of the sample. But our sample is representative
+of a larger population, in which it is biologically and functionally
+embedded. We can apply the \me\ method to the larger population, using the
+same constraints, and generate a probability distribution for its larger
+state, and then find the distribution for the sample by marginalization.
+Either application seems to have some commendable features. However,
+\emph{the distributions obtained from these two applications differ}. It
+goes without saying that if one is \enquote{noncommittal}, the other must
+be \enquote{committal}. Which choice is most meaningful?
 
-In the final discussion we present some arguments in favour of one choice
-in our dilemma.
+In the final discussion we present some arguments in favour of one choice.
 
 In the rest of the paper we mathematically formulate this dilemma. To this
-purpose we also present some probability relations relevant to the sampling
-problem. The relations we presentare well-known in survey sampling and in
-the pedagogic problem of drawing from an urn without replacement, yet they
-are somewhat hard to find explicitly written in the neuroscientific
-literature, so they may be of interest on their own. We briefly discuss
-also two very different assumptions that lead to similar initial
+purpose we also present some probability relations relevant to sampling.
+The relations we present are well-known in survey sampling and in the
+pedagogic problem of drawing from an urn without replacement, yet they are
+somewhat hard to find explicitly written in the neuroscientific literature,
+so they may be of interest on their own. We briefly discuss also two very
+different meaning of \enquote{representative} that lead to similar initial
 probability assignments for sampling.
 
 \iffalse In the final discussion we present some arguments in favour of one choice
@@ -683,13 +679,13 @@ readers the importance of asking \emph{what is the question we're trying to
   answer with probability theory?} and \emph{which assumptions do we want
   or need to make?} \fi
 
-Our mathematical analysis pertains to a neurons modelled as binary units at
+Our mathematical analysis pertains to neurons modelled as binary units at
 one specific instant or short window in time. It is possible to similarly
 discuss multi-state neuron models and population dynamics; but for
 simplicity neurons are here assumed to be in a fixed, active \enquote{$1$}
 or inactive \enquote{$0$} state; and evolution, change, time correlations,
-and similar concepts do not concern us. We consider \me\ models that have
-constraints based on some kinds of sample or population averages; they are
+and similar concepts do not concern us. We consider \me\ models that
+constrain various kinds of sample or population averages; these models are
 often called \enquote{homogeneous}. The final discussion touches upon
 \enquote{inhomogeneous} models as well.
 
@@ -697,11 +693,11 @@ often called \enquote{homogeneous}. The final discussion touches upon
 The notation in this note follows ISO and ANSI standards
 \citep{iso1993,ieee1993,nist1995} but for the use of the comma \enquote{,}
 to denote logical conjunction. Probability notation follows Jaynes
-\citep{jaynes1994_r2003}. By \enquote{probability} we mean plausibility or
-the degree of belief which \enquote{would be agreed by all rational men if
-  there were any rational men} \cite{good1966}.
+\citep{jaynes1994_r2003}. By \enquote{probability} we mean a degree of
+belief which \enquote{would be agreed by all rational men if there were any
+  rational men} \cite{good1966}.
 
-\section{Setup}
+\section{Setup: population, sample, probabilities}
 \label{sec:setup}
 
 We have a population of $N$ binary neurons. We assume that they can be
@@ -710,9 +706,9 @@ their locations, are unknown. The neurons have a joint state
 $(X_1,\dotsc,X_N) \defs \yX$ having fixed but unknown binary values
 $(R_1,\dotsc,R_N)\defs \yR \in \set{0,1}^N$. A particular sample of $n$
 neurons from this population has joint state $(x_1, \dotsc, x_n) \defs \yx$
-having fixed binary values $(r_1, \dotsc, r_n)\defs\yr$. We will consider
-various averages of the population and the sample. For this purpose we
-introduce a general averaging operator $\sav{\dotv}$ defined by
+having fixed binary values $(r_1, \dotsc, r_n)\defs\yr \in \set{0,1}^n$. We
+will consider various averages of the population and the sample. For this
+purpose we introduce a general averaging operator $\sav{\dotv}$ defined by
 \begin{equation}
   \begin{gathered}
     \av{\yX} \defd \tfrac{1}{N} (X_1 + X_2 + \dotsb + X_N),
@@ -749,10 +745,10 @@ Analogous formulae  hold for quantities like $\yx$, $\yR$, $\yr$.
   ways. Consider the population of neurons named $\set{1,2,3}$ for example.
   The sample $\set{1,3}$ is random because neurons $1$ and $3$ were chosen
   according to an unknown process. The sample
-  $\set{\textrm{X}_1, \textrm{X}_2}$ is random because we don't know the
+  $\set{\textrm{X}_1, \textrm{X}_2}$ is random because we do not know the
   identity of neurons $\textrm{X}_1$ and $\textrm{X}_2$. Given the
   probability for the population, the probabilities for the states of these
-  two samples are different: the former is obtained by marginalization, the
+  two samples are different: the former is obtained from marginalization, the
   latter by symmetrization and marginalization.
 \end{simplenote}
 \fi
@@ -782,24 +778,26 @@ We need to make an initial probability assignment before any experimental
 observations are
 made. %, no matter what kinds of predictions we are interested in.
 This initial assignment will be modified by our experimental observations.
-We would also like our probability assignment to reflect that the sample is
-somehow \enquote{representative} of the population. We consider here two
-states of knowledge that express this representativeness in different ways
-but lead to identical \emph{initial} probability assignments.
+Our probability assignment should reflect that the sample is somehow
+\enquote{representative} of the population. We consider here two states of
+knowledge that express this representativeness in different ways but lead
+to identical \emph{initial} probability assignments.
 
-In the first, denoted $\yHp$, we know that the neurons in the population
-are physico-biologically similar, for example in morphology and kind of
-input they receive. Knowledge of this similarity leads us to assign a
-probability distribution for the population state $\yX$ that is symmetric,
-also called \emph{exchangeable}, under permutations of neuron identities.
+In the first state of knowledge, denoted $\yHp$, we know that the neurons
+in the population are biologically or functionally similar, for
+example in morphology and kind of input or output they receive or give.
+Knowledge of this similarity leads us to assign a probability distribution
+for the population state $\yX$ that is symmetric under permutations of
+neuron identities, or \emph{exchangeable} as it is usually called.
 
-In the second, denoted $\yHi$, we are completely ignorant about the
-physical details of the individual neurons. Our ignorance is therefore
-symmetric under permutations of neuron identities. This also leads to an
-exchangeable probability distribution for $\yX$.
+In the second state of knowledge or ignorance, denoted $\yHi$, we are
+completely ignorant about the physical details of the individual neurons.
+Our ignorance is therefore symmetric under permutations of neuron
+identities. This also leads to an exchangeable probability distribution for
+$\yX$.
 
-Let us use $\yH$ to denote either of these two states of knowledge in those
-probabilities that are identical in both.
+Let us use $\yH$ to denote either of these two states of knowledge, in those
+probabilities that are identical for $\yHp$ and $\yHi$.
 
 The \emph{representation theorem for finite exchangeability} states that
 the symmetric distribution of $\yH$ must obey
@@ -810,10 +808,12 @@ the symmetric distribution of $\yH$ must obey
   \p(\yXf=\yRf \| \yH) =
   \binom{N}{N\yRf}^{-1} \p(\yXf=\yRf \| \yH),
 \end{equation}
-the latter being the probability for the population average $\yX$. Proof of
-this theorem and generalizations to non-binary and continuum cases are
-given by de~Finetti \cite{definetti1959b}, Kendall \cite{kendall1967},
-Ericson \cite{ericson1976}, Diaconis \amp\ Freedman
+the latter being the probability for the population average $\yX$. A sum is
+only apparently missing in the central term: its summands $\yXf=A$ are all
+zero except for $A=\yRf$. Proof of this theorem and generalizations to
+non-binary and continuum cases are given by de~Finetti
+\cite{definetti1959b}, Kendall \cite{kendall1967}, Ericson
+\cite{ericson1976}, Diaconis \amp\ Freedman
 \cite{diaconis1977,diaconisetal1980}, Heath \amp\ Sudderth
 \cite{heathetal1976}. This theorem is intuitive: owing to symmetry, we must
 assign equal probabilities to all states with $N\yRf$ active neurons.
@@ -834,30 +834,31 @@ By marginalization we obtain the probability for the state of the sample:
   \binom{n}{n\yrs}\binom{N-n}{N \yRf-n\yrs}\binom{N}{N \yRf}^{-1}
   \defs \ypp(\yrs\|\yRf).
 \end{gather}
-Our initial symmetric ignorance should intuitively also apply to the
+The conditional probability in the last formula is a hypergeometric
+distribution $\ypp(\yrs\|\yRf)$, typical of \enquote{drawing without
+  replacement} problems. The combinatorial proof of the formulae above is
+in fact the same as for this class of problems
+\cites[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}.
+Our initial symmetric knowledge should intuitively also apply to the
 sample; indeed, the probability for the state of the
 sample~\eqref{eq:subpop_average} automatically satisfies the representation
-theorem~\eqref{eq:joint_plaus_N_homog} as well. The conditional probability
-in the last formula is a hypergeometric distribution $\ypp(\yrs\|\yRf)$,
-typical of \enquote{drawing without replacement} problems. The
-combinatorial proof of the formulae above is in fact the same as for this
-class of problems
-\cites[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}.
+theorem~\eqref{eq:joint_plaus_N_homog} as well.
 
 How is it possible that the very different states of knowledge $\yHp$ and
 $\yHi$ lead to the same formulae above? Their difference appears as soon as
 we make an experimental observation, say $X_2 = R_2\in\set{0,1}$ and update our
-probabilities \eqref{eq:joint_plaus_N_homog},
+initial probabilities \eqref{eq:joint_plaus_N_homog}:
 \begin{equation}
   \label{eq:updated_joint}
     \p(\yX = \yR \| X_2 = R_2, \yH) \equiv
   \p(\yX = \yR \| \yXf = \yRf, X_2 = R_2, \yH)\,
-  \p(\yXf=\yRf \| X_2 = R_2,\yH)
+  \p(\yXf=\yRf \| X_2 = R_2,\yH).
 \end{equation}
-Both the conditional probability and the one for the average on the right
-side will update in very different ways for $\yHp$ and $\yHi$. The
-discussion of this update process in the two cases is outside the purposes
-of this note, and we hope to address it in full in a future work.
+The conditional probability and the probability for the average on the
+right side will update in very different ways for $\yHp$ and $\yHi$. The
+discussion of this update process in the two cases is unnecessary for the
+purposes of this note and outside their scope; we hope to address it in
+full in a future work.
 
 The conditional probability $\ypp(\yrs,\yRf)$ relates the spaces of the
 sample average $\yXf\in\set{0,\dotsc,N}$ and of the population average
@@ -915,25 +916,25 @@ average $\yXf$ is bimodal, for example, the bimodality can be lost in the
 distribution for the sample average $\yxs$, owing to the coarsening effect
 of $\ypp(\yrs\|\yRf)$.
 
-The approximate equalities above express the fact that \emph{our
+Yet, the approximate equalities above express the fact that \emph{our
   uncertainty about the sample is representative of our uncertainty about
   the population and about other samples}, and vice versa. This fact comes
 about for very different reasons in the states of knowledge $\yHp$ and
 $\yHi$. In $\yHp$, because our sample is \emph{physically} representative
 of the population and of other samples; we could write this as
 $\yxs\approx\yXf$. In $\yHi$, because we are ignorant about sample and
-population in similar symmetric ways; but this does not imply that
-$\yxs\approx\yXf$. New observations may in fact break this symmetry by
+population in similar symmetric ways; but this does \emph{not} imply that
+$\yxs\approx\yXf$. New observations may in fact break this symmetry via
 \eqn~\eqref{eq:updated_joint}.
 
 
 Note that formulae~\eqref{eq:roughly_equal_nN} say more than the limits
-$\p(\yxs=a) \to \p(\yXf=a)$, $\expeb{f(\yxs)} \to \expeb{f(\yXf)}$ as
-$n\to N$. These limits are trivially valid because the sample becomes the
-full population as $n\to N$. In particular, these limits hold even in cases
-where the conditional probability $\p(\yxs = \yrs \|\yXf=\yRf)$ is not a
-fuzzy identity and our uncertainties about sample and about population can
-differ wildly.
+$\p(\yxs=a) \to \p(\yXf=a)$ and $\expeb{f(\yxs)} \to \expeb{f(\yXf)}$, as
+$n\to N$, do. These limits are trivially valid because the sample becomes
+the full population as $n\to N$. In particular, these limits hold even in
+cases where the conditional probability $\p(\yxs = \yrs \|\yXf=\yRf)$ is
+not a fuzzy identity and our uncertainties about sample and about
+population can differ wildly.
 
 
 \bigskip
@@ -947,7 +948,7 @@ differ wildly.
 %   \sum_{n\yrs=0}^n f(\yrs)\,p_*(\yxs=\yrs) = \sum_{N\yRf=0}^N f^*(\yRf)\,p(\yXf=\yRf).
 % \end{equation}
 For functions representing averaged products,
-$f(\yxs) \defd \sav{\yx\dots\yx}=\binom{n\yxs}{m}/\binom{n}{m}$,
+$f(\yxs) = \sav{\yx\dots\yx}\equiv\binom{n\yxs}{m}/\binom{n}{m}$,
 formulae~\eqref{eq:pullback_P} have the useful form
 \begin{equation}
   \label{eq:expe_products}
@@ -991,29 +992,30 @@ via \eqn~\eqref{eq:products_intermsof_average}.
 \section{Enter maximum-entropy: dilemma}
 \label{sec:specific_initial_probability}
 
-Formulae
+The probability formulae
 \eqref{eq:joint_plaus_N_homog}--\eqref{eq:conditional_hypergeometric} are
 constraints on our initial probability assignment, but do not determine it
 numerically. The probability $\p(\yXf=\yRf \| \yH)$ for the population
-average needs to be numerically specified, and by \eqref{eq:subpop_average}
-it will determine that of the sample average, $\p(\yxs=\yrs \| \yH)$. If we
-numerically specify the latter, the former is not completely specified,
-because \eqn~\eqref{eq:subpop_average} linearly constrains $N+1$ unknowns
-by only $n+1$ equations in this case.
+average needs to be numerically specified, and by marginalization
+\eqref{eq:subpop_average} it will determine that of the sample average,
+$\p(\yxs=\yrs \| \yH)$. If we numerically specify the latter, the former is
+not completely specified, because \eqn~\eqref{eq:subpop_average} linearly
+constrains $N+1$ unknowns by only $n+1$ equations.
 
 We may want to specify the probability by enforcing the sample expectations
 of several functions to have specific values, for example
 $\expe{\yxs}=c_1$, $\expe{\yxxs}=c_2$. This is still an underdetermined
-linear problem: several distributions can have the same desired
-expectations, as clear from \eqns~\eqref{eq:expe_products}.
+problem: several distributions can have the same desired expectations, as
+clear from \eqns~\eqref{eq:expe_products}.
 
 The \me\ method is brought into play to solve this indeterminacy. It
 selects one distribution, purported to be \enquote{maximally noncommittal},
-among those that have the desired expectations. But here's a dilemma:
-formulae~\eqref{eq:pullback_P} allow us to apply the method to find the
-probability of the population $\p(\yXf=\yRf \| \yH)$, or of the sample
-$\p(\yxs=\yrs \| \yH)$. \emph{The two applications, however, are
-  inequivalent}. They lead to numerically different $\p(\yxs=\yrs \| \yH)$.
+among those that have the desired expectations. But here's a dilemma: the
+expectation formulae~\eqref{eq:pullback_P} allow us to apply the method to
+find the probability of the population $\p(\yXf=\yRf \| \yH)$, or of the
+sample $\p(\yxs=\yrs \| \yH)$. \emph{The two applications, however, are
+  inequivalent}. They lead to numerically different distributions for the
+sample average $\p(\yxs=\yrs \| \yH)$.
 
 Suppose we want to constrain the sample expectations of a vector function
 $\yf = (f_1,\dotsc,f_m)$ to the vector values $\yc=(c_1,\dotsc,c_m)$, that
@@ -1026,7 +1028,7 @@ $\yHa$, gives
   \binom{N}{N \yRf}\,\exp\Bigl[\yL\T
   \sum_{n\yrs=0}^n \yf(\yrs)\ypp(\yrs\|\yRf)\Bigr],
 \end{equation}
-and then by marginalization with \eqn~\eqref{eq:marginal}
+and then by marginalization~\eqref{eq:marginal}
 \begin{equation}
   \label{eq:app_maxent_pop_marg}
   \p(\yxs = \yrs \| \yHa)  = \yK\, 
@@ -1068,19 +1070,17 @@ observation about representativity~\eqref{eq:roughly_equal_nN} and also by
 the fact that they must satisfy the same expectations for $\yf$.
 
 Yet they cannot be exactly equal, because their equality would require the
-Lagrange multipliers $\yL$ and $\yl$ to satisfy equations
+Lagrange multipliers $\yL$ and $\yl$ to satisfy the constraint equations
 \eqref{eq:app_maxent_pop_constraints},
-\eqref{eq:app_maxent_sample_constraints}, and
+\eqref{eq:app_maxent_sample_constraints}, and also
 $\p(\yxs = \yrs \| \yHa) = \p(\yxs = \yrs \| \yHb)$; that is, $2m+n$
-equations (normalization is taken care of) in $2m$ unknowns. A solution can
+equations (one normalization is taken care of) in $2m$ unknowns. A solution can
 exist, if at all, only for very special choices of constraints functions
 $\yf$ and values $\yc$.
 
 The sample distribution obtained from \me\ at the sample level will
 therefore likely miss important features present in the one obtained at the
 population level, like additional modes or particular tail behaviour.
-
-
 \begin{figure}[!t]
 \centering
 \includegraphics[width=0.9\linewidth]{different_maxent_pop_sample_200_realdata_2mom.pdf}%
@@ -1110,24 +1110,28 @@ We show two examples of this discrepancy in
 and~\ref{fig:diff_maxent_pop_sample_realdata}, for $N=5000$, $n=200$, and
 constraint functions of the form
 $\yf(\yxs)=(\yxs,\yxxs,\dotsc)\equiv\bigl( \yxs,
-\raisebox{0pt}[0pt][1ex]{}\binom{n\yxs}{2}/\binom{n}{2},\dotsc \bigr)$. In
-the first example the constraint functions are $\expe{\yxs}$ and
-$\expe{\yxxs}$, The distribution obtained at the sample level is broader
-than the one obtained at the population level; the tails of the two
-distributions are very different. The second example uses two additional
-constraint function $\expe{\sav{\yx\yx\yx}}$, $\expe{\sav{\yx\yx\yx\yx}}$.
-The distribution obtained at the population level has two modes, replaced
-by only one in the distribution obtained at the sample level; the tails are
-very different also in this case. The constraint values used in these
+\raisebox{0pt}[0pt][1ex]{}\binom{n\yxs}{2}/\binom{n}{2},\dotsc \bigr)$,
+equivalent to moments constraints. The constraint values used in these
 examples, reported in the figure captions, have neurobiologically realistic
 values \cite{rostamietal2016}.
+
+In the first example the constraint functions are $\expe{\yxs}$ and
+$\expe{\yxxs}$. The distribution obtained at the sample level is broader
+than the one obtained at the population level; the tails of the two
+distributions are very different.
+
+The second
+example uses two additional constraint functions $\expe{\sav{\yx\yx\yx}}$,
+$\expe{\sav{\yx\yx\yx\yx}}$. The distribution obtained at the population
+level has two modes, replaced by only one in the distribution obtained at
+the sample level; the tails are very different also in this case.
 
 
 
 \bigskip
 
 How should we apply the \me\ method then? on the sample or on the
-population? Which application is maximally noncommittal?
+population? Which application is \enquote{maximally noncommittal}?
 
 \section{Discussion}
 \label{sec:discussion}
@@ -1135,7 +1139,7 @@ population? Which application is maximally noncommittal?
 The question that closed the preceding section cannot receive a categorical
 answer. An optimal answer can only be given case by case, depending on the
 computational power available, on which inferences we are trying to make,
-on which assumptions we need or want to make and those we wish to avoid.
+on which assumptions we need or want to make, and those we wish to avoid.
 
 \iffalse We want to stress, in fact, the
 extreme importance and priority of the following two questions:
@@ -1147,31 +1151,31 @@ extreme importance and priority of the following two questions:
 
 \iffalse The first purpose of this note is indeed to remind ourselves that
 probability models require careful scrutiny, because they can rest on
-hidden assumptions that we don't want to make or that contradict others we
+hidden assumptions that we do not want to make or that contradict others we
 are making, and we may not be aware of this. The dilemma generated by the
 \me\ method and the assumption of representative sampling is an example.
 \fi
 
-The tricky point is this. Maximum-entropy applied at the population level
-and applied at the sample level give different results; they are different
-statistical models. The former model clearly assumes, by construction, the
-existence of a larger population from which the sample is taken. What does
-the latter model assume in this respect? is it \enquote{unassuming}, as
-often claimed in the literature? or is it actually assuming that \emph{no}
-larger population exists? In the latter case it would not be the correct
-model to use in our problem.
+The tricky point is this. The \me\ application at the population level and
+the application at the sample level give different results; they are two
+different statistical models. The former model clearly assumes, by
+construction, the existence of a larger population from which the sample is
+taken. What does the latter model assume in this respect? is it
+\enquote{unassuming}, as often claimed in the literature? or does it
+actually assume that \emph{no} larger population exists? In the latter case
+it would not be correct to use this model in our problem.
 
 A perfunctory intuitive reasoning seems insufficient for clarifying this
 point. Let's express it in the language of the probability calculus.
 Suppose we do not know whether the sample is really part of a larger
-population: we do not know whether $N=n$ or how large is $N$ otherwise.
-Call this state of ignorance $\yHd$. In the probability calculus, this
+population: we do not know whether $N=n$ or how large $N$ is otherwise.
+Call this state of ignorance $\yHd$. In the probability calculus this
 ignorance about $N$ is expressed by assigning a probability distribution
 $\p(N \| \yHd)$ that vanishes if $N<n$, since we know that $N\ge n$; see
 Good \cite{good1965,good1967b} and Rissanen \cite{rissanen1983} for
 examples of such distributions over the integers. Maintaining our
 assumption of symmetric ignorance, probability assignments that do not
-assume a specific value of $N$ are then obtained by multiplication of all
+assume a specific value of $N$ are then obtained via multiplication of all
 $N$-dependent probabilities by $\p(N \| \yHd)$ and subsequent
 marginalization over $N$. Technically speaking, $N$ becomes a
 \emph{nuisance parameter}
@@ -1188,12 +1192,13 @@ probability obtained from \me\ at the population level,
   \,\p(N \| \yHd),
 \end{equation}
 where $N$-dependencies have been made explicit. This is a formidable
-expression. But the answer to our question, whether the usual \me\ at the
-sample level~\eqref{eq:app_maxent_sample} does not assume anything about a
-larger population, translates now into the precise mathematical question:
-are the distributions~\eqref{eq:app_maxent_pop_marg_unknown_N} and
+expression. But our question, \enquote{is the usual \me\ at the sample
+  level~\eqref{eq:app_maxent_sample} unassuming with regard to the
+  existence of a larger population?}, translates now into the precise
+mathematical question: \enquote{are the
+distributions~\eqref{eq:app_maxent_pop_marg_unknown_N} and
 \eqref{eq:app_maxent_sample} equal for some choice of $\p(N \| \yHd)$, with
-$\p(N \| \yHd)\ne 0$ for $N>n$? We leave this mathematical problem for
+$\p(N \| \yHd)\ne 0$ for $N>n$?}. We leave this mathematical problem for
 future work. Note, however, that this equality is satisfied if
 $\p(N=1 \| \yHd)=1$, which means that the usual \me\ model can also be
 interpreted as assuming that \emph{no} larger population exists.
@@ -1207,7 +1212,7 @@ from their environment.
 The \me\ application at the population level gives in fact, by
 construction, a distribution with lower Shannon relative entropy than the
 one given by the application at the sample level: both satisfy the same
-constraints, but only the latter is obtained by direct maximization of the
+constraints, but only the latter is obtained via direct maximization of the
 entropy. The lower entropy of the distribution obtained from application at
 the population level is clearly visible from its higher sharpness in
 \fig~\ref{fig:diff_maxent_pop_sample}. Such distribution therefore
@@ -1219,13 +1224,22 @@ ignorance about the sample should be representative of our ignorance about
 a larger population. This assumption affects our predictions.
 \fi
 
-Rough estimates of $N$ may be available in neuroscientific contexts, so we
-find the \me\ model constructed at the population level very natural and
-preferable. After all, \emph{physical} neuronal-network models usually
-include some sort of external input to the neurons as well, mimicking their
-embedding in a larger network. The distribution of this \me\ model, when
-used as a reference distribution for surprise analysis, may reveal features
-in a dataset that were unnoticed by the standard \me\ model.
+We find the \me\ model constructed at the population level very natural and
+preferable. After all, physical models of neuronal networks usually include
+some sort of external input to the neurons as well, mimicking their
+embedding in a larger network. The sample distribution given by the \me\
+model at the population level, when used as a reference distribution for
+surprise analysis, may reveal features in a dataset that were unnoticed by
+the standard \me\ model. The question remains of how to specify $N$,
+though. We have tacitly intended $N$ as the size of the largest
+biologically or functionally homogeneous population from which our sample
+was recorded. It could be the amount of neurons in a functional brain area,
+for example the primary visual cortex, for which $N\sim 10^8$
+\cite{leubaetal1994}. For large $N$ -- unfortunately we are not yet able to
+translate this \enquote{large} into a numeric order of magnitude -- the
+final distribution becomes independent of $N$, and continuous
+approximations become available.
+
 
 \iffalse
 The quandary we found in the present note has at least two bright sides.
@@ -1257,31 +1271,31 @@ can describe our knowledge about the final state either by a Gibbs
 distribution, or by the distribution obtained from the Liouville evolution
 of the Gibbs distribution assigned to the initial state. The two
 descriptions differ -- even though the final \emph{physical} state is
-obviously exactly the same \cite[\sect~4]{jaynes1985d_r1993}. The
-difference in the two descriptions appears because in one case we can make
-sharper predictions about the state thanks to our knowledge of its
-preceding dynamics. In this example, though, both distributions are usually
-immensely sharp and practically lead to the same predictions. In the cases
-considered in this note the difference in predictions may be relevant
-instead.
+obviously exactly the same \cite[\sect~4]{jaynes1985d_r1993}. The two
+descriptions differs because in one case we can make sharper predictions
+about the state thanks to our knowledge of its preceding dynamics. In this
+example, though, both distributions are usually immensely sharp and
+practically lead to the same predictions. In the neuroscientific
+applications considered in this note the difference in predictions may be
+relevant instead.
 
-Our analysis touched only constraints of the sample average. The
-corresponding models are usually called \enquote{homogeneous} in the
-literature. Purely \enquote{inhomogeneous} models have also been used
+Our analysis touched only constraints of the sample average,
+$\expeb{f(\yxs)}$. The corresponding models are usually called
+\enquote{homogeneous} in the literature. Purely \enquote{inhomogeneous}
+models have also been used
 \cite{schneidmanetal2006,shlensetal2006,roudietal2009b}, in which
 expectations for individual neurons or groups of neurons are constrained,
 for example $\expe{x_2}$ or $\expe{x_1x_8x_9}$. A short computation shows
 that the \me\ method with this kind of constraints gives the same result
 whether applied at the sample or at the population level: the states of any
 unconstrained neurons marginalize out. This is understandable: expressing
-different uncertainties about neurons $2$ and $5$ we are breaking the
+different uncertainties about, say, neurons $2$ and $5$ we are breaking the
 symmetry of our uncertainty, which thus cannot be representative of other
-neurons in the sample or in the population.
-
-Inhomogeneous models, however, require enormous computational power for
-large sample sizes; homogeneous models therefore retain their importance.
-Our analysis and dilemma also persist for hybrid homogeneous-inhomogeneous
-models \cite{tkaciketal2014b,shimazakietal2015}.
+neurons in the sample or in the population. Inhomogeneous models, however,
+require enormous computational power for large sample sizes; homogeneous
+models therefore retain their importance. Our analysis and dilemma also
+persist for hybrid homogeneous-inhomogeneous models
+\cite{tkaciketal2014b,shimazakietal2015}.
 
 
 %\mynote{Importance of the formulae relating sample and population.}

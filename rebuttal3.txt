@@ -1,0 +1,88 @@
+The author(s) thank the reviewers for their feedback, which is extremely useful for a revised version of the manuscript even in case of non-acceptance. Here are our comments point-by-point.
+
+
+* Reviewer 1 (Assigned_Reviewer_1)
+
+1. The sample-level maximum-entropy method has been repeatedly used and discussed in computational neuroscience at least since Bohte & al (2000). Unfortunately our Introduction did not clarify nor reference this context enough; this should be amended in a revised version. An unabridged bibliography is given at the end of this response and can be easily extended. The method is also used by non-experts; the manuscript aims to clarify implicit assumptions that users seem to be unaware of.
+
+
+2. Our discussion starts from an observation: in the neuroscientific literature, several authors generalize conclusions drawn via maximum-entropy on recorded neurons, to whole areas the neurons are recorded from, eg retina or motor cortex. Unfortunately this observation was not clear in our Introduction. Whether such generalization makes biological sense is a difficult question to be analysed case-by-case. Our purpose is to give a statistician's warning: the sample-level equation (17) and the beyond-sample generalization, both typical of the literature, are incompatible. We propose two simple alternative equations (15, 19) compatible with the generalization.
+
+The case of absolute ignorance (I'') is not used in the rest of the manuscript; we apologize for the confusion it creates. We would omit it in a revised version.
+
+We invite the reviewer to read also our responses 1, 2 to the second reviewer.
+
+
+3. The manuscript's principal equations are:
+
+(15) to be used when a larger population is assumed and its size roughly known;
+
+(17) to be used when no larger population is assumed. Most literature uses this equation but assumes a larger population;
+
+(19) to be used when the the size of the larger population is uncertain.
+
+Equations (15) & (19) are novel to our knowledge. We apologize for not emphasizing the role of the three equations above nor giving clear guidance to their use. This should be amended in a revised version.
+
+
+4. The captions should be amended and give a clearer explanation of the figures. Owing to the page limit we chose not to repeat explanations given in the main text.
+
+
+* Reviewer 2 (Assigned_Reviewer_2)
+
+1. The manuscript's starting points are three:
+
+- the *sample-level* maximum-entropy method is increasingly being used in the neuroscientific literature (refs below);
+
+- this literature often generalizes results obtained via this method from a recorded sample to a whole area;
+
+- worries have been expressed (eg Ganmor & al 2011, Roudi & al PlosCB 2009) about excessive sample-size dependence of maximum-entropy results.
+
+We apologize for not clarifying enough these three starting points in our Introduction, which should be amended in a revised version. We aim to motivate the sample-size worries by simple probabilistic considerations, and to provide alternative correct formulae: Eq. (15) when the size of the full population is known, Eq. (19) when it is uncertain.
+
+
+2. The sample approach is routinely used in the literature and we agree with the reviewer: "it is not even an option" if the recorded neurons are assumed to be a sample of a larger population. This is the message of the manuscript, unfortunately not clear enough. Its analysis is meant to explain why the sample approach is not an option and to propose two corrected formulae (Eqs 15, 19).
+
+Our phrase "left for future work" was unfortunate: Eq. (19) for uncertain population size is actually an end result, ready to be used. What we left for future work was the analysis of its mathematical difference from (15) & (17). In a revised version we would add an example of distribution (19) to Figs 2 & 3.
+
+We invite the reviewer to read also our responses 1-3 to the first reviewer.
+
+
+3. Large space was given to deriving the formulae of sampling without replacement. As mentioned on lines 42-45 this was on purpose because these old formulae are central in many neuroscientific problems, yet we rarely see them used in the neuroscience literature. We wanted to stress their importance. But, starting from those formulae, the manuscript also presents novel results: Eqs (15) & (19), which can immediately be used instead of Eq. (17), currently used in the literature.
+
+
+4. Eq. (12) and its discussion (lines 113-129) are an excursion irrelevant to the rest of the paper, to the discussion of maximum-entropy and to the main equations we derive. We would eliminate this whole passage in a revised version.
+
+
+5. We would have liked to present a full Bayesian analysis of the problem, but the NIPS page limit prevents this. A measure of discrepancy, eg Kullback-Leibler divergence, between Eqs (15), (17), (19) would be added in a revised version.
+
+
+* Reviewer 3 (Assigned_Reviewer_5)
+
+We cordially thank the reviewer for the appreciative words. We want to add that our figures *do* use actual recorded neural activity data, but because of the double-blind review procedure we had to omit the related discussion at first. It would be added in the final version if the manuscript were accepted.
+
+
+
+Sample references of maximum-entropy use in neuroscientific literature:
+Martignon & al, Biol Cybern 1995
+Bohte & al, Neural Comp 2000
+Amari & al, Neural Comp 2003
+Schneidman & al, Nature 2006
+Shlens & al, J Neurosci 2006
+Tkačik & al, arXiv:q-bio/0611072 2006
+Mcdonald & al, NIPS 2009
+Macke & al, Neural Comp 2009
+Roudi & al, PLoS CB 2009
+Roudi & al, Front Comp Neurosci 2009
+Roudi & al, Phys Rev E 2009
+Tkačik & al, arXiv:0912.5409 2009
+Macke & al, Tech Rep 2009
+Gerwinn & al, NIPS 2009
+Barreiro & al, BMC Neurosci 2010
+Macke & al, NIPS 2011
+Macke & al, Phys Rev Lett 2011
+Ganmor & al, Proc Natl Acad Sci 2011
+Granot-Atedgi & al, PLoS CB 2013
+Macke & al, Entropy 2013
+Tkačik & al, Proc Natl Acad Sci 2014
+Mora & al, Phys Rev Lett 2015
+Shimazaki & al, Sci Rep 2015

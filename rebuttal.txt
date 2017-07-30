@@ -1,0 +1,88 @@
+The author(s) thank the three reviewers for their feedback. Here are our replies point-by-point.
+
+
+Reviewer 1 ("Assigned_Reviewer_1")
+
+1. We agree that the introduction part did not give enough neuroscientific introductory context and literature. The maximum-entropy method at the "sample level" has actually been repeatedly used and analysed in computational neuroscience since the work of Bohte et al (2000) to the present. A more complete bibliography is given at the end of this response and can be easily extended. The method is also used by non-experts, and our point would be to clarify some assumptions implicit the method also for non-experts.
+
+
+2. The reviewer is again right. Our discussion starts from the *constatation* that most of the neuroscientific literature implicitly or explicitly generalizes the statistical properties of a sample of recorded neurons, analysed via maximum-entropy, to whole areas the neurons are recorded from, eg retina or motor cortex. This generalization is a complex argument lying outside our competence; we cannot justify or deprecate it in this manuscript. Our purpose is to warn neuroscientists who make this generalization: the typical sample-level method commonly used in the literature is inconsistent with this generalization. We are proposing a more consistent approach.
+
+The case of absolute ignorance (I'') is not used in the rest of the manuscript and was confusing; we would omit it in a revised version.
+
+We invite the reviewer to read also our responses 1 & 2 to the second reviewer.
+
+
+3. We again agree: our principal equations are:
+
+(15) to be used when a larger population is assumed and its size roughly known;
+
+(17) *the equation used in the literature*, to be used when no larger population is assumed;
+
+(19) to be used when the the size of the larger population is unknown.
+
+Equations (15) and (19) are novel to our knowledge. Unfortunately we failed to emphasize these three equations and give clear guidance to their use. We would amend this in a revised version.
+
+
+4. The captions should indeed give a clearer explanation of the figures. We would amend this in a revised version.
+
+
+
+Reviewer 2 ("Assigned_Reviewer_2")
+
+1. We agree with the reviewer, we did not give enough context and literature. Our starting point is indeed that
+
+- the *sample-level* maximum-entropy method is increasingly being used in the neuroscientific literature (references below);
+  
+- this literature often generalizes results obtained by this method from a recorded sample to a whole area;
+  
+- worries have already been expressed (eg Ganmor et al 2011, Roudi et al PlosCB 2009) about the sample-size dependence of maximum-entropy results.
+
+Our manuscript would like to explain from simple probability considerations why these worries are motivated, why the results depend on the sample size, and what alternative formulae can be used: eqns (15), (19).
+
+
+2. The reviewer is right, we should have mentioned and referenced an important fact: the sample approach is routinely used in the literature. We agree that it is not an option if we assume sampling from a larger population. Our manuscript wanted to explain why it is not an option, and propose more valid alternatives (eqns 15, 19).
+
+The phrase "left for future work" was unfortunate. Eqn (19), for unknown population size, can actually be used and numerically computed as is. Left for future work is the analysis of its mathematical properties. In a revised version of the paper we would add to each figure also the distribution obtained by eqn (19).
+
+We invite the reviewer to read also our responses 1 & 2 to the first reviewer.
+
+
+3. It is true, we give much space to the old formulae of sampling without replacement. This was on purpose, see lines 42-45: "The relations we present are well-known in survey sampling and in the pedagogic problem of drawing from an urn without replacement, yet they are somewhat hard to find explicitly written in the neuroscientific literature, so they may be of interest on their own". We should have stressed more that our manuscript wanted to "advertize" the importance of these formulae, not much used in neuroscience but very central to it.
+
+
+4. Equation (12) and its discussion (lines 113-129) are irrelevant to the rest of the paper, to the discussion of maximum-entropy and to the main equations. We would eliminate this whole passage in a revised version.
+
+
+5. We would have liked to present a Bayesian analysis of the problem, but the page limit prevented this; the manuscript could become confusing. In a revised version we would add a measure of discrepancy, eg Kullback-Leibler divergence, between the "sample" and "population" approach.
+
+
+Reviewer 3 ("Assigned_Reviewer_5")
+
+We cordially thank the reviewer for the appreciative words. We would modify the manuscript to address the concerns of the other reviewers but leaving the theoretical points. We want to add that our figures do use actual recorded neural activity data, but because of the double-blind review procedure we could not give more details and made comparison with recorded frequency distributions in the reviewed version.ÿ
+
+
+
+Sample references of maximum-entropy use in neuroscientific literature:
+Martignon & al, Biol Cybern (1995)
+Bohte & al, Neural Comp (2000)
+Schneidman & al,  Nature (2006)
+Shlens & al,  J Neurosci (2006)
+Tkačik & al, arXiv:q-bio/0611072 (2006)
+Macke & al, Neural Comp (2009)
+Roudi & al, PLoS CB (2009)
+Roudi & al, Front Comp Neurosci (2009)
+Roudi & al, Phys Rev E (2009)
+Tkačik & al, arXiv:09125409 (2009)
+Macke & al, Tech Rep (2009)
+Gerwinn & al, Front Comput Neurosci (2010)
+Barreiro & al, arXiv:10112797 (2010)
+Macke & al, NIPS (2011)
+Macke & al, Phys Rev Lett (2011)
+Ganmor & al, Proc Natl Acad Sci (2011)
+Granot-Atedgi & al, PLoS CB (2013)
+Macke & al, Entropy (2013)
+Tkačik & al, Proc Natl Acad Sci (2014)
+Mora & al, Phys Rev Lett (2015)
+Shimazaki & al,  Sci Rep (2015)
+

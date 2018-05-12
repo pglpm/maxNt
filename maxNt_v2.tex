@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2018-05-09T15:24:58+0200
+%% Last-Updated: 2018-05-12T15:29:50+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -67,7 +67,7 @@ nonatbib]{nips_2017}
 \newcommand*{\langnohyph}{\foreignlanguage{nohyphenation}}
 
 \usepackage[autostyle=false,autopunct=false,english=british]{csquotes}
-\setquotestyle{american}
+\setquotestyle{british}
 
 \let\openbox\relax
 \usepackage{amsthm}
@@ -130,7 +130,7 @@ nonatbib]{nips_2017}
 % \DeclareMathSymbol{\epsilon}{\mathalpha}{egreeki}{"0F}
  \DeclareMathSymbol{\zeta}{\mathalpha}{egreeki}{"10}
 % \DeclareMathSymbol{\eta}{\mathalpha}{egreeki}{"11}
-% \DeclareMathSymbol{\theta}{\mathalpha}{egreeki}{"12}
+ \DeclareMathSymbol{\theta}{\mathalpha}{egreeki}{"12}
 % \DeclareMathSymbol{\iota}{\mathalpha}{egreeki}{"13}
  \DeclareMathSymbol{\kappa}{\mathalpha}{egreeki}{"14}
  \DeclareMathSymbol{\lambda}{\mathalpha}{egreeki}{"15}
@@ -343,6 +343,8 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 %\usepackage{nicefrac}       % compact symbols for 1/2, etc.
 %\usepackage{microtype}      % microtypography
 
+\pdfmapline{+dummy-space <dummy-space.pfb}\pdfinterwordspaceon%
+
 % @@@@@@@@@@ new macros @@@@@@@@@@
 % Common ones - uncomment as needed
 %\providecommand{\nequiv}{\not\equiv}
@@ -359,7 +361,7 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 %\newcommand*{\micro}{\textmu}% degree Celsius
 %\newcommand*{\I}{\mathrm{i}}%imaginary unit
 %\newcommand*{\e}{\mathrm{e}}%Neper
-%\newcommand*{\di}{\mathrm{d}}%differential
+\newcommand*{\di}{\mathrm{d}}%differential
 %\newcommand*{\Di}{\mathrm{D}}%capital differential
 %\newcommand*{\planckc}{\hslash}
 %\newcommand*{\avogn}{N_{\textrm{A}}}
@@ -530,7 +532,7 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 
 \newcommand*{\mee}{maximum entropy}
 \newcommand*{\me}{maximum-entropy}
-
+\newcommand*{\ytheta}{\bm{\theta}}
 %@@@@@@@@@@ new macros end @@@@@@@@@@
 
 \selectlanguage{british}\frenchspacing
@@ -607,6 +609,63 @@ E. Torre\\\texttt{torre@ibk.baug.ethz.ch}
 % LM: I'd like to avoid common beginnings like "Today blah blah is
 % important" or "Blah blah is interesting/fundamental". They feel more like
 % a mechanical ritual than a real tentative of connecting with the reader.
+
+Imagine that we have recorded the firing activity of a hundred neurons from
+a particular brain area. This scenario is a concrete possibility thanks to
+recent electrophysiological techniques \cite{berenyietal2014}. We bin and
+binarize the recorded activity into sequences of $0$s (inactive) and $1$s
+(firing) \cite{caianiello1961,caianiello1986}. We notice that groups of two
+or more $1$s can appear in any time bin. We may ask several questions
+looking at these groups. A recurring question is of this kind: can the
+presence of groups of three or more simultaneous firings be
+\enquote{explained} in terms of groups of just two or three? This kind of
+question is very vague until we define what we mean with \enquote{explain}
+or similar words.
+
+A possible, precise definition is as follows. We want to predict, \ie\
+assign a probability to, the population activity in a time bin, given the
+population activities in the other bins:
+\begin{equation}
+  \label{eq:general_prediction}
+  \p(\text{activity at one time bin} \|
+  \text{activities at the remaining bins, and other info}).
+\end{equation}
+We can say that the simultaneous firing of at most two neurons
+\enquote{explains} the activity if only the values of the first and second
+empirical moments of the activities are relevant for the probability above:
+\begin{multline}
+  \label{eq:informal_sufficiency}
+  \p(\text{activity at one time bin} \|
+  \text{activities at the other bins, and other info}) ={}\\
+  \p(\text{activity at some time bin} \|
+  \text{1st \amp\ 2nd empirical moments, and other info});
+\end{multline}
+in statistical terms, the first and second moments are \emph{sufficient
+  statistics}. Other definitions are possible, of course; the definition
+above has the advantage of being mathematically very precise. In fact it
+determines, from just the three basic laws of the probability calculus, the
+mathematical form of the probability for the activity at any number of bins:
+\begin{multline}
+  \label{eq:sufficiency_maxent_family}
+  \p(\text{activity at bins $1,2,\dotsc$} \|
+  \text{other info}) ={}\\
+  \shoveright{\int
+    \pf(\text{activity at bin $1$} \|\ytheta)\,
+    \pf(\text{activity at bin $2$} \|\ytheta)\dotsm
+ \pf(\ytheta\| \text{other info})\,
+  \di\ytheta,}
+  \\[2\jot]
+  \text{with \enquote{$\pf(\text{activity at time bin $i$} \|\ytheta)$}
+    having maximum-entropy form}.
+\end{multline}
+The proof that the assumption of sufficient statistics leads to the
+probability expression above is the Koopman-Pitman theorem
+\cite{koopman1936,pitman1936,darmois1935} and can be found in
+\citetext[\sect~4.5]{bernardoetal1994_r2000} and references therein. It can
+be extended to higher moments and other statistics.
+
+
+
 This note is mainly addressed to neuroscientists interested in \me\
 methods, but we would be pleased if its discussion of the probability of
 \enquote{sampling} were useful to neuroscientists that use other

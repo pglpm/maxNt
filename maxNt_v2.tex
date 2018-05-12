@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2018-05-12T15:29:50+0200
+%% Last-Updated: 2018-05-12T16:21:17+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -656,14 +656,23 @@ mathematical form of the probability for the activity at any number of bins:
   \di\ytheta,}
   \\[2\jot]
   \text{with \enquote{$\pf(\text{activity at time bin $i$} \|\ytheta)$}
-    having maximum-entropy form}.
+    having maximum-entropy form};
 \end{multline}
-The proof that the assumption of sufficient statistics leads to the
-probability expression above is the Koopman-Pitman theorem
+the $\ytheta$ being the Lagrange multipliers of the maximum-entropy
+distribution. The proof that the assumption of sufficient statistics leads
+to the probability expression above is the Koopman-Pitman theorem
 \cite{koopman1936,pitman1936,darmois1935} and can be found in
-\citetext[\sect~4.5]{bernardoetal1994_r2000} and references therein. It can
+\textcite[\sect~4.5]{bernardoetal1994_r2000} and references therein. It can
 be extended to higher moments and other statistics.
 
+When many data are available (and unfortunately also when they aren't), the
+conditional density for the Lagrange multipliers,
+$\pf(\ytheta\| \text{data, other info})$ is strongly peaked at the unique
+values determined by the inverse problem \cite{meadetal1984}, and the
+probability for the population activity is well-approximated by a
+maximum-entropy one with those Lagrange multipliers. This kind of
+distribution has been used at least since the 1990s
+\cite{mackay1991,martignonetal1995,bohteetal2000,amarietal2003,schneidmanetal2006,shlensetal2006,tkaciketal2006,mackeetal2009,mackeetal2009b,roudietal2009,roudietal2009b,roudietal2009c,tkaciketal2009,gerwinnetal2009,barreiroetal2010b,mackeetal2011,mackeetal2011b,ganmoretal2011,granotatedgietal2013,mackeetal2013,tkaciketal2014b,moraetal2015,shimazakietal2015}
 
 
 This note is mainly addressed to neuroscientists interested in \me\

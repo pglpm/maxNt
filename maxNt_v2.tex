@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2018-05-13T22:11:43+0200
+%% Last-Updated: 2018-05-13T23:58:06+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -645,28 +645,58 @@ distributions
 We assume that our readers are at least vaguely familiar with such models.
 In brief, they build a probability distribution for neuronal activity using
 only data about simultaneous firings of two neurons, or of three, and so
-on. Maximum-entropy probability distributions can be introduced and justified in
+on. Let us take the case of the first two moments just as an example. The
+corresponding maximum-entropy probability distributions can be derived in
 three main ways:
 \begin{enumerate}
-\item from the maximum-entropy method
-  \cite{jaynes1957,jaynes1963,sivia1996_r2006};
-\item as asymptotic distributions of Bayesian models called
+\item From the maximum-entropy method
+  \cite{jaynes1957,jaynes1963,sivia1996_r2006}. The distribution is chosen
+  as the broadest one, in the Shannon-entropy sense, among those having
+  particular first and second moments.
+\item As asymptotic distributions of Bayesian models called
   \enquote{exchangeable} with entropic priors
   \cites{jaynes1986d_r1996,skilling1989b,skilling1990,rodriguez1989,rodriguez2002,portamana2017}[see
   also][\chap~VI]{schroedinger1946_r1948}%[pp.~52--55]
-{jaynes1979b};
-\item as asymptotic distributions of Bayesian models based on sufficient
+  {jaynes1979b}. The distribution is the limit, when the number of time
+  bins is very large, of
+  \begin{equation}
+    \label{eq:predictive_exchangeability}
+    \p(\text{\small activity at some time bin} \|
+    \text{\small 1st \amp\ 2nd empirical moments from observed bins},\text{\small other info});
+  \end{equation}
+  obtained from Bayes's theorem \emph{given} the observed empirical moments
+  and a particular initial joint distribution.
+\item As asymptotic distributions of Bayesian models based on sufficient
   statistics
   \cite{jaynes1982,%[\sect~I]
-jaynes1982b,portamana2017}.
+jaynes1982b,portamana2017}. The distribution is the limit, when the number of time
+bins is very large, of
+\begin{equation}
+  \label{eq:general_prediction}
+  \p(\text{\small activity at one time bin} \|
+  \text{\small activities at the remaining bins},\text{\small other info})
+\end{equation}
+under the assumption that only the values of the first and second empirical
+moments of the activities are \emph{relevant} for the probability above, \ie\
+\begin{multline}
+  \label{eq:informal_sufficiency}
+  \p(\text{\small activity at one time bin} \|
+  \text{\small activities at the other bins},\text{\small other info}) ={}\\
+  \p(\text{\small activity at some time bin} \|
+  \text{\small 1st \amp\ 2nd empirical moments},\text{\small other info});
+\end{multline}
+in other words, the assumption that the first and second moments are
+\emph{sufficient statistics}. This limit generally does not depend on the initial
+joint distribution.
 \end{enumerate}
 
+***
 
 
 
 
 
-*** usually \enquote{explain} has a probabilistic meaning. We want to see
+usually \enquote{explain} has a probabilistic meaning. We want to see
 whether information about moments give reasonable predictions about the
 rest. Necessity of making this precise. Three ways:
 

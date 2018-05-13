@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2018-05-13T13:23:37+0200
+%% Last-Updated: 2018-05-13T22:11:43+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -272,33 +272,28 @@ nonatbib]{nips_2018}
 \providecommand{\eprint}[2]{\texttt{\href{#1}{#2}}}
 \newcommand*{\amp}{\&}
 
-\def\arxivp{}
-\def\mparcp{}
-\def\philscip{}
-\def\biorxivp{}
-\newcommand*{\arxivsi}{\texttt{arXiv} eprints available at \url{http://arxiv.org/}.\\}
-\newcommand*{\mparcsi}{\texttt{mp\_arc} eprints available at \url{http://www.ma.utexas.edu/mp_arc/}.\\}
-\newcommand*{\philscisi}{\texttt{philsci} eprints available at \url{http://philsci-archive.pitt.edu/}.\\}
-\newcommand*{\biorxivsi}{\texttt{bioRxiv} eprints available at \url{http://biorxiv.org/}.\\}
-\newcommand*{\arxiveprint}[1]{\global\def\arxivp{\arxivsi}%\citeauthor{0arxivcite}\addtocategory{ifarchcit}{0arxivcite}%eprint
-\texttt{\urlalt{http://arxiv.org/abs/#1}{arXiv:\hspace{0pt}#1}}%
+\newcommand*{\arxiveprint}[1]{%\global\def\arxivp{\arxivsi}%\citeauthor{0arxivcite}\addtocategory{ifarchcit}{0arxivcite}%eprint
+\texttt{\urlalt{https://arxiv.org/abs/#1}{arXiv:\hspace{0pt}#1}}%
 %\texttt{\href{http://arxiv.org/abs/#1}{\protect\url{arXiv:#1}}}%
 %\renewcommand{\arxivnote}{\texttt{arXiv} eprints available at \url{http://arxiv.org/}.}
 }
-\newcommand*{\mparceprint}[1]{\global\def\mparcp{\mparcsi}%\citeauthor{0mparccite}\addtocategory{ifarchcit}{0mparccite}%eprint
+\newcommand*{\mparceprint}[1]{%\global\def\mparcp{\mparcsi}%\citeauthor{0mparccite}\addtocategory{ifarchcit}{0mparccite}%eprint
 \texttt{\urlalt{http://www.ma.utexas.edu/mp_arc-bin/mpa?yn=#1}{mp\_arc:\hspace{0pt}#1}}%
 %\texttt{\href{http://www.ma.utexas.edu/mp_arc-bin/mpa?yn=#1}{\protect\url{mp_arc:#1}}}%
 %\providecommand{\mparcnote}{\texttt{mp_arc} eprints available at \url{http://www.ma.utexas.edu/mp_arc/}.}
 }
-\newcommand*{\philscieprint}[1]{\global\def\philscip{\philscisi}%\citeauthor{0philscicite}\addtocategory{ifarchcit}{0philscicite}%eprint
+\newcommand*{\philscieprint}[1]{%\global\def\philscip{\philscisi}%\citeauthor{0philscicite}\addtocategory{ifarchcit}{0philscicite}%eprint
 \texttt{\urlalt{http://philsci-archive.pitt.edu/archive/#1}{PhilSci:\hspace{0pt}#1}}%
 %\texttt{\href{http://philsci-archive.pitt.edu/archive/#1}{\protect\url{PhilSci:#1}}}%
 %\providecommand{\mparcnote}{\texttt{philsci} eprints available at \url{http://philsci-archive.pitt.edu/}.}
 }
-\newcommand*{\biorxiveprint}[1]{\global\def\biorxivp{\biorxivsi}%\citeauthor{0arxivcite}\addtocategory{ifarchcit}{0arxivcite}%eprint
+\newcommand*{\biorxiveprint}[1]{%\global\def\biorxivp{\biorxivsi}%\citeauthor{0arxivcite}\addtocategory{ifarchcit}{0arxivcite}%eprint
 \texttt{\urlalt{http://biorxiv.org/content/early/#1}{bioRxiv:\hspace{0pt}#1}}%
 %\texttt{\href{http://arxiv.org/abs/#1}{\protect\url{arXiv:#1}}}%
 %\renewcommand{\arxivnote}{\texttt{arXiv} eprints available at \url{http://arxiv.org/}.}
+}
+\newcommand*{\osfeprint}[1]{%
+\texttt{\urlalt{https://doi.org/10.17605/osf.io/#1}{doi:10.17605/osf.io/#1}}%
 }
 
 \usepackage{graphicx}
@@ -551,7 +546,7 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 % author name.
 
 \author{
-  P.G.L. Porta Mana\\\texttt{piero.mana@ntnu.org}
+  P.G.L. Porta Mana\\\texttt{piero.mana@ntnu.no}
   \And
   V. Rostami\\\texttt{v.rostami@fz-juelich.de}
   \And
@@ -612,13 +607,85 @@ E. Torre\\\texttt{torre@ibk.baug.ethz.ch}
 
 Imagine that we have recorded the firing activity of a hundred neurons from
 a particular brain area. This scenario is a concrete possibility thanks to
-recent electrophysiological techniques \cite{berenyietal2014}. We bin and
-binarize the recorded activity into sequences of $0$s (inactive) and $1$s
-(firing) \cite{caianiello1961,caianiello1986}. We notice that groups of two
-or more $1$s can appear in any time bin. We may ask several questions
-looking at these groups. A recurring question is of this kind: can the
-presence of groups of three or more simultaneous firings be
-\enquote{explained} in terms of groups of just two or three? This kind of
+recent electrophysiological techniques \cite{berenyietal2014}. In 1985,
+Gerstein, Perkel, \amp\ Dayhoff wrote:
+\begin{quote}
+  the very profusion of data produced in such experiments creates serious
+  problems of analysis and interpretation; these problems are conceptual as
+  well as practical. The principal conceptual problems are (1) defining
+  cooperativity or functional grouping among neurons and (2) formulating
+  quantitative criteria for recognizing and characterizing such
+  cooperativity. \cite{gersteinetal1985}
+\end{quote}
+ More than thirty years later these problems are
+still under investigation.
+
+Some investigations in the literature proceed as follows. We bin in time
+and binarize in intensity \cite{caianiello1961,caianiello1986} the recorded
+activity, transforming it into a sequence of $0$s (inactive) and $1$s
+(firing) for each neuron. Groups of two or more $1$s can appear in any time
+bin. Then we ask a question of this kind: can the presence of groups of
+three or more simultaneous firings be \enquote{explained} in terms of
+groups of just two, or three, or\ldots? This kind of question is very vague
+until we define what we mean with \enquote{explain} or similar words.
+Usually such \enquote{explanation} has a probabilistic meaning: we wonder
+whether the sole knowledge about two, or three, or more simultaneous
+firings can yield as good predictions about the whole activity as a more
+complete knowledge would do. To make this question concrete we must choose
+a probabilistic model.
+
+Maximum-entropy models
+\cite{jaynes1957,jaynes1963,sivia1996_r2006,meadetal1984} have been used in
+neuroscience with this kind of purpose and for diverse brain areas at least
+since the 1990s
+\cite{mackay1991,martignonetal1995,bohteetal2000,amarietal2003,schneidmanetal2006,shlensetal2006,mackeetal2009b,roudietal2009c,tkaciketal2009,gerwinnetal2009,mackeetal2011,mackeetal2011b,ganmoretal2011,granotatedgietal2013,tkaciketal2014b,moraetal2015,shimazakietal2015}.
+Part of this literature focused on the range of applicability of \me\
+distributions
+\cite{tkaciketal2006,roudietal2009,roudietal2009b,barreiroetal2010b,mackeetal2013,rostamietal2016_r2017}.
+We assume that our readers are at least vaguely familiar with such models.
+In brief, they build a probability distribution for neuronal activity using
+only data about simultaneous firings of two neurons, or of three, and so
+on. Maximum-entropy probability distributions can be introduced and justified in
+three main ways:
+\begin{enumerate}
+\item from the maximum-entropy method
+  \cite{jaynes1957,jaynes1963,sivia1996_r2006};
+\item as asymptotic distributions of Bayesian models called
+  \enquote{exchangeable} with entropic priors
+  \cites{jaynes1986d_r1996,skilling1989b,skilling1990,rodriguez1989,rodriguez2002,portamana2017}[see
+  also][\chap~VI]{schroedinger1946_r1948}%[pp.~52--55]
+{jaynes1979b};
+\item as asymptotic distributions of Bayesian models based on sufficient
+  statistics
+  \cite{jaynes1982,%[\sect~I]
+jaynes1982b,portamana2017}.
+\end{enumerate}
+
+
+
+
+
+
+*** usually \enquote{explain} has a probabilistic meaning. We want to see
+whether information about moments give reasonable predictions about the
+rest. Necessity of making this precise. Three ways:
+
+-- \me\ method,
+
+-- Bayesian with entropic prior,
+
+-- Bayesian sufficiency.
+
+Applied to sample, all three are asymptotically equivalent. However, sample
+is representative of population. Need to take full population into
+consideration. This leads to different formulae, and also to
+non-equivalence of third way. Here we focus on first two.
+
+
+
+
+
+This kind of
 question is very vague until we define what we mean with \enquote{explain}
 or similar words.
 
@@ -656,7 +723,7 @@ mathematical form of the probability for the activity at any number of bins:
   \di\ytheta,
   \\[\jot]
   \text{with \enquote{$\pf(\text{\small activity at time bin } i \|\ytheta)$}
-    having maximum-entropy form with multipliers $\ytheta$};
+    having \me\ form with multipliers $\ytheta$};
 \end{gathered}
 \end{equation}
 The proof that the assumption of sufficient statistics leads
@@ -670,86 +737,45 @@ conditional density for the Lagrange multipliers,
 $\pf(\ytheta\| \text{data, other info})$ is strongly peaked at the unique
 values determined by the inverse problem \cite{meadetal1984}, and the
 probability for the population activity is well-approximated by a
-maximum-entropy distribution \cite{jaynes1957,sivia1996_r2006,meadetal1984}
-with those Lagrange multipliers. This kind of distributions has been used
-in neuroscience at least since the 1990s to study correlations from diverse
+\me\ distribution
+\cite{jaynes1957,jaynes1963,sivia1996_r2006,meadetal1984} with those
+Lagrange multipliers. This kind of distributions has been used in
+neuroscience at least since the 1990s to study correlations from diverse
 points of view, for diverse purposes, and with data recorded from diverse
 brain areas
 \cite{mackay1991,martignonetal1995,bohteetal2000,amarietal2003,schneidmanetal2006,shlensetal2006,mackeetal2009b,roudietal2009c,tkaciketal2009,gerwinnetal2009,mackeetal2011,mackeetal2011b,ganmoretal2011,granotatedgietal2013,tkaciketal2014b,moraetal2015,shimazakietal2015}.
-Part of this literature focused on the range of applicability of maximum-entropy
-distributions
+Part of this literature focused on the range of applicability of
+\me\ distributions
 \cite{tkaciketal2006,roudietal2009,roudietal2009b,barreiroetal2010b,mackeetal2013}.
 
 This kind of studies would have little significance if we did not expect
 their results to generalize beyond the particular recorded sample. In other
 words, we implicitly or explicitly expect that the conclusions drawn with
-maximum-entropy methods about the recorded neurons should somehow
-generalize or extrapolate at least to whole areas those neurons are recorded from,
-\eg\ retina or motor cortex. We are thus assuming that the recorded sample
-is a \emph{representative sample} of that area.
-
-Whether such extrapolation makes biological sense is a difficult question,
-to be analysed case by case. The purpose
-
-The point that we want to stress is that
-
-
-From the observation of these samples we expect
-to learn something about all other neurons in the same brain area. That is,
-we assume that they are a \enquote{representative sample}.
-
-
-This note is mainly addressed to neuroscientists interested in \me\
-methods, but we would be pleased if its discussion of the probability of
-\enquote{sampling} were useful to neuroscientists that use other
-statistical methods to study the physical and dynamical characteristics of
-brain areas via neuronal recordings.
-
-Recent electrophysiological techniques \cite{berenyietal2014} in fact allow
-experimenters to record samples comprising even a couple hundreds neurons
-from specific brain areas. From the observation of these samples we expect
-to learn something about all other neurons in the same brain area. That is,
-we assume that they are a \enquote{representative sample}. We do not
-elaborate on the various important purposes of such recordings here, but
-stress that these sample sizes can be considered \enquote{large} because
-their statistical analysis requires considerable computational power.
-
-These computational costs are one, probably not the earliest, of the many
-reasons why \me\ methods have been introduced in neuroscience. It would be
-useful to somehow compress the statistical wealth of large neuronal
-recordings into few quantities, like sample moments for example. This
-compression might also entail interesting biological or functional
-properties of neuronal activity. The standard \me\ method
-\cite{jaynes1957,sivia1996_r2006,meadetal1984} accomplishes this kind of
-compression: it associates a unique probability distribution with few
-experimental quantities. But this is only one of its uses. It is also used
-for various information-theoretic purposes or to generate reference
-probability distributions
-\cite{bohteetal2000,schneidmanetal2006,shlensetal2006,roudietal2009b,mackeetal2011,tkaciketal2014b,shimazakietal2015}.
-In all these uses the \me\ distribution is chosen as the \enquote{maximally
-  noncommittal} one \cite{jaynes1963}. This adjective means little without
-further technical characterizations. Different works give different
-characterizations, but in this paper we will use the quoted expression as
-an umbrella term for all of them. Our results will not depend on the
-specific characterization of \enquote{noncommittal}.
+\me\ methods about the recorded neurons should somehow generalize or
+extrapolate at least to whole areas those neurons are recorded from, \eg\
+retina or motor cortex. We are thus assuming that the recorded sample is a
+\emph{representative sample} of that area. Whether such extrapolation makes
+biological sense is a difficult question, to be analysed case by case.
 
 \bigskip
 
-In this note we show that we must face a dilemma if we want to apply the
-\me\ method to a representative sample to find a maximally noncommittal
-distribution.
+But a problem remains even if we assume that the sample is representative
+of its brain area. The problem lies in the way the \me\ methods
+is typically used in the literature. In this note we want to discuss this
+problem and offer a solution to it.
 
-The dilemma is this. We can apply the \me\ method to the sample, using a
-specified set of experimental constraints, and generate a probability
-distribution for the state of the sample. But our sample is representative
-of a larger population, in which it is biologically and functionally
-embedded. We can apply the \me\ method to the larger population, using the
-same constraints, and generate a probability distribution for its larger
-state, and then find the distribution for the sample by marginalization.
-Either application seems to have some commendable features. However,
-\emph{the distributions obtained from these two applications differ}. It
-goes without saying that if one is \enquote{noncommittal}, the other must
-be \enquote{committal}. Which choice is most meaningful?
+The problem is this. We can apply the \me\ method to the sample, choosing
+some sufficient statistics, and generate a probability distribution for the
+state of the sample. But we consider our sample to be representative of a
+larger population, in which it is biologically and functionally embedded.
+We can apply the \me\ method to the larger population, using the same kind
+of sufficient statistics, and generate a probability distribution for its
+larger state, and then find the distribution for the sample by
+marginalization. Either application seems to have some commendable
+features. However, \emph{the distributions obtained from these two
+  applications differ}. It goes without saying that if one is
+\enquote{noncommittal}, the other must be \enquote{committal}. Which choice
+is most meaningful?
 
 In the final discussion we present some arguments in favour of one choice.
 
@@ -913,12 +939,13 @@ By marginalization we obtain the probability for the state of the sample:
   \label{eq:marginal}
   \p(\yx = \yr \| \yH) = \binom{n}{n\yrs}^{-1} \p(\yxs=\yrs \| \yH),
   \\
-  \shortintertext{with}
+  \shortintertext{where}
   \label{eq:subpop_average}
   \p(\yxs=\yrs \| \yH) = \sum_{N \yRf =0}^{N}
     \p(\yxs = \yrs \|\yXf=\yRf, \yH)\,
   \p(\yXf=\yRf \| \yH),
   \\[2\jot]
+  \shortintertext{with the conditional probability}
   \label{eq:conditional_hypergeometric}
   \p(\yxs = \yrs \|\yXf=\yRf, \yH)=
   \binom{n}{n\yrs}\binom{N-n}{N \yRf-n\yrs}\binom{N}{N \yRf}^{-1}
@@ -950,33 +977,27 @@ discussion of this update process in the two cases is unnecessary for the
 purposes of this note and outside their scope; we hope to address it in
 full in a future work.
 
-The conditional probability $\ypp(\yrs,\yRf)$ relates the spaces of the
-sample average $\yXf\in\set{0,\dotsc,N}$ and of the population average
-$\yxs\in\set{0,\dotsc,n}$ in a special way. It is a coarsening projector of
-any probability $p$ for $\yXf$ onto a marginal probability $p_*$ for
-$\yxs$:
-\begin{equation}
-  \label{eq:projection_P}
-  % \ypp\colon p(\yXf=\dotv) \to
-  p_*(\yxs=\yrs)
-  = \sum_{N\yRf=0}^N \ypp(\yrs\|\yRf) p(\yXf=\yRf).
-\end{equation}
-Conversely it also a pulls back expectations of functions $f$ of the sample
-average $\yxs$ to expectations of functions $f^*$ of the population average
-$\yXf$:
+The conditional probability
+$\p(\yxs = \yrs \|\yXf=\yRf, \yH)\equiv\ypp(\yrs\|\yRf)$ relates the spaces
+of the sample average $\yXf\in\set{0,\dotsc,N}$ and of the population
+average $\yxs\in\set{0,\dotsc,n}$. It is a coarsening projector of any
+probability $p$ for $\yXf$ onto a marginal probability, as
+\eqn~\eqref{eq:subpop_average} shows. It also allows us to construct a
+function of the population average $f^*(\yXf)$, given a function of the
+sample average $f(\yxs)$:
 \begin{equation}
   \label{eq:pullback_P}
-%  \ypp^*\colon f(\yxs=\dotv) \to f^*(\yXf=\dotv) \defd \sum_{N\yrs=0}^n
-%  f(\yrs)\ypp(\yrs\|\dotv),
-  \begin{gathered}
-    f^*(\yXf) \defd \sum_{n\yrs=0}^n f(\yrs)\ypp(\yrs\|\yXf),
-    \\
-   \expeb{f(\yxs)}= \expeb{f^*(\yXf)}
-    =
-    \sum_{n\yrs=0}^n f(\yrs)\,\p(\yxs=\yrs \| \yH)
-    =
-    \sum_{N\yRf=0}^N f^*(\yRf)\,\p(\yXf=\yRf \| \yH).
-  \end{gathered}
+  f^*(\yXf) \defd \sum_{n\yrs=0}^n f(\yrs)\ypp(\yrs\|\yXf),
+\end{equation}  
+with the property of having the same expectation value as the latter:
+\begin{equation}
+  \label{eq:same_expect}
+  \expeb{f^*(\yXf)} \equiv
+  \sum_{N\yRf=0}^N f^*(\yRf)\,\p(\yXf=\yRf \| \yH)
+  =
+  \sum_{n\yrs=0}^n f(\yrs)\,\p(\yxs=\yrs \| \yH)
+  \equiv
+  \expeb{f(\yxs)}. 
 \end{equation}
 
 
@@ -989,7 +1010,7 @@ $\yXf$:
   colourbar depending on your \textsc{pdf} viewer.)}
 \label{fig:hypergeom_proj}
 \end{figure}%hypergeometric_identity.nb
-A look at a plot of the hypergeometric distribution $\ypp(\yrs\|\yRf)$, see
+A look at a plot of the hypergeometric distribution $\ypp(\yrs\|\yRf)$,
 \fig~\ref{fig:hypergeom_proj}, reveals that it is a sort of \enquote{fuzzy
   identity matrix} between the $\yXf$-space $\set{0,\dotsc,N}$ and
 $\yxs$-space $\set{0,\dotsc,n}$. When $n=N$ it is the identity matrix. We
@@ -1039,33 +1060,32 @@ population can differ wildly.
 % \end{equation}
 For functions representing averaged products,
 $f(\yxs) = \sav{\yx\dots\yx}\equiv\binom{n\yxs}{m}/\binom{n}{m}$,
-formulae~\eqref{eq:pullback_P} have the useful form
+ the expectations at the population and at the sample
+levels are exactly the same, as can be seen from \eqn~\eqref{eq:same_expect}:
 \begin{equation}
   \label{eq:expe_products}
 %  \label{eq:pullback_m_expectations}
 %  \ypp^*\colon \sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}}
 %  \mapsto
-  \begin{gathered}
-    \bigl( \sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}}\bigr)^* =
-    \av{\underbrace{\yX \dotsm \yX}_{\text{$m$ factors}}},
-    \\[2\jot]
+    % \bigl( \sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}}\bigr)^* =
+    % \av{\underbrace{\yX \dotsm \yX}_{\text{$m$ factors}}},
+    % \\[2\jot]
     % \expe{\sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}} \| \yH} =
     % \expe{\av{\underbrace{\yX \dotsm \yX}_{\text{$m$ factors}}} \| \yH}
     \expe{\sav{\yx \dotsm \yx} \| \yH} =
     \expe{\av{\yX \dotsm \yX} \| \yH}
-    % \\[2\jot]
-    % {}
-    = \binom{n}{m}^{-1}
-    % \frac{(n-m)!}{n!}
-    \sum_{\mathclap{n \yrs=0}}^n %m!\,
-    \binom{n \yrs}{m}\, \p(\yxs=\yrs \| \yH)
-    % \sum_{N \yRf=0}^N %m!\,
-    % \binom{N-m}{N \yRf-m} \binom{N}{N \yRf}^{-1} \p(\yXf=\yRf \| \yH)
-    = \binom{N}{m}^{-1}
-    % \frac{(N-m)!}{N!}
-    \sum_{\mathclap{N \yRf=0}}^N %m!\,
-    \binom{N \yRf}{m}\, \p(\yXf=\yRf \| \yH).
-  \end{gathered}
+    % % \\[2\jot]
+    % % {}
+    % = \binom{n}{m}^{-1}
+    % % \frac{(n-m)!}{n!}
+    % \sum_{\mathclap{n \yrs=0}}^n %m!\,
+    % \binom{n \yrs}{m}\, \p(\yxs=\yrs \| \yH)
+    % % \sum_{N \yRf=0}^N %m!\,
+    % % \binom{N-m}{N \yRf-m} \binom{N}{N \yRf}^{-1} \p(\yXf=\yRf \| \yH)
+    % = \binom{N}{m}^{-1}
+    % % \frac{(N-m)!}{N!}
+    % \sum_{\mathclap{N \yRf=0}}^N %m!\,
+    % \binom{N \yRf}{m}\, \p(\yXf=\yRf \| \yH).
 \end{equation}
 The proof uses the expression for the $m$th factorial moment of the
 hypergeometric distribution \cite{potts1953}. Thus, in the states of
@@ -1440,9 +1460,9 @@ unfiltered scientific exchange possible.\fi
 % learning and recall at excitatory recurrent synapses and cholinergic
 % modulation in rat hippocampal region CA3. {\it Journal of
 %   Neuroscience} {\bf 15}(7):5249-5262.
-\defbibnote{postnote}{\small\par\medskip\noindent{\footnotesize% Note:
-\arxivp \mparcp \philscip \biorxivp}%
-}
+% \defbibnote{postnote}{\small\par\medskip\noindent{\footnotesize% Note:
+% \arxivp \mparcp \philscip \biorxivp}%
+% }
 
 \newcommand*{\citein}[2][]{\textnormal{\textcite[#1]{#2}}%\addtocategory{extras}{#2}
 }
@@ -1451,7 +1471,7 @@ unfiltered scientific exchange possible.\fi
 \newcommand*{\subtitleproc}[1]{}
 
 
-\printbibliography[postnote=postnote]
+\printbibliography%[postnote=postnote]
 
 \iffalse
 \newrefsection

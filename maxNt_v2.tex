@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2018-05-13T23:58:06+0200
+%% Last-Updated: 2018-05-14T14:56:53+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -620,179 +620,115 @@ Gerstein, Perkel, \amp\ Dayhoff wrote:
  More than thirty years later these problems are
 still under investigation.
 
-Some investigations in the literature proceed as follows. We bin in time
-and binarize in intensity \cite{caianiello1961,caianiello1986} the recorded
-activity, transforming it into a sequence of $0$s (inactive) and $1$s
-(firing) for each neuron. Groups of two or more $1$s can appear in any time
-bin. Then we ask a question of this kind: can the presence of groups of
-three or more simultaneous firings be \enquote{explained} in terms of
-groups of just two, or three, or\ldots? This kind of question is very vague
-until we define what we mean with \enquote{explain} or similar words.
-Usually such \enquote{explanation} has a probabilistic meaning: we wonder
-whether the sole knowledge about two, or three, or more simultaneous
-firings can yield as good predictions about the whole activity as a more
-complete knowledge would do. To make this question concrete we must choose
-a probabilistic model.
+Some investigations in the neuroscientific literature proceed as follows.
+We bin in time and binarize in intensity
+\cite{caianiello1961,caianiello1986} the recorded activity, transforming it
+into a sequence of $0$s (inactive) and $1$s (firing) for each neuron.
+Groups of two or more $1$s can appear in any time bin. Then we ask a
+question of this kind: can the presence of groups of three or more
+simultaneous firings be \enquote{explained} in terms of groups of just two,
+or three, or\ldots? This question is very vague until we define what we
+mean with \enquote{explain} or similar words. Usually such
+\enquote{explanation} has a probabilistic meaning: we wonder whether the
+sole knowledge about two, or three, or more simultaneous firings can yield
+as good predictions about the whole activity as a more complete knowledge
+would do. To make this question concrete we must first choose a
+probabilistic model from some well-defined assumptions, and then assess
+whether its final probabilities are \enquote{good} according to some
+well-defined measure. In the following we consider only the first,
+model-building, step.
 
-Maximum-entropy models
+Maximum-entropy probability models
 \cite{jaynes1957,jaynes1963,sivia1996_r2006,meadetal1984} have been used in
-neuroscience with this kind of purpose and for diverse brain areas at least
-since the 1990s
+neuroscience with this kind of purpose, for recordings from brain areas as
+diverse as retina and motor cortex, at least since the 1990s
 \cite{mackay1991,martignonetal1995,bohteetal2000,amarietal2003,schneidmanetal2006,shlensetal2006,mackeetal2009b,roudietal2009c,tkaciketal2009,gerwinnetal2009,mackeetal2011,mackeetal2011b,ganmoretal2011,granotatedgietal2013,tkaciketal2014b,moraetal2015,shimazakietal2015}.
-Part of this literature focused on the range of applicability of \me\
+Part of this literature focuses on the range of applicability of \me\
 distributions
 \cite{tkaciketal2006,roudietal2009,roudietal2009b,barreiroetal2010b,mackeetal2013,rostamietal2016_r2017}.
-We assume that our readers are at least vaguely familiar with such models.
-In brief, they build a probability distribution for neuronal activity using
+We assume that our readers are at least vaguely familiar with this kind of model.
+In brief, it builds a probability distribution for neuronal activity using
 only data about simultaneous firings of two neurons, or of three, and so
-on. Let us take the case of the first two moments just as an example. The
-corresponding maximum-entropy probability distributions can be derived in
-three main ways:
+on. Let us take the case of the first two moments as an example. The
+maximum-entropy distribution can be derived in three main ways:
 \begin{enumerate}
 \item From the maximum-entropy method
   \cite{jaynes1957,jaynes1963,sivia1996_r2006}. The distribution is chosen
-  as the broadest one, in the Shannon-entropy sense, among those having
-  particular first and second moments.
-\item As asymptotic distributions of Bayesian models called
-  \enquote{exchangeable} with entropic priors
+  as the one with the highest Shannon entropy among those having particular
+  first and second moments. This distribution is deemed to be
+  \enquote{maximally noncommittal} \cite{jaynes1963}, but this adjective
+  means little without further technical characterization. Two
+  characterizations are given by the next two derivations.
+
+\item As the asymptotic distribution of a Bayesian model called
+  \enquote{exchangeable}, with a particular prior
   \cites{jaynes1986d_r1996,skilling1989b,skilling1990,rodriguez1989,rodriguez2002,portamana2017}[see
-  also][\chap~VI]{schroedinger1946_r1948}%[pp.~52--55]
-  {jaynes1979b}. The distribution is the limit, when the number of time
+  also:][\chap~VI]{schroedinger1946_r1948}%[pp.~52--55]
+  {jaynes1979b}. This distribution is the limit, when the number of time
   bins is very large, of
   \begin{equation}
     \label{eq:predictive_exchangeability}
-    \p(\text{\small activity at some time bin} \|
-    \text{\small 1st \amp\ 2nd empirical moments from observed bins},\text{\small other info});
+    \p(\text{\small activity in one time bin} \|
+    \text{\small 1st \amp\ 2nd empirical moments from other bins}%,\text{\small other info}
+    ),
   \end{equation}
-  obtained from Bayes's theorem \emph{given} the observed empirical moments
-  and a particular initial joint distribution.
-\item As asymptotic distributions of Bayesian models based on sufficient
-  statistics
-  \cite{jaynes1982,%[\sect~I]
-jaynes1982b,portamana2017}. The distribution is the limit, when the number of time
-bins is very large, of
+  calculated with Bayes's theorem from a particular initial joint
+  distribution in which different time bins are almost independent. This
+  derivation produces a probability just by taking into account those two
+  moments, but does not exclude that other information might be relevant.
+  It can therefore be compared with a probability that uses additional
+  information, or with empirical frequencies.
+\item As the asymptotic distribution of a Bayesian model based on
+  sufficient statistics \cite{jaynes1982,%[\sect~I]
+    jaynes1982b,portamana2017}. This distribution is the limit, when the
+  number of time bins is very large, of
 \begin{equation}
   \label{eq:general_prediction}
-  \p(\text{\small activity at one time bin} \|
-  \text{\small activities at the remaining bins},\text{\small other info})
+  \p(\text{\small activity in one time bin} \|
+  \text{\small activities in other bins}%,\text{\small other info}
+  )
 \end{equation}
-under the assumption that only the values of the first and second empirical
-moments of the activities are \emph{relevant} for the probability above, \ie\
+under the assumption that \emph{only} the values of the first and second
+empirical moments of the activities are relevant for the probability above,
+\ie\
 \begin{multline}
   \label{eq:informal_sufficiency}
-  \p(\text{\small activity at one time bin} \|
-  \text{\small activities at the other bins},\text{\small other info}) ={}\\
-  \p(\text{\small activity at some time bin} \|
-  \text{\small 1st \amp\ 2nd empirical moments},\text{\small other info});
+  \p(\text{\small activity in one time bin} \|
+  \text{\small activities in other bins}%,\text{\small other info}
+  ) \equiv{}\\
+  \p(\text{\small activity in one time bin} \|
+  \text{\small 1st \amp\ 2nd empirical moments from other bins}%,\text{\small other info}
+  );
 \end{multline}
 in other words, the assumption that the first and second moments are
-\emph{sufficient statistics}. This limit generally does not depend on the initial
-joint distribution.
+sufficient statistics. This limit generally does not depend on the initial
+joint distribution. This derivation produces a probability by explicitly
+assuming that only the first and second moments are informationally
+relevant: any other information would lead to the same conditional
+probability. It can therefore only be compared with empirical frequencies.
 \end{enumerate}
-
-***
-
-
-
-
-
-usually \enquote{explain} has a probabilistic meaning. We want to see
-whether information about moments give reasonable predictions about the
-rest. Necessity of making this precise. Three ways:
-
--- \me\ method,
-
--- Bayesian with entropic prior,
-
--- Bayesian sufficiency.
-
-Applied to sample, all three are asymptotically equivalent. However, sample
-is representative of population. Need to take full population into
-consideration. This leads to different formulae, and also to
-non-equivalence of third way. Here we focus on first two.
-
-
-
-
-
-This kind of
-question is very vague until we define what we mean with \enquote{explain}
-or similar words.
-
-A possible, precise definition is as follows. We want to predict, \ie\
-assign a probability to, the population activity in a time bin, given the
-population activities in the other bins:
-\begin{equation}
-  \label{eq:general_prediction}
-  \p(\text{\small activity at one time bin} \|
-  \text{\small activities at the remaining bins},\text{\small other info}).
-\end{equation}
-We can say that the simultaneous firing of at most two neurons
-\enquote{explains} the activity if only the values of the first and second
-empirical moments of the activities are relevant for the probability above:
-\begin{multline}
-  \label{eq:informal_sufficiency}
-  \p(\text{\small activity at one time bin} \|
-  \text{\small activities at the other bins},\text{\small other info}) ={}\\
-  \p(\text{\small activity at some time bin} \|
-  \text{\small 1st \amp\ 2nd empirical moments},\text{\small other info});
-\end{multline}
-in statistical terms, the first and second moments are \emph{sufficient
-  statistics}. Other definitions are possible, of course; the definition
-above has the advantage of being mathematically very precise. In fact it
-determines, from just the three basic laws of the probability calculus, the
-mathematical form of the probability for the activity at any number of bins:
-\begin{equation}
-  \label{eq:sufficiency_maxent_family}
-  \begin{gathered}
-  \p(\text{\small activity at bins $1,2,\dotsc$} \|
-  \text{\small other info}) =
-  \int\Bigl[\prod_i 
-    \pf(\text{\small activity at bin } i \|\ytheta) \Bigr]\,
- \pf(\ytheta\| \text{\small other info})\,
-  \di\ytheta,
-  \\[\jot]
-  \text{with \enquote{$\pf(\text{\small activity at time bin } i \|\ytheta)$}
-    having \me\ form with multipliers $\ytheta$};
-\end{gathered}
-\end{equation}
-The proof that the assumption of sufficient statistics leads
-to the probability expression above is the Koopman-Pitman theorem
-\cite{koopman1936,pitman1936,darmois1935} and can be found in
-\textcite[\sect~4.5]{bernardoetal1994_r2000} and references therein. It can
-be extended to higher moments and other statistics.
-
-When many data are available (and unfortunately also when they aren't), the
-conditional density for the Lagrange multipliers,
-$\pf(\ytheta\| \text{data, other info})$ is strongly peaked at the unique
-values determined by the inverse problem \cite{meadetal1984}, and the
-probability for the population activity is well-approximated by a
-\me\ distribution
-\cite{jaynes1957,jaynes1963,sivia1996_r2006,meadetal1984} with those
-Lagrange multipliers. This kind of distributions has been used in
-neuroscience at least since the 1990s to study correlations from diverse
-points of view, for diverse purposes, and with data recorded from diverse
-brain areas
-\cite{mackay1991,martignonetal1995,bohteetal2000,amarietal2003,schneidmanetal2006,shlensetal2006,mackeetal2009b,roudietal2009c,tkaciketal2009,gerwinnetal2009,mackeetal2011,mackeetal2011b,ganmoretal2011,granotatedgietal2013,tkaciketal2014b,moraetal2015,shimazakietal2015}.
-Part of this literature focused on the range of applicability of
-\me\ distributions
-\cite{tkaciketal2006,roudietal2009,roudietal2009b,barreiroetal2010b,mackeetal2013}.
-
-This kind of studies would have little significance if we did not expect
-their results to generalize beyond the particular recorded sample. In other
-words, we implicitly or explicitly expect that the conclusions drawn with
-\me\ methods about the recorded neurons should somehow generalize or
-extrapolate at least to whole areas those neurons are recorded from, \eg\
-retina or motor cortex. We are thus assuming that the recorded sample is a
-\emph{representative sample} of that area. Whether such extrapolation makes
-biological sense is a difficult question, to be analysed case by case.
+We refer our readers to the cited references for a deeper discussion of
+these derivations. It is remarkable that all three lead to the same
+distribution. We shall now see, however, that if we apply these derivations
+more carefully they lead to different distributions.
 
 \bigskip
 
-But a problem remains even if we assume that the sample is representative
-of its brain area. The problem lies in the way the \me\ methods
-is typically used in the literature. In this note we want to discuss this
-problem and offer a solution to it.
+This kind of investigation of recorded samples of neuronal activity would
+have little significance if we did not expect its results to generalize
+beyond the particular recorded sample. In other words, we implicitly or
+explicitly expect that the conclusions drawn with \me\ methods about the
+recorded neurons should somehow generalize or extrapolate at least to whole
+areas those neurons are recorded from, \eg\ retina or motor cortex. We are
+thus assuming that the recorded sample is a \emph{representative sample} of
+that area. Whether such extrapolation makes biological sense is a difficult
+question, to be analysed case by case. For the moment let's assume that it
+does make biological sense, and that our sample can be assumed to be
+representative of its brain area.
+
+Then a problem appears in the way the \me\ method is typically applied, in
+the literature, to recorded or artificial samples. In this note we want to
+discuss this problem and offer a solution to it.
 
 The problem is this. We can apply the \me\ method to the sample, choosing
 some sufficient statistics, and generate a probability distribution for the
@@ -2586,3 +2522,95 @@ are somewhat hard to find explicitly written in the neuroscientific
 literature.
 \fi
 \end{document}
+
+----------- cut text ---------------------
+
+
+
+***
+
+
+
+
+
+usually \enquote{explain} has a probabilistic meaning. We want to see
+whether information about moments give reasonable predictions about the
+rest. Necessity of making this precise. Three ways:
+
+-- \me\ method,
+
+-- Bayesian with entropic prior,
+
+-- Bayesian sufficiency.
+
+Applied to sample, all three are asymptotically equivalent. However, sample
+is representative of population. Need to take full population into
+consideration. This leads to different formulae, and also to
+non-equivalence of third way. Here we focus on first two.
+
+
+
+
+
+This kind of
+question is very vague until we define what we mean with \enquote{explain}
+or similar words.
+
+A possible, precise definition is as follows. We want to predict, \ie\
+assign a probability to, the population activity in a time bin, given the
+population activities in the other bins:
+\begin{equation}
+  \label{eq:general_prediction}
+  \p(\text{\small activity at one time bin} \|
+  \text{\small activities at the remaining bins},\text{\small other info}).
+\end{equation}
+We can say that the simultaneous firing of at most two neurons
+\enquote{explains} the activity if only the values of the first and second
+empirical moments of the activities are relevant for the probability above:
+\begin{multline}
+  \label{eq:informal_sufficiency}
+  \p(\text{\small activity at one time bin} \|
+  \text{\small activities at the other bins},\text{\small other info}) ={}\\
+  \p(\text{\small activity at some time bin} \|
+  \text{\small 1st \amp\ 2nd empirical moments},\text{\small other info});
+\end{multline}
+in statistical terms, the first and second moments are \emph{sufficient
+  statistics}. Other definitions are possible, of course; the definition
+above has the advantage of being mathematically very precise. In fact it
+determines, from just the three basic laws of the probability calculus, the
+mathematical form of the probability for the activity at any number of bins:
+\begin{equation}
+  \label{eq:sufficiency_maxent_family}
+  \begin{gathered}
+  \p(\text{\small activity at bins $1,2,\dotsc$} \|
+  \text{\small other info}) =
+  \int\Bigl[\prod_i 
+    \pf(\text{\small activity at bin } i \|\ytheta) \Bigr]\,
+ \pf(\ytheta\| \text{\small other info})\,
+  \di\ytheta,
+  \\[\jot]
+  \text{with \enquote{$\pf(\text{\small activity at time bin } i \|\ytheta)$}
+    having \me\ form with multipliers $\ytheta$};
+\end{gathered}
+\end{equation}
+The proof that the assumption of sufficient statistics leads
+to the probability expression above is the Koopman-Pitman theorem
+\cite{koopman1936,pitman1936,darmois1935} and can be found in
+\textcite[\sect~4.5]{bernardoetal1994_r2000} and references therein. It can
+be extended to higher moments and other statistics.
+
+When many data are available (and unfortunately also when they aren't), the
+conditional density for the Lagrange multipliers,
+$\pf(\ytheta\| \text{data, other info})$ is strongly peaked at the unique
+values determined by the inverse problem \cite{meadetal1984}, and the
+probability for the population activity is well-approximated by a
+\me\ distribution
+\cite{jaynes1957,jaynes1963,sivia1996_r2006,meadetal1984} with those
+Lagrange multipliers. This kind of distributions has been used in
+neuroscience at least since the 1990s to study correlations from diverse
+points of view, for diverse purposes, and with data recorded from diverse
+brain areas
+\cite{mackay1991,martignonetal1995,bohteetal2000,amarietal2003,schneidmanetal2006,shlensetal2006,mackeetal2009b,roudietal2009c,tkaciketal2009,gerwinnetal2009,mackeetal2011,mackeetal2011b,ganmoretal2011,granotatedgietal2013,tkaciketal2014b,moraetal2015,shimazakietal2015}.
+Part of this literature focused on the range of applicability of
+\me\ distributions
+\cite{tkaciketal2006,roudietal2009,roudietal2009b,barreiroetal2010b,mackeetal2013}.

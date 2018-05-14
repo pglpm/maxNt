@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2018-05-14T15:43:37+0200
+%% Last-Updated: 2018-05-14T16:02:59+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -749,7 +749,8 @@ marginalization. Here's the double dilemma:
   and~\ref{item:entropic_prior} always lead to the same distribution).
 \end{itemize}
 
-
+\hrule
+\mynote{delete this part}
 
 Either application seems to have some commendable features. However,
 \emph{the distributions obtained from these two applications differ}. It
@@ -757,6 +758,7 @@ goes without saying that if one is \enquote{noncommittal}, the other must
 be \enquote{committal}. Which choice is most meaningful?
 
 In the final discussion we present some arguments in favour of one choice.
+\hrule
 
 In the rest of the paper we mathematically formulate this dilemma. To this
 purpose we also present some probability relations relevant to sampling.
@@ -885,6 +887,10 @@ Knowledge of this similarity leads us to assign a probability distribution
 for the population state $\yX$ that is symmetric under permutations of
 neuron identities, or \emph{exchangeable} as it is usually called.
 
+\hrule
+
+\mynote{DISCUSSION ABOUT THE SECOND STATE OF KNOWLEDGE IS TO BE DISCARDED}
+
 In the second state of knowledge or ignorance, denoted $\yHi$, we are
 completely ignorant about the physical details of the individual neurons.
 Our ignorance is therefore symmetric under permutations of neuron
@@ -893,6 +899,8 @@ $\yX$.
 
 Let us use $\yH$ to denote either of these two states of knowledge, in those
 probabilities that are identical for $\yHp$ and $\yHi$.
+
+\hrule
 
 The \emph{representation theorem for finite exchangeability} states that
 the symmetric distribution of $\yH$ must obey
@@ -940,6 +948,11 @@ sample; indeed, the probability for the state of the
 sample~\eqref{eq:subpop_average} automatically satisfies the representation
 theorem~\eqref{eq:joint_plaus_N_homog} as well.
 
+
+\hrule
+
+\mynote{DISCUSSION ABOUT THE SECOND STATE OF KNOWLEDGE IS TO BE DISCARDED}
+
 How is it possible that the very different states of knowledge $\yHp$ and
 $\yHi$ lead to the same formulae above? Their difference appears as soon as
 we make an experimental observation, say $X_2 = R_2\in\set{0,1}$ and update our
@@ -955,6 +968,8 @@ right side will update in very different ways for $\yHp$ and $\yHi$. The
 discussion of this update process in the two cases is unnecessary for the
 purposes of this note and outside their scope; we hope to address it in
 full in a future work.
+
+\hrule
 
 The conditional probability
 $\p(\yxs = \yrs \|\yXf=\yRf, \yH)\equiv\ypp(\yrs\|\yRf)$ relates the spaces
@@ -1209,12 +1224,20 @@ $\expe{\yxxs}$. The distribution obtained at the sample level is broader
 than the one obtained at the population level; the tails of the two
 distributions are very different.
 
-The second
-example uses two additional constraint functions $\expe{\sav{\yx\yx\yx}}$,
-$\expe{\sav{\yx\yx\yx\yx}}$. The distribution obtained at the population
-level has two modes, replaced by only one in the distribution obtained at
-the sample level; the tails are very different also in this case.
+The second example uses two additional constraint functions
+$\expe{\sav{\yx\yx\yx}}$, $\expe{\sav{\yx\yx\yx\yx}}$. The distribution
+obtained at the population level has two modes, replaced by only one in the
+distribution obtained at the sample level; the tails are very different
+also in this case.
 
+\begin{figure}[!t]
+\centering
+\includegraphics[width=0.9\linewidth]{newplot.pdf}
+% 
+\caption{\mynote{to be written} distributions obtained using
+  formulae~\eqref{eq:app_maxent_pop_marg_unknown_N} and the other two}
+\label{fig:newplot}
+\end{figure}%maxent_pop_or_sample.nb
 
 
 \bigskip
@@ -1224,6 +1247,8 @@ population? Which application is \enquote{maximally noncommittal}?
 
 \section{Discussion}
 \label{sec:discussion}
+
+\mynote{needs to be changed}
 
 The question that closed the preceding section cannot receive a categorical
 answer. An optimal answer can only be given case by case, depending on the

@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2018-05-14T14:56:53+0200
+%% Last-Updated: 2018-05-14T15:43:37+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -652,7 +652,7 @@ only data about simultaneous firings of two neurons, or of three, and so
 on. Let us take the case of the first two moments as an example. The
 maximum-entropy distribution can be derived in three main ways:
 \begin{enumerate}
-\item From the maximum-entropy method
+\item\label{item:maxent}From the maximum-entropy method
   \cite{jaynes1957,jaynes1963,sivia1996_r2006}. The distribution is chosen
   as the one with the highest Shannon entropy among those having particular
   first and second moments. This distribution is deemed to be
@@ -660,7 +660,7 @@ maximum-entropy distribution can be derived in three main ways:
   means little without further technical characterization. Two
   characterizations are given by the next two derivations.
 
-\item As the asymptotic distribution of a Bayesian model called
+\item\label{item:entropic_prior}As the asymptotic distribution of a Bayesian model called
   \enquote{exchangeable}, with a particular prior
   \cites{jaynes1986d_r1996,skilling1989b,skilling1990,rodriguez1989,rodriguez2002,portamana2017}[see
   also:][\chap~VI]{schroedinger1946_r1948}%[pp.~52--55]
@@ -678,7 +678,8 @@ maximum-entropy distribution can be derived in three main ways:
   moments, but does not exclude that other information might be relevant.
   It can therefore be compared with a probability that uses additional
   information, or with empirical frequencies.
-\item As the asymptotic distribution of a Bayesian model based on
+
+\item\label{item:sufficiency_model}As the asymptotic distribution of a Bayesian model based on
   sufficient statistics \cite{jaynes1982,%[\sect~I]
     jaynes1982b,portamana2017}. This distribution is the limit, when the
   number of time bins is very large, of
@@ -716,32 +717,44 @@ more carefully they lead to different distributions.
 
 This kind of investigation of recorded samples of neuronal activity would
 have little significance if we did not expect its results to generalize
-beyond the particular recorded sample. In other words, we implicitly or
-explicitly expect that the conclusions drawn with \me\ methods about the
-recorded neurons should somehow generalize or extrapolate at least to whole
-areas those neurons are recorded from, \eg\ retina or motor cortex. We are
-thus assuming that the recorded sample is a \emph{representative sample} of
-that area. Whether such extrapolation makes biological sense is a difficult
-question, to be analysed case by case. For the moment let's assume that it
-does make biological sense, and that our sample can be assumed to be
-representative of its brain area.
+beyond the particular recorded sample. In other words, we expect that the
+conclusions drawn with \me\ methods about the recorded neurons should
+somehow generalize or extrapolate at least to larger areas from which those
+neurons are recorded. We are thus assuming that the recorded sample is a
+\emph{representative sample} of some larger area. Whether such
+extrapolation makes biological sense is a difficult question, to be
+analysed case by case. For the moment let's assume that it does make
+biological sense, and that our sample can be assumed to be representative
+of a larger area.
 
-Then a problem appears in the way the \me\ method is typically applied, in
-the literature, to recorded or artificial samples. In this note we want to
-discuss this problem and offer a solution to it.
+Then a double dilemma appears in the way the \me\ method is typically
+applied in the neuroscientific literature to recorded or artificial
+samples. In this note we want to discuss one part of this dilemma and offer
+a solution to it.
 
-The problem is this. We can apply the \me\ method to the sample, choosing
-some sufficient statistics, and generate a probability distribution for the
-state of the sample. But we consider our sample to be representative of a
-larger population, in which it is biologically and functionally embedded.
-We can apply the \me\ method to the larger population, using the same kind
-of sufficient statistics, and generate a probability distribution for its
-larger state, and then find the distribution for the sample by
-marginalization. Either application seems to have some commendable
-features. However, \emph{the distributions obtained from these two
-  applications differ}. It goes without saying that if one is
-\enquote{noncommittal}, the other must be \enquote{committal}. Which choice
-is most meaningful?
+We can apply the \me\ method to the sample, choosing some set of moments,
+and generate a probability distribution for the state of the sample. But if
+we consider our sample to be representative of a larger population, it
+makes sense to apply the \me\ method to the larger population, using one of
+the three derivations above, and generate a probability distribution for
+the larger population. The distribution for the sample can then be found by
+marginalization. Here's the double dilemma:
+\begin{itemize}
+\item \emph{the distribution obtained from the application at the sample
+    level differs from those obtained from the application at the
+    population level};
+\item \emph{at the population level, the
+    derivations~\ref{item:entropic_prior} and~\ref{item:sufficiency_model}
+    lead to different distributions} (the derivations \ref{item:maxent}
+  and~\ref{item:entropic_prior} always lead to the same distribution).
+\end{itemize}
+
+
+
+Either application seems to have some commendable features. However,
+\emph{the distributions obtained from these two applications differ}. It
+goes without saying that if one is \enquote{noncommittal}, the other must
+be \enquote{committal}. Which choice is most meaningful?
 
 In the final discussion we present some arguments in favour of one choice.
 

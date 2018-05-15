@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2018-05-15T13:51:45+0200
+%% Last-Updated: 2018-05-15T22:50:14+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -135,12 +135,12 @@ nonatbib]{nips_2017}
  \DeclareMathSymbol{\kappa}{\mathalpha}{egreeki}{"14}
  \DeclareMathSymbol{\lambda}{\mathalpha}{egreeki}{"15}
 % \DeclareMathSymbol{\mu}{\mathalpha}{egreeki}{"16}
-% \DeclareMathSymbol{\nu}{\mathalpha}{egreeki}{"17}
-% \DeclareMathSymbol{\xi}{\mathalpha}{egreeki}{"18}
+ \DeclareMathSymbol{\nu}{\mathalpha}{egreeki}{"17}
+ \DeclareMathSymbol{\xi}{\mathalpha}{egreeki}{"18}
 % \DeclareMathSymbol{\omicron}{\mathalpha}{egreeki}{"6F}
 % \DeclareMathSymbol{\pi}{\mathalpha}{egreeki}{"19}
 % \DeclareMathSymbol{\rho}{\mathalpha}{egreeki}{"1A}
-% \DeclareMathSymbol{\sigma}{\mathalpha}{egreeki}{"1B}
+ \DeclareMathSymbol{\sigma}{\mathalpha}{egreeki}{"1B}
 % \DeclareMathSymbol{\tau}{\mathalpha}{egreeki}{"1C}
 % \DeclareMathSymbol{\upsilon}{\mathalpha}{egreeki}{"1D}
 % \DeclareMathSymbol{\phi}{\mathalpha}{egreeki}{"1E}
@@ -168,11 +168,11 @@ nonatbib]{nips_2017}
  \DeclareMathSymbol{\varLambda}{\mathalpha}{egreeki}{"03}
 % \DeclareMathSymbol{\varMu}{\mathalpha}{egreeki}{"4D}
 % \DeclareMathSymbol{\varNu}{\mathalpha}{egreeki}{"4E}
-% \DeclareMathSymbol{\varXi}{\mathalpha}{egreeki}{"04}
+ \DeclareMathSymbol{\varXi}{\mathalpha}{egreeki}{"04}
 % \DeclareMathSymbol{\varOmicron}{\mathalpha}{egreeki}{"4F}
 % \DeclareMathSymbol{\varPi}{\mathalpha}{egreeki}{"05}
 % \DeclareMathSymbol{\varRho}{\mathalpha}{egreeki}{"50}
-% \DeclareMathSymbol{\varSigma}{\mathalpha}{egreeki}{"06}
+ \DeclareMathSymbol{\varSigma}{\mathalpha}{egreeki}{"06}
 % \DeclareMathSymbol{\varTau}{\mathalpha}{egreeki}{"54}
  \DeclareMathSymbol{\varUpsilon}{\mathalpha}{egreeki}{"07}
 % \DeclareMathSymbol{\varPhi}{\mathalpha}{egreeki}{"08}
@@ -493,18 +493,21 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 
 \newcommand*{\ypp}{\varPi}
 
-\newcommand*{\yxx}{x}%subpop state
-\newcommand*{\yx}{\bm{\yxx}}%subpop state
+\newcommand*{\yvX}{\varSigma}
+\newcommand*{\yvR}{\sigma}
+\newcommand*{\yvx}{S}
+\newcommand*{\yvr}{s}
+\newcommand*{\yvN}{\nu}
+
+\newcommand*{\yx}{\bm{\yvx}}%subpop state
 \newcommand*{\yxs}{\sav{\yx}}%subpop av state
-\newcommand*{\yX}{\bm{X}}%pop state
-\newcommand*{\yy}{\bm{y}}%pop state
+\newcommand*{\yX}{\bm{\yvX}}%pop state
 \newcommand*{\yXf}{\av{\yX}}%pop av state
 \newcommand*{\yxxs}{\sav{\yx\yx}}%subpop av state
 \newcommand*{\yXXf}{\av{\yX\yX}}%subpop av state
-\newcommand*{\yr}{\bm{r}}%subpop value
-\newcommand*{\ys}{\bm{s}}%subpop value
+\newcommand*{\yr}{\bm{\yvr}}%subpop value
 \newcommand*{\yrs}{\sav{\yr}}%subpop av value
-\newcommand*{\yR}{\bm{R}}%pop value
+\newcommand*{\yR}{\bm{\yvR}}%pop value
 \newcommand*{\yRf}{\av{\yR}}%pop av value
 %conditional assumptions
 \newcommand*{\yH}{\varIota}
@@ -592,14 +595,14 @@ Y. Roudi\\\texttt{yasser.roudi@ntnu.no}
 \maketitle
 
 \begin{abstract}
-  This note shows that the \me\ method can be applied to a representative
-  sample from a neuronal population along two different routes: (1) apply
-  to the sample; or (2) apply to the population and marginalize to the
-  sample. These two routes give inequivalent results. Which route should be
-  chosen? Some arguments are presented in favour of the second. The note
-  also touches upon probability formulae of representative sampling and
-  discusses their possible meanings, a discussion that may be useful for
-   sampling problems in neuroscience.
+  \mynote{to be rewritten} This note shows that the \me\ method can be
+  applied to a representative sample from a neuronal population along two
+  different routes: (1) apply to the sample; or (2) apply to the population
+  and marginalize to the sample. These two routes give inequivalent
+  results. Which route should be chosen? Some arguments are presented in
+  favour of the second. The note also touches upon probability formulae of
+  representative sampling and discusses their possible meanings, a
+  discussion that may be useful for sampling problems in neuroscience.
   % The abstract must be limited to one paragraph.
 \end{abstract}
 
@@ -607,23 +610,23 @@ Y. Roudi\\\texttt{yasser.roudi@ntnu.no}
 \section{Introduction: \me\ and sampling in neuroscience}
 
 Suppose that we have recorded the firing activity of a hundred neurons,
-sampled from a particular brain area. This scenario is a concrete
-possibility thanks to recent electrophysiological techniques
-\cite{berenyietal2014}. In 1985, Gerstein, Perkel, \amp\ Dayhoff wrote (our
-emphasis):
+sampled from a particular brain area. What are we to do with such data?
+Gerstein, Perkel, \amp\ Dayhoff \cite{gersteinetal1985} posed this question
+very tersely (our emphasis):
 \begin{quote}
-  the very profusion of data produced in such experiments creates serious
-  problems of analysis and interpretation; these problems are conceptual as
-  well as practical. The principal conceptual problems are (1)
-  \emph{defining cooperativity or functional grouping} among neurons and
-  (2) \emph{formulating quantitative criteria} for recognizing and
-  characterizing such cooperativity. \cite{gersteinetal1985}
+  The principal conceptual problems are (1) \emph{defining cooperativity or
+    functional grouping} among neurons and (2) \emph{formulating
+    quantitative criteria} for recognizing and characterizing such
+  cooperativity.
 \end{quote}
-The neuroscientific literature has since offered several mathematical
-definitions of \enquote{cooperativity} or \enquote{functional grouping} and
-criteria to quantify it.
+These questions have a long history, of course; see \eg\ the 1966 review by
+Moore \etal\ \cite{mooreetal1966}. % This scenario is a concrete possibility
+% thanks to recent electrophysiological techniques \cite{berenyietal2014}.
+The neuroscientific literature has offered several mathematical definitions
+of \enquote{cooperativity} or \enquote{functional grouping} and criteria to
+quantify it.
 
-One such quantitative criterion relies on the \me\ method
+One such quantitative criterion relies on the \me\ or relative-\me\ method
 \cite{jaynes1957,jaynes1963,hobsonetal1973,sivia1996_r2006,meadetal1984}.
 This criterion has been used in neuroscience at least since the 1990s,
 applied to data recorded from brain areas as diverse as retina and motor
@@ -633,78 +636,115 @@ and it has been subjected to mathematical and conceptual scrutiny
 \cite{tkaciketal2006,roudietal2009,roudietal2009b,barreiroetal2010b,mackeetal2013,rostamietal2016_r2017}.
 
 \enquote{Cooperativity} can quantified and characterized with \me\ method
-in several ways. The simplest way proceeds along the following steps.
-Consider the recorded activity of a sample of $n$ neurons.
+in several ways. The simplest way roughly proceeds along the following
+steps. Consider the recorded activity of a sample of $n$ neurons.
 \begin{enumerate}
-\item The activity of each neuron, ideally a continuous signal, is
-  transformed into a sequence of \enquote{$0$}s (inactive) and
-  \enquote{$1$}s (firing) by binning the time and binarizing the signal
-  intensity \cite{caianiello1961,caianiello1986}.
+\item The activity of each neuron, a continuous signal, is binned in time
+  and binarized in intensity, and thus transformed into a sequence of
+  digits \enquote{$0$}s (inactive) and \enquote{$1$}s
+  \cite[\cf][]{caianiello1961,caianiello1986}.
 
-\item The total activity $n\yxs$ of the sample in each time bin is
-  therefore an integer between $0$ and $n$. The total pairwise activity in
-  each time bin, \ie\ the total number of simultaneously active pairs, is
-  combinatorially given by $\tbinom{n\yxs}{2}\equiv n\yxs\,(n\yxs-1)/2$,
-  and so on for higher-order simultaneous activities.
+  Let the variable $\yvx_i(t)\in\set{0,1}$ denote the activity of the $i$th
+  sampled neuron at time bin $t$. The average activity at that bin is
+  therefore $\yxs(t) \defd \sum_i \yvx_i(t)/n$. If we count the number of
+  distinct pairs of active neurons at that bin we combinatorially find
+  $\tbinom{n\yxs(t)}{2}\equiv n\yxs(t)\,[n\yxs(t)-1]/2$. There can be at
+  most $\tbinom{n}{2}$ simultaneously active pairs, so the average pair
+  activity is
+  $\av{\yx \yx}(t) \defd \tbinom{n}{2}^{-1}\tbinom{n\yxs(t)}{2}$. With some
+  combinatorics we see that the average activity of $m$-tuples of neurons
+  is
+  \begin{equation}
+    \label{eq:products_intermsof_average}
+    \av{\underbrace{\yx\dotsm\yx}_{\text{$m$ terms}}}
+    = \binom{n}{m}^{-1}\binom{n\yxs(t)}{m}.
+  \end{equation}
+  For brevity let us agree to simply call \enquote{activity} the average
+  $\yxs$, \enquote{pair-activity} the average $\av{\yx \yx}$, and so on.
 
-\item We construct a collection of \me\ distribution for the total
-  activity, using as constraints: the time-averaged total activity; the
-  time-averaged total activity \emph{and} total pairwise activity; and so
-  on up to the time-averaged total activities of orders $1$ to $k$. Call
-  the resulting distributions $p_1(n\yxs), p_2(n\yxs),\dotsc,p_k(n\yxs)$.
+\item Construct a sequence of relative-\me\ distributions for the activity
+  $\yxs$, using this sequence of constraints:
+  \begin{itemize}
+  \item the time average of the activities $\yxs(t)$;
+  \item the time averages of the activities $\yxs(t)$ and pair-activities
+    $\av{\yx \yx}(t)$;
+  \item \ldots and so on, including the time averages of $\yxs(t)$ up to
+    $\av{\yx\dotsm\yx}(t)$ with $k$ terms.
+  \end{itemize}
+  Call the resulting distributions $p_1(\yxs), p_2(\yxs),\dotsc,p_k(\yxs)$.
+  The time-bin dependence is now absent because these distributions can be
+  interpreted as referring to any one of the time bins $t$, or to a new
+  time bin containing new data.
+
   We also have the empirical frequency distribution of the total activity,
-  $f(n\yxs)$, counted from the time bins.
+  $f(\yxs)$, counted from the time bins.
 
-\item We can now compare the distributions above with one another and with
-  the frequency distribution, using some probability-space distance like
-  the relative entropy or discrimination information
+\item Now compare the distributions above with one another and with the
+  frequency distribution, using some probability-space distance like the
+  relative entropy or discrimination information
   \citep{kullback1987,jaynes1963,hobson1969,hobsonetal1973}. If we find,
-  for example, that such distance is very high between $p_1$ and $f$, but
-  very low between $p_k$ and $f$ for $k \ge 2$, then we can say that there
-  is a \enquote{pairwise cooperativity}, and that any higher-order
-  cooperativity is just a reflection or consequence of the pairwise one.
+  say, that such distance is very high between $p_1$ and $f$, very low
+  between $p_2$ and $f$, and is more or less the same between all $p_m$ and
+  $f$ for $m \ge 2$, then we can say that there is a \enquote{pairwise
+    cooperativity}, and that any higher-order cooperativity is just a
+  reflection or consequence of the pairwise one. The reason is that the
+  information from higher-order simultaneous activities did not lead to
+  appreciable changes in the distribution obtained from pair activities.
 \end{enumerate}
 The protocol above needs to be made precise by specifying various
-parameters, for example the width of the time bins.
+parameters, such as the width of the time bins or the probability
+distance used.
 
 We hurry to say that the description just given is just \emph{one} way to
 quantify and characterize cooperativity and functional grouping, not
-\emph{the} only way. It can surely be criticized from many points of view.
-Yet, it is quantitative and more precise than an undefined notion of
-\enquote{cooperativity}. Two people who apply it to the same data will
-obtain the same numbers. Other protocols can be based on the \me\ method,
-for example protocols that take into account the activities or joint
-activities of individual neurons, or even protocols that take into account
-time dependence.
+\emph{the only} way. It can surely be criticized from many points of view.
+Yet, it is quantitative and bears a more precise meaning than an undefined,
+vague notion of \enquote{cooperativity}. Two persons who apply this
+procedure to the same data will obtain the same numbers. Different
+protocols can be based on the \me\ method, for instance protocols that take
+into account the activities or pair activities of specific neurons rather
+than population averages, or even protocols that take into account time
+dependence.
 
-The purpose of the present work is to show that there is a problem in the
-way the \me\ method as sketched above, or more complex variations of it, is
-applied to the activity of the recorded neurons. The problem stems from the
-fact that the recorded neurons are a sample from a larger population.
+The purpose of the present work is not to assess the merits of \me\ methods
+with respect to other methods. Its main purpose is to show that there is a
+problem in the way the \me\ method itself, as sketched above, is applied to
+the activity of the recorded neurons. We believe that this problem is at
+the root of some quirks about this method that were pointed out in the
+literature \cite{roudietal2009b}. This problems extends also to more
+complex versions of the method, possibly except version that use
+\enquote{hidden} neurons. The problem stems from the fact that the recorded
+neurons are a \emph{sample} from a larger, unrecorded population.
 
 Suppose that the neurons were recorded with electrodes covering an area of
-some square millimetres. This recording is a sample of the activity of the
-population covered by the electrode; we can consider it as a sample of an
-even more extended brain area. The characterization of the cooperativity of
-the recorded sample would have little meaning if we did not expect its
-results to generalize to a larger area, at least that covered by the
-electrodes. In other words, we expect that the conclusions drawn with the
-\me\ methods about the sampled neurons should somehow generalize or
-extrapolate at least to larger areas from which those neurons were sampled.
-We are thus assuming that the recorded sample is a \emph{representative
-  sample} of some larger area. Probability theory tells us how to make
-inferences from a sample to the larger population from which it is sampled
-\parentext{see references below}.
+some square millimetres \cite[\cf][]{berenyietal2014}. This recording is a
+sample of the activity of the neuronal population under the recording
+device; such population can amount to tens of thousands of neurons
+\cite{abeles1991}. We could even consider the recorded neurons as a sample
+of a brain area more extended than the recording device.
+
+The characterization of the cooperativity of the recorded sample would have
+little meaning if we did not expect its results to generalize to a larger,
+unrecorded population -- at the very least that under the recording device.
+In other words, we expect that the conclusions drawn with the \me\ methods
+about the sampled neurons should somehow extrapolate to unrecorded neurons
+in some larger area, from which the recorded neurons were sampled. In
+statistical terms we are assuming that the recorded neurons are a
+\emph{representative sample} of some larger neuronal population.
+Probability theory tells us how to make inferences from a sample to the
+larger population from which it is sampled \parentext{see references
+  below}.
 
 Here is the problem. We can apply the \me\ method to the sample, as
 described in the above protocol, to generate probability distributions for
-the state of the sample. But, if our sample is representative of a larger
-population, we can apply the \me\ method to the larger population, using
-the constraints obtained from the sample, and generate a probability
-distribution for the larger population; the distribution for the sample is
-then obtained by marginalization. Either application seems to have some
-commendable features. However, \emph{the distributions obtained from these
-  two applications differ}. Which choice is most meaningful?
+the activity of the sample. But, if our sample is representative of a
+larger population, we can apply the \me\ method to the larger (unrecorded)
+population, using the constraints obtained from the recorded sample, and
+generate a probability distribution for the larger population. The
+distribution for the sample is then obtained by marginalization. Either
+application seems to have some commendable features. However, \emph{the
+  distributions obtained from these two applications differ}. Which choice
+is most meaningful?
 
 In this paper we develop the second way of applying the \me, at the level
 of the larger population, and show that its results differ from the
@@ -747,29 +787,29 @@ degree of belief which \enquote{would be agreed by all rational men if
 \section{Notation: population, sample, probabilities}
 \label{sec:setup}
 
-We have a population of $N$ binary neurons. We assume that they can be
+We have a population of $\yvN$ binary neurons. We assume that they can be
 distinguished, by their spike shapes for example; but other details, like
 their locations, are unknown. The neurons have a joint state
-$(X_1,\dotsc,X_N) \defs \yX$ having fixed but unknown binary values
-$(R_1,\dotsc,R_N)\defs \yR \in \set{0,1}^N$; the \enquote{$X$} denote the
-variables, and \enquote{$R$} their values. A particular sample of $n$ neurons
-from this population has joint state $(x_1, \dotsc, x_n) \defs \yx$ having
-fixed binary values $(r_1, \dotsc, r_n)\defs\yr \in \set{0,1}^n$. We will
+$(\yvX_1,\dotsc,\yvX_\yvN) \defs \yX$ having fixed but unknown binary values
+$(\yvR_1,\dotsc,\yvR_\yvN)\defs \yR \in \set{0,1}^\yvN$; the \enquote{$\yvX$} denote the
+variables, and \enquote{$\yvR$} their values. A particular sample of $n$ neurons
+from this population has joint state $(\yvx_1, \dotsc, \yvx_n) \defs \yx$ having
+fixed binary values $(\yvr_1, \dotsc, \yvr_n)\defs\yr \in \set{0,1}^n$. We will
 consider various averages of the population and the sample. For this
 purpose we introduce a population-averaging operator $\sav{\dotv}$ defined
 by
 \begin{equation}
   \begin{gathered}
-    \av{\yX} \defd \tfrac{1}{N} (X_1 + X_2 + \dotsb + X_N),
+    \av{\yX} \defd \tfrac{1}{\yvN} (\yvX_1 + \yvX_2 + \dotsb + \yvX_\yvN),
     % & \sav{\yx} &\defd \tfrac{1}{n} (x_1 + x_2 + \dotsb + x_n),
    \qquad% \\[2\jot]
-    \av{\yX \yX} \defd \tbinom{N}{2}^{-1} (X_1 X_2 + X_1 X_3 + \dotsb +
-    X_{N-1} X_N),
+    \av{\yX \yX} \defd \tbinom{\yvN}{2}^{-1} (\yvX_1 \yvX_2 + \yvX_1 \yvX_3 + \dotsb +
+    \yvX_{\yvN-1} \yvX_\yvN),
     % & \sav{\yx \yx} &\defd\tbinom{n}{2}^{-1} (x_1 x_2 + x_1 x_3 + \dotsb
     % + x_{n-1} x_n),
     \\[2\jot]
-    \av{\yX\yX\yX} \defd \tbinom{N}{3}^{-1} (X_1 X_2 X_3 +% X_1 X_2 X_4
-    \dotsb + X_{N-2} X_{N-1}X_N),
+    \av{\yX\yX\yX} \defd \tbinom{\yvN}{3}^{-1} (\yvX_1 \yvX_2 \yvX_3 +% \yvX_1 \yvX_2 \yvX_4
+    \dotsb + \yvX_{\yvN-2} \yvX_{\yvN-1}\yvX_\yvN),
     \qquad\text{and so on.}
     % & \sav{\yx\yx\yx} &\defd \tbinom{n}{3}^{-1} (x_1 x_2 x_3
     % + %x_1 x_2 x_4
@@ -777,14 +817,14 @@ by
   \end{gathered}
 \end{equation}
 These formulae say that $\yXf$ is the fraction of active neurons, $\yXXf$
-the fraction of simultaneously active pairs out of all $\binom{N}{2}$
+the fraction of simultaneously active pairs out of all $\binom{\yvN}{2}$
 pairs, $\av{\yX\yX\yX}$ the fraction of simultaneously active triplets, and
-so on. Products of states like $X_i \dotsm X_j$ also have values in
+so on. Products of states like $\yvX_i \dotsm \yvX_j$ also have values in
 $\set{0,1}$; from this we can combinatorially  prove that
 \begin{equation}
   \label{eq:products_intermsof_average}
   \av{\underbrace{\yX\dotsm\yX}_{\text{$m$ factors}}}
-  = \binom{N}{m}^{-1}\binom{N\yXf}{m}.
+  = \binom{\yvN}{m}^{-1}\binom{\yvN\yXf}{m}.
 \end{equation}
 Analogous formulae  hold for quantities like $\yx$, $\yR$, $\yr$.
 
@@ -806,15 +846,15 @@ Our uncertainty about the actual state of the population is completely
 expressed by the joint probability distribution
 \begin{equation}
   \label{eq:joint_plaus}
-  \p(X_1=R_1, X_2=R_2, \dotsc, X_N=R_N \| \yHc) \quad\text{or}\quad
-\p(\yX =\yR \| \yHc), \quad \yR \in \set{0,1}^N,
+  \p(\yvX_1=\yvR_1, \yvX_2=\yvR_2, \dotsc, \yvX_\yvN=\yvR_\yvN \| \yHc) \quad\text{or}\quad
+\p(\yX =\yR \| \yHc), \quad \yR \in \set{0,1}^\yvN,
 \end{equation}
 where $\yHc$ denotes our state of knowledge, \ie\ the evidence and
 assumptions backing this particular probability assignment. Our uncertainty
 about the state of the sample is likewise expressed by
 \begin{equation}
   \label{eq:sample_plaus}
-  \p(x_1=r_1, x_2=r_2, \dotsc, x_n=r_n \| \yHc) \quad\text{or}\quad
+  \p(\yvx_1=\yvr_1, \yvx_2=\yvr_2, \dotsc, \yvx_n=\yvr_n \| \yHc) \quad\text{or}\quad
 \p(\yx =\yr \| \yHc), \quad \yr \in \set{0,1}^n.
 \end{equation}
 
@@ -859,7 +899,7 @@ the symmetric distribution in the state of knowledge $\yH$ must obey
   \p(\yX = \yR \|  \yH) \equiv
   \p(\yX = \yR \| \yXf = \yRf, \yH)\,
   \p(\yXf=\yRf \| \yH) =
-  \binom{N}{N\yRf}^{-1} \p(\yXf=\yRf \| \yH),
+  \binom{\yvN}{\yvN\yRf}^{-1} \p(\yXf=\yRf \| \yH),
 \end{equation}
 the latter being the probability for the population average $\yX$. A sum is
 only apparently missing in the central term: its summands $\yXf=A$ are all
@@ -869,7 +909,7 @@ non-binary and continuum cases are given by de~Finetti
 \cite{ericson1976}, Diaconis \amp\ Freedman
 \cite{diaconis1977,diaconisetal1980}, Heath \amp\ Sudderth
 \cite{heathetal1976}. This theorem is intuitive: owing to symmetry, we must
-assign equal probabilities to all states with $N\yRf$ active neurons.
+assign equal probabilities to all states with $\yvN\yRf$ active neurons.
 
 By marginalization we obtain the probability for the state of the sample:
 \begin{gather}
@@ -878,13 +918,13 @@ By marginalization we obtain the probability for the state of the sample:
   \\
   \shortintertext{with}
   \label{eq:subpop_average}
-  \p(\yxs=\yrs \| \yH) = \sum_{N \yRf =0}^{N}
+  \p(\yxs=\yrs \| \yH) = \sum_{\yvN \yRf =0}^{\yvN}
     \p(\yxs = \yrs \|\yXf=\yRf, \yH)\,
   \p(\yXf=\yRf \| \yH),
   \\[2\jot]
   \label{eq:conditional_hypergeometric}
   \p(\yxs = \yrs \|\yXf=\yRf, \yH)=
-  \binom{n}{n\yrs}\binom{N-n}{N \yRf-n\yrs}\binom{N}{N \yRf}^{-1}
+  \binom{n}{n\yrs}\binom{\yvN-n}{\yvN \yRf-n\yrs}\binom{\yvN}{\yvN \yRf}^{-1}
   \defs \ypp(\yrs\|\yRf).
 \end{gather}
 The conditional probability in the last formula is a hypergeometric
@@ -899,7 +939,7 @@ theorem~\eqref{eq:joint_plaus_N_homog} as well.
 
 The conditional probability
 $\p(\yxs = \yrs \|\yXf=\yRf, \yH) \equiv \ypp(\yrs,\yRf)$ relates the
-spaces of the sample average $\yXf\in\set{0,\dotsc,N}$ and of the
+spaces of the sample average $\yXf\in\set{0,\dotsc,\yvN}$ and of the
 population average $\yxs\in\set{0,\dotsc,n}$. It is a coarsening projector
 of any probability for $\yXf$ onto a marginal probability for $\yxs$, as
 \eqn~\eqref{eq:subpop_average} shows. For each function $f$ of the sample
@@ -916,7 +956,7 @@ that has the same expectation as $f$:
 \begin{equation}
   \expeb{f^*(\yXf)}
   \equiv
-  \sum_{N\yRf=0}^N f^*(\yRf)\,\p(\yXf=\yRf \| \yH)
+  \sum_{\yvN\yRf=0}^\yvN f^*(\yRf)\,\p(\yXf=\yRf \| \yH)
 %  =
 %  \sum_{N\yRf=0}^N \sum_{n\yrs=0}^n f(\yrs)\ypp(\yrs\|\yRf)\,\p(\yXf=\yRf \| \yH)
   =
@@ -931,14 +971,14 @@ and~\eqref{eq:subpop_average}.
 \includegraphics[width=0.9\linewidth]{pop_sample_projection3.pdf}%
 \caption{Log-plot of the hypergeometric distribution
   $%\p(\yxs = \yrs \|\yXf=\yRf, \yH)=
-\ypp(\yrs\|\yRf) \defd  \raisebox{0pt}[0pt][1ex]{}\binom{n}{n\yrs}\binom{N-n}{N \yRf-n\yrs}\binom{N}{N \yRf}^{-1}$ for $N=5000$, $n=200$. (Band artifacts may appear in the
+\ypp(\yrs\|\yRf) \defd  \raisebox{0pt}[0pt][1ex]{}\binom{n}{n\yrs}\binom{\yvN-n}{\yvN \yRf-n\yrs}\binom{\yvN}{\yvN \yRf}^{-1}$ for $\yvN=5000$, $n=200$. (Band artifacts may appear in the
   colourbar depending on your \textsc{pdf} viewer.)}
 \label{fig:hypergeom_proj}
 \end{figure}%hypergeometric_identity.nb
 A look at a plot of the hypergeometric distribution $\ypp(\yrs\|\yRf)$, see
 \fig~\ref{fig:hypergeom_proj}, reveals that it is a sort of \enquote{fuzzy
-  identity matrix} between the $\yXf$-space $\set{0,\dotsc,N}$ and
-$\yxs$-space $\set{0,\dotsc,n}$. When $n=N$ it is the identity matrix. We
+  identity matrix} between the $\yXf$-space $\set{0,\dotsc,\yvN}$ and
+$\yxs$-space $\set{0,\dotsc,n}$. When $n=\yvN$ it is the identity matrix. We
 thus have that
 \begin{equation}
   \label{eq:roughly_equal_nN}
@@ -958,8 +998,8 @@ The approximate equalities above, on the other hand, express the fact that
 approximate equalities are not generally valid for other probability
 distributions for the population. They should be contrasted with the limits
 $\p(\yxs=a) \to \p(\yXf=a)$ and $\expeb{f(\yxs)} \to \expeb{f(\yXf)}$, as
-$n\to N$, do: these limits are trivially, universally valid because the
-sample becomes the full population as $n\to N$. In particular, these limits
+$n\to \yvN$, do: these limits are trivially, universally valid because the
+sample becomes the full population as $n\to \yvN$. In particular, these limits
 hold even in cases where the conditional probability
 $\p(\yxs = \yrs \|\yXf=\yRf)$ is not a fuzzy identity, our uncertainties
 about sample and about population can differ wildly, and the approximate
@@ -974,7 +1014,7 @@ equalities~\eqref{eq:roughly_equal_nN} do not hold.
 %   \label{eq:expectation_pullback}
 %   \expeb{f(\yxs) \|\yH} = \expeb{f^*(\yXf)\|\yH}
 %   \qquad\text{or}\qquad
-%   \sum_{n\yrs=0}^n f(\yrs)\,p_*(\yxs=\yrs) = \sum_{N\yRf=0}^N f^*(\yRf)\,p(\yXf=\yRf).
+%   \sum_{n\yrs=0}^n f(\yrs)\,p_*(\yxs=\yrs) = \sum_{\yvN\yRf=0}^\yvN f^*(\yRf)\,p(\yXf=\yRf).
 % \end{equation}
 For averaged products, $\sav{\underbrace{\yx\dots\yx}_{\text{$m$
       factors}}}\equiv\binom{n\yxs}{m}/\binom{n}{m}$,
@@ -999,10 +1039,10 @@ formulae~\eqref{eq:pullback_P} yield the useful equality
     \binom{n \yrs}{m}\, \p(\yxs=\yrs \| \yH)
     % \sum_{N \yRf=0}^N %m!\,
     % \binom{N-m}{N \yRf-m} \binom{N}{N \yRf}^{-1} \p(\yXf=\yRf \| \yH)
-    = \binom{N}{m}^{-1}
+    = \binom{\yvN}{m}^{-1}
     % \frac{(N-m)!}{N!}
-    \sum_{\mathclap{N \yRf=0}}^N %m!\,
-    \binom{N \yRf}{m}\, \p(\yXf=\yRf \| \yH)
+    \sum_{\mathclap{\yvN \yRf=0}}^\yvN %m!\,
+    \binom{\yvN \yRf}{m}\, \p(\yXf=\yRf \| \yH)
 \equiv    \expe{\av{\underbrace{\yX \dotsm \yX}_{\text{$m$ factors}}} \| \yH}.
 \end{equation}
 The proof of the middle equality uses the expression for the $m$th
@@ -1029,7 +1069,7 @@ average needs to be numerically specified, and by marginalization
 \eqref{eq:subpop_average} it will determine that of the sample average,
 $\p(\yxs=\yrs \| \yH)$. If we numerically specify the latter, the former is
 not completely specified, because \eqn~\eqref{eq:subpop_average} linearly
-constrains $N+1$ unknowns by only $n+1$ equations.
+constrains $\yvN+1$ unknowns by only $n+1$ equations.
 
 We may want to specify the probability by enforcing the sample expectations
 of several functions to have specific values, for example
@@ -1054,16 +1094,16 @@ $\yHa$, gives
 \begin{equation}
   \label{eq:app_maxent_pop}
   \p(\yXf = \yRf \| \yHa)  = \yK\,
-  \binom{N}{N \yRf}\,\exp\Bigl[\yL\T
+  \binom{\yvN}{\yvN \yRf}\,\exp\Bigl[\yL\T
   \sum_{n\yrs=0}^n \yf(\yrs)\ypp(\yrs\|\yRf)\Bigr],
 \end{equation}
 and then by marginalization~\eqref{eq:marginal}
 \begin{equation}
   \label{eq:app_maxent_pop_marg}
   \p(\yxs = \yrs \| \yHa)  = \yK\, 
-  \sum_{N\yRf=0}^N \ypp(\yrs \|\yRf)
+  \sum_{\yvN\yRf=0}^\yvN \ypp(\yrs \|\yRf)
 \,
-  \binom{N}{N \yRf}\,\exp\Bigl[\yL\T
+  \binom{\yvN}{\yvN \yRf}\,\exp\Bigl[\yL\T
   \sum_{n\yrs=0}^n \yf(\yrs)\ypp(\yrs\|\yRf)\Bigr],
 \end{equation}
 where $\yK$ is a normalization constant and
@@ -1071,9 +1111,9 @@ $\yL\T=(\varLambda_1,\dotsc,\varLambda_m)\T$ are Lagrange multipliers such
 that
 \begin{equation}
   \label{eq:app_maxent_pop_constraints}
-\yc = \yK\sum_{n\yrs=0}^n \sum_{N\yRf=0}^N \yf(\yrs) \ypp(\yrs \|\yRf)
+\yc = \yK\sum_{n\yrs=0}^n \sum_{\yvN\yRf=0}^\yvN \yf(\yrs) \ypp(\yrs \|\yRf)
 \,
-  \binom{N}{N \yRf}\,\exp\Bigl[\yL\T
+  \binom{\yvN}{\yvN \yRf}\,\exp\Bigl[\yL\T
   \sum_{n\yrs=0}^n \yf(\yrs)\ypp(\yrs\|\yRf)\Bigr].
 \end{equation}
 Application of \me\ at the sample level, denoted by $\yHb$, gives
@@ -1116,7 +1156,7 @@ population level, like additional modes or particular tail behaviour.
 \caption{Linear and log-plots of $\p(\yxs = \yrs)$ constructed by \me\ at the population
   level followed by sample marginalization (blue triangles),
   \eqn~\eqref{eq:app_maxent_pop_marg}, and at the sample level (red
-  circles), \eqn~\eqref{eq:app_maxent_sample}, with $N=5000$,
+  circles), \eqn~\eqref{eq:app_maxent_sample}, with $\yvN=5000$,
   $n=200$, constraints $\expe{\yxs}=0.0478$, $\expe{\yxxs}=0.00257$.}
 \label{fig:diff_maxent_pop_sample}
 \end{figure}%maxent_pop_or_sample.nb
@@ -1128,7 +1168,7 @@ population level, like additional modes or particular tail behaviour.
 \caption{Linear and log-plots of $\p(\yxs = \yrs)$ constructed by \me\ at
   the population level followed by sample marginalization (blue triangles),
   \eqn~\eqref{eq:app_maxent_pop_marg}, and at the sample level (red
-  circles), \eqn~\eqref{eq:app_maxent_sample}, with $N=5000$,
+  circles), \eqn~\eqref{eq:app_maxent_sample}, with $\yvN=5000$,
   $n=200$, constraints $\expe{\yxs}=0.0478$, $\expe{\yxxs}=0.00257$,
   $\expe{\sav{\yx\yx\yx}}=1.48\times10^{-4}$,
   $\expe{\sav{\yx\yx\yx\yx}}=8.81\times 10^{-6}$.}
@@ -1136,7 +1176,7 @@ population level, like additional modes or particular tail behaviour.
 \end{figure}%maxent_pop_or_sample.nb
 We show two examples of this discrepancy in
 \figs~\ref{fig:diff_maxent_pop_sample}
-and~\ref{fig:diff_maxent_pop_sample_realdata}, for $N=5000$, $n=200$, and
+and~\ref{fig:diff_maxent_pop_sample_realdata}, for $\yvN=5000$, $n=200$, and
 constraint functions of the form
 $\yf(\yxs)=(\yxs,\yxxs,\dotsc)\equiv\bigl( \yxs,
 \raisebox{0pt}[0pt][1ex]{}\binom{n\yxs}{2}/\binom{n}{2},\dotsc \bigr)$,
@@ -1197,39 +1237,39 @@ it would not be correct to use this model in our problem.
 A perfunctory intuitive reasoning seems insufficient for clarifying this
 point. Let's express it in the language of the probability calculus.
 Suppose we do not know whether the sample is really part of a larger
-population: we do not know whether $N=n$ or how large $N$ is otherwise.
+population: we do not know whether $\yvN=n$ or how large $\yvN$ is otherwise.
 Call this state of ignorance $\yHd$. In the probability calculus this
-ignorance about $N$ is expressed by assigning a probability distribution
-$\p(N \| \yHd)$ that vanishes if $N<n$, since we know that $N\ge n$; see
+ignorance about $\yvN$ is expressed by assigning a probability distribution
+$\p(\yvN \| \yHd)$ that vanishes if $\yvN<n$, since we know that $\yvN\ge n$; see
 Good \cite{good1965,good1967b} and Rissanen \cite{rissanen1983} for
 examples of such distributions over the integers. Maintaining our
 assumption of symmetric ignorance, probability assignments that do not
-assume a specific value of $N$ are then obtained via multiplication of all
-$N$-dependent probabilities by $\p(N \| \yHd)$ and subsequent
-marginalization over $N$. Technically speaking, $N$ becomes a
+assume a specific value of $\yvN$ are then obtained via multiplication of all
+$\yvN$-dependent probabilities by $\p(\yvN \| \yHd)$ and subsequent
+marginalization over $\yvN$. Technically speaking, $\yvN$ becomes a
 \emph{nuisance parameter}
 \cite{jaynes1994_r2003,lindley1965b_r2008,bernardoetal1994_r2000}. The
 probability obtained from \me\ at the population level,
 \eqn~\eqref{eq:app_maxent_pop_marg}, then generalizes to
 \begin{equation}
   \label{eq:app_maxent_pop_marg_unknown_N}
-  \p(\yxs = \yrs \| \yHd)  = \sum_N \biggl\{\yK_N\, 
-  \sum_{N\yRf=0}^N \ypp_N(\yrs \|\yRf)
+  \p(\yxs = \yrs \| \yHd)  = \sum_\yvN \biggl\{\yK_\yvN\, 
+  \sum_{\yvN\yRf=0}^\yvN \ypp_\yvN(\yrs \|\yRf)
 \,
-  \binom{N}{N \yRf}\,\exp\Bigl[{\yL_N}\T
-  \sum_{n\yrs=0}^n \yf(\yrs)\ypp_N(\yrs\|\yRf)\Bigr]\biggr\}
-  \,\p(N \| \yHd),
+  \binom{\yvN}{\yvN \yRf}\,\exp\Bigl[{\yL_\yvN}\T
+  \sum_{n\yrs=0}^n \yf(\yrs)\ypp_\yvN(\yrs\|\yRf)\Bigr]\biggr\}
+  \,\p(\yvN \| \yHd),
 \end{equation}
-where $N$-dependencies have been made explicit. This is a formidable
+where $\yvN$-dependencies have been made explicit. This is a formidable
 expression. But our question, \enquote{is the usual \me\ at the sample
   level~\eqref{eq:app_maxent_sample} unassuming with regard to the
   existence of a larger population?}, translates now into the precise
 mathematical question: \enquote{are the
 distributions~\eqref{eq:app_maxent_pop_marg_unknown_N} and
-\eqref{eq:app_maxent_sample} equal for some choice of $\p(N \| \yHd)$, with
-$\p(N \| \yHd)\ne 0$ for $N>n$?}. We leave this mathematical problem for
+\eqref{eq:app_maxent_sample} equal for some choice of $\p(\yvN \| \yHd)$, with
+$\p(\yvN \| \yHd)\ne 0$ for $\yvN>n$?}. We leave this mathematical problem for
 future work. Note, however, that this equality is satisfied if
-$\p(N=1 \| \yHd)=1$, which means that the usual \me\ model can also be
+$\p(\yvN=1 \| \yHd)=1$, which means that the usual \me\ model can also be
 interpreted as assuming that \emph{no} larger population exists.
 
 
@@ -1259,14 +1299,14 @@ some sort of external input to the neurons as well, mimicking their
 embedding in a larger network. The sample distribution given by the \me\
 model at the population level, when used as a reference distribution for
 surprise analysis, may reveal features in a dataset that were unnoticed by
-the standard \me\ model. The question remains of how to specify $N$,
-though. We have tacitly intended $N$ as the size of the largest
+the standard \me\ model. The question remains of how to specify $\yvN$,
+though. We have tacitly intended $\yvN$ as the size of the largest
 biologically or functionally homogeneous population from which our sample
 was recorded. It could be the amount of neurons in a functional brain area,
-for example the primary visual cortex, for which $N\sim 10^8$
-\cite{leubaetal1994}. For large $N$ -- unfortunately we are not yet able to
+for example the primary visual cortex, for which $\yvN\sim 10^8$
+\cite{leubaetal1994}. For large $\yvN$ -- unfortunately we are not yet able to
 translate this \enquote{large} into a numeric order of magnitude -- the
-final distribution becomes independent of $N$, and continuous
+final distribution becomes independent of $\yvN$, and continuous
 approximations become available.
 
 
@@ -1285,7 +1325,7 @@ example.
   \me\ at the population level followed by sample marginalization (blue
   triangles), and at the sample level (red circles). The constraints are
   the same in either case: $\expe{\yxs \|\yH}=0.045$,
-  $\expe{\yxxs \|\yH}=0.0025$, and $N=5000$, $n=200$.}
+  $\expe{\yxxs \|\yH}=0.0025$, and $\yvN=5000$, $n=200$.}
 \label{fig:diff_maxent_pop_sample_realdata}
 \end{figure}%maxent_pop_or_sample.nb
 The second is that \fi
@@ -1314,7 +1354,7 @@ $\expeb{f(\yxs)}$. The corresponding models are usually called
 models have also been used
 \cite{schneidmanetal2006,shlensetal2006,roudietal2009b}, in which
 expectations for individual neurons or groups of neurons are constrained,
-for example $\expe{x_2}$ or $\expe{x_1x_8x_9}$. A short computation shows
+for example $\expe{\yvx_2}$ or $\expe{\yvx_1x_8x_9}$. A short computation shows
 that the \me\ method with this kind of constraints gives the same result
 whether applied at the sample or at the population level: the states of any
 unconstrained neurons marginalize out. This is understandable: expressing
@@ -1329,7 +1369,7 @@ persist for hybrid homogeneous-inhomogeneous models
 
 %\mynote{Importance of the formulae relating sample and population.}
 
-% \mynote{Discussion of case when individual $X_i\dotsm X_j$ are constrained.
+% \mynote{Discussion of case when individual $\yvX_i\dotsm \yvX_j$ are constrained.
 % Likely breakdown of \me\ in this case \cite{portamana2009}. Hints at full
 % Bayesian treatment of which \me\ is a limit? \cite[***]{mackay1995_r2003}}
 
@@ -1399,7 +1439,7 @@ unfiltered scientific exchange possible.\fi
 \section{***}
 
 \begin{align}
-  \expe{x_{i_1} \dotsm x_{i_m} \| \yH}
+  \expe{\yvx_{i_1} \dotsm \yvx_{i_m} \| \yH}
 &=
 \expe{\sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}} \| \yH}
 =
@@ -1407,18 +1447,18 @@ unfiltered scientific exchange possible.\fi
 \\
 \intertext{and has an explicit expression in terms of $Q$:}
   \begin{split}
-\expe{x_{i_1} \dotsm x_{i_m} \| \yH}
+\expe{\yvx_{i_1} \dotsm \yvx_{i_m} \| \yH}
 &=
-\binom{N}{m}^{-1}
+\binom{\yvN}{m}^{-1}
 %\frac{(N-m)!}{N!}
-\sum_{N A=0}^N %m!\, 
-\binom{N A}{m}\, Q(A)
+\sum_{\yvN A=0}^\yvN %m!\, 
+\binom{\yvN A}{m}\, Q(A)
 \\
 &\equiv
 %\frac{(N-m)!}{N!}
-\sum_{N A=0}^N %m!\, 
-\binom{N-m}{N A-m}
-\binom{N}{N A}^{-1} Q(A).
+\sum_{\yvN A=0}^\yvN %m!\, 
+\binom{\yvN-m}{\yvN A-m}
+\binom{\yvN}{\yvN A}^{-1} Q(A).
 \end{split}
 \end{align}
 \end{subequations}
@@ -1448,33 +1488,33 @@ population.
 For example, $\yX$ can
 represent the state of a population at a particular time. We call the
 neurons \enquote{units} to lend some generality to our discussion. We shall
-make statements about the whole population of $N$ units and about a
+make statements about the whole population of $\yvN$ units and about a
 subpopulation of $n$ units; the word \enquote{population} will always refer
 to the \emph{whole} population. The subpopulation states and their values
-are denoted by lowercase letters: $(x_1, \dotsc, x_n)\equiv\yx$ and
-$(r_1, \dotsc, r_n)\equiv\yr$; but note that $x_i \equiv X_{j_i}$ and
-$r_i \equiv R_{j_i}$ for some distinct $j_1,\dotsc,j_n$. We shall also make
+are denoted by lowercase letters: $(\yvx_1, \dotsc, \yvx_n)\equiv\yx$ and
+$(\yvr_1, \dotsc, \yvr_n)\equiv\yr$; but note that $\yvx_i \equiv \yvX_{j_i}$ and
+$\yvr_i \equiv \yvR_{j_i}$ for some distinct $j_1,\dotsc,j_n$. We shall also make
 statements about the population-averaged state, or \emph{population
   average}:
 \begin{align}
   \label{noeq:population-av}
-   \yXf &\defd (X_1 + \dotsb + X_N)/N,
+   \yXf &\defd (\yvX_1 + \dotsb + \yvX_\yvN)/\yvN,
 \\
 \intertext{and the subpopulation-averaged state, or \emph{subpopulation average}:}
 \label{noeq:subpopulation-av}
-\yxs &\defd (x_1 + \dotsc + x_n)/n.
+\yxs &\defd (\yvx_1 + \dotsc + \yvx_n)/n.
 \end{align}
-The quantities $N\yXf$ and $n\yxs$ represent the total number of active
+The quantities $\yvN\yXf$ and $n\yxs$ represent the total number of active
 units in the population and the subpopulation. Quantities like $\yRf$ and $\yrs$
 are defined analogously. The averaging operators $\sav{\dotv}$ and
 $\av{\dotv}$ are also extended to averages of $\tbinom{n}{m}$ or
-$\tbinom{N}{m}$ products of $m$ states; \eg,
+$\tbinom{\yvN}{m}$ products of $m$ states; \eg,
 \begin{align}
 \av{\yX \yX} &\defd
-\tbinom{N}{2}^{-1} (X_1 X_2 + X_1 X_3  + \dotsb +  X_{N-1} X_N),
+\tbinom{\yvN}{2}^{-1} (\yvX_1 \yvX_2 + \yvX_1 \yvX_3  + \dotsb +  \yvX_{\yvN-1} \yvX_\yvN),
 \\[2\jot]
 \sav{\yx\yx\yx} &\defd
-\tbinom{n}{3}^{-1} (x_1 x_2 x_3 + x_1 x_2 x_4 + \dotsb + x_{n-2} x_{n-1} x_n),
+\tbinom{n}{3}^{-1} (\yvx_1 \yvx_2 \yvx_3 + \yvx_1 \yvx_2 \yvx_4 + \dotsb + \yvx_{n-2} \yvx_{n-1} \yvx_n),
 \end{align}
 and so on.
 
@@ -1487,7 +1527,7 @@ probability distribution of the individual states, from which we can
 derive all other probabilities of interest. We denote it by
 \begin{equation}
   \label{noeq:joint_plaus}
-  \p(X_1=R_1, X_2=R_2, \dotsc, X_N=R_N \| \yH) \quad\text{or}\quad
+  \p(\yvX_1=\yvR_1, \yvX_2=\yvR_2, \dotsc, \yvX_\yvN=\yvR_\yvN \| \yH) \quad\text{or}\quad
 \p(\yX =\yR \| \yH).
 \end{equation}
 Such probability is conditional on our state of knowledge, \ie\ the
@@ -1504,9 +1544,9 @@ specific properties in our probability assignments:
   the units's labels:
 \begin{multline}
   \label{noeq:homog_math}
-  \p(X_1=R_1, X_2=R_2, \dotsc, X_N=R_N \| \yH) ={}
+  \p(\yvX_1=\yvR_1, \yvX_2=\yvR_2, \dotsc, \yvX_\yvN=\yvR_\yvN \| \yH) ={}
 \\ 
-\shoveright{\p(X_1=R_{\pi(1)}, X_2=R_{\pi(2)}, \dotsc, X_N=R_{\pi(N)} \| \yH)}
+\shoveright{\p(\yvX_1=\yvR_{\pi(1)}, \yvX_2=\yvR_{\pi(2)}, \dotsc, \yvX_\yvN=\yvR_{\pi(\yvN)} \| \yH)}
 \\
 \text{for any permutation $\pi$}.
 \end{multline}
@@ -1525,7 +1565,7 @@ in \sect~***%\ref{nosec:stoch_symm}.
 % \equiv \pr(x_1+ \dotsb + x_N = N A \| \varEta) 
 =  Q(A),
 \qquad
-A \in \set*{0,\tfrac{1}{N},\tfrac{2}{N},\dotsc,1}.
+A \in \set*{0,\tfrac{1}{\yvN},\tfrac{2}{\yvN},\dotsc,1}.
 \end{equation}
 For the moment we are not concerned about the specific form of $Q$ and
 about how it was assigned: it could, \eg, arise from maximum-entropy
@@ -1547,7 +1587,7 @@ consequences for our probability assignments:
   \medskip\item\label{noitem:tot_plaus}Probability for the population state:
 \begin{equation}
   \label{noeq:joint_plaus_N_homog}
-  \p(\yX = \yR \| H) = \binom{N}{N\yRf}^{-1} Q(\yRf).
+  \p(\yX = \yR \| H) = \binom{\yvN}{\yvN\yRf}^{-1} Q(\yRf).
 \end{equation}
 
 \medskip
@@ -1556,12 +1596,12 @@ consequences for our probability assignments:
 \begin{equation}
   \label{noeq:marginal}
     \p(\yx = \yr \| \yH) =
-\sum_{N A =0}^{N} 
-\binom{N-n}{N A-n\yrs}\binom{N}{N A}^{-1}\,
+\sum_{\yvN A =0}^{\yvN} 
+\binom{\yvN-n}{\yvN A-n\yrs}\binom{\yvN}{\yvN A}^{-1}\,
 Q(A).
 \end{equation}
 Note that the only summands contributing to this sum are those for which
-$n\yrs \le NA \le N$; the others are zero because by definition
+$n\yrs \le NA \le \yvN$; the others are zero because by definition
 $\tbinom{M}{y}=0$ if $y<0$. This remark applies to all the sums of this
 kind in the rest of this Note.
 
@@ -1572,7 +1612,7 @@ kind in the rest of this Note.
   \label{noeq:conditional_total_state}
   \p(\yx = \yr \| \yX = \yR, \yH)
 =
-\binom{N-n}{N \yRf-n \yrs}.
+\binom{\yvN-n}{\yvN \yRf-n \yrs}.
 \end{equation}
 
 \medskip
@@ -1581,8 +1621,8 @@ kind in the rest of this Note.
 \begin{multline}
   \label{noeq:subpop_average}
   \p(\yxs = a  \| \yH) = \binom{n}{n a}
- \sum_{N A=0}^{N}
-\binom{N-n}{N A-n a}\binom{N}{N A}^{-1}\,
+ \sum_{\yvN A=0}^{\yvN}
+\binom{\yvN-n}{\yvN A-n a}\binom{\yvN}{\yvN A}^{-1}\,
 Q(A),
 \\
 a \in \set*{0,\tfrac{1}{n},\tfrac{2}{n},\dotsc,1}.
@@ -1595,14 +1635,14 @@ a \in \set*{0,\tfrac{1}{n},\tfrac{2}{n},\dotsc,1}.
   \label{noeq:conditional_prob}
   \p(\yxs = a \| \yXf = A, \yH)
 =
-\binom{n}{n a}\binom{N-n}{N A-n a}\binom{N}{N A}^{-1}.
+\binom{n}{n a}\binom{\yvN-n}{\yvN A-n a}\binom{\yvN}{\yvN A}^{-1}.
 \end{equation}
 
 \medskip
 \item\label{noitem:moments}The product of the states of any $m$ distinct
   units from a given subpopulation,
   \begin{equation*}
-    x_{i_1} x_{i_2} \dotsm x_{i_m},
+    \yvx_{i_1} \yvx_{i_2} \dotsm \yvx_{i_m},
     \qquad 1\le i_1 < i_2 < \dotsb < i_m \le n
   \end{equation*}
   has an expectation equal to that of the subpopulation average of such
@@ -1610,7 +1650,7 @@ a \in \set*{0,\tfrac{1}{n},\tfrac{2}{n},\dotsc,1}.
 \begin{subequations}
 \label{noeq:expe_products}
 \begin{align}
-  \expe{x_{i_1} \dotsm x_{i_m} \| \yH}
+  \expe{\yvx_{i_1} \dotsm \yvx_{i_m} \| \yH}
 &=
 \expe{\sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}} \| \yH}
 =
@@ -1618,18 +1658,18 @@ a \in \set*{0,\tfrac{1}{n},\tfrac{2}{n},\dotsc,1}.
 \\
 \intertext{and has an explicit expression in terms of $Q$:}
   \begin{split}
-\expe{x_{i_1} \dotsm x_{i_m} \| \yH}
+\expe{\yvx_{i_1} \dotsm \yvx_{i_m} \| \yH}
 &=
-\binom{N}{m}^{-1}
+\binom{\yvN}{m}^{-1}
 %\frac{(N-m)!}{N!}
-\sum_{N A=0}^N %m!\, 
-\binom{N A}{m}\, Q(A)
+\sum_{\yvN A=0}^\yvN %m!\, 
+\binom{\yvN A}{m}\, Q(A)
 \\
 &\equiv
 %\frac{(N-m)!}{N!}
-\sum_{N A=0}^N %m!\, 
-\binom{N-m}{N A-m}
-\binom{N}{N A}^{-1} Q(A).
+\sum_{\yvN A=0}^\yvN %m!\, 
+\binom{\yvN-m}{\yvN A-m}
+\binom{\yvN}{\yvN A}^{-1} Q(A).
 \end{split}
 \end{align}
 \end{subequations}
@@ -1652,11 +1692,11 @@ $m$th factorial moment of the subpopulation average $\yxs$ is defined by
 an analogous definition holding for $\yXf$. We have that
 \begin{equation}
   \label{noeq:eq_factmom_prod}
-\expe{x_{i_1} \dotsm x_{i_m} \| \yH}
+\expe{\yvx_{i_1} \dotsm \yvx_{i_m} \| \yH}
 =
   \tfrac{(n-m)!}{n!}\expeb*{\frac{(n\yxs)!}{(n\yxs-m)!} \| \yH}
 =
-  \tfrac{(N-m)!}{N!}\expeb*{\frac{(N\yXf)!}{(N\yXf-m)!} \| \yH}.
+  \tfrac{(\yvN-m)!}{\yvN!}\expeb*{\frac{(\yvN\yXf)!}{(\yvN\yXf-m)!} \| \yH}.
 \end{equation}
 
 
@@ -1669,20 +1709,20 @@ are related by
     \\[2\jot]
     \begin{split}
     \expe{\yxs^2 \| \yH} &= \expe{\yXf \| \yH}
-                                  \frac{N-n}{(N-1)n}
+                                  \frac{\yvN-n}{(\yvN-1)n}
  +{}
-\\&\quad\quad \expe{\yXf^2 \| \yH}\frac{N\,(n-1)}{(N-1)n},
+\\&\quad\quad \expe{\yXf^2 \| \yH}\frac{\yvN\,(n-1)}{(\yvN-1)n},
 \end{split}
     \\[2\jot]
     \begin{split}
     \expe{\yxs^3 \| \yH} &=
-                              \expe{\yXf \| \yH}\frac{(N-n)(N-2n)}{(N-1)(N-2)n^2}+{}
+                              \expe{\yXf \| \yH}\frac{(\yvN-n)(\yvN-2n)}{(\yvN-1)(\yvN-2)n^2}+{}
                                     \\
                                     &\quad\quad\expe{\yXf^2 \| \yH}
-                                    \frac{3N\,(N-n)(n-1)}{(N-1)(N-2)n^2} +{}
+                                    \frac{3N\,(\yvN-n)(n-1)}{(\yvN-1)(\yvN-2)n^2} +{}
                                     \\
                                     &\quad\quad\quad\expe{\yXf^3 \| \yH}
-                                    \frac{N^2\,(n-1)(n-2)}{(N-1)(N-2)n^2}.
+                                    \frac{\yvN^2\,(n-1)(n-2)}{(\yvN-1)(\yvN-2)n^2}.
                                   \end{split}
                                     % \\[2\jot]
                                     % \expe{\yxs^4 \| \varEta} &=
@@ -1707,22 +1747,22 @@ Relations for higher moments can be obtained recursively from
 first $m$ moments are related by a homogeneous linear transformation,
 \begin{equation}
   \label{noeq:lin_transf_moments}
-  \expe{\yxs^m \| \yH} = \sum_{l=1}^m M_{ml}(n,N) \expe{\yXf^l \| \yH},
+  \expe{\yxs^m \| \yH} = \sum_{l=1}^m M_{ml}(n,\yvN) \expe{\yXf^l \| \yH},
 \end{equation}
-with a universal, lower-triangular transformation matrix $M_{ml}(n,N)$ that
-depends only on $n$, $N$, and the condition of symmetry~\eqref{noeq:homog_math}.
+with a universal, lower-triangular transformation matrix $M_{ml}(n,\yvN)$ that
+depends only on $n$, $\yvN$, and the condition of symmetry~\eqref{noeq:homog_math}.
 
 As intuition suggests, we have 
-%$\expe{\yxs^m \| \yH} \xrightarrow{n\to N} \expe{\yXf^m \| \yH}$.
+%$\expe{\yxs^m \| \yH} \xrightarrow{n\to \yvN} \expe{\yXf^m \| \yH}$.
 \begin{equation}
   \label{noeq:limit_moments}
-  \expe{\yxs^m \| \yH} \xrightarrow{n\to N} 
+  \expe{\yxs^m \| \yH} \xrightarrow{n\to \yvN} 
   \expe{\yXf^m \| \yH},
 \qquad
   \expe{\yxs^m \| \yH} \xrightarrow{n\to 1} 
   \expe{\yXf \| \yH},
 \end{equation}
-the latter because ${x_i}^m=x_i$, since states are $\set{0,1}$-valued.
+the latter because ${\yvx_i}^m=\yvx_i$, since states are $\set{0,1}$-valued.
 
 \bigskip
 
@@ -1731,7 +1771,7 @@ The core of the six mathematical relations above are
 expresses the probability for the subpopulation average as a mixture of
 hypergeometric distributions
 \cites[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968},
-with parameters $N,N\yXf,n$, weighted by the probabilities
+with parameters $\yvN,\yvN\yXf,n$, weighted by the probabilities
 $\p(\yXf = A \|\yH)$ \citep[\cf][\sect~4, esp.\ \eqn~(22)]{kendall1967}.
 The connection between this mixture representation and the condition of
 symmetry~\eqref{noeq:homog_math} is well-known in the Bayesian literature
@@ -1752,13 +1792,13 @@ $\p(\yXf=A\| \yH)$ belonging to the exponential family
 \begin{equation}
   \label{noeq:full_pop_av_example_ME}
   \p(\yXf = A \| \yH) = Q(A) \propto
-\binom{N}{N A}\exp[
-\yl_2\, N A\,(N A-1)/2 + \yl_1\, N A].
+\binom{\yvN}{\yvN A}\exp[
+\yl_2\, \yvN A\,(\yvN A-1)/2 + \yl_1\, \yvN A].
 \end{equation}
 This is the form obtained from the principle of maximum relative entropy
 \citep[\eg:][]{jaynes1957,jaynes1963,good1963,jaynes1967,aczeletal1975,jaynes1979b,vancampenhoutetal1981,sivia1990,fangetal1997,bretthorst2013}
 with first and second moments as constraints and the reference distribution
-$Q_0$ defined by $Q_0(A) = 2^{-N}\binom{N}{N A}$, corresponding to a
+$Q_0$ defined by $Q_0(A) = 2^{-\yvN}\binom{\yvN}{\yvN A}$, corresponding to a
 uniform probability distribution for the network state $\yX$.
 %file: distr_scaling_from_full_population.nb
 \begin{figure}[!b]
@@ -1781,7 +1821,7 @@ uniform probability distribution for the network state $\yX$.
 The probability distribution of \eqn~\eqref{noeq:full_pop_av_example_ME} is
 plotted in \fig~\ref{noscaling_distr}, together with the resulting
 subnetwork-average distributions $\p(\yxs = a \|\yH)$, for the case in
-which $N = 1000$ units, $\lambda_1=-2.55$, $\lambda_2=0.005$, and
+which $\yvN = 1000$ units, $\lambda_1=-2.55$, $\lambda_2=0.005$, and
 $n=10, 50, 100, 250$. The distributions become broader as $n$ decreases,
 and the minimum of the original distribution disappears; at the same time
 the finite-difference 
@@ -1830,7 +1870,7 @@ The dependence of the first four moments $\expe{\yxs^m \| \yH}$ as a
 function of size $n$ is shown in \fig~\ref{noscaling_moments}. The moments
 become practically constant when $n \approx 100$ or larger. The
 expectations of $m$-tuple products of states
-$\expe{x_{i_1}\dotsm x_{i_m} \| \yH}$, proportional to the factorial
+$\expe{\yvx_{i_1}\dotsm \yvx_{i_m} \| \yH}$, proportional to the factorial
 moments, are not shown as they do not depend on $n$.
 
 
@@ -1842,7 +1882,7 @@ the probability $\p(\yXf = A \|\yH)$ for the network average determines
 that of each subnetwork average, $\p(\yxs \|\yH)$, by the
 marginalization \eqn~\eqref{noeq:subpop_average}. The reverse is trivially
 not true, since \eqn~\eqref{noeq:subpop_average}, as a linear mapping from
-$\RR^{N+1}$ to $\RR^{n+1}$, with $N$ larger than $n$, is onto but not into.
+$\RR^{\yvN+1}$ to $\RR^{n+1}$, with $\yvN$ larger than $n$, is onto but not into.
 Assigning a probability distribution $\p(\yxs = a \|\yH)$ to a
 subnetwork average $\yxs$ does not determine a network distribution
 $\p(\yXf = A\|\yH)$: it only restricts the set of possible ones; this
@@ -1879,7 +1919,7 @@ Consider a state of knowledge $\yHa$ leading to the following properties:
   $\sav{\yx\yx}$ of a particular subnetwork have given values
   \begin{equation}
     \label{noeq:constr_ex1}
-    \expe{\yxs \| \yHa} = c_1, \qquad \expe{\sav{x_i x_j}\|\yHa} = c_2;
+    \expe{\yxs \| \yHa} = c_1, \qquad \expe{\sav{\yvx_i \yvx_j}\|\yHa} = c_2;
   \end{equation}
 \item the network probability distribution $\p(\yX = \yR \|\yHa)$
   has maximum relative entropy with respect to the uniform one, given the
@@ -1892,14 +1932,14 @@ property~\eqref{noeq:homog_math} and is defined by
 \begin{multline}
   \label{noeq:pop_distr_maxent1}
   \pf(\yX =\yR \|\yHa) =
-\varKappa\exp[\yL_2 N\yRf\,(N\yRf-1)/2 + \yL_1 N\yRf]
+\varKappa\exp[\yL_2 \yvN\yRf\,(\yvN\yRf-1)/2 + \yL_1 \yvN\yRf]
 \\
 \!\begin{aligned}[b]
 &\text{with $\varKappa, \yL_m$, such that the distribution is normalized and}
 \\
-&\varKappa\sum_{N A=0}^N %m!\, 
-\binom{N-m}{N A-m}
-\exp[\yL_2 N A\,(N A-1)/2 + \yL_1 N A]
+&\varKappa\sum_{\yvN A=0}^\yvN %m!\, 
+\binom{\yvN-m}{\yvN A-m}
+\exp[\yL_2 \yvN A\,(\yvN A-1)/2 + \yL_1 \yvN A]
 = c_m, \quad m=1,2.
 \end{aligned}
 \end{multline}
@@ -1911,9 +1951,9 @@ network expectations, \eg
 \begin{equation}
   \label{noeq:exploit_eq_expects}
   c_2 = \expe{\sav{\yx\yx}\|\yHa} = 
-\binom{N}{2}^{-1}
-\sum_{N A=0}^N %m!\, 
-\binom{N A}{2} \, \p(\yXf = A\|\yHa),
+\binom{\yvN}{2}^{-1}
+\sum_{\yvN A=0}^\yvN %m!\, 
+\binom{\yvN A}{2} \, \p(\yXf = A\|\yHa),
 \end{equation}
 and with relations~\eqref{noeq:joint_plaus_N_homog},
 \eqref{noeq:conditional_total_state}. This example is easily generalized to
@@ -1954,20 +1994,20 @@ property~\eqref{noeq:homog_math}:
 \sum_{n a=0}^n \yL_{ a}
 %\binom{N}{N\yXf}^{-1}
 \binom{n}{n a}
-\binom{N-n}{N\yRf-n a}\Biggr]
+\binom{\yvN-n}{\yvN\yRf-n a}\Biggr]
 \\
 \!\begin{aligned}[b]
 &\text{with $\yL_{ a}$ such that}
 \\
-&\sum_{N A=0}^N 
+&\sum_{\yvN A=0}^\yvN 
 %\binom{N}{N A}^{-1}
 \binom{n}{n a}
-\binom{N-n}{N A-n a}\,
+\binom{\yvN-n}{\yvN A-n a}\,
 \exp\Biggl[
 \sum_{n a=0}^n \yL_{ a}
 %\binom{N}{N A}^{-1}
 \binom{n}{n a}
-\binom{N-n}{N A-n a}\Biggr]
+\binom{\yvN-n}{\yvN A-n a}\Biggr]
 =q( a)
 \end{aligned}
 \end{multline}
@@ -2039,10 +2079,10 @@ the area.
 This may come as a surprise. The method simply requires a number of
 exhaustive and mutually exclusive events, and if these are composite events
 the final distribution may have a multiplicity factor. When we consider the
-$2^{N}$ states of $N$ units we are not excluding that these might be
+$2^{\yvN}$ states of $\yvN$ units we are not excluding that these might be
 marginals of $2^{M}$ states of $M$ units. Each one has the same
-multiplicity $2^{M-N}$, but this constant multiplicity factor disappears
-by normalization. So the method applies just as in the case of $N$ units
+multiplicity $2^{M-\yvN}$, but this constant multiplicity factor disappears
+by normalization. So the method applies just as in the case of $\yvN$ units
 only, right?
 
 Right, but 
@@ -2054,7 +2094,7 @@ Wrong. In our reasoning we have made subtle assumptions of independence
 between the full population and the subpopulation. The problem is that the
 counting of multiplicities is not based on simple enumeration, but already
 involves probability considerations. Consider three cases with a full
-population of two units, $M=2$, of which we consider one unit, $N=1$.
+population of two units, $M=2$, of which we consider one unit, $\yvN=1$.
 \begin{itemize}
 \item First case: all four states are \emph{possible}. The two states of
   the first unit have multiplicity $2$ each. The usual \me\ distribution
@@ -2082,21 +2122,21 @@ the subpopulation \emph{cannot give us any insights about the population it is a
 
 Consider the following ways of proceeding. We:
 \begin{enumerate}
-\item have a population with $N$ units, $2^{N}$ possible states
+\item have a population with $\yvN$ units, $2^{\yvN}$ possible states
 \item expect averages of $\yx$ active neurons and $\yxxs$ active pairs
 \item use maximum-entropy to choose a probability distribution for the
-  states of the $N$ units conforming to our expectations.
+  states of the $\yvN$ units conforming to our expectations.
 \end{enumerate}
 
 We:
 \begin{enumerate}
 \item have a population with $M$ units, $2^{M}$ possible states
-\item expect that any subpopulation of $N$ units has $\yxs$ active
+\item expect that any subpopulation of $\yvN$ units has $\yxs$ active
   neurons and $\yxxs$ active pairs
 \item use maximum-entropy to choose a probability distribution for the
   states of the $M$ units conforming to our expectations
 \item marginalize to find the probability distribution for the states of
-  $N$ units.
+  $\yvN$ units.
 \end{enumerate}
 
 
@@ -2112,11 +2152,11 @@ We:
   To derive the joint probability distribution
   \eqref{noeq:joint_plaus_N_homog} from that for the network
   average~\eqref{noeq:pop_average_Q}, consider that if the network total
-  is $N\yXf$, then $N\yXf$ out of $N$ units are active, and there are
-  $\tbinom{N}{N\yXf}$ possible states for which this can be true; therefore
+  is $\yvN\yXf$, then $\yvN\yXf$ out of $\yvN$ units are active, and there are
+  $\tbinom{\yvN}{\yvN\yXf}$ possible states for which this can be true; therefore
   \begin{equation}
-    \labelbis{eq:joint_plaus_N_homog}
-    \p(\yX = \yR \| H) = \binom{N}{N\yRf}^{-1}Q(\yRf).
+    \labelbis{eq:joint_plaus_\yvN_homog}
+    \p(\yX = \yR \| H) = \binom{\yvN}{\yvN\yRf}^{-1}Q(\yRf).
   \end{equation}
 An analogous reasoning for $n$ and $\yxs$ leads to an analogous equality,
 \begin{equation}
@@ -2129,14 +2169,14 @@ for the subnetwork.
 
 Let us next consider the probability $\p(\yxs =a \| \yXf = A,\yH)$ for
 the subnetwork average $\yxs$ conditional on the network average $\yXf$.
-There are $\tbinom{N}{N\yXf}$ possible network states if the network
-average is $\yXf$, \ie\ if $N\yXf$ units are in state $1$; the conditional
-probability of each is therefore $1/\tbinom{N}{N\yXf}$, owing to the
+There are $\tbinom{\yvN}{\yvN\yXf}$ possible network states if the network
+average is $\yXf$, \ie\ if $\yvN\yXf$ units are in state $1$; the conditional
+probability of each is therefore $1/\tbinom{\yvN}{\yvN\yXf}$, owing to the
 symmetry assumption~\eqref{noeq:homog_math}. Now consider the subnetwork of the
 first $n$ units. The conditional probability of having $n\yxs$ specific
 ones in state $1$ is the sum of the probabilities of all states for
-which $N\yXf-n\yxs$ of the remaining $N-n$ units are in state $1$; there are
-$\tbinom{N-n}{N\yXf-n\yxs}$ such states, all equally probable. Finally,
+which $\yvN\yXf-n\yxs$ of the remaining $\yvN-n$ units are in state $1$; there are
+$\tbinom{\yvN-n}{\yvN\yXf-n\yxs}$ such states, all equally probable. Finally,
 there are $\tbinom{n}{n\yxs}$ possible ways, all equally probable, in which
 $n\yxs$ of the first $n$ units can be in state $1$. In formulae,
 \begin{equation}
@@ -2151,20 +2191,20 @@ $n\yxs$ of the first $n$ units can be in state $1$. In formulae,
       &=
       \sum_{\yr}^{\yrs=a} \sum_{\yR}^{\yRf=A} 
       \p(\yx=\yr \|  \yX =\yR, \yH) \,
-      \binom{N}{N A}^{-1},
+      \binom{\yvN}{\yvN A}^{-1},
       \\
       &=\sum_{\yr}^{\yrs=a} 
-      \binom{N-n}{N A-n a}\binom{N}{N A}^{-1},
+      \binom{\yvN-n}{\yvN A-n a}\binom{\yvN}{\yvN A}^{-1},
       \\
       &=
-      \binom{n}{n a}\binom{N-n}{N A-n a}\binom{N}{N A}^{-1},
+      \binom{n}{n a}\binom{\yvN-n}{\yvN A-n a}\binom{\yvN}{\yvN A}^{-1},
 \end{split}
 \end{equation}
   which is the conditional probability~\eqref{noeq:conditional_prob}. Note
   that this is just a derivation of the hypergeometric distribution
   \cites[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968},
   which describes the probability of, say, drawing a proportion of $\yxs$
-  blue balls in $n$ drawings without replacement from an urn with $N$
+  blue balls in $n$ drawings without replacement from an urn with $\yvN$
   balls, a fraction $\yXf$ of which are blue.
 
   \bigskip The probability of a subnetwork average $\yxs$ is then, by
@@ -2173,11 +2213,11 @@ $n\yxs$ of the first $n$ units can be in state $1$. In formulae,
     \label{noeq:subpop_average_explained}
     \begin{split}
       \p(\yxs =a \| \yH)
-      &= \sum_{N A=0}^N\p(\yxs = a \| \yXf = A, \yH)\,
+      &= \sum_{\yvN A=0}^\yvN\p(\yxs = a \| \yXf = A, \yH)\,
       \p(\yXf = A \| \yH),
       \\
-      &=\sum_{N A=0}^N
-      \binom{n}{n a}\binom{N-n}{N A-n a}\binom{N}{N A}^{-1}
+      &=\sum_{\yvN A=0}^\yvN
+      \binom{n}{n a}\binom{\yvN-n}{\yvN A-n a}\binom{\yvN}{\yvN A}^{-1}
       Q(A).
     \end{split}
   \end{equation}
@@ -2192,15 +2232,15 @@ $n\yxs$ of the first $n$ units can be in state $1$. In formulae,
   the subnetwork size is trivial by marginalization:
   \begin{multline}
     \label{noeq:margin_products}
-    \sum_{\yx} x_1\dotsm x_m \p(\yx =\yr \| \yH)
-      =\sum_{\yr,\yR}  r_1\dotsm r_m \p(\yx=\yr \| \yX=\yR,\yH)
+    \sum_{\yx} \yvx_1\dotsm \yvx_m \p(\yx =\yr \| \yH)
+      =\sum_{\yr,\yR}  \yvr_1\dotsm \yvr_m \p(\yx=\yr \| \yX=\yR,\yH)
       \, \p(\yX=\yR \| \yH),
       \\
       \begin{aligned}
-      &=\sum_{\yr,\yR} r_1\dotsm r_m\,\delt(R_1-r_1)\dotsm\delt(R_m-R_m)
+      &=\sum_{\yr,\yR} \yvr_1\dotsm \yvr_m\,\delt(\yvR_1-\yvr_1)\dotsm\delt(\yvR_m-\yvR_m)
       \p(\yX = \yR \| \yH),
       \\
-      &=\sum_{\yR} R_1\dotsm R_m \p(\yX =\yR \| \yH).
+      &=\sum_{\yR} \yvR_1\dotsm \yvR_m \p(\yX =\yR \| \yH).
     \end{aligned}
   \end{multline}
   All such $m$-fold products have the same expectation by symmetry,
@@ -2210,7 +2250,7 @@ $n\yxs$ of the first $n$ units can be in state $1$. In formulae,
   Now consider the sum of all distinct products of states of two units in
   the subnetwork:
   \begin{equation*}
-    x_1 x_2 + x_1 x_3 + \dotsb + x_{n-1} x_n.
+    \yvx_1 \yvx_2 + \yvx_1 \yvx_3 + \dotsb + \yvx_{n-1} \yvx_n.
   \end{equation*}
   The terms in this sum are either $0$ or $1$. The non-vanishing ones are
   those with index pairs chosen from the $n\yxs$ units of the subnetwork
@@ -2220,12 +2260,12 @@ $n\yxs$ of the first $n$ units can be in state $1$. In formulae,
   $\tbinom{n\yxs}{2}/\tbinom{n}{2}$. Generalizing the argument to products
   of $m$ units, we have that
   \begin{equation}
-    \sav{x_{i_1} \dotsm x_{i_m}} = \binom{n\yxs}{m} \binom{n}{m}^{-1}.
+    \sav{\yvx_{i_1} \dotsm \yvx_{i_m}} = \binom{n\yxs}{m} \binom{n}{m}^{-1}.
   \end{equation}
   Then, using \eqn~\eqref{noeq:subpop_average},
   \begin{multline}
     \label{noeq:expect_product_m}
-    \expe*{\sav{x_{i_1} \dotsm x_{i_m}} \| \yH}
+    \expe*{\sav{\yvx_{i_1} \dotsm \yvx_{i_m}} \| \yH}
     \\
     \begin{aligned}[b]
       &=\tfrac{(n-m)!}{n!}
@@ -2234,11 +2274,11 @@ $n\yxs$ of the first $n$ units can be in state $1$. In formulae,
       &\equiv\frac{(n-m)!}{n!}
       \sum_{n a=0}^n m!\, \binom{n a}{m} \p(\yxs =a \|\yH),
       \\
-      &=\frac{(n-m)!}{n!} \sum_{N A=0}^N
+      &=\frac{(n-m)!}{n!} \sum_{\yvN A=0}^\yvN
       Q( A)
       \Biggl[ 
       \sum_{n a=0}^n 
-      m!\,\binom{n a}{m}\, \binom{n}{n a}\binom{N-n}{N A-n a}\binom{N}{N A}^{-1} 
+      m!\,\binom{n a}{m}\, \binom{n}{n a}\binom{\yvN-n}{\yvN A-n a}\binom{\yvN}{\yvN A}^{-1} 
       \Biggr].
     \end{aligned}
   \end{multline}
@@ -2246,16 +2286,16 @@ $n\yxs$ of the first $n$ units can be in state $1$. In formulae,
   hypergeometric function, and is given by \citep{potts1953}
 %file: factorial_moments_etc.nb
   \begin{equation}
-    \sum_{n a=0}^n m!\,\binom{n a}{m} \binom{n}{n a}\binom{N-n}{N\yXf-n a}
-    \binom{N}{N\yXf}^{-1} 
+    \sum_{n a=0}^n m!\,\binom{n a}{m} \binom{n}{n a}\binom{\yvN-n}{\yvN\yXf-n a}
+    \binom{\yvN}{\yvN\yXf}^{-1} 
     =
-    m!\,\binom{n}{m} \binom{n a}{m}\binom{N}{m},
+    m!\,\binom{n}{m} \binom{n a}{m}\binom{\yvN}{m},
   \end{equation}
   which combined with the previous equation yields the second line of
   \eqn~\eqref{noeq:expe_products}; its last equality comes from the identity
   \begin{equation}
     \label{noeq:binom_identity}
-    \binom{N}{M}\binom{M}{m}=\binom{N}{m}\binom{N-m}{M-m},
+    \binom{\yvN}{M}\binom{M}{m}=\binom{\yvN}{m}\binom{\yvN-m}{M-m},
   \end{equation}
   easily derived by writing the binomial coefficients in terms of
   factorials. Finally, \eqns~\eqref{noeq:moments}, relating the moments of
@@ -2267,7 +2307,7 @@ $n\yxs$ of the first $n$ units can be in state $1$. In formulae,
     \sum_{n a=0}^{n} a^m \p(\yxs = a  \| H),
     \quad
     \expe{\yXf^m \| \yH} \defd
-    \sum_{N A=0}^{N} A^m \p(\yXf = A  \| H),
+    \sum_{\yvN A=0}^{\yvN} A^m \p(\yXf = A  \| H),
   \end{equation}
   replaced in the equalities for the factorial
   moments~\eqref{noeq:eq_factmom_prod}, by recursively solving in terms of
@@ -2287,8 +2327,8 @@ average of the full population we find
 \begin{equation}
   \label{eq:full_pop_av_example_ME}
   \p(\yXf = \yRf \| \yHa)  = \yL\,
-\binom{N}{N \yRf}\exp\biggl[
-\yL_2 \yRf \,\frac{N \yRf-1}{N-1} + \yL_1\, \yRf\biggr]
+\binom{\yvN}{\yvN \yRf}\exp\biggl[
+\yL_2 \yRf \,\frac{\yvN \yRf-1}{\yvN-1} + \yL_1\, \yRf\biggr]
 \end{equation}
 with such parameters $\yL$, $\yL_1$, $\yL_2$ as to satisfy normalization
 and constraints. We call this state of knowledge $\yHa$. Marginalization by
@@ -2296,9 +2336,9 @@ and constraints. We call this state of knowledge $\yHa$. Marginalization by
 \begin{equation}
   \label{eq:full_pop_av_example_ME_marg}
   \p(\yxs = \yrs \| \yHa)  = \yL
-  \sum_{N\yRf=0}^N
-  \binom{n}{n\yrs} \binom{N-n}{N\yRf-n\yrs} \exp\biggl[
-\yL_2 \yRf \,\frac{N \yRf-1}{N-1} + \yL_1\, \yRf\biggr].
+  \sum_{\yvN\yRf=0}^\yvN
+  \binom{n}{n\yrs} \binom{\yvN-n}{\yvN\yRf-n\yrs} \exp\biggl[
+\yL_2 \yRf \,\frac{\yvN \yRf-1}{\yvN-1} + \yL_1\, \yRf\biggr].
 \end{equation}
 Applying \me\ to the distribution of the average of the sample, using the
 third term of \eqn~\eqref{eq:expe_products}, we find
@@ -2314,11 +2354,11 @@ We call this state of knowledge $\yHb$.
 
 The resulting distributions $\p(\yxs = \yrs \| \yHa)$,
 $\p(\yxs = \yrs \| \yHb)$ are different.
-Figure~\ref{fig:diff_maxent_pop_sample} shows one example, for $N=5000$,
+Figure~\ref{fig:diff_maxent_pop_sample} shows one example, for $\yvN=5000$,
 $n=100$, $c_1=0.45$, $c_2=0.35$. The two distributions have slightly
 different modes and the one obtained from \me\ at the population level is
 more peaked. Another example is shown in
-\fig~\ref{fig:diff_maxent_pop_sample_realdata}, for $N=5000$, $n=200$,
+\fig~\ref{fig:diff_maxent_pop_sample_realdata}, for $\yvN=5000$, $n=200$,
 and neurobiologically more realistic constraints $c_1=0.045$, $c_2=0.0025$
 \cite{rostamietal2016}. The discrepancy is maybe not as large as in the
 previous example, but the tails of the distributions are still very

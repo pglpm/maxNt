@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2018-05-15T11:12:59+0200
+%% Last-Updated: 2018-05-15T12:04:44+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -441,7 +441,7 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 %\newcommand*{\Cf}{{Cf.}}
 %\newcommand*{\vd}{{v.}}
 %\newcommand*{\Vd}{{V.}}
-%\newcommand*{\etal}{{et al.}}
+\newcommand*{\etal}{{et al.}}
 %\newcommand*{\etsim}{{et sim.}}
 %\newcommand*{\ibid}{{ibid.}}
 %\newcommand*{\sic}{{sic}}
@@ -637,7 +637,7 @@ in several ways. The simplest way proceeds along the following steps.
 Consider the recorded activity of a sample of $n$ neurons.
 \begin{enumerate}
 \item The activity of each neuron, ideally a continuous signal, is
-  transformed into into a sequence of \enquote{$0$}s (inactive) and
+  transformed into a sequence of \enquote{$0$}s (inactive) and
   \enquote{$1$}s (firing) by binning the time and binarizing the signal
   intensity \cite{caianiello1961,caianiello1986}.
 
@@ -667,10 +667,10 @@ Consider the recorded activity of a sample of $n$ neurons.
 The protocol above needs to be made precise by specifying various
 parameters, for example the width of the time bins.
 
-We hurry to say that the description just given is not \emph{the} way to
-quantify and characterize cooperativity and functional grouping, but just
-\emph{one} way. It can surely be criticized from many points of view. Yet,
-it is quantitative and more precise than an undefined notion of
+We hurry to say that the description just given is just \emph{one} way to
+quantify and characterize cooperativity and functional grouping, not
+\emph{the} only way. It can surely be criticized from many points of view.
+Yet, it is quantitative and more precise than an undefined notion of
 \enquote{cooperativity}. Two people who apply it to the same data will
 obtain the same numbers. Other protocols can be based on the \me\ method,
 for example protocols that take into account the activities or joint
@@ -713,7 +713,7 @@ of the larger population is unknown.
 
 To apply the \me\ method to the larger, unsampled population, it is
 necessary to use probability relations relevant to sampling
-\cites{ghoshetal1997}[parts~I,VI]{freedmanetal1978_r2007}[\chap~8]{gelmanetal1995_r2014}[\chap~3]{jaynes1994_r2003}.
+\cites{ghoshetal1997}[parts~I, VI]{freedmanetal1978_r2007}[\chap~8]{gelmanetal1995_r2014}[\chap~3]{jaynes1994_r2003}.
 The relations we present are well-known in survey sampling and in the
 pedagogic problem of drawing from an urn without replacement, yet they are
 somewhat hard to find explicitly written in the neuroscientific literature,
@@ -744,18 +744,20 @@ follows Jaynes \citep{jaynes1994_r2003}. By \enquote{probability} we mean a
 degree of belief which \enquote{would be agreed by all rational men if
   there were any rational men} \cite{good1966}.
 
-\section{Setup: population, sample, probabilities}
+\section{Notation: population, sample, probabilities}
 \label{sec:setup}
 
 We have a population of $N$ binary neurons. We assume that they can be
 distinguished, by their spike shapes for example; but other details, like
 their locations, are unknown. The neurons have a joint state
 $(X_1,\dotsc,X_N) \defs \yX$ having fixed but unknown binary values
-$(R_1,\dotsc,R_N)\defs \yR \in \set{0,1}^N$. A particular sample of $n$
-neurons from this population has joint state $(x_1, \dotsc, x_n) \defs \yx$
-having fixed binary values $(r_1, \dotsc, r_n)\defs\yr \in \set{0,1}^n$. We
-will consider various averages of the population and the sample. For this
-purpose we introduce a general averaging operator $\sav{\dotv}$ defined by
+$(R_1,\dotsc,R_N)\defs \yR \in \set{0,1}^N$; \enquote{$X$} denote the
+variable, and \enquote{$R$} its value. A particular sample of $n$ neurons
+from this population has joint state $(x_1, \dotsc, x_n) \defs \yx$ having
+fixed binary values $(r_1, \dotsc, r_n)\defs\yr \in \set{0,1}^n$. We will
+consider various averages of the population and the sample. For this
+purpose we introduce a population-averaging operator $\sav{\dotv}$ defined
+by
 \begin{equation}
   \begin{gathered}
     \av{\yX} \defd \tfrac{1}{N} (X_1 + X_2 + \dotsb + X_N),
@@ -818,36 +820,40 @@ about the state of the sample is likewise expressed by
 
 
 
-\section{Initial assumptions: the probability of representative samples}
+\section{Probability: relations between population and  sample}
 \label{sec:prob_samples}
 
-We need to make an initial probability assignment before any experimental
-observations are
+The theory of statistical sampling is covered in many excellent texts, for
+example Ghosh \amp\ Meeden \citey{ghoshetal1997} or Freedman, Pisani, \amp\
+Purves \citey[parts~I, VI]{freedmanetal1978_r2007}; summaries can be found
+in Gelman \etal\ \citey[\chap~8]{gelmanetal1995_r2014} and Jaynes
+\citey[\chap~3]{jaynes1994_r2003}.
+
+We need to make an initial probability assignment for the state of the
+population before any experimental observations are
 made. %, no matter what kinds of predictions we are interested in.
-This initial assignment will be modified by our experimental observations.
-Our probability assignment should reflect that the sample is somehow
-\enquote{representative} of the population. We consider here two states of
-knowledge that express this representativeness in different ways but lead
-to identical \emph{initial} probability assignments.
+This initial assignment will be modified by our experimental observations,
+which can involve only a sample of the population. Our initial probability
+assignment should reflect that samples are somehow representative of the
+whole population. We consider here a state of knowledge that express
+this representativeness.
 
-In the first state of knowledge, denoted $\yHp$, we know that the neurons
-in the population are biologically or functionally similar, for
-example in morphology and kind of input or output they receive or give.
-Knowledge of this similarity leads us to assign a probability distribution
-for the population state $\yX$ that is symmetric under permutations of
-neuron identities, or \emph{exchangeable} as it is usually called.
-
-In the second state of knowledge or ignorance, denoted $\yHi$, we are
+In this state of knowledge, denoted $\yH$, we know that the neurons in the
+population are biologically or functionally similar, for example in
+morphology or the kind of input or output they receive or give. But we are
 completely ignorant about the physical details of the individual neurons.
 Our ignorance is therefore symmetric under permutations of neuron
-identities. This also leads to an exchangeable probability distribution for
-$\yX$.
+identities. This ignorance leads us to assign a probability distribution
+for the population state $\yX$ that is symmetric under permutations of
+neuron identities; such a distribution is usually called \emph{finitely
+  exchangeable} \cites{ericson1969}[\chap~1]{ghoshetal1997}. We stress that
+this probability assignment is just an expression of the symmetry of our
+\emph{ignorance} about the state of the population, not an expression of
+some biologic or physical identity of the neurons.
 
-Let us use $\yH$ to denote either of these two states of knowledge, in those
-probabilities that are identical for $\yHp$ and $\yHi$.
 
 The \emph{representation theorem for finite exchangeability} states that
-the symmetric distribution of $\yH$ must obey
+the symmetric distribution in the state of knowledge $\yH$ must obey
 \begin{equation}
   \label{eq:joint_plaus_N_homog}
   \p(\yX = \yR \|  \yH) \equiv

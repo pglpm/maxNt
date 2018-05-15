@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2018-05-15T13:48:44+0200
+%% Last-Updated: 2018-05-15T13:51:45+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -913,17 +913,18 @@ population average $\yXf$
 %  f(\yrs)\ypp(\yrs\|\dotv),
 \end{equation}
 that has the same expectation as $f$:
-\begin{multline}
+\begin{equation}
   \expeb{f^*(\yXf)}
   \equiv
   \sum_{N\yRf=0}^N f^*(\yRf)\,\p(\yXf=\yRf \| \yH)
+%  =
+%  \sum_{N\yRf=0}^N \sum_{n\yrs=0}^n f(\yrs)\ypp(\yrs\|\yRf)\,\p(\yXf=\yRf \| \yH)
   =
-  \sum_{N\yRf=0}^N \sum_{n\yrs=0}^n f(\yrs)\ypp(\yrs\|\yRf)\,\p(\yXf=\yRf \| \yH)
-  ={}\\
   \sum_{n\yrs=0}^n f(\yrs)\,\p(\yxs=\yrs \| \yH)
-  \equiv  \expeb{f(\yxs)}
-\end{multline}
-
+  \equiv  \expeb{f(\yxs)}.
+\end{equation}
+The middle equality uses the combination of formulae~\eqref{eq:pullback_P}
+and~\eqref{eq:subpop_average}.
 
 \begin{figure}[!t]
 \centering

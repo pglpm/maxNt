@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2018-05-15T12:04:44+0200
+%% Last-Updated: 2018-05-15T13:47:43+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -67,7 +67,7 @@ nonatbib]{nips_2017}
 \newcommand*{\langnohyph}{\foreignlanguage{nohyphenation}}
 
 \usepackage[autostyle=false,autopunct=false,english=british]{csquotes}
-\setquotestyle{american}
+\setquotestyle{british}
 
 \let\openbox\relax
 \usepackage{amsthm}
@@ -751,8 +751,8 @@ We have a population of $N$ binary neurons. We assume that they can be
 distinguished, by their spike shapes for example; but other details, like
 their locations, are unknown. The neurons have a joint state
 $(X_1,\dotsc,X_N) \defs \yX$ having fixed but unknown binary values
-$(R_1,\dotsc,R_N)\defs \yR \in \set{0,1}^N$; \enquote{$X$} denote the
-variable, and \enquote{$R$} its value. A particular sample of $n$ neurons
+$(R_1,\dotsc,R_N)\defs \yR \in \set{0,1}^N$; the \enquote{$X$} denote the
+variables, and \enquote{$R$} their values. A particular sample of $n$ neurons
 from this population has joint state $(x_1, \dotsc, x_n) \defs \yx$ having
 fixed binary values $(r_1, \dotsc, r_n)\defs\yr \in \set{0,1}^n$. We will
 consider various averages of the population and the sample. For this
@@ -770,12 +770,12 @@ by
     \\[2\jot]
     \av{\yX\yX\yX} \defd \tbinom{N}{3}^{-1} (X_1 X_2 X_3 +% X_1 X_2 X_4
     \dotsb + X_{N-2} X_{N-1}X_N),
+    \qquad\text{and so on.}
     % & \sav{\yx\yx\yx} &\defd \tbinom{n}{3}^{-1} (x_1 x_2 x_3
     % + %x_1 x_2 x_4
     % \dotsb + x_{n-2} x_{n-1} x_n),
   \end{gathered}
 \end{equation}
-and so on.
 These formulae say that $\yXf$ is the fraction of active neurons, $\yXXf$
 the fraction of simultaneously active pairs out of all $\binom{N}{2}$
 pairs, $\av{\yX\yX\yX}$ the fraction of simultaneously active triplets, and
@@ -843,11 +843,11 @@ population are biologically or functionally similar, for example in
 morphology or the kind of input or output they receive or give. But we are
 completely ignorant about the physical details of the individual neurons.
 Our ignorance is therefore symmetric under permutations of neuron
-identities. This ignorance leads us to assign a probability distribution
-for the population state $\yX$ that is symmetric under permutations of
-neuron identities; such a distribution is usually called \emph{finitely
-  exchangeable} \cites{ericson1969}[\chap~1]{ghoshetal1997}. We stress that
-this probability assignment is just an expression of the symmetry of our
+identities. This ignorance is represented by a probability distribution
+that is symmetric under permutations of neuron identities; such a
+distribution is usually called \emph{finitely exchangeable}
+\cites{ericson1969}[\chap~1]{ghoshetal1997}. We stress that this
+probability assignment is just an expression of the symmetry of our
 \emph{ignorance} about the state of the population, not an expression of
 some biologic or physical identity of the neurons.
 
@@ -892,55 +892,37 @@ distribution $\ypp(\yrs\|\yRf)$, typical of \enquote{drawing without
   replacement} problems. The combinatorial proof of the formulae above is
 in fact the same as for this class of problems
 \cites[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}.
-Our initial symmetric knowledge should intuitively also apply to the
-sample; indeed, the probability for the state of the
-sample~\eqref{eq:subpop_average} automatically satisfies the representation
+Our initial symmetric ignorance should intuitively also apply to the
+sample; the probability for the state of the
+sample~\eqref{eq:subpop_average} indeed satisfies the representation
 theorem~\eqref{eq:joint_plaus_N_homog} as well.
 
-How is it possible that the very different states of knowledge $\yHp$ and
-$\yHi$ lead to the same formulae above? Their difference appears as soon as
-we make an experimental observation, say $X_2 = R_2\in\set{0,1}$ and update our
-initial probabilities \eqref{eq:joint_plaus_N_homog}:
-\begin{equation}
-  \label{eq:updated_joint}
-    \p(\yX = \yR \| X_2 = R_2, \yH) \equiv
-  \p(\yX = \yR \| \yXf = \yRf, X_2 = R_2, \yH)\,
-  \p(\yXf=\yRf \| X_2 = R_2,\yH).
-\end{equation}
-The conditional probability and the probability for the average on the
-right side will update in very different ways for $\yHp$ and $\yHi$. The
-discussion of this update process in the two cases is unnecessary for the
-purposes of this note and outside their scope; we hope to address it in
-full in a future work.
-
-The conditional probability $\ypp(\yrs,\yRf)$ relates the spaces of the
-sample average $\yXf\in\set{0,\dotsc,N}$ and of the population average
-$\yxs\in\set{0,\dotsc,n}$ in a special way. It is a coarsening projector of
-any probability $p$ for $\yXf$ onto a marginal probability $p_*$ for
-$\yxs$:
-\begin{equation}
-  \label{eq:projection_P}
-  % \ypp\colon p(\yXf=\dotv) \to
-  p_*(\yxs=\yrs)
-  = \sum_{N\yRf=0}^N \ypp(\yrs\|\yRf) p(\yXf=\yRf).
-\end{equation}
-Conversely it also a pulls back expectations of functions $f$ of the sample
-average $\yxs$ to expectations of functions $f^*$ of the population average
-$\yXf$:
+The conditional probability
+$\p(\yxs = \yrs \|\yXf=\yRf, \yH) \equiv \ypp(\yrs,\yRf)$ relates the
+spaces of the sample average $\yXf\in\set{0,\dotsc,N}$ and of the
+population average $\yxs\in\set{0,\dotsc,n}$. It is a coarsening projector
+of any probability for $\yXf$ onto a marginal probability for $\yxs$, as
+\eqn~\eqref{eq:subpop_average} shows. For each function $f$ of the sample
+average $\yxs$, the  hypergeometric distribution 
+$\ypp(\yrs,\yRf)$ also allows us to construct a function $f^*$ of the
+population average $\yXf$
 \begin{equation}
   \label{eq:pullback_P}
+    f^*(\yXf) \defd \sum_{n\yrs=0}^n f(\yrs)\ypp(\yrs\|\yXf),
 %  \ypp^*\colon f(\yxs=\dotv) \to f^*(\yXf=\dotv) \defd \sum_{N\yrs=0}^n
 %  f(\yrs)\ypp(\yrs\|\dotv),
-  \begin{gathered}
-    f^*(\yXf) \defd \sum_{n\yrs=0}^n f(\yrs)\ypp(\yrs\|\yXf),
-    \\
-   \expeb{f(\yxs)}= \expeb{f^*(\yXf)}
-    =
-    \sum_{n\yrs=0}^n f(\yrs)\,\p(\yxs=\yrs \| \yH)
-    =
-    \sum_{N\yRf=0}^N f^*(\yRf)\,\p(\yXf=\yRf \| \yH).
-  \end{gathered}
 \end{equation}
+that has the same expectation as $f$:
+\begin{multline}
+  \expeb{f^*(\yXf)}
+  \equiv
+  \sum_{N\yRf=0}^N f^*(\yRf)\,\p(\yXf=\yRf \| \yH)
+  =
+  \sum_{N\yRf=0}^N \sum_{n\yrs=0}^n f(\yrs)\ypp(\yrs\|\yRf)\,\p(\yXf=\yRf \| \yH)
+  ={}\\
+  \sum_{n\yrs=0}^n f(\yrs)\,\p(\yxs=\yrs \| \yH)
+  \equiv  \expeb{f(\yxs)}
+\end{multline}
 
 
 \begin{figure}[!t]
@@ -969,25 +951,18 @@ average $\yXf$ is bimodal, for example, the bimodality can be lost in the
 distribution for the sample average $\yxs$, owing to the coarsening effect
 of $\ypp(\yrs\|\yRf)$.
 
-Yet, the approximate equalities above express the fact that \emph{our
-  uncertainty about the sample is representative of our uncertainty about
-  the population and about other samples}, and vice versa. This fact comes
-about for very different reasons in the states of knowledge $\yHp$ and
-$\yHi$. In $\yHp$, because our sample is \emph{physically} representative
-of the population and of other samples; we could write this as
-$\yxs\approx\yXf$. In $\yHi$, because we are ignorant about sample and
-population in similar symmetric ways; but this does \emph{not} imply that
-$\yxs\approx\yXf$. New observations may in fact break this symmetry via
-\eqn~\eqref{eq:updated_joint}.
-
-
-Note that formulae~\eqref{eq:roughly_equal_nN} say more than the limits
+The approximate equalities above, on the other hand, express the fact that
+\emph{our uncertainty about the sample is representative of our uncertainty
+  about the population and about other samples}, and vice versa. These
+approximate equalities are not generally valid for other probability
+distributions for the population. They should be contrasted with the limits
 $\p(\yxs=a) \to \p(\yXf=a)$ and $\expeb{f(\yxs)} \to \expeb{f(\yXf)}$, as
-$n\to N$, do. These limits are trivially valid because the sample becomes
-the full population as $n\to N$. In particular, these limits hold even in
-cases where the conditional probability $\p(\yxs = \yrs \|\yXf=\yRf)$ is
-not a fuzzy identity and our uncertainties about sample and about
-population can differ wildly.
+$n\to N$, do: these limits are trivially, universally valid because the
+sample becomes the full population as $n\to N$. In particular, these limits
+hold even in cases where the conditional probability
+$\p(\yxs = \yrs \|\yXf=\yRf)$ is not a fuzzy identity, our uncertainties
+about sample and about population can differ wildly, and the approximate
+equalities~\eqref{eq:roughly_equal_nN} do not hold.
 
 
 \bigskip
@@ -1000,25 +975,24 @@ population can differ wildly.
 %   \qquad\text{or}\qquad
 %   \sum_{n\yrs=0}^n f(\yrs)\,p_*(\yxs=\yrs) = \sum_{N\yRf=0}^N f^*(\yRf)\,p(\yXf=\yRf).
 % \end{equation}
-For functions representing averaged products,
-$f(\yxs) = \sav{\yx\dots\yx}\equiv\binom{n\yxs}{m}/\binom{n}{m}$,
-formulae~\eqref{eq:pullback_P} have the useful form
+For averaged products, $\sav{\underbrace{\yx\dots\yx}_{\text{$m$
+      factors}}}\equiv\binom{n\yxs}{m}/\binom{n}{m}$,
+formulae~\eqref{eq:pullback_P} yield the useful equality
 \begin{equation}
   \label{eq:expe_products}
 %  \label{eq:pullback_m_expectations}
 %  \ypp^*\colon \sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}}
 %  \mapsto
-  \begin{gathered}
-    \bigl( \sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}}\bigr)^* =
-    \av{\underbrace{\yX \dotsm \yX}_{\text{$m$ factors}}},
-    \\[2\jot]
+    % \bigl( \sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}}\bigr)^* =
+    % \av{\underbrace{\yX \dotsm \yX}_{\text{$m$ factors}}},
+    % \\[2\jot]
     % \expe{\sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}} \| \yH} =
     % \expe{\av{\underbrace{\yX \dotsm \yX}_{\text{$m$ factors}}} \| \yH}
-    \expe{\sav{\yx \dotsm \yx} \| \yH} =
-    \expe{\av{\yX \dotsm \yX} \| \yH}
+  \expe{\sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}} \| \yH}
+\equiv
     % \\[2\jot]
     % {}
-    = \binom{n}{m}^{-1}
+    \binom{n}{m}^{-1}
     % \frac{(n-m)!}{n!}
     \sum_{\mathclap{n \yrs=0}}^n %m!\,
     \binom{n \yrs}{m}\, \p(\yxs=\yrs \| \yH)
@@ -1027,16 +1001,16 @@ formulae~\eqref{eq:pullback_P} have the useful form
     = \binom{N}{m}^{-1}
     % \frac{(N-m)!}{N!}
     \sum_{\mathclap{N \yRf=0}}^N %m!\,
-    \binom{N \yRf}{m}\, \p(\yXf=\yRf \| \yH).
-  \end{gathered}
+    \binom{N \yRf}{m}\, \p(\yXf=\yRf \| \yH)
+\equiv    \expe{\av{\underbrace{\yX \dotsm \yX}_{\text{$m$ factors}}} \| \yH}.
 \end{equation}
-The proof uses the expression for the $m$th factorial moment of the
-hypergeometric distribution \cite{potts1953}. Thus, in the states of
-knowledge $\yHp$ and $\yHi$ the averages of activity products \emph{are
-  initially the same for the sample and for the full population}. Similar
-relations can be found for the raw moments $\expe{\yxs^m}$ and
-$\expe{\yXf^m}$, which can be written in terms of the product expectations
-via \eqn~\eqref{eq:products_intermsof_average}.
+The proof of the middle equality uses the expression for the $m$th
+factorial moment of the hypergeometric distribution \cite{potts1953}. Thus,
+in the state of knowledge $\yH$ the expectations of the averages of
+activity products \emph{are initially the same for the sample and for the
+  full population}. Similar relations can be found for the raw moments
+$\expe{\yxs^m}$ and $\expe{\yXf^m}$, which can be written in terms of the
+product expectations via \eqn~\eqref{eq:products_intermsof_average}.
 
 
 

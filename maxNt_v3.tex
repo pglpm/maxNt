@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2018-05-15T02:15:52+0200
+%% Last-Updated: 2018-05-15T11:12:59+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -624,9 +624,10 @@ definitions of \enquote{cooperativity} or \enquote{functional grouping} and
 criteria to quantify it.
 
 One such quantitative criterion relies on the \me\ method
-\cite{jaynes1957,jaynes1963,sivia1996_r2006,meadetal1984}. This criterion
-has been used in neuroscience at least since the 1990s, applied to data
-recorded from brain areas as diverse as retina and motor cortex
+\cite{jaynes1957,jaynes1963,hobsonetal1973,sivia1996_r2006,meadetal1984}.
+This criterion has been used in neuroscience at least since the 1990s,
+applied to data recorded from brain areas as diverse as retina and motor
+cortex
 \cite{mackay1991,martignonetal1995,bohteetal2000,amarietal2003,schneidmanetal2006,shlensetal2006,mackeetal2009b,roudietal2009c,tkaciketal2009,gerwinnetal2009,mackeetal2011,mackeetal2011b,ganmoretal2011,granotatedgietal2013,tkaciketal2014b,moraetal2015,shimazakietal2015},
 and it has been subjected to mathematical and conceptual scrutiny
 \cite{tkaciketal2006,roudietal2009,roudietal2009b,barreiroetal2010b,mackeetal2013,rostamietal2016_r2017}.
@@ -673,29 +674,29 @@ it is quantitative and more precise than an undefined notion of
 \enquote{cooperativity}. Two people who apply it to the same data will
 obtain the same numbers. Other protocols can be based on the \me\ method,
 for example protocols that take into account the activities or joint
-activities of individual neurons.
+activities of individual neurons, or even protocols that take into account
+time dependence.
 
-The purpose of the present work is to show that there is a problem in this
-general way of applying the \me\ method to the data recorded from our
-sampled neurons.
+The purpose of the present work is to show that there is a problem in the
+way the \me\ method as sketched above, or more complex variations of it, is
+applied to the activity of the recorded neurons. The problem stems from the
+fact that the recorded neurons are a sample from a larger population.
 
 Suppose that the neurons were recorded with electrodes covering an area of
-some square millimetres. This recording is a \emph{sample} of the activity
-of the population covered by the electrode; or we can consider it as a
-sample of an even more extended brain area.
+some square millimetres. This recording is a sample of the activity of the
+population covered by the electrode; we can consider it as a sample of an
+even more extended brain area. The characterization of the cooperativity of
+the recorded sample would have little meaning if we did not expect its
+results to generalize to a larger area, at least that covered by the
+electrodes. In other words, we expect that the conclusions drawn with the
+\me\ methods about the sampled neurons should somehow generalize or
+extrapolate at least to larger areas from which those neurons were sampled.
+We are thus assuming that the recorded sample is a \emph{representative
+  sample} of some larger area. Probability theory tells us how to make
+inferences from a sample to the larger population from which it is sampled
+\parentext{see references below}.
 
-The characterization of the cooperativity of the recorded sample would have
-little meaning if we did not expect its results to generalize to a larger
-area, at least that covered by the electrodes. In other words, we expect
-that the conclusions drawn with \me\ methods about the sampled neurons
-should somehow generalize or extrapolate at least to larger areas from
-which those neurons were sampled. We are thus assuming that the recorded
-sample is a \emph{representative sample} of some larger area. Probability
-theory tells us how to make inferences from a sample to the larger
-population from which it is sampled
-\cites{ghoshetal1997}[parts~I,VI]{freedmanetal1978_r2007}[\chap~8]{gelmanetal1995_r2014}[\chap~3]{jaynes1994_r2003}.
-
-The problem is this. We can apply the \me\ method to the sample, as
+Here is the problem. We can apply the \me\ method to the sample, as
 described in the above protocol, to generate probability distributions for
 the state of the sample. But, if our sample is representative of a larger
 population, we can apply the \me\ method to the larger population, using
@@ -705,80 +706,25 @@ then obtained by marginalization. Either application seems to have some
 commendable features. However, \emph{the distributions obtained from these
   two applications differ}. Which choice is most meaningful?
 
-***
+In this paper we develop the second way of applying the \me, at the level
+of the larger population, and show that its results differ from the
+application at the sample level. We also consider the case where the size
+of the larger population is unknown.
 
-% LM: I'd like to avoid common beginnings like "Today blah blah is
-% important" or "Blah blah is interesting/fundamental". They feel more like
-% a mechanical ritual than a real tentative of connecting with the reader.
-This note is mainly addressed to neuroscientists interested in \me\
-methods, but we would be pleased if its discussion of the probability of
-\enquote{sampling} were useful to neuroscientists that use other
-statistical methods to study the physical and dynamical characteristics of
-brain areas via neuronal recordings.
-
-Recent electrophysiological techniques \cite{berenyietal2014} in fact allow
-experimenters to record samples comprising even a couple hundreds neurons
-from specific brain areas. From the observation of these samples we expect
-to learn something about all other neurons in the same brain area. That is,
-we assume that they are a \enquote{representative sample}. We do not
-elaborate on the various important purposes of such recordings here, but
-stress that these sample sizes can be considered \enquote{large} because
-their statistical analysis requires considerable computational power.
-
-These computational costs are one, probably not the earliest, of the many
-reasons why \me\ methods have been introduced in neuroscience. It would be
-useful to somehow compress the statistical wealth of large neuronal
-recordings into few quantities, like sample moments for example. This
-compression might also entail interesting biological or functional
-properties of neuronal activity. The standard \me\ method
-\cite{jaynes1957,sivia1996_r2006,meadetal1984} accomplishes this kind of
-compression: it associates a unique probability distribution with few
-experimental quantities. But this is only one of its uses. It is also used
-for various information-theoretic purposes or to generate reference
-probability distributions
-\cite{bohteetal2000,schneidmanetal2006,shlensetal2006,roudietal2009b,mackeetal2011,tkaciketal2014b,shimazakietal2015}.
-In all these uses the \me\ distribution is chosen as the \enquote{maximally
-  noncommittal} one \cite{jaynes1963}. This adjective means little without
-further technical characterizations. Different works give different
-characterizations, but in this paper we will use the quoted expression as
-an umbrella term for all of them. Our results will not depend on the
-specific characterization of \enquote{noncommittal}.
-
-\bigskip
-
-In this note we show that we must face a dilemma if we want to apply the
-\me\ method to a representative sample to find a maximally noncommittal
-distribution.
-
-The dilemma is this. We can apply the \me\ method to the sample, using a
-specified set of experimental constraints, and generate a probability
-distribution for the state of the sample. But our sample is representative
-of a larger population, in which it is biologically and functionally
-embedded. We can apply the \me\ method to the larger population, using the
-same constraints, and generate a probability distribution for its larger
-state, and then find the distribution for the sample by marginalization.
-Either application seems to have some commendable features. However,
-\emph{the distributions obtained from these two applications differ}. It
-goes without saying that if one is \enquote{noncommittal}, the other must
-be \enquote{committal}. Which choice is most meaningful?
-
-In the final discussion we present some arguments in favour of one choice.
-
-In the rest of the paper we mathematically formulate this dilemma. To this
-purpose we also present some probability relations relevant to sampling.
+To apply the \me\ method to the larger, unsampled population, it is
+necessary to use probability relations relevant to sampling
+\cites{ghoshetal1997}[parts~I,VI]{freedmanetal1978_r2007}[\chap~8]{gelmanetal1995_r2014}[\chap~3]{jaynes1994_r2003}.
 The relations we present are well-known in survey sampling and in the
 pedagogic problem of drawing from an urn without replacement, yet they are
 somewhat hard to find explicitly written in the neuroscientific literature,
-so they may be of interest on their own. We briefly discuss also two very
-different meaning of \enquote{representative} that lead to similar initial
-probability assignments for sampling.
+so they may be of interest on their own.
 
 \iffalse In the final discussion we present some arguments in favour of one choice
 in our dilemma, but we do not mean that to be our final answer. This note,
 and its dilemma,  also have the more general purpose of reminding our
 readers the importance of asking \emph{what is the question we're trying to
   answer with probability theory?} and \emph{which assumptions do we want
-  or need to make?} \fi
+  or need to make?} 
 
 Our mathematical analysis pertains to neurons modelled as binary units at
 one specific instant or short window in time. It is possible to similarly
@@ -789,14 +735,14 @@ and similar concepts do not concern us. We consider \me\ models that
 constrain various kinds of sample or population averages; these models are
 often called \enquote{homogeneous}. The final discussion touches upon
 \enquote{inhomogeneous} models as well.
+\fi
 
-
-The notation in this note follows ISO and ANSI standards
-\citep{iso1993,ieee1993,nist1995} but for the use of the comma \enquote{,}
-to denote logical conjunction. Probability notation follows Jaynes
-\citep{jaynes1994_r2003}. By \enquote{probability} we mean a degree of
-belief which \enquote{would be agreed by all rational men if there were any
-  rational men} \cite{good1966}.
+The notation and terminology in this note follows ISO and ANSI standards
+\citep{iso1993,ieee1993,nist1995,iso2006,iso2006b} but for the use of the
+comma \enquote{,} to denote logical conjunction. Probability notation
+follows Jaynes \citep{jaynes1994_r2003}. By \enquote{probability} we mean a
+degree of belief which \enquote{would be agreed by all rational men if
+  there were any rational men} \cite{good1966}.
 
 \section{Setup: population, sample, probabilities}
 \label{sec:setup}

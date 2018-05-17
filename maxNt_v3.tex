@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2018-05-16T11:37:42+0200
+%% Last-Updated: 2018-05-17T18:47:41+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -167,7 +167,7 @@ nonatbib]{nips_2017}
  \DeclareMathSymbol{\varKappa}{\mathalpha}{egreeki}{"4B}
  \DeclareMathSymbol{\varLambda}{\mathalpha}{egreeki}{"03}
 % \DeclareMathSymbol{\varMu}{\mathalpha}{egreeki}{"4D}
-% \DeclareMathSymbol{\varNu}{\mathalpha}{egreeki}{"4E}
+ \DeclareMathSymbol{\varNu}{\mathalpha}{egreeki}{"4E}
  \DeclareMathSymbol{\varXi}{\mathalpha}{egreeki}{"04}
 % \DeclareMathSymbol{\varOmicron}{\mathalpha}{egreeki}{"4F}
 % \DeclareMathSymbol{\varPi}{\mathalpha}{egreeki}{"05}
@@ -272,33 +272,28 @@ nonatbib]{nips_2017}
 \providecommand{\eprint}[2]{\texttt{\href{#1}{#2}}}
 \newcommand*{\amp}{\&}
 
-\def\arxivp{}
-\def\mparcp{}
-\def\philscip{}
-\def\biorxivp{}
-\newcommand*{\arxivsi}{\texttt{arXiv} eprints available at \url{http://arxiv.org/}.\\}
-\newcommand*{\mparcsi}{\texttt{mp\_arc} eprints available at \url{http://www.ma.utexas.edu/mp_arc/}.\\}
-\newcommand*{\philscisi}{\texttt{philsci} eprints available at \url{http://philsci-archive.pitt.edu/}.\\}
-\newcommand*{\biorxivsi}{\texttt{bioRxiv} eprints available at \url{http://biorxiv.org/}.\\}
-\newcommand*{\arxiveprint}[1]{\global\def\arxivp{\arxivsi}%\citeauthor{0arxivcite}\addtocategory{ifarchcit}{0arxivcite}%eprint
-\texttt{\urlalt{http://arxiv.org/abs/#1}{arXiv:\hspace{0pt}#1}}%
+\newcommand*{\arxiveprint}[1]{%\global\def\arxivp{\arxivsi}%\citeauthor{0arxivcite}\addtocategory{ifarchcit}{0arxivcite}%eprint
+\texttt{\urlalt{https://arxiv.org/abs/#1}{arXiv:\hspace{0pt}#1}}%
 %\texttt{\href{http://arxiv.org/abs/#1}{\protect\url{arXiv:#1}}}%
 %\renewcommand{\arxivnote}{\texttt{arXiv} eprints available at \url{http://arxiv.org/}.}
 }
-\newcommand*{\mparceprint}[1]{\global\def\mparcp{\mparcsi}%\citeauthor{0mparccite}\addtocategory{ifarchcit}{0mparccite}%eprint
+\newcommand*{\mparceprint}[1]{%\global\def\mparcp{\mparcsi}%\citeauthor{0mparccite}\addtocategory{ifarchcit}{0mparccite}%eprint
 \texttt{\urlalt{http://www.ma.utexas.edu/mp_arc-bin/mpa?yn=#1}{mp\_arc:\hspace{0pt}#1}}%
 %\texttt{\href{http://www.ma.utexas.edu/mp_arc-bin/mpa?yn=#1}{\protect\url{mp_arc:#1}}}%
 %\providecommand{\mparcnote}{\texttt{mp_arc} eprints available at \url{http://www.ma.utexas.edu/mp_arc/}.}
 }
-\newcommand*{\philscieprint}[1]{\global\def\philscip{\philscisi}%\citeauthor{0philscicite}\addtocategory{ifarchcit}{0philscicite}%eprint
+\newcommand*{\philscieprint}[1]{%\global\def\philscip{\philscisi}%\citeauthor{0philscicite}\addtocategory{ifarchcit}{0philscicite}%eprint
 \texttt{\urlalt{http://philsci-archive.pitt.edu/archive/#1}{PhilSci:\hspace{0pt}#1}}%
 %\texttt{\href{http://philsci-archive.pitt.edu/archive/#1}{\protect\url{PhilSci:#1}}}%
 %\providecommand{\mparcnote}{\texttt{philsci} eprints available at \url{http://philsci-archive.pitt.edu/}.}
 }
-\newcommand*{\biorxiveprint}[1]{\global\def\biorxivp{\biorxivsi}%\citeauthor{0arxivcite}\addtocategory{ifarchcit}{0arxivcite}%eprint
+\newcommand*{\biorxiveprint}[1]{%\global\def\biorxivp{\biorxivsi}%\citeauthor{0arxivcite}\addtocategory{ifarchcit}{0arxivcite}%eprint
 \texttt{\urlalt{http://biorxiv.org/content/early/#1}{bioRxiv:\hspace{0pt}#1}}%
 %\texttt{\href{http://arxiv.org/abs/#1}{\protect\url{arXiv:#1}}}%
 %\renewcommand{\arxivnote}{\texttt{arXiv} eprints available at \url{http://arxiv.org/}.}
+}
+\newcommand*{\osfeprint}[1]{%
+\texttt{\urlalt{https://doi.org/10.17605/osf.io/#1}{doi:10.17605/osf.io/#1}}%
 }
 
 \usepackage{graphicx}
@@ -432,7 +427,7 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 %\newcommand*{\vs}{{vs.}}
 \newcommand*{\etc}{{etc.}}
 \newcommand*{\ie}{{i.e.}}
-%\newcommand*{\ca}{{c.}}
+\newcommand*{\ca}{{c.}}
 %\newcommand*{\Ie}{{I.e.}}
 %\newcommand*{\Eg}{{E.g.}}
 \newcommand*{\eg}{{e.g.}}
@@ -499,13 +494,14 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 \newcommand*{\yxv}{S}
 \newcommand*{\yrv}{s}
 \newcommand*{\yNv}{\nu}
+\newcommand*{\yNN}{\varNu}
 
 \newcommand*{\yx}{\bm{\yxv}}%subpop state
 \newcommand*{\yxs}{\sav{\yx}}%subpop av state
 \newcommand*{\yX}{\bm{\yXv}}%pop state
 \newcommand*{\yXf}{\av{\yX}}%pop av state
-\newcommand*{\yxxs}{\sav{\yx\yx}}%subpop av state
-\newcommand*{\yXXf}{\av{\yX\yX}}%subpop av state
+\newcommand*{\yxxs}{\sav{\yr\yr}}%subpop av state
+\newcommand*{\yXXf}{\av{\yR\yR}}%subpop av state
 \newcommand*{\yr}{\bm{\yrv}}%subpop value
 \newcommand*{\yrs}{\sav{\yr}}%subpop av value
 \newcommand*{\yR}{\bm{\yRv}}%pop value
@@ -516,16 +512,16 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 \newcommand*{\yHa}{\varIota_\textrm{p}}
 \newcommand*{\yHb}{\varIota_\textrm{s}}
 \newcommand*{\yHc}{\varKappa}
-\newcommand*{\yHd}{\varUpsilon}
+\newcommand*{\yHd}{\varIota_\textrm{u}}
 \newcommand*{\yHp}{\varIota'}
 \newcommand*{\yHi}{\varIota''}
 %Lagr multipliers
-\newcommand*{\yf}{\bm{f}}
+\newcommand*{\yf}{\bm{g}}
 \newcommand*{\yc}{\bm{c}}
-\newcommand*{\yL}{\bm{\varLambda}}
-\newcommand*{\yl}{\bm{\lambda}}
-\newcommand*{\yk}{\zeta}
-\newcommand*{\yK}{\varZeta}
+\newcommand*{\yL}{\bm{\lambda}}
+\newcommand*{\yl}{\bm{l}}
+\newcommand*{\yk}{z}
+\newcommand*{\yK}{\zeta}
 %entropies
 \newcommand*{\ysh}{H}
 \newcommand*{\ybu}{H_{\text{B}}}
@@ -609,6 +605,7 @@ Y. Roudi\\\texttt{yasser.roudi@ntnu.no}
 
 %\section{Implicit assumptions in the maximum-entropy method}
 \section{Introduction: \me\ and sampling in neuroscience}
+\label{sec:intro}
 
 Suppose that we have recorded the firing activity of a hundred neurons,
 sampled from a particular brain area. What are we to do with such data?
@@ -818,15 +815,17 @@ the standard notation:
 \begin{equation}
   \label{eq:notation_statements}
   \begin{aligned}
+    &\text{\enquote{$\yXv_{\iota} = \yRv_{\iota}$} 
+      stands for \enquote{the activity of the $\iota$th neuron is $\yRv_{\iota}$}},
+    \\
+    &\text{\enquote{$\yXf = \yRf$} 
+      stands for \enquote{the (population-averaged) activity of the neurons is $\yRf$}},
+    \\
     &\text{\enquote{$\yxv_i = \yrv_i$} 
       stands for \enquote{the activity of the $i$th sample neuron is $\yrv_i$}},
-    \\
-    &\text{\enquote{$\yxs = \yrs$} 
-      stands for \enquote{the (population-averaged) activity of the sample neurons is $\yrv_i$}},
   \end{aligned}
 \end{equation}
-and similarly for other quantities and for the activities of the neurons of
-the larger population.
+and similarly for other quantities.
 
 \iffalse We have a population of $\yNv$ binary neurons. We assume that they can be
 distinguished, by their spike shapes for example; but other details, like
@@ -900,6 +899,7 @@ Our uncertainty about the state of the sample is likewise expressed by
 \p(\yx =\yr \| \yHc), \quad \yr \in \set{0,1}^n.
 \end{equation}
 
+\bigskip
 
 The theory of statistical sampling is covered in many excellent texts, for
 example Ghosh \amp\ Meeden \citey{ghoshetal1997} or Freedman, Pisani, \amp\
@@ -907,14 +907,12 @@ Purves \citey[parts~I, VI]{freedmanetal1978_r2007}; summaries can be found
 in Gelman \etal\ \citey[\chap~8]{gelmanetal1995_r2014} and Jaynes
 \citey[\chap~3]{jaynes1994_r2003}.
 
-We need to make an initial probability assignment for the state of the
-population before any experimental observations are
-made. %, no matter what kinds of predictions we are interested in.
-This initial assignment will be modified by our experimental observations,
-which can involve only a sample of the population. Our initial probability
-assignment should reflect that samples are somehow representative of the
-whole population. We consider here a state of knowledge that express
-this representativeness.
+We need to make an initial probability assignment for the state of the full
+population before any experimental observations are made. This initial
+assignment will be modified by our experimental observations, and these can
+involve just a sample of the population. Our state of knowledge and initial
+probability assignment should reflect that samples are somehow
+representative of the whole population.
 
 In this state of knowledge, denoted $\yH$, we know that the neurons in the
 population are biologically or functionally similar, for example in
@@ -927,136 +925,112 @@ distribution is usually called \emph{finitely exchangeable}
 \cites{ericson1969}[\chap~1]{ghoshetal1997}. We stress that this
 probability assignment is just an expression of the symmetry of our
 \emph{ignorance} about the state of the population, not an expression of
-some biologic or physical identity of the neurons.
+some biologic or physical symmetry or identity of the neurons.
 
-
-The \emph{representation theorem for finite exchangeability} states that
-the symmetric distribution in the state of knowledge $\yH$ must obey
+The \emph{representation theorem for finite exchangeability} states that,
+in the state of knowledge $\yH$, the symmetric distribution for the full
+activity is completely determined by the distribution for its
+population-average:
 \begin{equation}
   \label{eq:joint_plaus_N_homog}
   \p(\yX = \yR \|  \yH) \equiv
-  \p(\yX = \yR \| \yXf = \yRf, \yH)\,
+  \sum_{\yRf}\p(\yX = \yR \| \yXf = \yRf, \yH)\,
   \p(\yXf=\yRf \| \yH) =
-  \binom{\yNv}{\yNv\yRf}^{-1} \p(\yXf=\yRf \| \yH),
+  \binom{\yNv}{\yNv\yRf}^{-1} \p(\yXf=\yRf \| \yH).
 \end{equation}
-the latter being the probability for the population average $\yX$. A sum is
-only apparently missing in the central term: its summands $\yXf=A$ are all
-zero except for $A=\yRf$. Proof of this theorem and generalizations to
+The equivalence on the left is just an application of the law of total
+probability; the equality on the right is the statement of the theorem.
+This result is intuitive: owing to symmetry, we must assign equal
+probabilities to all $\tbinom{\yNv}{\yNv\yRf}$ activity vectors with
+$\yNv\yRf$ active neurons; the probability of each activity vector is
+therefore given by that of the average activity divided by the number of
+possible vector values. Proof of this theorem and generalizations to
 non-binary and continuum cases are given by de~Finetti
 \cite{definetti1959b}, Kendall \cite{kendall1967}, Ericson
 \cite{ericson1976}, Diaconis \amp\ Freedman
 \cite{diaconis1977,diaconisetal1980}, Heath \amp\ Sudderth
-\cite{heathetal1976}. This theorem is intuitive: owing to symmetry, we must
-assign equal probabilities to all states with $\yNv\yRf$ active neurons.
+\cite{heathetal1976}.
 
-By marginalization we obtain the probability for the state of the sample:
-\begin{gather}
-  \label{eq:marginal}
-  \p(\yx = \yr \| \yH) = \binom{n}{n\yrs}^{-1} \p(\yxs=\yrs \| \yH),
-  \\
-  \shortintertext{with}
-  \label{eq:subpop_average}
-  \p(\yxs=\yrs \| \yH) = \sum_{\yNv \yRf =0}^{\yNv}
-    \p(\yxs = \yrs \|\yXf=\yRf, \yH)\,
-  \p(\yXf=\yRf \| \yH),
-  \\[2\jot]
+Our uncertainties about the full population and the sample are connected
+via the conditional probability
+\begin{equation}
   \label{eq:conditional_hypergeometric}
   \p(\yxs = \yrs \|\yXf=\yRf, \yH)=
   \binom{n}{n\yrs}\binom{\yNv-n}{\yNv \yRf-n\yrs}\binom{\yNv}{\yNv \yRf}^{-1}
-  \defs \ypp(\yrs\|\yRf).
-\end{gather}
-The conditional probability in the last formula is a hypergeometric
-distribution $\ypp(\yrs\|\yRf)$, typical of \enquote{drawing without
-  replacement} problems. The combinatorial proof of the formulae above is
-in fact the same as for this class of problems
+  \defs \ypp(\yrs\|\yRf),
+\end{equation}
+which is a hypergeometric distribution, typical of \enquote{drawing without
+  replacement} problems. The combinatorial proof of this expression is in
+fact the same as for this class of problems
 \cites[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}.
-Our initial symmetric ignorance should intuitively also apply to the
-sample; the probability for the state of the
-sample~\eqref{eq:subpop_average} indeed satisfies the representation
-theorem~\eqref{eq:joint_plaus_N_homog} as well.
+
+Using the conditional probability above we obtain the probability for the
+activity of the sample:
+\begin{gather}
+  \label{eq:subpop_average}
+  \p(\yxs=\yrs \| \yH) = \sum_{\yRf}
+  \p(\yxs = \yrs \|\yXf=\yRf, \yH)\,
+  \p(\yXf=\yRf \| \yH)
+  = 
+  \sum_{\yRf}
+  \ypp(\yrs\|\yRf)\,
+  \p(\yXf=\yRf \| \yH).
+\end{gather}
+It should be proved that the probability distribution for the full activity
+of the sample is also symmetric and completely determined by the
+distribution of its population-averaged activity:
+\begin{equation}
+  \label{eq:marginal}
+  \p(\yx = \yr \| \yH) = \binom{n}{n\yrs}^{-1} \p(\yxs=\yrs \| \yH).
+\end{equation}
+This is intuitively clear: our initial symmetric ignorance should also
+apply to the sample. The distribution for the
+sample~\eqref{eq:subpop_average} indeed satisfies the same representation
+theorem~\eqref{eq:joint_plaus_N_homog} as the distribution for the full
+population.
 
 The conditional probability
-$\p(\yxs = \yrs \|\yXf=\yRf, \yH) \equiv \ypp(\yrs,\yRf)$ relates the
-spaces of the sample average $\yXf\in\set{0,\dotsc,\yNv}$ and of the
-population average $\yxs\in\set{0,\dotsc,n}$. It is a coarsening projector
-of any probability for $\yXf$ onto a marginal probability for $\yxs$, as
-\eqn~\eqref{eq:subpop_average} shows. For each function $f$ of the sample
-average $\yxs$, the  hypergeometric distribution 
-$\ypp(\yrs,\yRf)$ also allows us to construct a function $f^*$ of the
-population average $\yXf$
-\begin{equation}
+$\p(\yxs = \yrs \|\yXf=\yRf, \yH) \equiv \ypp(\yrs \|\yRf)$, besides
+relating the distributions for the population and sample activities via
+marginalization, also allows us to express the expectation value of any
+function of the sample activity, $g(\yrs)$, in terms of the distribution
+for the full population, as follows:
+\begin{multline}
   \label{eq:pullback_P}
-    f^*(\yXf) \defd \sum_{n\yrs=0}^n f(\yrs)\ypp(\yrs\|\yXf),
-%  \ypp^*\colon f(\yxs=\dotv) \to f^*(\yXf=\dotv) \defd \sum_{N\yrs=0}^n
-%  f(\yrs)\ypp(\yrs\|\dotv),
-\end{equation}
-that has the same expectation as $f$:
-\begin{equation}
-  \expeb{f^*(\yXf)}
+  \expe{g\|I}
   \equiv
-  \sum_{\yNv\yRf=0}^\yNv f^*(\yRf)\,\p(\yXf=\yRf \| \yH)
+  \sum_{\yrs} g(\yrs)\,\p(\yxs=\yrs \| \yH)
+  =
+  \sum_{\yrs} g(\yrs) \sum_{\yRf} \ypp(\yrs\|\yRf)\,\p(\yXf=\yRf \| \yH)
+  ={}\\
+  \sum_{\yRf} \biggl[ \sum_{\yrs} g(\yrs)  \ypp(\yrs\|\yRf) \biggr]\,
+  \p(\yXf=\yRf \| \yH),
 %  =
 %  \sum_{N\yRf=0}^N \sum_{n\yrs=0}^n f(\yrs)\ypp(\yrs\|\yRf)\,\p(\yXf=\yRf \| \yH)
-  =
-  \sum_{n\yrs=0}^n f(\yrs)\,\p(\yxs=\yrs \| \yH)
-  \equiv  \expeb{f(\yxs)}.
-\end{equation}
-The middle equality uses the combination of formulae~\eqref{eq:pullback_P}
-and~\eqref{eq:subpop_average}.
-
-\begin{figure}[!t]
-\centering
-\includegraphics[width=0.9\linewidth]{pop_sample_projection3.pdf}%
-\caption{Log-plot of the hypergeometric distribution
-  $%\p(\yxs = \yrs \|\yXf=\yRf, \yH)=
-\ypp(\yrs\|\yRf) \defd  \raisebox{0pt}[0pt][1ex]{}\binom{n}{n\yrs}\binom{\yNv-n}{\yNv \yRf-n\yrs}\binom{\yNv}{\yNv \yRf}^{-1}$ for $\yNv=5000$, $n=200$. (Band artifacts may appear in the
-  colourbar depending on your \textsc{pdf} viewer.)}
-\label{fig:hypergeom_proj}
-\end{figure}%hypergeometric_identity.nb
-A look at a plot of the hypergeometric distribution $\ypp(\yrs\|\yRf)$, see
-\fig~\ref{fig:hypergeom_proj}, reveals that it is a sort of \enquote{fuzzy
-  identity matrix} between the $\yXf$-space $\set{0,\dotsc,\yNv}$ and
-$\yxs$-space $\set{0,\dotsc,n}$. When $n=\yNv$ it is the identity matrix. We
-thus have that
-\begin{equation}
-  \label{eq:roughly_equal_nN}
-  \p(\yxs=a) \approx \p(\yXf=a),\qquad
-\expeb{f(\yxs)} \approx \expeb{f(\yXf)}.
-\end{equation}
-These are only very approximate equalities: they may miss important
-features of the two probability distributions. In the next section we will
-in fact emphasize their differences. If the distribution for the population
-average $\yXf$ is bimodal, for example, the bimodality can be lost in the
-distribution for the sample average $\yxs$, owing to the coarsening effect
-of $\ypp(\yrs\|\yRf)$.
-
-The approximate equalities above, on the other hand, express the fact that
-\emph{our uncertainty about the sample is representative of our uncertainty
-  about the population and about other samples}, and vice versa. These
-approximate equalities are not generally valid for other probability
-distributions for the population. They should be contrasted with the limits
-$\p(\yxs=a) \to \p(\yXf=a)$ and $\expeb{f(\yxs)} \to \expeb{f(\yXf)}$, as
-$n\to \yNv$, do: these limits are trivially, universally valid because the
-sample becomes the full population as $n\to \yNv$. In particular, these limits
-hold even in cases where the conditional probability
-$\p(\yxs = \yrs \|\yXf=\yRf)$ is not a fuzzy identity, our uncertainties
-about sample and about population can differ wildly, and the approximate
-equalities~\eqref{eq:roughly_equal_nN} do not hold.
-
+%  \equiv  \expeb{g^*}.
+\end{multline}
+where the second step uses \eqn~\eqref{eq:subpop_average}. The last
+expression shows that the expectation of the function $g$, whose argument
+is the sample activity $\yrs$, is equal to the expectation of the function
+$g^*$, whose argument is the full-population activity $\yRf$, defined as
+$g^*(\yRf) \defd \sum_{\yrs} g(\yrs)\,\ypp(\yrs\|\yRf)$.
 
 \bigskip
 
-% The projection~\eqref{eq:projection_P} and pull-back~\eqref{eq:pullback_P}
-% have the property
-% \begin{equation}
-%   \label{eq:expectation_pullback}
-%   \expeb{f(\yxs) \|\yH} = \expeb{f^*(\yXf)\|\yH}
-%   \qquad\text{or}\qquad
-%   \sum_{n\yrs=0}^n f(\yrs)\,p_*(\yxs=\yrs) = \sum_{\yNv\yRf=0}^\yNv f^*(\yRf)\,p(\yXf=\yRf).
-% \end{equation}
-For averaged products, $\sav{\underbrace{\yx\dots\yx}_{\text{$m$
-      factors}}}\equiv\binom{n\yxs}{m}/\binom{n}{m}$,
-formulae~\eqref{eq:pullback_P} yield the useful equality
+The final expression in \eqn~\eqref{eq:pullback_P} is important for our
+\me\ application: the requirement that the function $g$, defined for the
+sample, have a  value $c$ obtained from observed data,
+\emph{translates into a linear constraint for the distribution of the full
+  population}:
+\begin{equation}
+  \label{eq:constraint_extended}
+  c = \expe{g \| \yH} \equiv \sum_{\yRf} \biggl[ \sum_{\yrs} g(\yrs)  \ypp(\yrs\|\yRf) \biggr]\,
+  \p(\yXf=\yRf \| \yH).
+\end{equation}
+
+In particular, when the function $g$ is the $m$-activity of the sample,
+$g(\yrs) = \sav{\yr\dotso\yr} \equiv \binom{n\yrs}{m}/\binom{n}{m}$, we
+find
 \begin{equation}
   \label{eq:expe_products}
 %  \label{eq:pullback_m_expectations}
@@ -1067,248 +1041,358 @@ formulae~\eqref{eq:pullback_P} yield the useful equality
     % \\[2\jot]
     % \expe{\sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}} \| \yH} =
     % \expe{\av{\underbrace{\yX \dotsm \yX}_{\text{$m$ factors}}} \| \yH}
-  \expe{\sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}} \| \yH}
+  \expe{\sav{\underbrace{\yr \dotsm \yr}_{\text{$m$ factors}}} \| \yH}
 \equiv
     % \\[2\jot]
     % {}
-    \binom{n}{m}^{-1}
     % \frac{(n-m)!}{n!}
-    \sum_{\mathclap{n \yrs=0}}^n %m!\,
+    \sum_{\yrs} %m!\,
+    \binom{n}{m}^{-1}
     \binom{n \yrs}{m}\, \p(\yxs=\yrs \| \yH)
     % \sum_{N \yRf=0}^N %m!\,
     % \binom{N-m}{N \yRf-m} \binom{N}{N \yRf}^{-1} \p(\yXf=\yRf \| \yH)
     = \binom{\yNv}{m}^{-1}
     % \frac{(N-m)!}{N!}
-    \sum_{\mathclap{\yNv \yRf=0}}^\yNv %m!\,
+    \sum_{\yRf} %m!\,
     \binom{\yNv \yRf}{m}\, \p(\yXf=\yRf \| \yH)
-\equiv    \expe{\av{\underbrace{\yX \dotsm \yX}_{\text{$m$ factors}}} \| \yH}.
+\equiv    \expe{\av{\underbrace{\yR \dotsm \yR}_{\text{$m$ factors}}} \| \yH},
 \end{equation}
-The proof of the middle equality uses the expression for the $m$th
-factorial moment of the hypergeometric distribution \cite{potts1953}. Thus,
-in the state of knowledge $\yH$ the expectations of the averages of
-activity products \emph{are initially the same for the sample and for the
-  full population}. Similar relations can be found for the raw moments
-$\expe{\yxs^m}$ and $\expe{\yXf^m}$, which can be written in terms of the
-product expectations via \eqn~\eqref{eq:products_intermsof_average}.
+that is, \emph{the expected values of the $m$-activities of the sample and
+  of the full population are equal}. The proof of the middle equality uses
+the expression for the $m$th factorial moment of the hypergeometric
+distribution and can be found in \textcite{potts1953}. Similar relations
+can be found for the raw moments $\expe{\yrs^m}$ and $\expe{\yRf^m}$, which
+can be written in terms of the product expectations using
+\eqn~\eqref{eq:products_intermsof_average}.
+
+Thus, in a \me\ application, when we require the expectation of the
+$m$-activity of a sample to have a particular value, we are also
+requiring  the expectation of the $m$-activity of the full population to
+have the same value.
+
+\bigskip
 
 
-
-
-
-\section{Maximum-entropy at the population level with constraints at the
-  sample level}
-\label{sec:specific_initial_probability}
-
-The probability formulae
-\eqref{eq:joint_plaus_N_homog}--\eqref{eq:conditional_hypergeometric} are
-constraints on our initial probability assignment, but do not determine it
-numerically. The probability $\p(\yXf=\yRf \| \yH)$ for the population
-average needs to be numerically specified, and by marginalization
-\eqref{eq:subpop_average} it will determine that of the sample average,
-$\p(\yxs=\yrs \| \yH)$. If we numerically specify the latter, the former is
-not completely specified, because \eqn~\eqref{eq:subpop_average} linearly
-constrains $\yNv+1$ unknowns by only $n+1$ equations.
-
-We may want to specify the probability by enforcing the sample expectations
-of several functions to have specific values, for example
-$\expe{\yxs}=c_1$, $\expe{\yxxs}=c_2$. This is still an underdetermined
-problem: several distributions can have the same desired expectations, as
-clear from \eqns~\eqref{eq:expe_products}.
-
-The \me\ method is brought into play to solve this indeterminacy. It
-selects one distribution, purported to be \enquote{maximally noncommittal},
-among those that have the desired expectations. But here's a dilemma: the
-expectation formulae~\eqref{eq:pullback_P} allow us to apply the method to
-find the probability of the population $\p(\yXf=\yRf \| \yH)$, or of the
-sample $\p(\yxs=\yrs \| \yH)$. \emph{The two applications, however, are
-  inequivalent}. They lead to numerically different distributions for the
-sample average $\p(\yxs=\yrs \| \yH)$.
-
-Suppose we want to constrain the sample expectations of a vector function
-$\yf = (f_1,\dotsc,f_m)$ to the vector values $\yc=(c_1,\dotsc,c_m)$, that
-is, $\expeb{\yf(\yxs)}=\yc$. Application of \me\
-\cite{sivia1996_r2006,meadetal1984} at the population level, denoted by
-$\yHa$, gives
-\begin{equation}
-  \label{eq:app_maxent_pop}
-  \p(\yXf = \yRf \| \yHa)  = \yK\,
-  \binom{\yNv}{\yNv \yRf}\,\exp\Bigl[\yL\T
-  \sum_{n\yrs=0}^n \yf(\yrs)\ypp(\yrs\|\yRf)\Bigr],
-\end{equation}
-and then by marginalization~\eqref{eq:marginal}
-\begin{equation}
-  \label{eq:app_maxent_pop_marg}
-  \p(\yxs = \yrs \| \yHa)  = \yK\, 
-  \sum_{\yNv\yRf=0}^\yNv \ypp(\yrs \|\yRf)
-\,
-  \binom{\yNv}{\yNv \yRf}\,\exp\Bigl[\yL\T
-  \sum_{n\yrs=0}^n \yf(\yrs)\ypp(\yrs\|\yRf)\Bigr],
-\end{equation}
-where $\yK$ is a normalization constant and
-$\yL\T=(\varLambda_1,\dotsc,\varLambda_m)\T$ are Lagrange multipliers such
+\begin{figure}[!b]
+\centering
+\includegraphics[width=0.9\linewidth]{pop_sample_projection3.pdf}%
+\caption{Log-density plot of the hypergeometric distribution
+  $%\p(\yxs = \yrs \|\yXf=\yRf, \yH)=
+\ypp(\yrs\|\yRf) \defd  \raisebox{0pt}[0pt][1ex]{}\binom{n}{n\yrs}\binom{\yNv-n}{\yNv \yRf-n\yrs}\binom{\yNv}{\yNv \yRf}^{-1}$ for $\yNv=5000$, $n=200$. (Band artifacts may appear in the
+  colourbar depending on your \textsc{pdf} viewer.)}
+\label{fig:hypergeom_proj}
+\end{figure}%hypergeometric_identity.nb
+These expectation equalities between sample and full population should not
+be surprising: we intuitively \emph{expect} that the proportion of coloured
+balls sampled from an urn should be roughly equal to the proportion of
+coloured ball contained in the urn. The formulae in the present section
+formalize and mathematically express our intuition. The hypergeometric
+distribution $\ypp(\yrs\|\yRf)$ plays an important role in this
+formalization. A look at its plot, \fig~\ref{fig:hypergeom_proj}, reveals
+that it is a sort of \enquote{fuzzy identity transformation}, or fuzzy
+Kronecker delta, between the $\yRf$-space $\set{0,\dotsc,\yNv}$ and
+$\yrs$-space $\set{0,\dotsc,n}$. From \eqn~\eqref{eq:marginal} we thus have
 that
 \begin{equation}
-  \label{eq:app_maxent_pop_constraints}
-\yc = \yK\sum_{n\yrs=0}^n \sum_{\yNv\yRf=0}^\yNv \yf(\yrs) \ypp(\yrs \|\yRf)
-\,
-  \binom{\yNv}{\yNv \yRf}\,\exp\Bigl[\yL\T
-  \sum_{n\yrs=0}^n \yf(\yrs)\ypp(\yrs\|\yRf)\Bigr].
+  \label{eq:roughly_equal_nN}
+  \p(\yxs=a \|\yH) \approx \p(\yXf=a \|\yH),\qquad
+\expeb{g(\yrs) \|\yH} \approx \expeb{g(\yRf) \|\yH},
 \end{equation}
-Application of \me\ at the sample level, denoted by $\yHb$, gives
+where $g$ is any smooth function defined on $\clcl{0,1}$. These approximate
+equalities express the intuitive fact that \emph{our uncertainty about the
+  sample is representative of our uncertainty about the population and
+  about other samples}, and vice versa. When $n=\yNv$, $\ypp(\yrs\|\yRf)$
+becomes the identity matrix and the approximate equalities above become
+exact -- of course, since we have sampled the full population.
+
+But the approximate equalities above may miss important features of the two
+probability distributions. In the next section we will in fact emphasize
+their differences. If the distribution for the population average $\yRf$ is
+bimodal, for example, the bimodality can be lost in the distribution for
+the sample average $\yrs$, owing to the coarsening effect of
+$\ypp(\yrs\|\yRf)$.
+
+% They should be contrasted with the limits
+% $\p(\yxs=a) \to \p(\yXf=a)$ and $\expeb{g(\yxs)} \to \expeb{g(\yXf)}$, as
+% $n\to \yNv$, do: these limits are trivially, universally valid because the
+% sample becomes the full population as $n\to \yNv$. In particular, these limits
+% hold even in cases where the conditional probability
+% $\p(\yxs = \yrs \|\yXf=\yRf)$ is not a fuzzy identity, our uncertainties
+% about sample and about population can differ wildly, and the approximate
+% equalities~\eqref{eq:roughly_equal_nN} do not hold.
+
+
+
+\section{Maximum-entropy: sample level vs full-population level}
+\label{sec:specific_initial_probability}
+
+In the previous section we have seen that observations about a sample can
+be used as constraints on the distribution for the activity of the full
+population. Let us use such constraints with the \me\ method. Suppose that
+we want to constrain $m$ functions of the sample activity, vectorially
+written $\yf \defd (g_1,\dotsc,g_m)$, to $m$ values
+$\yc \defd (c_1,\dotsc,c_m)$. These functions are typically $k$-activities
+$\sav{\yr\dotso \yr}$, and the values are typically the time averages of
+the observed sample, as discussed in \sect~\ref{sec:intro}:
+$\yc = \sum_t \yf[\yrs(t)]/T$.
+
+Let us apply the relative-\me\ method \cite{sivia1996_r2006,meadetal1984}
+directly to sampled neurons; denote this approach by $\yHb$. Then we apply
+the method to the full population of neurons, most of which are unsampled;
+denote this approach by $\yHa$.
+
+Applied directly to the sampled neurons, the method yields the distribution
 \begin{equation}
   \label{eq:app_maxent_sample}
   \p(\yxs=\yrs \|\yHb)
-  =\yk\,
+  =\frac{1}{\yk(\yl)}\,
   \binom{n}{n\yrs}
   \exp[\yl\T \yf(\yrs)]
 \end{equation}
-where $\yk$ is a normalization constant and $\yl\T$ are Lagrange
-multipliers such that
+where $\yk(\yl)$ is a normalization constant. The binomial in front of the
+exponential appears because we must account for the multiplicity by which
+the population-average activity $\yrs$ can be realized: $\yrs=0$ can be
+realized in only one way (all neurons inactive), $\yrs=1/n$ can be realized
+in $n$ ways (one active neuron out of $n$), \etc\ This term is analogous to
+the \enquote{density of states} in front of a Boltzmann factor in
+statistical mechanics \cite[\chap~16]{callen1960_r1985}. The $m$ Lagrange
+multipliers $\yl\defd (l_1,\dotsc,l_m)$ must satisfy the $m$ constraint
+equations
 \begin{equation}
   \label{eq:app_maxent_sample_constraints}
-\yc = \yk\sum_{n\yrs=0}^n  \yf(\yrs) \binom{n}{n\yrs}
-  \exp[\yl\T \yf(\yrs)].
+  c_k = \expe{g_k \|\yHb} \equiv
+  \frac{1}{\yk(\yl)}\sum_{\yrs}  g_k(\yrs) \binom{n}{n\yrs}
+  \exp[\yl\T \yf(\yrs)], \qquad k=1,\dotsc,m.
 \end{equation}
 
-The probabilities for the sample average obtained from application at the
-population level~\eqref{eq:app_maxent_pop_marg} and at the sample level
-\eqref{eq:app_maxent_sample} should be approximately equal, by our previous
-observation about representativity~\eqref{eq:roughly_equal_nN} and also by
-the fact that they must satisfy the same expectations for $\yf$.
+Applied to the full population, using the constraint
+expression~\eqref{eq:constraint_extended} derived in the previous section,
+the method yields the distribution for the full-population activity
+\begin{equation}
+  \label{eq:app_maxent_pop}
+  \p(\yXf = \yRf \| \yHa)  = \frac{1}{\yK(\yL)}\,
+  \binom{\yNv}{\yNv \yRf}\,\exp\Bigl[\yL\T
+  \sum_{\yrs} \yf(\yrs)\ypp(\yrs\|\yRf)\Bigr].
+\end{equation}
+The $m$ Lagrange multipliers $\yL\defd (\lambda_1,\dotsc,\lambda_m)$ must
+satisfy the $m$ constraint equations
+\begin{equation}
+  \label{eq:app_maxent_pop_constraints}
+  c_k = \expe{g_k \|\yHa}\equiv
+  \frac{1}{\yK(\yL)}\sum_{\yrs} \sum_{\yRf} g_k(\yrs) \ypp(\yrs \|\yRf)
+\,
+  \binom{\yNv}{\yNv \yRf}\,\exp\Bigl[\yL\T
+  \sum_{\yrs} \yf(\yrs)\ypp(\yrs\|\yRf)\Bigr],
+  \qquad k=1,\dotsc,m.
+\end{equation}
 
-Yet they cannot be exactly equal, because their equality would require the
-Lagrange multipliers $\yL$ and $\yl$ to satisfy the constraint equations
-\eqref{eq:app_maxent_pop_constraints},
-\eqref{eq:app_maxent_sample_constraints}, and also
-$\p(\yxs = \yrs \| \yHa) = \p(\yxs = \yrs \| \yHb)$; that is, $2m+n$
-equations (one normalization is taken care of) in $2m$ unknowns. A solution can
-exist, if at all, only for very special choices of constraints functions
-$\yf$ and values $\yc$.
+We obtain the distribution for the sample activity by marginalization, using
+\eqn~\eqref{eq:marginal}:
+\begin{equation}
+  \label{eq:app_maxent_pop_marg}
+  \p(\yxs = \yrs \| \yHa)  = \frac{1}{\yK(\yL)}\, 
+  \sum_{\yRf} \ypp(\yrs \|\yRf)
+\,
+  \binom{\yNv}{\yNv \yRf}\,\exp\Bigl[\yL\T
+  \sum_{\yrs} \yf(\yrs)\ypp(\yrs\|\yRf)\Bigr].
+\end{equation}
 
-The sample distribution obtained from \me\ at the sample level will
-therefore likely miss important features present in the one obtained at the
-population level, like additional modes or particular tail behaviour.
+The distributions for the sample activity,
+\eqns~\eqref{eq:app_maxent_pop_marg} and \eqref{eq:app_maxent_sample},
+obtained with the two approaches $\yHb$ and $\yHa$, are different. From the
+discussion in the previous section we expect them to be vaguely similar;
+yet they cannot be exactly equal, because their equality would require the
+$2m$ quantities $\yL$ and $\yl$ to satisfy the constraint equations
+\eqref{eq:app_maxent_pop_constraints} and
+\eqref{eq:app_maxent_sample_constraints}, and in addition also the $n$
+equations $\p(\yxs = \yrs \| \yHa) = \p(\yxs = \yrs \| \yHb)$,
+$\yrs=1/n,\dotsc,1$ (one equation is taken care of by the normalization of
+the distributions). We would have a set of $2m+n$ equations in $2m$
+unknowns.
+
+Hence, \emph{the applications of \me\ at the sample level and at the
+  full-population level are inequivalent}. They lead to numerically
+different distributions for the sample activity $\yr$.
+
+%%% FIGURES %%%
+\iffalse
 \begin{figure}[!t]
 \centering
 \includegraphics[width=0.9\linewidth]{different_maxent_pop_sample_200_realdata_2mom.pdf}%
-\caption{Linear and log-plots of $\p(\yxs = \yrs)$ constructed by \me\ at the population
-  level followed by sample marginalization (blue triangles),
-  \eqn~\eqref{eq:app_maxent_pop_marg}, and at the sample level (red
-  circles), \eqn~\eqref{eq:app_maxent_sample}, with $\yNv=5000$,
-  $n=200$, constraints $\expe{\yxs}=0.0478$, $\expe{\yxxs}=0.00257$.}
-\label{fig:diff_maxent_pop_sample}
-\end{figure}%maxent_pop_or_sample.nb
-% \end{wrapfigure}
-\begin{figure}[!t]
-\centering
-\includegraphics[width=0.9\linewidth]{different_maxent_pop_sample_200_realdata_4mom.pdf}
-% 
 \caption{Linear and log-plots of $\p(\yxs = \yrs)$ constructed by \me\ at
   the population level followed by sample marginalization (blue triangles),
   \eqn~\eqref{eq:app_maxent_pop_marg}, and at the sample level (red
   circles), \eqn~\eqref{eq:app_maxent_sample}, with $\yNv=5000$,
-  $n=200$, constraints $\expe{\yxs}=0.0478$, $\expe{\yxxs}=0.00257$,
-  $\expe{\sav{\yx\yx\yx}}=1.48\times10^{-4}$,
-  $\expe{\sav{\yx\yx\yx\yx}}=8.81\times 10^{-6}$.}
+  $n=200$, and constraints as in \eqn~\eqref{eq:constraints}.}
+\label{fig:diff_maxent_pop_sample}
+\end{figure}%maxent_pop_or_sample.nb
+%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=0.9\linewidth]{different_maxent_pop_sample_200_realdata_4mom.pdf}% 
+\caption{Linear and log-plots of $\p(\yxs = \yrs)$ constructed by \me\ at
+  the population level followed by sample marginalization (blue triangles),
+  \eqn~\eqref{eq:app_maxent_pop_marg}, and at the sample level (red
+  circles), \eqn~\eqref{eq:app_maxent_sample}, with $\yNv=5000$,
+  $n=200$, and constraints as in \eqn~\eqref{eq:constraints}.}
 \label{fig:diff_maxent_pop_sample_realdata}
 \end{figure}%maxent_pop_or_sample.nb
-We show two examples of this discrepancy in
-\figs~\ref{fig:diff_maxent_pop_sample}
-and~\ref{fig:diff_maxent_pop_sample_realdata}, for $\yNv=5000$, $n=200$, and
-constraint functions of the form
-$\yf(\yxs)=(\yxs,\yxxs,\dotsc)\equiv\bigl( \yxs,
-\raisebox{0pt}[0pt][1ex]{}\binom{n\yxs}{2}/\binom{n}{2},\dotsc \bigr)$,
-equivalent to moments constraints. The constraint values used in these
-examples, reported in the figure captions, have neurobiologically realistic
-values \cite{rostamietal2016_r2017}.
-
-In the first example the constraint functions are $\expe{\yxs}$ and
-$\expe{\yxxs}$. The distribution obtained at the sample level is broader
-than the one obtained at the population level; the tails of the two
-distributions are very different.
-
-The second
-example uses two additional constraint functions $\expe{\sav{\yx\yx\yx}}$,
-$\expe{\sav{\yx\yx\yx\yx}}$. The distribution obtained at the population
-level has two modes, replaced by only one in the distribution obtained at
-the sample level; the tails are very different also in this case.
-
-
+\fi%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=0.9\linewidth]{comparison3.pdf}%
+\caption{Linear and log-plots of $\p(\yxs = \yrs)$ for a sample of $n=200$
+  and constraints as in \eqn~\eqref{eq:constraints}, constructed by: (red
+  circles) \me\ at the sample level, \eqn~\eqref{eq:app_maxent_sample};
+  (blue triangles) \me\ at the population level,
+  \eqn~\eqref{eq:app_maxent_pop_marg} with $\yNv=10\,000$, followed by
+  sample marginalization; (yellow squares) \me\ at the population level
+  with unknown population size,
+  \eqn~\eqref{eq:app_maxent_pop_marg_unknown_N}, according to the
+  distribution~\eqref{eq:pdf_popsize}.}
+\label{fig:all_three}
+\end{figure}%maxent_pop_or_sample.nb\fi
+The distribution obtained at the sample level will show different
+features from the one obtained at the population level, like displaced or
+additional modes or particular tail behaviour. We show an example of this
+discrepancy in \fig~\ref{fig:all_three}, for
+$\yNv=10\,000$, $n=200$, and the two constraints
+\begin{equation}
+  \label{eq:constraints}
+  \expe{\yrs} = 0.0478,\qquad
+  \expe{\yxxs} = 0.00257,
+  % ,\quad
+  % \expe{\sav{\yr\yr\yr}} = 1.48\times 10^{-4},\quad
+  % \expe{\sav{\yr\yr\yr\yr}} = 8.81 \times 10^{-6}.
+\end{equation}
+which come from the actual recording of circa 200 neurons from macaque
+motor cortex \cite{rostamietal2016_r2017}. The distribution obtained at the
+population level (blue triangles) has a higher and displaced mode and a quite
+different behaviour for activities around $0.5$ than the distribution
+obtained at the sample level (red squares).
 
 \bigskip
 
-How should we apply the \me\ method then? on the sample or on the
-population? Which application is \enquote{maximally noncommittal}?
+In our discussion we have so far assumed the size $\yNv$ of the larger
+population to be known. This is rarely the case, however. We usually are
+uncertain about $\yNv$ and can only guess its order of magnitude. In such a
+state of knowledge $\yHd$ our ignorance about the possible value of $\yNv$
+is expressed by a probability distribution $\p(\yNN=\yNv \|\yHd)=h(\yNv)$,
+and the marginal distribution for the sample
+activity~\eqref{eq:app_maxent_pop_marg} is modified, by the law of total
+probability, to
+\begin{multline}
+  \label{eq:app_maxent_pop_marg_unknown_N}
+  \p(\yxs = \yrs \| \yHd)  =
+  \sum_{\yNv} \p(\yxs = \yrs \| \yNN=\yNv,\yHd) \,
+  \p(\yNN=\yNv \|\yHd)
+  ={}\\[-\jot]
+  \sum_\yNv \biggl\{\frac{1}{\yK(\yL_\yNv)}\, 
+  \sum_{\yRf} \ypp_\yNv(\yrs \|\yRf)
+\,
+  \tbinom{\yNv}{\yNv \yRf}\,\exp\Bigl[{\yL_\yNv}\T
+  \sum_{\yrs} \yf(\yrs)\ypp_\yNv(\yrs\|\yRf)\Bigr]\biggr\}
+  \,h(\yNv),
+\end{multline}
+where the Lagrange multipliers $\yL_{\yNv}$ and the summation range for
+$\yRf$ depend on $\yNv$.
+
+As a proof of concept, \fig~\ref{fig:all_three} also shows such a distribution
+(yellow circles) for the same constraints as above, and a probability
+distribution for $\yNv$ inspired by Jeffreys
+\cite[\sect~4.8]{jeffreys1939_r2003}:
+\begin{equation}
+  \label{eq:pdf_popsize}
+  h(\yNv) \propto 1/\yNv, \qquad
+  \yNv \in\set{1\,000,\; 2\,000,\; \dotsc,\;10\,000}.
+\end{equation}
+
+
+
 
 \section{Discussion}
 \label{sec:discussion}
 
-The question that closed the preceding section cannot receive a categorical
-answer. An optimal answer can only be given case by case, depending on the
-computational power available, on which inferences we are trying to make,
-on which assumptions we need or want to make, and those we wish to avoid.
+The purpose of the present note was to simply to point out and show, in a
+simple set-up, that the \me\ method can be applied to recorded neuronal
+data in a way that accounts for the larger population from which the data
+are sampled,
+\eqns~\eqref{eq:app_maxent_pop}--\eqref{eq:app_maxent_pop_marg}. This
+application leads to results that differ from the standard application
+focused on the sample only,
+\eqns~\eqref{eq:app_maxent_sample}--\eqref{eq:app_maxent_sample_constraints}.
+We gave a numerical example of this difference. We have also shown how to
+extend the new application when the size of the larger population is
+unknown, \eqn~\eqref{eq:app_maxent_pop_marg_unknown_N}.
 
-\iffalse We want to stress, in fact, the
-extreme importance and priority of the following two questions:
+The latter formula, in particular, shows that the standard way of applying
+\me\ (without \enquote{hidden neurons}) implicitly assumes that \emph{no}
+larger population exists beyond the recorded sample of neurons. One could
+in fact object to the application at the population level, and say that the
+traditional way of applying \me, \eqn~\eqref{eq:app_maxent_sample}, yields
+different results because it does not make assumptions about the size
+$\yNv$ of a possibly existing larger population. Such a state of
+uncertainty, however, is correctly formalized according to the laws of
+probability by introducing a probability distribution for $\yNv$, and is
+expressed by \eqn~\eqref{eq:app_maxent_pop_marg_unknown_N}. This expression
+cannot generally be equal to~\eqref{eq:app_maxent_sample} unless the
+distribution for $\yNv$ gives unit probability to $\yNv=n$; that is,
+unless the sample \emph{is} the full population, and no larger population
+exists or the recorded neurons are completely isolated from it.
+
+The latter notion is unreasonable. It amounts to say that the neurons we
+distinguished and tracked with our recording device are a very special,
+isolated set among all those that could have been recorded. It is for this
+reason that we find the \me\ application at the population level
+preferable. Physical models of neuronal networks usually include some sort
+of external input, mimicking an embedding in a larger network. The \me\
+distribution obtained at the population level may reveal features in a
+data set that were unnoticed by the standard \me\ model.
+
+
+The difference between the applications at the sample and at the population
+levels appears also in statistical mechanics. If a system is statistically
+described by a \me\ Gibbs state, its subsystems cannot be described by a
+Gibbs state \cite{maesetal1999}. A somewhat similar situation also appears
+in the statistical description of the final state of a non-equilibrium
+process starting and ending in two equilibrium states: we can describe our
+knowledge about the final state either by (1) a Gibbs distribution,
+calculated from the final equilibrium macrovariables, or (2) by the
+distribution obtained from the Liouville evolution of the Gibbs
+distribution assigned to the initial state. The two distributions differ
+(even though the final \emph{physical} state is obviously exactly the same
+\cite[\sect~4]{jaynes1985d_r1993}), and the second allows us to make
+sharper predictions about the final physical state thanks to our knowledge
+of its preceding dynamics. In this example, though, both distributions are
+usually immensely sharp and practically lead to the same predictions. In
+the neuroscientific applications considered in this note the difference in
+predictions of the sample vs full-population applications may be very
+relevant instead.
+
+The idea of the new application leads in fact to more questions. For
+instance:
 \begin{itemize}
-\item Of which quantities do we need to quantify the uncertainty? and why?
-\item What are the assumptions we need or want to make to answer the
-  question above?
-\end{itemize}\fi
+\item Do the standard and new applications lead to different or contrasting
+  conclusions about \enquote{cooperativity}, when applied to real data
+  sets?
+\item How to extend the new application when we want to study the 
+  activities of individual neurons, of individual pairs, triplets, and so
+  on?
+\item What is the mathematical relation between the new application and
+  \me\ models with hidden neurons?
+\end{itemize}
+Owing to space limitations we cannot investigate these questions here, but
+we hope to in future work.
 
-\iffalse The first purpose of this note is indeed to remind ourselves that
-probability models require careful scrutiny, because they can rest on
-hidden assumptions that we do not want to make or that contradict others we
-are making, and we may not be aware of this. The dilemma generated by the
-\me\ method and the assumption of representative sampling is an example.
-\fi
+Finally, we would like to point out the usefulness and importance of the
+probability formulae that relate our states of knowledge about a population
+and its samples, presented in \sect~\ref{sec:prob_samples}. This kind of
+formulae is essential in neuroscience, where we try to understand
+properties of extended regions from partial observations of them. The
+formulae presented here reflected a very basic, symmetric state of
+ignorance. It would be useful to explore formulae more appropriate to our
+real knowledge of the brain and of its networking properties.
 
-The tricky point is this. The \me\ application at the population level and
-the application at the sample level give different results; they are two
-different statistical models. The former model clearly assumes, by
-construction, the existence of a larger population from which the sample is
-taken. What does the latter model assume in this respect? is it
-\enquote{unassuming}, as often claimed in the literature? or does it
-actually assume that \emph{no} larger population exists? In the latter case
-it would not be correct to use this model in our problem.
-
-A perfunctory intuitive reasoning seems insufficient for clarifying this
-point. Let's express it in the language of the probability calculus.
-Suppose we do not know whether the sample is really part of a larger
-population: we do not know whether $\yNv=n$ or how large $\yNv$ is otherwise.
-Call this state of ignorance $\yHd$. In the probability calculus this
-ignorance about $\yNv$ is expressed by assigning a probability distribution
-$\p(\yNv \| \yHd)$ that vanishes if $\yNv<n$, since we know that $\yNv\ge n$; see
-Good \cite{good1965,good1967b} and Rissanen \cite{rissanen1983} for
-examples of such distributions over the integers. Maintaining our
-assumption of symmetric ignorance, probability assignments that do not
-assume a specific value of $\yNv$ are then obtained via multiplication of all
-$\yNv$-dependent probabilities by $\p(\yNv \| \yHd)$ and subsequent
-marginalization over $\yNv$. Technically speaking, $\yNv$ becomes a
-\emph{nuisance parameter}
-\cite{jaynes1994_r2003,lindley1965b_r2008,bernardoetal1994_r2000}. The
-probability obtained from \me\ at the population level,
-\eqn~\eqref{eq:app_maxent_pop_marg}, then generalizes to
-\begin{equation}
-  \label{eq:app_maxent_pop_marg_unknown_N}
-  \p(\yxs = \yrs \| \yHd)  = \sum_\yNv \biggl\{\yK_\yNv\, 
-  \sum_{\yNv\yRf=0}^\yNv \ypp_\yNv(\yrs \|\yRf)
-\,
-  \binom{\yNv}{\yNv \yRf}\,\exp\Bigl[{\yL_\yNv}\T
-  \sum_{n\yrs=0}^n \yf(\yrs)\ypp_\yNv(\yrs\|\yRf)\Bigr]\biggr\}
-  \,\p(\yNv \| \yHd),
-\end{equation}
-where $\yNv$-dependencies have been made explicit. This is a formidable
-expression. But our question, \enquote{is the usual \me\ at the sample
-  level~\eqref{eq:app_maxent_sample} unassuming with regard to the
-  existence of a larger population?}, translates now into the precise
-mathematical question: \enquote{are the
-distributions~\eqref{eq:app_maxent_pop_marg_unknown_N} and
-\eqref{eq:app_maxent_sample} equal for some choice of $\p(\yNv \| \yHd)$, with
-$\p(\yNv \| \yHd)\ne 0$ for $\yNv>n$?}. We leave this mathematical problem for
-future work. Note, however, that this equality is satisfied if
-$\p(\yNv=1 \| \yHd)=1$, which means that the usual \me\ model can also be
-interpreted as assuming that \emph{no} larger population exists.
 
 
 \iffalse
@@ -1331,21 +1415,6 @@ ignorance about the sample should be representative of our ignorance about
 a larger population. This assumption affects our predictions.
 \fi
 
-We find the \me\ model constructed at the population level very natural and
-preferable. After all, physical models of neuronal networks usually include
-some sort of external input to the neurons as well, mimicking their
-embedding in a larger network. The sample distribution given by the \me\
-model at the population level, when used as a reference distribution for
-surprise analysis, may reveal features in a dataset that were unnoticed by
-the standard \me\ model. The question remains of how to specify $\yNv$,
-though. We have tacitly intended $\yNv$ as the size of the largest
-biologically or functionally homogeneous population from which our sample
-was recorded. It could be the amount of neurons in a functional brain area,
-for example the primary visual cortex, for which $\yNv\sim 10^8$
-\cite{leubaetal1994}. For large $\yNv$ -- unfortunately we are not yet able to
-translate this \enquote{large} into a numeric order of magnitude -- the
-final distribution becomes independent of $\yNv$, and continuous
-approximations become available.
 
 
 \iffalse
@@ -1368,26 +1437,8 @@ example.
 \end{figure}%maxent_pop_or_sample.nb
 The second is that \fi
 
-The possibility of using two different distributions is not a physical
-contradiction. Similar situations arise in statistical mechanics. It is
-known that if a system is described by a \me\ Gibbs state, its subsystems
-need not be \cite{maesetal1999}. A dilemma quite similar to ours also
-appears in the statistical description of the final state of a
-non-equilibrium process starting and ending in two equilibrium states: we
-can describe our knowledge about the final state either by a Gibbs
-distribution, or by the distribution obtained from the Liouville evolution
-of the Gibbs distribution assigned to the initial state. The two
-descriptions differ -- even though the final \emph{physical} state is
-obviously exactly the same \cite[\sect~4]{jaynes1985d_r1993}. The two
-descriptions differs because in one case we can make sharper predictions
-about the state thanks to our knowledge of its preceding dynamics. In this
-example, though, both distributions are usually immensely sharp and
-practically lead to the same predictions. In the neuroscientific
-applications considered in this note the difference in predictions may be
-relevant instead.
-
-Our analysis touched only constraints of the sample average,
-$\expeb{f(\yxs)}$. The corresponding models are usually called
+\iffalse Our analysis touched only constraints of the sample average,
+$\expeb{g(\yxs)}$. The corresponding models are usually called
 \enquote{homogeneous} in the literature. Purely \enquote{inhomogeneous}
 models have also been used
 \cite{schneidmanetal2006,shlensetal2006,roudietal2009b}, in which
@@ -1403,7 +1454,7 @@ require enormous computational power for large sample sizes; homogeneous
 models therefore retain their importance. Our analysis and dilemma also
 persist for hybrid homogeneous-inhomogeneous models
 \cite{tkaciketal2014b,shimazakietal2015}.
-
+\fi
 
 %\mynote{Importance of the formulae relating sample and population.}
 
@@ -1457,9 +1508,9 @@ unfiltered scientific exchange possible.\fi
 % learning and recall at excitatory recurrent synapses and cholinergic
 % modulation in rat hippocampal region CA3. {\it Journal of
 %   Neuroscience} {\bf 15}(7):5249-5262.
-\defbibnote{postnote}{\small\par\medskip\noindent{\footnotesize% Note:
-\arxivp \mparcp \philscip \biorxivp}%
-}
+% \defbibnote{postnote}{\small\par\medskip\noindent{\footnotesize% Note:
+% \arxivp \mparcp \philscip \biorxivp}%
+% }
 
 \newcommand*{\citein}[2][]{\textnormal{\textcite[#1]{#2}}%\addtocategory{extras}{#2}
 }
@@ -1468,7 +1519,7 @@ unfiltered scientific exchange possible.\fi
 \newcommand*{\subtitleproc}[1]{}
 
 
-\printbibliography[postnote=postnote]
+\printbibliography%[postnote=postnote]
 
 \iffalse
 \newrefsection

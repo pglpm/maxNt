@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2018-05-18T10:28:29+0200
+%% Last-Updated: 2018-05-18T11:33:51+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -721,12 +721,12 @@ the activity of the recorded neurons. We believe that this problem is at
 the root of some quirks about this method that were pointed out in the
 literature \cite{roudietal2009b}. This problems extends also to more
 complex versions of the method, possibly except version that use
-\enquote{hidden} neurons. The problem is that the recorded neurons are a
-\emph{sample} from a larger, unrecorded population, but the \me\ method as
-applied above is treating them as isolated from the rest of the brain.
-Hence, the results it provides cannot rightfully be extrapolated. We will
-give a mathematical proof of this. Let us first analyse this issue in more
-detail.
+\enquote{hidden} neurons \cite{smolensky1986,hintonetal2006}. The problem
+is that the recorded neurons are a \emph{sample} from a larger, unrecorded
+population, but the \me\ method as applied above is treating them as
+isolated from the rest of the brain. Hence, the results it provides cannot
+rightfully be extrapolated. We will give a mathematical proof of this. Let
+us first analyse this issue in more detail.
 
 Suppose that the neurons were recorded with electrodes covering an area of
 some square millimetres \cite[\cf][]{berenyietal2014}. This recording is a
@@ -1262,48 +1262,50 @@ extend the new application when the size of the larger population is
 unknown, \eqn~\eqref{eq:app_maxent_pop_marg_unknown_N}.
 
 The latter formula, in particular, shows that the standard way of applying
-\me\ (without \enquote{hidden neurons}) implicitly assumes that \emph{no}
-larger population exists beyond the recorded sample of neurons. One could
-in fact object to the application at the population level, and say that the
-traditional way of applying \me, \eqn~\eqref{eq:app_maxent_sample}, yields
-different results because it does not make assumptions about the size
-$\yNv$ of a possibly existing larger population. Such a state of
-uncertainty, however, is correctly formalized according to the laws of
-probability by introducing a probability distribution for $\yNv$, and is
-expressed by \eqn~\eqref{eq:app_maxent_pop_marg_unknown_N}. This expression
-cannot generally be equal to~\eqref{eq:app_maxent_sample} unless the
-distribution for $\yNv$ gives unit probability to $\yNv=n$; that is,
-unless the sample \emph{is} the full population, and no larger population
-exists or the recorded neurons are completely isolated from it.
+\me\ 
+implicitly assumes that \emph{no} larger population exists beyond the
+recorded sample of neurons. One could in fact object to the application at
+the population level, and say that the traditional way of applying \me,
+\eqn~\eqref{eq:app_maxent_sample}, yields different results because it does
+not make assumptions about the size $\yNv$ of a possibly existing larger
+population. Such a state of uncertainty, however, is correctly formalized
+according to the laws of probability by introducing a probability
+distribution for $\yNv$, and is expressed by
+\eqn~\eqref{eq:app_maxent_pop_marg_unknown_N}. This expression cannot
+generally be equal to~\eqref{eq:app_maxent_sample} unless the distribution
+for $\yNv$ gives unit probability to $\yNv=n$; that is, unless the sample
+\emph{is} the full population, and no larger population exists or the
+recorded neurons are completely isolated from it.
 
-The latter notion is unreasonable. It amounts to say that the neurons we
-distinguished and tracked with our recording device are a very special,
-isolated set among all those that could have been recorded. It is for this
-reason that we find the \me\ application at the population level
-preferable. Physical models of neuronal networks usually include some sort
-of external input, mimicking an embedding in a larger network. The \me\
-distribution obtained at the population level may reveal features in a
+This hidden assumption of isolation is unreasonable. It amounts to say that
+the neurons we distinguished and tracked with our recording device are a
+very special, isolated set among all those that could have been recorded.
+It is for this reason that we find the \me\ application at the population
+level preferable. Physical models of neuronal networks usually include some
+sort of external input, mimicking an embedding in a larger network. The
+\me\ distribution obtained at the population level may reveal features in a
 data set that were unnoticed by the standard \me\ model.
 
 
-The difference between the applications at the sample and at the population
-levels appears also in statistical mechanics. If a system is statistically
-described by a \me\ Gibbs state, its subsystems cannot be described by a
-Gibbs state \cite{maesetal1999}. A somewhat similar situation also appears
-in the statistical description of the final state of a non-equilibrium
-process starting and ending in two equilibrium states: we can describe our
-knowledge about the final state either by (1) a Gibbs distribution,
-calculated from the final equilibrium macrovariables, or (2) by the
-distribution obtained from the Liouville evolution of the Gibbs
+The difference in the resulting distributions between the applications at
+the sample and at the population levels appears in the use of Boltzmann
+machines with hidden units \cite{lerouxetal2008}, although by a different
+conceptual route. It also appears in statistical mechanics: if a system is
+statistically described by a \me\ Gibbs state, its subsystems cannot be
+described by a Gibbs state \cite{maesetal1999}. A somewhat similar
+situation also appears in the statistical description of the final state of
+a non-equilibrium process starting and ending in two equilibrium states: we
+can describe our knowledge about the final state either by (1) a Gibbs
+distribution, calculated from the final equilibrium macrovariables, or (2)
+by the distribution obtained from the Liouville evolution of the Gibbs
 distribution assigned to the initial state. The two distributions differ
 (even though the final \emph{physical} state is obviously exactly the same
 \cite[\sect~4]{jaynes1985d_r1993}), and the second allows us to make
 sharper predictions about the final physical state thanks to our knowledge
 of its preceding dynamics. In this example, though, both distributions are
 usually immensely sharp and practically lead to the same predictions. In
-the neuroscientific applications considered in this note the difference in
-predictions of the sample \vs\ full-population applications may be very
-relevant instead.
+neuroscientific applications, the difference in predictions of the sample
+\vs\ full-population applications can instead be very relevant.
 
 The idea of the new application leads in fact to more questions. For
 instance:
@@ -1315,7 +1317,7 @@ instance:
   \cite{schneidmanetal2006,shlensetal2006,roudietal2009b}, in which
   expectations for individual neurons or groups of neurons are constrained?
 \item What is the mathematical relation between the new application and
-  \me\ models with hidden neurons?
+  \me\ models with hidden neurons \cite{smolensky1986,hintonetal2006}?
 \end{itemize}
 Owing to space limitations we cannot investigate these questions here, but
 we hope to in future work.
@@ -1394,6 +1396,7 @@ unfiltered scientific exchange possible.\fi
 \newcommand*{\citebi}[2][]{ref.\ \citep[#1]{#2}%\addtocategory{extras}{#2}
 }
 \newcommand*{\subtitleproc}[1]{}
+\newcommand*{\chapb}{ch.}
 
 
 \printbibliography%[postnote=postnote]

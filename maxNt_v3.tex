@@ -1,6 +1,6 @@
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2018-05-18T11:53:47+0200
+%% Last-Updated: 2018-05-18T15:43:51+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -12,13 +12,13 @@
 % to avoid loading the natbib package, add option nonatbib:
 % \usepackage[nonatbib]{nips_2017}
 
-\usepackage[final,%
+\usepackage[%final,%
 nonatbib]{nips_2017}
 
 \newcommand*{\firstdraft}{4 November 2015}
 
-\newcommand*{\pdftitle}{Maximum-entropy and samples of neuronal
-  activity:\\the importance of the larger population}
+\newcommand*{\pdftitle}{Maximum-entropy and representative samples\\ of neuronal
+  activity: a dilemma}
 
 \newcommand*{\headtitle}{\pdftitle} \newcommand*{\pdfauthor}{P.G.L.  Porta Mana, V. Rostami, E. Torre, Y. Roudi}
 \usepackage{newtxmath}
@@ -555,7 +555,7 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 \author{
   P.G.L. Porta Mana\\\texttt{piero.mana@ntnu.no}
   \And
-  V. Rostami\\\texttt{v.rostami@fz-juelich.de}
+  V. Rostami\\\texttt{vrostami@uni-koeln.de}
   \AND
   E. Torre\\\texttt{torre@ibk.baug.ethz.ch}
     \And
@@ -596,14 +596,14 @@ Y. Roudi\\\texttt{yasser.roudi@ntnu.no}
 \maketitle
 
 \begin{abstract}
-  This note shows that the \me\ method can be applied to a sample of
-  neuronal activity along two different routes: (1) apply to the sample; or
-  (2) apply to a larger, unsampled neuronal population from which the
-  sample is drawn, and then marginalize to the sample. The second route can
-  be generalized to the case where the size of the larger population is
-  unknown. These two routes give inequivalent results. Which route should
-  be chosen? Some arguments are presented in favour of the second. This
-  note also presents and discusses probability formulae that relate our
+  The present work shows that the \me\ method can be applied to a sample of
+  neuronal recordings along two different routes: (1) apply to the sample;
+  or (2) apply to a larger, unsampled neuronal population from which the
+  sample is drawn, and then marginalize to the sample. These two routes
+  give inequivalent results. The second route can be further generalized to
+  the case where the size of the larger population is unknown. Which route
+  should be chosen? Some arguments are presented in favour of the second.
+  This work also presents and discusses probability formulae that relate
   states of knowledge about a population and its samples, and that may be
   useful for sampling problems in neuroscience.
   % The abstract must be limited to one paragraph.
@@ -640,9 +640,9 @@ cortex
 and it has been subjected to mathematical and conceptual scrutiny
 \cite{tkaciketal2006,roudietal2009,roudietal2009b,barreiroetal2010,barreiroetal2010b,mackeetal2013,rostamietal2016_r2017}.
 
-\enquote{Cooperativity} can quantified and characterized with \me\ method
-in several ways. The simplest way roughly proceeds along the following
-steps. Consider the recorded activity of a sample of $n$ neurons.
+\enquote{Cooperativity} can be quantified and characterized with \me\
+methods in several ways. The simplest way roughly proceeds along the
+following steps. Consider the recorded activity of a sample of $n$ neurons.
 \begin{enumerate}
 \item The activity of each neuron, a continuous signal, is divided into $T$
   time bins and binarized in intensity, and thus transformed into a
@@ -722,8 +722,9 @@ the activity of the recorded neurons. We believe that this problem is at
 the root of some quirks about this method that were pointed out in the
 literature \cite{roudietal2009b}. This problems extends also to more
 complex versions of the method, possibly except version that use
-\enquote{hidden} neurons \cite{smolensky1986,hintonetal2006}. The problem
-is that the recorded neurons are a \emph{sample} from a larger, unrecorded
+\enquote{hidden} neurons
+\cite{smolensky1986,kulkarnietal2007,huang2015,dunnetal2017}. The problem is
+that the recorded neurons are a \emph{sample} from a larger, unrecorded
 population, but the \me\ method as applied above is treating them as
 isolated from the rest of the brain. Hence, the results it provides cannot
 rightfully be extrapolated. We will give a mathematical proof of this. Let
@@ -759,7 +760,7 @@ population, and the distribution for the sample is obtained by
 marginalization. The problem is that \emph{the distributions obtained from
   these two applications differ}. Which choice is most meaningful?
 
-In this paper we develop the second way of applying the \me\ method, at the
+In this work we develop the second way of applying the \me\ method, at the
 level of the larger population, and show that its results differ from the
 application at the sample level. We also consider the case where the size
 of the larger population is unknown.
@@ -776,7 +777,7 @@ paper is to make these relations more widely known, because they can be
 useful independently of \me\ methods.
 
 
-The notation and terminology in this note follow ISO and ANSI standards
+The notation and terminology in the present work follow ISO and ANSI standards
 \citep{iso1993,ieee1993,nist1995,iso2006,iso2006b} but for the use of the
 comma \enquote{,} to denote logical conjunction. Probability notation
 follows Jaynes \citep{jaynes1994_r2003}. By \enquote{probability} we mean a
@@ -1250,13 +1251,12 @@ distribution for $\yNv$ inspired by Jeffreys
 \section{Discussion}
 \label{sec:discussion}
 
-The purpose of the present note was to simply to point out and show, in a
-simple set-up, that the \me\ method can be applied to recorded neuronal
-data in a way that accounts for the larger population from which the data
-are sampled,
-\eqns~\eqref{eq:app_maxent_pop}--\eqref{eq:app_maxent_pop_marg}. This
-application leads to results that differ from the standard application
-focused on the sample only,
+The purpose of the present work was to point out and show, in a simple
+set-up, that the \me\ method can be applied to recorded neuronal data in a
+way that accounts for the larger population from which the data are
+sampled, \eqns~\eqref{eq:app_maxent_pop}--\eqref{eq:app_maxent_pop_marg}.
+This application leads to results that differ from the standard application
+which only considers the sample in isolation,
 \eqns~\eqref{eq:app_maxent_sample}--\eqref{eq:app_maxent_sample_constraints}.
 We gave a numerical example of this difference. We have also shown how to
 extend the new application when the size of the larger population is
@@ -1275,17 +1275,24 @@ distribution for $\yNv$, and is expressed by
 \eqn~\eqref{eq:app_maxent_pop_marg_unknown_N}. This expression cannot
 generally be equal to~\eqref{eq:app_maxent_sample} unless the distribution
 for $\yNv$ gives unit probability to $\yNv=n$; that is, unless the sample
-\emph{is} the full population, and no larger population exists or the
-recorded neurons are completely isolated from it.
+\emph{is} the full population, and no larger population exists.
 
-This hidden assumption of isolation is unreasonable. It amounts to say that
-the neurons we distinguished and tracked with our recording device are a
-very special, isolated set among all those that could have been recorded.
-It is for this reason that we find the \me\ application at the population
-level preferable. Physical models of neuronal networks usually include some
-sort of external input, mimicking an embedding in a larger network. The
-\me\ distribution obtained at the population level may reveal features in a
-data set that were unnoticed by the standard \me\ model.
+The standard \me\ approach therefore assumes that the recorded neurons
+constitute a special subnetwork, isolated from the larger network of
+neurons in which it is embedded, and which was also present under the
+recording device. This assumption is unrealistic. The \me\ approach at the
+population level does not make such assumption and is therefore preferable.
+It may reveal features in a data set that were unnoticed by the standard
+\me\ approach.
+
+% This hidden assumption of isolation is unreasonable. It amounts to say that
+% the neurons we distinguished and tracked with our recording device are a
+% very special, isolated set among all those that could have been recorded.
+% It is for this reason that we find the \me\ application at the population
+% level preferable. Physical models of neuronal networks usually include some
+% sort of external input, mimicking an embedding in a larger network. The
+% \me\ distribution obtained at the population level may reveal features in a
+% data set that were unnoticed by the standard \me\ model.
 
 
 The difference in the resulting distributions between the applications at
@@ -1304,7 +1311,7 @@ distribution assigned to the initial state. The two distributions differ
 \cite[\sect~4]{jaynes1985d_r1993}), and the second allows us to make
 sharper predictions about the final physical state thanks to our knowledge
 of its preceding dynamics. In this example, though, both distributions are
-usually immensely sharp and practically lead to the same predictions. In
+usually extremely sharp and practically lead to the same predictions. In
 neuroscientific applications, the difference in predictions of the sample
 \vs\ full-population applications can instead be very relevant.
 
@@ -1318,19 +1325,21 @@ instance:
   \cite{schneidmanetal2006,shlensetal2006,roudietal2009b}, in which
   expectations for individual neurons or groups of neurons are constrained?
 \item What is the mathematical relation between the new application and
-  \me\ models with hidden neurons \cite{smolensky1986,hintonetal2006}?
+  \me\ models with hidden neurons
+  \cite{smolensky1986,kulkarnietal2007,huang2015,dunnetal2017}?
 \end{itemize}
-Owing to space limitations we cannot investigate these questions here, but
-we hope to in future work.
+Owing to space limitations we must leave a thorough investigation of these
+questions to future work.
 
 Finally, we would like to point out the usefulness and importance of the
 probability formulae that relate our states of knowledge about a population
 and its samples, presented in \sect~\ref{sec:prob_samples}. This kind of
 formulae is essential in neuroscience, where we try to understand
-properties of extended regions from partial observations of them. The
-formulae presented here reflected a very basic, symmetric state of
-ignorance. It would be useful to explore formulae more appropriate to our
-real knowledge of the brain and of its networking properties.
+properties of extended brain regions from partial observations. The
+formulae presented here reflect a simple, symmetric state of ignorance.
+More work is needed \cite[\cf][]{levinaetal2017} to extend these formulae
+to account for finer knowledge of the cerebral cortex and its network
+properties.
 
 
 

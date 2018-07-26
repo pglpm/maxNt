@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-11-04T09:20:08+0100
-%% Last-Updated: 2018-05-23T14:19:42+0200
+%% Last-Updated: 2018-07-19T11:05:41+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Report-no: ***
 \documentclass{article}
@@ -654,7 +654,7 @@ following steps. Consider the recorded activity of a sample of $n$ neurons.
 \begin{enumerate}
 \item The activity of each neuron, a continuous signal, is divided into $T$
   time bins and binarized in intensity, and thus transformed into a
-  sequence of digits \enquote{$0$}s (inactive) and \enquote{$1$}s
+  sequence of digits \enquote{$0$}s (inactive) and \enquote{$1$}s (active)
   \cite[\cf][]{caianiello1961,caianiello1986}.
 
   Let the variable $\yrv_i(t)\in\set{0,1}$ denote the activity of the $i$th
@@ -729,33 +729,33 @@ problem in the way the \me\ method itself, as sketched above, is applied to
 the activity of the recorded neurons. We believe that this problem is at
 the root of some quirks about this method that were pointed out in the
 literature \cite{roudietal2009b}. This problems extends also to more
-complex versions of the method, possibly except version that use
+complex versions of the method, possibly except versions that use
 \enquote{hidden} neurons
 \cite{smolensky1986,kulkarnietal2007,huang2015,dunnetal2017}. The problem is
 that the recorded neurons are a \emph{sample} from a larger, unrecorded
 population, but the \me\ method as applied above is treating them as
 isolated from the rest of the brain. Hence, the results it provides cannot
-rightfully be extrapolated. We will give a mathematical proof of this. Let
+be rightfully extrapolated. We will give a mathematical proof of this. Let
 us first analyse this issue in more detail.
 
 Suppose that the neurons were recorded with electrodes covering an area of
 some square millimetres \cite[\cf][]{berenyietal2014}. This recording is a
 sample of the activity of the neuronal population under the recording
-device; which can amount to tens of thousands of neurons
+device, which can amount to tens of thousands of neurons
 \cite{abeles1991}. We could even consider the recorded neurons as a sample
 of a brain area more extended than the recording device.
 
 The characterization of the cooperativity of the recorded sample would have
 little meaning if we did not expect its results to generalize to a larger,
-unrecorded population -- at the very least that under the recording device.
-In other words, we expect that the conclusions drawn with the \me\ methods
-about the sampled neurons should somehow extrapolate to unrecorded neurons
-in some larger area, from which the recorded neurons were sampled. In
-statistical terms we are assuming that the recorded neurons are a
-\emph{representative sample} of some larger neuronal population.
-Probability theory tells us how to make inferences from a sample to the
-larger population from which it is sampled \parentext{see references
-  below}.
+unrecorded population -- at the very least the population under the
+recording device. In other words, we expect that the conclusions drawn with
+the \me\ methods about the sampled neurons should somehow extrapolate to
+unrecorded neurons in some larger area, from which the recorded neurons
+were sampled. In statistical terms we are assuming that the recorded
+neurons are a \emph{representative sample} of some larger neuronal
+population. Probability theory tells us how to make inferences from a
+sample to the larger population from which it is sampled \parentext{see
+  references below}.
 
 We can apply the \me\ method to the sample, as described in the above
 protocol, to generate probability distributions for the activity of the

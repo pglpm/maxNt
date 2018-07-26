@@ -1,0 +1,147 @@
+\documentclass{article}
+
+\usepackage{nips_2018_author_response}
+
+\newcommand*{\firstdraft}{4 November 2015}
+\newcommand*{\published}{22 May 2018}
+
+\newcommand*{\pdftitle}{Maximum-entropy and representative samples\\ of neuronal
+  activity: a dilemma}
+
+\newcommand*{\headtitle}{\pdftitle} \newcommand*{\pdfauthor}{P.G.L.  Porta Mana, V. Rostami, E. Torre, Y. Roudi}
+
+\usepackage[T1]{fontenc} 
+\input{glyphtounicode} \pdfgentounicode=1
+\usepackage[utf8]{inputenx}
+\newcommand*{\bmmax}{3} % reduce number of bold fonts, before bm
+\newcommand*{\hmmax}{0} % reduce number of heavy fonts, before bm
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\setlength{\multlinegap}{0pt}
+
+\usepackage{amssymb}
+\usepackage{amsxtra}
+
+\usepackage[british]{babel}\selectlanguage{british}
+\newcommand*{\langfrench}{\foreignlanguage{french}}
+\newcommand*{\langgerman}{\foreignlanguage{german}}
+\newcommand*{\langitalian}{\foreignlanguage{italian}}
+\newcommand*{\langswedish}{\foreignlanguage{swedish}}
+\newcommand*{\langlatin}{\foreignlanguage{latin}}
+\newcommand*{\langnohyph}{\foreignlanguage{nohyphenation}}
+
+\usepackage[autostyle=false,autopunct=false,english=british]{csquotes}
+\setquotestyle{british}
+\usepackage{bm}
+
+
+
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\iffalse
+\usepackage[shortlabels,inline]{enumitem}
+\SetEnumitemKey{para}{itemindent=\parindent,leftmargin=0pt,listparindent=\parindent,parsep=0pt,itemsep=\topsep}
+% \begin{asparaenum} = \begin{enumerate}[para]
+% \begin{inparaenum} = \begin{enumerate*}
+\setlist[enumerate,2]{label=\alph*.}
+\setlist[enumerate]{leftmargin=\parindent}
+\setlist[itemize]{leftmargin=\parindent}
+\setlist[description]{leftmargin=\parindent}
+\fi
+%% With euler font cursive for Greek letters - the [1] means 100% scaling
+\DeclareFontFamily{U}{egreek}{\skewchar\font'177}%
+\DeclareFontShape{U}{egreek}{m}{n}{<-6>s*[0.95]eurm5 <6-8>s*[0.95]eurm7 <8->s*[0.95]eurm10}{}%
+\DeclareFontShape{U}{egreek}{m}{it}{<->s*[0.95]eurmo10}{}%
+\DeclareFontShape{U}{egreek}{b}{n}{<-6>s*[0.95]eurb5 <6-8>s*[0.95]eurb7 <8->s*[0.95]eurb10}{}%
+\DeclareFontShape{U}{egreek}{b}{it}{<->s*[0.95]eurbo10}{}%
+\DeclareSymbolFont{egreeki}{U}{egreek}{m}{it}%
+\SetSymbolFont{egreeki}{bold}{U}{egreek}{b}{it}% from the amsfonts package
+\DeclareSymbolFont{egreekr}{U}{egreek}{m}{n}%
+\SetSymbolFont{egreekr}{bold}{U}{egreek}{b}{n}% from the amsfonts package
+% Take also \sum, \prod, \coprod symbols from Euler fonts
+\DeclareFontFamily{U}{egreekx}{\skewchar\font'177}
+\DeclareFontShape{U}{egreekx}{m}{n}{%
+       <-7.5>s*[0.9]euex7%
+    <7.5-8.5>s*[0.9]euex8%
+    <8.5-9.5>s*[0.9]euex9%
+    <9.5->s*[0.9]euex10%
+}{}
+\DeclareSymbolFont{egreekx}{U}{egreekx}{m}{n}
+\DeclareMathSymbol{\sumop}{\mathop}{egreekx}{"50}
+\DeclareMathSymbol{\prodop}{\mathop}{egreekx}{"51}
+\DeclareMathSymbol{\coprodop}{\mathop}{egreekx}{"60}
+\makeatletter
+\def\sum{\DOTSI\sumop\slimits@}
+\def\prod{\DOTSI\prodop\slimits@}
+\def\coprod{\DOTSI\coprodop\slimits@}
+\makeatother
+
+\usepackage{mathdots}
+\usepackage{microtype}
+
+\usepackage[backend=biber,mcite,subentry,citestyle=numeric-comp,bibstyle=numericbringhurst,autopunct=false,sorting=none,sortcites=false,natbib=false,maxnames=8,minnames=8,giveninits=true,block=space,hyperref=true,defernumbers=false,useprefix=true,language=british]{biblatex}
+\renewcommand*{\finalnamedelim}{, }
+\setcounter{biburlnumpenalty}{1}
+\setcounter{biburlucpenalty}{0}
+\setcounter{biburllcpenalty}{1}
+\DeclareDelimFormat{multicitedelim}{\addsemicolon\space}
+\DeclareDelimFormat{postnotedelim}{\space}
+\addbibresource{portamanabib.bib}%comment for arxiv
+\renewcommand{\bibfont}{\footnotesize}
+%\defbibheading{bibliography}[\bibname]{\section*{#1}\addcontentsline{toc}{section}{#1}%\markboth{#1}{#1}
+%}
+\newcommand*{\citep}{\parencites}
+\newcommand*{\citey}{\parencites*}
+\renewcommand*{\cite}{\citep}
+\providecommand{\href}[2]{#2}
+\providecommand{\eprint}[2]{\texttt{\href{#1}{#2}}}
+\newcommand*{\amp}{\&}
+
+\newcommand*{\arxiveprint}[1]{%\global\def\arxivp{\arxivsi}%\citeauthor{0arxivcite}\addtocategory{ifarchcit}{0arxivcite}%eprint
+\texttt{\urlalt{https://arxiv.org/abs/#1}{arXiv:\hspace{0pt}#1}}%
+%\texttt{\href{http://arxiv.org/abs/#1}{\protect\url{arXiv:#1}}}%
+%\renewcommand{\arxivnote}{\texttt{arXiv} eprints available at \url{http://arxiv.org/}.}
+}
+\newcommand*{\mparceprint}[1]{%\global\def\mparcp{\mparcsi}%\citeauthor{0mparccite}\addtocategory{ifarchcit}{0mparccite}%eprint
+\texttt{\urlalt{http://www.ma.utexas.edu/mp_arc-bin/mpa?yn=#1}{mp\_arc:\hspace{0pt}#1}}%
+%\texttt{\href{http://www.ma.utexas.edu/mp_arc-bin/mpa?yn=#1}{\protect\url{mp_arc:#1}}}%
+%\providecommand{\mparcnote}{\texttt{mp_arc} eprints available at \url{http://www.ma.utexas.edu/mp_arc/}.}
+}
+\newcommand*{\philscieprint}[1]{%\global\def\philscip{\philscisi}%\citeauthor{0philscicite}\addtocategory{ifarchcit}{0philscicite}%eprint
+\texttt{\urlalt{http://philsci-archive.pitt.edu/archive/#1}{PhilSci:\hspace{0pt}#1}}%
+%\texttt{\href{http://philsci-archive.pitt.edu/archive/#1}{\protect\url{PhilSci:#1}}}%
+%\providecommand{\mparcnote}{\texttt{philsci} eprints available at \url{http://philsci-archive.pitt.edu/}.}
+}
+\newcommand*{\biorxiveprint}[1]{%\global\def\biorxivp{\biorxivsi}%\citeauthor{0arxivcite}\addtocategory{ifarchcit}{0arxivcite}%eprint
+\texttt{\urlalt{http://biorxiv.org/content/early/#1}{bioRxiv:\hspace{0pt}#1}}%
+%\texttt{\href{http://arxiv.org/abs/#1}{\protect\url{arXiv:#1}}}%
+%\renewcommand{\arxivnote}{\texttt{arXiv} eprints available at \url{http://arxiv.org/}.}
+}
+\newcommand*{\osfeprint}[1]{%
+\texttt{\urlalt{https://doi.org/10.17605/osf.io/#1}{doi:10.17605/osf.io/#1}}%
+}
+\usepackage{graphicx}
+
+\PassOptionsToPackage{hyphens}{url}\usepackage[hypertexnames=false]{hyperref}
+\usepackage[depth=4]{bookmark}
+\hypersetup{colorlinks=true,bookmarksnumbered,pdfborder={0 0 0.25},citebordercolor={0.2 0.1333 0.5333},%bluish
+citecolor=mybluishpurple,linkbordercolor={0.0667 0.4667 0.2},%greenish
+linkcolor=mypurplishred,urlbordercolor={0.5333 0.1333 0.3333},%reddish
+urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
+% \usepackage[vertfit=local]{breakurl}% only for arXiv
+\providecommand*{\urlalt}{\href}
+
+\selectlanguage{british}\frenchspacing
+% \usepackage{booktabs}       % professional-quality tables
+% \usepackage{amsfonts}       % blackboard math symbols
+% \usepackage{nicefrac}       % compact symbols for 1/2, etc.
+%\usepackage{lipsum}
+
+\begin{document}
+We thank the reviewers for their analysis and suggestions. We would like to
+reply to specific points:
+\begin{enumerate}
+\item The 
+\end{enumerate}
+\end{document}

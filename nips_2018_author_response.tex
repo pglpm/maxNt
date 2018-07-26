@@ -5,10 +5,9 @@
 \newcommand*{\firstdraft}{4 November 2015}
 \newcommand*{\published}{22 May 2018}
 
-\newcommand*{\pdftitle}{Maximum-entropy and representative samples\\ of neuronal
-  activity: a dilemma}
+\newcommand*{\pdftitle}{Response to reviewers}
 
-\newcommand*{\headtitle}{\pdftitle} \newcommand*{\pdfauthor}{P.G.L.  Porta Mana, V. Rostami, E. Torre, Y. Roudi}
+\newcommand*{\headtitle}{\pdftitle} %\newcommand*{\pdfauthor}{P.G.L.  Porta Mana, V. Rostami, E. Torre, Y. Roudi}
 
 \usepackage[T1]{fontenc} 
 \input{glyphtounicode} \pdfgentounicode=1
@@ -37,8 +36,6 @@
 
 
 
-\usepackage{hyperref}       % hyperlinks
-\usepackage{url}            % simple URL typesetting
 \iffalse
 \usepackage[shortlabels,inline]{enumitem}
 \SetEnumitemKey{para}{itemindent=\parindent,leftmargin=0pt,listparindent=\parindent,parsep=0pt,itemsep=\topsep}
@@ -80,6 +77,7 @@
 \usepackage{mathdots}
 \usepackage{microtype}
 
+\iffalse
 \usepackage[backend=biber,mcite,subentry,citestyle=numeric-comp,bibstyle=numericbringhurst,autopunct=false,sorting=none,sortcites=false,natbib=false,maxnames=8,minnames=8,giveninits=true,block=space,hyperref=true,defernumbers=false,useprefix=true,language=british]{biblatex}
 \renewcommand*{\finalnamedelim}{, }
 \setcounter{biburlnumpenalty}{1}
@@ -121,14 +119,16 @@
 \newcommand*{\osfeprint}[1]{%
 \texttt{\urlalt{https://doi.org/10.17605/osf.io/#1}{doi:10.17605/osf.io/#1}}%
 }
+\fi
+
 \usepackage{graphicx}
 
 \PassOptionsToPackage{hyphens}{url}\usepackage[hypertexnames=false]{hyperref}
-\usepackage[depth=4]{bookmark}
+%\usepackage[depth=4]{bookmark}
 \hypersetup{colorlinks=true,bookmarksnumbered,pdfborder={0 0 0.25},citebordercolor={0.2 0.1333 0.5333},%bluish
 citecolor=mybluishpurple,linkbordercolor={0.0667 0.4667 0.2},%greenish
 linkcolor=mypurplishred,urlbordercolor={0.5333 0.1333 0.3333},%reddish
-urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
+urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle}}
 % \usepackage[vertfit=local]{breakurl}% only for arXiv
 \providecommand*{\urlalt}{\href}
 
@@ -142,6 +142,34 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
 We thank the reviewers for their analysis and suggestions. We would like to
 reply to specific points:
 \begin{enumerate}
-\item The 
+\item We agree with Reviewer 3 that the paper emphasizes some philosophical
+  aspects; intentionally so. Sadly we can't make all kinds of readers
+  happy; a choice of audience is necessary. As readers ourselves we
+  appreciate when a paper begins by asking: \enquote{What is the question?
+    is it possible to translate it into a mathematical problem? which
+    principles can we use to make such translation?}. There are papers that
+  develop very refined mathematical techniques but leave us unsatisfied,
+  with the lingering question \enquote{why are we doing this?}. This is the
+  reason why we try to emphasize these kinds of questions. But we are sure
+  that part of the NIPS audience will appreciate this emphasis.
+
+\item We also agree with Reviewer 3 that the main formulae of the paper,
+  (17) and (19), probably have little experimental use today. But the point
+  they make is important:
+  \begin{itemize}
+  \item the Reviewer says \enquote{the differences between the sample level
+      and population level distribution seem minor} -- but we could not
+    have known this, if we hadn't faced the whole problem and derived a
+    formula showing that the difference is minor;
+  \item the sample-level distribution is actually \emph{less} entropic. By
+    lifting the constraints to the population level, the maximum-entropy
+    principle allows us to explore even \emph{more entropic} sample
+    distributions than those allowed by a direct application at the sample
+    level. Thus this approach agrees with the \enquote{maximum entropy}
+    spirit. -- These points should be mentioned, of course, in an amended
+    version of the paper.
+  \item 
+  \end{itemize}
+
 \end{enumerate}
 \end{document}

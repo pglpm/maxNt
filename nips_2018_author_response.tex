@@ -36,16 +36,15 @@
 
 
 
-\iffalse
 \usepackage[shortlabels,inline]{enumitem}
 \SetEnumitemKey{para}{itemindent=\parindent,leftmargin=0pt,listparindent=\parindent,parsep=0pt,itemsep=\topsep}
 % \begin{asparaenum} = \begin{enumerate}[para]
 % \begin{inparaenum} = \begin{enumerate*}
 \setlist[enumerate,2]{label=\alph*.}
-\setlist[enumerate]{leftmargin=\parindent}
-\setlist[itemize]{leftmargin=\parindent}
+\setlist[enumerate]{leftmargin=1.5em}
+\setlist[itemize]{leftmargin=1.5em}
 \setlist[description]{leftmargin=\parindent}
-\fi
+
 %% With euler font cursive for Greek letters - the [1] means 100% scaling
 \DeclareFontFamily{U}{egreek}{\skewchar\font'177}%
 \DeclareFontShape{U}{egreek}{m}{n}{<-6>s*[0.95]eurm5 <6-8>s*[0.95]eurm7 <8->s*[0.95]eurm10}{}%
@@ -139,20 +138,58 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle}}
 %\usepackage{lipsum}
 
 \begin{document}
-We thank the reviewers for their analysis and suggestions. We would like to
-reply to specific points:
-\begin{enumerate}
-\item We agree with Reviewer 3 that the paper emphasizes some philosophical
-  aspects; intentionally so. Sadly we can't make all kinds of readers
-  happy; a choice of audience is necessary. As readers ourselves we
-  appreciate when a paper begins by asking: \enquote{What is the question?
-    is it possible to translate it into a mathematical problem? which
-    principles can we use to make such translation?}. There are papers that
-  develop very refined mathematical techniques but leave us unsatisfied,
-  with the lingering question \enquote{why are we doing this?}. This is the
-  reason why we try to emphasize these kinds of questions. But we are sure
-  that part of the NIPS audience will appreciate this emphasis.
+We thank the reviewers for their analysis, appreciative words, and suggestions.
 
+\textbf{Reviewer 1}
+\begin{enumerate}
+\item It would be interesting to use the frequency distribution of the
+  sample activity, measured in the recording, as a constraint, equivalent
+  to $n$ moment constraints. In fact, using it at the population level is
+  less questionable than using at the sample level (activities with zero
+  frequencies lead to zeroes in the maximum-entropy distribution, and these
+  are unreasonable because the sample size is much smaller than the
+  state-space size. This indicates that maximum-entropy is used beyond its
+  range of validity). Its use, however, addresses a different question than
+  the one discussed in our introduction, namely to define and measure
+  \enquote{cooperativity} by comparing maximum-entropy distributions
+  constructed from different numbers of moments.
+\item Unfortunately the reviewer forgot the bibliographic reference to Tkacik et al
+  2012. We'd like to read that paper.
+\item It's true, we forgot to discuss how the population-level application
+  solves the sample-size-dependence of maximum-entropy results pointed out in
+  previous literature. This should be addressed in an amended version of
+  the paper.
+\end{enumerate}
+
+\medskip
+
+\textbf{Reviewer 2}
+\begin{enumerate}
+\item We agree that the comparison with other approaches is important. But
+  we believe that it's also important to carefully examine (1) the question
+  we're asking, and (2) which first principles, if any, can be used to
+  translate it into a mathematical problem. A lot of literature develops
+  very refined -- though often ad hoc -- mathematical techniques; and yet
+  it leaves us unsatisfied, with the lingering question \enquote{why were
+    we doing this?}. This is the reason for our long introductory
+  discussion about the problem and the first principles that can be used to
+  address it.
+\item Regarding the effect of correlations on the result: the original
+  question is how \enquote{cooperativity} can be related to the measured
+  correlations, or defined in terms of them. The method is devised to give
+  one answer to this question; see the \enquote{protocol} 1--3 in the
+  Introduction. The crucial point is that there is no underlying
+  distribution; the point of the method is to construct it for us.
+\item We agree that there are many approaches in the literature. In the
+  literature we have explored we've seen very little use of the basic
+  sampling formulae presented in our paper. Honestly this surprised us,
+  because they're surely essential even in a very basic analysis of the data.
+\end{enumerate}
+
+\medskip
+
+\textbf{Reviewer 3}
+\begin{enumerate}
 \item We also agree with Reviewer 3 that the main formulae of the paper,
   (17) and (19), probably have little experimental use today. But the point
   they make is important:
@@ -170,6 +207,17 @@ reply to specific points:
     version of the paper.
   \item 
   \end{itemize}
+\item We agree with Reviewer 3 that the paper emphasizes some philosophical
+  aspects; intentionally so. Sadly we can't make all kinds of readers
+  happy; a choice of audience is necessary. As readers ourselves we
+  appreciate when a paper begins by asking: \enquote{What is the question?
+    is it possible to translate it into a mathematical problem? which
+    principles can we use to make such translation?}. There are papers that
+  develop very refined mathematical techniques but leave us unsatisfied,
+  with the lingering question \enquote{why are we doing this?}. This is the
+  reason why we try to emphasize these kinds of questions. But we are sure
+  that part of the NIPS audience will appreciate this emphasis.
+
 
 \end{enumerate}
 \end{document}

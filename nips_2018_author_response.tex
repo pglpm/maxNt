@@ -138,7 +138,9 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle}}
 %\usepackage{lipsum}
 
 \begin{document}
-We thank the reviewers for their analysis, appreciative words, and suggestions.
+We thank the reviewers for their analysis, appreciative words, and
+suggestions. We reply to major points only. The manuscript can be easily
+amended to address the points we don't discuss here.
 
 \textbf{Reviewer 1}
 \begin{enumerate}
@@ -153,8 +155,6 @@ We thank the reviewers for their analysis, appreciative words, and suggestions.
   the one discussed in our introduction, namely to define and measure
   \enquote{cooperativity} by comparing maximum-entropy distributions
   constructed from different numbers of moments.
-\item Unfortunately the reviewer forgot the bibliographic reference to Tkacik et al
-  2012. We'd like to read that paper.
 \item It's true, we forgot to discuss how the population-level application
   solves the sample-size-dependence of maximum-entropy results pointed out in
   previous literature. This should be addressed in an amended version of
@@ -197,50 +197,51 @@ We thank the reviewers for their analysis, appreciative words, and suggestions.
   formulae and the analysis behind them are important exactly for the
   points raised by the Reviewer:
   \begin{itemize}
-  \item \begin{minipage}[t]{0.8\linewidth} the Reviewer says \enquote{the
+  \item \begin{minipage}[t]{0.74\linewidth}The Reviewer says \enquote{the
         differences between the sample level and population level
-        distribution seem minor} -- this can be true, but we could not have
+        distribution seem minor}: this could be true, but we could not have
       known this, if we hadn't faced the whole problem and derived a
-      formula showing that the difference is minor;
-    \end{minipage}
-  \item
-    \begin{minipage}[t]{0.8\linewidth}
-      application of the method with higher-order constrains can show more
-      interesting differences between sample- and population-level
-      distributions. See e.g. the plot on the right. This should be added
-      in an amended version of the paper. Unfortunately there are space
-      constraints.
+      formula showing that the difference is minor.
     \end{minipage}\hspace{\fill}
-    \smash{\begin{minipage}[c]{0.19\linewidth}\vspace{0pt}
+    \smash{\begin{minipage}[t]{0.24\linewidth}\vspace{0pt}
       \includegraphics[width=\linewidth]{zoom_4mom.png}
     \end{minipage}}
-
+  \item
+    \begin{minipage}[t]{0.74\linewidth}
+      Application of the method with higher-order constrains can show more
+      interesting differences between sample- and population-level
+      distributions. See e.g. the plot on the right: the bimodal
+      distribution is the marginalized, population-level one.
+    \end{minipage}
 %     % \setlength{\intextsep}{0.5ex}% with wrapfigure
 %     \begin{figure}[h!]%{r}{0.4\linewidth} % with wrapfigure
 %   \centering
 % %\caption{***}\label{fig:comparison_a5}
 % \end{figure}
-  \item The population-level distribution can be more or less entropic of
-    the sample-level one. is actually \emph{less} entropic. By
-    lifting the constraints to the population level, the maximum-entropy
-    principle allows us to explore even \emph{more entropic} sample
-    distributions than those allowed by a direct application at the sample
-    level. Thus this approach agrees with the \enquote{maximum entropy}
-    spirit. -- These points should be mentioned, of course, in an amended
-    version of the paper.
-  \item 
-  \end{itemize}
-\item We agree with Reviewer 3 that the paper emphasizes some philosophical
-  aspects; intentionally so. Sadly we can't make all kinds of readers
-  happy; a choice of audience is necessary. As readers ourselves we
-  appreciate when a paper begins by asking: \enquote{What is the question?
-    is it possible to translate it into a mathematical problem? which
-    principles can we use to make such translation?}. There are papers that
-  develop very refined mathematical techniques but leave us unsatisfied,
-  with the lingering question \enquote{why are we doing this?}. This is the
-  reason why we try to emphasize these kinds of questions. But we are sure
-  that part of the NIPS audience will appreciate this emphasis.
-
-
+\item Calculations show that the population-level distribution can be less
+  or more entropic than the sample-level one. But a more entropic
+  distribution is not necessarily more correct (we could just use a uniform
+  distribution then). The question is how the constraints are appropriately
+  applied in the method. 
+\end{itemize}
+As this Reviewer and Reviewer 2 remark, the points and findings above
+deserve more discussion. Unfortunately there are space constraints, and we
+preferred to give more room to a careful analysis of the principles behind
+the method, to see whether the method is correctly applied. Our main wish
+is that our readers will give more thoughts to these matters. We could
+hurry up and produce a lot of mathematical results; but, whether positive or
+negative, such would be meaningless if the method isn't meaningfully
+applied. And it isn't always the case that a meaningful application of a
+method can be judged by its results alone.
+% \item We agree with Reviewer 3 that the paper emphasizes some philosophical
+%   aspects; intentionally so. Sadly we can't make all kinds of readers
+%   happy; a choice of audience is necessary. As readers ourselves we
+%   appreciate when a paper begins by asking: \enquote{What is the question?
+%     is it possible to translate it into a mathematical problem? which
+%     principles can we use to make such translation?}. There are papers that
+%   develop very refined mathematical techniques but leave us unsatisfied,
+%   with the lingering question \enquote{why are we doing this?}. This is the
+%   reason why we try to emphasize these kinds of questions. But we are sure
+%   that part of the NIPS audience will appreciate this emphasis.
 \end{enumerate}
 \end{document}

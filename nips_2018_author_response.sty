@@ -224,6 +224,7 @@
 % do not allow more than one page of output
 % Compholio, https://stackoverflow.com/questions/2720534/force-a-maximum-number-of-pages-in-latex
 
+\iffalse
 \newcounter{pagecount}
 \ifx\latex@outputpage\@undefined\relax
   \global\let\latex@outputpage\@outputpage
@@ -237,5 +238,5 @@
     \latex@outputpage%
   \fi
 }
-
+\fi
 \endinput

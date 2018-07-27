@@ -37,11 +37,11 @@
 
 
 \usepackage[shortlabels,inline]{enumitem}
-\SetEnumitemKey{para}{itemindent=\parindent,leftmargin=0pt,listparindent=\parindent,parsep=0pt,itemsep=\topsep}
+\SetEnumitemKey{para}{itemindent=\parindent,leftmargin=0pt,listparindent=\parindent,parsep=0pt,itemsep=\topsep,topsep=0pt}
 % \begin{asparaenum} = \begin{enumerate}[para]
 % \begin{inparaenum} = \begin{enumerate*}
 \setlist[enumerate,2]{label=\alph*.}
-\setlist[enumerate]{leftmargin=1.5em}
+\setlist[enumerate]{leftmargin=1.5em,topsep=-1ex}
 \setlist[itemize]{leftmargin=1.5em}
 \setlist[description]{leftmargin=\parindent}
 
@@ -161,44 +161,67 @@ We thank the reviewers for their analysis, appreciative words, and suggestions.
   the paper.
 \end{enumerate}
 
-\medskip
+\bigskip
 
 \textbf{Reviewer 2}
 \begin{enumerate}
 \item We agree that the comparison with other approaches is important. But
   we believe that it's also important to carefully examine (1) the question
-  we're asking, and (2) which first principles, if any, can be used to
-  translate it into a mathematical problem. A lot of literature develops
-  very refined -- though often ad hoc -- mathematical techniques; and yet
-  it leaves us unsatisfied, with the lingering question \enquote{why were
-    we doing this?}. This is the reason for our long introductory
-  discussion about the problem and the first principles that can be used to
-  address it.
-\item Regarding the effect of correlations on the result: the original
-  question is how \enquote{cooperativity} can be related to the measured
-  correlations, or defined in terms of them. The method is devised to give
-  one answer to this question; see the \enquote{protocol} 1--3 in the
-  Introduction. The crucial point is that there is no underlying
-  distribution; the point of the method is to construct it for us.
+  we're asking, and (2) which first principles can be used to translate it
+  into a mathematical problem. Some literature develops very refined --
+  though often ad hoc -- mathematical techniques, but then leaves us
+  unsatisfied, with the lingering question \enquote{why were we doing
+    this?}. This is the reason for our long introductory discussion about
+  the problem and the first principles that can be used to address it.
+\item The firing rate likely affects the results and the quantification of
+  \enquote{cooperativity}. Is this an issue? is our idea of
+  \enquote{cooperativity} invariant with respect to the firing rate, or
+  not? Requirements of this kind constrain the translation of cooperativity
+  into a mathematical quantity. This again shows the importance of defining
+  the question we're asking first.
+\item Regarding correlations: the method quantifies cooperativity using the
+  measured correlations; see the \enquote{protocol} 1--3 in the
+  Introduction. Thus, correlations determine the result.
 \item We agree that there are many approaches in the literature. In the
   literature we have explored we've seen very little use of the basic
   sampling formulae presented in our paper. Honestly this surprised us,
   because they're surely essential even in a very basic analysis of the data.
 \end{enumerate}
 
-\medskip
+\bigskip
 
 \textbf{Reviewer 3}
 \begin{enumerate}
-\item We also agree with Reviewer 3 that the main formulae of the paper,
-  (17) and (19), probably have little experimental use today. But the point
-  they make is important:
+\item We agree with the Reviewer that the main formulae of the paper, (17)
+  and (19), probably have little \emph{experimental} use today. But the
+  formulae and the analysis behind them are important exactly for the
+  points raised by the Reviewer:
   \begin{itemize}
-  \item the Reviewer says \enquote{the differences between the sample level
-      and population level distribution seem minor} -- but we could not
-    have known this, if we hadn't faced the whole problem and derived a
-    formula showing that the difference is minor;
-  \item the sample-level distribution is actually \emph{less} entropic. By
+  \item \begin{minipage}[t]{0.8\linewidth} the Reviewer says \enquote{the
+        differences between the sample level and population level
+        distribution seem minor} -- this can be true, but we could not have
+      known this, if we hadn't faced the whole problem and derived a
+      formula showing that the difference is minor;
+    \end{minipage}
+  \item
+    \begin{minipage}[t]{0.8\linewidth}
+      application of the method with higher-order constrains can show more
+      interesting differences between sample- and population-level
+      distributions. See e.g. the plot on the right. This should be added
+      in an amended version of the paper. Unfortunately there are space
+      constraints.
+    \end{minipage}\hspace{\fill}
+    \smash{\begin{minipage}[c]{0.19\linewidth}\vspace{0pt}
+      \includegraphics[width=\linewidth]{zoom_4mom.png}
+    \end{minipage}}
+
+%     % \setlength{\intextsep}{0.5ex}% with wrapfigure
+%     \begin{figure}[h!]%{r}{0.4\linewidth} % with wrapfigure
+%   \centering
+% %\caption{***}\label{fig:comparison_a5}
+% \end{figure}
+  \item The population-level distribution can be more or less entropic of
+    the sample-level one. is actually \emph{less} entropic. By
     lifting the constraints to the population level, the maximum-entropy
     principle allows us to explore even \emph{more entropic} sample
     distributions than those allowed by a direct application at the sample

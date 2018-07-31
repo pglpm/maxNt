@@ -1,0 +1,24 @@
+* line 2: "we don't discuss here": ad "due to space constraints".
+
+Reviewer 1:
+* the reviewer raises 4 major points, but we address only 2. We should address all: Something like:
+  " 2. We thank the reviewer for the relevant reference, that should indeed be added in an amended version of the paper
+    3. [current point2]
+    4. [who does the reviewer "agree" with? us? Don't remember this statement in our submitted paper; but we should reply...]
+
+Reviewer 2.
+* Bullet point 1 should be split into two (or renamed "1-2.", to match the two paragraphs where the reviewer addresses the first two issues: 1) comparison with related frameworks, and 2) long intro
+* here we need to say that, in light of the confusion/unawareness of many tricky aspects of maximum entropy modelling by many end users, we need the long intro to clearly set the stage and define the problem. Comparison with other frameworks is certainly a major point for future work, but absolutely wouldn't fit the space contraints of NIPS.
+* Bullet Points 2 and 3 of our reply should be merged together (point 2), to make them corresponding to the one paragraph where the reviewer asks about rates and correlations.
+* on current bullet point 2: I believe that they also "determine", and don't "affect", the results, just like you nicely put it for the correlations. After all, correlation values are a function of rates also. 
+  Besides, I didn't really understand the final reply we give on this point. I find the reviewer's question meaningful (higher rates typically "mask" existing cooperativity by increasing the surrounding noise).
+  I would like to discuss this with you guys (Luca?) before writing the reply.
+
+Reviewer 3:
+[The reviewer was all and all very positive and supportive. I would use that to our own advantage by maintaining a very positive tone]
+I would thank the reviewer and point out that:
+* even minor differences in the null distribution predicted by the different approaches may lead to considerably different interpretations of the underlying dynamics. For instance, the right tail obtained by the population approaches (with population known and unknown, doesn't matter here) is considerably thinner than that predicted using MAxEnt at sample level. Consequently, higher-order interactions (e.g. synchronous spikes) observed in the data would have a much larger statistical significance (and this is exactly the type of question Schneidman and colleagues were addressing in their research that popularized MaxEnt in neuroscience). This should added to our discussion
+* Bigger differences could be seen in future experimental data
+* Being able to measure that difference, independent of its magnitude, is relevant per se, as you righteously point out (but be less aggressive).
+
+

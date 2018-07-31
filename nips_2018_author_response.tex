@@ -40,8 +40,8 @@
 \SetEnumitemKey{para}{itemindent=\parindent,leftmargin=0pt,listparindent=\parindent,parsep=0pt,itemsep=\topsep,topsep=0pt}
 % \begin{asparaenum} = \begin{enumerate}[para]
 % \begin{inparaenum} = \begin{enumerate*}
-\setlist[enumerate,2]{label=\alph*.}
-\setlist[enumerate]{leftmargin=1.5em,topsep=-1ex}
+\setlist[enumerate,2]{label=\alph*}
+\setlist[enumerate]{leftmargin=1.5em,topsep=-1ex,itemsep=0.5ex}
 \setlist[itemize]{leftmargin=1.5em}
 \setlist[description]{leftmargin=\parindent}
 
@@ -139,75 +139,122 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle}}
 
 \begin{document}
 We thank the reviewers for their analysis, appreciative words, and
-suggestions. We reply to major points only. The manuscript can be easily
-amended to address the points we don't discuss here.
+suggestions. Our reply below does not address the points that can be easily
+addressed by amending our manuscript.
+
+\bigskip
 
 \textbf{Reviewer 1}
-\begin{enumerate}
-\item It would be interesting to use the frequency distribution of the
-  sample activity, measured in the recording, as a constraint, equivalent
-  to $n$ moment constraints. In fact, using it at the population level is
-  less questionable than using at the sample level (activities with zero
-  frequencies lead to zeroes in the maximum-entropy distribution, and these
-  are unreasonable because the sample size is much smaller than the
-  state-space size. This indicates that maximum-entropy is used beyond its
-  range of validity). Its use, however, addresses a different question than
-  the one discussed in our introduction, namely to define and measure
-  \enquote{cooperativity} by comparing maximum-entropy distributions
-  constructed from different numbers of moments.
-\item It's true, we forgot to discuss how the population-level application
-  solves the sample-size-dependence of maximum-entropy results pointed out in
-  previous literature. This should be addressed in an amended version of
-  the paper.
+\begin{enumerate}[wide]
+\item \emph{\enquote{$P(s)$}:} To be honest we are not sure what the
+  Reviewer means with \enquote{$P(s)$-type constraints} (the Reviewer's
+  comment is truncated). If it means the empirical frequency distribution
+  of the sample activity, equivalent to $n$ moment constraints, then it is
+  one of the distributions calculated at step 2. of the protocol (lines
+  27--56), to be compared with the other distributions. We may add that
+  using the empirical frequencies as constraints at the sample level
+  is questionable: activities with zero frequencies lead to zeroes in the
+  maximum-entropy distribution, and these are unreasonable because the
+  sample size is much smaller than the state-space size. This indicates
+  that maximum-entropy is used beyond its range of validity. The approach
+  at the population level + marginalization cures this problem somewhat.
+% Its use, however, addresses a different question than
+%   the one discussed in our introduction, namely to define and measure
+%   \enquote{cooperativity} by comparing maximum-entropy distributions
+%   constructed from different numbers of moments.
+\item \emph{Puzzling finds in the literature:} We apologize for having
+  forgotten to discuss this; this oversight can be easily fixed.
 \end{enumerate}
 
 \bigskip
 
 \textbf{Reviewer 2}
-\begin{enumerate}
-\item We agree that the comparison with other approaches is important. But
-  we believe that it's also important to carefully examine (1) the question
-  we're asking, and (2) which first principles can be used to translate it
-  into a mathematical problem. Some literature develops very refined --
-  though often ad hoc -- mathematical techniques, but then leaves us
-  unsatisfied, with the lingering question \enquote{why were we doing
-    this?}. This is the reason for our long introductory discussion about
-  the problem and about the first principles that can be used to address
-  it. See also our reply to Reviewer 3 below.
-\item The firing rate likely affects the results and the quantification of
-  \enquote{cooperativity}. The question is: Is this an issue? is our idea
-  of \enquote{cooperativity} invariant with respect to the firing rate, or
-  not? Requirements of this kind constrain the translation of cooperativity
-  into a mathematical quantity. This again shows the importance of defining
-  the question we're asking first.
-\item Regarding correlations: the method quantifies cooperativity using the
-  measured correlations; see the \enquote{protocol} 1--3 in the
-  Introduction. Thus, correlations determine the result rather than
-  affecting it.
-\item We agree that there are many approaches in the literature. In the
-  literature we have explored we've seen very little use of the basic
-  sampling formulae presented in our paper. Honestly this surprised us,
-  because they're surely essential even in a very basic analysis of the data.
+\begin{enumerate}[wide]
+\item \emph{Comparison with other frameworks and long intro:} The
+  comparison with other approaches and the exploration of more results are
+  indeed important. There are two reasons why we gave less space to them:
+  \begin{enumerate}[label=\alph*.,itemsep=0ex]
+  \item We think that most literature hurries in deriving results and does
+    not give enough space to the examination of the principles behind a
+    method. This worries us. The misapplication of a method often cannot be
+    detected by its results alone. This is especially true for
+    maximum-entropy. We risk finding a plethora of results that may even
+    look interesting but are meaningless, because the method was not
+    meaningfully applied. In turn, this often happens because the problem
+    we wanted to solve with that method is too vaguely defined. For this
+    reason we wanted to give large space to defining the problem and to
+    discussing how the method and its principles should be applied to it.
+    Our wish is that our readers will give more thoughts to these matters.
+  \item We focus on the comparison between the \enquote{naive}
+    maximum-entropy method, and the maximum-entropy method that accounts
+    for the sampling context. The eight-page limit was not enough to make
+    comparisons with more methods and discuss results. Also, a long
+    discussion about further results would steal focus from the examination
+    of the problem and the principles, which are our main concern and message.
+  \end{enumerate}
+
+
+%   As this Reviewer and Reviewer 2 remark, the points and findings above
+% deserve more discussion. Unfortunately there are space constraints, and we
+% preferred to give more room to a careful analysis of the principles behind
+% the method, to see whether the method is correctly applied. Our main wish
+% is that our readers will give more thoughts to these matters. We could
+% hurry up and produce a lot of mathematical results; but, whether positive
+% or negative, any results are meaningless if the method isn't meaningfully
+% applied. And it isn't always the case that a meaningful application of a
+% method can be judged by its results alone.
+  % But we believe that it's also important to carefully
+  % examine (1) the question we're asking, and (2) which first principles can
+  % be used to translate it into a mathematical problem. Some literature
+  % develops very refined -- though often ad hoc -- mathematical techniques,
+  % but then leaves us unsatisfied, with the lingering question \enquote{why
+  %   were we doing this?}. This is the reason for our long introductory
+  % discussion about the problem and about the first principles that can be
+  % used to address it. See also our reply to Reviewer 3 below.
+\item \emph{The effect of firing rates and correlations:} The empirical
+  correlations determine (rather than affect) the result; see the protocol
+  1--3, lines 27--56. Firing rates surely affect the results, and this is
+  an interesting question: most literature seem to seek a measure of
+  \enquote{cooperativity} that is invariant under firing-rate changes. We
+  wonder whether maximum-entropy can provide this. Again, this is a
+  question that should be addressed in defining the problem and the
+  principles behind the method to solve it.
+%   likely affects the results and the
+%   quantification of \enquote{cooperativity}. The question is: Is this an
+%   issue? is our idea of \enquote{cooperativity} invariant with respect to
+%   the firing rate, or not? Requirements of this kind constrain the
+%   translation of cooperativity into a mathematical quantity. This again
+%   shows the importance of defining the question we're asking first.
+% \item Regarding correlations: the method quantifies cooperativity using the
+%   measured correlations; see the \enquote{protocol} 1--3 in the
+%   Introduction. Thus, correlations determine the result rather than
+%   affecting it.
+\item \emph{Bayesian approaches and sampling:} The literature indeed offers
+  fully Bayesian approaches, which we also prefer. But maximum-entropy
+  methods still abound in the literature, and maybe they can be reasonably
+  motivated. Our goal is to point out the subtlety in apply these methods.
+  In the literature we have explored we've seen very little use of the
+  basic sampling formulae presented in our paper. Honestly this surprised
+  us, because they're surely essential even in a very basic analysis of the
+  data.
 \end{enumerate}
 
 \bigskip
 
 \textbf{Reviewer 3}
-\begin{enumerate}
-\item We agree with the Reviewer that the main formulae of the paper, (17)
-  and (19), probably have little \emph{experimental} use today. But the
-  formulae and the analysis behind them are important exactly for the
-  points raised by the Reviewer:
-  \begin{itemize}
-  \item \begin{minipage}[t]{0.74\linewidth}The Reviewer says \enquote{the
-        differences between the sample level and population level
-        distribution seem minor}: this could be true, but we could not have
-      known this, if we hadn't faced the whole problem and derived a
-      formula showing that the difference is minor.
-    \end{minipage}\hspace{\fill}
-    \smash{\begin{minipage}[t]{0.24\linewidth}\vspace{0pt}
-      \includegraphics[width=\linewidth]{zoom_4mom.png}
-    \end{minipage}}
+\begin{enumerate}[wide]
+\item \emph{Whether it matters in practice:} We agree with the Reviewer
+  that the consequences of the differences between the two applications
+  should be discussed further in the manuscript. In particular:
+  \begin{enumerate}[label=\alph*.,itemsep=0ex]
+  \item Minor differences may lead to considerably different
+    interpretations of the underlying activity. For instance, the thinner
+    right tail of the population-level distribution indicates that
+    higher-order correlations observed in the data have larger statistical
+    significance (this is the type of question Schneidman et al. were
+    addressing in their research, which popularized maximum-entropy in
+    neuroscience). From this point of view, a more entropic distribution is
+    not necessarily more correct (we could just use a uniform distribution).
   \item
     \begin{minipage}[t]{0.74\linewidth}
       Application of the method with higher-order constrains can show more
@@ -215,27 +262,45 @@ amended to address the points we don't discuss here.
       distributions. See e.g. the plot on the right, obtained with
       fourth-moment constraints: the bimodal
       distribution is the marginalized, population-level one.
+    \end{minipage}\hspace{\fill}
+    \smash{\begin{minipage}[t]{0.24\linewidth}\vspace{0pt}
+      \includegraphics[width=\linewidth]{zoom_4mom.png}
+    \end{minipage}}
+  \item \begin{minipage}[t]{0.74\linewidth}Even if the differences were
+      negligible, we believe that the results of the paper would matter:
+      the point is that we could not have known about the presence or
+      absence of differences, if we had not faced the whole problem and
+      derived a formula showing that the difference were negligible.
     \end{minipage}
 %     % \setlength{\intextsep}{0.5ex}% with wrapfigure
 %     \begin{figure}[h!]%{r}{0.4\linewidth} % with wrapfigure
 %   \centering
 % %\caption{***}\label{fig:comparison_a5}
 % \end{figure}
-\item Calculations show that the population-level distribution can be less
-  or more entropic than the sample-level one. But a more entropic
-  distribution is not necessarily more correct (we could just use a uniform
-  distribution then). The question is how the constraints are appropriately
-  applied in the method. 
-\end{itemize}
-As this Reviewer and Reviewer 2 remark, the points and findings above
-deserve more discussion. Unfortunately there are space constraints, and we
-preferred to give more room to a careful analysis of the principles behind
-the method, to see whether the method is correctly applied. Our main wish
-is that our readers will give more thoughts to these matters. We could
-hurry up and produce a lot of mathematical results; but, whether positive
-or negative, any results are meaningless if the method isn't meaningfully
-applied. And it isn't always the case that a meaningful application of a
-method can be judged by its results alone.
+  \end{enumerate}
+\item\emph{Unnecessarily principled:} For our motivation in emphasizing
+  principles, we kindly ask the Reviewer to read our reply 1. to Reviewer~2
+  above. Probably the writing could be improved on our part to make the
+  paper flow more smoothly, without sacrificing the more philosophical
+  discussion?
+  % We agree with the Reviewer that the main formulae of the paper, (17)
+  % and (19), probably have little \emph{experimental} use today. But the
+  % formulae and the analysis behind them are important exactly for the
+  % points raised by the Reviewer:
+% \item Calculations show that the population-level distribution can be less
+%   or more entropic than the sample-level one. But a more entropic
+%   distribution is not necessarily more correct (we could just use a uniform
+%   distribution then). The question is how the constraints are appropriately
+%   applied in the method. 
+% \item As this Reviewer and Reviewer 2 remark, the points and findings above
+% deserve more discussion. Unfortunately there are space constraints, and we
+% preferred to give more room to a careful analysis of the principles behind
+% the method, to see whether the method is correctly applied. Our main wish
+% is that our readers will give more thoughts to these matters. We could
+% hurry up and produce a lot of mathematical results; but, whether positive
+% or negative, any results are meaningless if the method isn't meaningfully
+% applied. And it isn't always the case that a meaningful application of a
+% method can be judged by its results alone.
 % \item We agree with Reviewer 3 that the paper emphasizes some philosophical
 %   aspects; intentionally so. Sadly we can't make all kinds of readers
 %   happy; a choice of audience is necessary. As readers ourselves we

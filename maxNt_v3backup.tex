@@ -1,0 +1,1429 @@
+\pdfoutput=1
+%% Author: PGL  Porta Mana
+%% Created: 2015-11-04T09:20:08+0100
+%% Last-Updated: 2018-07-26T21:05:58+0200
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Report-no: ***
+\documentclass{article}
+
+% if you need to pass options to natbib, use, e.g.:
+% \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading nips_2017
+%
+% to avoid loading the natbib package, add option nonatbib:
+% \usepackage[nonatbib]{nips_2017}
+
+\usepackage[preprint,%
+nonatbib]{nips_2018}
+
+\newcommand*{\firstdraft}{4 November 2015}
+\newcommand*{\published}{22 May 2018}
+
+\newcommand*{\pdftitle}{Maximum-entropy and representative samples\\ of neuronal
+  activity: a dilemma}
+
+\newcommand*{\headtitle}{\pdftitle} \newcommand*{\pdfauthor}{P.G.L.  Porta Mana, V. Rostami, E. Torre, Y. Roudi}
+\usepackage{newtxmath}
+%\usepackage{pifont}
+%\usepackage{fontawesome}
+\usepackage[T1]{fontenc} 
+\input{glyphtounicode} \pdfgentounicode=1
+\usepackage[utf8]{inputenx}
+%\usepackage{newunicodechar}
+% \newunicodechar{Ĕ}{\u{E}}
+% \newunicodechar{ĕ}{\u{e}}
+% \newunicodechar{Ĭ}{\u{I}}
+% \newunicodechar{ĭ}{\u{\i}}
+% \newunicodechar{Ŏ}{\u{O}}
+% \newunicodechar{ŏ}{\u{o}}
+% \newunicodechar{Ŭ}{\u{U}}
+% \newunicodechar{ŭ}{\u{u}}
+% \newunicodechar{Ā}{\=A}
+% \newunicodechar{ā}{\=a}
+% \newunicodechar{Ē}{\=E}
+% \newunicodechar{ē}{\=e}
+% \newunicodechar{Ī}{\=I}
+% \newunicodechar{ī}{\={\i}}
+% \newunicodechar{Ō}{\=O}
+% \newunicodechar{ō}{\=o}
+% \newunicodechar{Ū}{\=U}
+% \newunicodechar{ū}{\=u}
+% \newunicodechar{Ȳ}{\=Y}
+% \newunicodechar{ȳ}{\=y}
+
+\newcommand*{\bmmax}{3} % reduce number of bold fonts, before bm
+\newcommand*{\hmmax}{0} % reduce number of heavy fonts, before bm
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\setlength{\multlinegap}{0pt}
+
+\usepackage{amssymb}
+\usepackage{amsxtra}
+
+\usepackage[british]{babel}\selectlanguage{british}
+\newcommand*{\langfrench}{\foreignlanguage{french}}
+\newcommand*{\langgerman}{\foreignlanguage{german}}
+\newcommand*{\langitalian}{\foreignlanguage{italian}}
+\newcommand*{\langswedish}{\foreignlanguage{swedish}}
+\newcommand*{\langlatin}{\foreignlanguage{latin}}
+\newcommand*{\langnohyph}{\foreignlanguage{nohyphenation}}
+
+\usepackage[autostyle=false,autopunct=false,english=british]{csquotes}
+\setquotestyle{british}
+
+\let\openbox\relax
+\usepackage{amsthm}
+\newcommand*{\QED}{\textsc{q.e.d.}}
+\renewcommand*{\qedsymbol}{\QED}
+\theoremstyle{remark}
+\newtheorem{note}{Note}
+\newtheorem*{remark}{Note}
+\newtheoremstyle{innote}{\parsep}{\parsep}{\footnotesize}{}{}{}{0pt}{}
+\theoremstyle{innote}
+\newtheorem*{innote}{}
+
+\usepackage{bm}
+
+\iffalse
+\usepackage[shortlabels,inline]{enumitem}
+\SetEnumitemKey{para}{itemindent=\parindent,leftmargin=0pt,listparindent=\parindent,parsep=0pt,itemsep=\topsep}
+% \begin{asparaenum} = \begin{enumerate}[para]
+% \begin{inparaenum} = \begin{enumerate*}
+\setlist[enumerate,2]{label=\alph*.}
+\setlist[enumerate]{leftmargin=\parindent}
+\setlist[itemize]{leftmargin=\parindent}
+\setlist[description]{leftmargin=\parindent}
+\fi
+
+%% With euler font cursive for Greek letters - the [1] means 100% scaling
+\DeclareFontFamily{U}{egreek}{\skewchar\font'177}%
+\DeclareFontShape{U}{egreek}{m}{n}{<-6>s*[0.95]eurm5 <6-8>s*[0.95]eurm7 <8->s*[0.95]eurm10}{}%
+\DeclareFontShape{U}{egreek}{m}{it}{<->s*[0.95]eurmo10}{}%
+\DeclareFontShape{U}{egreek}{b}{n}{<-6>s*[0.95]eurb5 <6-8>s*[0.95]eurb7 <8->s*[0.95]eurb10}{}%
+\DeclareFontShape{U}{egreek}{b}{it}{<->s*[0.95]eurbo10}{}%
+\DeclareSymbolFont{egreeki}{U}{egreek}{m}{it}%
+\SetSymbolFont{egreeki}{bold}{U}{egreek}{b}{it}% from the amsfonts package
+\DeclareSymbolFont{egreekr}{U}{egreek}{m}{n}%
+\SetSymbolFont{egreekr}{bold}{U}{egreek}{b}{n}% from the amsfonts package
+% Take also \sum, \prod, \coprod symbols from Euler fonts
+\DeclareFontFamily{U}{egreekx}{\skewchar\font'177}
+\DeclareFontShape{U}{egreekx}{m}{n}{%
+       <-7.5>s*[0.9]euex7%
+    <7.5-8.5>s*[0.9]euex8%
+    <8.5-9.5>s*[0.9]euex9%
+    <9.5->s*[0.9]euex10%
+}{}
+\DeclareSymbolFont{egreekx}{U}{egreekx}{m}{n}
+\DeclareMathSymbol{\sumop}{\mathop}{egreekx}{"50}
+\DeclareMathSymbol{\prodop}{\mathop}{egreekx}{"51}
+\DeclareMathSymbol{\coprodop}{\mathop}{egreekx}{"60}
+\makeatletter
+\def\sum{\DOTSI\sumop\slimits@}
+\def\prod{\DOTSI\prodop\slimits@}
+\def\coprod{\DOTSI\coprodop\slimits@}
+\makeatother
+% Greek letters not usually given in LaTeX. Comment the unneeded ones
+% \DeclareMathSymbol{\varpartial}{\mathalpha}{egreeki}{"40}
+% \DeclareMathSymbol{\partialup}{\mathalpha}{egreekr}{"40}
+% \DeclareMathSymbol{\alpha}{\mathalpha}{egreeki}{"0B}
+% \DeclareMathSymbol{\beta}{\mathalpha}{egreeki}{"0C}
+% \DeclareMathSymbol{\gamma}{\mathalpha}{egreeki}{"0D}
+% \DeclareMathSymbol{\delta}{\mathalpha}{egreeki}{"0E}
+% \DeclareMathSymbol{\epsilon}{\mathalpha}{egreeki}{"0F}
+ \DeclareMathSymbol{\zeta}{\mathalpha}{egreeki}{"10}
+% \DeclareMathSymbol{\eta}{\mathalpha}{egreeki}{"11}
+% \DeclareMathSymbol{\theta}{\mathalpha}{egreeki}{"12}
+ \DeclareMathSymbol{\iota}{\mathalpha}{egreeki}{"13}
+ \DeclareMathSymbol{\kappa}{\mathalpha}{egreeki}{"14}
+ \DeclareMathSymbol{\lambda}{\mathalpha}{egreeki}{"15}
+% \DeclareMathSymbol{\mu}{\mathalpha}{egreeki}{"16}
+ \DeclareMathSymbol{\nu}{\mathalpha}{egreeki}{"17}
+ \DeclareMathSymbol{\xi}{\mathalpha}{egreeki}{"18}
+% \DeclareMathSymbol{\omicron}{\mathalpha}{egreeki}{"6F}
+% \DeclareMathSymbol{\pi}{\mathalpha}{egreeki}{"19}
+% \DeclareMathSymbol{\rho}{\mathalpha}{egreeki}{"1A}
+ \DeclareMathSymbol{\sigma}{\mathalpha}{egreeki}{"1B}
+% \DeclareMathSymbol{\tau}{\mathalpha}{egreeki}{"1C}
+% \DeclareMathSymbol{\upsilon}{\mathalpha}{egreeki}{"1D}
+% \DeclareMathSymbol{\phi}{\mathalpha}{egreeki}{"1E}
+% \DeclareMathSymbol{\chi}{\mathalpha}{egreeki}{"1F}
+% \DeclareMathSymbol{\psi}{\mathalpha}{egreeki}{"20}
+% \DeclareMathSymbol{\omega}{\mathalpha}{egreeki}{"21}
+% \DeclareMathSymbol{\varepsilon}{\mathalpha}{egreeki}{"22}
+% \DeclareMathSymbol{\vartheta}{\mathalpha}{egreeki}{"23}
+% \DeclareMathSymbol{\varpi}{\mathalpha}{egreeki}{"24}
+% \let\varrho\rho 
+% \let\varsigma\sigma
+% \let\varkappa\kappa
+% \DeclareMathSymbol{\varphi}{\mathalpha}{egreeki}{"27}
+% %
+% \DeclareMathSymbol{\varAlpha}{\mathalpha}{egreeki}{"41}
+% \DeclareMathSymbol{\varBeta}{\mathalpha}{egreeki}{"42}
+% \DeclareMathSymbol{\varGamma}{\mathalpha}{egreeki}{"00}
+% \DeclareMathSymbol{\varDelta}{\mathalpha}{egreeki}{"01}
+% \DeclareMathSymbol{\varEpsilon}{\mathalpha}{egreeki}{"45}
+ \DeclareMathSymbol{\varZeta}{\mathalpha}{egreeki}{"5A}
+% \DeclareMathSymbol{\varEta}{\mathalpha}{egreeki}{"48}
+% \DeclareMathSymbol{\varTheta}{\mathalpha}{egreeki}{"02}
+ \DeclareMathSymbol{\varIota}{\mathalpha}{egreeki}{"49}
+ \DeclareMathSymbol{\varKappa}{\mathalpha}{egreeki}{"4B}
+ \DeclareMathSymbol{\varLambda}{\mathalpha}{egreeki}{"03}
+% \DeclareMathSymbol{\varMu}{\mathalpha}{egreeki}{"4D}
+ \DeclareMathSymbol{\varNu}{\mathalpha}{egreeki}{"4E}
+ \DeclareMathSymbol{\varXi}{\mathalpha}{egreeki}{"04}
+% \DeclareMathSymbol{\varOmicron}{\mathalpha}{egreeki}{"4F}
+% \DeclareMathSymbol{\varPi}{\mathalpha}{egreeki}{"05}
+% \DeclareMathSymbol{\varRho}{\mathalpha}{egreeki}{"50}
+ \DeclareMathSymbol{\varSigma}{\mathalpha}{egreeki}{"06}
+% \DeclareMathSymbol{\varTau}{\mathalpha}{egreeki}{"54}
+ \DeclareMathSymbol{\varUpsilon}{\mathalpha}{egreeki}{"07}
+% \DeclareMathSymbol{\varPhi}{\mathalpha}{egreeki}{"08}
+% \DeclareMathSymbol{\varChi}{\mathalpha}{egreeki}{"58}
+% \DeclareMathSymbol{\varPsi}{\mathalpha}{egreeki}{"09}
+% \DeclareMathSymbol{\varOmega}{\mathalpha}{egreeki}{"0A} 
+% %
+% \DeclareMathSymbol{\Alpha}{\mathalpha}{egreekr}{"41}
+% \DeclareMathSymbol{\Beta}{\mathalpha}{egreekr}{"42}
+% \DeclareMathSymbol{\Gamma}{\mathalpha}{egreekr}{"00}
+% \DeclareMathSymbol{\Delta}{\mathalpha}{egreekr}{"01}
+% \DeclareMathSymbol{\Epsilon}{\mathalpha}{egreekr}{"45}
+% \DeclareMathSymbol{\Zeta}{\mathalpha}{egreekr}{"5A}
+% \DeclareMathSymbol{\Eta}{\mathalpha}{egreekr}{"48}
+% \DeclareMathSymbol{\Theta}{\mathalpha}{egreekr}{"02}
+% \DeclareMathSymbol{\Iota}{\mathalpha}{egreekr}{"49}
+% \DeclareMathSymbol{\Kappa}{\mathalpha}{egreekr}{"4B}
+% \DeclareMathSymbol{\Lambda}{\mathalpha}{egreekr}{"03}
+% \DeclareMathSymbol{\Mu}{\mathalpha}{egreekr}{"4D}
+% \DeclareMathSymbol{\Nu}{\mathalpha}{egreekr}{"4E}
+% \DeclareMathSymbol{\Xi}{\mathalpha}{egreekr}{"04}
+% \DeclareMathSymbol{\Omicron}{\mathalpha}{egreekr}{"4F}
+% \DeclareMathSymbol{\Pi}{\mathalpha}{egreekr}{"05}
+% \DeclareMathSymbol{\Rho}{\mathalpha}{egreekr}{"50}
+% \DeclareMathSymbol{\Sigma}{\mathalpha}{egreekr}{"06}
+% \DeclareMathSymbol{\Tau}{\mathalpha}{egreekr}{"54}
+% \DeclareMathSymbol{\Upsilon}{\mathalpha}{egreekr}{"07}
+% \DeclareMathSymbol{\Phi}{\mathalpha}{egreekr}{"08}
+% \DeclareMathSymbol{\Chi}{\mathalpha}{egreekr}{"58}
+% \DeclareMathSymbol{\Psi}{\mathalpha}{egreekr}{"09}
+% \DeclareMathSymbol{\Omega}{\mathalpha}{egreekr}{"0A}
+% %
+% \DeclareMathSymbol{\alphaup}{\mathalpha}{egreekr}{"0B}
+% \DeclareMathSymbol{\betaup}{\mathalpha}{egreekr}{"0C}
+% \DeclareMathSymbol{\gammaup}{\mathalpha}{egreekr}{"0D}
+% \DeclareMathSymbol{\deltaup}{\mathalpha}{egreekr}{"0E}
+% \DeclareMathSymbol{\epsilonup}{\mathalpha}{egreekr}{"0F}
+% \DeclareMathSymbol{\zetaup}{\mathalpha}{egreekr}{"10}
+% \DeclareMathSymbol{\etaup}{\mathalpha}{egreekr}{"11}
+% \DeclareMathSymbol{\thetaup}{\mathalpha}{egreekr}{"12}
+% \DeclareMathSymbol{\iotaup}{\mathalpha}{egreekr}{"13}
+% \DeclareMathSymbol{\kappaup}{\mathalpha}{egreekr}{"14}
+% \DeclareMathSymbol{\lambdaup}{\mathalpha}{egreekr}{"15}
+% \DeclareMathSymbol{\muup}{\mathalpha}{egreekr}{"16}
+% \DeclareMathSymbol{\nuup}{\mathalpha}{egreekr}{"17}
+% \DeclareMathSymbol{\xiup}{\mathalpha}{egreekr}{"18}
+% \DeclareMathSymbol{\omicronup}{\mathalpha}{egreekr}{"6F}
+%  \DeclareMathSymbol{\piup}{\mathalpha}{egreekr}{"19}
+% \DeclareMathSymbol{\rhoup}{\mathalpha}{egreekr}{"1A}
+% \DeclareMathSymbol{\sigmaup}{\mathalpha}{egreekr}{"1B}
+% \DeclareMathSymbol{\tauup}{\mathalpha}{egreekr}{"1C}
+% \DeclareMathSymbol{\upsilonup}{\mathalpha}{egreekr}{"1D}
+% \DeclareMathSymbol{\phiup}{\mathalpha}{egreekr}{"1E}
+% \DeclareMathSymbol{\chiup}{\mathalpha}{egreekr}{"1F}
+% \DeclareMathSymbol{\psiup}{\mathalpha}{egreekr}{"20}
+% \DeclareMathSymbol{\omegaup}{\mathalpha}{egreekr}{"21}
+% \DeclareMathSymbol{\varepsilonup}{\mathalpha}{egreekr}{"22}
+% \DeclareMathSymbol{\varthetaup}{\mathalpha}{egreekr}{"23}
+% \DeclareMathSymbol{\varpiup}{\mathalpha}{egreekr}{"24}
+% \let\varrhoup\rhoup 
+% \let\varsigmaup\sigmaup
+% \let\varkappaup\kappaup
+% \DeclareMathSymbol{\varphiup}{\mathalpha}{egreekr}{"27}
+
+%\newcommand*{\mathte}[1]{\textbf{\textit{\textsf{#1}}}}
+% Upright sans-serif math alphabet
+% \DeclareMathAlphabet{\mathsu}  {T1}{\sfdefault}{m}{n}
+% \SetMathAlphabet{\mathsu}{bold}{T1}{\sfdefault}{b}{n}
+
+\usepackage{mathdots}
+
+\usepackage[usenames]{xcolor}
+\definecolor{mybluishpurple}{RGB}{51,34,136}
+\definecolor{myblue}{RGB}{136,204,238}
+\definecolor{mybluishgreen}{RGB}{68,170,153}
+\definecolor{mygreen}{RGB}{17,119,51}
+\definecolor{mygreenishyellow}{RGB}{153,153,51}
+\definecolor{myyellow}{RGB}{221,204,119}
+\definecolor{myred}{RGB}{204,102,119}
+\definecolor{mypurplishred}{RGB}{136,34,85}
+\definecolor{myreddishpurple}{RGB}{170,68,153}
+\definecolor{mygrey}{RGB}{221,221,221}
+
+\usepackage{microtype}
+
+\usepackage[backend=biber,mcite,subentry,citestyle=numeric-comp,bibstyle=numericbringhurst,autopunct=false,sorting=none,sortcites=false,natbib=false,maxnames=8,minnames=8,giveninits=true,block=space,hyperref=true,defernumbers=false,useprefix=true,language=british]{biblatex}
+\renewcommand*{\finalnamedelim}{, }
+\setcounter{biburlnumpenalty}{1}
+\setcounter{biburlucpenalty}{0}
+\setcounter{biburllcpenalty}{1}
+\DeclareDelimFormat{multicitedelim}{\addsemicolon\space}
+\DeclareDelimFormat{postnotedelim}{\space}
+\addbibresource{portamanabib.bib}%comment for arxiv
+\renewcommand{\bibfont}{\footnotesize}
+%\defbibheading{bibliography}[\bibname]{\section*{#1}\addcontentsline{toc}{section}{#1}%\markboth{#1}{#1}
+%}
+\newcommand*{\citep}{\parencites}
+\newcommand*{\citey}{\parencites*}
+\renewcommand*{\cite}{\citep}
+\providecommand{\href}[2]{#2}
+\providecommand{\eprint}[2]{\texttt{\href{#1}{#2}}}
+\newcommand*{\amp}{\&}
+
+\newcommand*{\arxiveprint}[1]{%\global\def\arxivp{\arxivsi}%\citeauthor{0arxivcite}\addtocategory{ifarchcit}{0arxivcite}%eprint
+\texttt{\urlalt{https://arxiv.org/abs/#1}{arXiv:\hspace{0pt}#1}}%
+%\texttt{\href{http://arxiv.org/abs/#1}{\protect\url{arXiv:#1}}}%
+%\renewcommand{\arxivnote}{\texttt{arXiv} eprints available at \url{http://arxiv.org/}.}
+}
+\newcommand*{\mparceprint}[1]{%\global\def\mparcp{\mparcsi}%\citeauthor{0mparccite}\addtocategory{ifarchcit}{0mparccite}%eprint
+\texttt{\urlalt{http://www.ma.utexas.edu/mp_arc-bin/mpa?yn=#1}{mp\_arc:\hspace{0pt}#1}}%
+%\texttt{\href{http://www.ma.utexas.edu/mp_arc-bin/mpa?yn=#1}{\protect\url{mp_arc:#1}}}%
+%\providecommand{\mparcnote}{\texttt{mp_arc} eprints available at \url{http://www.ma.utexas.edu/mp_arc/}.}
+}
+\newcommand*{\philscieprint}[1]{%\global\def\philscip{\philscisi}%\citeauthor{0philscicite}\addtocategory{ifarchcit}{0philscicite}%eprint
+\texttt{\urlalt{http://philsci-archive.pitt.edu/archive/#1}{PhilSci:\hspace{0pt}#1}}%
+%\texttt{\href{http://philsci-archive.pitt.edu/archive/#1}{\protect\url{PhilSci:#1}}}%
+%\providecommand{\mparcnote}{\texttt{philsci} eprints available at \url{http://philsci-archive.pitt.edu/}.}
+}
+\newcommand*{\biorxiveprint}[1]{%\global\def\biorxivp{\biorxivsi}%\citeauthor{0arxivcite}\addtocategory{ifarchcit}{0arxivcite}%eprint
+\texttt{\urlalt{http://biorxiv.org/content/early/#1}{bioRxiv:\hspace{0pt}#1}}%
+%\texttt{\href{http://arxiv.org/abs/#1}{\protect\url{arXiv:#1}}}%
+%\renewcommand{\arxivnote}{\texttt{arXiv} eprints available at \url{http://arxiv.org/}.}
+}
+\newcommand*{\osfeprint}[1]{%
+\texttt{\urlalt{https://doi.org/10.17605/osf.io/#1}{doi:10.17605/osf.io/#1}}%
+}
+
+\usepackage{graphicx}
+
+\PassOptionsToPackage{hyphens}{url}\usepackage[hypertexnames=false]{hyperref}
+\usepackage[depth=4]{bookmark}
+\hypersetup{colorlinks=true,bookmarksnumbered,pdfborder={0 0 0.25},citebordercolor={0.2 0.1333 0.5333},%bluish
+citecolor=mybluishpurple,linkbordercolor={0.0667 0.4667 0.2},%greenish
+linkcolor=mypurplishred,urlbordercolor={0.5333 0.1333 0.3333},%reddish
+urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle},pdfauthor={\pdfauthor}}
+% \usepackage[vertfit=local]{breakurl}% only for arXiv
+\providecommand*{\urlalt}{\href}
+
+%\usepackage{wrapfig}
+\usepackage{datetime2}
+\DTMnewdatestyle{mydate}%
+{% definitions
+\renewcommand*{\DTMdisplaydate}[4]{%
+\number##3\ \DTMenglishmonthname{##2} ##1}%
+\renewcommand*{\DTMDisplaydate}{\DTMdisplaydate}%
+}
+\DTMsetdatestyle{mydate}
+
+
+% handling orphan/widow lines:
+\clubpenalty=10000
+\widowpenalty=10000
+\raggedbottom
+
+\selectlanguage{british}\frenchspacing
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+% \usepackage[final]{nips_2017}
+
+%\usepackage[utf8]{inputenc} % allow utf-8 input
+%\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+%\usepackage{hyperref}       % hyperlinks
+%\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+%\usepackage{amsfonts}       % blackboard math symbols
+%\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+%\usepackage{microtype}      % microtypography
+
+% @@@@@@@@@@ new macros @@@@@@@@@@
+% Common ones - uncomment as needed
+%\providecommand{\nequiv}{\not\equiv}
+%\providecommand{\coloneqq}{\mathrel{\mathop:}=}
+%\providecommand{\eqqcolon}{=\mathrel{\mathop:}}
+%\providecommand{\varprod}{\prod}
+%\newcommand*{\de}{\partialup}%partial diff
+%\newcommand*{\pu}{\piup}%constant pi
+\newcommand*{\delt}{\deltaup}%Kronecker, Dirac
+%\newcommand*{\eps}{\varepsilonup}%Levi-Civita, Heaviside
+%\newcommand*{\riem}{\zetaup}%Riemann zeta
+%\providecommand{\degree}{\textdegree}% degree
+%\newcommand*{\celsius}{\textcelsius}% degree Celsius
+%\newcommand*{\micro}{\textmu}% degree Celsius
+%\newcommand*{\I}{\mathrm{i}}%imaginary unit
+%\newcommand*{\e}{\mathrm{e}}%Neper
+%\newcommand*{\di}{\mathrm{d}}%differential
+%\newcommand*{\Di}{\mathrm{D}}%capital differential
+%\newcommand*{\planckc}{\hslash}
+%\newcommand*{\avogn}{N_{\textrm{A}}}
+%\newcommand*{\NN}{\bm{\mathrm{N}}}
+%\newcommand*{\ZZ}{\bm{\mathrm{Z}}}
+%\newcommand*{\QQ}{\bm{\mathrm{Q}}}
+\newcommand*{\RR}{\bm{\mathrm{R}}}
+%\newcommand*{\CC}{\bm{\mathrm{C}}}
+%\newcommand*{\nabl}{\bm{\nabla}}%nabla
+%\DeclareMathOperator{\lb}{lb}%base 2 log
+%\DeclareMathOperator{\tr}{tr}%trace
+%\DeclareMathOperator{\card}{card}%cardinality
+%\DeclareMathOperator{\im}{Im}%im part
+%\DeclareMathOperator{\re}{Re}%re part
+%\DeclareMathOperator{\sgn}{sgn}%signum
+%\DeclareMathOperator{\ent}{ent}%integer less or equal to
+%\DeclareMathOperator{\Ord}{O}%same order as
+%\DeclareMathOperator{\ord}{o}%lower order than
+%\newcommand*{\incr}{\triangle}%finite increment
+\newcommand*{\defd}{\coloneqq}
+\newcommand*{\defs}{\eqqcolon}
+%\newcommand*{\Land}{\bigwedge}
+%\newcommand*{\Lor}{\bigvee}
+%\newcommand*{\lland}{\mathbin{\ \land\ }}
+%\newcommand*{\llor}{\mathbin{\ \lor\ }}
+%\newcommand*{\lonlyif}{\mathbin{\Rightarrow}}%implies
+\newcommand*{\limplies}{\mathbin{\Rightarrow}}%implies
+%\newcommand*{\mimplies}{\Rightarrow}%implies
+%\newcommand*{\liff}{\mathbin{\Leftrightarrow}}%if and only if
+\renewcommand*{\|}{\mathpunct{|}}%conditional sign (in probabilities)
+%\newcommand*{\lcond}{\mathpunct{|\ }}%conditional sign (in probabilities)
+%\newcommand*{\bigcond}{\mathpunct{\big|}}%conditional sign (in probabilities)
+%\newcommand*{\lbigcond}{\mathpunct{\big|\ }}%conditional sign (in probabilities)
+%\newcommand*{\suchthat}{\mid}%{\mathpunct{|}}%such that (eg in sets)
+%\newcommand*{\bigst}{\mathpunct{\big|}}%such that (eg in sets)
+%\newcommand*{\with}{\colon}%with (list of indices)
+%\newcommand*{\mul}{\times}%multiplication
+%\newcommand*{\inn}{\cdot}%inner product
+\newcommand*{\dotv}{\mathord{\,\cdot\,}}%variable place
+%\newcommand*{\comp}{\circ}%composition of functions
+%\newcommand*{\con}{\mathbin{:}}%scal prod of tensors
+%\newcommand*{\equi}{\sim}%equivalent to 
+%\newcommand*{\corr}{\mathrel{\hat{=}}}%corresponds to
+%\providecommand{\varparallel}{\ensuremath{\mathbin{/\mkern-7mu/}}}%parallel (tentative symbol)
+\renewcommand{\le}{\leqslant}%less or equal
+\renewcommand{\ge}{\geqslant}%greater or equal
+\DeclarePairedDelimiter\clcl{[}{]}
+%\DeclarePairedDelimiter\clop{[}{[}
+%\DeclarePairedDelimiter\opcl{]}{]}
+%\DeclarePairedDelimiter\opop{]}{[}
+%\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+%\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\DeclarePairedDelimiter\set{\{}{\}}
+%\DeclareMathOperator{\pr}{P}%probability
+\newcommand*{\pf}{\mathrm{p}}%probability
+\newcommand*{\p}{\mathrm{P}}%probability
+%\newcommand*{\tf}{\mathrm{T}}%probability
+%\renewcommand*{\|}{\|}
+%\newcommand*{\+}{\lor}
+%\renewcommand{\*}{\land}
+\newcommand*{\sect}{\S}% Sect.~
+\newcommand*{\sects}{\S\S}% Sect.~
+\newcommand*{\chap}{ch.}%
+\newcommand*{\chaps}{chs}%
+%\newcommand*{\fn}{fn}%
+\newcommand*{\eqn}{eq.}%
+\newcommand*{\eqns}{eqs}%
+\newcommand*{\fig}{fig.}%
+\newcommand*{\figs}{figs}%
+\newcommand*{\vs}{{vs}}
+%\newcommand*{\etc}{{etc.}}
+%\newcommand*{\ie}{{i.e.}}
+%\newcommand*{\ca}{{c.}}
+%\newcommand*{\Ie}{{I.e.}}
+%\newcommand*{\Eg}{{E.g.}}
+%\newcommand*{\eg}{{e.g.}}
+%\newcommand*{\viz}{{viz}}
+\newcommand*{\cf}{{cf.}}
+%\newcommand*{\Cf}{{Cf.}}
+%\newcommand*{\vd}{{v.}}
+%\newcommand*{\Vd}{{V.}}
+\newcommand*{\etal}{{et al.}}
+%\newcommand*{\etsim}{{et sim.}}
+%\newcommand*{\ibid}{{ibid.}}
+%\newcommand*{\sic}{{sic}}
+%\newcommand*{\id}{\mathte{I}}%id matrix
+%\newcommand*{\nbd}{\nobreakdash}%
+%\newcommand*{\bd}{\hspace{0pt}}%
+%\def\hy{-\penalty0\hskip0pt\relax}
+\newcommand*{\labelbis}[1]{\tag*{(\ref{#1})$_\text{r}$}}
+%\newcommand*{\mathbox}[2][.8]{\parbox[t]{#1\columnwidth}{#2}}
+%\newcommand*{\zerob}[1]{\makebox[0pt][l]{#1}}
+%\newcommand*{\tprod}{\mathop{\textstyle\prod}\nolimits}
+%\newcommand*{\tsum}{\mathop{\textstyle\sum}\nolimits}
+%\newcommand*{\tint}{\begingroup\textstyle\int\endgroup\nolimits}
+%\newcommand*{\tland}{\mathop{\textstyle\bigwedge}\nolimits}
+%\newcommand*{\tlor}{\mathop{\textstyle\bigvee}\nolimits}
+%\newcommand*{\sprod}{\mathop{\textstyle\prod}}
+%\newcommand*{\ssum}{\mathop{\textstyle\sum}}
+%\newcommand*{\sint}{\begingroup\textstyle\int\endgroup}
+%\newcommand*{\sland}{\mathop{\textstyle\bigwedge}}
+%\newcommand*{\slor}{\mathop{\textstyle\bigvee}}
+\newcommand*{\T}{^\intercal}%transpose
+\newcommand*{\E}{\mathrm{E}}
+\DeclarePairedDelimiter\expp{(}{)}
+\newcommand*{\expe}{\E\expp}%round
+\newcommand*{\expeb}{\E\clcl}%square
+%%\newcommand*{\QEM}%{\textnormal{$\Box$}}%{\ding{167}}
+%\newcommand*{\qem}{\leavevmode\unskip\penalty9999 \hbox{}\nobreak\hfill
+%\quad\hbox{\QEM}}
+
+\newtheoremstyle{simple}%
+{}%.5\baselineskip plusminus.2\baselineskip % \parsep
+{}%
+{\footnotesize}%
+{}%
+{}%
+{}%
+{0pt}%
+{}%
+\theoremstyle{simple}
+\newtheorem*{simplenote}{}
+
+\definecolor{notecolour}{RGB}{68,170,153}
+\newcommand*{\puzzle}{{\fontencoding{U}\fontfamily{fontawesometwo}\selectfont\symbol{225}}}
+\newcommand{\mynote}[1]{ {\color{notecolour}\puzzle\ #1}}
+\newcommand*{\widebar}[1]{{\mkern1.5mu\skew{2}\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}}
+
+\newcommand*{\tav}{\widehat} %time average
+\newcommand*{\av}{\widebar} %pop average
+\newcommand*{\sav}{\widebar} %subpop average
+
+\newcommand*{\ypp}{\varPi}
+
+\newcommand*{\yXv}{\varSigma}
+\newcommand*{\yRv}{\sigma}
+\newcommand*{\yxv}{S}
+\newcommand*{\yrv}{s}
+\newcommand*{\yNv}{\nu}
+\newcommand*{\yNN}{\varNu}
+
+\newcommand*{\yx}{\bm{\yxv}}%subpop state
+\newcommand*{\yxs}{\sav{\yx}}%subpop av state
+\newcommand*{\yX}{\bm{\yXv}}%pop state
+\newcommand*{\yXf}{\av{\yX}}%pop av state
+\newcommand*{\yxxs}{\sav{\yr\yr}}%subpop av state
+\newcommand*{\yXXf}{\av{\yR\yR}}%subpop av state
+\newcommand*{\yr}{\bm{\yrv}}%subpop value
+\newcommand*{\yrs}{\sav{\yr}}%subpop av value
+\newcommand*{\yR}{\bm{\yRv}}%pop value
+\newcommand*{\yRf}{\av{\yR}}%pop av value
+%conditional assumptions
+\newcommand*{\yH}{\varIota}
+\newcommand*{\yD}{\varDelta}
+\newcommand*{\yHa}{\varIota_\textrm{p}}
+\newcommand*{\yHb}{\varIota_\textrm{s}}
+\newcommand*{\yHc}{\varKappa}
+\newcommand*{\yHd}{\varIota_\textrm{u}}
+\newcommand*{\yHp}{\varIota'}
+\newcommand*{\yHi}{\varIota''}
+%Lagr multipliers
+\newcommand*{\yf}{\bm{g}}
+\newcommand*{\yc}{\bm{c}}
+\newcommand*{\yL}{\bm{\lambda}}
+\newcommand*{\yl}{\bm{l}}
+\newcommand*{\yk}{z}
+\newcommand*{\yK}{\zeta}
+%entropies
+\newcommand*{\ysh}{H}
+\newcommand*{\ybu}{H_{\text{B}}}
+
+\newcommand*{\prop}[1]{`#1'}
+
+\newcommand*{\mee}{maximum entropy}
+\newcommand*{\me}{maximum-entropy}
+
+%@@@@@@@@@@ new macros end @@@@@@@@@@
+
+\selectlanguage{british}\frenchspacing
+
+
+\title{\pdftitle}
+
+% The \author macro works with any number of authors. There are two
+% commands used to separate the names and addresses of multiple
+% authors: \And and \AND.
+%
+% Using \And between authors leaves it to LaTeX to determine where to
+% break the lines. Using \AND forces a line break at that point. So,
+% if LaTeX puts 3 of 4 authors names on the first line, and the last
+% on the second line, try using \AND instead of \And before the third
+% author name.
+
+\author{
+  P.G.L. Porta Mana\\\texttt{piero.mana@ntnu.no}
+  \And
+  V. Rostami\\\texttt{vrostami@uni-koeln.de}
+  \AND
+  E. Torre\\\texttt{torre@ibk.baug.ethz.ch}
+    \And
+Y. Roudi\\\texttt{yasser.roudi@ntnu.no}
+  % David S.~Hippocampus\thanks{Use footnote for providing further
+  %   information about author (webpage, alternative
+  %   address)---\emph{not} for acknowledging funding agencies.} \\
+  % Department of Computer Science\\
+  % Cranberry-Lemon University\\
+  % Pittsburgh, PA 15213 \\
+  % \texttt{hippo@cs.cranberry-lemon.edu} \\
+  %% examples of more authors
+  %% \And
+  %% Coauthor \\
+  %% Affiliation \\
+  %% Address \\
+  %% \texttt{email} \\
+  %% \AND
+  %% Coauthor \\
+  %% Affiliation \\
+  %% Address \\
+  %% \texttt{email} \\
+  %% \And
+  %% Coauthor \\
+  %% Affiliation \\
+  %% Address \\
+  %% \texttt{email} \\
+  %% \And
+  %% Coauthor \\
+  %% Affiliation \\
+  %% Address \\
+  %% \texttt{email} \\
+}
+
+\begin{document}
+% \nipsfinalcopy is no longer used
+
+\maketitle
+
+\vspace{-2em}
+\begin{center}
+  \footnotesize\published
+\end{center}
+\medskip
+
+\begin{abstract}
+  The present work shows that the \me\ method can be applied to a sample of
+  neuronal recordings along two different routes: (1) apply to the sample;
+  or (2) apply to a larger, unsampled neuronal population from which the
+  sample is drawn, and then marginalize to the sample. These two routes
+  give inequivalent results. The second route can be further generalized to
+  the case where the size of the larger population is unknown. Which route
+  should be chosen? Some arguments are presented in favour of the second.
+  This work also presents and discusses probability formulae that relate
+  states of knowledge about a population and its samples, and that may be
+  useful for sampling problems in neuroscience.
+  % The abstract must be limited to one paragraph.
+\end{abstract}
+
+%\section{Implicit assumptions in the maximum-entropy method}
+\section{Introduction: \me\ and recordings of neuronal activity}
+\label{sec:intro}
+
+Suppose that we have recorded the firing activity of a hundred neurons,
+sampled from a particular brain area. What are we to do with such data?
+Gerstein, Perkel, Dayhoff \cite{gersteinetal1985} posed this question very
+tersely (our emphasis):
+\begin{quote}
+  The principal conceptual problems are (1) \emph{defining cooperativity or
+    functional grouping} among neurons and (2) \emph{formulating
+    quantitative criteria} for recognizing and characterizing such
+  cooperativity.
+\end{quote}
+These questions have a long history, of course; see for instance the 1966
+review by Moore \etal\
+\cite{mooreetal1966}. % This scenario is a concrete possibility
+% thanks to recent electrophysiological techniques \cite{berenyietal2014}.
+The neuroscientific literature has offered several mathematical definitions
+of \enquote{cooperativity} or \enquote{functional grouping} and criteria to
+quantify it.
+
+One such quantitative criterion relies on the \me\ or relative-\me\ method
+\cite{jaynes1957,jaynes1963,hobsonetal1973,sivia1996_r2006,meadetal1984}.
+This criterion has been used in neuroscience at least since the 1990s,
+applied to data recorded from brain areas as diverse as retina and motor
+cortex
+\cite{mackay1991,martignonetal1995,bohteetal2000,amarietal2003,schneidmanetal2006,shlensetal2006,mackeetal2009b,roudietal2009c,tkaciketal2009,gerwinnetal2009,mackeetal2011,mackeetal2011b,ganmoretal2011,granotatedgietal2013,tkaciketal2014b,moraetal2015,shimazakietal2015},
+and it has been subjected to mathematical and conceptual scrutiny
+\cite{tkaciketal2006,roudietal2009,roudietal2009b,barreiroetal2010,barreiroetal2010b,mackeetal2013,rostamietal2016_r2017}.
+
+\enquote{Cooperativity} can be quantified and characterized with \me\
+methods in several ways. The simplest way roughly proceeds along the
+following steps. Consider the recorded activity of a sample of $n$ neurons.
+\begin{enumerate}
+\item The activity of each neuron, a continuous signal, is divided into $T$
+  time bins and binarized in intensity, and thus transformed into a
+  sequence of digits \enquote{$0$}s (inactive) and \enquote{$1$}s (active)
+  \cite[\cf][]{caianiello1961,caianiello1986}.
+
+  Let the variable $\yrv_i(t)\in\set{0,1}$ denote the activity of the $i$th
+  sampled neuron at time bin $t$. Collectively denote the $n$ activities
+  with $\yr(t) \defd \bigl(\yrv_1(t),\dotsc,\yrv_n(t)\bigr)$. The
+  population-averaged activity at that bin is
+  $\yrs(t) \defd \sum_i \yrv_i(t)/n$. If we count the number of distinct
+  pairs of active neurons at that bin we combinatorially find
+  $\tbinom{n\yrs(t)}{2}\equiv n\yrs(t)\,[n\yrs(t)-1]/2$. There can be at
+  most $\tbinom{n}{2}$ simultaneously active pairs, so the
+  population-averaged pair activity is
+  $\av{\yr \yr}(t) \defd \tbinom{n}{2}^{-1}\tbinom{n\yrs(t)}{2}$. With some
+  combinatorics we see that the population-averaged activity of $m$-tuples
+  of neurons is
+  \begin{equation}
+    \label{eq:products_intermsof_average}
+    \av{\underbrace{\yr\dotsm\yr}_{\text{$m$ terms}}}(t)
+    = \binom{n}{m}^{-1}\binom{n\yrs(t)}{m}.
+  \end{equation}
+  
+  For brevity let us agree to simply call \enquote{activity} the average
+  $\yrs$, \enquote{pair-activity} the average $\av{\yr \yr}$, and so on.
+
+\item Construct a sequence of relative-\me\ distributions for the activity
+  $\yrs$, using this sequence of constraints:
+  \begin{itemize}
+  \item the time average of the activity: $\tav{\yrs} \defd \sum_t\yrs(t)/T$;
+  \item the time averages of the activity and of the pair-activity
+    $\tav{\av{\yr \yr}} \defd \sum_t\av{\yr \yr}(t)/T$;
+  \item \ldots
+  \item the time averages of the activity, of the pair-activity, and so on, up
+    to the $k$-activity.
+  \end{itemize}
+  Call the resulting distributions $p_1(\yrs), p_2(\yrs),\dotsc,p_k(\yrs)$.
+  The time-bin dependence is now absent because these distributions can be
+  interpreted as referring to any one of the time bins $t$, or to a new
+  time bin (in the future or in the past) containing new data.
+
+  We also have the empirical frequency distribution of the total activity,
+  $f(\yrs)$, counted from the time bins.
+
+\item Now compare the distributions above with one another and with the
+  frequency distribution, using some probability-space distance like the
+  relative entropy or discrimination information
+  \citep{kullback1987,jaynes1963,hobson1969,hobsonetal1973}. If we find,
+  say, that such distance is very high between $p_1$ and $f$, very low
+  between $p_2$ and $f$, and is more or less the same between all $p_m$ and
+  $f$ for $m \ge 2$, then we can say that there is a \enquote{pairwise
+    cooperativity}, and that any higher-order cooperativity is just a
+  reflection or consequence of the pairwise one. The reason is that the
+  information from higher-order simultaneous activities did not lead to
+  appreciable changes in the distribution obtained from pair activities.
+\end{enumerate}
+The protocol above needs to be made precise by specifying various
+parameters, such as the width of the time bins or the probability
+distance used.
+
+We hurry to say that the description just given is just \emph{one} way to
+quantify and characterize cooperativity and functional grouping, not
+\emph{the only} way. It can surely be criticized from many points of view.
+Yet, it is quantitative and bears a more precise meaning than an undefined,
+vague notion of \enquote{cooperativity}. Two persons who apply this
+procedure to the same data will obtain the same numbers. Different
+protocols can be based on the \me\ method, for instance protocols that take
+into account the activities or pair activities of specific neurons rather
+than population averages, or even protocols that take into account time
+dependence.
+
+The purpose of the present work is not to assess the merits of \me\ methods
+with respect to other methods. Its main purpose is to show that there is a
+problem in the way the \me\ method itself, as sketched above, is applied to
+the activity of the recorded neurons. We believe that this problem is at
+the root of some quirks about this method that were pointed out in the
+literature \cite{roudietal2009b}. This problems extends also to more
+complex versions of the method, possibly except versions that use
+\enquote{hidden} neurons
+\cite{smolensky1986,kulkarnietal2007,huang2015,dunnetal2017}. The problem is
+that the recorded neurons are a \emph{sample} from a larger, unrecorded
+population, but the \me\ method as applied above is treating them as
+isolated from the rest of the brain. Hence, the results it provides cannot
+be rightfully extrapolated. We will give a mathematical proof of this. Let
+us first analyse this issue in more detail.
+
+Suppose that the neurons were recorded with electrodes covering an area of
+some square millimetres \cite[\cf][]{berenyietal2014}. This recording is a
+sample of the activity of the neuronal population under the recording
+device, which can amount to tens of thousands of neurons
+\cite{abeles1991}. We could even consider the recorded neurons as a sample
+of a brain area more extended than the recording device.
+
+The characterization of the cooperativity of the recorded sample would have
+little meaning if we did not expect its results to generalize to a larger,
+unrecorded population -- at the very least the population under the
+recording device. In other words, we expect that the conclusions drawn with
+the \me\ methods about the sampled neurons should somehow extrapolate to
+unrecorded neurons in some larger area, from which the recorded neurons
+were sampled. In statistical terms we are assuming that the recorded
+neurons are a \emph{representative sample} of some larger neuronal
+population. Probability theory tells us how to make inferences from a
+sample to the larger population from which it is sampled \parentext{see
+  references below}.
+
+We can apply the \me\ method to the sample, as described in the above
+protocol, to generate probability distributions for the activity of the
+sample. But, given that our sample is representative of a larger
+population, we can also apply the \me\ method to the larger (unrecorded)
+population. The constraints are the same: the time averages of the sampled
+data, since they constitute representative data about the larger population
+as well. The method thus yields a probability distribution for the larger
+population, and the distribution for the sample is obtained by
+marginalization. The problem is that \emph{the distributions obtained from
+  these two applications differ}. Which choice is most meaningful?
+
+In this work we develop the second way of applying the \me\ method, at the
+level of the larger population, and show that its results differ from the
+application at the sample level. We also consider the case where the size
+of the larger population is unknown.
+
+To apply the \me\ method to the larger, unsampled population, it is
+necessary to use probability relations relevant to sampling
+\cites{ghoshetal1997}[parts~I,
+VI]{freedmanetal1978_r2007}[\chap~8]{gelmanetal1995_r2014}[\chap~3]{jaynes1994_r2003}.
+The relations we present are well-known in survey sampling and in the
+pedagogic problem of drawing from an urn without replacement, yet they are
+somewhat hard to find explicitly written in the neuroscientific literature.
+We present and discuss them in the next section. A minor purpose of this
+paper is to make these relations more widely known, because they can be
+useful independently of \me\ methods.
+
+
+The notation and terminology in the present work follow ISO and ANSI standards
+\citep{iso1993,ieee1993,nist1995,iso2006,iso2006b} but for the use of the
+comma \enquote{,} to denote logical conjunction. Probability notation
+follows Jaynes \citep{jaynes1994_r2003}. By \enquote{probability} we mean a
+degree of belief which \enquote{would be agreed by all rational men if
+  there were any rational men} \cite{good1966}.
+
+
+
+\section{Probability relations between population and  sample}
+\label{sec:prob_samples}
+
+We have already introduced the notation for the sample neurons. We
+introduce an analogous notation for the $\yNv$ neurons constituting the
+larger population, but using the corresponding Greek letters:
+$\yRv_{\iota}(t)$ is the activity of the $\iota$th neuron at time bin $t$,
+$\yRf(t) \defd \sum_{\iota} \yRv_{\iota}(t)/\yNv$ is the activity at that
+bin averaged over the larger population, and so on.
+
+The probability relations between sample and larger population are valid at
+every time bin. As we mentioned above, the \me\ distribution refers to any
+time bin or to a new bin. For these reasons we will now omit the time-bin
+argument \enquote{(t)} from our expressions. 
+
+Probabilities refer to statements about the quantities we observe. We use
+the standard notation:
+\begin{equation}
+  \label{eq:notation_statements}
+  \begin{aligned}
+    &\text{\enquote{$\yXv_{\iota} = \yRv_{\iota}$} 
+      stands for \enquote{the activity of the $\iota$th neuron is $\yRv_{\iota}$}},
+    \\
+    &\text{\enquote{$\yXf = \yRf$} 
+      stands for \enquote{the (population-averaged) activity of the neurons is $\yRf$}},
+    \\
+    &\text{\enquote{$\yxv_i = \yrv_i$} 
+      stands for \enquote{the activity of the $i$th sample neuron is $\yrv_i$}},
+  \end{aligned}
+\end{equation}
+and similarly for other quantities.
+
+
+If $\yHc$ denotes our state of knowledge -- the evidence and assumptions
+backing our probability assignments -- our uncertainty about the full
+activity of the larger population is expressed by the joint probability
+distribution
+\begin{equation}
+  \label{eq:joint_plaus}
+  \p(\yXv_1=\yRv_1, \yXv_2=\yRv_2, \dotsc, \yXv_\yNv=\yRv_\yNv \| \yHc)
+  \quad\text{or}\quad
+\p(\yX =\yR \| \yHc), \quad \yR \in \set{0,1}^\yNv.
+\end{equation}
+Our uncertainty about the state of the sample is likewise expressed by
+\begin{equation}
+  \label{eq:sample_plaus}
+  \p(\yxv_1=\yrv_1, \yxv_2=\yrv_2, \dotsc, \yxv_n=\yrv_n \| \yHc) \quad\text{or}\quad
+\p(\yx =\yr \| \yHc), \quad \yr \in \set{0,1}^n.
+\end{equation}
+
+\bigskip
+
+The theory of statistical sampling is covered in many excellent texts, for
+example Ghosh \amp\ Meeden \citey{ghoshetal1997} or Freedman, Pisani, \amp\
+Purves \citey[parts~I, VI]{freedmanetal1978_r2007}; summaries can be found
+in Gelman \etal\ \citey[\chap~8]{gelmanetal1995_r2014} and Jaynes
+\citey[\chap~3]{jaynes1994_r2003}.
+
+We need to make an initial probability assignment for the state of the full
+population before any experimental observations are made. This initial
+assignment will be modified by our experimental observations, and these can
+involve just a sample of the population. Our state of knowledge and initial
+probability assignment should reflect that samples are somehow
+representative of the whole population.
+
+In this state of knowledge, denoted $\yH$, we know that the neurons in the
+population are biologically or functionally similar, for example in
+morphology or the kind of input or output they receive or give. But we are
+completely ignorant about the physical details of the individual neurons.
+Our ignorance is therefore symmetric under permutations of neuron
+identities. This ignorance is represented by a probability distribution
+that is symmetric under permutations of neuron identities; such a
+distribution is usually called \emph{finitely exchangeable}
+\cites{ericson1969}[\chap~1]{ghoshetal1997}. We stress that this
+probability assignment is just an expression of the symmetry of our
+\emph{ignorance} about the state of the population, not an expression of
+some biologic or physical symmetry or identity of the neurons.
+
+The \emph{representation theorem for finite exchangeability} states that,
+in the state of knowledge $\yH$, the symmetric distribution for the full
+activity is completely determined by the distribution for its
+population-average:
+\begin{equation}
+  \label{eq:joint_plaus_N_homog}
+  \p(\yX = \yR \|  \yH) \equiv
+  \sum_{\yRf}\p(\yX = \yR \| \yXf = \yRf, \yH)\,
+  \p(\yXf=\yRf \| \yH) =
+  \binom{\yNv}{\yNv\yRf}^{-1} \p(\yXf=\yRf \| \yH).
+\end{equation}
+The equivalence on the left is just an application of the law of total
+probability; the equality on the right is the statement of the theorem.
+This result is intuitive: owing to symmetry, we must assign equal
+probabilities to all $\tbinom{\yNv}{\yNv\yRf}$ activity vectors with
+$\yNv\yRf$ active neurons; the probability of each activity vector is
+therefore given by that of the average activity divided by the number of
+possible vector values. Proof of this theorem and generalizations to
+non-binary and continuum cases are given by de~Finetti
+\cite{definetti1959b}, Kendall \cite{kendall1967}, Ericson
+\cite{ericson1976}, Diaconis \amp\ Freedman
+\cite{diaconis1977,diaconisetal1980}, Heath \amp\ Sudderth
+\cite{heathetal1976}.
+
+Our uncertainties about the full population and the sample are connected
+via the conditional probability
+\begin{equation}
+  \label{eq:conditional_hypergeometric}
+  \p(\yxs = \yrs \|\yXf=\yRf, \yH)=
+  \binom{n}{n\yrs}\binom{\yNv-n}{\yNv \yRf-n\yrs}\binom{\yNv}{\yNv \yRf}^{-1}
+  \defs \ypp(\yrs\|\yRf),
+\end{equation}
+which is a hypergeometric distribution, typical of \enquote{drawing without
+  replacement} problems. The combinatorial proof of this expression is in
+fact the same as for this class of problems
+\cites[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}.
+
+Using the conditional probability above we obtain the probability for the
+activity of the sample:
+\begin{gather}
+  \label{eq:subpop_average}
+  \p(\yxs=\yrs \| \yH) = \sum_{\yRf}
+  \p(\yxs = \yrs \|\yXf=\yRf, \yH)\,
+  \p(\yXf=\yRf \| \yH)
+  = 
+  \sum_{\yRf}
+  \ypp(\yrs\|\yRf)\,
+  \p(\yXf=\yRf \| \yH).
+\end{gather}
+It should be proved that the probability distribution for the full activity
+of the sample is also symmetric and completely determined by the
+distribution of its population-averaged activity:
+\begin{equation}
+  \label{eq:marginal}
+  \p(\yx = \yr \| \yH) = \binom{n}{n\yrs}^{-1} \p(\yxs=\yrs \| \yH).
+\end{equation}
+This is intuitively clear: our initial symmetric ignorance should also
+apply to the sample. The distribution for the
+sample~\eqref{eq:subpop_average} indeed satisfies the same representation
+theorem~\eqref{eq:joint_plaus_N_homog} as the distribution for the full
+population.
+
+The conditional probability
+$\p(\yxs = \yrs \|\yXf=\yRf, \yH) \equiv \ypp(\yrs \|\yRf)$, besides
+relating the distributions for the population and sample activities via
+marginalization, also allows us to express the expectation value of any
+function of the sample activity, $g(\yrs)$, in terms of the distribution
+for the full population, as follows:
+\begin{multline}
+  \label{eq:pullback_P}
+  \expe{g\|I}
+  \equiv
+  \sum_{\yrs} g(\yrs)\,\p(\yxs=\yrs \| \yH)
+  =
+  \sum_{\yrs} g(\yrs) \sum_{\yRf} \ypp(\yrs\|\yRf)\,\p(\yXf=\yRf \| \yH)
+  ={}\\
+  \sum_{\yRf} \biggl[ \sum_{\yrs} g(\yrs)  \ypp(\yrs\|\yRf) \biggr]\,
+  \p(\yXf=\yRf \| \yH),
+%  =
+%  \sum_{N\yRf=0}^N \sum_{n\yrs=0}^n f(\yrs)\ypp(\yrs\|\yRf)\,\p(\yXf=\yRf \| \yH)
+%  \equiv  \expeb{g^*}.
+\end{multline}
+where the second step uses \eqn~\eqref{eq:subpop_average}. The last
+expression shows that the expectation of the function $g(\yrs)$ is equal to
+the expectation of the function
+$g^*(\yRf) \defd \sum_{\yrs} g(\yrs)\,\ypp(\yrs\|\yRf)$.
+
+\bigskip
+
+The final expression in \eqn~\eqref{eq:pullback_P} is important for our
+\me\ application: the requirement that the function $g$, defined for the
+sample, have a  value $c$ obtained from observed data,
+\emph{translates into a linear constraint for the distribution of the full
+  population}:
+\begin{equation}
+  \label{eq:constraint_extended}
+  c = \expe{g \| \yH} \equiv \sum_{\yRf} \biggl[ \sum_{\yrs} g(\yrs)  \ypp(\yrs\|\yRf) \biggr]\,
+  \p(\yXf=\yRf \| \yH).
+\end{equation}
+
+In particular, when the function $g$ is the $m$-activity of the sample,
+$g(\yrs) = \sav{\yr\dotso\yr} \equiv \binom{n\yrs}{m}/\binom{n}{m}$, we
+find
+\begin{equation}
+  \label{eq:expe_products}
+%  \label{eq:pullback_m_expectations}
+%  \ypp^*\colon \sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}}
+%  \mapsto
+    % \bigl( \sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}}\bigr)^* =
+    % \av{\underbrace{\yX \dotsm \yX}_{\text{$m$ factors}}},
+    % \\[2\jot]
+    % \expe{\sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}} \| \yH} =
+    % \expe{\av{\underbrace{\yX \dotsm \yX}_{\text{$m$ factors}}} \| \yH}
+  \expe{\sav{\underbrace{\yr \dotsm \yr}_{\text{$m$ factors}}} \| \yH}
+\equiv
+    % \\[2\jot]
+    % {}
+    % \frac{(n-m)!}{n!}
+    \sum_{\yrs} %m!\,
+    \binom{n}{m}^{-1}
+    \binom{n \yrs}{m}\, \p(\yxs=\yrs \| \yH)
+    % \sum_{N \yRf=0}^N %m!\,
+    % \binom{N-m}{N \yRf-m} \binom{N}{N \yRf}^{-1} \p(\yXf=\yRf \| \yH)
+    = \binom{\yNv}{m}^{-1}
+    % \frac{(N-m)!}{N!}
+    \sum_{\yRf} %m!\,
+    \binom{\yNv \yRf}{m}\, \p(\yXf=\yRf \| \yH)
+\equiv    \expe{\av{\underbrace{\yR \dotsm \yR}_{\text{$m$ factors}}} \| \yH},
+\end{equation}
+that is, \emph{the expected values of the $m$-activities of the sample and
+  of the full population are equal}. The proof of the middle equality uses
+the expression for the $m$th factorial moment of the hypergeometric
+distribution and can be found in \textcite{potts1953}. Similar relations
+can be found for the raw moments $\expe{\yrs^m}$ and $\expe{\yRf^m}$, which
+can be written in terms of the product expectations using
+\eqn~\eqref{eq:products_intermsof_average}.
+
+Thus, in a \me\ application, when we require the expectation of the
+$m$-activity of a sample to have a particular value, we are also
+requiring  the expectation of the $m$-activity of the full population to
+have the same value.
+
+\bigskip
+
+
+\begin{figure}[!b]
+\centering
+\includegraphics[width=0.9\linewidth]{pop_sample_projection3.pdf}%
+\caption{Log-density plot of the hypergeometric distribution
+  $%\p(\yxs = \yrs \|\yXf=\yRf, \yH)=
+\ypp(\yrs\|\yRf) \defd  \raisebox{0pt}[0pt][1ex]{}\binom{n}{n\yrs}\binom{\yNv-n}{\yNv \yRf-n\yrs}\binom{\yNv}{\yNv \yRf}^{-1}$ for $\yNv=5000$, $n=200$. (Band artifacts may appear in the
+  colourbar depending on your \textsc{pdf} viewer.)}
+\label{fig:hypergeom_proj}
+\end{figure}%hypergeometric_identity.nb
+These expectation equalities between sample and full population should not
+be surprising: we intuitively \emph{expect} that the proportion of coloured
+balls sampled from an urn should be roughly equal to the proportion of
+coloured ball contained in the urn. The formulae in the present section
+formalize and mathematically express our intuition. The hypergeometric
+distribution $\ypp(\yrs\|\yRf)$ plays an important role in this
+formalization. A look at its plot, \fig~\ref{fig:hypergeom_proj}, reveals
+that it is a sort of \enquote{fuzzy identity transformation}, or fuzzy
+Kronecker delta, between the $\yRf$-space $\set{0,\dotsc,\yNv}$ and
+$\yrs$-space $\set{0,\dotsc,n}$. From \eqn~\eqref{eq:marginal} we thus have
+that
+\begin{equation}
+  \label{eq:roughly_equal_nN}
+  \p(\yxs=a \|\yH) \approx \p(\yXf=a \|\yH),\qquad
+\expeb{g(\yrs) \|\yH} \approx \expeb{g(\yRf) \|\yH},
+\end{equation}
+where $g$ is any smooth function defined on $\clcl{0,1}$. These approximate
+equalities express the intuitive fact that \emph{our uncertainty about the
+  sample is representative of our uncertainty about the population and
+  about other samples}, and vice versa. When $n=\yNv$, $\ypp(\yrs\|\yRf)$
+becomes the identity matrix and the approximate equalities above become
+exact -- of course, since we have sampled the full population.
+
+But the approximate equalities above may miss important features of the two
+probability distributions. In the next section we will in fact emphasize
+their differences. If the distribution for the population average $\yRf$ is
+bimodal, for example, the bimodality can be lost in the distribution for
+the sample average $\yrs$, owing to the coarsening effect of
+$\ypp(\yrs\|\yRf)$.
+
+% They should be contrasted with the limits
+% $\p(\yxs=a) \to \p(\yXf=a)$ and $\expeb{g(\yxs)} \to \expeb{g(\yXf)}$, as
+% $n\to \yNv$, do: these limits are trivially, universally valid because the
+% sample becomes the full population as $n\to \yNv$. In particular, these limits
+% hold even in cases where the conditional probability
+% $\p(\yxs = \yrs \|\yXf=\yRf)$ is not a fuzzy identity, our uncertainties
+% about sample and about population can differ wildly, and the approximate
+% equalities~\eqref{eq:roughly_equal_nN} do not hold.
+
+
+
+\section{Maximum-entropy: sample level \vs\ full-population level}
+\label{sec:specific_initial_probability}
+
+In the previous section we have seen that observations about a sample can
+be used as constraints on the distribution for the activity of the full
+population. Let us use such constraints with the \me\ method. Suppose that
+we want to constrain $m$ functions of the sample activity, vectorially
+written $\yf \defd (g_1,\dotsc,g_m)$, to $m$ values
+$\yc \defd (c_1,\dotsc,c_m)$. These functions are typically $k$-activities
+$\sav{\yr\dotso \yr}$, and the values are typically the time averages of
+the observed sample, as discussed in \sect~\ref{sec:intro}:
+$\yc = \sum_t \yf[\yrs(t)]/T$.
+
+Let us apply the relative-\me\ method \cite{sivia1996_r2006,meadetal1984}
+directly to sampled neurons; denote this approach by $\yHb$. Then we apply
+the method to the full population of neurons, most of which are unsampled;
+denote this approach by $\yHa$.
+
+Applied directly to the sampled neurons, the method yields the distribution
+\begin{equation}
+  \label{eq:app_maxent_sample}
+  \p(\yxs=\yrs \|\yHb)
+  =\frac{1}{\yk(\yl)}\,
+  \binom{n}{n\yrs}
+  \exp[\yl\T \yf(\yrs)]
+\end{equation}
+where $\yk(\yl)$ is a normalization constant. The binomial in front of the
+exponential appears because we must account for the multiplicity by which
+the population-average activity $\yrs$ can be realized: $\yrs=0$ can be
+realized in only one way (all neurons inactive), $\yrs=1/n$ can be realized
+in $n$ ways (one active neuron out of $n$), and so on. This term is analogous to
+the \enquote{density of states} in front of the Boltzmann factor in
+statistical mechanics \cite[\chap~16]{callen1960_r1985}. The $m$ Lagrange
+multipliers $\yl\defd (l_1,\dotsc,l_m)$ must satisfy the $m$ constraint
+equations
+\begin{equation}
+  \label{eq:app_maxent_sample_constraints}
+  c_k = \expe{g_k \|\yHb} \equiv
+  \frac{1}{\yk(\yl)}\sum_{\yrs}  g_k(\yrs) \binom{n}{n\yrs}
+  \exp[\yl\T \yf(\yrs)], \qquad k=1,\dotsc,m.
+\end{equation}
+
+Applied to the full population, using the constraint
+expression~\eqref{eq:constraint_extended} derived in the previous section,
+the method yields the distribution for the full-population activity
+\begin{equation}
+  \label{eq:app_maxent_pop}
+  \p(\yXf = \yRf \| \yHa)  = \frac{1}{\yK(\yL)}\,
+  \binom{\yNv}{\yNv \yRf}\,\exp\Bigl[\yL\T
+  \sum_{\yrs} \yf(\yrs)\ypp(\yrs\|\yRf)\Bigr].
+\end{equation}
+The $m$ Lagrange multipliers $\yL\defd (\lambda_1,\dotsc,\lambda_m)$ must
+satisfy the $m$ constraint equations
+\begin{equation}
+  \label{eq:app_maxent_pop_constraints}
+  c_k = \expe{g_k \|\yHa}\equiv
+  \frac{1}{\yK(\yL)}\sum_{\yrs} \sum_{\yRf} g_k(\yrs) \ypp(\yrs \|\yRf)
+\,
+  \binom{\yNv}{\yNv \yRf}\,\exp\Bigl[\yL\T
+  \sum_{\yrs} \yf(\yrs)\ypp(\yrs\|\yRf)\Bigr],
+  \qquad k=1,\dotsc,m.
+\end{equation}
+
+We obtain the distribution for the sample activity by marginalization, using
+\eqn~\eqref{eq:marginal}:
+\begin{equation}
+  \label{eq:app_maxent_pop_marg}
+  \p(\yxs = \yrs \| \yHa)  = \frac{1}{\yK(\yL)}\, 
+  \sum_{\yRf} \ypp(\yrs \|\yRf)
+\,
+  \binom{\yNv}{\yNv \yRf}\,\exp\Bigl[\yL\T
+  \sum_{\yrs} \yf(\yrs)\ypp(\yrs\|\yRf)\Bigr].
+\end{equation}
+
+The distributions for the sample activity,
+\eqns~\eqref{eq:app_maxent_pop_marg} and \eqref{eq:app_maxent_sample},
+obtained with the two approaches $\yHb$ and $\yHa$, are different. From the
+discussion in the previous section we expect them to be vaguely similar;
+yet they cannot be exactly equal, because their equality would require the
+$2m$ quantities $\yL$ and $\yl$ to satisfy the constraint equations
+\eqref{eq:app_maxent_pop_constraints} and
+\eqref{eq:app_maxent_sample_constraints}, and in addition also the $n$
+equations $\p(\yxs = \yrs \| \yHa) = \p(\yxs = \yrs \| \yHb)$,
+$\yrs=1/n,\dotsc,1$ (one equation is taken care of by the normalization of
+the distributions). We would have a set of $2m+n$ equations in $2m$
+unknowns.
+
+Hence, \emph{the applications of \me\ at the sample level and at the
+  full-population level are inequivalent}. They lead to numerically
+different distributions for the sample activity $\yr$.
+
+%%% FIGURES %%%
+\iffalse
+\begin{figure}[!t]
+\centering
+\includegraphics[width=0.9\linewidth]{different_maxent_pop_sample_200_realdata_2mom.pdf}%
+\caption{Linear and log-plots of $\p(\yxs = \yrs)$ constructed by \me\ at
+  the population level followed by sample marginalization (blue triangles),
+  \eqn~\eqref{eq:app_maxent_pop_marg}, and at the sample level (red
+  circles), \eqn~\eqref{eq:app_maxent_sample}, with $\yNv=5000$,
+  $n=200$, and constraints as in \eqn~\eqref{eq:constraints}.}
+\label{fig:diff_maxent_pop_sample}
+\end{figure}%maxent_pop_or_sample.nb
+%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=0.9\linewidth]{different_maxent_pop_sample_200_realdata_4mom.pdf}% 
+\caption{Linear and log-plots of $\p(\yxs = \yrs)$ constructed by \me\ at
+  the population level followed by sample marginalization (blue triangles),
+  \eqn~\eqref{eq:app_maxent_pop_marg}, and at the sample level (red
+  circles), \eqn~\eqref{eq:app_maxent_sample}, with $\yNv=5000$,
+  $n=200$, and constraints as in \eqn~\eqref{eq:constraints}.}
+\label{fig:diff_maxent_pop_sample_realdata}
+\end{figure}%maxent_pop_or_sample.nb
+\fi%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=0.9\linewidth]{comparison3.pdf}%
+\caption{Linear and log-plots of $\p(\yxs = \yrs)$ for a sample of $n=200$
+  and constraints as in \eqn~\eqref{eq:constraints}, constructed by:
+  \textcolor{myred}{\textbf{red squares:}} \me\ at the sample level,
+  \eqn~\eqref{eq:app_maxent_sample};
+  \textcolor{mybluishpurple}{\textbf{blue triangles:}} \me\ at the
+  population level, \eqn~\eqref{eq:app_maxent_pop_marg} with
+  $\yNv=10\,000$, followed by sample marginalization;
+  \textcolor{myyellow}{\textbf{yellow circles:}} \me\ at the population
+  level with unknown population size,
+  \eqn~\eqref{eq:app_maxent_pop_marg_unknown_N}, according to the
+  distribution~\eqref{eq:pdf_popsize} for the population.}
+\label{fig:all_three}
+\end{figure}%maxent_pop_or_sample.nb\fi
+The distribution obtained at the sample level will show different
+features from the one obtained at the population level, like displaced or
+additional modes or particular tail behaviour. We show an example of this
+discrepancy in \fig~\ref{fig:all_three}, for
+$\yNv=10\,000$, $n=200$, and the two constraints
+\begin{equation}
+  \label{eq:constraints}
+  \expe{\yrs} = 0.0478,\qquad
+  \expe{\yxxs} = 0.00257,
+  % ,\quad
+  % \expe{\sav{\yr\yr\yr}} = 1.48\times 10^{-4},\quad
+  % \expe{\sav{\yr\yr\yr\yr}} = 8.81 \times 10^{-6}.
+\end{equation}
+which come from the actual recording of circa 200 neurons from macaque
+motor cortex \cite{rostamietal2016_r2017}. The distribution obtained at the
+population level (blue triangles) has a higher and displaced mode and a quite
+different behaviour for activities around $0.5$ than the distribution
+obtained at the sample level (red squares).
+
+\bigskip
+
+In our discussion we have so far assumed the size $\yNv$ of the larger
+population to be known. This is rarely the case, however. We usually are
+uncertain about $\yNv$ and can only guess its order of magnitude. In such a
+state of knowledge $\yHd$ our ignorance about the possible value of $\yNv$
+is expressed by a probability distribution $\p(\yNN=\yNv \|\yHd)=h(\yNv)$,
+and the marginal distribution for the sample
+activity~\eqref{eq:app_maxent_pop_marg} is modified, by the law of total
+probability, to
+\begin{multline}
+  \label{eq:app_maxent_pop_marg_unknown_N}
+  \p(\yxs = \yrs \| \yHd)  =
+  \sum_{\yNv} \p(\yxs = \yrs \| \yNN=\yNv,\yHd) \,
+  \p(\yNN=\yNv \|\yHd)
+  ={}\\[-\jot]
+  \sum_\yNv \biggl\{\frac{1}{\yK(\yL_\yNv)}\, 
+  \sum_{\yRf} \ypp_\yNv(\yrs \|\yRf)
+\,
+  \tbinom{\yNv}{\yNv \yRf}\,\exp\Bigl[{\yL_\yNv}\T
+  \sum_{\yrs} \yf(\yrs)\ypp_\yNv(\yrs\|\yRf)\Bigr]\biggr\}
+  \,h(\yNv),
+\end{multline}
+where the Lagrange multipliers $\yL_{\yNv}$ and the summation range for
+$\yRf$ depend on $\yNv$.
+
+As a proof of concept, \fig~\ref{fig:all_three} also shows such a distribution
+(yellow circles) for the same constraints as above, and a probability
+distribution for $\yNv$ inspired by Jeffreys
+\cite[\sect~4.8]{jeffreys1939_r2003}:
+\begin{equation}
+  \label{eq:pdf_popsize}
+  h(\yNv) \propto 1/\yNv, \qquad
+  \yNv \in\set{1\,000,\; 2\,000,\; \dotsc,\;10\,000}.
+\end{equation}
+
+
+
+
+\section{Discussion}
+\label{sec:discussion}
+
+The purpose of the present work was to point out and show, in a simple
+set-up, that the \me\ method can be applied to recorded neuronal data in a
+way that accounts for the larger population from which the data are
+sampled, \eqns~\eqref{eq:app_maxent_pop}--\eqref{eq:app_maxent_pop_marg}.
+This application leads to results that differ from the standard application
+which only considers the sample in isolation,
+\eqns~\eqref{eq:app_maxent_sample}--\eqref{eq:app_maxent_sample_constraints}.
+We gave a numerical example of this difference. We have also shown how to
+extend the new application when the size of the larger population is
+unknown, \eqn~\eqref{eq:app_maxent_pop_marg_unknown_N}.
+
+The latter formula, in particular, shows that the standard way of applying
+\me\ 
+implicitly assumes that \emph{no} larger population exists beyond the
+recorded sample of neurons. One could in fact object to the application at
+the population level, and say that the traditional way of applying \me,
+\eqn~\eqref{eq:app_maxent_sample}, yields different results because it does
+not make assumptions about the size $\yNv$ of a possibly existing larger
+population. Such a state of uncertainty, however, is correctly formalized
+according to the laws of probability by introducing a probability
+distribution for $\yNv$, and is expressed by
+\eqn~\eqref{eq:app_maxent_pop_marg_unknown_N}. This expression cannot
+generally be equal to~\eqref{eq:app_maxent_sample} unless the distribution
+for $\yNv$ gives unit probability to $\yNv=n$; that is, unless the sample
+\emph{is} the full population, and no larger population exists.
+
+The standard \me\ approach therefore assumes that the recorded neurons
+constitute a special subnetwork, isolated from the larger network of
+neurons in which it is embedded, and which was also present under the
+recording device. This assumption is unrealistic. The \me\ approach at the
+population level does not make such assumption and is therefore preferable.
+It may reveal features in a data set that were unnoticed by the standard
+\me\ approach.
+
+% This hidden assumption of isolation is unreasonable. It amounts to say that
+% the neurons we distinguished and tracked with our recording device are a
+% very special, isolated set among all those that could have been recorded.
+% It is for this reason that we find the \me\ application at the population
+% level preferable. Physical models of neuronal networks usually include some
+% sort of external input, mimicking an embedding in a larger network. The
+% \me\ distribution obtained at the population level may reveal features in a
+% data set that were unnoticed by the standard \me\ model.
+
+
+The difference in the resulting distributions between the applications at
+the sample and at the population levels appears in the use of Boltzmann
+machines with hidden units \cite{lerouxetal2008}, although by a different
+conceptual route. It also appears in statistical mechanics: if a system is
+statistically described by a \me\ Gibbs state, its subsystems cannot be
+described by a Gibbs state \cite{maesetal1999}. A somewhat similar
+situation also appears in the statistical description of the final state of
+a non-equilibrium process starting and ending in two equilibrium states: we
+can describe our knowledge about the final state either by (1) a Gibbs
+distribution, calculated from the final equilibrium macrovariables, or (2)
+by the distribution obtained from the Liouville evolution of the Gibbs
+distribution assigned to the initial state. The two distributions differ
+(even though the final \emph{physical} state is obviously exactly the same
+\cite[\sect~4]{jaynes1985d_r1993}), and the second allows us to make
+sharper predictions about the final physical state thanks to our knowledge
+of its preceding dynamics. In this example, though, both distributions are
+usually extremely sharp and practically lead to the same predictions. In
+neuroscientific applications, the difference in predictions of the sample
+\vs\ full-population applications can instead be very relevant.
+
+The idea of the new application leads in fact to more questions. For
+instance:
+\begin{itemize}
+\item Do the standard and new applications lead to different or contrasting
+  conclusions about \enquote{cooperativity}, when applied to real data
+  sets?
+\item How to extend the new application to the \enquote{inhomogeneous} case
+  \cite{schneidmanetal2006,shlensetal2006,roudietal2009b}, in which
+  expectations for individual neurons or groups of neurons are constrained?
+\item What is the mathematical relation between the new application and
+  \me\ models with hidden neurons
+  \cite{smolensky1986,kulkarnietal2007,huang2015,dunnetal2017}?
+\end{itemize}
+Owing to space limitations we must leave a thorough investigation of these
+questions to future work.
+
+Finally, we would like to point out the usefulness and importance of the
+probability formulae that relate our states of knowledge about a population
+and its samples, presented in \sect~\ref{sec:prob_samples}. This kind of
+formulae is essential in neuroscience, where we try to understand
+properties of extended brain regions from partial observations. The
+formulae presented here reflect a simple, symmetric state of ignorance.
+More work is needed \cite[\cf][]{levinaetal2017} to extend these formulae
+to account for finer knowledge of the cerebral cortex and its network
+properties.
+
+
+
+
+
+%\mynote{Importance of the formulae relating sample and population.}
+
+% \mynote{Discussion of case when individual $\yXv_i\dotsm \yXv_j$ are constrained.
+% Likely breakdown of \me\ in this case \cite{portamana2009}. Hints at full
+% Bayesian treatment of which \me\ is a limit? \cite[***]{mackay1995_r2003}}
+
+
+% do not change font sizes (except perhaps in the \textbf{References}
+% section; see below).
+
+
+\subsubsection*{Acknowledgements}
+
+PGLPM thanks Mari \amp\ Miri for continuous
+encouragement and affection; Buster Keaton for filling life with awe and
+inspiration; the developers and maintainers of \LaTeX, Emacs, AUC\TeX, Open
+Science Framework, Python, Inkscape, Sci-Hub for making a free and
+unfiltered scientific exchange possible.
+
+% Use unnumbered third level headings for the acknowledgments. All
+% acknowledgments go at the end of the paper. Do not include
+% acknowledgments in the anonymized submission, only in the final paper.
+
+%\section*{References}
+\renewcommand*{\bibname}{References}
+\defbibheading{bibliography}[\bibname]{\section*{#1}\addcontentsline{toc}{section}{#1}%\markboth{#1}{#1}
+}
+
+% References follow the acknowledgments. Use unnumbered first-level
+% heading for the references. Any choice of citation style is acceptable
+% as long as you are consistent. It is permissible to reduce the font
+% size to \verb+small+ (9 point) when listing the references. {\bf
+%   Remember that you can go over 8 pages as long as the subsequent ones contain
+%   \emph{only} cited references.}
+% \medskip
+
+% \small
+
+% [1] Alexander, J.A.\ \& Mozer, M.C.\ (1995) Template-based algorithms
+% for connectionist rule extraction. In G.\ Tesauro, D.S.\ Touretzky and
+% T.K.\ Leen (eds.), {\it Advances in Neural Information Processing
+%   Systems 7}, pp.\ 609--616. Cambridge, MA: MIT Press.
+
+% [2] Bower, J.M.\ \& Beeman, D.\ (1995) {\it The Book of GENESIS:
+%   Exploring Realistic Neural Models with the GEneral NEural SImulation
+%   System.}  New York: TELOS/Springer--Verlag.
+
+% [3] Hasselmo, M.E., Schnell, E.\ \& Barkai, E.\ (1995) Dynamics of
+% learning and recall at excitatory recurrent synapses and cholinergic
+% modulation in rat hippocampal region CA3. {\it Journal of
+%   Neuroscience} {\bf 15}(7):5249-5262.
+% \defbibnote{postnote}{\small\par\medskip\noindent{\footnotesize% Note:
+% \arxivp \mparcp \philscip \biorxivp}%
+% }
+
+\newcommand*{\citein}[2][]{\textnormal{\textcite[#1]{#2}}%\addtocategory{extras}{#2}
+}
+\newcommand*{\citebi}[2][]{ref.\ \citep[#1]{#2}%\addtocategory{extras}{#2}
+}
+\newcommand*{\subtitleproc}[1]{}
+\newcommand*{\chapb}{ch.}
+
+
+\printbibliography%[postnote=postnote]
+
+
+\end{document}
+
+
+%%% Local Variables: 
+%%% mode: LaTeX
+%%% TeX-PDF-mode: t
+%%% TeX-master: t
+%%% End: 

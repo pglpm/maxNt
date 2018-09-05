@@ -139,25 +139,25 @@ urlcolor=mygreen,breaklinks=true,pdftitle={\pdftitle}}
 
 \begin{document}
 We thank the reviewers for their analysis, appreciative words, and
-suggestions. Our reply below does not address the points that can be easily
-addressed by amending our manuscript.
+suggestions. Owing to space constraints our reply below does not address
+the points that can be easily addressed by amending our manuscript.
 
 \bigskip
 
 \textbf{Reviewer 1}
 \begin{enumerate}[wide]
-\item \emph{\enquote{$P(s)$}:} To be honest we are not sure what the
-  Reviewer means with \enquote{$P(s)$-type constraints} (the Reviewer's
-  comment is truncated). If it means the empirical frequency distribution
-  of the sample activity, equivalent to $n$ moment constraints, then it is
-  one of the distributions calculated at step 2. of the protocol (lines
-  27--56), to be compared with the other distributions. We may add that
-  using the empirical frequencies as constraints at the sample level
-  is questionable: activities with zero frequencies lead to zeroes in the
-  maximum-entropy distribution, and these are unreasonable because the
-  sample size is much smaller than the state-space size. This indicates
-  that maximum-entropy is used beyond its range of validity. The approach
-  at the population level + marginalization cures this problem somewhat.
+\item \emph{\enquote{$P(s)$}:} Unfortunately the Reviewer's comment is
+  truncated; we aren't fully sure if we are interpreting \enquote{$P(s)$}
+  correctly. We assume it to be the empirical frequency distribution of the
+  sample activity, equivalent to $n$ moment constraints. This constraint is
+  one of those used in step 2. of the protocol (lines 27--56), to be
+  compared with the other constraints. We may add that using the
+  empirical frequencies as constraints at the sample level is questionable:
+  activities with zero frequencies lead to zeroes in the maximum-entropy
+  distribution, and these are unreasonable because the sample size is much
+  smaller than the state-space size. This indicates that maximum-entropy is
+  used beyond its range of validity. The approach at the population level +
+  marginalization cures this problem.
 % Its use, however, addresses a different question than
 %   the one discussed in our introduction, namely to define and measure
 %   \enquote{cooperativity} by comparing maximum-entropy distributions
@@ -170,28 +170,30 @@ addressed by amending our manuscript.
 
 \textbf{Reviewer 2}
 \begin{enumerate}[wide]
-\item \emph{Comparison with other frameworks and long intro:} The
-  comparison with other approaches and the exploration of more results are
-  indeed important. There are two reasons why we gave less space to them:
-  \begin{enumerate}[label=\alph*.,itemsep=0ex]
-  \item We think that most literature hurries in deriving results and does
-    not give enough space to the examination of the principles behind a
-    method. This worries us. The misapplication of a method often cannot be
-    detected by its results alone. This is especially true for
-    maximum-entropy. We risk finding a plethora of results that may even
-    look interesting but are meaningless, because the method was not
-    meaningfully applied. In turn, this often happens because the problem
-    we wanted to solve with that method is too vaguely defined. For this
-    reason we wanted to give large space to defining the problem and to
-    discussing how the method and its principles should be applied to it.
-    Our wish is that our readers will give more thoughts to these matters.
-  \item We focus on the comparison between the \enquote{naive}
-    maximum-entropy method, and the maximum-entropy method that accounts
-    for the sampling context. The eight-page limit was not enough to make
-    comparisons with more methods and discuss results. Also, a long
-    discussion about further results would steal focus from the examination
-    of the problem and the principles, which are our main concern and message.
-  \end{enumerate}
+\item \emph{Comparison with other frameworks and long intro:} We
+  respectfully acknowledge the Reviewer's personal stand on the
+  \enquote{results vs introduction} point. Our opinion is that at times it
+  is important to focus on the problem and the principles of the method
+  purported to solve it, leaving more detailed results till later. The
+  reason is this: if the method is misapplied, the results are actually
+  irrelevant or even misleading -- and yet they may \emph{appear}
+  interesting, risking to steal our focus from the principles. What's worse
+  is that the results themselves may not reveal, or may even conceal, that
+  the method was misapplied. We think that this has happened in many uses
+  of the maximum-entropy method in neuroscience.
+
+  The modicum of results we presented is meant to bring to light this
+  possible misapplication. We called this a \enquote{dilemma} because we do
+  not wish to advertise the newly derived equations as the final solution
+  to the problem. At this stage we consider a careful description of the
+  problem critical, and a comparison with more advanced methods still
+  premature.
+
+  Also, we would like to reach a broader audience than the one specifically
+  interested in \enquote{cooperativity}. Our primary goal is to raise
+  awareness about this possible pitfall of the maximum-entropy method, and
+  to show a possible solution. We fear that focusing on further results
+  specific to cooperativity would conceal the wider bearing of our message.
 
 
 %   As this Reviewer and Reviewer 2 remark, the points and findings above
@@ -211,14 +213,19 @@ addressed by amending our manuscript.
   %   were we doing this?}. This is the reason for our long introductory
   % discussion about the problem and about the first principles that can be
   % used to address it. See also our reply to Reviewer 3 below.
-\item \emph{The effect of firing rates and correlations:} The empirical
+\item \emph{Effect of firing rates and correlations:} The empirical
   correlations determine (rather than affect) the result; see the protocol
-  1--3, lines 27--56. Firing rates surely affect the results, and this is
-  an interesting question: most literature seem to seek a measure of
-  \enquote{cooperativity} that is invariant under firing-rate changes. We
-  wonder whether maximum-entropy can provide this. Again, this is a
-  question that should be addressed in defining the problem and the
-  principles behind the method to solve it.
+  1--3, lines 27--56. Firing rates surely affect the results, but they do
+  so through the intermediary of the correlations. The question about the
+  effect of firing rates actually brings us back to an analysis of the
+  initial problem: do we want a measure of \enquote{cooperativity} that is
+  invariant under firing-rate changes? do the principles behind the
+  maximum-entropy method provide this? from this point of view, are we
+  misapplying the method?
+  
+  % We wonder whether maximum-entropy can provide this. Again, this is a
+  % question that should be addressed in defining the problem and the
+  % principles behind the method to solve it.
 %   likely affects the results and the
 %   quantification of \enquote{cooperativity}. The question is: Is this an
 %   issue? is our idea of \enquote{cooperativity} invariant with respect to
@@ -231,12 +238,12 @@ addressed by amending our manuscript.
 %   affecting it.
 \item \emph{Bayesian approaches and sampling:} The literature indeed offers
   fully Bayesian approaches, which we also prefer. But maximum-entropy
-  methods still abound in the literature, and maybe they can be reasonably
-  motivated. Our goal is to point out the subtlety in apply these methods.
-  In the literature we have explored we've seen very little use of the
-  basic sampling formulae presented in our paper. Honestly this surprised
-  us, because they're surely essential even in a very basic analysis of the
-  data.
+  methods still abound in the neuroscientific literature, and maybe they
+  can be reasonably motivated. Our goal is to point out the subtlety in
+  applying these methods. The literature we have explored makes very little
+  use of the basic sampling formulae presented in our paper. This is
+  surprising: such formulae are surely essential even in a very basic
+  analysis of the data.
 \end{enumerate}
 
 \bigskip
@@ -244,44 +251,39 @@ addressed by amending our manuscript.
 \textbf{Reviewer 3}
 \begin{enumerate}[wide]
 \item \emph{Whether it matters in practice:} We agree with the Reviewer
-  that the consequences of the differences between the two applications
-  should be discussed further in the manuscript. In particular:
-  \begin{enumerate}[label=\alph*.,itemsep=0ex]
-  \item Minor differences may lead to considerably different
-    interpretations of the underlying activity. For instance, the thinner
-    right tail of the population-level distribution indicates that
-    higher-order correlations observed in the data have larger statistical
-    significance (this is the type of question Schneidman et al. were
-    addressing in their research, which popularized maximum-entropy in
-    neuroscience). From this point of view, a more entropic distribution is
-    not necessarily more correct (after all, we could just use a uniform
-    distribution otherwise).
-  \item
-    \begin{minipage}[t]{0.74\linewidth}
-      Application of the method with higher-order constrains can show more
-      interesting differences between sample- and population-level
-      distributions. See e.g. the plot on the right, obtained with
-      fourth-moment constraints: the bimodal
-      distribution is the marginalized, population-level one.
-    \end{minipage}\hspace{\fill}
+  that pointing out the circumstances where the difference matters would be
+  useful. For instance, the thinner
+  right tail of the population-level distribution observed by the Reviewer\\
+  \begin{minipage}[t]{0.74\linewidth}indicates that higher-order
+    correlations observed in the data are important (this is the question
+    Schneidman et al. were addressing in their research, which popularized
+    maximum-entropy in neuroscience). Note that a more entropic
+    distribution is not necessarily more correct (after all, we could just
+    use a uniform distribution otherwise). Application of the method with
+    higher-order constraints can show more interesting differences between
+    sample- and population-level distributions, e.g. a bimodality not
+    observed in the empirical frequencies, as in the plot on the right
+    (bimodal distribution = population-level). This also leads to different
+    conclusion about the relative importance of the correlations.
+  \end{minipage}
+  \hspace{\fill}
     \smash{\begin{minipage}[t]{0.24\linewidth}\vspace{0pt}
       \includegraphics[width=\linewidth]{zoom_4mom.png}
     \end{minipage}}
-  \item \begin{minipage}[t]{0.74\linewidth}Even if the differences were
-      negligible, we believe that the results of the paper would matter:
-      the point is that we could not have known about the presence or
-      absence of differences, if we had not faced the whole problem and
-      derived a formula showing that the difference were negligible.
-    \end{minipage}
 %     % \setlength{\intextsep}{0.5ex}% with wrapfigure
 %     \begin{figure}[h!]%{r}{0.4\linewidth} % with wrapfigure
 %   \centering
 % %\caption{***}\label{fig:comparison_a5}
 % \end{figure}
-  \end{enumerate}
-\item\emph{Unnecessarily principled:} For our motivation in emphasizing
+
+  But we believe that \emph{even if the differences were negligible, the
+    results of the paper would still matter}: the point is that we could
+  not have known about the presence or absence of differences, if we had
+  not faced the whole problem and derived a formula showing that the
+  difference were negligible.
+\item\emph{Unnecessarily principled:} Regarding our motivation for emphasizing
   principles, we kindly ask the Reviewer to read our reply 1. to Reviewer~2
-  above. Probably the writing could be improved on our part to make the
+  above. Possibly the writing could be improved on our part to make the
   paper flow more smoothly, without sacrificing the more philosophical
   discussion?
   % We agree with the Reviewer that the main formulae of the paper, (17)

@@ -1,0 +1,233 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7543,        225]
+NotebookOptionsPosition[      5494,        180]
+NotebookOutlinePosition[      5841,        195]
+CellTagsIndexPosition[      5798,        192]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "SetDirectory", "[", 
+   "\"\<C:\\\\Users\\\\pglpm\\\\repositories\\\\maxNt\\\\scripts\\\\\>\"", 
+   "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.7567274179360237`*^9, 3.7567274392456613`*^9}, 
+   3.7567277694281216`*^9, {3.7567278344988356`*^9, 
+   3.7567278452628546`*^9}},ExpressionUUID->"ff931a48-e09b-4b67-9141-\
+1e5303ece9db"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Import", "[", 
+  RowBox[{"\"\<StensolaSpikeData.mat\>\"", ",", "\"\<Comments\>\""}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7567274591980963`*^9, 3.756727480616934*^9}, {
+  3.75672873612428*^9, 3.756728745945842*^9}, {3.7567288277285194`*^9, 
+  3.7567288287775793`*^9}},ExpressionUUID->"1241dcd6-8965-4392-9df6-\
+2dc53b1d53c7"],
+
+Cell[BoxData["$Failed"], "Output",
+ CellChangeTimes->{
+  3.756728847730664*^9},ExpressionUUID->"b6fbae69-aa0d-4b86-a199-\
+88f1f833f630"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Dimensions", "[", "test", "]"}]], "Input",
+ CellChangeTimes->{{3.7567274816309357`*^9, 3.756727483003738*^9}, {
+  3.7567275925757313`*^9, 
+  3.7567275957893367`*^9}},ExpressionUUID->"4e24e4ac-bb9a-4e45-8328-\
+d746e12ec9b7"],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.7567276144655695`*^9, 3.7567278103187933`*^9, 
+  3.7567278757171087`*^9, 
+  3.7567286832694025`*^9},ExpressionUUID->"24e9251b-a732-48f8-98f2-\
+b3fea787d3ee"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Directory", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.7567286413491287`*^9, 
+  3.7567286441259336`*^9}},ExpressionUUID->"80e61bfc-523e-4782-9fbd-\
+4dad4234a3f1"],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\pglpm\\\\Documents\"\>"], "Output",
+ CellChangeTimes->{3.7567286444067345`*^9, 
+  3.7567286956558247`*^9},ExpressionUUID->"e2f0f56b-2ddd-4296-a491-\
+2ec13710a5ef"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NotebookDirectory", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.756727492953956*^9, 
+  3.7567275074151816`*^9}},ExpressionUUID->"b28fe022-380a-4cec-a60d-\
+f33212dbe0c8"],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\pglpm\\\\repositories\\\\maxNt\\\\scripts\\\\\
+\"\>"], "Output",
+ CellChangeTimes->{{3.756727507695982*^9, 3.7567275252148128`*^9}, 
+   3.7567277155621996`*^9, {3.756727752314891*^9, 3.7567277724389267`*^9}, 
+   3.756727813376399*^9, 3.7567279196029854`*^9, 3.75672796743307*^9, 
+   3.756728637651922*^9, 
+   3.7567286971846275`*^9},ExpressionUUID->"d9c0e9e2-b5fd-400a-bded-\
+1c63adbe6037"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EvaluationNotebook", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.7567282879356375`*^9, 
+  3.7567282914148364`*^9}},ExpressionUUID->"8b5b76a9-cee9-4d56-9aba-\
+deb4b2fa2a94"],
+
+Cell[BoxData[
+ TemplateBox[{FrontEndObject[
+    LinkObject["4jjwb_shm", 3, 1]],11,
+   "FrontEndObject[LinkObject[\"4jjwb_shm\", 3, 1]]","11",
+   "\"stensola_calc.nb\"",
+   "\"C:\\\\Users\\\\pglpm\\\\repositories\\\\maxNt\\\\scripts\\\\stensola_\
+calc.nb\""},
+  "NotebookObject"]], "Output",
+ CellChangeTimes->{
+  3.7567282919418664`*^9, {3.7567284494683905`*^9, 
+   3.7567284571124043`*^9}},ExpressionUUID->"2c03533c-9dc5-4d75-a2f7-\
+9320270f3fc9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Thread", "[", 
+  RowBox[{"NotebookSave", "[", 
+   RowBox[{"Drop", "[", 
+    RowBox[{
+     RowBox[{"Notebooks", "[", "]"}], ",", 
+     RowBox[{"-", "1"}]}], "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.756728372231655*^9, 
+  3.7567283722472553`*^9}},ExpressionUUID->"e7b2032d-aa2a-422c-b9e3-\
+795b264d2a58"],
+
+Cell[BoxData[
+ RowBox[{"{", "Null", "}"}]], "Output",
+ CellChangeTimes->{
+  3.7567283731520567`*^9},ExpressionUUID->"2ee03b60-3043-4e96-9a97-\
+01852e46dcfe"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Notebooks", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.756728390187287*^9, 
+  3.75672839213729*^9}},ExpressionUUID->"0d5143cb-9149-471b-85da-\
+c7b033aa2356"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   TemplateBox[{FrontEndObject[
+      LinkObject["akqmf_shm", 3, 1]],11,
+     "FrontEndObject[LinkObject[\"akqmf_shm\", 3, 1]]","11",
+     "\"stensola_calc.nb\"",
+     "\"C:\\\\Users\\\\pglpm\\\\repositories\\\\maxNt\\\\scripts\\\\stensola_\
+calc.nb\""},
+    "NotebookObject"], ",", 
+   TemplateBox[{FrontEndObject[
+      LinkObject["akqmf_shm", 3, 1]],1,
+     "FrontEndObject[LinkObject[\"akqmf_shm\", 3, 1]]","1","\"Messages\""},
+    "NotebookObjectUnsaved"]}], "}"}]], "Output",
+ CellChangeTimes->{3.7567283925428905`*^9, 3.756728461605212*^9, 
+  3.7567285796666203`*^9, 
+  3.7567286482131405`*^9},ExpressionUUID->"926a8f04-0e2a-4f8f-a1b0-\
+2012ad7a7d7f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["a"], "Input",
+ CellChangeTimes->{
+  3.7567286317239122`*^9},ExpressionUUID->"d0f0abfa-b711-41b7-b4b9-\
+3e3655287f36"],
+
+Cell[BoxData["a"], "Output",
+ CellChangeTimes->{
+  3.7567286321607127`*^9},ExpressionUUID->"c938f721-46a0-4980-a77b-\
+7944fc6e4277"]
+}, Open  ]]
+},
+WindowSize->{640, 755},
+WindowMargins->{{175, Automatic}, {Automatic, 0}},
+FrontEndVersion->"11.2 for Microsoft Windows (32-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 370, 9, 31, "Input",ExpressionUUID->"ff931a48-e09b-4b67-9141-1e5303ece9db"],
+Cell[CellGroupData[{
+Cell[953, 33, 354, 7, 31, "Input",ExpressionUUID->"1241dcd6-8965-4392-9df6-2dc53b1d53c7"],
+Cell[1310, 42, 136, 3, 32, "Output",ExpressionUUID->"b6fbae69-aa0d-4b86-a199-88f1f833f630"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1483, 50, 247, 5, 28, "Input",ExpressionUUID->"4e24e4ac-bb9a-4e45-8328-d746e12ec9b7"],
+Cell[1733, 57, 224, 5, 32, "Output",ExpressionUUID->"24e9251b-a732-48f8-98f2-b3fea787d3ee"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1994, 67, 187, 4, 28, "Input",ExpressionUUID->"80e61bfc-523e-4782-9fbd-4dad4234a3f1"],
+Cell[2184, 73, 196, 3, 32, "Output",ExpressionUUID->"e2f0f56b-2ddd-4296-a491-2ec13710a5ef"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2417, 81, 193, 4, 28, "Input",ExpressionUUID->"b28fe022-380a-4cec-a60d-f33212dbe0c8"],
+Cell[2613, 87, 423, 7, 32, "Output",ExpressionUUID->"d9c0e9e2-b5fd-400a-bded-1c63adbe6037"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3073, 99, 196, 4, 28, "Input",ExpressionUUID->"8b5b76a9-cee9-4d56-9aba-deb4b2fa2a94"],
+Cell[3272, 105, 448, 11, 50, "Output",ExpressionUUID->"2c03533c-9dc5-4d75-a2f7-9320270f3fc9"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3757, 121, 338, 9, 31, "Input",ExpressionUUID->"e7b2032d-aa2a-422c-b9e3-795b264d2a58"],
+Cell[4098, 132, 157, 4, 35, "Output",ExpressionUUID->"2ee03b60-3043-4e96-9a97-01852e46dcfe"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4292, 141, 182, 4, 28, "Input",ExpressionUUID->"0d5143cb-9149-471b-85da-c7b033aa2356"],
+Cell[4477, 147, 698, 17, 50, "Output",ExpressionUUID->"926a8f04-0e2a-4f8f-a1b0-2012ad7a7d7f"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5212, 169, 131, 3, 28, "Input",ExpressionUUID->"d0f0abfa-b711-41b7-b4b9-3e3655287f36"],
+Cell[5346, 174, 132, 3, 32, "Output",ExpressionUUID->"c938f721-46a0-4980-a77b-7944fc6e4277"]
+}, Open  ]]
+}
+]
+*)
+

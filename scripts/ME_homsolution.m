@@ -41,18 +41,25 @@ MEhomsolutiont[meanmm_, meancorr_, nn_, wp_:MachinePrecision] :=
 MEhomsolutioni[meanmm_, meancorr_, nn_, wp_:MachinePrecision] := 
  Block[{totcorr = meancorr,
    totmm = meanmm,totalprob,
-   js2, js1, freeenm, varm, soluzm, prob,ran=Range[0,nn],bvalues},
-       freeenm[js1_,js2_] :=NIntegrate[Binomial[nn, m]*Exp[js2*((m^2-m)/(nn^2-nn)-totcorr) + js1*(m/nn-totmm)], {m, 0, nn}];
+   js2, js1, freeenm, varm, soluzm, prob,bvalues},
+       freeenm[js1_,js2_] :=Log@NIntegrate[Exp[nn*(
+	 -x*Log[x]-(1-x)*Log[1-x]+ js1*(x-totmm)+js2*(x^2-totcorr))], {x,0,1},
+					   PrecisionGoal -> 6, AccuracyGoal -> Infinity,WorkingPrecision->wp];
   soluzm = 
-   NMinimize[freeenm, {js1, js2}, MaxIterations -> 10000, 
-    PrecisionGoal -> 6,Method->Automatic, AccuracyGoal -> Infinity,WorkingPrecision->wp];
-  prob = Table[
-    Binomial[nn, m]*Exp[js2*(m^2-m)/(nn^2-nn) + js1*m/nn]/2^nn /. soluzm[[2]], {m, 
-     0, nn}];
-  totalprob = Total[prob];prob=prob/totalprob;
-  bvalues={(ran.prob/nn)/meanmm-1,((ran^2-ran).prob/(nn^2-nn))/meancorr-1};
- Print["rel. discrepancies %: ", bvalues*100//N];
-  {js1 /. soluzm[[2]], js2/. soluzm[[2]], prob,totalprob}]
+   NMinimize[freeenm[js1,js2], {js1, js2}, MaxIterations -> 10000, 
+	     PrecisionGoal -> 6,Method->Automatic, AccuracyGoal -> Infinity,WorkingPrecision->wp];
+  
+  {jss1,jss2}={js1,js2}/.soluzm[[2]];
+
+  totalprob=NIntegrate[Exp[nn*(
+	 -x*Log[x]-(1-x)*Log[1-x]+ jss1*x+jss2*x^2)], {x,0,1},
+					   PrecisionGoal -> 3, AccuracyGoal -> Infinity,WorkingPrecision->wp];
+  bvalues=NIntegrate[{x,x^2}*Exp[nn*(
+	 -x*Log[x]-(1-x)*Log[1-x]+ jss1*x+jss2*x^2)]/totalprob, {x,0,1},
+					   PrecisionGoal -> 3, AccuracyGoal -> Infinity,WorkingPrecision->wp]/{meanmm,meancorr}-1;
+
+  Print["rel. discrepancies %: ", bvalues*100//N];
+  {jss1, jss2,totalprob}]
 
  MEhomsolutiontruncated[meanmm_, meancorr_, nn_, trunc_, wp_:MachinePrecision] := 
  Block[{totcorr = meancorr,

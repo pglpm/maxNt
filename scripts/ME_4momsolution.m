@@ -2,7 +2,7 @@
 
 Clear[MEhom4moments,MEhom4thmoment,MEhomvmoments,MEhom4momentsprob]; 
 
-MEhom4moments[m1_, m2_, m3_, m4_, nn_, wp_:MachinePrecision] := 
+MEhom4moments[m1_, m2_, m3_, m4_, nn_, wp_:MachinePrecision,pg_:3] := 
  Block[{totalprob,
 	zzzm, js1, js2, js3, js4, freeenm, varm, soluzm, prob,ran=Range[0,nn],
 	nn2=Binomial[nn,2], nn3=Binomial[nn,3], nn4=Binomial[nn,4], 
@@ -28,6 +28,34 @@ MEhom4moments[m1_, m2_, m3_, m4_, nn_, wp_:MachinePrecision] :=
  Print["rel. discrepancies %: ", bvalues*100//N];
  {js1 /. soluzm[[2]], js2 /. soluzm[[2]],
   js3 /. soluzm[[2]], js4 /. soluzm[[2]],prob,totalprob}]
+
+MEhom4moments2[m1_, m2_, m3_, m4_, nn_, wp_:MachinePrecision,pg_:3] := 
+ Block[{totalprob,
+	zzzm, js1, js2, js3, js4, freeenm, varm, soluzm, prob,ran=Range[0,nn],
+	nn2=Binomial[nn,2], nn3=Binomial[nn,3], nn4=Binomial[nn,4], 
+	bvalues},
+       mm1=m1*nn;mm2=m2*nn2;mm3=m3*nn3;mm4=m4*nn4;
+       freeenm = Log@Sum[Binomial[nn, m]*
+			 Exp[js1*(m-mm1) + js2*(Binomial[m,2]-mm2) +
+			     js3*(Binomial[m,3]-mm3) +
+			     js4*(Binomial[m,4]-mm4)],
+       {m, 0, nn}];
+  soluzm = 
+   NMinimize[freeenm, {js1, js2, js3, js4}, MaxIterations -> 10000, 
+    PrecisionGoal -> 4, AccuracyGoal -> Infinity,WorkingPrecision->wp];
+  prob = Table[
+	  Binomial[nn, m]*Exp[js1*m + js2*Binomial[m,2] +
+		      js3*Binomial[m,3] +
+		      js4*Binomial[m,4]]/. soluzm[[2]],
+	  {m, 0, nn}];
+  totalprob = Total[prob];prob=prob/totalprob;
+    bvalues={(ran.prob/nn)/m1-1,
+	     ((Binomial[ran,2]/nn2).prob)/m2-1,
+	     ((Binomial[ran,3]/nn3).prob)/m3-1,
+	     ((Binomial[ran,4]/nn4).prob)/m4-1};
+ Print["rel. discrepancies %: ", bvalues*100//N];
+ {nn1*js1 /. soluzm[[2]], nn2*js2 /. soluzm[[2]],
+  nn3*js3 /. soluzm[[2]], nn4*js4 /. soluzm[[2]],prob,totalprob}]
 
 MEhom4thmoment[m1_, m2_, m4_, nn_, wp_:MachinePrecision] := 
  Block[{totcorr = meancorr,

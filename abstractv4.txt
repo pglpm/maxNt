@@ -1,0 +1,54 @@
+- Luca:
+
+This work shows how to build a maximum-entropy probabilistic model for the
+total activity of a population of neurons, given only some activity statistics
+-- for example, empirical moments -- of a \emph{subpopulation} thereof. This
+kind of model is useful because neuronal recordings are always limited to a
+very small sample of a population of neurons.
+
+The model is applied to two sets of neuronal data available in the
+literature. In some cases it predicts the larger population to have
+interesting features -- for example, two modes in the probability for the
+total activity at low regimes -- that are not visible in the sample or in a
+maximum-entropy model built for the sample alone.
+
+For the two dataset, the maximum-entropy probability model applied only to
+the subpopulation is compared with the marginal probability distribution
+obtained from the maximum-entropy model applied to the full population. On
+a linear probability scale no large differences are visible, but on a
+logarithmic scale the two distributions show very different behaviours,
+especially in the tails.
+
+
+- Yasser:
+
+Maximum entropy models have been used for building statistical models of
+neural data. Since this data usually includes the activity of a relatively
+small sample of neurons from a much bigger population, a natural question
+to ask is how we can incorporate the fact that we are looking at such a
+small fraction of neurons from the network? In this paper we address this
+question in the context of the homogeneous maximum entropy model. We first
+demonstrate how to build a maximum entropy model for the full population
+using only the data from a sample of neurons by expressing the statistics
+of the full population activity as a function of those of the sample using
+standard counting arguments. We do this both when we assume that we know
+the size of the full population or when we assume an uninformative prior
+over the size of the full population. When then apply this to
+multi-electrode recordings from the macaque motor cortex and rat Medial
+Entorhinal Cortex (MEC) and see that in some cases, depending on the
+moments of interest or the assumed size of the full population, this full
+population maximum entropy shows features, such as extra modes in the
+probability distribution of the moments that are not observable in the
+maximum entropy model fit to the sampled neurons. To gain better insight
+into these differences, we wondered if marginalizing the full population
+maximum entropy model down to the sample size would still preserve the
+observed differences in the two distributions over the sampled neurons. We
+found that, in the datasets we considered, the major differences to a large
+extend disappear when the model is marginalized to the sample size, but
+small differences remain between the marginalized distribution and the
+sample level maximum entropy model. In principle one does have to include
+the knowledge that the data is subsampled from a bigger population, but
+this is not usually done in practice The similarity between the maximum
+entropy at the sample level and the one marginalized from the full
+population is thus comforting as, a priori, the two can yield widely
+different results about the activity of the sample.

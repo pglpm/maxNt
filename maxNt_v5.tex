@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-04-09T14:46:50+0200
+%% Last-Updated: 2019-04-09T17:16:14+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -265,7 +265,7 @@ citestyle=authoryear-comp,bibstyle=pglpm-authoryear,autopunct=false,sorting=ny,s
 \newcommand*{\citep}{\parencites}
 \newcommand*{\citey}{\parencites*}
 %\renewcommand*{\cite}{\parencite}
-\renewcommand*{\cites}{\parencites}
+%\newcommand*{\citeps}{\parencites}
 \providecommand{\href}[2]{#2}
 \providecommand{\eprint}[2]{\texttt{\href{#1}{#2}}}
 \newcommand*{\amp}{\&}
@@ -688,6 +688,8 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\ysh}{H}
 \newcommand*{\ybu}{H_{\text{B}}}
 
+\newcommand*{\ynu}{\bm{\nu}}
+
 \newcommand*{\prop}[1]{`#1'}
 
 \newcommand*{\mee}{maximum entropy}
@@ -921,7 +923,7 @@ of the larger population is unknown.
 
 To apply the \me\ method to the larger, unsampled population, it is
 necessary to use probability relations relevant to sampling
-\cites{ghoshetal1997}[parts~I,
+\citep{ghoshetal1997}[parts~I,
 VI]{freedmanetal1978_r2007}[\chap~8]{gelmanetal1995_r2014}[\chap~3]{jaynes1994_r2003}.
 The relations we present are well-known in survey sampling and in the
 pedagogic problem of drawing from an urn without replacement, yet they are
@@ -1053,7 +1055,7 @@ via the conditional probability
 which is a hypergeometric distribution, typical of \enquote{drawing without
   replacement} problems. The combinatorial proof of this expression is in
 fact the same as for this class of problems
-\cites[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}.
+\citep[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}.
 
 Using the conditional probability above we obtain the probability for the
 activity of the sample:
@@ -1403,35 +1405,68 @@ distribution for $\yNv$ inspired by Jeffreys
 \section{Derivation from the probability calculus}
 \label{sec:derivation_prob_calculus}
 
-There are several ways to build and interpret a distribution of the
-maximum-entropy form~\eqref{eq:app_maxent_sample}
-or~\eqref{eq:app_maxent_pop}.
+There are three inequivalent main routes that lead to a probability
+distribution of the maximum-entropy form~\eqref{eq:app_maxent_sample}
+or~\eqref{eq:app_maxent_pop}. The distribution carries a different
+interpretation under each route \citep[pp.~52--55,
+72--77]{jaynes1979b}[pp.~25--28]{jaynes1982}[\sect~I]{jaynes1982b}{jaynes1986d_r1996}[\sect~11.1]{jaynes1994_r2003}.
 
-The maximum-entropy method is used to construct a complete plausibility
-distribution given only a quantitative \emph{feeling} of some of its
-properties, such as expectations. This way of constructing probabilities
-may be needed at the very beginning of an inference
-problem\footnote{\enquote{Now the axioms of probability enable us to infer
-    any probability-conclusion \emph{only} from probability-premisses. In
-    other words, the calculus of probability does not enable us to infer
-    any probability-value unless we have some probabilities or probability
-    relations \emph{given}. Such data cannot be supplied by the
-    mathematician. E.g. the rules of arithmetic and the axioms of the
-    probability-calculus are utterly impotent to determine, on the supposed
-    knowledge that the throw of a coin must yield either head or tail and
-    cannot yield both, the probability that it will yield head or that it
-    will yield tail. We must assume that the two co-exclusive and
-    co-exhaustive possibilities are \emph{equally probable}, before we can
-    estimate the probability of either as being a half of certitude}
-  \citep[\emph{Appendix on eduction}, \sect~5, p.~182]{johnson1924}.}
-\cites[pp.~52--55, 72--77]{jaynes1979b}[pp.~25--28]{jaynes1982}[\sect~I]{jaynes1982b}{jaynes1986d_r1996}[\sect~11.1]{jaynes1994_r2003}.
+\begin{enumerate}[wide,label=(\alph*)]
+\item \label{item:entropy_route}One route is the choice of the distribution having the highest
+  Shannon entropy, given only a quantitative assessment some of its
+  properties, such as expectations. The numerical choice of the value of
+  such properties is a (subjective) assumption.
 
-In the present case, however, the probability distribution can be derived
-through the probability calculus from the precise empirical statistics and
-observations made; the initial probabilities and assumptions needed in such
-an inference are of a different kind. It can be shown that the
-maximum-entropy distribution is an \emph{approximation} of the exact result
-obtained this way.
+  \medskip
+
+  In the two other routes the maximum-entropy distribution is obtained as
+  an \emph{approximation} of a distribution obtained via the probability
+  calculus, using data coming from a set of $T$ measurements -- as in our
+  present case.\mynote{refs here} Also in this case some (subjective)
+  assumptions are necessary: they concern our beliefs about the long-run
+  relative frequencies of the measurement outcomes:\footnote{Such
+    assumptions are always necessary at the beginning of an inference:
+    \enquote{Now the axioms of probability enable us to infer any
+      probability-conclusion \emph{only} from probability-premisses. In
+      other words, the calculus of probability does not enable us to infer
+      any probability-value unless we have some probabilities or
+      probability relations \emph{given}. Such data cannot be supplied by
+      the mathematician. E.g. the rules of arithmetic and the axioms of the
+      probability-calculus are utterly impotent to determine, on the
+      supposed knowledge that the throw of a coin must yield either head or
+      tail and cannot yield both, the probability that it will yield head
+      or that it will yield tail. We must assume that the two co-exclusive
+      and co-exhaustive possibilities are \emph{equally probable}, before
+      we can estimate the probability of either as being a half of
+      certitude} \citep[\emph{Appendix on eduction}, \sect~5,
+    p.~182]{johnson1924}.}
+
+\item \label{item:entr_prior_route}In one case we consider all possible
+  sets of measurement outcomes to be \emph{roughly} equally likely; this
+  leads to a probability for the frequencies $\ynu$ proportional to a
+  multinomial coefficient $\binom{L}{L\ynu}$, with $L$ large but smaller
+  than $T$. (We cannot assume the sets of measurement outcomes to be
+  exactly equally likely, because this is equivalent to their independence:
+  \cf\
+  \cites[\sect~6.7]{jaynes1994_r2003}[\sect~B]{portamana2009}[\sect~2]{portamana2017}.)
+\item \label{item:suff_route}In the other case we assume that the
+  measurements have a \emph{sufficient statistics}: the same as appears in
+  the exponential of the maximum-entropy distribution.
+\end{enumerate}
+
+It's important to keep in mind that the approximate equivalence of these
+three routes only holds under very specific assumptions -- which \emph{have
+  physical and biological meanings and consequences}. In particular,
+route~\ref{item:suff_route} implies that we can discard other empirical
+statistics of the data, if they are known; whereas
+route~\ref{item:entr_prior_route} requires us to specify all known
+empirical statistics, because using only a subset of them may lead to
+different results. Route~\ref{item:entropy_route} is also supposed to be
+used with all known data. Moreover, the approximate equivalence of
+route~\ref{item:entropy_route} with routes~\ref{item:entr_prior_route} and
+\ref{item:suff_route} \emph{only holds if $T$ is much larger than the
+  possible values of the activity $\yRf$}.
+
 
 
 \section{Discussion}

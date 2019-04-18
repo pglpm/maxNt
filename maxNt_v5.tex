@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-04-18T16:17:13+0200
+%% Last-Updated: 2019-04-18T21:40:56+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -790,31 +790,41 @@ a hundred years ago:
     p.~182]{johnson1924}}
 \end{quote}
 
-These premisses may represent either actual knowledge or just some
-hypotheses whose consequences we want to explore. They can be
+These premisses may represent either actual knowledge or just
 \setlength{\intextsep}{0.5ex}% with wrapfigure
 \begin{wrapfigure}{l}{0.33\linewidth}% with wrapfigure
 \centering\includegraphics[width=\linewidth]{statements_scheme1.pdf}%\\
 %\caption{caption}\label{fig:comparison_a5}
 \end{wrapfigure}% statements_scheme.svg statements_scheme2.svg
-assigned at different depths of the logical analysis of our inference
-problem, and assignments at different depths can turn out to be
-equivalent.
+some hypotheses whose consequences we want to explore. They can be assigned
+at different depths of the logical analysis of our inference problem.
 
 We can for example assign probabilistic premisses at a very deep
-level, as schematically illustrated on the left. They will determine the
+level, as schematically illustrated on the left. They determine the
 probabilities of statements at all higher levels, including the statements
 we're ultimately interested in.
 
-Or we can assign probabilistic premisses at
-a level of intermediate
 \begin{wrapfigure}{r}{0.33\linewidth}% with wrapfigure
-\centering\includegraphics[width=\linewidth]{statements_scheme2.pdf}%\\
+\centering\includegraphics[width=\linewidth]{statements_scheme2b.pdf}%\\
 %\caption{caption}\label{fig:comparison_a5}
 \end{wrapfigure}% statements_scheme.svg statements_scheme2.svg
-depth, as schematically illustrated on the right. In this case they will
-determine the probabilities of statements at all higher level, and partly
-constrain the probabilities of statements at deeper levels.
+Or we can assign probabilistic premisses at a level of intermediate depth,
+as schematically illustrated on the right. In this case they determine the
+probabilities of statements at all higher levels, and partly constrain
+the probabilities of statements at deeper levels.
+
+The choice of the logical level at which to assign the premisses depends on
+many factors: on the difficulty of assessing our state of knowledge at
+particular levels, on the cost of the ensuing calculations, and especially
+on the general purpose of our inference. But two assignments of premisses at
+different levels can still turn out to be completely equivalent for the
+probabilities of the statements of interest.
+
+The maximum-entropy principle was proposed first by Jaynes
+\parentext{\cite*{jaynes1957,jaynes1963,jaynes1994_r2003};
+  \cite{sivia1996_r2006,hobsonetal1973}} as a way of assigning probability
+premisses at a level of intermediate depth -- this point is made
+especially clear in \textcite[\sect~11.1]{jaynes1994_r2003}.
 
 
 

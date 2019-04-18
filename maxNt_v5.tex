@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-04-12T16:00:41+0200
+%% Last-Updated: 2019-04-18T16:17:13+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -312,7 +312,7 @@ citestyle=authoryear-comp,bibstyle=pglpm-authoryear,autopunct=false,sorting=ny,s
 
 \usepackage{graphicx}
 
-%\usepackage{wrapfig}
+\usepackage{wrapfig}
 
 %\usepackage{tikz-cd}
 
@@ -768,10 +768,66 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \section{Maximum-entropy and recordings of neuronal activity}
 \label{sec:intro}
 
+A necessary step of every plausible inference is the assignment of some
+probabilistic premisses -- as many as necessary to arrive at our desired
+probabilistic conclusions given the evidence. The necessity of this step
+was tersely stated by W.~E.~Johnson %(J.~M.~Keynes's supervisor)
+a hundred years ago:
+\begin{quote}\footnotesize
+  Now the axioms of probability enable us to infer any
+  probability-conclusion \emph{only} from probability-premisses. In other
+  words, the calculus of probability does not enable us to infer any
+  probability-value unless we have some probabilities or probability
+  relations \emph{given}. Such data cannot be supplied by the
+  mathematician. E.g. the rules of arithmetic and the axioms of the
+  probability-calculus are utterly impotent to determine, on the supposed
+  knowledge that the throw of a coin must yield either head or tail and
+  cannot yield both, the probability that it will yield head or that it
+  will yield tail. We must assume that the two co-exclusive and
+  co-exhaustive possibilities are \emph{equally probable}, before we can
+  estimate the probability of either as being a half of certitude.
+  \sourceatright{\citep[Appendix on eduction, \sect~5,
+    p.~182]{johnson1924}}
+\end{quote}
+
+These premisses may represent either actual knowledge or just some
+hypotheses whose consequences we want to explore. They can be
+\setlength{\intextsep}{0.5ex}% with wrapfigure
+\begin{wrapfigure}{l}{0.33\linewidth}% with wrapfigure
+\centering\includegraphics[width=\linewidth]{statements_scheme1.pdf}%\\
+%\caption{caption}\label{fig:comparison_a5}
+\end{wrapfigure}% statements_scheme.svg statements_scheme2.svg
+assigned at different depths of the logical analysis of our inference
+problem, and assignments at different depths can turn out to be
+equivalent.
+
+We can for example assign probabilistic premisses at a very deep
+level, as schematically illustrated on the left. They will determine the
+probabilities of statements at all higher levels, including the statements
+we're ultimately interested in.
+
+Or we can assign probabilistic premisses at
+a level of intermediate
+\begin{wrapfigure}{r}{0.33\linewidth}% with wrapfigure
+\centering\includegraphics[width=\linewidth]{statements_scheme2.pdf}%\\
+%\caption{caption}\label{fig:comparison_a5}
+\end{wrapfigure}% statements_scheme.svg statements_scheme2.svg
+depth, as schematically illustrated on the right. In this case they will
+determine the probabilities of statements at all higher level, and partly
+constrain the probabilities of statements at deeper levels.
+
+
+
+
+
+
+
+\clearpage
+
 \hrule
 Yasser's intro
 \hrule
-
+{\footnotesize
 Experimental technologies to record the activity of many neurons at the
 same time in different species and brain areas are rapidly advancing. These
 experimental advancements are paralleled by advances in theoretical and
@@ -848,6 +904,7 @@ moments that we use for building the maximum entropy model. In section 3 we
 compare the distributions found from marginalizing the maximum entropy
 model down to the sample level and the original sample level model.
 
+}
 \mynote{Luca: add this: from sampling theory we know that important
   features of the full network may not be visible in a sample because
   smoothed out. But using sampling theory in the inverse direction we can

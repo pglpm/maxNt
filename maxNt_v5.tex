@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-04-19T19:09:13+0200
+%% Last-Updated: 2019-04-19T19:24:02+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -850,7 +850,7 @@ new time bin, somehow using the data we were given. (It must be remarked
 that such assignment partly constrains, in a backward fashion, all assignments we
 would do at a deeper level.)
 
-The maximum-entropy principle was proposed by Jaynes
+The maximum-entropy method was proposed by Jaynes
 \parentext{\cite*{jaynes1957,jaynes1963,jaynes1994_r2003};
   \cite{sivia1996_r2006,hobsonetal1973}} as a way of assigning probability
 premisses at a more direct level, as in the approach just described. This
@@ -866,22 +866,22 @@ point is made especially clear in \textcite{jaynes1994_r2003},
   in essentially the same situation; how do we assign informative
   probabilities?
 \end{quote}
-The idea behind this principle is to translate \emph{all} the data we're
+The idea behind this method is to translate \emph{all} the data we're
 given into constraints -- such as expectations -- for our probability
 assignment, resolving the leftover freedom by choosing the constrained
 probability distribution having highest Shannon entropy, as a measure of
 its uncertainty or broadness. It can be shown that the use of this
-principle is approximately equivalent, under specific conditions, to a
+method is approximately equivalent, under specific conditions, to a
 probability assignment at a deeper level based on an assumption of
 exchangeability together with a multinomial probability distribution for
 long-run frequencies, or with an assumption about sufficient statistics
 \citep{jaynes1986d_r1996,rodriguez1989,rodriguez2002,skilling1989b,skilling1990}[\sect~4.5]{bernardoetal1994_r2000}{diaconisetal1981,portamana2017,portamana2009}.
 
-Sometimes this principle is applied with only \emph{part} of the available
+Sometimes this method is applied with only \emph{part} of the available
 data used as constraint; such an altered approach can be a heuristic way of
 testing for sufficient statistics.
 
-Owing to its directness, the maximum-entropy principle is straightforward
+Owing to its directness, the maximum-entropy method is straightforward
 to use -- and to misuse. In our previous example, for instance, it would
 give silly results if the number of time bins were not much larger than the
 possible activity values (it has thus been variously misused in the
@@ -889,14 +889,23 @@ neuroscientific literature \mynote{refs, especially to Tkacik}).
 
 \bigskip
 
-In the present work we show how to use the maximum-entropy principle to
+In the present work we show how to use the maximum-entropy method to
 assign a probability distribution for the activity of a population of
 neurons at a new time bin, given specific statistics about the activity of
 a \emph{subpopulation}, that is, a sample, of the full population. This
 kind of probability assignment is extremely important in neuroscience: we
 try to understand the workings of brain areas that may include tens of
-thousands of neurons, by analysing recording of only a few tens or hundreds
+thousands of neurons, but we can record only few tens or hundreds
 of them.
+
+Our approach also corrects a slight misuse of the maximum-entropy method as
+it has appeared in the literature. When this method is applied to a set of
+neurons, it implicitly assumes that the set is completely isolated from
+other neurons. We'll reveal this implicit assumption in several ways. The
+probability distribution thus constructed is therefore affected by this
+hidden assumption. We'll study in which circumstances the application of
+the method at the sample level gives results similar to the application at
+the full-population level.
 
 
 

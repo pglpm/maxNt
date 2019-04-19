@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-04-18T21:40:56+0200
+%% Last-Updated: 2019-04-19T15:23:02+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -453,7 +453,8 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \normalsize\sffamily%
 \lineskip  0.5em}
 \postauthor{\par\end{center}}
-\predate{\DTMsetdatestyle{mydate}\begin{center}\footnotesize}
+\predate{\DTMsetdatestyle{mydate}\vspace{0.5\baselineskip}%
+\begin{center}\footnotesize}
 \postdate{\end{center}\vspace{-\medskipamount}}
 
 \setfloatadjustment{figure}{\footnotesize}
@@ -474,6 +475,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \predisplaypenalty=10000
 \postdisplaypenalty=1549
 \displaywidowpenalty=1602
+\raggedbottom
 \selectlanguage{british}\frenchspacing
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -700,6 +702,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 %%% Beginning of document
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \firmlists
+\raggedbottom
 \begin{document}
 \captiondelim{\quad}\captionnamefont{\footnotesize}\captiontitlefont{\footnotesize}
 \selectlanguage{british}\frenchspacing
@@ -772,7 +775,7 @@ A necessary step of every plausible inference is the assignment of some
 probabilistic premisses -- as many as necessary to arrive at our desired
 probabilistic conclusions given the evidence. The necessity of this step
 was tersely stated by W.~E.~Johnson %(J.~M.~Keynes's supervisor)
-a hundred years ago:
+a hundred years ago:\vspace{\topsep}
 \begin{quote}\footnotesize
   Now the axioms of probability enable us to infer any
   probability-conclusion \emph{only} from probability-premisses. In other
@@ -820,13 +823,66 @@ on the general purpose of our inference. But two assignments of premisses at
 different levels can still turn out to be completely equivalent for the
 probabilities of the statements of interest.
 
-The maximum-entropy principle was proposed first by Jaynes
+
+Here's an example. Suppose that $n$ neurons have been recorded in a
+sequence of time bins. We're given the time averages of the numbers of
+active neurons and neuron pairs in the sequence. We don't know the exact
+sequence of activities or the number $T$ of time bins, although we know
+that the latter is large. We want to forecast how many neurons will be
+active in a \emph{new} time bin.
+
+In a deep approach to this inference problem we assign the probability for
+the possible value of $T$, and the probabilities for several hypotheses
+about the sequence of activities in $T+1$ or more time bins. One hypothesis
+could be, for example, that the $n$ neurons are a sample of a larger
+population of $N$ neurons and for this population there are some sufficient
+statistics, out of biological reasons. We could of course deepen this
+approach further, with no end, down to assigning the probabilities for the
+constitution and motion of the molecules of the $N$ neurons and their
+environment, the probabilities for the position and response of the
+recording electrodes, and so on. From all these probabilities and the data
+we could finally calculate the probability for the activity in the new time
+bin.
+
+At the other end, the shallowest approach to this inference problem is to
+directly assign the probabilities for the number of active neurons in the
+new time bin, somehow using the data we were given. (It must be remarked
+that such assignment partly constrains, in a backward fashion, all assignments we
+would do at a deeper level.)
+
+The maximum-entropy principle was proposed by Jaynes
 \parentext{\cite*{jaynes1957,jaynes1963,jaynes1994_r2003};
   \cite{sivia1996_r2006,hobsonetal1973}} as a way of assigning probability
-premisses at a level of intermediate depth -- this point is made
-especially clear in \textcite[\sect~11.1]{jaynes1994_r2003}.
+premisses at a more direct level, as in the approach just described. This
+point is made especially clear in \textcite{jaynes1994_r2003},
+\sect~11.1:\vspace{0.5\topsep}
+\begin{quote}\footnotesize
+  If we knew the numbers $N$, $L$, $W$, then this could be solved by direct
+  application of Bayes' theorem; without that information, we could still
+  introduce the unknowns $N$, $L$, $W$ as nuisance parameters and use
+  Bayes' theorem, eliminating them at the end. \textelp{} However, the
+  Bayesian solution would not really address our problem; it only transfers
+  it to the problem of assigning priors to $N$, $L$, $W$, leaving us back
+  in essentially the same situation; how do we assign informative
+  probabilities?
+\end{quote}
+Its idea is to translate \emph{all} data we're given as constraints for our
+probability assignment, resolving the leftover freedom by choosing the
+probability distribution having highest Shannon entropy, as a measure of
+its uncertainty or broadness. It can be shown that the use of this
+principle is approximately equivalent, under specific conditions, to a
+probability assignment at a deeper level based on an assumption of
+exchangeability together with a multinomial probability distribution for
+long-run frequencies, or with an assumption about sufficient statistics
+\citep{jaynes1986d_r1996,rodriguez1989,rodriguez2002,skilling1989b,skilling1990}[\sect~4.5]{bernardoetal1994_r2000}{diaconisetal1981,portamana2009,portamana2017}.
 
+Owing to its directness, the maximum-entropy principle is straightforward
+to use -- and to misuse. In our previous example, for instance, it gives
+silly results unless the number of time bins is much larger than the
+possible activity values (it has thus been variously misused in the
+neuroscientific literature \mynote{refs, especially to Tkacik}).
 
+In the present work we show how to use the maximum-entropy principle to...
 
 
 

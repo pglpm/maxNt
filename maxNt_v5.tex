@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-04-19T19:25:21+0200
+%% Last-Updated: 2019-04-20T15:37:10+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -579,7 +579,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\E}{\mathrm{E}}
 \renewcommand*{\|}{\nonscript\,\vert\nonscript\;\mathopen{}}
 %\DeclarePairedDelimiterX{\cond}[2]{(}{)}{#1\nonscript\,\delimsize\vert\nonscript\;\mathopen{}#2}
-%\DeclarePairedDelimiterX{\condt}[2]{[}{]}{#1\nonscript\,\delimsize\vert\nonscript\;\mathopen{}#2}
+\DeclarePairedDelimiterX{\condt}[2]{[}{]}{#1\nonscript\,\delimsize\vert\nonscript\;\mathopen{}#2}
 %\DeclarePairedDelimiterX{\conds}[2]{\{}{\}}{#1\nonscript\,\delimsize\vert\nonscript\;\mathopen{}#2}
 %\newcommand*{\+}{\lor}
 %\renewcommand{\*}{\land}
@@ -768,14 +768,59 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 %%% BEGINNING OF MAIN TEXT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Maximum-entropy and recordings of neuronal activity}
-\label{sec:intro}
+\section{Why polls?}
+\label{sec:polls}
+
+When political elections are approaching, mass media are constantly
+bubbling with results and discussions of pre-election polls. Why do we
+conduct pre-election polls and other kinds of survey sampling? The
+simplest, intuitive answer is \enquote{because they give us an idea of what
+  the final election outcomes will be}. Can this answer be made more
+quantitative?
+
+Yes. In the simplest cases, the probability calculus give us simple and
+precise quantitative relations between our expectations from a population
+-- of voters, for instance -- and from a sample thereof. Suppose there are
+$N$ voters, $S$ of which prefer one political candidate and $N-S$ of which
+prefer another. We don't know $S$ or $N-S$. Now take a sample of $n$
+voters, assuming that every set of $n$ voters is equally likely to be
+sampled. In this sample, $s$ voters prefer the first candidate, and $n-s$
+the second. The probability calculus tells us that our expectations of
+$s/n$ and $S/N$ are equal:
+\begin{equation}
+  \label{eq:equal_expectations_poll}
+  \E(s/n \| \yH) = \E(S/N \| \yH),
+\end{equation}
+where $\yH$ represents our state of knowledge in this example.
+
+A more precise answer to our original question is then: \enquote{because we
+  \emph{expect} to see the same proportion of political preferences in a
+  sample as in the full population}.
+
+The equality above extends to other quantities beyond the means $S/N$ and
+$s/n$: it holds for all normalized \emph{factorial} moments \citep{potts1953,broca2005}:
+\begin{multline}
+  \label{eq:equal_factorialmoments_polls}
+  \E\condt[\Big]{\tfrac{s\;(s-1)}{n\;(n-1)}}{\yH} = 
+  \E\condt[\Big]{\tfrac{S\;(S-1)}{N\;(N-1)}}{\yH},\\
+  \E\condt[\Big]{\tfrac{s\;(s-1)\;(s-2)}{n\;(n-1)\;(n-2)}}{\yH} = 
+  \E\condt[\Big]{\tfrac{S\;(S-1)\;(S-2)}{N\;(N-1)\;(N-2)}}{\yH},\quad\dotsc
+  \\
+  \E\condt[\Big]{\tbinom{s}{r}\;\tbinom{n}{r}^{-1}}{\yH} =
+  \E\condt[\Big]{\tbinom{S}{r}\;\tbinom{N}{r}^{-1}}{\yH},
+\end{multline}
+with $r<N$.
+
+
+
+\section{Maximum-entropy method}
+\label{sec:maxent_remarks}
 
 A necessary step of every plausible inference is the assignment of some
-probabilistic premisses -- as many as necessary to arrive at our desired
+probabilistic premisses; as many as necessary to arrive at our desired
 probabilistic conclusions given the evidence. The necessity of this step
 was tersely stated by W.~E.~Johnson %(J.~M.~Keynes's supervisor)
-a hundred years ago:\vspace{\topsep}
+a century ago:\vspace{\topsep}
 \begin{quote}\footnotesize
   Now the axioms of probability enable us to infer any
   probability-conclusion \emph{only} from probability-premisses. In other
@@ -802,53 +847,54 @@ These premisses may represent either actual knowledge or just
 some hypotheses whose consequences we want to explore. They can be assigned
 at different depths of the logical analysis of our inference problem.
 
-We can for example assign probabilistic premisses at a very deep
+We can for example assign probabilistic premisses at a very deep analytical
 level, as schematically illustrated on the left. They determine the
-probabilities of statements at all higher levels, including the statements
-we're ultimately interested in.
+probabilities of statements at more superficial levels, including the
+statements which we're ultimately interested in or which we can directly
+observe.
 
 \begin{wrapfigure}{r}{0.33\linewidth}% with wrapfigure
 \centering\includegraphics[width=\linewidth]{statements_scheme2b.pdf}%\\
 %\caption{caption}\label{fig:comparison_a5}
 \end{wrapfigure}% statements_scheme.svg statements_scheme2.svg
-Or we can assign probabilistic premisses at a level of intermediate depth,
-as schematically illustrated on the right. In this case they determine the
-probabilities of statements at all higher levels, and partly constrain
-the probabilities of statements at deeper levels.
+Or we can assign probabilistic premisses at a level of superficial or
+intermediate depth, as schematically illustrated on the right. In this case
+they determine the probabilities of statements at more superficial levels, and
+partly constrain the probabilities of statements at deeper levels.
 
-The choice of the logical level at which to assign the premisses depends on
-many factors: on the difficulty of assessing our state of knowledge at
-particular levels, on the cost of the ensuing calculations, and especially
-on the general purpose of our inference. But two assignments of premisses at
+The choice of the analytical depth at which to assign the premisses depends
+on many factors: on the difficulty of assessing our state of uncertainty at
+that depth, on the cost of the ensuing calculations, and especially on the
+general purpose of our inference. Assignments of probabilistic premisses at
 different levels can still turn out to be completely equivalent for the
 probabilities of the statements of interest.
 
 
 Here's an example. Suppose that $n$ neurons have been recorded in a
 sequence of time bins. We're given the time averages of the numbers of
-active neurons and neuron pairs in the sequence. We don't know the exact
+active neurons and of neuron pairs in the sequence. We don't know the exact
 sequence of activities or the number $T$ of time bins, although we know
-that the latter is large. We want to forecast how many neurons will be
-active in a \emph{new} time bin.
+that the latter is large. We want to forecast how many of the $n$ neurons
+will be active in a \emph{new} time bin.
 
 In a deep approach to this inference problem we assign the probability for
 the possible value of $T$, and the probabilities for several hypotheses
 about the sequence of activities in $T+1$ or more time bins. One hypothesis
-could be, for example, that the $n$ neurons are a sample of a larger
-population of $N$ neurons and for this population there are some sufficient
-statistics, out of biological reasons. We could of course deepen this
-approach further, with no end, down to assigning the probabilities for the
-constitution and motion of the molecules of the $N$ neurons and their
-environment, the probabilities for the position and response of the
-recording electrodes, and so on. From all these probabilities and the data
-we could finally calculate the probability for the activity in the new time
-bin.
+could be, for instance, that the $n$ neurons are a sample of a larger
+population of $N$ neurons, and a second hypothesis could be that for this
+population there are some sufficient statistics, out of biological reasons.
+We could of course deepen this approach further, with no end, down to
+assigning the probabilities for the constitution and motion of the
+molecules of the neurons and their environment, the probabilities for the
+position and response of the recording electrodes, and so on. From all
+these probabilities and the data we could finally calculate the probability
+for the activity in the new time bin.
 
 At the other end, the shallowest approach to this inference problem is to
 directly assign the probabilities for the number of active neurons in the
 new time bin, somehow using the data we were given. (It must be remarked
-that such assignment partly constrains, in a backward fashion, all assignments we
-would do at a deeper level.)
+that such assignment partly constrains, in a backward fashion, all
+assignments we could do at a deeper level.)
 
 The maximum-entropy method was proposed by Jaynes
 \parentext{\cite*{jaynes1957,jaynes1963,jaynes1994_r2003};
@@ -857,14 +903,14 @@ premisses at a more direct level, as in the approach just described. This
 point is made especially clear in \textcite{jaynes1994_r2003},
 \sect~11.1:\vspace{0.5\topsep}
 \begin{quote}\footnotesize
-  If we knew the numbers $N$, $L$, $W$, then this could be solved by direct
-  application of Bayes' theorem; without that information, we could still
-  introduce the unknowns $N$, $L$, $W$ as nuisance parameters and use
-  Bayes' theorem, eliminating them at the end. \textelp{} However, the
-  Bayesian solution would not really address our problem; it only transfers
-  it to the problem of assigning priors to $N$, $L$, $W$, leaving us back
-  in essentially the same situation; how do we assign informative
-  probabilities?
+  If we knew the numbers $N$, $L$, $W$, \textins{some quantities relevant
+    to our inference} then this could be solved by direct application of
+  Bayes' theorem; without that information, we could still introduce the
+  unknowns $N$, $L$, $W$ as nuisance parameters and use Bayes' theorem,
+  eliminating them at the end. \textelp{} However, the Bayesian solution
+  would not really address our problem; it only transfers it to the problem
+  of assigning priors to $N$, $L$, $W$, leaving us back in essentially the
+  same situation; how do we assign informative probabilities?
 \end{quote}
 The idea behind this method is to translate \emph{all} the data we're
 given into constraints -- such as expectations -- for our probability
@@ -889,23 +935,27 @@ neuroscientific literature \mynote{refs, especially to Tkacik}).
 
 \bigskip
 
-In the present work we show how to use the maximum-entropy method to
-assign a probability distribution for the activity of a population of
-neurons at a new time bin, given specific statistics about the activity of
-a \emph{subpopulation}, that is, a sample, of the full population. This
-kind of probability assignment is extremely important in neuroscience: we
-try to understand the workings of brain areas that may include tens of
-thousands of neurons, but we can record only few tens or hundreds
-of them.
+In the present work we show how to use the maximum-entropy method to assign
+a probability distribution for the total activity at a new time bin of a
+population of neurons, \emph{most of which can be unrecorded}, given
+specific statistics about the activity of a recorded \emph{sample} of the
+full population. This kind of probability assignment is extremely important
+in neuroscience: we try to understand the workings of brain areas that may
+include tens of thousands of neurons, but we can record only few tens or
+hundreds of them.
 
-Our approach also corrects a slight misuse of the maximum-entropy method as
-it has appeared in the literature. When this method is applied to a set of
-neurons, it implicitly assumes that the set is completely isolated from
-other neurons. We'll reveal this implicit assumption in several ways. The
-probability distribution thus constructed is therefore affected by this
+Our approach also corrects a slight misuse of the maximum-entropy method
+as sometimes appears in the literature. When this method is applied to a
+set of neurons, it implicitly assumes that the set is completely isolated
+from other neurons. We'll reveal this implicit assumption in several ways.
+The probability distribution thus constructed is therefore affected by this
 hidden assumption. We'll study in which circumstances the application of
 the method at the sample level and at the full-population level give
-similar results.
+similar or different probabilities.
+
+The maximum-entropy method can be used this way thanks to a very simple ***
+
+
 
 
 

@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-04-20T15:37:10+0200
+%% Last-Updated: 2019-04-20T15:41:30+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -798,7 +798,9 @@ A more precise answer to our original question is then: \enquote{because we
   sample as in the full population}.
 
 The equality above extends to other quantities beyond the means $S/N$ and
-$s/n$: it holds for all normalized \emph{factorial} moments \citep{potts1953,broca2005}:
+$s/n$: it holds for all normalized \emph{factorial} moments
+\citep{potts1953,broca2005}, no matter what probability distribution we
+have assigned to $S$:
 \begin{multline}
   \label{eq:equal_factorialmoments_polls}
   \E\condt[\Big]{\tfrac{s\;(s-1)}{n\;(n-1)}}{\yH} = 
@@ -809,7 +811,9 @@ $s/n$: it holds for all normalized \emph{factorial} moments \citep{potts1953,bro
   \E\condt[\Big]{\tbinom{s}{r}\;\tbinom{n}{r}^{-1}}{\yH} =
   \E\condt[\Big]{\tbinom{S}{r}\;\tbinom{N}{r}^{-1}}{\yH},
 \end{multline}
-with $r<N$.
+with $r<N$. Note that from the first $r$ factorial moments we can calculate
+the first $r$ raw power moments and vice versa; but the simple equalities
+above don't hold for the power moments.
 
 
 

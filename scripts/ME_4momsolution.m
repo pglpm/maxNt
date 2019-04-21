@@ -2,7 +2,7 @@
 
 Clear[MEhom4moments,MEhom4thmoment,MEhomvmoments,MEhom4momentsprob]; 
 
-MEhom4moments[m1_, m2_, m3_, m4_, nn_, wp_:MachinePrecision,pg_:3] := 
+MEhom4moments[m1_, m2_, m3_, m4_, nn_, wp_:MachinePrecision,pg_:6,mi_:10000] := 
  Block[{totalprob,
 	zzzm, js1, js2, js3, js4, freeenm, varm, soluzm, prob,ran=Range[0,nn],
 	nn2=Binomial[nn,2], nn3=Binomial[nn,3], nn4=Binomial[nn,4], 
@@ -13,8 +13,8 @@ MEhom4moments[m1_, m2_, m3_, m4_, nn_, wp_:MachinePrecision,pg_:3] :=
 			     js4*(Binomial[m,4]/nn4-m4)],
        {m, 0, nn}];
   soluzm = 
-   NMinimize[freeenm, {js1, js2, js3, js4}, MaxIterations -> 10000, 
-    PrecisionGoal -> 4, AccuracyGoal -> Infinity,WorkingPrecision->wp];
+   NMinimize[freeenm, {js1, js2, js3, js4}, MaxIterations -> mi, 
+    PrecisionGoal -> pg, AccuracyGoal -> Infinity,WorkingPrecision->wp];
   prob = Table[
 	  Binomial[nn, m]*Exp[js1*m/nn + js2*Binomial[m,2]/nn2 +
 		      js3*Binomial[m,3]/nn3 +

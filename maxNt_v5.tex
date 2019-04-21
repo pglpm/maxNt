@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-04-20T17:16:05+0200
+%% Last-Updated: 2019-04-20T23:54:37+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -779,14 +779,14 @@ simplest, intuitive answer is \enquote{because they give us an idea of what
 quantitative?
 
 Yes. In the simplest cases, the probability calculus give us simple and
-precise quantitative relations between our expectations from a population
--- of voters, for instance -- and from a sample thereof. Suppose there are
+precise quantitative relations between our expectations about a population
+-- of voters, for instance -- and about a sample thereof. Suppose there are
 $N$ voters, $S$ of which prefer one political candidate and $N-S$ of which
 prefer another. We don't know $S$ or $N-S$. Now take a sample of $n$
-voters, assuming that every set of $n$ voters is equally likely to be
-sampled. In this sample, $s$ voters prefer the first candidate, and $n-s$
-the second. The probability calculus tells us that our expectations of
-$s/n$ and $S/N$ are equal:
+voters, in such a way that we can assume that every set of $n$ voters is
+equally likely to be sampled. In this sample, $s$ voters prefer the first
+candidate, and $n-s$ the second. The probability calculus tells us that our
+expectations of $s/n$ and $S/N$ are equal:
 \begin{equation}
   \label{eq:equal_expectations_poll}
   \E(s/n \| \yH) = \E(S/N \| \yH),
@@ -799,8 +799,7 @@ A more precise answer to our original question then is: \enquote{because we
 
 The equality above extends to other quantities beyond the means $S/N$ and
 $s/n$: it holds for all normalized \emph{factorial} moments
-\citep{potts1953,broca2005}, no matter what probability distribution
-$\pf(S\|\yH)$ we have assigned to $S$:
+\citep{potts1953,broca2005}:
 \begin{equation}
   \label{eq:equal_factorialmoments_polls}
   \begin{split}
@@ -818,6 +817,9 @@ $\pf(S\|\yH)$ we have assigned to $S$:
 Note that from the first $r$ factorial moments we can calculate the first
 $r$ raw power moments and vice versa; but the simple equalities above don't
 hold for the power moments \citep[\sect~A]{portamanaetal2015}.
+
+The relations above are powerful because they hold no matter what the
+probability distribution $\pf(S\|\yH)$ be.
 
 
 

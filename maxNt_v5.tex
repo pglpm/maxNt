@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-04-23T13:06:43+0200
+%% Last-Updated: 2019-04-23T13:50:31+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -806,45 +806,48 @@ may be.
 
 \bigskip
 
-This probabilistic fact is of outstanding importance in neuroscience, where
-we try to understand the workings of brain areas that may include tens of
-thousands of neurons, but we can record only few tens or hundreds of them.
-Whenever we record the activity of $n$ neurons we're effectively polling
-them on the activity of all $N$ neurons under the recording device -- those
-that could equally likely have been sampled instead. Suppose the recorded
-activities are time-binned and binarized. At every time bin $t$, $s(t)$ out
-of the $n$ neurons \enquote{vote} for activity, and $n-s(t)$ vote for
-silence. The probability calculus tells us that the expectation equalities
-such as~\eqref{eq:poll_equal_expectations} hold for the total activity
-$S(t)$ of the full population of $N$ neurons that could have been recorded.
+These probabilistic properties are of outstanding importance in
+neuroscience, where we try to understand the workings of brain areas that
+may include tens of thousands of neurons, but we can record only few tens
+or hundreds of them. Whenever we record the activity of $n$ neurons we're
+effectively polling them on the activity of all $N$ neurons under the
+recording device -- those that could equally likely have been sampled
+instead. Suppose the recorded activities are time-binned and binarized. At
+every time bin $t$, $s(t)$ out of the $n$ neurons \enquote{vote} for
+activity, and $n-s(t)$ vote for silence. The probability calculus tells us
+that expectation equalities such as~\eqref{eq:poll_equal_expectations} hold
+for the total activity $S(t)$ of the full population of $N$ neurons that
+could have been recorded.
 
-The simple expectation equalities are 
+Expectation properties are especially important for the maximum-entropy
+method, which is used for various purposes in the neuroscientific
+literature. This method is typically applied constraining the equality of
+expectations and empirical averages. Expectation equalities such
+as~\eqref{eq:poll_equal_expectations} then have a far-reaching consequence:
+\emph{from empirical statistics of the activity of a \textbf{sample} of
+  neurons we can construct maximum-entropy distributions for the total
+  activity of the \textbf{full population} of neurons that could have been
+  sampled by the recording device}.
 
-Expectations are often used with
 
 
-\bigskip
+% In the present work we show how to use the maximum-entropy method to assign
+% a probability distribution for the total activity at a new time bin of a
+% population of neurons, \emph{most of which can be unrecorded}, given
+% specific statistics about the activity of a recorded \emph{sample} of the
+% full population. This kind of probability assignment is extremely important
+% in neuroscience: we try to understand the workings of brain areas that may
+% include tens of thousands of neurons, but we can record only few tens or
+% hundreds of them.
 
-
-
-
-In the present work we show how to use the maximum-entropy method to assign
-a probability distribution for the total activity at a new time bin of a
-population of neurons, \emph{most of which can be unrecorded}, given
-specific statistics about the activity of a recorded \emph{sample} of the
-full population. This kind of probability assignment is extremely important
-in neuroscience: we try to understand the workings of brain areas that may
-include tens of thousands of neurons, but we can record only few tens or
-hundreds of them.
-
-Our approach also corrects a slight misuse of the maximum-entropy method
-as sometimes appears in the literature. When this method is applied to a
-set of neurons, it implicitly assumes that the set is completely isolated
-from other neurons. We'll reveal this implicit assumption in several ways.
-The probability distribution thus constructed is therefore affected by this
-hidden assumption. We'll study in which circumstances the application of
-the method at the sample level and at the full-population level give
-similar or different probabilities.
+% Our approach also corrects a slight misuse of the maximum-entropy method
+% as sometimes appears in the literature. When this method is applied to a
+% set of neurons, it implicitly assumes that the set is completely isolated
+% from other neurons. We'll reveal this implicit assumption in several ways.
+% The probability distribution thus constructed is therefore affected by this
+% hidden assumption. We'll study in which circumstances the application of
+% the method at the sample level and at the full-population level give
+% similar or different probabilities.
 
 
 \mynote{integrate above with Yasser's below}

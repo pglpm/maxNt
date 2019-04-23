@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-04-23T09:59:41+0200
+%% Last-Updated: 2019-04-23T10:42:47+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -787,8 +787,9 @@ voters, in such a way that we can assume that every set of $n$ voters is
 equally likely to be sampled. In this sample, $s$ voters prefer the first
 candidate, and $n-s$ the second. The probability calculus tells us that our
 expectations of $s/n$ and $S/N$ are equal:
+\begin{subequations}
+  \label{eq:all_equal_expectations_poll}
 \begin{equation}
-  \label{eq:equal_expectations_poll}
   \E(s/n \| \yH) = \E(S/N \| \yH),
 \end{equation}
 where $\yH$ represents our state of knowledge in this example.
@@ -814,14 +815,24 @@ $s/n$: it holds for all normalized \emph{factorial} moments
   \quad r<N.
 \end{split}
 \end{equation}
+\end{subequations}
 Note that from the first $r$ factorial moments we can calculate the first
-$r$ raw power moments and vice versa; but the simple equalities above don't
+$r$ power moments and vice versa; but the simple equalities above don't
 hold for the power moments \citep[\sect~A]{portamanaetal2015}.
 
 The relations above are powerful because they hold no matter what the
 probability distribution $\pf(S\|\yH)$ be.
 
+\bigskip
 
+Whenever we record the activity of $n$ neurons we're effectively polling
+them on the activity of all $N$ neurons under the recording device -- those
+that could equally likely have been sampled instead. Suppose their
+activities are time-binned and binarized. At every time bin $t$, $s(t)$ out
+of the $n$ neurons \enquote{vote} for activity, and $n-s(t)$ vote for
+silence. The probability calculus tells us that the expectation
+formulae~\eqref{eq:all_equal_expectations_poll} hold for the total activity
+$S(t)$ of the full population of $N$ neurons that could have been recorded.
 
 
 \bigskip

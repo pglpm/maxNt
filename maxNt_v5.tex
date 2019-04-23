@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-04-23T11:28:39+0200
+%% Last-Updated: 2019-04-23T13:06:43+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -787,47 +787,22 @@ voters, in such a way that we can assume that every set of $n$ voters is
 equally likely to be sampled. In this sample, $s$ voters prefer the first
 candidate, and $n-s$ the second. The probability calculus tells us that our
 expectations of $s/n$ and $S/N$ are equal:
-\begin{subequations}
-  \label{eq:all_equal_expectations_poll}
-\begin{equation}
+\begin{equation}\label{eq:poll_equal_expectations}
   \E(s/n \| \yH) = \E(S/N \| \yH),
 \end{equation}
-where $\yH$ represents our state of knowledge in this example.
+where $\yH$ represents our state of knowledge in this example. A more
+precise answer to our original question then is: \enquote{because we
+  \emph{expect} -- in the full probabilistic sense -- to see the same
+  proportion of political preferences in a sample as in the full
+  population}.
 
-A more precise answer to our original question then is: \enquote{because we
-  \emph{expect} to see the same proportion of political preferences in a
-  sample as in the full population}.
-
-The equality above extends to other quantities beyond the means $S/N$ and
-$s/n$: it holds for all normalized \emph{factorial} moments
-\citep{potts1953,broca2005}:
-\begin{equation}
-  \label{eq:equal_factorialmoments_polls}
-  \begin{split}
-  \E\condt[\big]{\tfrac{s\;(s-1)}{n\;(n-1)}}{\yH} &= 
-  \E\condt[\big]{\tfrac{S\;(S-1)}{N\;(N-1)}}{\yH},\\
-  \E\condt[\big]{\tfrac{s\;(s-1)\;(s-2)}{n\;(n-1)\;(n-2)}}{\yH} &= 
-  \E\condt[\big]{\tfrac{S\;(S-1)\;(S-2)}{N\;(N-1)\;(N-2)}}{\yH},
-  \\
-  \text{and in general}\quad
-  \E\condt[\big]{\tbinom{s}{r}\;\tbinom{n}{r}^{-1}}{\yH} &=
-  \E\condt[\big]{\tbinom{S}{r}\;\tbinom{N}{r}^{-1}}{\yH},
-  \quad r<N.
-\end{split}
-\end{equation}
-Note that from the first $r$ factorial moments we can calculate the first
-$r$ power moments and vice versa; but the simple equalities above don't
-hold for the power moments \citep[\sect~A]{portamanaetal2015}. The formulae
-above follow from a precise relation between our \dobs\ about the polled
-voters and about all voters:
-\begin{equation}
-  \label{eq:relation_ps_pS}
-  \pf(s \| \yH) = \sum_{S} \binom{n}{s}\;\binom{N-n}{S-s}\;\binom{N}{S}^{-1}\;
-  \pf(S \| \yH).
-\end{equation}
-\end{subequations}
-The relations above are powerful because they hold no matter what the
-probability distribution $\pf(S\|\yH)$ may be.
+The exact equality above extends to other quantities beyond the means $S/N$
+and $s/n$: it holds for all normalized \emph{factorial} moments
+\citep{potts1953,broca2005}[\sect~A]{portamanaetal2015}. These expectation
+equalities follow from a precise relation between our \dobs\ about the
+polled voters and about all voters. The relations above are powerful
+because they hold no matter what the probability distribution $\pf(S\|\yH)$
+may be.
 
 \bigskip
 
@@ -839,8 +814,8 @@ them on the activity of all $N$ neurons under the recording device -- those
 that could equally likely have been sampled instead. Suppose the recorded
 activities are time-binned and binarized. At every time bin $t$, $s(t)$ out
 of the $n$ neurons \enquote{vote} for activity, and $n-s(t)$ vote for
-silence. The probability calculus tells us that the expectation
-formulae~\eqref{eq:all_equal_expectations_poll} hold for the total activity
+silence. The probability calculus tells us that the expectation equalities
+such as~\eqref{eq:poll_equal_expectations} hold for the total activity
 $S(t)$ of the full population of $N$ neurons that could have been recorded.
 
 The simple expectation equalities are 
@@ -959,7 +934,36 @@ model down to the sample level and the original sample level model.
 \hrule
 \bigskip
 
+\section{Mathematical development}
+\label{sec:maths_development}
 
+\begin{subequations}
+  \label{eq:all_equal_expectations_poll}
+\begin{equation}
+  \label{eq:equal_factorialmoments_polls}
+  \begin{split}
+  \E\condt[\big]{\tfrac{s\;(s-1)}{n\;(n-1)}}{\yH} &= 
+  \E\condt[\big]{\tfrac{S\;(S-1)}{N\;(N-1)}}{\yH},\\
+  \E\condt[\big]{\tfrac{s\;(s-1)\;(s-2)}{n\;(n-1)\;(n-2)}}{\yH} &= 
+  \E\condt[\big]{\tfrac{S\;(S-1)\;(S-2)}{N\;(N-1)\;(N-2)}}{\yH},
+  \\
+  \text{and in general}\quad
+  \E\condt[\big]{\tbinom{s}{r}\;\tbinom{n}{r}^{-1}}{\yH} &=
+  \E\condt[\big]{\tbinom{S}{r}\;\tbinom{N}{r}^{-1}}{\yH},
+  \quad r<N.
+\end{split}
+\end{equation}
+
+Note that from the first $r$ factorial moments we can calculate the first
+$r$ power moments and vice versa; but the simple equalities above don't
+hold for the power moments \citep[\sect~A]{portamanaetal2015}.
+
+\begin{equation}
+  \label{eq:relation_ps_pS}
+  \pf(s \| \yH) = \sum_{S} \binom{n}{s}\;\binom{N-n}{S-s}\;\binom{N}{S}^{-1}\;
+  \pf(S \| \yH).
+\end{equation}
+\end{subequations}
 
 
 Suppose we have recorded the firing activity of a hundred neurons,

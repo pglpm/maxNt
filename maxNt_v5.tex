@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-04-23T10:42:47+0200
+%% Last-Updated: 2019-04-23T11:28:39+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -804,38 +804,54 @@ $s/n$: it holds for all normalized \emph{factorial} moments
 \begin{equation}
   \label{eq:equal_factorialmoments_polls}
   \begin{split}
-  \E\condt[\Big]{\tfrac{s\;(s-1)}{n\;(n-1)}}{\yH} &= 
-  \E\condt[\Big]{\tfrac{S\;(S-1)}{N\;(N-1)}}{\yH},\\
-  \E\condt[\Big]{\tfrac{s\;(s-1)\;(s-2)}{n\;(n-1)\;(n-2)}}{\yH} &= 
-  \E\condt[\Big]{\tfrac{S\;(S-1)\;(S-2)}{N\;(N-1)\;(N-2)}}{\yH},\quad\dotsc
+  \E\condt[\big]{\tfrac{s\;(s-1)}{n\;(n-1)}}{\yH} &= 
+  \E\condt[\big]{\tfrac{S\;(S-1)}{N\;(N-1)}}{\yH},\\
+  \E\condt[\big]{\tfrac{s\;(s-1)\;(s-2)}{n\;(n-1)\;(n-2)}}{\yH} &= 
+  \E\condt[\big]{\tfrac{S\;(S-1)\;(S-2)}{N\;(N-1)\;(N-2)}}{\yH},
   \\
   \text{and in general}\quad
-  \E\condt[\Big]{\tbinom{s}{r}\;\tbinom{n}{r}^{-1}}{\yH} &=
-  \E\condt[\Big]{\tbinom{S}{r}\;\tbinom{N}{r}^{-1}}{\yH},
+  \E\condt[\big]{\tbinom{s}{r}\;\tbinom{n}{r}^{-1}}{\yH} &=
+  \E\condt[\big]{\tbinom{S}{r}\;\tbinom{N}{r}^{-1}}{\yH},
   \quad r<N.
 \end{split}
 \end{equation}
-\end{subequations}
 Note that from the first $r$ factorial moments we can calculate the first
 $r$ power moments and vice versa; but the simple equalities above don't
-hold for the power moments \citep[\sect~A]{portamanaetal2015}.
-
+hold for the power moments \citep[\sect~A]{portamanaetal2015}. The formulae
+above follow from a precise relation between our \dobs\ about the polled
+voters and about all voters:
+\begin{equation}
+  \label{eq:relation_ps_pS}
+  \pf(s \| \yH) = \sum_{S} \binom{n}{s}\;\binom{N-n}{S-s}\;\binom{N}{S}^{-1}\;
+  \pf(S \| \yH).
+\end{equation}
+\end{subequations}
 The relations above are powerful because they hold no matter what the
-probability distribution $\pf(S\|\yH)$ be.
+probability distribution $\pf(S\|\yH)$ may be.
 
 \bigskip
 
+This probabilistic fact is of outstanding importance in neuroscience, where
+we try to understand the workings of brain areas that may include tens of
+thousands of neurons, but we can record only few tens or hundreds of them.
 Whenever we record the activity of $n$ neurons we're effectively polling
 them on the activity of all $N$ neurons under the recording device -- those
-that could equally likely have been sampled instead. Suppose their
+that could equally likely have been sampled instead. Suppose the recorded
 activities are time-binned and binarized. At every time bin $t$, $s(t)$ out
 of the $n$ neurons \enquote{vote} for activity, and $n-s(t)$ vote for
 silence. The probability calculus tells us that the expectation
 formulae~\eqref{eq:all_equal_expectations_poll} hold for the total activity
 $S(t)$ of the full population of $N$ neurons that could have been recorded.
 
+The simple expectation equalities are 
+
+Expectations are often used with
+
 
 \bigskip
+
+
+
 
 In the present work we show how to use the maximum-entropy method to assign
 a probability distribution for the total activity at a new time bin of a

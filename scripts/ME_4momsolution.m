@@ -2,9 +2,10 @@
 
 Clear[MEhom4moments,MEhom4thmoment,MEhomvmoments,MEhom4momentsprob]; 
 
-MEhom4moments[m1_, m2_, m3_, m4_, nn_, wp_:MachinePrecision,pg_:6,mi_:10000] := 
- Block[{totalprob,
-	zzzm, js1, js2, js3, js4, freeenm, varm, soluzm, prob,ran=Range[0,nn],
+MEhom4moments[mr1_, mr2_, mr3_, mr4_, nn_, wp_:MachinePrecision,pg_:6,mi_:10000] := 
+  Block[{totalprob,
+	 m1=Rationalize[mr1,0],m2=Rationalize[mr2,0],m3=Rationalize[mr3,0],m4=Rationalize[mr4,0],
+	js1, js2, js3, js4, freeenm, varm, soluzm, prob,ran=Range[0,nn],
 	nn2=Binomial[nn,2], nn3=Binomial[nn,3], nn4=Binomial[nn,4], 
 	bvalues},
        freeenm = Log@Sum[Binomial[nn, m]*

@@ -4,17 +4,17 @@ Clear[MEhomsolution,MEhomsolutiontruncated,MEhomprob];
 
 MEhomsolution::usage = "Input: pop-avgd activity [0,1], pop-avgd couple activity, pop size, machine precision. Output: Lagr multipl, Lagr multipl, distribution, Z"
 (* it uses normalized values in the optimization; usually gives more precise results than MEhomsolution2, although it reports difficulties in finding the optimum *)
-MEhomsolution[meanmm_, meancorr_, nn_, wp_:MachinePrecision] := 
- Block[{totcorr = meancorr,
-   totmm = meanmm,totalprob,
+MEhomsolution[meanmm_, meancorr_, nn_, wp_:MachinePrecision,pg_:6] := 
+  Block[{totcorr = Rationalize[meancorr,0],
+	 totmm = Rationalize[meanmm,0],totalprob,
    zzzm, js2, js1, freeenm, varm, soluzm, prob,ran=Range[0,nn],bvalues},
-       zzzm = Sum[(1-m+nn)/((nn+1)*(nn+2))*Exp[js2*(m^2-m)/(nn^2-nn) + js1*m/nn], {m, 0, nn}]/2^nn;
+       zzzm = Sum[(1-m+nn)/((nn+1)*(nn+2))*Exp[js2*(m^2-m)/(nn^2-nn) + js1*m/nn], {m, 0, nn}];
   freeenm = Log[zzzm] - js2*totcorr - js1*totmm;
   soluzm = 
    NMinimize[freeenm, {js1, js2}, MaxIterations -> 10000, 
-    PrecisionGoal -> 6,Method->Automatic, AccuracyGoal -> Infinity,WorkingPrecision->wp];
+    PrecisionGoal -> pg,Method->Automatic, AccuracyGoal -> Infinity,WorkingPrecision->wp];
   prob = Table[
-    (1-m+nn)/((nn+1)*(nn+2))*Exp[js2*(m^2-m)/(nn^2-nn) + js1*m/nn]/2^nn /. soluzm[[2]], {m, 
+    (1-m+nn)/((nn+1)*(nn+2))*Exp[js2*(m^2-m)/(nn^2-nn) + js1*m/nn] /. soluzm[[2]], {m, 
      0, nn}];
   totalprob = Total[prob];prob=prob/totalprob;
   bvalues={(ran.prob/nn)/meanmm-1,((ran^2-ran).prob/(nn^2-nn))/meancorr-1};
@@ -30,7 +30,7 @@ MEhomsolutiont[meanmm_, meancorr_, nn_, wp_:MachinePrecision] :=
    NMinimize[freeenm, {js1, js2}, MaxIterations -> 10000, 
     PrecisionGoal -> 3,Method->Automatic, AccuracyGoal -> Infinity,WorkingPrecision->wp];
   prob = Table[
-    (1-m+nn)/((nn+1)*(nn+2))*Exp[js2*(m^2-m)/(nn^2-nn) + js1*m/nn]/2^nn /. soluzm[[2]], {m, 
+    (1-m+nn)/((nn+1)*(nn+2))*Exp[js2*(m^2-m)/(nn^2-nn) + js1*m/nn] /. soluzm[[2]], {m, 
      0, nn}];
   totalprob = Total[prob];prob=prob/totalprob;
   bvalues={(ran.prob/nn)/meanmm-1,((ran^2-ran).prob/(nn^2-nn))/meancorr-1};

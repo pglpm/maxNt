@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-05-08T13:08:22+0200
+%% Last-Updated: 2019-05-12T18:09:32+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -769,93 +769,29 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \mynote{comment about the possibility of drawing conclusions about a brain
-  area usin different sets of neurons (eg because of recording across many
+  area using different sets of neurons (eg because of recording across many
   sessions)}
 
 
-\section{Polling neurons}
-\label{sec:polls}
+\section{Introduction}
+\label{sec:intro}
 
-When political elections are approaching, mass media are constantly
-bubbling with results and discussions of pre-election polls. Why do we
-conduct pre-election polls and other kinds of survey sampling? The
-simplest, intuitive answer is \enquote{because they give us an idea of what
-  the final election outcomes will be}. Can this answer be made more
-quantitative?
+What correlations are important for the description of the multi-neuronal
+activity in a specific brain area? How does such activity change when
+external stimuli or experimental conditions change? Does such activity
+range over all its theoretically possible values, or only over a
+submanifold thereof?
 
-Yes. In the simplest cases, the probability calculus give us simple and
-precise quantitative relations between our expectations about a population
--- of voters, for instance -- and about a sample thereof. Suppose there are
-$N$ voters, $S$ of which prefer one political candidate and $N-S$ of which
-prefer another. We don't know $S$ or $N-S$. Now take a sample of $n$
-voters, in such a way that we can assume that every set of $n$ voters is
-equally likely to be sampled. In this sample, $s$ voters prefer the first
-candidate, and $n-s$ the second. The probability calculus tells us that our
-expectations of $s/n$ and $S/N$ are equal:
-\begin{equation}\label{eq:poll_equal_expectations}
-  \E(s/n \| \yH) = \E(S/N \| \yH),
-\end{equation}
-where $\yH$ represents our state of knowledge in this example. A more
-precise answer to our original question then is: \enquote{because we
-  \emph{expect} -- in the full probabilistic sense -- to see the same
-  proportion of political preferences in a sample as in the full
-  population}.
+Answering this kind of questions always involves an element of uncertainty.
+Our answers therefore involve experimental data, such as neuronal
+recordings from specific brain areas, but also probabilistic assumptions --
+probabilistic \enquote{models} -- about biological conditions and
+mechanisms that cannot be experimentally ascertained.
 
-The exact equality above extends to other quantities beyond the means $S/N$
-and $s/n$: it holds for all normalized \emph{factorial} moments
-\citep{potts1953,broca2005}[\sect~A]{portamanaetal2015}. These expectation
-equalities follow from a precise relation between our \dobs\ about the
-polled voters and about all voters. The relations above are powerful
-because they hold no matter what the probability distribution $\pf(S\|\yH)$
-may be.
-
-\bigskip
-
-These probabilistic properties are of outstanding importance in
-neuroscience, where we try to understand the workings of brain areas that
-may include tens of thousands of neurons, but we can record only few tens
-or hundreds of them. Whenever we record the activity of $n$ neurons we're
-effectively polling them on the activity of all $N$ neurons under the
-recording device -- those that could equally likely have been sampled
-instead. Suppose the recorded activities are time-binned and binarized. At
-every time bin $t$, $s(t)$ out of the $n$ neurons \enquote{vote} for
-activity, and $n-s(t)$ vote for silence. The probability calculus tells us
-that expectation equalities such as~\eqref{eq:poll_equal_expectations} hold
-for the total activity $S(t)$ of the full population of $N$ neurons that
-could have been recorded. 
-
-Expectation properties are especially important for the maximum-entropy
-method, which is used for various purposes in the neuroscientific
-literature. This method is typically applied constraining the equality of
-expectations and empirical averages. Expectation equalities such
-as~\eqref{eq:poll_equal_expectations} then have a far-reaching consequence:
-\emph{from empirical statistics of the activity of a \textbf{sample} of
-  neurons we can construct maximum-entropy distributions for the total
-  activity of the \textbf{full population} of neurons that could have been
-  sampled by the recording device}.
-
-
-
-% In the present work we show how to use the maximum-entropy method to assign
-% a probability distribution for the total activity at a new time bin of a
-% population of neurons, \emph{most of which can be unrecorded}, given
-% specific statistics about the activity of a recorded \emph{sample} of the
-% full population. This kind of probability assignment is extremely important
-% in neuroscience: we try to understand the workings of brain areas that may
-% include tens of thousands of neurons, but we can record only few tens or
-% hundreds of them.
-
-% Our approach also corrects a slight misuse of the maximum-entropy method
-% as sometimes appears in the literature. When this method is applied to a
-% set of neurons, it implicitly assumes that the set is completely isolated
-% from other neurons. We'll reveal this implicit assumption in several ways.
-% The probability distribution thus constructed is therefore affected by this
-% hidden assumption. We'll study in which circumstances the application of
-% the method at the sample level and at the full-population level give
-% similar or different probabilities.
-
-
-\mynote{integrate above with Yasser's below}
+Despite fast advances in recording technologies, our best experimental
+measurements of neuronal activity can still only sample a very small number
+of neurons compared to the number that constitutes a brain area. Many
+probabilistic models focus on such samples only,
 
 Experimental technologies to record the activity of many neurons at the
 same time in different species and brain areas are rapidly advancing. These
@@ -1846,6 +1782,85 @@ properties.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Cut text (won't be compiled)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+When political elections are approaching, mass media are constantly
+bubbling with results and discussions of pre-election polls. Why do we
+conduct pre-election polls and other kinds of survey sampling? The
+simplest, intuitive answer is \enquote{because they give us an idea of what
+  the final election outcomes will be}. Can this answer be made more
+quantitative?
+
+Yes. In the simplest cases, the probability calculus give us simple and
+precise quantitative relations between our expectations about a population
+-- of voters, for instance -- and about a sample thereof. Suppose there are
+$N$ voters, $S$ of which prefer one political candidate and $N-S$ of which
+prefer another. We don't know $S$ or $N-S$. Now take a sample of $n$
+voters, in such a way that we can assume that every set of $n$ voters is
+equally likely to be sampled. In this sample, $s$ voters prefer the first
+candidate, and $n-s$ the second. The probability calculus tells us that our
+expectations of $s/n$ and $S/N$ are equal:
+\begin{equation}\label{eq:poll_equal_expectations}
+  \E(s/n \| \yH) = \E(S/N \| \yH),
+\end{equation}
+where $\yH$ represents our state of knowledge in this example. A more
+precise answer to our original question then is: \enquote{because we
+  \emph{expect} -- in the full probabilistic sense -- to see the same
+  proportion of political preferences in a sample as in the full
+  population}.
+
+The exact equality above extends to other quantities beyond the means $S/N$
+and $s/n$: it holds for all normalized \emph{factorial} moments
+\citep{potts1953,broca2005}[\sect~A]{portamanaetal2015}. These expectation
+equalities follow from a precise relation between our \dobs\ about the
+polled voters and about all voters. The relations above are powerful
+because they hold no matter what the probability distribution $\pf(S\|\yH)$
+may be.
+
+\bigskip
+
+These probabilistic properties are of outstanding importance in
+neuroscience, where we try to understand the workings of brain areas that
+may include tens of thousands of neurons, but we can record only few tens
+or hundreds of them. Whenever we record the activity of $n$ neurons we're
+effectively polling them on the activity of all $N$ neurons under the
+recording device -- those that could equally likely have been sampled
+instead. Suppose the recorded activities are time-binned and binarized. At
+every time bin $t$, $s(t)$ out of the $n$ neurons \enquote{vote} for
+activity, and $n-s(t)$ vote for silence. The probability calculus tells us
+that expectation equalities such as~\eqref{eq:poll_equal_expectations} hold
+for the total activity $S(t)$ of the full population of $N$ neurons that
+could have been recorded. 
+
+Expectation properties are especially important for the maximum-entropy
+method, which is used for various purposes in the neuroscientific
+literature. This method is typically applied constraining the equality of
+expectations and empirical averages. Expectation equalities such
+as~\eqref{eq:poll_equal_expectations} then have a far-reaching consequence:
+\emph{from empirical statistics of the activity of a \textbf{sample} of
+  neurons we can construct maximum-entropy distributions for the total
+  activity of the \textbf{full population} of neurons that could have been
+  sampled by the recording device}.
+
+
+
+% In the present work we show how to use the maximum-entropy method to assign
+% a probability distribution for the total activity at a new time bin of a
+% population of neurons, \emph{most of which can be unrecorded}, given
+% specific statistics about the activity of a recorded \emph{sample} of the
+% full population. This kind of probability assignment is extremely important
+% in neuroscience: we try to understand the workings of brain areas that may
+% include tens of thousands of neurons, but we can record only few tens or
+% hundreds of them.
+
+% Our approach also corrects a slight misuse of the maximum-entropy method
+% as sometimes appears in the literature. When this method is applied to a
+% set of neurons, it implicitly assumes that the set is completely isolated
+% from other neurons. We'll reveal this implicit assumption in several ways.
+% The probability distribution thus constructed is therefore affected by this
+% hidden assumption. We'll study in which circumstances the application of
+% the method at the sample level and at the full-population level give
+% similar or different probabilities.
+
 
 
 %%% Local Variables: 

@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-05-13T10:06:49+0200
+%% Last-Updated: 2019-05-13T11:41:45+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -791,18 +791,33 @@ mechanisms that cannot be experimentally ascertained.
 Despite remarkable advances in recording technologies, the best
 experimental measurements of neuronal activity can still only record a very
 small sample of neurons compared to the number that constitutes a brain
-area. Many probabilistic models focus on such samples only, somehow
+region. Many probabilistic models focus on such samples only, somehow
 neglecting, in their assumptions, that the recorded neurons are a sample
 from a larger network. This kind of isolation assumptions sometimes escape
 attention, being subtly hidden in the mathematics. Some probabilistic
-models try to take also  unrecorded neurons into account, but
-become very complex in doing so.
+models try to take also unrecorded neurons into account, but become very
+complex in doing so.
 
 In the present work we give an answer to this question: What kind of
 inferences about the total activity of a large neuronal network can we make
 by recording a very small sample thereof? Our answer comes from the
 simple combination of basic sampling probability relations and the maximum-entropy
 method.\mynote{shall we give a two-sentence summary of the main idea here?}
+
+The maximum-entropy method\mynote{refs} has been used for a variety of
+inferences about neuronal activity from various brain areas and about other
+phenomena of importance to the neurosciences, for example gene regulation
+and protein sequencing\mynote{what's this exactly? refs}. This method is
+often used to test whether some statistics of the data, for example
+second-order time correlatins, is sufficient for making other inferences
+about the data. It can be considered as an approximation of probabilistic
+models based on various assumptions of inferential
+sufficiency\mynote{refs} -- for example of empirical moments or of long-run
+frequencies.
+
+\mynote{Say something more about advantages of such question/answer: for
+  example we can make statements about total activity of brain region even
+  across recordings when sampled neurons aren't the same.}
 
 
 

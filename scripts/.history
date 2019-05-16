@@ -1,0 +1,24 @@
+q()
+n
+q()
+n
+q()
+n
+a <- readcsv('testdcsv.csv',header=F)
+a <- read.csv('testdcsv.csv',header=F)
+a
+length(a)
+a <- read.csv('testdcsv.csv',header=F,sep="\n")
+length(a)
+a[1]
+dim(a)
+a <- c(read.csv('testdcsv.csv',header=F))
+dim(a)
+length(a)
+a[1]
+a <- read.csv('testdcsv.csv',header=F)
+length(a)
+a[1]
+a[2]
+q()
+n

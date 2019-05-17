@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-05-13T11:41:45+0200
+%% Last-Updated: 2019-05-17T16:54:33+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -654,22 +654,26 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\ypp}{G}
 
 %\newcommand*{\yXv}{\varSigma}
-\newcommand*{\yRv}{S}
+\newcommand*{\yAv}{A}
 %\newcommand*{\yxv}{s}
-\newcommand*{\yrv}{s}
+\newcommand*{\yav}{a}
 \newcommand*{\yNv}{N}
 \newcommand*{\yNN}{\varNu}
+\newcommand*{\yFF}{F}
+\newcommand*{\yff}{f}
+\newcommand*{\yF}{\bm{\yFF}}
+\newcommand*{\yf}{\bm{\yff}}
 
 %\newcommand*{\yx}{\bm{\yxv}}%subpop state
 %\newcommand*{\yxs}{\sav{\yx}}%subpop av state
 %\newcommand*{\yX}{\bm{\yXv}}%pop state
 %\newcommand*{\yXf}{\av{\yX}}%pop av state
-\newcommand*{\yrrs}{\sav{\yr\yr}}%subpop av state
-%\newcommand*{\yXXf}{\av{\yR\yR}}%subpop av state
-\newcommand*{\yr}{\bm{\yrv}}%subpop value
-\newcommand*{\yrs}{\yrv}%subpop av value
-\newcommand*{\yR}{\bm{\yRv}}%pop value
-\newcommand*{\yRf}{\yRv}%pop av value
+\newcommand*{\yaa}{\bm{\yav}}%subpop value
+\newcommand*{\yaas}{\sav{\yaa\yaa}}%subpop av state
+%\newcommand*{\yXXf}{\av{\yAA\yAA}}%subpop av state
+\newcommand*{\ya}{\yav}%subpop av value
+\newcommand*{\yAA}{\bm{\yAv}}%pop value
+\newcommand*{\yA}{\yAv}%pop av value
 %conditional assumptions
 \newcommand*{\yH}{\varIota}
 \newcommand*{\yD}{\varDelta}
@@ -690,9 +694,19 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\ysh}{H}
 \newcommand*{\ybu}{H_{\text{B}}}
 
-\newcommand*{\ynu}{\bm{\nu}}
+\newcommand*{\yR}{\bm{R}}
+
+\newcommand*{\ynuu}{\nu}
+\newcommand*{\ynu}{\bm{\ynuu}}
+\newcommand*{\yjj}{\phi}
+\newcommand*{\yj}{\bm{\yjj}}
 
 \newcommand*{\prop}[1]{`#1'}
+
+\newcommand{\appropto}{\mathrel{\vcenter{
+  \offinterlineskip\halign{\hfil$##$\cr
+    \propto\cr\noalign{\kern2pt}\sim\cr\noalign{\kern-2pt}}}}}
+% https://tex.stackexchange.com/a/33547/97039
 
 \newcommand*{\mee}{maximum entropy}
 \newcommand*{\me}{maximum-entropy}
@@ -976,44 +990,44 @@ following steps. Consider the recorded activity of a sample of $n$ neurons.
   sequence of digits \enquote{$0$}s (inactive) and \enquote{$1$}s (active)
   \citep[\cf][]{caianiello1961,caianiello1986}.
 
-  Let the variable $\yrv_i(t)\in\set{0,1}$ denote the activity of the $i$th
+  Let the variable $\yav_i(t)\in\set{0,1}$ denote the activity of the $i$th
   sampled neuron at time bin $t$. Collectively denote the $n$ activities
-  with $\yr(t) \defd \bigl(\yrv_1(t),\dotsc,\yrv_n(t)\bigr)$. The
+  with $\yaa(t) \defd \bigl(\yav_1(t),\dotsc,\yav_n(t)\bigr)$. The
   population-averaged activity at that bin is
-  $\yrs(t) \defd \sum_i \yrv_i(t)/n$. If we count the number of distinct
+  $\ya(t) \defd \sum_i \yav_i(t)/n$. If we count the number of distinct
   pairs of active neurons at that bin we combinatorially find
-  $\tbinom{n\yrs(t)}{2}\equiv n\yrs(t)\,[n\yrs(t)-1]/2$. There can be at
+  $\tbinom{n\ya(t)}{2}\equiv n\ya(t)\,[n\ya(t)-1]/2$. There can be at
   most $\tbinom{n}{2}$ simultaneously active pairs, so the
   population-averaged pair activity is
-  $\av{\yr \yr}(t) \defd \tbinom{n}{2}^{-1}\tbinom{n\yrs(t)}{2}$. With some
+  $\av{\yaa \yaa}(t) \defd \tbinom{n}{2}^{-1}\tbinom{n\ya(t)}{2}$. With some
   combinatorics we see that the population-averaged activity of $m$-tuples
   of neurons is
   \begin{equation}
     \label{eq:products_intermsof_average}
-    \av{\underbrace{\yr\dotsm\yr}_{\text{$m$ terms}}}(t)
-    = \binom{n}{m}^{-1}\binom{n\yrs(t)}{m}.
+    \av{\underbrace{\yaa\dotsm\yaa}_{\text{$m$ terms}}}(t)
+    = \binom{n}{m}^{-1}\binom{n\ya(t)}{m}.
   \end{equation}
   
   For brevity let us agree to simply call \enquote{activity} the average
-  $\yrs$, \enquote{pair-activity} the average $\av{\yr \yr}$, and so on.
+  $\ya$, \enquote{pair-activity} the average $\av{\yaa \yaa}$, and so on.
 
 \item Construct a sequence of relative-\me\ distributions for the activity
-  $\yrs$, using this sequence of constraints:
+  $\ya$, using this sequence of constraints:
   \begin{itemize}
-  \item the time average of the activity: $\tav{\yrs} \defd \sum_t\yrs(t)/T$;
+  \item the time average of the activity: $\tav{\ya} \defd \sum_t\ya(t)/T$;
   \item the time averages of the activity and of the pair-activity
-    $\tav{\av{\yr \yr}} \defd \sum_t\av{\yr \yr}(t)/T$;
+    $\tav{\av{\yaa \yaa}} \defd \sum_t\av{\yaa \yaa}(t)/T$;
   \item \ldots
   \item the time averages of the activity, of the pair-activity, and so on, up
     to the $k$-activity.
   \end{itemize}
-  Call the resulting distributions $p_1(\yrs), p_2(\yrs),\dotsc,p_k(\yrs)$.
+  Call the resulting distributions $p_1(\ya), p_2(\ya),\dotsc,p_k(\ya)$.
   The time-bin dependence is now absent because these distributions can be
   interpreted as referring to any one of the time bins $t$, or to a new
   time bin (in the future or in the past) containing new data.
 
   We also have the empirical frequency distribution of the total activity,
-  $f(\yrs)$, counted from the time bins.
+  $f(\ya)$, counted from the time bins.
 
 \item Now compare the distributions above with one another and with the
   frequency distribution, using some probability-space distance like the
@@ -1120,8 +1134,8 @@ degree of belief which \enquote{would be agreed by all rational men if
 We have already introduced the notation for the sample neurons. We
 introduce an analogous notation for the $\yNv$ neurons constituting the
 larger population, but using the corresponding capital letters:
-$\yRv_{i}(t)$ is the activity of the $i$th neuron at time bin $t$,
-$\yRf(t) \defd \sum_{i} \yRv_{i}(t)/\yNv$ is the activity at that
+$\yAv_{i}(t)$ is the activity of the $i$th neuron at time bin $t$,
+$\yA(t) \defd \sum_{i} \yAv_{i}(t)/\yNv$ is the activity at that
 bin averaged over the larger population, and so on.
 
 The probability relations between sample and larger population are valid at
@@ -1134,14 +1148,14 @@ argument \enquote{$(t)$} from our expressions.
 % \begin{equation}
 %   \label{eq:notation_statements}
 %   \begin{aligned}
-%     &\text{\enquote{$\yXv_{\iota} = \yRv_{\iota}$} 
-%       stands for \enquote{the activity of the $\iota$th neuron is $\yRv_{\iota}$}},
+%     &\text{\enquote{$\yXv_{\iota} = \yAv_{\iota}$} 
+%       stands for \enquote{the activity of the $\iota$th neuron is $\yAv_{\iota}$}},
 %     \\
-%     &\text{\enquote{$\yXf = \yRf$} 
-%       stands for \enquote{the (population-averaged) activity of the neurons is $\yRf$}},
+%     &\text{\enquote{$\yXf = \yA$} 
+%       stands for \enquote{the (population-averaged) activity of the neurons is $\yA$}},
 %     \\
-%     &\text{\enquote{$\yxv_i = \yrv_i$} 
-%       stands for \enquote{the activity of the $i$th sample neuron is $\yrv_i$}},
+%     &\text{\enquote{$\yxv_i = \yav_i$} 
+%       stands for \enquote{the activity of the $i$th sample neuron is $\yav_i$}},
 %   \end{aligned}
 % \end{equation}
 % and similarly for other quantities.
@@ -1153,15 +1167,15 @@ activity of the larger population is expressed by the joint probability
 distribution
 \begin{equation}
   \label{eq:joint_plaus}
-  \pf(\yRv_1, \yRv_2, \dotsc, \yRv_\yNv \| \yHc)
+  \pf(\yAv_1, \yAv_2, \dotsc, \yAv_\yNv \| \yHc)
   \quad\text{or}\quad
-\pf(\yR \| \yHc), \quad \yR \in \set{0,1}^\yNv.
+\pf(\yAA \| \yHc), \quad \yAA \in \set{0,1}^\yNv.
 \end{equation}
 Our uncertainty about the state of the sample is likewise expressed by
 \begin{equation}
   \label{eq:sample_plaus}
-  \pf(\yrv_1, \yrv_2, \dotsc, \yrv_n \| \yHc) \quad\text{or}\quad
-\pf(\yr \| \yHc), \quad \yr \in \set{0,1}^n.
+  \pf(\yav_1, \yav_2, \dotsc, \yav_n \| \yHc) \quad\text{or}\quad
+\pf(\yaa \| \yHc), \quad \yaa \in \set{0,1}^n.
 \end{equation}
 
 \bigskip
@@ -1198,16 +1212,16 @@ activity is completely determined by the distribution for its
 population-average:
 \begin{equation}
   \label{eq:joint_plaus_N_homog}
-  \pf(\yR \|  \yH) \equiv
-  \sum_{\yRf}\pf(\yR \| \yRf, \yH)\,
-  \pf(\yRf \| \yH) =
-  \binom{\yNv}{\yNv\yRf}^{-1} \pf(\yRf \| \yH).
+  \pf(\yAA \|  \yH) \equiv
+  \sum_{\yA}\pf(\yAA \| \yA, \yH)\,
+  \pf(\yA \| \yH) =
+  \binom{\yNv}{\yNv\yA}^{-1} \pf(\yA \| \yH).
 \end{equation}
 The equivalence on the left is just an application of the law of total
 probability; the equality on the right is the statement of the theorem.
 This result is intuitive: owing to symmetry, we must assign equal
-probabilities to all $\tbinom{\yNv}{\yNv\yRf}$ activity vectors with
-$\yNv\yRf$ active neurons; the probability of each activity vector is
+probabilities to all $\tbinom{\yNv}{\yNv\yA}$ activity vectors with
+$\yNv\yA$ active neurons; the probability of each activity vector is
 therefore given by that of the average activity divided by the number of
 possible vector values. Proof of this theorem and generalizations to
 non-binary and continuum cases are given by de~Finetti
@@ -1220,9 +1234,9 @@ Our uncertainties about the full population and the sample are connected
 via the conditional probability
 \begin{equation}
   \label{eq:conditional_hypergeometric}
-  \pf(\yrs \|\yRf, \yH)=
-  \binom{n}{n\yrs}\binom{\yNv-n}{\yNv \yRf-n\yrs}\binom{\yNv}{\yNv \yRf}^{-1}
-  \defs \ypp_{\yrs\yRf},
+  \pf(\ya \|\yA, \yH)=
+  \binom{n}{n\ya}\binom{\yNv-n}{\yNv \yA-n\ya}\binom{\yNv}{\yNv \yA}^{-1}
+  \defs \ypp_{\ya\yA},
 \end{equation}
 which is a hypergeometric distribution, typical of \enquote{drawing without
   replacement} problems. The combinatorial proof of this expression is in
@@ -1233,20 +1247,20 @@ Using the conditional probability above we obtain the probability for the
 activity of the sample:
 \begin{gather}
   \label{eq:subpop_average}
-  \pf(\yrs \| \yH) = \sum_{\yRf}
-  \pf(\yrs \|\yRf, \yH)\,
-  \pf(\yRf \| \yH)
+  \pf(\ya \| \yH) = \sum_{\yA}
+  \pf(\ya \|\yA, \yH)\,
+  \pf(\yA \| \yH)
   = 
-  \sum_{\yRf}
-  \ypp_{\yrs\yRf}\,
-  \pf(\yRf \| \yH).
+  \sum_{\yA}
+  \ypp_{\ya\yA}\,
+  \pf(\yA \| \yH).
 \end{gather}
 It should be proved that the probability distribution for the full activity
 of the sample is also symmetric and completely determined by the
 distribution of its population-averaged activity:
 \begin{equation}
   \label{eq:marginal}
-  \pf(\yr \| \yH) = \binom{n}{n\yrs}^{-1} \pf(\yrs \| \yH).
+  \pf(\yaa \| \yH) = \binom{n}{n\ya}^{-1} \pf(\ya \| \yH).
 \end{equation}
 This is intuitively clear: our initial symmetric ignorance should also
 apply to the sample. The distribution for the
@@ -1255,29 +1269,29 @@ theorem~\eqref{eq:joint_plaus_N_homog} as the distribution for the full
 population.
 
 The conditional probability
-$\pf(\yrs \|\yRf, \yH) \equiv \ypp_{\yrs \yRf}$, besides
+$\pf(\ya \|\yA, \yH) \equiv \ypp_{\ya \yA}$, besides
 relating the distributions for the population and sample activities via
 marginalization, also allows us to express the expectation value of any
-function of the sample activity, $\yg_{\yrs}$, in terms of the distribution
+function of the sample activity, $\yg_{\ya}$, in terms of the distribution
 for the full population, as follows:
 \begin{equation}
   \label{eq:pullback_P}
   \E(\yg\|I)
   \equiv
-  \sum_{\yrs} \yg_{\yrs}\,\pf(\yrs \| \yH)
+  \sum_{\ya} \yg_{\ya}\,\pf(\ya \| \yH)
   =
-  \sum_{\yrs} \yg_{\yrs} \sum_{\yRf} \ypp_{\yrs\yRf}\,\pf(\yRf \| \yH)
+  \sum_{\ya} \yg_{\ya} \sum_{\yA} \ypp_{\ya\yA}\,\pf(\yA \| \yH)
   =%{}\\
-  \sum_{\yRf} \bigl( \tsum_{\yrs} \yg_{\yrs}  \ypp_{\yrs\yRf} \bigr)\,
-  \pf(\yRf \| \yH),
+  \sum_{\yA} \bigl( \tsum_{\ya} \yg_{\ya}  \ypp_{\ya\yA} \bigr)\,
+  \pf(\yA \| \yH),
 %  =
-%  \sum_{N\yRf=0}^N \sum_{n\yrs=0}^n f(\yrs)\ypp_{\yrs\yRf}\,\p(\yXf=\yRf \| \yH)
+%  \sum_{N\yA=0}^N \sum_{n\ya=0}^n f(\ya)\ypp_{\ya\yA}\,\p(\yXf=\yA \| \yH)
 %  \equiv  \expeb{\yg^*}.
 \end{equation}
 where the second step uses \eqn~\eqref{eq:subpop_average}. The last
-expression shows that the expectation of the function $\yg_{\yrs}$ is equal to
+expression shows that the expectation of the function $\yg_{\ya}$ is equal to
 the expectation of the function
-$\yg^*(\yRf) \defd \sum_{\yrs} \yg_{\yrs}\,\ypp_{\yrs\yRf}$.
+$\yg^*(\yA) \defd \sum_{\ya} \yg_{\ya}\,\ypp_{\ya\yA}$.
 
 \bigskip
 
@@ -1288,12 +1302,12 @@ sample, have a  value $\yc$ obtained from observed data,
   population}:
 \begin{equation}
   \label{eq:constraint_extended}
-  \yc = \E(\yg \| \yH) \equiv \sum_{\yRf} \bigl( \tsum_{\yrs} \yg_{\yrs}  \ypp_{\yrs\yRf} \bigr)\;
-  \pf(\yRf \| \yH).
+  \yc = \E(\yg \| \yH) \equiv \sum_{\yA} \bigl( \tsum_{\ya} \yg_{\ya}  \ypp_{\ya\yA} \bigr)\;
+  \pf(\yA \| \yH).
 \end{equation}
 
 In particular, when the function $\yg$ is the $m$-activity of the sample,
-$\yg_{\yrs} = \sav{\yr\dotso\yr} \equiv \binom{n\yrs}{m}/\binom{n}{m}$, we
+$\yg_{\ya} = \sav{\yaa\dotso\yaa} \equiv \binom{n\ya}{m}/\binom{n}{m}$, we
 find
 \begin{multline}
   \label{eq:expe_products}
@@ -1305,28 +1319,28 @@ find
     % \\[2\jot]
     % \expe{\sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}} \| \yH} =
     % \expe{\av{\underbrace{\yX \dotsm \yX}_{\text{$m$ factors}}} \| \yH}
-  \E(\sav{\underbrace{\yr \dotsm \yr}_{\text{$m$ factors}}} \| \yH)
+  \E(\sav{\underbrace{\yaa \dotsm \yaa}_{\text{$m$ factors}}} \| \yH)
 \equiv
     % \\[2\jot]
     % {}
     % \frac{(n-m)!}{n!}
-    \sum_{\yrs} %m!\,
+    \sum_{\ya} %m!\,
     \binom{n}{m}^{-1}
-    \binom{n \yrs}{m}\, \pf(\yrs \| \yH)
-    % \sum_{N \yRf=0}^N %m!\,
-    % \binom{N-m}{N \yRf-m} \binom{N}{N \yRf}^{-1} \p(\yXf=\yRf \| \yH)
+    \binom{n \ya}{m}\, \pf(\ya \| \yH)
+    % \sum_{N \yA=0}^N %m!\,
+    % \binom{N-m}{N \yA-m} \binom{N}{N \yA}^{-1} \p(\yXf=\yA \| \yH)
     ={}\\
     \binom{\yNv}{m}^{-1}
     % \frac{(N-m)!}{N!}
-    \sum_{\yRf} %m!\,
-    \binom{\yNv \yRf}{m}\, \pf(\yRf \| \yH)
-\equiv    \E(\av{\underbrace{\yR \dotsm \yR}_{\text{$m$ factors}}} \| \yH),
+    \sum_{\yA} %m!\,
+    \binom{\yNv \yA}{m}\, \pf(\yA \| \yH)
+\equiv    \E(\av{\underbrace{\yAA \dotsm \yAA}_{\text{$m$ factors}}} \| \yH),
 \end{multline}
 that is, \emph{the expected values of the $m$-activities of the sample and
   of the full population are equal}. The proof of the middle equality uses
 the expression for the $m$th factorial moment of the hypergeometric
 distribution and can be found in \textcite{potts1953}. Similar relations
-can be found for the raw moments $\E(\yrs^m)$ and $\E(\yRf^m)$, which
+can be found for the raw moments $\E(\ya^m)$ and $\E(\yA^m)$, which
 can be written in terms of the product expectations using
 \eqn~\eqref{eq:products_intermsof_average}.
 
@@ -1342,8 +1356,8 @@ have the same value.
 \centering
 \includegraphics[width=\linewidth]{pop_sample_projection3.pdf}%
 \caption{Log-density plot of the hypergeometric distribution
-  $%\pf(\yrs \|\yRf, \yH)=
-\ypp_{\yrs\yRf} \defd  \raisebox{0pt}[0pt][1ex]{}\binom{n}{n\yrs}\binom{\yNv-n}{\yNv \yRf-n\yrs}\binom{\yNv}{\yNv \yRf}^{-1}$ for $\yNv=5000$, $n=200$. (Band artifacts may appear in the
+  $%\pf(\ya \|\yA, \yH)=
+\ypp_{\ya\yA} \defd  \raisebox{0pt}[0pt][1ex]{}\binom{n}{n\ya}\binom{\yNv-n}{\yNv \yA-n\ya}\binom{\yNv}{\yNv \yA}^{-1}$ for $\yNv=5000$, $n=200$. (Band artifacts may appear in the
   colourbar depending on your \textsc{pdf} viewer.)}
 \label{fig:hypergeom_proj}
 \end{figure}%hypergeometric_identity.nb
@@ -1352,37 +1366,37 @@ be surprising: we intuitively \emph{expect} that the proportion of coloured
 balls sampled from an urn should be roughly equal to the proportion of
 coloured ball contained in the urn. The formulae in the present section
 formalize and mathematically express our intuition. The hypergeometric
-distribution $\ypp_{\yrs\yRf}$ plays an important role in this
+distribution $\ypp_{\ya\yA}$ plays an important role in this
 formalization. A look at its plot, \fig~\ref{fig:hypergeom_proj}, reveals
 that it is a sort of \enquote{fuzzy identity transformation}, or fuzzy
-Kronecker delta, between the $\yRf$-space $\set{0,\dotsc,\yNv}$ and
-$\yrs$-space $\set{0,\dotsc,n}$. From \eqn~\eqref{eq:marginal} we thus have
+Kronecker delta, between the $\yA$-space $\set{0,\dotsc,\yNv}$ and
+$\ya$-space $\set{0,\dotsc,n}$. From \eqn~\eqref{eq:marginal} we thus have
 that
 \begin{equation}
   \label{eq:roughly_equal_nN}
-  \pf(\yrs=a \|\yH) \approx \pf(\yRf=a \|\yH),\qquad
-\E[\yg_{\yrs} \|\yH] \approx \E[\yg_{\yRf} \|\yH],
+  \pf(\ya=a \|\yH) \approx \pf(\yA=a \|\yH),\qquad
+\E[\yg_{\ya} \|\yH] \approx \E[\yg_{\yA} \|\yH],
 \end{equation}
 where $\yg$ is any smooth function defined on $\clcl{0,1}$. These approximate
 equalities express the intuitive fact that \emph{our uncertainty about the
   sample is representative of our uncertainty about the population and
-  about other samples}, and vice versa. When $n=\yNv$, $\ypp_{\yrs\yRf}$
+  about other samples}, and vice versa. When $n=\yNv$, $\ypp_{\ya\yA}$
 becomes the identity matrix and the approximate equalities above become
 exact -- of course, since we have sampled the full population.
 
 But the approximate equalities above may miss important features of the two
 probability distributions. In the next section we will in fact emphasize
-their differences. If the distribution for the population average $\yRf$ is
+their differences. If the distribution for the population average $\yA$ is
 bimodal, for example, the bimodality can be lost in the distribution for
-the sample average $\yrs$, owing to the coarsening effect of
-$\ypp_{\yrs\yRf}$.
+the sample average $\ya$, owing to the coarsening effect of
+$\ypp_{\ya\yA}$.
 
 % They should be contrasted with the limits
 % $\pf(\yxs=a) \to \pf(\yXf=a)$ and $\expeb{\yg_{\yxs}} \to \expeb{\yg_{\yXf}}$, as
 % $n\to \yNv$, do: these limits are trivially, universally valid because the
 % sample becomes the full population as $n\to \yNv$. In particular, these limits
 % hold even in cases where the conditional probability
-% $\pf(\yxs = \yrs \|\yXf=\yRf)$ is not a fuzzy identity, our uncertainties
+% $\pf(\yxs = \ya \|\yXf=\yA)$ is not a fuzzy identity, our uncertainties
 % about sample and about population can differ wildly, and the approximate
 % equalities~\eqref{eq:roughly_equal_nN} do not hold.
 
@@ -1397,9 +1411,9 @@ population. Let us use such constraints with the \me\ method. Suppose that
 we want to constrain $m$ functions of the sample activity, vectorially
 written $\yg \defd (c_1,\dotsc,c_m)$, to $m$ values
 $\yc \defd (\widehat{c}_1,\dotsc,\widehat{c}_m)$. These functions are typically $k$-activities
-$\sav{\yr\dotso \yr}$, and the values are typically the time averages of
+$\sav{\yaa\dotso \yaa}$, and the values are typically the time averages of
 the observed sample, as discussed in \sect~\ref{sec:intro}:
-$\yc = \sum_t \yg[\yrs(t)]/T$.
+$\yc = \sum_t \yg[\ya(t)]/T$.
 
 Let us apply the relative-\me\ method \citep{sivia1996_r2006,meadetal1984}
 directly to sampled neurons; denote this approach by $\yHb$. Then we apply
@@ -1409,15 +1423,15 @@ denote this approach by $\yHa$.
 Applied directly to the sampled neurons, the method yields the distribution
 \begin{equation}
   \label{eq:app_maxent_sample}
-  \pf(\yrs \|\yHb)
+  \pf(\ya \|\yHb)
   =\frac{1}{\yk(\yl)}\,
-  \binom{n}{n\yrs}
-  \exp[\yl\T \yg_{\yrs}]
+  \binom{n}{n\ya}
+  \exp[\yl\T \yg_{\ya}]
 \end{equation}
 where $\yk(\yl)$ is a normalization constant. The binomial in front of the
 exponential appears because we must account for the multiplicity by which
-the population-average activity $\yrs$ can be realized: $\yrs=0$ can be
-realized in only one way (all neurons inactive), $\yrs=1/n$ can be realized
+the population-average activity $\ya$ can be realized: $\ya=0$ can be
+realized in only one way (all neurons inactive), $\ya=1/n$ can be realized
 in $n$ ways (one active neuron out of $n$), and so on. This term is analogous to
 the \enquote{density of states} in front of the Boltzmann factor in
 statistical mechanics \citep[\chap~16]{callen1960_r1985}. The $m$ Lagrange
@@ -1426,8 +1440,8 @@ equations
 \begin{equation}
   \label{eq:app_maxent_sample_constraints}
   \yc = \E(\yg \|\yHb) \equiv
-  \frac{1}{\yk(\yl)}\sum_{\yrs}  \yg_{\yrs} \binom{n}{n\yrs}
-  \exp[\yl\T \yg_{\yrs}].%, \qquad k=1,\dotsc,m.
+  \frac{1}{\yk(\yl)}\sum_{\ya}  \yg_{\ya} \binom{n}{n\ya}
+  \exp[\yl\T \yg_{\ya}].%, \qquad k=1,\dotsc,m.
 \end{equation}
 
 Applied to the full population, using the constraint
@@ -1435,19 +1449,19 @@ expression~\eqref{eq:constraint_extended} derived in the previous section,
 the method yields the distribution for the full-population activity
 \begin{equation}
   \label{eq:app_maxent_pop}
-  \pf(\yRf \| \yHa)  = \frac{1}{\yK(\yL)}\,
-  \binom{\yNv}{\yNv \yRf}\,\exp\bigl(\yL\T
-  \tsum_{\yrs} \yg_{\yrs}\ypp_{\yrs\yRf}\bigr).
+  \pf(\yA \| \yHa)  = \frac{1}{\yK(\yL)}\,
+  \binom{\yNv}{\yNv \yA}\,\exp\bigl(\yL\T
+  \tsum_{\ya} \yg_{\ya}\ypp_{\ya\yA}\bigr).
 \end{equation}
 The $m$ Lagrange multipliers $\yL\defd (\lambda_1,\dotsc,\lambda_m)$ must
 satisfy the $m$ constraint equations
 \begin{equation}
   \label{eq:app_maxent_pop_constraints}
   \yc = \E(\yg \|\yHa)\equiv %{}\\
- \frac{1}{\yK(\yL)}\sum_{\yrs} \sum_{\yRf} \yg_{\yrs} \ypp_{\yrs \yRf}
+ \frac{1}{\yK(\yL)}\sum_{\ya} \sum_{\yA} \yg_{\ya} \ypp_{\ya \yA}
 \,
-  \binom{\yNv}{\yNv \yRf}\,\exp\bigl(\yL\T
-  \tsum_{\yrs} \yg_{\yrs}\ypp_{\yrs\yRf}\bigr).
+  \binom{\yNv}{\yNv \yA}\,\exp\bigl(\yL\T
+  \tsum_{\ya} \yg_{\ya}\ypp_{\ya\yA}\bigr).
 %  \\ k=1,\dotsc,m.
 \end{equation}
 
@@ -1455,11 +1469,11 @@ We obtain the distribution for the sample activity by marginalization, using
 \eqn~\eqref{eq:marginal}:
 \begin{equation}
   \label{eq:app_maxent_pop_marg}
-  \pf(\yrs \| \yHa)  = \frac{1}{\yK(\yL)}\, 
-  \sum_{\yRf} \ypp_{\yrs \yRf}
+  \pf(\ya \| \yHa)  = \frac{1}{\yK(\yL)}\, 
+  \sum_{\yA} \ypp_{\ya \yA}
 \,
-  \binom{\yNv}{\yNv \yRf}\,\exp\bigl(\yL\T
-  \tsum_{\yrs} \yg_{\yrs}\ypp_{\yrs\yRf}\bigr).
+  \binom{\yNv}{\yNv \yA}\,\exp\bigl(\yL\T
+  \tsum_{\ya} \yg_{\ya}\ypp_{\ya\yA}\bigr).
 \end{equation}
 
 The distributions for the sample activity,
@@ -1470,21 +1484,21 @@ yet they cannot be exactly equal, because their equality would require the
 $2m$ quantities $\yL$ and $\yl$ to satisfy the constraint equations
 \eqref{eq:app_maxent_pop_constraints} and
 \eqref{eq:app_maxent_sample_constraints}, and in addition also the $n$
-equations $\pf(\yrs \| \yHa) = \pf(\yrs \| \yHb)$,
-$\yrs=1/n,\dotsc,1$ (one equation is taken care of by the normalization of
+equations $\pf(\ya \| \yHa) = \pf(\ya \| \yHb)$,
+$\ya=1/n,\dotsc,1$ (one equation is taken care of by the normalization of
 the distributions). We would have a set of $2m+n$ equations in $2m$
 unknowns.
 
 Hence, \emph{the applications of \me\ at the sample level and at the
   full-population level are inequivalent}. They lead to numerically
-different distributions for the sample activity $\yr$.
+different distributions for the sample activity $\yaa$.
 
 %%% FIGURES %%%
 \iffalse
 \begin{figure}[!t]
 \centering
 \includegraphics[width=\linewidth]{different_maxent_pop_sample_200_realdata_2mom.pdf}%
-\caption{Linear and log-plots of $\pf(\yrs)$ constructed by \me\ at
+\caption{Linear and log-plots of $\pf(\ya)$ constructed by \me\ at
   the population level followed by sample marginalization (blue triangles),
   \eqn~\eqref{eq:app_maxent_pop_marg}, and at the sample level (red
   circles), \eqn~\eqref{eq:app_maxent_sample}, with $\yNv=5000$,
@@ -1495,7 +1509,7 @@ different distributions for the sample activity $\yr$.
 \begin{figure}[!t]
 \centering
 \includegraphics[width=\linewidth]{different_maxent_pop_sample_200_realdata_4mom.pdf}% 
-\caption{Linear and log-plots of $\pf(\yrs)$ constructed by \me\ at
+\caption{Linear and log-plots of $\pf(\ya)$ constructed by \me\ at
   the population level followed by sample marginalization (blue triangles),
   \eqn~\eqref{eq:app_maxent_pop_marg}, and at the sample level (red
   circles), \eqn~\eqref{eq:app_maxent_sample}, with $\yNv=5000$,
@@ -1506,7 +1520,7 @@ different distributions for the sample activity $\yr$.
 \begin{figure}[!t]
 \centering
 \includegraphics[width=\linewidth]{comparison3.pdf}%
-\caption{Linear and log-plots of $\pf(\yrs)$ for a sample of $n=200$
+\caption{Linear and log-plots of $\pf(\ya)$ for a sample of $n=200$
   and constraints as in \eqn~\eqref{eq:constraints}, constructed by:
   \textcolor{myred}{\textbf{red squares:}} \me\ at the sample level,
   \eqn~\eqref{eq:app_maxent_sample};
@@ -1526,11 +1540,11 @@ discrepancy in \fig~\ref{fig:all_three}, for
 $\yNv=10\,000$, $n=200$, and the two constraints
 \begin{equation}
   \label{eq:constraints}
-  \E(\yrs) = 0.0478,\qquad
-  \E(\yrrs) = 0.00257,
+  \E(\ya) = 0.0478,\qquad
+  \E(\yaas) = 0.00257,
   % ,\quad
-  % \expe{\sav{\yr\yr\yr}} = 1.48\times 10^{-4},\quad
-  % \expe{\sav{\yr\yr\yr\yr}} = 8.81 \times 10^{-6}.
+  % \expe{\sav{\yaa\yaa\yaa}} = 1.48\times 10^{-4},\quad
+  % \expe{\sav{\yaa\yaa\yaa\yaa}} = 8.81 \times 10^{-6}.
 \end{equation}
 which come from the actual recording of circa 200 neurons from macaque
 motor cortex \citep{rostamietal2016_r2017}. The distribution obtained at the
@@ -1550,19 +1564,19 @@ activity~\eqref{eq:app_maxent_pop_marg} is modified, by the law of total
 probability, to
 \begin{multline}
   \label{eq:app_maxent_pop_marg_unknown_N}
-  \pf(\yrs \| \yHd)  =
-  \sum_{\yNv} \pf(\yrs \| \yNv,\yHd) \,
+  \pf(\ya \| \yHd)  =
+  \sum_{\yNv} \pf(\ya \| \yNv,\yHd) \,
   \pf(\yNv \|\yHd)
   ={}\\[-\jot]
   \sum_\yNv \biggl\{\frac{1}{\yK(\yL_\yNv)}\, 
-  \sum_{\yRf} \ypp^{(\yNv)}_{\yrs\yRf}
+  \sum_{\yA} \ypp^{(\yNv)}_{\ya\yA}
 \,
-  \tbinom{\yNv}{\yNv \yRf}\,\exp\Bigl[{\yL_\yNv}\T
-  \tsum_{\yrs} \yg_{\yrs}\ypp^{(\yNv)}_{\yrs\yRf}\Bigr]\biggr\}
+  \tbinom{\yNv}{\yNv \yA}\,\exp\Bigl[{\yL_\yNv}\T
+  \tsum_{\ya} \yg_{\ya}\ypp^{(\yNv)}_{\ya\yA}\Bigr]\biggr\}
   \;h(\yNv),
 \end{multline}
 where the Lagrange multipliers $\yL_{\yNv}$ and the summation range for
-$\yRf$ depend on $\yNv$.
+$\yA$ depend on $\yNv$.
 
 As a proof of concept, \fig~\ref{fig:all_three} also shows such a distribution
 (yellow circles) for the same constraints as above, and a probability
@@ -1639,11 +1653,11 @@ interpretation under each route \citep[pp.~52--55,
   %   \label{eq:prob_conditional_average_suff}
   %   \p\bigl[\yE{N+1}{k} \bigcond \tsum\yo\yf{N}\in\yA, \yS\bigr] ={}
   %       \\[3\jot]
-  %    \frac{\int \pf(k \| \yl,\yr,\yS) \sum_{\yf{N}} \delt(\tsum \yo\yf{N}\in \yA)\,
-  %     \binom{N}{N\yf{N}}\,\bigl[ \tprod  \pf(\yk \| \yl,\yr,\yS)^{N\yf{N}} \bigr]
+  %    \frac{\int \pf(k \| \yl,\yaa,\yS) \sum_{\yf{N}} \delt(\tsum \yo\yf{N}\in \yA)\,
+  %     \binom{N}{N\yf{N}}\,\bigl[ \tprod  \pf(\yk \| \yl,\yaa,\yS)^{N\yf{N}} \bigr]
   %      \,
   %     \pf(\yl \|\yS) \,\di\yl}{\int\sum_{\yf{N}} \delt(\tsum \yo\yf{N}\in \yA)\,
-  %     \binom{N}{N\yf{N}}\,\bigl[ \tprod \pf(\yk \| \yl,\yr,\yS)^{N\yf{N}} \bigr]
+  %     \binom{N}{N\yf{N}}\,\bigl[ \tprod \pf(\yk \| \yl,\yaa,\yS)^{N\yf{N}} \bigr]
   %      \,
   %     \pf(\yl \|\yS) \,\di\yl}.
   % \end{multline}
@@ -1660,11 +1674,38 @@ different results. Route~\ref{item:entropy_route} is also supposed to be
 used with all known data. Moreover, the approximate equivalence of
 route~\ref{item:entropy_route} with routes~\ref{item:entr_prior_route} and
 \ref{item:suff_route} \emph{only holds if $T$ is much larger than the
-  possible values of the activity $\yRf$}. Finally, we also obtain very
+  possible values of the activity $\yA$}. Finally, we also obtain very
 different expressions depending on whether we're asking about \emph{the
   activity in one of the \textbf{recorded} time bins} or about \emph{the
   activity in a \textbf{new} time bin}. Works that use maximum-entropy
 distributions are often very vague about the latter point.
+
+
+\bigskip
+
+Here are the distributions for our \dobs\ about three different quantities,
+assuming an entropic pre-data distribution for the long-run frequencies of
+the full population:
+
+\textbf{The frequency distribution $\yF$ of the full-population activity during
+  the recording}
+
+\begin{multline}
+  \label{eq:fullfreq_from_samplefreq}
+  \p(\yF \|\yf,\yH) \propto
+  \int\!\di\ynu\;  \tsum_{\yj}
+  \delt(\tsum_{\yA}\yjj_{\ya\yA} = \yff_{\ya})\;
+  \delt(\tsum_{\ya}\yjj_{\ya\yA} = \yFF_{\yA})\times{}\\
+  \binom{T}{T\yj}\;
+  \biggl[\prod_{\ya\yA}
+(\ypp_{\ya\yA}\ynuu_{\yA})^{T\yjj_{\ya\yA}}
+\biggr]\;
+\exp[-L\;\ysh(\ynu;\yR)]
+\\
+{}\appropto
+  \delt(\tsum_{\yA}\ypp_{\ya\yA}\yFF_{\yA} = \yff_{\ya})\;
+\exp[-L\;\ysh(\yF;\yR)]
+\end{multline}
 
 
 

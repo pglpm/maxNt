@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-05-17T16:54:33+0200
+%% Last-Updated: 2019-05-17T19:34:12+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -196,7 +196,7 @@ british%
 \renewcommand\sfdefault{uop}
 \DeclareMathAlphabet{\mathsf}  {T1}{\sfdefault}{m}{sl}
 \SetMathAlphabet{\mathsf}{bold}{T1}{\sfdefault}{b}{sl}
-%\newcommand*{\mathte}[1]{\textbf{\textit{\textsf{#1}}}}
+\newcommand*{\mathte}[1]{\textbf{\textit{\textsf{#1}}}}
 % Upright sans-serif math alphabet
 % \DeclareMathAlphabet{\mathsu}  {T1}{\sfdefault}{m}{n}
 % \SetMathAlphabet{\mathsu}{bold}{T1}{\sfdefault}{b}{n}
@@ -1687,12 +1687,14 @@ Here are the distributions for our \dobs\ about three different quantities,
 assuming an entropic pre-data distribution for the long-run frequencies of
 the full population:
 
-\textbf{The frequency distribution $\yF$ of the full-population activity during
-  the recording}
+\textbf{The frequency distribution $\yF$ of the full-population activity
+  \emph{during the recording}}
 
-\begin{multline}
+\begin{equation}
   \label{eq:fullfreq_from_samplefreq}
-  \p(\yF \|\yf,\yH) \propto
+  \begin{split}
+  \p(\yF \|\yf,\yH) &\propto
+  \!\begin{multlined}[t][0.8\linewidth]
   \int\!\di\ynu\;  \tsum_{\yj}
   \delt(\tsum_{\yA}\yjj_{\ya\yA} = \yff_{\ya})\;
   \delt(\tsum_{\ya}\yjj_{\ya\yA} = \yFF_{\yA})\times{}\\
@@ -1701,11 +1703,62 @@ the full population:
 (\ypp_{\ya\yA}\ynuu_{\yA})^{T\yjj_{\ya\yA}}
 \biggr]\;
 \exp[-L\;\ysh(\ynu;\yR)]
+\end{multlined}
 \\
-{}\appropto
-  \delt(\tsum_{\yA}\ypp_{\ya\yA}\yFF_{\yA} = \yff_{\ya})\;
+&\appropto \delt(\tsum_{\yA}\ypp_{\ya\yA}\yFF_{\yA} = \yff_{\ya})\;
 \exp[-L\;\ysh(\yF;\yR)]
-\end{multline}
+\end{split}
+\end{equation}
+
+\bigskip
+
+\textbf{The long-run frequency distribution $\ynu$ of the full-population
+  activity}
+
+\begin{equation}
+  \label{eq:longrun_from_samplefreq}
+  \begin{split}
+  \p(\ynu \|\yf,\yH) &\propto
+    \binom{T}{T\yf}\;
+  \biggl[\prod_{\ya}
+(\tsum_{\yA}\ypp_{\ya\yA}\ynuu_{\yA})^{T\yff_{\ya}}
+\biggr]\;
+\exp[-L\;\ysh(\ynu;\yR)]
+\\
+&\appropto 
+\exp[-T\;\ysh(\yf; \mathte{\ypp}\ynu)
+-L\;\ysh(\ynu;\yR)]
+\end{split}
+\end{equation}
+Note that if some $\yff_{\ya}$ are zero, then the first exponential may
+be badly approximated by a delta, because the constraints lie on a facet of the
+simplex of frequencies $\set{\ynu}$.
+
+\bigskip
+
+\textbf{The activity $\yA'$ of the full-population
+  in a \emph{new} time bin}
+
+\begin{equation}
+  \label{eq:newbin_from_samplefreq}
+  \begin{split}
+  \p(\yA' \|\yf,\yH) &\propto
+  \int\!\di\ynu\;\ynuu_{\yA'}\;
+  \binom{T}{T\yf}\;
+  \biggl[\prod_{\ya}
+(\tsum_{\yA}\ypp_{\ya\yA}\ynuu_{\yA})^{T\yff_{\ya}}
+\biggr]\;
+\exp[-L\;\ysh(\ynu;\yR)]
+\\
+&\appropto 
+\int\!\di\ynu\;\ynuu_{\yA'}\;
+\exp[-T\;\ysh(\yf; \mathte{\ypp}\ynu)
+-L\;\ysh(\ynu;\yR)]
+\end{split}
+\end{equation}
+Note that if some $\yff_{\ya}$ are zero, then the first exponential may
+be badly approximated by a delta, because the constraints lie on a facet of the
+simplex of frequencies $\set{\ynu}$.
 
 
 

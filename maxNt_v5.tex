@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-11T11:27:39+0200
+%% Last-Updated: 2019-06-11T11:49:47+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -20,10 +20,10 @@ british%
 \newcommand*{\firstdraft}{4 November 2015}
 \newcommand*{\firstpublished}{***}
 \newcommand*{\propertitle}{Maximum-entropy distributions for a 
-  neuronal population\\ from subpopulation constraints%\\{\large ***}%
+  neuronal population\\ from subpopulation data%\\{\large ***}%
 }
 \newcommand*{\pdftitle}{\propertitle}
-\newcommand*{\headtitle}{Maximum-entropy from sample constraints}
+\newcommand*{\headtitle}{Maximum-entropy from sample data}
 \newcommand*{\pdfauthor}{P.G.L.  Porta Mana, Y. Roudi, V. Rostami, E. Torre}
 \newcommand*{\headauthor}{Porta Mana \etal}
 \newcommand*{\reporthead}{}% Report number
@@ -486,7 +486,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \hspace*{\stretch{1}}%
 \parbox{0.5\linewidth}%\makebox[0pt][c]%
 {\protect\centering P.G.L.  Porta Mana\\%
-\footnotesize\epost{\email{piero.mana}{ntnu.no}}}%
+\footnotesize\epost{\email{pgl}{portamana.org}}}%
 \hspace*{\stretch{1}}%
 %% uncomment if additional authors present
 \parbox{0.5\linewidth}%\makebox[0pt][c]%
@@ -734,16 +734,16 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \begin{abstract}\labelsep 0pt%
   \noindent This work shows how to build a maximum-entropy probabilistic
   model for the total activity of a population of neurons, given only some
-  activity statistics -- for example, empirical moments -- of a
+  activity data or statistics -- for example, empirical moments -- of a
   \emph{subpopulation} thereof. This kind of model is useful because
   neuronal recordings are always limited to a very small sample of a
   population of neurons.
 %
   The model is applied to two sets of neuronal data available in the
-  literature. In some cases it predicts the larger population to have
-  interesting features -- for example, two modes in the probability for the
-  total activity at low regimes -- that are not visible in the sample or in
-  a maximum-entropy model built for the sample alone.
+  literature. In some cases it makes interesting forecasts about the larger
+  population -- for example, two low-regime modes in the frequency
+  distribution for the total activity -- that are not visible in the sample
+  data or in maximum-entropy models applied only to the sample.
 %
   For the two datasets, the maximum-entropy probability model applied only
   to the subpopulation is compared with the marginal probability

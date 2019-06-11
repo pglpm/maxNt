@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-11T14:46:37+0200
+%% Last-Updated: 2019-06-11T15:16:29+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -818,10 +818,23 @@ recording a very small sample thereof? We'll first give an answer by
 combining, in a straightforward way, the maximum-entropy method and basic
 sampling relations of the probability calculus. Later on we'll show that
 this answer can be obtained by exclusively using the probability calculus;
-this point of view will show that the maximum-entropy answer is a first
-approximation of a more complete one, and the assumptions lying behind it.
+this point of view shows that the maximum-entropy answer is a first
+approximation to the answers of \emph{three} different questions, and also
+shows the assumptions lying behind it.
 
-We apply this method to two concrete data sets:
+We apply our approach to two concrete data sets: the activity of 65 neurons
+recorded from a rat's Medial Entorhinal Cortex \mynote{ref}, and the
+activity of 159 neurons recorded from a macaque's Motor Cortex
+\mynote{ref}\mynote{add recording length}. In the first data set, the most
+interesting inference is that the most probable frequency distribution for
+the total activity of the full population, if the latter is assumed to be
+larger than 1\,000 neurons, has two very distinct modes, both at low
+activities ($0.7\%$ and $2.6\%$ of simultaneously active neurons within
+$3\;\mathrm{ms}$, see \fig***). The analogous distribution for second data
+set doesn't have two modes but still presents one prominent shoulder in the
+low-activity mode. Note that these inferred features for the full
+population aren't observed in the sample, nor are they inferred by the
+application of maximum-entropy to the sample alone.
 
 
 

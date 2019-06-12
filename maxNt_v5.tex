@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-12T16:15:50+0200
+%% Last-Updated: 2019-06-12T20:30:19+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -881,29 +881,33 @@ The idea behind the approach is easily summarized:
 \end{enumerate*}
 
 Regarding point~\ref{item:maxent_step}, we assume the reader to be familiar
-with the maximum-entropy method. We add two remarks.
-First, the distribution given by the method is the zeroth-order
-approximation of \emph{four} distinct distributions:
+with the maximum-entropy method. In short, it amounts to choosing the
+distribution having maximum Shannon entropy among those satisfying specific
+convex constraints, such as expectation values. We add two remarks. First,
+the \enquote{distribution} given by this method is the zeroth-order
+approximation of four different distributions:
 \begin{itemize}
-\item the probability distribution for the value of the activity at any
-  time bin among those recorded,
-\item the probability distribution for the value of the activity at a \emph{new}
-  time bin,
-\item the most probable time-frequency distribution of the activity during the
-  recording,
-\item the most probable time-frequency distribution of the activity in a very
-  long run of new time bins.
+\item the \emph{probability} distribution for the value of the activity at any
+  time bin among those \emph{recorded},
+\item the \emph{probability} distribution for the value of the activity at
+  a \emph{new} time bin,
+\item the most probable \emph{time-frequency} distribution of the activity
+  during the \emph{recording},
+\item the most probable \emph{time-frequency} distribution of the activity
+  in a very long run of \emph{new} time bins.
 \end{itemize}
-So the generic term \enquote{distribution} means one of these four; note
-that although these distributions numerically coincide in this basic
-approximation, they numerically differ in higher-order approximations.
-Second, the maximum-entropy method based on the Shannon entropy implicitly
-makes specific assumptions about the probability of the long-run frequency
-distributions \citep{jaynes1986d_r1996,portamana2009,portamana2017}.
+So the maximum-entropy \enquote{distribution} is an approximate answer to
+four conceptually different inferences. Note that although these four
+distributions numerically coincide in this approximation, they numerically
+differ in higher-order approximations. Second, the maximum-entropy method
+based on the Shannon entropy implicitly makes specific assumptions about
+the probability of the long-run frequency distributions
+\citep{jaynes1986d_r1996,portamana2009,portamana2017}. We discuss these
+assumptions in \sect***
 
 In our case, to apply the method to the total activity of the full
-population we need to set some of its expectation values, for some of its
-moments for example. Here enters point~\ref{item:sample_step}:
+population we need to set some of its expectation values, for example its
+moments. Here enters point~\ref{item:sample_step}:
 
 
 

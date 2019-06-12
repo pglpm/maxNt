@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-12T11:01:28+0200
+%% Last-Updated: 2019-06-12T16:15:50+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -819,7 +819,7 @@ combining, in a straightforward way, the maximum-entropy method and basic
 sampling relations of the probability calculus. Later on we'll show that
 this answer can be obtained by exclusively using the probability calculus;
 this point of view shows that the maximum-entropy answer is a first
-approximation to the answers of \emph{three} different questions, and also
+approximation to the answers of \emph{four} different questions, and also
 shows the assumptions lying behind it.
 
 We apply our approach to two concrete data sets: the activity of 65 neurons
@@ -867,6 +867,46 @@ empirical moments or of long-run frequencies.
 
 \mynote{To be continued after structure of the rest of the article is
   clear. Orig intro is on p.~\pageref{orig_intro}}
+
+\section{Model: maximum-entropy and sampling}
+\label{sec:model}
+
+The idea behind the approach is easily summarized:
+\begin{enumerate*}[label=(\alph*)]
+  \item\label{item:maxent_step} we build a distribution for the total
+  activity of the full population using the maximum-entropy method;
+  \item\label{item:sample_step} the expectation constraints used in the
+  method for the full population are, in turn, determined via sampling
+  theory from the expectation constraints for the sample.
+\end{enumerate*}
+
+Regarding point~\ref{item:maxent_step}, we assume the reader to be familiar
+with the maximum-entropy method. We add two remarks.
+First, the distribution given by the method is the zeroth-order
+approximation of \emph{four} distinct distributions:
+\begin{itemize}
+\item the probability distribution for the value of the activity at any
+  time bin among those recorded,
+\item the probability distribution for the value of the activity at a \emph{new}
+  time bin,
+\item the most probable time-frequency distribution of the activity during the
+  recording,
+\item the most probable time-frequency distribution of the activity in a very
+  long run of new time bins.
+\end{itemize}
+So the generic term \enquote{distribution} means one of these four; note
+that although these distributions numerically coincide in this basic
+approximation, they numerically differ in higher-order approximations.
+Second, the maximum-entropy method based on the Shannon entropy implicitly
+makes specific assumptions about the probability of the long-run frequency
+distributions \citep{jaynes1986d_r1996,portamana2009,portamana2017}.
+
+In our case, to apply the method to the total activity of the full
+population we need to set some of its expectation values, for some of its
+moments for example. Here enters point~\ref{item:sample_step}:
+
+
+
 
 
 

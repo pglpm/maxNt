@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-13T15:02:32+0200
+%% Last-Updated: 2019-06-13T16:07:01+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -941,12 +941,39 @@ is defined as the expectation
   \binom{n \ya}{m}\,  \binom{n}{m}^{-1}\, \pf(\ya \| \yH),
 \end{equation}
 where $\ya\in\set{0, 1/n, 2/n, \dotsc, (n-1)/n, 1}$ is the normalized total
-activity of a population of $n$ neurons. This moment can be interpreted as
-the expectation of the number of distinct $m$-tuples of simultaneously
-active neurons, normalized by the maximum possible number of distinct
-$m$-tuples.
+activity of a population of $n$ neurons, and $\pf(\ya \| \yH)$ is the
+probability for activity $\ya$ given assumptions $\yH$. This moment can be
+interpreted as the expectation of the number of distinct $m$-tuples of
+simultaneously active neurons, normalized by the maximum possible number of
+distinct $m$-tuples. Note that the first $m$ factorial moments determine
+the first $m$ moments and vice versa, so fixing the ones is equivalent to
+fixing the others. Now assume that these $n$ neurons are a sample from a
+full population of $N$ neurons, with possible normalized activity
+$\yA \in\set{0,1/N,\dotsc,1}$. We have this extremely convenient property:
+\emph{The first $n-1$ normalized factorial moments for the sample and for
+  the full population are numerically identical}:
+\begin{equation}
+  \label{eq:equal_m_factorialmoments}
+  \E\condt[\big]{\tbinom{n\ya}{m}\;\tbinom{n}{m}^{-1}}{\yH} =
+  \E\condt[\big]{\tbinom{N\yA}{m}\;\tbinom{N}{m}^{-1}}{\yH},
+  \qquad m < n.
+\end{equation}
 
-
+Hence we can apply the maximum-entropy method to obtain a distribution for
+the full population by constraining, for any $m$s we please, its $m$th
+factorial moment to be equal to the sample's recorded average of
+$\tbinom{n\ya}{m}\;\tbinom{n}{m}^{-1}$. If $\ya_{t}$ is the normalized
+total activity of the sample during the time bin $t$, during a recording
+with $T$ time bins, the constraint on the distribution $\pf(\yA \| \yH)$
+for the full population is
+\begin{equation}
+  \label{eq:final_constraint}
+  \frac{1}{T}\sum_{t}\binom{n\ya_{t}}{m}\,\binom{n}{m}^{-1}
+  =
+   \sum_{\yA}
+  \binom{N \yA}{m}\,  \binom{N}{m}^{-1}\, \pf(\yA \| \yH)
+\end{equation}
+for any $m$s we wish.
 
 
 

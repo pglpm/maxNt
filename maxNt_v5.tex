@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-12T20:30:19+0200
+%% Last-Updated: 2019-06-13T11:51:25+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -880,12 +880,14 @@ The idea behind the approach is easily summarized:
   theory from the expectation constraints for the sample.
 \end{enumerate*}
 
-Regarding point~\ref{item:maxent_step}, we assume the reader to be familiar
-with the maximum-entropy method. In short, it amounts to choosing the
+Regarding point~\ref{item:maxent_step}, we assume you to be familiar with
+the maximum-entropy method. In short, it amounts to choosing the
 distribution having maximum Shannon entropy among those satisfying specific
-convex constraints, such as expectation values. We add two remarks. First,
-the \enquote{distribution} given by this method is the zeroth-order
-approximation of four different distributions:
+convex constraints, such as expectation values; these expectations are
+typically chosen to be equal to measured averages. We add two remarks that
+you may not be familiar with. First, the \enquote{distribution} given by
+this method is the zeroth-order approximation of four different
+distributions:
 \begin{itemize}
 \item the \emph{probability} distribution for the value of the activity at any
   time bin among those \emph{recorded},
@@ -896,18 +898,22 @@ approximation of four different distributions:
 \item the most probable \emph{time-frequency} distribution of the activity
   in a very long run of \emph{new} time bins.
 \end{itemize}
-So the maximum-entropy \enquote{distribution} is an approximate answer to
-four conceptually different inferences. Note that although these four
-distributions numerically coincide in this approximation, they numerically
-differ in higher-order approximations. Second, the maximum-entropy method
-based on the Shannon entropy implicitly makes specific assumptions about
-the probability of the long-run frequency distributions
-\citep{jaynes1986d_r1996,portamana2009,portamana2017}. We discuss these
-assumptions in \sect***
+The maximum-entropy distribution is thus an approximate answer to four
+conceptually different inferences. Note that although the four
+distributions above numerically coincide in this approximation, they
+numerically differ in higher-order approximations. Second, the
+maximum-entropy method based on the Shannon entropy implicitly makes
+specific assumptions about the probability of the long-run frequency
+distributions \citep{jaynes1986d_r1996,portamana2009,portamana2017}. We
+discuss these assumptions in \sect***
 
 In our case, to apply the method to the total activity of the full
-population we need to set some of its expectation values, for example its
-moments. Here enters point~\ref{item:sample_step}:
+population we need to fix some of its expectation values, for example its
+moments. But we don't have any measured averages for the full population to
+equate our expectations to. Here enters point~\ref{item:sample_step}:
+classical sampling theory
+\citep[for example][\chaps~I--IV]{whitworth1867_r1965}[\chap~II]{feller1950_r1968}[\chap~3]{jaynes1994_r2003}[see
+also][]{whitworth1897}.
 
 
 

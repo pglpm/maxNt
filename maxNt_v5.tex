@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-13T11:51:25+0200
+%% Last-Updated: 2019-06-13T14:42:35+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -881,13 +881,13 @@ The idea behind the approach is easily summarized:
 \end{enumerate*}
 
 Regarding point~\ref{item:maxent_step}, we assume you to be familiar with
-the maximum-entropy method. In short, it amounts to choosing the
-distribution having maximum Shannon entropy among those satisfying specific
-convex constraints, such as expectation values; these expectations are
-typically chosen to be equal to measured averages. We add two remarks that
-you may not be familiar with. First, the \enquote{distribution} given by
-this method is the zeroth-order approximation of four different
-distributions:
+the maximum-entropy method. In short, it amounts to a pair of
+prescriptions: choose the distribution having maximum Shannon entropy among
+those satisfying specific convex constraints, such as expectation values;
+and judge these expectations to be equal to measured averages. We add two
+remarks that you may not be familiar with. First, the
+\enquote{distribution} given by this method is the zeroth-order
+approximation of four different distributions:
 \begin{itemize}
 \item the \emph{probability} distribution for the value of the activity at any
   time bin among those \emph{recorded},
@@ -910,10 +910,39 @@ discuss these assumptions in \sect***
 In our case, to apply the method to the total activity of the full
 population we need to fix some of its expectation values, for example its
 moments. But we don't have any measured averages for the full population to
-equate our expectations to. Here enters point~\ref{item:sample_step}:
-classical sampling theory
-\citep[for example][\chaps~I--IV]{whitworth1867_r1965}[\chap~II]{feller1950_r1968}[\chap~3]{jaynes1994_r2003}[see
-also][]{whitworth1897}.
+equate our expectations to. Here enters point~\ref{item:sample_step}: the
+probability calculus gives an exact relation between the first $m$ moments
+for the full population and the first $m$ for the sample, so that the ones
+determine the others and vice versa at every time bin; this is a classical
+result of sampling theory \citep[for
+example][\chaps~I--IV]{whitworth1867_r1965}[\chap~II]{feller1950_r1968}[\chap~3]{jaynes1994_r2003}[see
+also][]{whitworth1897}. Combining this result with the maximum-entropy
+prescription \enquote{expectations${}={}$measured averages} for the sample,
+we have that the latter averages determine the moments for the full
+population:
+\begin{equation}
+  \label{eq:chain_prescription_moments}
+  \text{measured averages} \longrightarrow
+  \text{sample moments} \longrightarrow
+  \text{full-population moments}
+\end{equation}
+
+This step is even more straightforward if instead of power moments we use
+\emph{normalized factorial moments}. The $m$th normalized factorial moment
+is defined as the expectation
+\begin{equation}
+  \E\condt[\Bigg]{
+    \binom{n \ya}{m}\,\binom{n}{m}^{-1}}{\yH}
+  \equiv
+  \sum_{\ya} %m!\,
+  \binom{n \ya}{m}\,  \binom{n}{m}^{-1}\, \pf(\ya \| \yH),
+\end{equation}
+where $\ya\in\set{0, 1/n, 2/n, \dotsc, (n-1)/n, 1}$ is the normalized total
+activity of a population of $n$ neurons. The $m$th factorial moment can be
+interpreted as the expectation of the number of distinct $m$-tuples of
+simultaneously active neurons, normalized by the maximum possible number of
+distinct $m$-tuples.
+
 
 
 

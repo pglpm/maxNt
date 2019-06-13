@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-13T14:42:35+0200
+%% Last-Updated: 2019-06-13T15:02:32+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -912,20 +912,23 @@ population we need to fix some of its expectation values, for example its
 moments. But we don't have any measured averages for the full population to
 equate our expectations to. Here enters point~\ref{item:sample_step}: the
 probability calculus gives an exact relation between the first $m$ moments
-for the full population and the first $m$ for the sample, so that the ones
-determine the others and vice versa at every time bin; this is a classical
+for the full population and the first $m$ for the sample; the ones
+determine the others and vice versa at every time bin. This is a classical
 result of sampling theory \citep[for
 example][\chaps~I--IV]{whitworth1867_r1965}[\chap~II]{feller1950_r1968}[\chap~3]{jaynes1994_r2003}[see
 also][]{whitworth1897}. Combining this result with the maximum-entropy
 prescription \enquote{expectations${}={}$measured averages} for the sample,
-we have that the latter averages determine the moments for the full
-population:
-\begin{equation}
+we have that the measured averages for the sample determine the moments for
+the full population:
+\begin{equation*}
   \label{eq:chain_prescription_moments}
-  \text{measured averages} \longrightarrow
-  \text{sample moments} \longrightarrow
-  \text{full-population moments}
-\end{equation}
+  \mathrlap{\overbracket{\phantom{\text{measured averages} \rightarrow
+        \text{sample moments}}}^{\textit{maximum-entropy prescription}}}
+  \text{measured averages} \rightarrow
+        \underbracket{\text{sample moments}
+  \rightarrow
+    \text{full-population moments}}_{\textit{sampling theory}}
+\end{equation*}
 
 This step is even more straightforward if instead of power moments we use
 \emph{normalized factorial moments}. The $m$th normalized factorial moment
@@ -938,10 +941,10 @@ is defined as the expectation
   \binom{n \ya}{m}\,  \binom{n}{m}^{-1}\, \pf(\ya \| \yH),
 \end{equation}
 where $\ya\in\set{0, 1/n, 2/n, \dotsc, (n-1)/n, 1}$ is the normalized total
-activity of a population of $n$ neurons. The $m$th factorial moment can be
-interpreted as the expectation of the number of distinct $m$-tuples of
-simultaneously active neurons, normalized by the maximum possible number of
-distinct $m$-tuples.
+activity of a population of $n$ neurons. This moment can be interpreted as
+the expectation of the number of distinct $m$-tuples of simultaneously
+active neurons, normalized by the maximum possible number of distinct
+$m$-tuples.
 
 
 

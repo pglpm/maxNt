@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-13T16:07:01+0200
+%% Last-Updated: 2019-06-14T14:06:05+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -871,21 +871,22 @@ empirical moments or of long-run frequencies.
 \section{Model: maximum-entropy and sampling}
 \label{sec:model}
 
-The idea behind the approach is easily summarized:
-\begin{enumerate*}[label=(\alph*)]
+The idea behind the approach presented here is easily summarized:
+\begin{enumerate}[label=(\alph*)]
   \item\label{item:maxent_step} we build a distribution for the total
   activity of the full population using the maximum-entropy method;
   \item\label{item:sample_step} the expectation constraints used in the
   method for the full population are, in turn, determined via sampling
   theory from the expectation constraints for the sample.
-\end{enumerate*}
+\end{enumerate}
+Let's discuss these points in more detail.
 
 Regarding point~\ref{item:maxent_step}, we assume you to be familiar with
 the maximum-entropy method. In short, it amounts to a pair of
 prescriptions: choose the distribution having maximum Shannon entropy among
 those satisfying specific convex constraints, such as expectation values;
-and judge these expectations to be equal to measured averages. We add two
-remarks that you may not be familiar with. First, the
+and judge these expectation values to be equal to measured averages. We add
+two remarks that are seldom made in the literature. First, the
 \enquote{distribution} given by this method is the zeroth-order
 approximation of four different distributions:
 \begin{itemize}
@@ -911,15 +912,17 @@ In our case, to apply the method to the total activity of the full
 population we need to fix some of its expectation values, for example its
 moments. But we don't have any measured averages for the full population to
 equate our expectations to. Here enters point~\ref{item:sample_step}: the
-probability calculus gives an exact relation between the first $m$ moments
-for the full population and the first $m$ for the sample; the ones
-determine the others and vice versa at every time bin. This is a classical
-result of sampling theory \citep[for
-example][\chaps~I--IV]{whitworth1867_r1965}[\chap~II]{feller1950_r1968}[\chap~3]{jaynes1994_r2003}[see
-also][]{whitworth1897}. Combining this result with the maximum-entropy
-prescription \enquote{expectations${}={}$measured averages} for the sample,
-we have that the measured averages for the sample determine the moments for
-the full population:
+probability calculus gives an exact, linear relation between the first $m$
+moments for the full population and the first $m$ for the sample; the ones
+determine the others and vice versa at every time bin \citep[for
+example][\eqns~(16)]{portamanaetal2015}. This is a classical result of
+sampling theory \citep[\chaps~I--IV]{whitworth1867_r1965}[\chap~II]{feller1950_r1968}[\chap~3]{jaynes1994_r2003}[see
+also][]{whitworth1897}.
+
+Combining this result with the maximum-entropy prescription
+\enquote{expectations${}={}$measured averages} for the sample, we have that
+the measured averages for the sample determine the moments for the full
+population:
 \begin{equation*}
   \label{eq:chain_prescription_moments}
   \mathrlap{\overbracket{\phantom{\text{measured averages} \rightarrow
@@ -930,9 +933,9 @@ the full population:
     \text{full-population moments}}_{\textit{sampling theory}}
 \end{equation*}
 
-This step is even more straightforward if instead of power moments we use
-\emph{normalized factorial moments}. The $m$th normalized factorial moment
-is defined as the expectation
+These two steps are even more straightforward if instead of power moments
+we use \emph{normalized factorial moments}. The $m$th normalized factorial
+moment is defined as the expectation
 \begin{equation}
   \E\condt[\Bigg]{
     \binom{n \ya}{m}\,\binom{n}{m}^{-1}}{\yH}
@@ -945,27 +948,31 @@ activity of a population of $n$ neurons, and $\pf(\ya \| \yH)$ is the
 probability for activity $\ya$ given assumptions $\yH$. This moment can be
 interpreted as the expectation of the number of distinct $m$-tuples of
 simultaneously active neurons, normalized by the maximum possible number of
-distinct $m$-tuples. Note that the first $m$ factorial moments determine
-the first $m$ moments and vice versa, so fixing the ones is equivalent to
-fixing the others. Now assume that these $n$ neurons are a sample from a
-full population of $N$ neurons, with possible normalized activity
-$\yA \in\set{0,1/N,\dotsc,1}$. We have this extremely convenient property:
-\emph{The first $n-1$ normalized factorial moments for the sample and for
-  the full population are numerically identical}:
+distinct $m$-tuples. For example, with $m=2$, if $na=4$ neurons are active
+in a population of $n=5$, we have $\tbinom{4}{2}=6$ distinct pairs of
+simultaneously active neurons, and if all five neurons were active we would
+have a maximum of $\tbinom{5}{2}=10$ distinct pairs; the normalized number
+of pairs is therefore $6/10$. Note that the first $m$ factorial moments
+linearly determine the first $m$ moments and vice versa, so fixing the ones is
+equivalent to fixing the others. Now assume that these $n$ neurons are a
+sample from a full population of $N$ neurons, with possible normalized
+activity $\yA \in\set{0,1/N,\dotsc,1}$. We have this extremely convenient
+property: \emph{The first $n-1$ normalized factorial moments for the sample
+  and for the full population are numerically identical}:
 \begin{equation}
   \label{eq:equal_m_factorialmoments}
   \E\condt[\big]{\tbinom{n\ya}{m}\;\tbinom{n}{m}^{-1}}{\yH} =
   \E\condt[\big]{\tbinom{N\yA}{m}\;\tbinom{N}{m}^{-1}}{\yH},
-  \qquad m < n.
+  \qquad m \le n.
 \end{equation}
 
-Hence we can apply the maximum-entropy method to obtain a distribution for
-the full population by constraining, for any $m$s we please, its $m$th
-factorial moment to be equal to the sample's recorded average of
-$\tbinom{n\ya}{m}\;\tbinom{n}{m}^{-1}$. If $\ya_{t}$ is the normalized
-total activity of the sample during the time bin $t$, during a recording
-with $T$ time bins, the constraint on the distribution $\pf(\yA \| \yH)$
-for the full population is
+We can hence apply the maximum-entropy method to obtain a distribution for
+the full population by constraining its $m$th factorial moment to be equal
+to the sample's recorded average of $\tbinom{n\ya}{m}\;\tbinom{n}{m}^{-1}$,
+for as many $m$ as we please with $1\le m \le n$. If $\ya_{t}$ is the
+normalized total activity of the sample during the time bin $t$, during a
+recording with $T$ time bins, the constraint on the distribution
+$\pf(\yA \| \yH)$ for the full population is
 \begin{equation}
   \label{eq:final_constraint}
   \frac{1}{T}\sum_{t}\binom{n\ya_{t}}{m}\,\binom{n}{m}^{-1}

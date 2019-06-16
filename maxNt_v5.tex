@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-16T12:46:55+0200
+%% Last-Updated: 2019-06-16T21:39:12+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -878,11 +878,12 @@ activities of $n$ neurons for a given amount of time. These spikes are
 binned into $T$ time bins and binarized to $\set{0,1}$ values in each bin.
 Denote by $\ya_{t}$ the number of neurons that fire during time bin $t$,
 divided by the total number of neurons $n$; we call this the
-\emph{normalized total activity} or just \enquote{total activity} for
-short. Obviously $\ya_{t} \in\set{0,1/n,\dotsc,(n-1)/n,1}$; if $\ya_{t}=0$,
-no neuron spiked during time bin $t$; if $\ya_{t}=1$, all spiked at some
-point during time bin $t$. For brevity, let's say \enquote{at $t$} for
-\enquote{during time bin $t$}.
+\emph{normalized total activity} or just \enquote{total activity} or
+\enquote{activity} for short. Obviously
+$\ya_{t} \in\set{0,1/n,\dotsc,(n-1)/n,1}$; if $\ya_{t}=0$, no neuron spiked
+during time bin $t$; if $\ya_{t}=1$, all spiked at some point during time
+bin $t$. For brevity, let's say \enquote{at $t$} for \enquote{during time
+  bin $t$}.
 
 \mynote{maybe move this paragraph to the intro?}Present-day technologies
 enable the recording of neuronal activity from small brain regions
@@ -890,69 +891,76 @@ enable the recording of neuronal activity from small brain regions
 are not, and cannot yet be, specifically chosen from among the rest, owing
 to several limiting factors -- for example, limitations in the precision
 with which electrodes are inserted, or with which neurons are targeted by
-viruses, and so on. In fact, the set of recorded neurons may even vary
+viruses, and so on. In fact, the set of recorded neurons may even change
 during very long recordings or across experimental trials. We assume that
-there's a small region, comprising a population of $N$ neurons, from which
-other sets of neurons had the same probability of being recorded as the set
-of $n$ neurons that have actually been recorded. During the recording, the
-normalized total activity of these $N$ neurons at $t$ was $\yA_{t}$. We
-don't know the values $\yA_{t}$; we only know for certain that
+there's a region, comprising a population of $N$ neurons, from which other
+sets of neurons had the same probability of being recorded as the set of
+$n$ neurons that have actually been recorded. We call this the
+\enquote{full population}. During the recording, the normalized total
+activity of these $N$ neurons at $t$ was $\yA_{t}$. We don't know the
+values $\yA_{t}$ at each $t$; we only know for certain that
 $\yA_{t} \in \set{0,1/N,\dotsc,(N-1)/N,1}$ and that $N\yA_{t} \ge n\ya_{t}$
-for obvious reasons. For the moment we assume that we know $N$; we'll
-discuss later the consequences of our lack of precise knowledge about $N$.
+for obvious reasons. For the moment we assume that we know $N$; in \sect***
+we discuss the consequences of our lack of precise knowledge about this
+number.
 
 Our questions concern general features of the total activity $\yA$ of the
-full population; for example: what was its time-frequency distribution? How
-much activity should we expect in a time bin during the recording, or in a
-new time bin? The answers to these questions are probabilistic and come in
-the form of distributions.
+full population during and after the recording. For example: what was its
+frequency distribution in time? How much total activity should we expect at
+a time bin during the recording, or at a new time bin? We cannot answer
+these questions with certainty; we can only give a distribution of
+probability over the possible answers. Our approach gives such a
+probability distribution.
 
-The idea behind the approach presented here is easily summarized:
+\bigskip
+
+The idea behind the approach is easily summarized:
 \begin{enumerate}[label=(\alph*)]
   \item\label{item:maxent_step} we build a distribution for the total
   activity of the full population using the maximum-entropy method;
   \item\label{item:sample_step} the expectation constraints used in the
-  method for the full population are, in turn, determined via sampling
-  theory from the expectation constraints for the sample.
+  maximum-entropy method for the full population are, in turn, determined
+  via sampling theory from the expectation constraints for the sample.
 \end{enumerate}
-Let's discuss these points in more detail.
+Let's discuss these points in detail.
 
-Regarding point~\ref{item:maxent_step}, we assume you to be familiar with
-the maximum-entropy method. In short, it amounts to a pair of
-prescriptions: choose the distribution having maximum Shannon entropy among
-those satisfying specific convex constraints, such as expectation values;
-and judge these expectation values to be equal to measured averages. We add
-two remarks that are seldom made in the literature. First, the
-\enquote{distribution} given by this method is the zeroth-order
+Regarding~\ref{item:maxent_step}, we assume you to be familiar with the
+maximum-entropy method. In short, it amounts to a pair of prescriptions:
+choose the distribution having maximum Shannon entropy among those
+satisfying specific convex constraints, such as fixed expectation values; and
+judge these expectation values to be equal to measured averages. We add two
+remarks about this method that are seldom made in the literature. First,
+the \enquote{distribution} given by this method is the zeroth-order
 approximation of four different distributions:
 \begin{itemize}
-\item the \emph{probability} distribution for the value of the activity at any
-  time bin among those \emph{recorded},
-\item the \emph{probability} distribution for the value of the activity at
-  a \emph{new} time bin,
-\item the most probable \emph{time-frequency} distribution of the activity
-  during the \emph{recording},
-\item the most probable \emph{time-frequency} distribution of the activity
-  in a very long run of \emph{new} time bins.
+\item the \emph{probability} distribution for the value of the total
+  activity at any time bin among those \emph{recorded},
+\item the \emph{probability} distribution for the value of the total
+  activity at a \emph{new} time bin,
+\item the most probable \emph{time-frequency} distribution of the total
+  activity across the \emph{recorded} bins,
+\item the most probable \emph{time-frequency} distribution of the total
+  activity in a very long run of \emph{new} time bins.
 \end{itemize}
 The maximum-entropy distribution is thus an approximate answer to four
 conceptually different inferences. Note that although the four
-distributions above numerically coincide in this approximation, they
-numerically differ in higher-order approximations. Second, the
-maximum-entropy method based on the Shannon entropy implicitly makes
-specific assumptions about the probability of the long-run frequency
-distributions \citep{jaynes1986d_r1996,portamana2009,portamana2017}. We
-discuss these assumptions in \sect***
+distributions above numerically coincide in this approximation, they differ
+in higher-order approximations. Second, the maximum-entropy method based on
+the Shannon entropy implicitly makes specific assumptions about the
+probability of the long-run frequency distributions
+\citep{jaynes1986d_r1996,portamana2009,portamana2017}. We discuss these
+assumptions in \sect***
 
-In our case, to apply the method to the total activity of the full
-population we need to fix some of its expectation values, for example its
-moments. But we don't have any measured averages for the full population to
-equate our expectations to. Here enters point~\ref{item:sample_step}: the
-probability calculus gives an exact, linear relation between the first $m$
-moments for the full population and the first $m$ for the sample; the ones
-determine the others and vice versa at every time bin \citep[for
-example][\eqns~(16)]{portamanaetal2015}. This is a classical result of
-sampling theory \citep[\chaps~I--IV]{whitworth1867_r1965}[\chap~II]{feller1950_r1968}[\chap~3]{jaynes1994_r2003}[see
+In our case, to apply the method for the total activity of the full
+population we need to fix some of the latter's expectation values, for
+example its moments. But we don't have any measured averages for the full
+population to equate our expectations to. Here enters
+point~\ref{item:sample_step}: the probability calculus gives an exact,
+linear relation between the first $m$ moments for the full population and
+the first $m$ for the sample; the ones determine the others and vice versa
+at every time bin \citep[for example][\eqns~(16)]{portamanaetal2015}. This
+relation is a classical result of sampling theory
+\citep[\chaps~I--IV]{whitworth1867_r1965}[\chap~II]{feller1950_r1968}[\chap~3]{jaynes1994_r2003}[see
 also][]{whitworth1897}.
 
 Combining this result with the maximum-entropy prescription
@@ -969,32 +977,32 @@ population:
     \text{full-population moments}}_{\textit{sampling theory}}
 \end{equation*}
 
-These two steps are even more straightforward if instead of power moments
-we use \emph{normalized factorial moments}. The $m$th normalized factorial
-moment is defined as the expectation
+These two steps are more straightforward if instead of power moments we use
+\emph{normalized factorial moments}. The $m$th normalized factorial moment
+of the probability distribution for the activity of the recorded neurons is
+defined as the expectation
 \begin{equation}
   \E\condt[\Bigg]{
     \binom{n \ya}{m}\,\binom{n}{m}^{-1}}{\yH}
   \equiv
   \sum_{\ya} %m!\,
   \binom{n \ya}{m}\,  \binom{n}{m}^{-1}\, \pf(\ya \| \yH),
+  \qquad 1\le m \le n
 \end{equation}
-where $\ya\in\set{0, 1/n, 2/n, \dotsc, (n-1)/n, 1}$ is the normalized total
-activity of a population of $n$ neurons, and $\pf(\ya \| \yH)$ is the
-probability for activity $\ya$ given assumptions $\yH$. This moment can be
-interpreted as the expectation of the number of distinct $m$-tuples of
-simultaneously active neurons, normalized by the maximum possible number of
-distinct $m$-tuples. For example, with $m=2$, if $na=4$ neurons are active
-in a population of $n=5$, we have $\tbinom{4}{2}=6$ distinct pairs of
-simultaneously active neurons, and if all five neurons were active we would
-have a maximum of $\tbinom{5}{2}=10$ distinct pairs; the normalized number
+where $\pf(\ya \| \yH)$ is the probability for activity $\ya$ given
+assumptions $\yH$; \enquote{$\ya$} may refer to any recorded bin or to a
+new bin. This moment can be interpreted as the expectation of the number of
+distinct $m$-tuples of simultaneously spiking neurons (within a bin's time
+width), normalized by the number of distinct $m$-tuples. For example, with
+$m=2$, if $na=4$ neurons spike in a population of $n=5$, we have
+$\tbinom{4}{2}=6$ distinct pairs of simultaneously spiking neurons, and the
+total number of distinct pairs is $\tbinom{5}{2}=10$. The normalized number
 of pairs is therefore $6/10$. Note that the first $m$ factorial moments
-linearly determine the first $m$ moments and vice versa, so fixing the ones is
-equivalent to fixing the others. Now assume that these $n$ neurons are a
-sample from a full population of $N$ neurons, with possible normalized
-activity $\yA \in\set{0,1/N,\dotsc,1}$. We have this extremely convenient
-property: \emph{The first $n$ normalized factorial moments for the sample
-  and for the full population are numerically identical}:
+linearly determine the first $m$ moments and vice versa, so fixing the ones
+is equivalent to fixing the others. Now, since the recorded neurons are a
+sample from the full population of $N$ neurons, we have this extremely
+convenient property: \emph{The first $n$ normalized factorial moments for
+  the sample and for the full population are numerically identical}:
 \begin{equation}
   \label{eq:equal_m_factorialmoments}
   \E\condt[\big]{\tbinom{n\ya}{m}\;\tbinom{n}{m}^{-1}}{\yH} =
@@ -1002,13 +1010,12 @@ property: \emph{The first $n$ normalized factorial moments for the sample
   \qquad m \le n.
 \end{equation}
 
-We can hence apply the maximum-entropy method to obtain a distribution for
-the full population by constraining its $m$th factorial moment to be equal
-to the sample's recorded average of $\tbinom{n\ya}{m}\;\tbinom{n}{m}^{-1}$,
-for as many $m$ as we please with $1\le m \le n$. If $\ya_{t}$ is the
-normalized total activity of the sample during the time bin $t$, and the
-recording with $T$ time bins, the constraint on the distribution
-$\pf(\yA \| \yH)$ for the full population is
+We can therefore apply the maximum-entropy method to obtain a distribution
+for the full population, by constraining its $m$th factorial moment to be
+equal to the sample's recorded average of
+$\tbinom{n\ya}{m}\;\tbinom{n}{m}^{-1}$, for as many $m$ as we please with
+$1\le m \le n$. The constraints on the distribution $\pf(\yA \| \yH)$ for
+the full population are
 \begin{equation}
   \label{eq:final_constraint}
   \frac{1}{T}\sum_{t}\binom{n\ya_{t}}{m}\,\binom{n}{m}^{-1}
@@ -1017,6 +1024,17 @@ $\pf(\yA \| \yH)$ for the full population is
   \binom{N \yA}{m}\,  \binom{N}{m}^{-1}\, \pf(\yA \| \yH)
 \end{equation}
 for any $m$s we wish.
+
+\bigskip
+
+In the next section we apply this method to the data sets from two actual
+recordings, and discuss the properties of the resulting distributions.
+
+\section{Application: two data sets}
+\label{sec:application}
+
+
+
 
 
 

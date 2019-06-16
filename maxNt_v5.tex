@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-14T15:23:13+0200
+%% Last-Updated: 2019-06-16T12:46:55+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -871,31 +871,35 @@ empirical moments or of long-run frequencies.
 \section{Model: maximum-entropy and sampling}
 \label{sec:model}
 
-Let's introduce the context and notation for our problem.
+Let's introduce some context and notation for our inference problem.
 
-We have recorded the activities of $n$ neurons for a given amount of time.
-These activities are binned into $T$ time bins and binarized to $\set{0,1}$
-values. Denote by $\ya_{t}$ the number of active neurons during time bin
-$t$, divided by the total number of neurons $n$; we call this the
+The context we consider is as follows. We have recorded the spiking
+activities of $n$ neurons for a given amount of time. These spikes are
+binned into $T$ time bins and binarized to $\set{0,1}$ values in each bin.
+Denote by $\ya_{t}$ the number of neurons that fire during time bin $t$,
+divided by the total number of neurons $n$; we call this the
 \emph{normalized total activity} or just \enquote{total activity} for
-short. Obviously $\ya_{t} \in\set{0,1/n,\dotsc,(n-1)/n,1}$: if $\ya_{t}=0$,
-all $n$ neurons were silent during time bin $t$; if $\ya_{t}=1$, all were
-active.
+short. Obviously $\ya_{t} \in\set{0,1/n,\dotsc,(n-1)/n,1}$; if $\ya_{t}=0$,
+no neuron spiked during time bin $t$; if $\ya_{t}=1$, all spiked at some
+point during time bin $t$. For brevity, let's say \enquote{at $t$} for
+\enquote{during time bin $t$}.
 
 \mynote{maybe move this paragraph to the intro?}Present-day technologies
-allow the recording of neuronal activity from small brain regions
-\mynote{be more specific}. The specific neurons that happen to be recorded
-from a region are not and cannot yet be specifically chosen, however, owing
-to several factors -- for example, limitations in the precision with which
-electrodes are inserted, or in the targeting of neurons by viruses, and so
-on. In fact, the set of recorded neurons may vary during very long
-recordings or across experimental trials. We assume that there's a small
-region, comprising a population of $N$ neurons, for which other sets of
-neurons had equal chances of being \enquote{selected} as the sample of $n$
-neurons that have actually been recorded. During the recording, the
-normalized total activity of these $N$ neurons at time bin $t$ was
-$\yA_{t}$; note that $\yA_{t} \in \set{0,1/N,\dotsc,(N-1)/N,1}$ and that
-$N\yA_{t} \ge n\ya_{t}$ for obvious reasons.
+enable the recording of neuronal activity from small brain regions
+\mynote{be more specific}. The neurons that are recorded within the region
+are not, and cannot yet be, specifically chosen from among the rest, owing
+to several limiting factors -- for example, limitations in the precision
+with which electrodes are inserted, or with which neurons are targeted by
+viruses, and so on. In fact, the set of recorded neurons may even vary
+during very long recordings or across experimental trials. We assume that
+there's a small region, comprising a population of $N$ neurons, from which
+other sets of neurons had the same probability of being recorded as the set
+of $n$ neurons that have actually been recorded. During the recording, the
+normalized total activity of these $N$ neurons at $t$ was $\yA_{t}$. We
+don't know the values $\yA_{t}$; we only know for certain that
+$\yA_{t} \in \set{0,1/N,\dotsc,(N-1)/N,1}$ and that $N\yA_{t} \ge n\ya_{t}$
+for obvious reasons. For the moment we assume that we know $N$; we'll
+discuss later the consequences of our lack of precise knowledge about $N$.
 
 Our questions concern general features of the total activity $\yA$ of the
 full population; for example: what was its time-frequency distribution? How

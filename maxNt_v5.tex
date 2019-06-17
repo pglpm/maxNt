@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-17T16:26:01+0200
+%% Last-Updated: 2019-06-17T17:13:33+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1033,8 +1033,25 @@ for any $m$s we wish.
 
 \bigskip
 
-In the next section we apply this method to the data sets from two actual
-recordings, and discuss the properties of the resulting distributions.
+The number of moments used with this method depends on the specific
+questions and hypotheses that a researcher is exploring; for example,
+hypotheses of sufficient statistics, such as the sufficiency of pairwise
+correlations for inferential purposes. In the present work we only want to
+present the general method without entering into biological questions of
+this kind. The particular case in which $n$ moments are constrained
+corresponds to fully specify the measured time-frequency distribution of
+the sample activity. In this case, our inferences about the full-network
+activity are using all available measured frequency data. Using the full
+frequency distribution of the sample may be a bad idea, however, because
+the maximum-entropy distribution becomes a bad approximation of some of the
+four distributions described above. It is preferable to use a moderately
+high number of moments smaller than $n$. We explain this point in \sect***.
+
+\bigskip
+
+In the next section we apply the method to the data sets from two actual
+recordings, using *** moments, and discuss the properties of the resulting
+distributions.
 
 \section{Application: two data sets}
 \label{sec:application}
@@ -1045,13 +1062,14 @@ the literature:
 The first data set, from \textcite[rat 14147]{stensolaetal2012}, consists
 of $n=65$ neurons (27 of which classified as grid cells) from rat Medial
 Entorhinal Cortex, recorded for about 20 minutes. Their spikes are
-binned ainto $T=417\,641$ bins of $3\;\textrm{ms}$ width.
+binned into $T=417\,641$ bins of $3\;\textrm{ms}$ width.
 
-The second data set, from \textcite{rostamietal2016_r2017}, consists of
-$n=159$ neurons from macaque Motor Cortex, recorded for about 15 minutes.
-Their spikes are binned ainto $T=300\,394$ bins of $3\;\textrm{ms}$ width.
+The second data set, from
+\textcite{rostamietal2016_r2017}, %\texttt{data\_RS.npy}
+consists of $n=159$ neurons from macaque Motor Cortex, recorded for about
+15 minutes. Their spikes are binned into $T=300\,394$ bins of
+$3\;\textrm{ms}$ width.
 
-\texttt{data\_RS.npy}
 
 
 

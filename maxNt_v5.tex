@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-17T11:00:59+0200
+%% Last-Updated: 2019-06-17T16:26:01+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -707,6 +707,8 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
   \offinterlineskip\halign{\hfil$##$\cr
     \propto\cr\noalign{\kern2pt}\sim\cr\noalign{\kern-2pt}}}}}
 % https://tex.stackexchange.com/a/33547/97039
+\newcommand*{\fm}{f}
+\newcommand*{\Fm}{F}
 
 \newcommand*{\mee}{maximum entropy}
 \newcommand*{\me}{maximum-entropy}
@@ -934,19 +936,22 @@ two remarks about this method that are seldom made in the literature.
 First, the \enquote{distribution} given by this method is the zeroth-order
 approximation of four different distributions:
 \begin{itemize}
-\item the \emph{probability} distribution for the value of the total
-  activity at any time bin among those \emph{recorded},
-\item the \emph{probability} distribution for the value of the total
-  activity at a \emph{new} time bin,
 \item the most probable \emph{time-frequency} distribution of the total
   activity across the \emph{recorded} bins,
 \item the most probable \emph{time-frequency} distribution of the total
-  activity in a very long run of \emph{new} time bins.
+  activity in a very long run of \emph{new} time bins,
+\item the \emph{probability} distribution for the value of the total
+  activity at any time bin among those \emph{recorded},
+\item the \emph{probability} distribution for the value of the total
+  activity at a \emph{new} time bin.
 \end{itemize}
 The maximum-entropy distribution is thus an approximate answer to four
 conceptually different inferences. Note that although the four
 distributions above numerically coincide in this approximation, they differ
 in higher-order approximations. We discuss their differences in \sect***.
+The maximum-entropy distribution approximates best the first of the four
+distributions, so that's the one we'll mainly have in mind, and we'll
+denote it by $\Fm(\yA)$.***
 Second, the maximum-entropy method based on the Shannon entropy implicitly
 makes specific assumptions about the probability of the long-run frequency
 distributions \citep{jaynes1986d_r1996,portamana2009,portamana2017}. We
@@ -998,12 +1003,12 @@ width), normalized by the number of distinct $m$-tuples. For example, with
 $m=2$, if $na=4$ neurons spike in a network of $n=5$, we have
 $\tbinom{4}{2}=6$ distinct pairs of simultaneously spiking neurons, and the
 total number of distinct pairs is $\tbinom{5}{2}=10$. The normalized number
-of pairs is therefore $6/10$. Note that the first $m$ factorial moments
-linearly determine the first $m$ moments and vice versa, so fixing the ones
-is equivalent to fixing the others. Now, since the recorded neurons are a
-sample from the full network of $N$ neurons, we have this extremely
-convenient property: \emph{The first $n$ normalized factorial moments for
-  the sample and for the full network are numerically identical}:
+of spiking pairs is therefore $6/10$. Note that the first $m$ factorial
+moments linearly determine the first $m$ power moments and vice versa,
+because $\tbinom{n\ya}{m}$ is a polynomial in $\ya$ of degree $m$; so
+fixing the ones is equivalent to fixing the others. Now we have this
+extremely convenient property: \emph{the first $n$ normalized factorial
+  moments for a sample and for the full network are numerically identical}:
 \begin{equation}
   \label{eq:equal_m_factorialmoments}
   \E\condt[\big]{\tbinom{n\ya}{m}\;\tbinom{n}{m}^{-1}}{\yH} =
@@ -1034,8 +1039,19 @@ recordings, and discuss the properties of the resulting distributions.
 \section{Application: two data sets}
 \label{sec:application}
 
+We apply the approach just described to two data sets publicly available in
+the literature:
 
+The first data set, from \textcite[rat 14147]{stensolaetal2012}, consists
+of $n=65$ neurons (27 of which classified as grid cells) from rat Medial
+Entorhinal Cortex, recorded for about 20 minutes. Their spikes are
+binned ainto $T=417\,641$ bins of $3\;\textrm{ms}$ width.
 
+The second data set, from \textcite{rostamietal2016_r2017}, consists of
+$n=159$ neurons from macaque Motor Cortex, recorded for about 15 minutes.
+Their spikes are binned ainto $T=300\,394$ bins of $3\;\textrm{ms}$ width.
+
+\texttt{data\_RS.npy}
 
 
 

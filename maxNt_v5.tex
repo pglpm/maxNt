@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-17T10:56:29+0200
+%% Last-Updated: 2019-06-17T11:00:59+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -875,15 +875,16 @@ Let's introduce some context and notation for our inference problem.
 
 The context we consider is as follows. We have recorded the spiking
 activities of $n$ neurons for a given amount of time. Let's call these
-neurons the \enquote{sample}. Their spikes are binned into $T$ time bins and
-binarized to $\set{0,1}$ values in each bin. Denote by $\ya_{t}$ the number
-of neurons that fire during time bin $t$, divided by the total number of
-neurons $n$; we call this the \emph{normalized total activity} of the
-sample, or just its \enquote{total activity} or \enquote{activity} for
-short. Obviously $\ya_{t} \in\set{0,1/n,\dotsc,(n-1)/n,1}$; if $\ya_{t}=0$,
-no neuron spiked during time bin $t$; if $\ya_{t}=1$, all spiked at some
-point during time bin $t$. For brevity, let's say \enquote{at $t$} for
-\enquote{during time bin $t$}.
+neurons the \enquote{sample} or the \enquote{subnetwork}. Their spikes are
+binned into $T$ time bins and binarized to $\set{0,1}$ values in each bin.
+Denote by $\ya_{t}$ the number of neurons that fire during time bin $t$,
+divided by the total number of neurons $n$; we call this the
+\emph{normalized total activity} of the sample, or just its \enquote{total
+  activity} or \enquote{activity} for short. Obviously
+$\ya_{t} \in\set{0,1/n,\dotsc,(n-1)/n,1}$; if $\ya_{t}=0$, no neuron spiked
+during time bin $t$; if $\ya_{t}=1$, all spiked at some point during time
+bin $t$. For brevity, let's say \enquote{at $t$} for \enquote{during time
+  bin $t$}.
 
 \mynote{maybe move this paragraph to the intro?}Present-day technologies
 enable the recording of neuronal activity from small brain regions
@@ -951,15 +952,15 @@ makes specific assumptions about the probability of the long-run frequency
 distributions \citep{jaynes1986d_r1996,portamana2009,portamana2017}. We
 discuss these assumptions in \sect***.
 
-In our case, to apply the method for the total activity of the full
-network we need to fix some of the latter's expectation values, for
-example its moments. But we don't have any measured averages for the full
-network to equate our expectations to. Here enters
-point~\ref{item:sample_step}: the probability calculus gives an exact,
-linear relation between the first $m$ moments for the full network and
-the first $m$ for the sample; the ones determine the others and vice versa
-at every time bin \citep[for example][\eqns~(16)]{portamanaetal2015}. This
-relation is a classical result of sampling theory
+In our case, to apply the method for the total activity of the full network
+we need to fix some of the latter's expectation values, for example its
+moments. But we don't have any measured averages for the full network to
+equate our expectations to. Here enters point~\ref{item:sample_step}: the
+probability calculus gives an exact, linear relation between the first $m$
+moments for the full network and the first $m$ for the sample
+\citep[\eqns~(16)]{portamanaetal2015}; the ones determine the others and
+vice versa at every time bin. This relation is a classical result of
+sampling theory
 \citep[\chaps~I--IV]{whitworth1867_r1965}[\chap~II]{feller1950_r1968}[\chap~3]{jaynes1994_r2003}[see
 also][]{whitworth1897}.
 

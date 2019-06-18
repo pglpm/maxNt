@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-18T19:12:25+0200
+%% Last-Updated: 2019-06-18T20:14:11+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -877,41 +877,42 @@ empirical moments or of long-run frequencies.
 Let's introduce some context and notation for our inference problem.
 
 The context we consider is as follows. We have recorded the spiking
-activities of $n$ neurons for a given amount of time. These neurons are our
-\enquote{sample} or \enquote{subnetwork}. Their spikes are binned into $T$
-time bins and binarized to $\set{0,1}$ values in each bin. Denote by
+activities of $n$ neurons for a certain amount of time. These neurons are
+our \enquote{sample} or \enquote{subnetwork}. Their spikes are binned into
+$T$ time bins and binarized to $\set{0,1}$ values in each bin. Call
 $\ya_{t}$ the number of neurons that fire during time bin $t$, divided by
 the total number of neurons $n$; this is the \emph{normalized total
-  activity} of the sample, or just its \enquote{total activity} or
-\enquote{activity} for short. Obviously
-$\ya_{t} \in\set{0,1/n,\dotsc,(n-1)/n,1}$; if $\ya_{t}=0$, no neuron spiked
-during bin $t$; if $\ya_{t}=1$, all spiked at some point during bin $t$.
-For brevity, let's say \enquote{at $t$} for \enquote{during time bin $t$}.
-From the activities $\set{\ya_{t}}$ we can count how many times the
-activity levels $\ya=0$, $\ya=1/n$, and so on appeared during the
-recording, obtaining the measured relative-frequency distribution
-$(\yff_{\ya}) \defs \yf$.
+  activity} of the sample, or just \enquote{activity} for short. Obviously
+$\ya_{t} \in\set{0,1/n,\dotsc,(n-1)/n,1}$; if $\ya_{t}=0$, no neuron spikes
+during bin $t$; if $\ya_{t}=1$, all spike at some point during bin $t$. For
+brevity, let's say \enquote{at $t$} for \enquote{during time bin $t$}. From
+the activities $\set{\ya_{t}}$ we can count how many times the activity
+levels $\ya=0$, $\ya=1/n$, and so on appeared during the recording,
+obtaining the measured relative-frequency distribution
+$(\yff_{\ya}) \defs \yf$. We can also consider the sample activity at time
+bins \emph{outside} of the recorded range. Such activity is unknown to us,
+of course.
 
 \mynote{maybe move this paragraph to the intro?}Present-day technologies
 enable the recording of neuronal activity from small brain regions
 \mynote{be more specific}. For many animal species, the neurons that are
-recorded within the region are not, and at present cannot be, specifically
-chosen from among the rest, owing to several limiting factors -- for
-example, limitations in the precision with which electrodes are inserted,
-or with which neurons are targeted by viruses, and so on. In fact, the set
+recorded within the region are not -- and at present cannot be --
+specifically chosen from among the rest, owing to several limiting factors;
+for example, limitations in the precision with which electrodes are
+inserted, or with which neurons are targeted by viruses. In fact, the set
 of recorded neurons may even change during very long recordings or across
 experimental sessions. We assume that there's a region, comprising a
 network of $N$ neurons, from which other sets of neurons had the same
 probability of being recorded as the set of $n$ neurons that was actually
 recorded. This is our \enquote{full network}\mynote{how about calling it
-  \enquote{the pool}?}. During the recording, the normalized total activity
-of these $N$ neurons at $t$ was $\yA_{t}$; the relative frequencies of the
-various activity levels were $(\yFF_{yA}) \defs \yF$. We don't know the
-values $\yA_{t}$ at each $t$ or the frequency distribution $\yF$. We only
+  \enquote{the pool}?}. The normalized total activity of these $N$ neurons
+at $t$ is $\yA_{t}$. The relative frequencies of the various activity
+levels during the recording were $(\yFF_{yA}) \defs \yF$. We don't know the
+values $\yA_{t}$ at each $t$, or the frequency distribution $\yF$. We only
 know for certain that $\yA_{t} \in \set{0,1/N,\dotsc,(N-1)/N,1}$ and that
-$N\yA_{t} \ge n\ya_{t}$ for obvious reasons. For the moment we assume that
-we know $N$; in \sect*** we discuss the consequences of our lack of precise
-knowledge about this number.
+$N\yA_{t} \ge n\ya_{t}$ for obvious reasons. For the time being we assume
+that we know $N$; in \sect*** we discuss the consequences of our lack of
+precise knowledge about this number.
 
 Our questions concern general features of the total activity $\yA$ of the
 full network during and after the recording. For example: what was its
@@ -954,12 +955,11 @@ different distributions for the full network:
   % $\yp(\yA_{t} \| \yH)$ with $t<1$ or $t>T$
 \end{itemize}
 The maximum-entropy distribution is thus an approximate answer to four
-completely different inferences. Note that although the four distributions
-above numerically coincide in this approximation, they differ in
-higher-order approximations. We discuss their differences in \sect***.
-Second, the maximum-entropy method based on the Shannon entropy implicitly
-makes specific assumptions about the probabilities for the long-run
-frequency distributions
+completely different inferences. Note that the four distributions above
+numerically differ in higher-order approximations. We discuss their
+differences in \sect***. Second, the maximum-entropy method based on the
+Shannon entropy implicitly makes some assumptions about the probabilities
+for the long-run frequency distributions
 \citep{jaynes1986d_r1996,portamana2009,portamana2017}. We discuss these
 assumptions in \sect***.
 

@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-18T15:07:45+0200
+%% Last-Updated: 2019-06-18T16:16:26+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -886,7 +886,10 @@ divided by the total number of neurons $n$; we call this the
 $\ya_{t} \in\set{0,1/n,\dotsc,(n-1)/n,1}$; if $\ya_{t}=0$, no neuron spiked
 during time bin $t$; if $\ya_{t}=1$, all spiked at some point during time
 bin $t$. For brevity, let's say \enquote{at $t$} for \enquote{during time
-  bin $t$}.
+  bin $t$}. From the activities $\set{\ya_{t}}$ we can count how many times
+the activity $\ya=0$, $\ya=1/n$, and so on each appeared during the
+recording, obtaining the measured relative-frequency distribution
+$\yff(\ya) \defs \yf$.
 
 \mynote{maybe move this paragraph to the intro?}Present-day technologies
 enable the recording of neuronal activity from small brain regions
@@ -901,17 +904,19 @@ sets of neurons had the same probability of being recorded as the set of
 $n$ neurons that has actually been recorded. We call this the \enquote{full
   network}\mynote{how about calling it \enquote{the pool}?}. During the
 recording, the normalized total activity of these $N$ neurons at $t$ was
-$\yA_{t}$. We don't know the values $\yA_{t}$ at each $t$; we only know for
-certain that $\yA_{t} \in \set{0,1/N,\dotsc,(N-1)/N,1}$ and that
-$N\yA_{t} \ge n\ya_{t}$ for obvious reasons. For the moment we assume that
-we know $N$; in \sect*** we discuss the consequences of our lack of precise
-knowledge about this number.
+$\yA_{t}$; the relative frequencies of the various activity levels were
+$\yFF(\yA) \defs \yF$. We don't know the values $\yA_{t}$ at each $t$ or
+the frequency distribution $\yF$. We only know for certain that
+$\yA_{t} \in \set{0,1/N,\dotsc,(N-1)/N,1}$ and that $N\yA_{t} \ge n\ya_{t}$
+for obvious reasons. For the moment we assume that we know $N$; in \sect***
+we discuss the consequences of our lack of precise knowledge about this
+number.
 
 Our questions concern general features of the total activity $\yA$ of the
 full network during and after the recording. For example: what was its
-frequency distribution in time during the recording? How much total
-activity should we expect at a time bin during the recording? And at a new
-time bin? We cannot answer these questions with certainty; we can only give
+frequency distribution $\yF$ during the recording? How much total activity
+should we expect at a time bin during the recording? And at a new time bin?
+We cannot answer these questions with certainty; we can only give
 distributions of probability over their possible answers. Our approach
 gives such probability distributions.
 
@@ -919,7 +924,7 @@ gives such probability distributions.
 
 The idea behind the approach is easily summarized:
 \begin{enumerate}[label=(\alph*)]
-  \item\label{item:maxent_step} we build a distribution for the total
+  \item\label{item:maxent_step} we build a distribution $\px(\yA)$ for the total
   activity of the full network using the maximum-entropy method;
   \item\label{item:sample_step} the constrained averages used in the
   maximum-entropy method for the full network are, in turn, determined via
@@ -932,10 +937,9 @@ maximum-entropy method. In short, it amounts to a pair of prescriptions:
 choose the distribution having maximum Shannon entropy among those
 satisfying specific convex constraints, such as fixed averages; and judge
 these averages to be equal to measured averages. We add two remarks about
-this method that are seldom made in the literature. First, the
-\enquote{distribution} given by this method, which we denote by $\px(\yA)$,
-is the zeroth-order approximation of four different distributions for the
-full network:
+this method that are seldom made in the literature. First, the distribution
+$\px(\yA)$ given by this method is the zeroth-order approximation of four
+different distributions for the full network:
 \begin{itemize}
 \item the most probable \emph{frequency} distribution for the total
   activity across the \emph{recorded} bins, %$\yFF(\yA)$,

@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-18T15:05:04+0200
+%% Last-Updated: 2019-06-18T15:07:45+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -708,7 +708,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
     \propto\cr\noalign{\kern2pt}\sim\cr\noalign{\kern-2pt}}}}}
 % https://tex.stackexchange.com/a/33547/97039
 %\newcommand*{\fm}{f}
-\newcommand*{\px}{p}
+\newcommand*{\px}{p_{\text{me}}}
 
 \newcommand*{\mee}{maximum entropy}
 \newcommand*{\me}{maximum-entropy}
@@ -1033,7 +1033,7 @@ the full network are
   \frac{1}{T}\sum_{t}\binom{n\ya_{t}}{m}\,\binom{n}{m}^{-1}
   =
    \sum_{\yA}
-  \binom{N \yA}{m}\,  \binom{N}{m}^{-1}\, \pf(\yA)
+  \binom{N \yA}{m}\,  \binom{N}{m}^{-1}\, \px(\yA)
 \end{equation}
 for any $m$s we wish.
 

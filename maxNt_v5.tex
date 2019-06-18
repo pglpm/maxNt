@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-18T19:09:53+0200
+%% Last-Updated: 2019-06-18T19:12:25+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1036,6 +1036,9 @@ $\px(\yA)$ for the full network are
 \begin{equation}
   \label{eq:final_constraint}
   \frac{1}{T}\sum_{t}\binom{n\ya_{t}}{m}\,\binom{n}{m}^{-1}
+  \equiv
+   \sum_{\ya}
+  \binom{n \ya}{m}\,  \binom{n}{m}^{-1} \yff_{\ya}
   =
    \sum_{\yA}
   \binom{N \yA}{m}\,  \binom{N}{m}^{-1}\, \px(\yA)

@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-17T17:13:33+0200
+%% Last-Updated: 2019-06-18T15:05:04+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -707,8 +707,8 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
   \offinterlineskip\halign{\hfil$##$\cr
     \propto\cr\noalign{\kern2pt}\sim\cr\noalign{\kern-2pt}}}}}
 % https://tex.stackexchange.com/a/33547/97039
-\newcommand*{\fm}{f}
-\newcommand*{\Fm}{F}
+%\newcommand*{\fm}{f}
+\newcommand*{\px}{p}
 
 \newcommand*{\mee}{maximum entropy}
 \newcommand*{\me}{maximum-entropy}
@@ -828,9 +828,9 @@ We apply our approach to two concrete data sets: the activity of 65 neurons
 recorded from a rat's Medial Entorhinal Cortex \mynote{ref}, and the
 activity of 159 neurons recorded from a macaque's Motor Cortex
 \mynote{ref}\mynote{add recording length}. In the first data set, the most
-interesting inference is that the most probable time-frequency distribution
-for the total activity of the full network, if the latter is assumed to
-be larger than 1\,000 neurons, has two very distinct modes, both at low
+interesting inference is that the most probable frequency distribution for
+the total activity of the full network, if the latter is assumed to be
+larger than 1\,000 neurons, has two very distinct modes, both at low
 activities ($0.7\%$ and $2.6\%$ of simultaneously active neurons within
 $3\;\mathrm{ms}$, see \fig***). The analogous distribution for second data
 set doesn't have two modes but still presents one prominent shoulder in its
@@ -909,11 +909,11 @@ knowledge about this number.
 
 Our questions concern general features of the total activity $\yA$ of the
 full network during and after the recording. For example: what was its
-frequency distribution in time? How much total activity should we expect at
-a time bin during the recording, or at a new time bin? We cannot answer
-these questions with certainty; we can only give a distribution of
-probability over the possible answers. Our approach gives such a
-probability distribution.
+frequency distribution in time during the recording? How much total
+activity should we expect at a time bin during the recording? And at a new
+time bin? We cannot answer these questions with certainty; we can only give
+distributions of probability over their possible answers. Our approach
+gives such probability distributions.
 
 \bigskip
 
@@ -921,46 +921,47 @@ The idea behind the approach is easily summarized:
 \begin{enumerate}[label=(\alph*)]
   \item\label{item:maxent_step} we build a distribution for the total
   activity of the full network using the maximum-entropy method;
-  \item\label{item:sample_step} the expectation constraints used in the
-  maximum-entropy method for the full network are, in turn, determined
-  via sampling theory from the expectation constraints for the sample.
+  \item\label{item:sample_step} the constrained averages used in the
+  maximum-entropy method for the full network are, in turn, determined via
+  sampling theory from the constrained averages for the sample.
 \end{enumerate}
 Let's discuss these points in detail.
 
 Regarding~\ref{item:maxent_step}, we assume that you're familiar with the
 maximum-entropy method. In short, it amounts to a pair of prescriptions:
 choose the distribution having maximum Shannon entropy among those
-satisfying specific convex constraints, such as fixed expectation values;
-and judge these expectation values to be equal to measured averages. We add
-two remarks about this method that are seldom made in the literature.
-First, the \enquote{distribution} given by this method is the zeroth-order
-approximation of four different distributions:
+satisfying specific convex constraints, such as fixed averages; and judge
+these averages to be equal to measured averages. We add two remarks about
+this method that are seldom made in the literature. First, the
+\enquote{distribution} given by this method, which we denote by $\px(\yA)$,
+is the zeroth-order approximation of four different distributions for the
+full network:
 \begin{itemize}
-\item the most probable \emph{time-frequency} distribution of the total
-  activity across the \emph{recorded} bins,
-\item the most probable \emph{time-frequency} distribution of the total
-  activity in a very long run of \emph{new} time bins,
+\item the most probable \emph{frequency} distribution for the total
+  activity across the \emph{recorded} bins, %$\yFF(\yA)$,
+\item the most probable \emph{frequency} distribution for the total
+  activity in a very long run of \emph{new} time bins, $\ynuu(\yA)$,
 \item the \emph{probability} distribution for the value of the total
   activity at any time bin among those \emph{recorded},
+  %$\yp(\yA_{t} \| \yH)$ with $1\le t \le T$,
 \item the \emph{probability} distribution for the value of the total
   activity at a \emph{new} time bin.
+  % $\yp(\yA_{t} \| \yH)$ with $t<1$ or $t>T$
 \end{itemize}
 The maximum-entropy distribution is thus an approximate answer to four
-conceptually different inferences. Note that although the four
-distributions above numerically coincide in this approximation, they differ
-in higher-order approximations. We discuss their differences in \sect***.
-The maximum-entropy distribution approximates best the first of the four
-distributions, so that's the one we'll mainly have in mind, and we'll
-denote it by $\Fm(\yA)$.***
+completely different inferences. Note that although the four distributions
+above numerically coincide in this approximation, they differ in
+higher-order approximations. We discuss their differences in \sect***.
 Second, the maximum-entropy method based on the Shannon entropy implicitly
-makes specific assumptions about the probability of the long-run frequency
-distributions \citep{jaynes1986d_r1996,portamana2009,portamana2017}. We
-discuss these assumptions in \sect***.
+makes specific assumptions about the probabilities for the long-run
+frequency distributions
+\citep{jaynes1986d_r1996,portamana2009,portamana2017}. We discuss these
+assumptions in \sect***.
 
 In our case, to apply the method for the total activity of the full network
-we need to fix some of the latter's expectation values, for example its
-moments. But we don't have any measured averages for the full network to
-equate our expectations to. Here enters point~\ref{item:sample_step}: the
+we need to fix some of the latter's averages, for example its moments. But
+we don't have any measured moments for the full network to equate the
+distribution moments to. Here enters point~\ref{item:sample_step}: the
 probability calculus gives an exact, linear relation between the first $m$
 moments for the full network and the first $m$ for the sample
 \citep[\eqns~(16)]{portamanaetal2015}; the ones determine the others and
@@ -970,82 +971,95 @@ sampling theory
 also][]{whitworth1897}.
 
 Combining this result with the maximum-entropy prescription
-\enquote{expectations${}={}$measured averages} for the sample, we have that
-the measured averages for the sample determine the moments for the full
-network:
+\enquote{moments${}={}$measured moments} for the sample, we have that the
+measured moments for the sample determine the moments for the full network:
 \begin{equation*}
   \label{eq:chain_prescription_moments}
-  \mathrlap{\overbracket{\phantom{\text{measured averages} \rightarrow
+  \mathrlap{\overbracket{\phantom{\text{measured moments} \rightarrow
         \text{sample moments}}}^{\textit{maximum-entropy prescription}}}
-  \text{measured averages} \rightarrow
+  \text{measured moments} \rightarrow
         \underbracket{\text{sample moments}
   \rightarrow
     \text{full-network moments}}_{\textit{sampling theory}}
 \end{equation*}
 
 These two steps are more straightforward if instead of power moments we use
-\emph{normalized factorial moments}. The $m$th normalized factorial moment
-of the probability distribution for the activity of the recorded neurons is
-defined as the expectation
+\emph{normalized factorial moments} \citep{potts1953}. The $m$th normalized
+factorial moment of a distribution $\px(\ya)$ for the activity of the
+sample neurons is defined as the average
 \begin{equation}
-  \E\condt[\Bigg]{
-    \binom{n \ya}{m}\,\binom{n}{m}^{-1}}{\yH}
-  \equiv
+  % \E\condt[\Bigg]{
+  %   \binom{n \ya}{m}\,\binom{n}{m}^{-1}}{\yH}
+  % \equiv
   \sum_{\ya} %m!\,
-  \binom{n \ya}{m}\,  \binom{n}{m}^{-1}\, \pf(\ya \| \yH),
+  \binom{n \ya}{m}\,  \binom{n}{m}^{-1}\, \px(\ya),
   \qquad 1\le m \le n
 \end{equation}
-where $\pf(\ya \| \yH)$ is the probability for activity $\ya$ given
-assumptions $\yH$; \enquote{$\ya$} may refer to any recorded bin or to a
-new bin. This moment can be interpreted as the expectation of the number of
-distinct $m$-tuples of simultaneously spiking neurons (within a bin's time
-width), normalized by the number of distinct $m$-tuples. For example, with
-$m=2$, if $na=4$ neurons spike in a network of $n=5$, we have
-$\tbinom{4}{2}=6$ distinct pairs of simultaneously spiking neurons, and the
-total number of distinct pairs is $\tbinom{5}{2}=10$. The normalized number
-of spiking pairs is therefore $6/10$. Note that the first $m$ factorial
-moments linearly determine the first $m$ power moments and vice versa,
-because $\tbinom{n\ya}{m}$ is a polynomial in $\ya$ of degree $m$; so
-fixing the ones is equivalent to fixing the others. Now we have this
-extremely convenient property: \emph{the first $n$ normalized factorial
-  moments for a sample and for the full network are numerically identical}:
+% where $\px(\ya \| \yH)$ is the probability for activity $\ya$ given
+% assumptions $\yH$; \enquote{$\ya$} may refer to any recorded bin or to a
+% new bin.
+This moment can be interpreted as the expectation of the number of distinct
+$m$-tuples of simultaneously spiking neurons (within a bin's time width),
+normalized by the number of distinct $m$-tuples. For example, with $m=2$,
+if $na=4$ neurons spike in a network of $n=5$, we have $\tbinom{4}{2}=6$
+distinct pairs of simultaneously spiking neurons, and the total number of
+distinct pairs is $\tbinom{5}{2}=10$. The normalized number of spiking
+pairs is therefore $6/10$. Note that the first $m$ factorial moments
+linearly determine the first $m$ power moments and vice versa, because
+$\tbinom{n\ya}{m}$ is a polynomial in $\ya$ of degree $m$; so fixing the
+ones is equivalent to fixing the others. Now we have this extremely
+convenient property: \emph{the first $n$ normalized factorial moments for a
+  sample and for the full network are numerically identical}:
 \begin{equation}
   \label{eq:equal_m_factorialmoments}
-  \E\condt[\big]{\tbinom{n\ya}{m}\;\tbinom{n}{m}^{-1}}{\yH} =
-  \E\condt[\big]{\tbinom{N\yA}{m}\;\tbinom{N}{m}^{-1}}{\yH},
-  \qquad m \le n.
+    \sum_{\ya} %m!\,
+  \binom{n \ya}{m}\,  \binom{n}{m}^{-1}\, \px(\ya)
+=    \sum_{\yA} %m!\,
+  \binom{N \yA}{m}\,  \binom{N}{m}^{-1}\, \px(\yA),
+  % \E\condt[\big]{\tbinom{n\ya}{m}\;\tbinom{n}{m}^{-1}}{\yH} =
+  % \E\condt[\big]{\tbinom{N\yA}{m}\;\tbinom{N}{m}^{-1}}{\yH},
+  \qquad 1\le m \le n,
 \end{equation}
+where $\px(\yA)$ is the distribution for the full-network activity.
 
 We can therefore apply the maximum-entropy method to obtain a distribution
 for the full network, by constraining its $m$th factorial moment to be
 equal to the sample's recorded average of
 $\tbinom{n\ya}{m}\;\tbinom{n}{m}^{-1}$, for as many $m$ as we please with
-$1\le m \le n$. The constraints on the distribution $\pf(\yA \| \yH)$ for
+$1\le m \le n$. The constraints on the distribution $\px(\yA)$ for
 the full network are
 \begin{equation}
   \label{eq:final_constraint}
   \frac{1}{T}\sum_{t}\binom{n\ya_{t}}{m}\,\binom{n}{m}^{-1}
   =
    \sum_{\yA}
-  \binom{N \yA}{m}\,  \binom{N}{m}^{-1}\, \pf(\yA \| \yH)
+  \binom{N \yA}{m}\,  \binom{N}{m}^{-1}\, \pf(\yA)
 \end{equation}
 for any $m$s we wish.
 
 \bigskip
 
-The number of moments used with this method depends on the specific
-questions and hypotheses that a researcher is exploring; for example,
-hypotheses of sufficient statistics, such as the sufficiency of pairwise
-correlations for inferential purposes. In the present work we only want to
-present the general method without entering into biological questions of
-this kind. The particular case in which $n$ moments are constrained
-corresponds to fully specify the measured time-frequency distribution of
-the sample activity. In this case, our inferences about the full-network
-activity are using all available measured frequency data. Using the full
-frequency distribution of the sample may be a bad idea, however, because
-the maximum-entropy distribution becomes a bad approximation of some of the
-four distributions described above. It is preferable to use a moderately
-high number of moments smaller than $n$. We explain this point in \sect***.
+The number of moments used with this method depends on the questions and
+hypotheses that a researcher is exploring; for example, hypotheses of
+sufficient statistics, such as the sufficiency of pairwise correlations for
+inferential purposes. In the present work we only want to present the
+general method without entering into biological questions of this kind.
+
+The particular case in which $n$ moments are constrained is especially
+important: it corresponds to fully specify the measured frequency
+distribution for the activity of the sample neurons. In this case, our
+inferences about the full-network activity are using all available measured
+frequency data. Note that application of the maximum-entropy method
+\emph{at the sample level} is in this case trivial and meaningless -- it
+just gives back the measured frequency distribution. But application of the
+method \emph{at the level of the full network}, as done here, is not
+trivial.
+
+Using the full frequency distribution of the sample may be a bad idea,
+however, because the maximum-entropy distribution becomes a bad
+approximation of some of the four distributions described above. It is
+preferable to use a moderately high number of moments smaller than $n$. We
+explain this point in \sect***.
 
 \bigskip
 
@@ -1058,18 +1072,17 @@ distributions.
 
 We apply the approach just described to two data sets publicly available in
 the literature:
-
-The first data set, from \textcite[rat 14147]{stensolaetal2012}, consists
-of $n=65$ neurons (27 of which classified as grid cells) from rat Medial
-Entorhinal Cortex, recorded for about 20 minutes. Their spikes are
-binned into $T=417\,641$ bins of $3\;\textrm{ms}$ width.
-
-The second data set, from
-\textcite{rostamietal2016_r2017}, %\texttt{data\_RS.npy}
-consists of $n=159$ neurons from macaque Motor Cortex, recorded for about
-15 minutes. Their spikes are binned into $T=300\,394$ bins of
-$3\;\textrm{ms}$ width.
-
+\begin{itemize}[wide]
+\item The first data set, from \textcite[rat 14147]{stensolaetal2012},
+  consists of $n=65$ neurons (27 of which classified as grid cells) from
+  rat Medial Entorhinal Cortex, recorded for about 20 minutes. Their spikes
+  are binned into $T=417\,641$ bins of $3\;\textrm{ms}$ width.
+\item The second data set, from
+  \textcite{rostamietal2016_r2017}, %\texttt{data\_RS.npy}
+  consists of $n=159$ neurons from macaque Motor Cortex, recorded for about
+  15 minutes. Their spikes are binned into $T=300\,394$ bins of
+  $3\;\textrm{ms}$ width.
+\end{itemize}
 
 
 

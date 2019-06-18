@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-18T19:00:36+0200
+%% Last-Updated: 2019-06-18T19:09:53+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -709,6 +709,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 % https://tex.stackexchange.com/a/33547/97039
 %\newcommand*{\fm}{f}
 \newcommand*{\px}{p_{\text{me}}}
+\newcommand*{\pxx}{p}
 
 \newcommand*{\mee}{maximum entropy}
 \newcommand*{\me}{maximum-entropy}
@@ -989,14 +990,14 @@ measured moments for the sample determine the moments for the full network:
 
 These two steps are more straightforward if instead of power moments we use
 \emph{normalized factorial moments} \citep{potts1953}. The $m$th normalized
-factorial moment of a distribution $\px(\ya)$ for the activity of the
+factorial moment of a distribution $\pxx(\ya)$ for the activity of the
 sample neurons is defined as the average
 \begin{equation}
   % \E\condt[\Bigg]{
   %   \binom{n \ya}{m}\,\binom{n}{m}^{-1}}{\yH}
   % \equiv
   \sum_{\ya} %m!\,
-  \binom{n \ya}{m}\,  \binom{n}{m}^{-1}\, \px(\ya),
+  \binom{n \ya}{m}\,  \binom{n}{m}^{-1}\, \pxx(\ya),
   \qquad 1\le m \le n
 \end{equation}
 % where $\px(\ya \| \yH)$ is the probability for activity $\ya$ given
@@ -1017,21 +1018,21 @@ convenient property: \emph{the first $n$ normalized factorial moments for a
 \begin{equation}
   \label{eq:equal_m_factorialmoments}
     \sum_{\ya} %m!\,
-  \binom{n \ya}{m}\,  \binom{n}{m}^{-1}\, \px(\ya)
+  \binom{n \ya}{m}\,  \binom{n}{m}^{-1}\, \pxx(\ya)
 =    \sum_{\yA} %m!\,
-  \binom{N \yA}{m}\,  \binom{N}{m}^{-1}\, \px(\yA),
+  \binom{N \yA}{m}\,  \binom{N}{m}^{-1}\, \pxx(\yA),
   % \E\condt[\big]{\tbinom{n\ya}{m}\;\tbinom{n}{m}^{-1}}{\yH} =
   % \E\condt[\big]{\tbinom{N\yA}{m}\;\tbinom{N}{m}^{-1}}{\yH},
   \qquad 1\le m \le n,
 \end{equation}
-where $\px(\yA)$ is the distribution for the full-network activity.
+where $\pxx(\yA)$ is the distribution for the full-network activity.
 
 We can therefore apply the maximum-entropy method to obtain a distribution
 for the full network, by constraining its $m$th factorial moment to be
 equal to the sample's recorded average of
 $\tbinom{n\ya}{m}\;\tbinom{n}{m}^{-1}$, for as many $m$ as we please with
-$1\le m \le n$. The constraints on the distribution $\px(\yA)$ for
-the full network are
+$1\le m \le n$. The constraints on the maximum-entropy distribution
+$\px(\yA)$ for the full network are
 \begin{equation}
   \label{eq:final_constraint}
   \frac{1}{T}\sum_{t}\binom{n\ya_{t}}{m}\,\binom{n}{m}^{-1}
@@ -1050,26 +1051,25 @@ inferential purposes. In the present work we only want to present the
 general method without entering into biological questions of this kind.
 
 The particular case in which $n$ moments are constrained is especially
-important: it corresponds to fully specify the measured frequency
+important: it corresponds to fully constraining the marginal frequency
 distribution for the activity of the sample neurons. In this case, our
 inferences about the full-network activity are using all available measured
 frequency data. Note that application of the maximum-entropy method
-\emph{at the sample level} is in this case trivial and meaningless -- it
+\emph{at the sample level} is trivial and meaningless in this case -- it
 just gives back the measured frequency distribution. But application of the
-method \emph{at the level of the full network}, as done here, is not
-trivial.
+method \emph{at the level of the full network} is not trivial.
 
 Using the full frequency distribution of the sample may be a bad idea,
-however, because the maximum-entropy distribution becomes a bad
+however, because the maximum-entropy distribution may become a bad
 approximation of some of the four distributions described above. It is
 preferable to use a moderately high number of moments smaller than $n$. We
 explain this point in \sect***.
 
 \bigskip
 
-In the next section we apply the method to the data sets from two actual
-recordings, using *** moments, and discuss the properties of the resulting
-distributions.
+In the next section we apply the method just described to the data sets
+from two actual recordings, using *** moments, and discuss the properties
+of the resulting distributions.
 
 \section{Application: two data sets}
 \label{sec:application}

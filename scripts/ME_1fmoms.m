@@ -4,8 +4,8 @@ Clear[ME1fmoms,ME1fmoms0,ME1fmomsc,ME1fmomsn];
 
 ME1fmoms[eemoms_, nn_, wp_:MachinePrecision,pg_:4] := 
   Block[{ll=Length[eemoms],js=Table[Unique["js"],Length[eemoms]], freeenm, soluzm, prob, bvalues,fmoms,emoms},
-	emoms=1-eemoms;
-	fmoms[s_]=Table[1-Binomial[s,r]/Binomial[nn,r], {r,ll}];
+	emoms=1/2-eemoms;
+	fmoms[s_]=Table[1/2-Binomial[s,r]/Binomial[nn,r], {r,ll}];
 	freeenm = Log@Sum[(1-ss+nn)/((nn+1)*(nn+2))*
 			 Exp[js.(fmoms[ss]-emoms)],{ss, 0, nn}];
 

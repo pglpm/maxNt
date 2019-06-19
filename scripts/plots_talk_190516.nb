@@ -13033,7 +13033,7 @@ c/i5WuzDcc0v/T9kLNYz
   "],
  CellLabel->"In[71]:=",ExpressionUUID->"1143b3f4-8118-49af-9f77-e9930cb56313"]
 },
-WindowSize->{640, 767},
+WindowSize->{640, 755},
 WindowMargins->{{Automatic, 46}, {Automatic, 0}},
 FrontEndVersion->"11.3 for Microsoft Windows (32-bit) (March 6, 2018)",
 StyleDefinitions->"Default.nb"

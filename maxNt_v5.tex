@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-18T20:14:11+0200
+%% Last-Updated: 2019-06-19T11:23:16+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -876,22 +876,22 @@ empirical moments or of long-run frequencies.
 
 Let's introduce some context and notation for our inference problem.
 
-The context we consider is as follows. We have recorded the spiking
-activities of $n$ neurons for a certain amount of time. These neurons are
-our \enquote{sample} or \enquote{subnetwork}. Their spikes are binned into
-$T$ time bins and binarized to $\set{0,1}$ values in each bin. Call
-$\ya_{t}$ the number of neurons that fire during time bin $t$, divided by
-the total number of neurons $n$; this is the \emph{normalized total
-  activity} of the sample, or just \enquote{activity} for short. Obviously
-$\ya_{t} \in\set{0,1/n,\dotsc,(n-1)/n,1}$; if $\ya_{t}=0$, no neuron spikes
-during bin $t$; if $\ya_{t}=1$, all spike at some point during bin $t$. For
-brevity, let's say \enquote{at $t$} for \enquote{during time bin $t$}. From
-the activities $\set{\ya_{t}}$ we can count how many times the activity
-levels $\ya=0$, $\ya=1/n$, and so on appeared during the recording,
-obtaining the measured relative-frequency distribution
-$(\yff_{\ya}) \defs \yf$. We can also consider the sample activity at time
-bins \emph{outside} of the recorded range. Such activity is unknown to us,
-of course.
+The context we consider is as follows. During an experimental session we
+have recorded the spiking activities of $n$ neurons for a certain amount of
+time. These neurons are our \enquote{sample} or \enquote{subnetwork}. Their
+spikes are binned into $T$ time bins and binarized to $\set{0,1}$ values in
+each bin. Call $\ya_{t}$ the number of neurons that fire during time bin
+$t$, divided by the total number of neurons $n$; this is the
+\emph{normalized total activity} of the sample, or just \enquote{activity}
+for short. Obviously $\ya_{t} \in\set{0,1/n,\dotsc,(n-1)/n,1}$; if
+$\ya_{t}=0$, no neuron spikes during bin $t$; if $\ya_{t}=1$, all spike at
+some point during bin $t$. For brevity, let's say \enquote{at $t$} for
+\enquote{during time bin $t$}. From the activities $\set{\ya_{t}}$ we can
+count how many times the activity levels $\ya=0$, $\ya=1/n$, and so on
+appeared during the recording, obtaining the measured relative-frequency
+distribution $(\yff_{\ya}) \defs \yf$. We can also consider the sample
+activity at time bins \emph{outside} of the recorded range. Such activity
+is unknown to us, of course.
 
 \mynote{maybe move this paragraph to the intro?}Present-day technologies
 enable the recording of neuronal activity from small brain regions
@@ -902,12 +902,13 @@ for example, limitations in the precision with which electrodes are
 inserted, or with which neurons are targeted by viruses. In fact, the set
 of recorded neurons may even change during very long recordings or across
 experimental sessions. We assume that there's a region, comprising a
-network of $N$ neurons, from which other sets of neurons had the same
-probability of being recorded as the set of $n$ neurons that was actually
-recorded. This is our \enquote{full network}\mynote{how about calling it
+network of $N$ neurons, from which other sets of neurons had or will have
+the same probability of being recorded, even in other experimental
+sessions, as the set of $n$ neurons that was actually recorded in this
+session. This is our \enquote{full network}\mynote{how about calling it
   \enquote{the pool}?}. The normalized total activity of these $N$ neurons
 at $t$ is $\yA_{t}$. The relative frequencies of the various activity
-levels during the recording were $(\yFF_{yA}) \defs \yF$. We don't know the
+levels during the recording were $(\yFF_{\yA}) \defs \yF$. We don't know the
 values $\yA_{t}$ at each $t$, or the frequency distribution $\yF$. We only
 know for certain that $\yA_{t} \in \set{0,1/N,\dotsc,(N-1)/N,1}$ and that
 $N\yA_{t} \ge n\ya_{t}$ for obvious reasons. For the time being we assume
@@ -915,12 +916,20 @@ that we know $N$; in \sect*** we discuss the consequences of our lack of
 precise knowledge about this number.
 
 Our questions concern general features of the total activity $\yA$ of the
-full network during and after the recording. For example: what was its
-frequency distribution $\yF$ during the recording? How much total activity
-$\yA_{t}$ should we expect at a time bin $t$ during the recording? And at a
-new time bin? We cannot answer these questions with certainty; we can only
-give distributions of probability over their possible answers. The approach
-presented here gives such probability distributions.
+full network during and after the recording, and across sessions under the
+same study conditions. For example: what was its frequency distribution
+during the recording? How much does this frequency distribution change
+across sessions? How much total activity should we expect at any time bin
+during a recording? We cannot answer these questions with certainty; we can
+only give distributions of probability over their possible answers. The
+approach presented here gives such probability distributions.
+
+\mynote{Move this to intro?}We want to stress the usefulness of making
+inferences about the full-network activity. First of all, this seems to be
+the primary idea behind recording a sample. Second, it allows us to make
+comparisons across experimental sessions; such comparisons would me
+difficult or meaningless made at the level of recorded samples, which
+generally comprise non-overlapping sets of neurons differing also in size.
 
 \bigskip
 
@@ -1045,6 +1054,12 @@ $\px(\yA)$ for the full network are
 \end{equation}
 for any $m$s we wish.
 
+The calculation amounts to a convex optimization
+\citep{meadetal1984}[\chap~10]{pressetal1988_r2007}{fangetal1997,boydetal2004_r2009,portamana2017b}
+and for the numbers $N,n,m$ considered in the next section it can be done
+on a modern computer without approximations of normalization constants or
+potential functions.
+
 \bigskip
 
 The number of moments used with this method depends on the questions and
@@ -1080,17 +1095,35 @@ of the resulting distributions.
 We apply the approach just described to two data sets publicly available in
 the literature:
 \begin{itemize}[wide]
-\item The first data set, from \textcite[rat 14147]{stensolaetal2012},
+\item The first, from \textcite[rat 14147]{stensolaetal2012},
   consists of $n=65$ neurons (27 of which classified as grid cells) from
   rat Medial Entorhinal Cortex, recorded for about 20 minutes. Their spikes
   are binned into $T=417\,641$ bins of $3\;\textrm{ms}$ width.
-\item The second data set, from
+\item The second, from
   \textcite{rostamietal2016_r2017}, %\texttt{data\_RS.npy}
   consists of $n=159$ neurons from macaque Motor Cortex, recorded for about
   15 minutes. Their spikes are binned into $T=300\,394$ bins of
   $3\;\textrm{ms}$ width.
 \end{itemize}
 
+We first calculate the maximum-entropy distribution for the full network by
+using six moments. This number already provides as much information as the
+full frequency distribution of the sample, and at the same time illustrates
+the use of the approach in questions of statistic sufficiency (typically
+limited to two or three moments). We show the results for full-network
+sizes $N=1\,000$, $N=5\,000$, $N=10\,000$\mynote{motivate?}. Thereafter we
+show the results for two moments and six moments using $N=10\,000$.
+
+
+\begin{figure}[!b]
+\centering
+\includegraphics[width=\linewidth]{scripts/paper_stensola_6mom_distributionsN_prior2.pdf}%
+\\%
+\includegraphics[width=\linewidth]{scripts/paper_riehle_6mom_distributionsN_prior2.pdf}%
+\caption{***}
+\label{fig:plots_6mom}
+\end{figure}
+%maxent_solutions_different_moments_prior2_6moments.nb
 
 
 

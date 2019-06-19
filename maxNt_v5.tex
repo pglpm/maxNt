@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-19T15:25:54+0200
+%% Last-Updated: 2019-06-19T15:34:37+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1142,18 +1142,6 @@ interesting and useful features.
 
 \bigskip
 
-As an illustration of our approach in questions of sufficient statistics,
-\fig~\ref{fig:plots_2_4mom} shows the results for two constrained moments
-(equivalent to constraining means and correlations only) and for four
-constrained moments, using $N=10\,000$. In either data set we obtain very
-distinct distributions for the two kinds of constraints. In particular, for
-the first data set with four moments we obtain a bimodal distribution, and
-with two moments a unimodal one, showing that two moments would be clearly
-insufficient. The inset in the plot for the first data set shows the
-distributions obtained applying maximum-entropy at the sample level: their
-differences aren't so glaring as in the full-network application.
-
-
 \begin{figure}[!p]
 \centering
 \includegraphics[width=\linewidth]{scripts/paper2_stensola_twomom_distributions10000_prior2.pdf}%
@@ -1163,6 +1151,18 @@ differences aren't so glaring as in the full-network application.
 \label{fig:plots_2_4mom}
 \end{figure}
 %maxent_solutions_different_moments_prior2_6moments.nb
+As an illustration of our approach in questions of sufficient statistics,
+\fig~\ref{fig:plots_2_4mom} shows the results for two constrained moments
+(equivalent to constraining means and correlations only) and for four
+constrained moments, with $N=10\,000$. In either data set we obtain two
+very distinct distributions. For the first data set in particular, four
+moments lead to a bimodal distribution, whereas two to a unimodal one,
+showing that two moments would not be a sufficient statistics. The inset in
+the plot for the first data set shows, for comparison, the two
+distributions obtained applying maximum-entropy at the sample level: their
+differences aren't so glaring as in the full-network application.
+
+
 
 
 

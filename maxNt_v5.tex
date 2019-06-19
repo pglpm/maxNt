@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-19T13:30:42+0200
+%% Last-Updated: 2019-06-19T14:57:21+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1106,6 +1106,8 @@ the literature:
   $3\;\textrm{ms}$ width.
 \end{itemize}
 
+\bigskip
+
 We first calculate the maximum-entropy distribution for the full network by
 using six moments. This number already provides as much information as the
 full frequency distribution of the sample, and at the same time illustrates
@@ -1114,21 +1116,39 @@ limited to two or three moments). Figure~\ref{fig:plots_6mom} shows the
 resulting densities (distribution/activity-step, that is,
 distribution${}\times N$) for full-network sizes $N=n$, $N=1\,000$,
 $N=5\,000$, $N=10\,000$\mynote{motivate?}. The case $N=n$ corresponds to
-applying the maximum-entropy method at the sample level.
-
-
-
-
-
-Thereafter we show the results for two moments and six moments using
-$N=10\,000$.
-
-
+applying the maximum-entropy method at the sample level; it can be observed
+that with six moments it reproduces almost exactly the measured frequency
+distribution.
 \begin{figure}[!p]
 \centering
 \includegraphics[width=\linewidth]{scripts/paper_stensola_6mom_distributionsN_prior2.pdf}%
 \\[3em]%
 \includegraphics[width=\linewidth]{scripts/paper_riehle_6mom_distributionsN_prior2.pdf}%
+\caption{***}
+\label{fig:plots_6mom}
+\end{figure}
+%maxent_solutions_different_moments_prior2_6moments.nb
+
+
+The distribution for the full-network is sharper than the measured
+frequency distribution for the sample; the sharper the larger $N$ is. Most
+remarkably, it has two distinct low-activity modes for the first data set.
+But also the second data set presents, upon closer inspection, a small
+shoulder on the right of the mode, suggestive of two activity regimes.
+These features are clearly not present in the sample or in the
+maximum-entropy distribution at the sample level. The application of the
+probability calculus to make forecasts about the full network thus reveals
+interesting and useful features.
+
+Thereafter we show the results for two moments and for four moments using
+$N=10\,000$.
+
+
+\begin{figure}[!p]
+\centering
+\includegraphics[width=\linewidth]{scripts/paper2_stensola_twomom_distributions10000_prior2.pdf}%
+\\[3em]%
+\includegraphics[width=\linewidth]{scripts/paper_riehle_twomom_distributions10000_prior2.pdf}%
 \caption{***}
 \label{fig:plots_6mom}
 \end{figure}

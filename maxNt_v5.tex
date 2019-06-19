@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-19T15:41:53+0200
+%% Last-Updated: 2019-06-19T19:49:04+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -135,7 +135,7 @@ british%
 
 \usepackage[bigdelims,nosymbolsc%,smallerops % probably arXiv doesn't have it
 ]{newpxmath}
-\useosf\linespread{1.083}
+\linespread{1.083}%\useosf
 %% smaller operators for old version of newpxmath
 \makeatletter
 \def\re@DeclareMathSymbol#1#2#3#4{%
@@ -949,8 +949,10 @@ choose the distribution having maximum Shannon entropy among those
 satisfying specific convex constraints, such as fixed averages; and judge
 these averages to be equal to measured averages. We add two remarks about
 this method that are seldom made in the literature. First, the distribution
-$\px(\yA)$ given by this method is the zeroth-order approximation of four
-different distributions for the full network:
+$\px(\yA)$ given by this method is the zeroth-order approximation \citep[in
+the sense of Laplace's
+method:][\chap~4]{debruijn1958_r1961}{tierneyetal1986,strawderman2000} of
+four different distributions for the full network:
 \begin{itemize}
 \item the most probable \emph{frequency} distribution for the total
   activity across the \emph{recorded} bins, %$\yFF(\yA)$,
@@ -1052,7 +1054,7 @@ $\px(\yA)$ for the full network are
    \sum_{\yA}
   \binom{N \yA}{m}\,  \binom{N}{m}^{-1}\, \px(\yA)
 \end{equation}
-for any $m$s we wish.
+for all $m$ we wish.
 
 The calculation amounts to a convex optimization
 \citep{meadetal1984}[\chap~10]{pressetal1988_r2007}{fangetal1997,boydetal2004_r2009,portamana2017b}
@@ -1106,18 +1108,24 @@ the literature:
   $3\;\textrm{ms}$ width.
 \end{itemize}
 
+For concreteness's sake we'll consider the maximum-entropy distribution
+$\px(\yA)$ as \emph{the most probable frequency distribution} for the
+full-network activity during the recording; but remember that it is also
+the approximation of three other distributions, as discussed in the
+previous section.
+
 \bigskip
 
-We first calculate the maximum-entropy distribution for the full network by
-using six moments. This number already provides as much information as the
-full frequency distribution of the sample, and at the same time illustrates
-the use of the approach in questions of statistic sufficiency (typically
-limited to two or three moments). Figure~\ref{fig:plots_6mom} shows the
-resulting densities (distribution/activity-step, that is,
-distribution${}\times N$) for full-network sizes $N=n$, $N=1\,000$,
-$N=5\,000$, $N=10\,000$\mynote{motivate?}. The case $N=n$ corresponds to
-applying the maximum-entropy method at the sample level; it can be observed
-that with six moments it reproduces almost exactly the measured frequency
+We first calculate the distribution by using six moments. This number
+already provides as much information as the full frequency distribution of
+the sample, and at the same time illustrates the use of the approach in
+questions of statistic sufficiency (typically limited to two or three
+moments). Figure~\ref{fig:plots_6mom} shows the resulting densities
+(distribution/activity-step, that is, distribution${}\times N$) for
+full-network sizes $N=n$, $N=1\,000$, $N=5\,000$,
+$N=10\,000$\mynote{motivate?}. The case $N=n$ corresponds to applying the
+maximum-entropy method at the sample level; it can be observed that with
+six moments it reproduces almost exactly the measured frequency
 distribution.
 \begin{figure}[!p]
 \centering
@@ -1134,14 +1142,27 @@ The distribution for the full-network is sharper than the measured
 frequency distribution for the sample; the sharper the larger $N$ is. Most
 remarkably, it has two distinct low-activity modes for the first data set.
 But also the second data set presents, upon closer inspection, a small
-shoulder on the right of the mode, suggestive of two activity regimes.
-These features are clearly not present in the sample or in the
-maximum-entropy distribution at the sample level. The application of the
-probability calculus to make forecasts about the full network thus reveals
-interesting and useful features.
+shoulder on the right of the mode, suggestive of two activity regimes. We
+frame no hypotheses about the biological cause of these two modes (they
+could stem from the presence of different kinds of cells or modules). These
+features are clearly not present in the sample or in the maximum-entropy
+distribution at the sample level. The application of the probability
+calculus to make forecasts about the full network thus reveals interesting
+and useful features.
 
 \bigskip
 
+To illustrate how our approach can be applied to studies of sufficient
+statistics, \fig~\ref{fig:plots_2_4mom} shows the results for two
+constrained moments (equivalent to constraining means and correlations
+only) and for four constrained moments, with $N=10\,000$. In either data
+set we obtain two very distinct distributions. For the first data set in
+particular, four moments lead to a bimodal distribution, whereas two to a
+unimodal one, showing that two moments would not be a sufficient
+statistics. For comparison, the two distributions obtained applying
+maximum-entropy \emph{at the sample level} are shown as an inset in the
+plot for the first data set: their differences aren't so glaring as in the
+full-network application.
 \begin{figure}[!p]
 \centering
 \includegraphics[width=\linewidth]{scripts/paper2_stensola_twomom_distributions10000_prior2.pdf}%
@@ -1151,18 +1172,22 @@ interesting and useful features.
 \label{fig:plots_2_4mom}
 \end{figure}
 %maxent_solutions_different_moments_prior2_6moments.nb
-As an illustration of our approach in questions of sufficient statistics,
-\fig~\ref{fig:plots_2_4mom} shows the results for two constrained moments
-(equivalent to constraining means and correlations only) and for four
-constrained moments, with $N=10\,000$. In either data set we obtain two
-very distinct distributions. For the first data set in particular, four
-moments lead to a bimodal distribution, whereas two to a unimodal one,
-showing that two moments would not be a sufficient statistics. The inset in
-the plot for the first data set shows, for comparison, the two
-distributions obtained applying maximum-entropy at the sample level: their
-differences aren't so glaring as in the full-network application.
 
 
+\section{Marginalization to the sample level}
+\label{sec:marginalization}
+
+
+\section{Assumptions and corrections}
+\label{sec:assumptions_formulae}
+
+in depth discussion about underlying assumptions, derivation from
+probability calculus, higher-order approximations beyond maxent and
+"error bars" around the distributions
+
+
+\section{Summary and discussion}
+\label{sec:summary_discussion}
 
 
 \clearpage

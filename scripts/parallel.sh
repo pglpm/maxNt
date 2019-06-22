@@ -1,6 +1,6 @@
 #!/bin/bash
 #################### Set the name of the job
-#SBATCH --job-name marg2e3
+#SBATCH --job-name testmc2
 # Launch an array of 100 jobs
 ## SBATCH --array 1-10
 # Specify a time limit
@@ -8,8 +8,8 @@
 # Redirect stderr and stdout to the same file:
 # %A will be replaced by the job ID and %a by the array index
 ####################
-#SBATCH -o marg2e3.out
-#SBATCH -e marg2e3.out
+#SBATCH -o testmc2.out
+#SBATCH -e testmc2.out
 # Send email notifications
 ## SBATCH --mail-type=ALL
 # We request an exclusive node for every job in the array
@@ -27,4 +27,4 @@
 # we use slurm's environment variables to create unique output files and echo the name of the executing node in that file
 ##module load anaconda
 ##source activate r
-srun Rscript -e 'source("marginalize.R")'
+srun Rscript -e 'source("mctestf1.R")'

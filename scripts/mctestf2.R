@@ -3,6 +3,9 @@
 ## where each symptom can assume values listed in 'symptomvariants'
 ## and each snp can assume values (alleles) listed in 'snpvariants'
 ## such values can be tuples
+
+set.seed(181225)
+
 #library('ggplot2')
 #library('RColorBrewer')
 #library('cowplot')
@@ -13,25 +16,26 @@ library('foreach')
 library('LaplacesDemon')
 #library('dplyr')
 
+
 pre <- FALSE
 #pre <- TRUE
 
-filename <- paste0(if(pre){'pre_'},'testmc_c6_p1_')
+filename <- paste0(if(pre){'pre_'},'mc_6mom_unif_')
 
 cores <- 30
 thinning <- 10
-mciterations <- 100
-mcstatus <- 10
-mcdiscard <- 10
+mciterations <- 1000
+mcstatus <- 50
+mcdiscard <- 100
 nn <- 1000
 n <- 6
 moms <- unlist(read.csv('stensola_norm_allbinomeans.csv',header=FALSE,sep=','))
 moms <- moms[1:n]
-L <- 500
+L <- 1000
 T <- 417641^2
-smooth <- nn^2
+smooth <- round(nn^(3/2))
 #prior <- (1-(0:nn)+nn)/((nn+1)*(nn+2))
-poste <- unlist(read.csv('stensola_6mom_prior2_N1000.csv',header=FALSE,sep=','))
+poste <- unlist(read.csv(paste0('stensola_6mom_prior2_N',nn,'.csv'),header=FALSE,sep=','))
 #dirich <- nn*(1/(nn+1)+unlist(read.csv('stensola_6mom_prior2_N1000.csv',header=FALSE,sep=',')))
 
 nchains <- cores
@@ -76,8 +80,9 @@ if(cores>1){
 if(pre){
 
     PGF <- function(data){nn <- data$nn
-    ff <- 0.9/(nn+1)+0.1*rdirichlet(1,rep(1,nn+1))
-    (1-cumsum(ff[-(nn+1)]))/c(1,1-cumsum(ff[-c(nn,nn+1)]))
+        ff <- 0.9/(nn+1)+0.1*rdirichlet(1,rep(1,nn+1))
+        ff <- ff[-(nn+1)]/sum(ff)
+    (1-cumsum(ff))/c(1,1-cumsum(ff[-nn]))
 }
 
 mydata <- list(y=1, PGF=PGF,
@@ -94,18 +99,18 @@ mydata <- list(y=1, PGF=PGF,
 logprob <- function(parm,data){
     parm <- interval(parm,0,1)
     F <- c(1,cumprod(parm))*c(1-parm,1)
-    F0 <- F[which(F>0)]
     nn <- data$nn
     LP <- #data$T*sum(data$f*log(crossprod(data$G, F)),na.rm=TRUE) 
-        -data$L*sum(F0*log(F0)) +
+        -data$L*sum(F*log(F),na.rm=TRUE) +
         sum((nn-(1:(nn-1)))*log(parm[1:(nn-1)])) -
         data$smooth*sum(diff(F,differences=4)^2)
     list(LP=LP, Dev=-2*LP, Monitor=1, yhat=1, parm=parm)
 }
 } else {
         PGF <- function(data){nn <- data$nn
-    ff <- 0.9*poste+0.1*rdirichlet(1,rep(1,nn+1))
-    (1-cumsum(ff[-(nn+1)]))/c(1,1-cumsum(ff[-c(nn,nn+1)]))
+            ff <- 0.9*poste+0.1*rdirichlet(1,rep(1,nn+1))
+            ff <- ff[-(nn+1)]/sum(ff)
+    (1-cumsum(ff))/c(1,1-cumsum(ff[-nn]))
 }
 
 mydata <- list(y=1, PGF=PGF,
@@ -123,11 +128,9 @@ mydata <- list(y=1, PGF=PGF,
 logprob <- function(parm,data){
     parm <- interval(parm,0,1)
     F <- c(1,cumprod(parm))*c(1-parm,1)
-    ind <- which[F>0]
-    F0 <- F[ind]
     nn <- data$nn
-    LP <- -data$T*sum(crossprod(data$G[ind,], F0)^2) -
-        data$L*sum(F0*log(F0)) +
+    LP <- -data$T*sum(crossprod(data$G, F)^2) -
+        data$L*sum(F*log(F),na.rm=TRUE) +
         sum((nn-(1:(nn-1)))*log(parm[1:(nn-1)])) -
         data$smooth*sum(diff(F,differences=4)^2)
     list(LP=LP, Dev=-2*LP, Monitor=1, yhat=1, parm=parm)
@@ -177,10 +180,10 @@ print('writing samples to file...')
 
 #write.csv(samples1,'testmcsamples.csv',row.names=FALSE)
 
-    write.table(samples1,file=paste0(filename,'samplesx_N',nn,'_L',L,'_s',dim(samples1)[1],'_a',smooth,'.csv'),row.names=FALSE,col.names=FALSE, sep=',')
-    write.table(samplesf,file=paste0(filename,'samplesf_N',nn,'_L',L,'_s',dim(samples1)[1],'_a',smooth,'.csv'),row.names=FALSE,col.names=FALSE, sep=',')
+    write.table(samples1,file=paste0('_',filename,'samplesx_N',nn,'_L',L,'_s',dim(samples1)[1],'_a',smooth,'.csv'),row.names=FALSE,col.names=FALSE, sep=',')
+    write.table(samplesf,file=paste0('_',filename,'samplesf_N',nn,'_L',L,'_s',dim(samples1)[1],'_a',smooth,'.csv'),row.names=FALSE,col.names=FALSE, sep=',')
 
-saveRDS(usamples,file=paste0(filename,'usamples_N',nn,'_L',L,'_s',dim(samples1)[1],'_a',smooth,'.rds'))
+saveRDS(usamples,file=paste0('_',filename,'usamples_N',nn,'_L',L,'_s',dim(samples1)[1],'_a',smooth,'.rds'))
 
 print(usamples$Rec.Thinning)
 print(Consort(usamples))

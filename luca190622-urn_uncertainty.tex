@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-22T16:13:31+0200
+%% Last-Updated: 2019-06-22T19:53:02+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -19,10 +19,10 @@ british%
 \newcommand*{\updated}{\today}
 \newcommand*{\firstdraft}{22 June 2019}
 \newcommand*{\firstpublished}{***}
-\newcommand*{\propertitle}{Quantifying uncertainty\\about the contents of sequences of urns%\\{\large ***}%
+\newcommand*{\propertitle}{Quantifying uncertainty\\about the contents of a magic urn%\\{\large ***}%
 }% title uses LARGE; set Large for smaller
-\newcommand*{\pdftitle}{Quantifying uncertainty about the contents of sequences of urns}
-\newcommand*{\headtitle}{Uncertainty about urn sequences}
+\newcommand*{\pdftitle}{Quantifying uncertainty about the contents of a magic urn}
+\newcommand*{\headtitle}{Uncertainty about a magic urn}
 \newcommand*{\pdfauthor}{P.G.L.  Porta Mana}
 \newcommand*{\headauthor}{Porta Mana}
 \newcommand*{\reporthead}{}% Report number
@@ -690,38 +690,59 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 %%% BEGINNING OF MAIN TEXT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{***}
-\label{sec:***}
+\section{A magic urn}
+\label{sec:magic_urn}
 
 Quantifying our uncertainty about the contents of a urn that contains, say,
-white and black balls in unknown proportions is a standard textbook topic.
-Our uncertainty depends on our data about the urn -- draws -- and on our
-state of knowledge about the urn before we knew those data. Jaynes's book
-\citey[\chaps~3 \amp\ 6]{jaynes1994_r2003} gives a superb analysis and
-discussion of this problem and of the formulae that typically arise there;
-and even of more realistic variants \citep[\sect~3.9]{jaynes1994_r2003}.
+white and black balls in an unknown proportion is a standard textbook
+topic. Our uncertainty depends on our data about the urn and on our state
+of knowledge about the urn before we knew those data; for example we know
+the colours of five balls drawn from the urn, and how or why the urn was
+prepared. Jaynes's book \citey[\chaps~3 \amp\ 6]{jaynes1994_r2003} gives a
+superb analysis and discussion of this problem and of the probability
+formulae that typically arise there; and even of more realistic variants,
+such as a tendency of drawing and replacing from the top layer of the urn
+\citep[\sect~3.9]{jaynes1994_r2003}.
 
-In this note I derive some formulae for a more complex version of the
-problem above, and some approximations of these formulae. I believe that
-they can be useful in several scientific questions.
+In this note I derive some probability formulae for a more complex version
+of the urn problem, and some approximations of these formulae. They can be
+useful in several scientific questions that, sufficiently simplified, can
+be mapped to the present problem.\mynote{examples}
 
-The problem we consider is the following. There is an urn with $N$ balls,
-which can be white or black. At regular time intervals every ball can
-change its colour: a white can turn black, or vice versa; or it can keep
-its colour. We can observe $n$ out of the $N$ balls for $T$ time intervals.
-The $n$ observed balls are initially chosen in a way unknown to us. Note
-that we observe the \emph{same} $n$ balls at all times. We ask several
-questions about this magic urn:
+The problem we consider is the following. There's an urn with $N$ balls,
+each of which can be white or black. At regular time intervals every ball
+can change its colour: a white can turn black, or vice versa; or it can
+keep the colour it had. We can observe $n$ out of the $N$ balls for $T$
+time intervals. The $n$ observed balls are initially chosen in a way
+unknown to us. Note that we observe the \emph{same} $n$ balls at all times.
+Some variations of this set-up will be discussed later on.
+We ask several questions about this magic urn:
 \begin{enumerate}[label=Q\arabic*]
-\item What was the proportion of white and black balls in the urn at some
-  specific time, among the times we observed?
-\item What was (or will be) the proportion of white and black balls in the
-  urn at some specific time, among the times we did not observe?
-\item How frequently did every possible proportion of white and black balls
-  appear, during the times we observed?
-\item How frequently will every possible proportion of white and black balls
-  appear, during all times the urn exists?
+\item \label{item:q_p_known}What was the proportion of white and black
+  balls in the urn at some specific time, among the times we observed?
+\item \label{item:q_p_unknown}What was (or will be) the proportion of white
+  and black balls in the urn at some specific time, among the times we did
+  not observe?
+\item \label{item:q_f_known}How frequently did every possible proportion of
+  white and black balls appear, during the times we observed?
+\item \label{item:q_f_unknown}How frequently will every possible proportion
+  of white and black balls appear, during all times the urn exists?
 \end{enumerate}
+And our goal is to quantify our belief in each of their possible answers.
+
+The set-up above is an abstract picture; in a real situation our
+uncertainty and knowledge would be more specific -- although their details
+are often difficult to specify in words. The quantification of our beliefs
+strongly depends on such details; it ought to be faced differently in each
+specific situation, just like every probability problem should. The
+formulae I present below apply only to an abstract, unrealistic situation.
+But they may be taken as an approximation or as a starting point for
+formulae more suited to some particular, real situations.
+
+
+
+
+
 
 
 

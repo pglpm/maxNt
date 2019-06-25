@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-19T19:49:04+0200
+%% Last-Updated: 2019-06-25T10:55:38+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -815,21 +815,21 @@ assumptions sometimes escape attention, being subtly hidden in the
 mathematics. Some probabilistic models try to take also unrecorded neurons
 into account, but become very complex in doing so.
 
-In the present work we give an answer to this question: What inferences
-about the \emph{total activity} of a large neuronal network can we make by
-recording a very small sample thereof? We'll first give an answer by
-combining, in a straightforward way, the maximum-entropy method and basic
-sampling relations of the probability calculus. Later on we'll show that
-this answer can be obtained by exclusively using the probability calculus;
-this point of view shows that the maximum-entropy answer is a first
-approximation to the answers of \emph{four} different questions, and also
-shows the assumptions lying behind it.
+In the present work we give an answer to this question: How much is our
+uncertainty about the \emph{total activity} of a large neuronal network, if
+we have observed the activity of a very small sample thereof? We'll first
+give an answer by combining, in a straightforward way, the maximum-entropy
+method and basic sampling relations of the probability calculus. Later on
+we'll show that this answer can be obtained by exclusively using the
+probability calculus; this point of view shows that the maximum-entropy
+answer is a first approximation to the answers of \emph{four} different
+questions, and also shows the assumptions lying behind it.
 
 We apply our approach to two concrete data sets: the activity of 65 neurons
 recorded from a rat's Medial Entorhinal Cortex \mynote{ref}, and the
 activity of 159 neurons recorded from a macaque's Motor Cortex
 \mynote{ref}\mynote{add recording length}. In the first data set, the most
-interesting inference is that the most probable frequency distribution for
+interesting finding is that the most probable frequency distribution for
 the total activity of the full network, if the latter is assumed to be
 larger than 1\,000 neurons, has two very distinct modes, both at low
 activities ($0.7\%$ and $2.6\%$ of simultaneously active neurons within
@@ -848,13 +848,13 @@ application of maximum-entropy to the sample alone. \mynote{if we manage
 
 The maximum-entropy method \citep{jaynes1957}[much clearer
 in][]{jaynes1963}{sivia1996_r2006,hobsonetal1973,jaynes1985b,grandy1980}
-has been used for a variety of inferences about the neuronal activity of
+has been used for a variety of forecasts about the neuronal activity of
 various brain areas and about other phenomena of importance to the
 neurosciences, for example gene and protein interaction \citep[for
 example][]{martignonetal1995,bohteetal2000,shlensetal2006,schneidmanetal2006,tkaciketal2006,mackeetal2009b,tkaciketal2009,roudietal2009c,barreiroetal2010,gerwinnetal2010,mackeetal2011b,ganmoretal2011,cohenetal2011,granotatedgietal2013,mackeetal2013,tkaciketal2014b,shimazakietal2015,moraetal2015,lezonetal2006,weigtetal2009}.
 This method is often used to test whether some statistics of the data, for
-example second-order time correlations, is sufficient for making other
-inferences about the data. It can be considered as an approximation of
+example second-order time correlations, is sufficient for quantifying our
+uncertainty about the data. It can be considered as an approximation of
 probabilistic models based on various assumptions of inferential
 sufficiency \citep{jaynes1986d_r1996,portamana2017} -- for example of
 empirical moments or of long-run frequencies.
@@ -874,7 +874,7 @@ empirical moments or of long-run frequencies.
 \section{Model: maximum-entropy and sampling}
 \label{sec:model}
 
-Let's introduce some context and notation for our inference problem.
+Let's introduce some context and notation for our problem.
 
 The context we consider is as follows. During an experimental session we
 have recorded the spiking activities of $n$ neurons for a certain amount of
@@ -925,7 +925,7 @@ only give distributions of probability over their possible answers. The
 approach presented here gives such probability distributions.
 
 \mynote{Move this to intro?}We want to stress the usefulness of making
-inferences about the full-network activity. First of all, this seems to be
+quantified guesses about the full-network activity. First of all, this seems to be
 the primary idea behind recording a sample. Second, it allows us to make
 comparisons across experimental sessions; such comparisons would me
 difficult or meaningless made at the level of recorded samples, which
@@ -965,12 +965,12 @@ four different distributions for the full network:
   activity at a \emph{new} time bin.
   % $\yp(\yA_{t} \| \yH)$ with $t<1$ or $t>T$
 \end{itemize}
-The maximum-entropy distribution is thus an approximate answer to four
-completely different inferences. Note that the four distributions above
-numerically differ in higher-order approximations. We discuss their
-differences in \sect***. Second, the maximum-entropy method based on the
-Shannon entropy implicitly makes some assumptions about the probabilities
-for the long-run frequency distributions
+The maximum-entropy distribution is thus an approximation of our
+uncertainty about four completely different quantities. Note that the four
+distributions above numerically differ in higher-order approximations. We
+discuss their differences in \sect***. Second, the maximum-entropy method
+based on the Shannon entropy implicitly makes some assumptions about the
+probabilities for the long-run frequency distributions
 \citep{jaynes1986d_r1996,portamana2009,portamana2017}. We discuss these
 assumptions in \sect***.
 
@@ -1066,18 +1066,18 @@ potential functions.
 
 The number of moments used with this method depends on the questions and
 hypotheses that a researcher is exploring; for example, hypotheses of
-sufficient statistics, such as the sufficiency of pairwise correlations for
-inferential purposes. In the present work we only want to present the
+sufficient statistics, such as the sufficiency of pairwise correlations to
+quantify our uncertainty. In the present work we only want to present the
 general method without entering into biological questions of this kind.
 
 The particular case in which $n$ moments are constrained is especially
 important: it corresponds to fully constraining the marginal frequency
 distribution for the activity of the sample neurons. In this case, our
-inferences about the full-network activity are using all available measured
-frequency data. Note that application of the maximum-entropy method
-\emph{at the sample level} is trivial and meaningless in this case -- it
-just gives back the measured frequency distribution. But application of the
-method \emph{at the level of the full network} is not trivial.
+uncertaity about the full-network activity is based on all available
+measured frequency data. Note that application of the maximum-entropy
+method \emph{at the sample level} is trivial and meaningless in this case
+-- it just gives back the measured frequency distribution. But application
+of the method \emph{at the level of the full network} is not trivial.
 
 Using the full frequency distribution of the sample may be a bad idea,
 however, because the maximum-entropy distribution may become a bad
@@ -1129,9 +1129,9 @@ six moments it reproduces almost exactly the measured frequency
 distribution.
 \begin{figure}[!p]
 \centering
-\includegraphics[width=\linewidth]{scripts/paper_stensola_6mom_distributionsN_prior2.pdf}%
+\includegraphics[width=\linewidth]{_scripts/paper_stensola_6mom_distributionsN_prior2.pdf}%
 \\[3em]%
-\includegraphics[width=\linewidth]{scripts/paper_riehle_6mom_distributionsN_prior2.pdf}%
+\includegraphics[width=\linewidth]{_scripts/paper_riehle_6mom_distributionsN_prior2.pdf}%
 \caption{***}
 \label{fig:plots_6mom}
 \end{figure}
@@ -1165,9 +1165,9 @@ plot for the first data set: their differences aren't so glaring as in the
 full-network application.
 \begin{figure}[!p]
 \centering
-\includegraphics[width=\linewidth]{scripts/paper2_stensola_twomom_distributions10000_prior2.pdf}%
+\includegraphics[width=\linewidth]{_scripts/paper2_stensola_twomom_distributions10000_prior2.pdf}%
 \\[3em]%
-\includegraphics[width=\linewidth]{scripts/paper_riehle_twomom_distributions10000_prior2.pdf}%
+\includegraphics[width=\linewidth]{_scripts/paper_riehle_twomom_distributions10000_prior2.pdf}%
 \caption{***}
 \label{fig:plots_2_4mom}
 \end{figure}

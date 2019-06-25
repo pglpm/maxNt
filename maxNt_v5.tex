@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-25T17:30:45+0200
+%% Last-Updated: 2019-06-25T17:40:21+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1195,20 +1195,27 @@ general fact of probability theory: if a probability distribution has some
 sufficient statistics \citep[\sect~4.5]{bernardoetal1994}{fortinietal2000},
 then its marginals \emph{cannot} have the same sufficient statistics, and
 vice versa (except for trivial cases, such as uniform distributions). This
-impossibility is known in statistical mechanics: marginals of Gibbs states
-aren't Gibbs states \citep{maesetal1999}. Mathematically it corresponds to
-the general impossibility of solving a system of $n$ equations in $m$
-unknowns when $n>m$
-\citep[\sect~3.1]{portamanaetal2015}[\sect~3]{portamanaetal2018b}.
+also holds among marginals of different order (to $n$ neurons or to $n+1$
+neurons, for example). This impossibility is known in statistical
+mechanics: marginals of Gibbs states aren't Gibbs states
+\citep{maesetal1999}. Mathematically it corresponds to the general
+impossibility of solving a system of $n$ equations in $m$ unknowns when
+$n>m$ \citep[\sect~3.1]{portamanaetal2015}[\sect~3]{portamanaetal2018b}.
 
 In the neuroscientific application above, this means for example that if
 pairwise correlations are sufficient statistics for a sample of a network,
-then they \emph{cannot} be sufficient for the full network; and vice versa,
-if we assume that they are sufficient statistics for the full network, then
-we must expect them \emph{not} to be sufficient for any recorded sample
-thereof. Thus, maximum-entropy methods applied at the sample level
+then they \emph{cannot} be sufficient for the full network or for a sample
+with more or fewer neurons; and vice versa, if we assume that they are
+sufficient statistics for the full network, then we must expect them
+\emph{not} to be sufficient for any recorded sample thereof.
+
+It seems to us that such questions about sufficient statistics are
+implicitly asked for specific brain areas, not for casually recorded
+samples thereof. Thus, maximum-entropy methods applied at the sample level
 paradoxically give an answer opposite to the one we might think they're
 giving!
+
+
 
 
 

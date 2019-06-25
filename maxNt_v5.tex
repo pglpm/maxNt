@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-25T11:58:15+0200
+%% Last-Updated: 2019-06-25T17:30:45+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1158,7 +1158,7 @@ constrained moments (equivalent to constraining means and correlations
 only) and for four constrained moments, with $N=10\,000$. In either data
 set we obtain two very distinct distributions. For the first data set in
 particular, four moments lead to a bimodal distribution, whereas two to a
-unimodal one, showing that two moments would not be a sufficient
+unimodal one, showing that two moments would not be sufficient
 statistics. For comparison, the two distributions obtained applying
 maximum-entropy \emph{at the sample level} are shown as an inset in the
 plot for the first data set: their differences aren't so glaring as in the
@@ -1174,14 +1174,49 @@ full-network application.
 %maxent_solutions_different_moments_prior2_6moments.nb
 
 
-\section{Marginalization to the sample level}
+\section{Marginalization to the sample level:\\ the issue with pairwise
+  correlations and other statistics}
 \label{sec:marginalization}
+
+The maximum-entropy method has been applied in the neurosciences to
+questions of sufficient statistics -- for example, whether we approximately
+reach the same state of uncertainty about network activity by considering
+only its network-averaged pairwise correlations and by considering also
+third-order correlations. The method is typically used as follows. We
+imagine to be ignorant of the measured frequency distribution for the
+network activity, and to know only the measured statistics of interest; two
+maximum-entropy distributions are then built, constrained under the two
+sets of moments under comparison. Finally, the resulting distributions are
+compared with each other and with the measured frequency distribution.
+
+The method introduced in the present work reveals an issue in the recipe
+above. The issue doesn't come from the method itself but from a simple,
+general fact of probability theory: if a probability distribution has some
+sufficient statistics \citep[\sect~4.5]{bernardoetal1994}{fortinietal2000},
+then its marginals \emph{cannot} have the same sufficient statistics, and
+vice versa (except for trivial cases, such as uniform distributions). This
+impossibility is known in statistical mechanics: marginals of Gibbs states
+aren't Gibbs states \citep{maesetal1999}. Mathematically it corresponds to
+the general impossibility of solving a system of $n$ equations in $m$
+unknowns when $n>m$
+\citep[\sect~3.1]{portamanaetal2015}[\sect~3]{portamanaetal2018b}.
+
+In the neuroscientific application above, this means for example that if
+pairwise correlations are sufficient statistics for a sample of a network,
+then they \emph{cannot} be sufficient for the full network; and vice versa,
+if we assume that they are sufficient statistics for the full network, then
+we must expect them \emph{not} to be sufficient for any recorded sample
+thereof. Thus, maximum-entropy methods applied at the sample level
+paradoxically give an answer opposite to the one we might think they're
+giving!
+
+
 
 
 \section{Assumptions and corrections}
 \label{sec:assumptions_formulae}
 
-in depth discussion about underlying assumptions, derivation from
+in-depth discussion about underlying assumptions, derivation from
 probability calculus, higher-order approximations beyond maxent and
 "error bars" around the distributions
 

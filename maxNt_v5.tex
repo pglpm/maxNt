@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-25T10:55:38+0200
+%% Last-Updated: 2019-06-25T11:58:15+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -848,8 +848,8 @@ application of maximum-entropy to the sample alone. \mynote{if we manage
 
 The maximum-entropy method \citep{jaynes1957}[much clearer
 in][]{jaynes1963}{sivia1996_r2006,hobsonetal1973,jaynes1985b,grandy1980}
-has been used for a variety of forecasts about the neuronal activity of
-various brain areas and about other phenomena of importance to the
+has been used for different kinds of estimations of the neuronal activity
+of various brain areas and about other phenomena of importance to the
 neurosciences, for example gene and protein interaction \citep[for
 example][]{martignonetal1995,bohteetal2000,shlensetal2006,schneidmanetal2006,tkaciketal2006,mackeetal2009b,tkaciketal2009,roudietal2009c,barreiroetal2010,gerwinnetal2010,mackeetal2011b,ganmoretal2011,cohenetal2011,granotatedgietal2013,mackeetal2013,tkaciketal2014b,shimazakietal2015,moraetal2015,lezonetal2006,weigtetal2009}.
 This method is often used to test whether some statistics of the data, for
@@ -883,15 +883,16 @@ spikes are binned into $T$ time bins and binarized to $\set{0,1}$ values in
 each bin. Call $\ya_{t}$ the number of neurons that fire during time bin
 $t$, divided by the total number of neurons $n$; this is the
 \emph{normalized total activity} of the sample, or just \enquote{activity}
-for short. Obviously $\ya_{t} \in\set{0,1/n,\dotsc,(n-1)/n,1}$; if
-$\ya_{t}=0$, no neuron spikes during bin $t$; if $\ya_{t}=1$, all spike at
-some point during bin $t$. For brevity, let's say \enquote{at $t$} for
-\enquote{during time bin $t$}. From the activities $\set{\ya_{t}}$ we can
-count how many times the activity levels $\ya=0$, $\ya=1/n$, and so on
-appeared during the recording, obtaining the measured relative-frequency
-distribution $(\yff_{\ya}) \defs \yf$. We can also consider the sample
-activity at time bins \emph{outside} of the recorded range. Such activity
-is unknown to us, of course.
+for short. It is also the network-averaged activity of the neurons.
+Obviously $\ya_{t} \in\set{0,1/n,\dotsc,(n-1)/n,1}$; if $\ya_{t}=0$, no
+neuron spikes during bin $t$; if $\ya_{t}=1$, all spike at some point
+during bin $t$. For brevity, let's say \enquote{at $t$} for \enquote{during
+  time bin $t$}. From the activities $\set{\ya_{t}}$ we can count how many
+times the activity levels $\ya=0$, $\ya=1/n$, and so on appeared during the
+recording, obtaining the measured relative-frequency distribution
+$(\yff_{\ya}) \defs \yf$. We can also consider the sample activity at time
+bins \emph{outside} of the recorded range. Such activity is unknown to us,
+of course.
 
 \mynote{maybe move this paragraph to the intro?}Present-day technologies
 enable the recording of neuronal activity from small brain regions
@@ -1067,13 +1068,14 @@ potential functions.
 The number of moments used with this method depends on the questions and
 hypotheses that a researcher is exploring; for example, hypotheses of
 sufficient statistics, such as the sufficiency of pairwise correlations to
-quantify our uncertainty. In the present work we only want to present the
-general method without entering into biological questions of this kind.
+quantify our uncertainty about network activity. In the present work we
+only want to introduce the general method without entering into biological
+questions of this kind.
 
 The particular case in which $n$ moments are constrained is especially
 important: it corresponds to fully constraining the marginal frequency
 distribution for the activity of the sample neurons. In this case, our
-uncertaity about the full-network activity is based on all available
+uncertainty about the full-network activity is based on all available
 measured frequency data. Note that application of the maximum-entropy
 method \emph{at the sample level} is trivial and meaningless in this case
 -- it just gives back the measured frequency distribution. But application
@@ -1117,16 +1119,15 @@ previous section.
 \bigskip
 
 We first calculate the distribution by using six moments. This number
-already provides as much information as the full frequency distribution of
-the sample, and at the same time illustrates the use of the approach in
-questions of statistic sufficiency (typically limited to two or three
-moments). Figure~\ref{fig:plots_6mom} shows the resulting densities
-(distribution/activity-step, that is, distribution${}\times N$) for
-full-network sizes $N=n$, $N=1\,000$, $N=5\,000$,
-$N=10\,000$\mynote{motivate?}. The case $N=n$ corresponds to applying the
-maximum-entropy method at the sample level; it can be observed that with
-six moments it reproduces almost exactly the measured frequency
-distribution.
+already provides almost as much information as the full frequency
+distribution of the sample, and at the same time illustrates the use of the
+approach in questions of statistic sufficiency (typically limited to two or
+three moments). Figure~\ref{fig:plots_6mom} shows the resulting densities
+(that is, distribution${}\times N$) for full-network sizes $N=n$,
+$N=1\,000$, $N=5\,000$, $N=10\,000$\mynote{motivate?}. The case $N=n$
+corresponds to applying the maximum-entropy method at the sample level; it
+can be observed that with six moments it reproduces almost exactly the
+measured frequency distribution.
 \begin{figure}[!p]
 \centering
 \includegraphics[width=\linewidth]{_scripts/paper_stensola_6mom_distributionsN_prior2.pdf}%
@@ -1147,8 +1148,7 @@ frame no hypotheses about the biological cause of these two modes (they
 could stem from the presence of different kinds of cells or modules). These
 features are clearly not present in the sample or in the maximum-entropy
 distribution at the sample level. The application of the probability
-calculus to make forecasts about the full network thus reveals interesting
-and useful features.
+calculus thus reveals interesting possible features of the full network.
 
 \bigskip
 

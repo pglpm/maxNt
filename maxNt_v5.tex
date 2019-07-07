@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-06-25T17:44:44+0200
+%% Last-Updated: 2019-07-07T14:24:05+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1178,41 +1178,49 @@ full-network application.
   correlations and other statistics}
 \label{sec:marginalization}
 
-The maximum-entropy method has been applied in the neurosciences to
-questions of sufficient statistics -- for example, whether we approximately
-reach the same state of uncertainty about network activity by considering
-only its network-averaged pairwise correlations and by considering also
-third-order correlations. The method is typically used as follows. We
-imagine to be ignorant of the measured frequency distribution for the
-network activity, and to know only the measured statistics of interest; two
-maximum-entropy distributions are then built, constrained under the two
-sets of moments under comparison. Finally, the resulting distributions are
-compared with each other and with the measured frequency distribution.
+The maximum-entropy method has often been applied in the neurosciences to
+questions of sufficient statistics. For example: does knowledge about
+third-order correlations change our state of uncertainty about network
+activity in an appreciable way, compared to knowledge about second-order
+correlations only? The method is used as follows to answer this question.
+We imagine to be ignorant of the measured frequency distribution for the
+network activity, and to know only up to second-order measured statistics,
+or up to third-order. Two maximum-entropy distributions are then built,
+constrained under the two sets of moments under comparison. Finally, the
+resulting distributions are compared with each other and with the measured
+frequency distribution. This recipe generalizes to any subsets of measured
+statistics, of course.
 
-The method introduced in the present work reveals an issue in the recipe
-above. The issue doesn't come from the method itself but from a simple,
-general fact of probability theory: if a probability distribution has some
+The method introduced in the present work reveals an issue in this recipe;
+the issue doesn't come from the method itself but from a simple, general
+fact of probability theory. If a probability distribution has some
 sufficient statistics \citep[\sect~4.5]{bernardoetal1994}{fortinietal2000},
 then its marginals \emph{cannot} have the same sufficient statistics, and
-vice versa (except for trivial cases, such as uniform distributions). This
-also holds among marginals of different order (to $n$ neurons or to $n+1$
-neurons, for example). This impossibility is known in statistical
-mechanics: marginals of Gibbs states aren't Gibbs states
+vice versa, except for trivial cases such as uniform distributions. This in
+general also holds between different marginals: if one has some sufficient
+statistics, another won't have it. This impossibility is known in
+statistical mechanics: marginals of Gibbs states aren't Gibbs states
 \citep{maesetal1999}. Mathematically it corresponds to the general
 impossibility of solving a system of $n$ equations in $m$ unknowns when
 $n>m$ \citep[\sect~3.1]{portamanaetal2015}[\sect~3]{portamanaetal2018b}.
 
 In the neuroscientific application above, this means for example that if
-pairwise correlations are sufficient statistics for a sample of a network,
-then they \emph{cannot} be sufficient for the full network or for a sample
-with more or fewer neurons; and vice versa, if we assume that they are
+pairwise correlations are sufficient statistics for a particular sample of
+a network, then they \emph{cannot} be sufficient for the full networ, or
+for a different sample; and vice versa, if we assume that they are
 sufficient statistics for the full network, then we must expect them
-\emph{not} to be sufficient for any recorded sample thereof. It seems to us
-that such questions about sufficient statistics are implicitly meant to
-apply to a specific brain area, not just to some casually recorded samples
-thereof. Thus, maximum-entropy methods applied at the sample level
-paradoxically give an answer opposite to the one we might think they're
-giving!
+\emph{not} to be sufficient for any recorded sample thereof. But questions
+about sufficient statistics are implicitly meant to apply to a whole brain
+area, not just to some casually recorded sample. Thus, maximum-entropy
+methods applied at the sample level paradoxically give an answer opposite
+to the one we might think they're giving!
+
+The comparisons of different sufficient statistics are only approximate,
+however: we ask only whether our uncertainties conditional on either are
+\emph{appreciably} different in some specified sense. It's therefore worth
+checking whether the different results we get from a sufficient statistics
+for the sample and for the full-network are still very similar when we
+consider an altogether different statistics.
 
 
 
@@ -1225,6 +1233,9 @@ giving!
 in-depth discussion about underlying assumptions, derivation from
 probability calculus, higher-order approximations beyond maxent and
 "error bars" around the distributions
+
+%plot_mc_6mom_unif_afss3tr_N10000_t400_L500_T5e+05_s30000_a0_i3
+
 
 
 \section{Summary and discussion}

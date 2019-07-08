@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-07-08T13:40:41+0200
+%% Last-Updated: 2019-07-08T16:40:48+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1236,12 +1236,12 @@ graphical answer in the case of the first data set. The upper plot shows
 the maximum-entropy distributions for a full network of $10\,000$ neurons,
 constructed from two moments (\textcolor{mygreen}{dashed green curve}) and
 from four moments (\textcolor{myblue}{solid blue curve}). The lower plot
-shows the maximum-entropy distributions for the sample (dashed curves),
+shows the maximum-entropy distributions for the sample (empty markers),
 from two moments (\textcolor{mygreen}{empty green triangles}) and from four
-moments (\textcolor{mygreen}{empty blue squares}), and the distributions
+moments (\textcolor{myblue}{empty blue squares}), and the distributions
 obtained by marginalizing the full-network distribution to the sample size
-(solid curves), from two moments (\textcolor{mygreen}{filled green
-  triangles}) and from four moments (\textcolor{mygreen}{filled blue
+(filled markers), from two moments (\textcolor{mygreen}{filled green
+  triangles}) and from four moments (\textcolor{myblue}{filled blue
   squares}). The measured frequency distribution (\textcolor{myred}{red
   circles}) is also shown. We note the following:
 \begin{itemize}
@@ -1275,9 +1275,12 @@ statistics.
 \section{Assumptions and corrections}
 \label{sec:assumptions_formulae}
 
-in-depth discussion about underlying assumptions, derivation from
+***in-depth discussion about underlying assumptions, derivation from
 probability calculus, higher-order approximations beyond maxent and
 "error bars" around the distributions
+
+***We can ask about probability of bimodality etc
+
 \begin{figure}[!p]
 \centering
 \includegraphics[width=\linewidth]{_scripts/MC_plot1000.pdf}%

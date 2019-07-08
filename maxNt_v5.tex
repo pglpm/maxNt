@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-07-08T11:42:10+0200
+%% Last-Updated: 2019-07-08T13:40:41+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -860,7 +860,7 @@ sufficiency \citep{jaynes1986d_r1996,portamana2017} -- for example of
 empirical moments or of long-run frequencies.
 
 \mynote{Say something more about advantages of such question/answer: for
-  example we can make statements about total activity of brain region even
+  example we can make statements about total activity of brain area even
   across recordings when sampled neurons aren't the same.}
 
 \mynote{Add this?: from sampling theory we know that important
@@ -895,14 +895,14 @@ bins \emph{outside} of the recorded range. Such activity is unknown to us,
 of course.
 
 \mynote{maybe move this paragraph to the intro?}Present-day technologies
-enable the recording of neuronal activity from small brain regions
+enable the recording of neuronal activity from small brain areas
 \mynote{be more specific}. For many animal species, the neurons that are
-recorded within the region are not -- and at present cannot be --
+recorded within the area are not -- and at present cannot be --
 specifically chosen from among the rest, owing to several limiting factors;
 for example, limitations in the precision with which electrodes are
 inserted, or with which neurons are targeted by viruses. In fact, the set
 of recorded neurons may even change during very long recordings or across
-experimental sessions. We assume that there's a region, comprising a
+experimental sessions. We assume that there's a area, comprising a
 network of $N$ neurons, from which other sets of neurons had or will have
 the same probability of being recorded, even in other experimental
 sessions, as the set of $n$ neurons that was actually recorded in this
@@ -1204,32 +1204,68 @@ statistical mechanics: marginals of Gibbs states aren't Gibbs states
 impossibility of solving a system of $n$ equations in $m$ unknowns when
 $n>m$ \citep[\sect~3.1]{portamanaetal2015}[\sect~3]{portamanaetal2018b}.
 
-In the neuroscientific application above, this means for example that if
-pairwise correlations are sufficient statistics for a particular sample of
-a network, then they \emph{cannot} be sufficient for the full networ, or
-for a different sample; and vice versa, if we assume that they are
-sufficient statistics for the full network, then we must expect them
-\emph{not} to be sufficient for any recorded sample thereof. But questions
-about sufficient statistics are implicitly meant to apply to a whole brain
-area, not just to some casually recorded sample. Thus, maximum-entropy
-methods applied at the sample level paradoxically give an answer opposite
-to the one we might think they're giving!
+In the neuroscientific application above, this means that if pairwise
+correlations, for example, are sufficient statistics for a particular
+sample of from a brain area, then they \emph{cannot} be sufficient for the
+full network of neurons in that area, or for a different sample; vice
+versa, if we assume that they are sufficient statistics for the full
+network, then we must expect them \emph{not} to be sufficient for any
+recorded sample thereof. But questions about sufficient statistics are
+meant to be addressed to a whole brain area, not just to some casually
+recorded sample. Thus, maximum-entropy methods applied at the sample level
+paradoxically give an answer opposite to the one we might think they're
+giving.
 
-The comparisons of different sufficient statistics are only approximate,
-however: we ask only whether our uncertainties conditional on either are
-\emph{appreciably} different in some specified sense. It's therefore worth
-checking whether the different results we get from a sufficient statistics
-for the sample and for the full-network are still very similar when we
-consider an altogether different statistics.
+Questions about sufficient statistics are therefore correctly addressed by
+applying the maximum-entropy method at the full-network level. If a
+comparison with the measured frequencies of the sample activities is
+desired, then the marginal distribution to the sample size should be used.
+
 \begin{figure}[!p]
 \centering
-\includegraphics[width=\linewidth]{_scripts/comparison_marginals.pdf}%
-\\[3em]%
 \includegraphics[width=\linewidth]{_scripts/comparison_full.pdf}%
+\\[3em]%
+\includegraphics[width=\linewidth]{_scripts/comparison_marginals.pdf}%
 \caption{***}
 \label{fig:comparisons_marginals}
 \end{figure}
 %comparison_ME_sample_full_levels.nb
+Does the application to the full-network lead to very different results
+from the one to the sample? Figure~\ref{fig:comparisons_marginals} gives a
+graphical answer in the case of the first data set. The upper plot shows
+the maximum-entropy distributions for a full network of $10\,000$ neurons,
+constructed from two moments (\textcolor{mygreen}{dashed green curve}) and
+from four moments (\textcolor{myblue}{solid blue curve}). The lower plot
+shows the maximum-entropy distributions for the sample (dashed curves),
+from two moments (\textcolor{mygreen}{empty green triangles}) and from four
+moments (\textcolor{mygreen}{empty blue squares}), and the distributions
+obtained by marginalizing the full-network distribution to the sample size
+(solid curves), from two moments (\textcolor{mygreen}{filled green
+  triangles}) and from four moments (\textcolor{mygreen}{filled blue
+  squares}). The measured frequency distribution (\textcolor{myred}{red
+  circles}) is also shown. We note the following:
+\begin{itemize}
+\item The application to the full-network (upper plot) leads to two
+  completely different distributions (even different number of modes);
+  clearly the two statistics are not even approximately equivalent for
+  inferential purposes.
+\item The application to the sample leads to deceivingly similar
+  distributions (empty triangles and empty squares), which can only be
+  distinguished on a logarithmic scale. This could lead to the erroneous
+  conclusion that the two statistics are approximately equivalent.
+\item The difference between marginals from the full-network distribution
+  and the distributions obtained at the sample level (filled vs empty
+  markers) is larger than the difference between different statistics
+  (triangles vs squares).
+\item The marginals of the application to the full network are closer to
+  the measured frequencies than the distributions obtained at the sample
+  level (although this closeness is not a valid criterion for their
+  goodness).
+\end{itemize}
+Therefore, the two maximum-entropy applications lead to different results,
+and the application at the full-network level is clearly superior, leading
+to a clearer distinction between the effect of considering different
+statistics.
 
 
 
@@ -2214,7 +2250,7 @@ Finally, we would like to point out the usefulness and importance of the
 probability formulae that relate our states of knowledge about a network
 and its samples, presented in \sect~\ref{sec:prob_samples}. This kind of
 formulae is essential in neuroscience, where we try to understand
-properties of extended brain regions from partial observations. The
+properties of extended brain areas from partial observations. The
 formulae presented here reflect a simple, symmetric state of ignorance.
 More work is needed \citep[\cf][]{levinaetal2017} to extend these formulae
 to account for finer knowledge of the cerebral cortex and its network

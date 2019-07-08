@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-07-08T16:40:48+0200
+%% Last-Updated: 2019-07-08T23:05:19+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1178,28 +1178,55 @@ full-network application.
   correlations and other statistics}
 \label{sec:marginalization}
 
-The maximum-entropy method has often been applied in the neurosciences to
-questions of sufficient statistics. For example: does knowledge about
-third-order correlations change our state of uncertainty about network
-activity in an appreciable way, compared to knowledge about second-order
-correlations only? The method is used as follows to answer this question.
-We imagine to be ignorant of the measured frequency distribution for the
-network activity, and to know only up to second-order measured statistics,
-or up to third-order. Two maximum-entropy distributions are then built,
-constrained under the two sets of moments under comparison. Finally, the
-resulting distributions are compared with each other and with the measured
-frequency distribution. This recipe generalizes to any subsets of measured
-statistics, of course.
+In the neurosciences, the maximum-entropy method has often been applied to
+questions of sufficient statistics. In this section we discuss how our
+proposed application bears on this kind of questions. For concreteness
+we use an example with specific statistics: first and second moments
+(equivalent to mean and correlations), versus first-to-fourth moments. But
+our discussion holds for any other sets of statistics.
 
-The method introduced in the present work reveals an issue in this recipe;
-the issue doesn't come from the method itself but from a simple, general
-fact of probability theory. If a probability distribution has some
-sufficient statistics \citep[\sect~4.5]{bernardoetal1994}{fortinietal2000},
-then its marginals \emph{cannot} have the same sufficient statistics, and
-vice versa, except for trivial cases such as uniform distributions. This in
-general also holds between different marginals: if one has some sufficient
-statistics, another won't have it. This impossibility is known in
-statistical mechanics: marginals of Gibbs states aren't Gibbs states
+The question is as follows. We want to assess our degree of belief about
+the frequencies of the activities of the sample, or about the sample
+activity in a new time bin. For this assessment we use any measured data we
+have. But it sometimes happens that dropping part of the data -- for
+example, the measured third- and higher-order moments -- leaves our
+assessment almost unchanged: the dropped data are \emph{informationally
+  irrelevant}, or \emph{almost} so. The data that remain -- for example,
+first and second moments -- are \emph{informationally sufficient}. This
+informational quasi-sufficiency may be connected to biological or physical
+mechanisms; that's why it's interesting.
+
+We can approximately check which data are irrelevant by simply dropping
+them from the conditional of our degree of belief, and see if the latter
+changes appreciably. When our degree of belief is built with the
+maximum-entropy method, we simply drop some of the data used as constraints
+and see how the resulting distribution changes. In the neurosciences this
+has been done with maximum-entropy distributions constructed \emph{for the
+  sample}.
+
+
+% For example: does knowledge about
+% third-order correlations change our state of uncertainty about network
+% activity in an appreciable way, compared to knowledge about second-order
+% correlations only? The method is used as follows to answer this question.
+% We imagine to be ignorant of the measured frequency distribution for the
+% network activity, and to know only up to second-order measured statistics,
+% or up to third-order. Two maximum-entropy distributions are then built,
+% constrained under the two sets of moments under comparison. Finally, the
+% resulting distributions are compared with each other and with the measured
+% frequency distribution. This recipe generalizes to any subsets of measured
+% statistics, of course.
+
+The method introduced in the present work reveals an issue with this
+application to the sample. The issue doesn't come from the method itself
+but from a simple, general fact of probability theory. If a probability
+distribution has some sufficient statistics
+\citep[\sect~4.5]{bernardoetal1994}{fortinietal2000}, then its marginals
+\emph{cannot} have the same sufficient statistics, and vice versa, except
+for trivial cases such as uniform distributions. This in general also holds
+between different marginals: if a marginal has some sufficient statistics,
+another won't have it. This impossibility is known in statistical
+mechanics: marginals of Gibbs states aren't Gibbs states
 \citep{maesetal1999}. Mathematically it corresponds to the general
 impossibility of solving a system of $n$ equations in $m$ unknowns when
 $n>m$ \citep[\sect~3.1]{portamanaetal2015}[\sect~3]{portamanaetal2018b}.

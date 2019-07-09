@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-07-08T23:05:19+0200
+%% Last-Updated: 2019-07-09T13:33:41+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1178,31 +1178,33 @@ full-network application.
   correlations and other statistics}
 \label{sec:marginalization}
 
-In the neurosciences, the maximum-entropy method has often been applied to
+In the neurosciences the maximum-entropy method is often applied to
 questions of sufficient statistics. In this section we discuss how our
-proposed application bears on this kind of questions. For concreteness
-we use an example with specific statistics: first and second moments
+proposed application bears on this kind of questions. For concreteness we
+use an example with specific statistics: first and second moments
 (equivalent to mean and correlations), versus first-to-fourth moments. But
-our discussion holds for any other sets of statistics.
+our discussion holds for any  sets of statistics.
 
 The question is as follows. We want to assess our degree of belief about
 the frequencies of the activities of the sample, or about the sample
-activity in a new time bin. For this assessment we use any measured data we
-have. But it sometimes happens that dropping part of the data -- for
-example, the measured third- and higher-order moments -- leaves our
+activity in a new time bin. For this assessment we should use all measured
+data we have. But it sometimes happens that dropping part of the data --
+for example, the measured third- and higher-order moments -- leaves our
 assessment almost unchanged: the dropped data are \emph{informationally
-  irrelevant}, or \emph{almost} so. The data that remain -- for example,
-first and second moments -- are \emph{informationally sufficient}. This
-informational quasi-sufficiency may be connected to biological or physical
-mechanisms; that's why it's interesting.
+  irrelevant}, or almost so. The remaining data -- for example, first and
+second moments -- are \emph{informationally sufficient}. This informational
+quasi-sufficiency is interesting because it may hint at peculiar biological
+or physical mechanisms or dependencies.
 
-We can approximately check which data are irrelevant by simply dropping
-them from the conditional of our degree of belief, and see if the latter
-changes appreciably. When our degree of belief is built with the
+We can approximately check how much some data are irrelevant by simply
+dropping them from the conditional of our degree of belief, and see if the
+latter changes appreciably. When our degree of belief is built with the
 maximum-entropy method, we simply drop some of the data used as constraints
-and see how the resulting distribution changes. In the neurosciences this
-has been done with maximum-entropy distributions constructed \emph{for the
-  sample}.
+and see how the resulting distribution changes. For example, we may only
+retain the first two moments (means and correlations) or the first four
+moments. In the neurosciences this check is often done with maximum-entropy
+distributions constructed \emph{for the sample}, ignoring the full network
+it's sampled from.
 
 
 % For example: does knowledge about
@@ -1218,33 +1220,32 @@ has been done with maximum-entropy distributions constructed \emph{for the
 % statistics, of course.
 
 The method introduced in the present work reveals an issue with this
-application to the sample. The issue doesn't come from the method itself
-but from a simple, general fact of probability theory. If a probability
+application at the sample level. The issue doesn't come from the method
+itself but from a general fact of probability theory. If a probability
 distribution has some sufficient statistics
 \citep[\sect~4.5]{bernardoetal1994}{fortinietal2000}, then its marginals
 \emph{cannot} have the same sufficient statistics, and vice versa, except
-for trivial cases such as uniform distributions. This in general also holds
-between different marginals: if a marginal has some sufficient statistics,
+for trivial cases such as uniform distributions. This generally also holds
+among different marginals: if a marginal has some sufficient statistics,
 another won't have it. This impossibility is known in statistical
 mechanics: marginals of Gibbs states aren't Gibbs states
 \citep{maesetal1999}. Mathematically it corresponds to the general
 impossibility of solving a system of $n$ equations in $m$ unknowns when
 $n>m$ \citep[\sect~3.1]{portamanaetal2015}[\sect~3]{portamanaetal2018b}.
 
-In the neuroscientific application above, this means that if pairwise
-correlations, for example, are sufficient statistics for a particular
-sample of from a brain area, then they \emph{cannot} be sufficient for the
-full network of neurons in that area, or for a different sample; vice
-versa, if we assume that they are sufficient statistics for the full
-network, then we must expect them \emph{not} to be sufficient for any
-recorded sample thereof. But questions about sufficient statistics are
-meant to be addressed to a whole brain area, not just to some casually
-recorded sample. Thus, maximum-entropy methods applied at the sample level
-paradoxically give an answer opposite to the one we might think they're
-giving.
+In our example this means that if means and pairwise correlations or the
+first four moments are informationally sufficient for a particular sample
+from a brain area, then they \emph{cannot} be sufficient for the full
+network of neurons in that area, or for a different sample. Vice versa, if
+we assume that they are informationally sufficient for the full network,
+then we must expect them \emph{not} to be sufficient for any recorded
+sample thereof. Now, questions about sufficient statistics are meant to be
+addressed to a whole brain area, not just to some casually recorded sample.
+Thus, paradoxically, maximum-entropy methods applied at the sample level
+give an answer opposite to the one we might think they're giving.
 
-Questions about sufficient statistics are therefore correctly addressed by
-applying the maximum-entropy method at the full-network level. If a
+Questions about informational sufficiency are therefore correctly addressed
+by applying the maximum-entropy method at the full-network level. If a
 comparison with the measured frequencies of the sample activities is
 desired, then the marginal distribution to the sample size should be used.
 
@@ -1257,29 +1258,31 @@ desired, then the marginal distribution to the sample size should be used.
 \label{fig:comparisons_marginals}
 \end{figure}
 %comparison_ME_sample_full_levels.nb
-Does the application to the full-network lead to very different results
-from the one to the sample? Figure~\ref{fig:comparisons_marginals} gives a
-graphical answer in the case of the first data set. The upper plot shows
-the maximum-entropy distributions for a full network of $10\,000$ neurons,
-constructed from two moments (\textcolor{mygreen}{dashed green curve}) and
-from four moments (\textcolor{myblue}{solid blue curve}). The lower plot
-shows the maximum-entropy distributions for the sample (empty markers),
-from two moments (\textcolor{mygreen}{empty green triangles}) and from four
-moments (\textcolor{myblue}{empty blue squares}), and the distributions
-obtained by marginalizing the full-network distribution to the sample size
-(filled markers), from two moments (\textcolor{mygreen}{filled green
-  triangles}) and from four moments (\textcolor{myblue}{filled blue
-  squares}). The measured frequency distribution (\textcolor{myred}{red
-  circles}) is also shown. We note the following:
+But does the application at the full-network level lead to appreciably
+different results from that at the sample level? after all we're interested
+in an approximate informational sufficiency, not in an analytically exact
+one. Figure~\ref{fig:comparisons_marginals} gives a graphical answer to
+this question in the case of our first data set. The upper plot shows the
+maximum-entropy distributions for a full network of $10\,000$ neurons,
+constructed from two moments (\textcolor{mygreen}{\textbf{--~--~--}}) and
+from four moments (\textcolor{myblue}{\textbf{------}}). The lower plot
+shows the maximum-entropy distributions for the sample, from two moments
+(\textcolor{mygreen}{$\bm{\triangledown}$}) and from four moments
+(\textcolor{myblue}{$\bm{\square}$}), and the distributions obtained by
+marginalizing the full-network distribution to the sample size, from two moments (\textcolor{mygreen}{$\bm{\blacktriangledown}$})
+and from four moments (\textcolor{myblue}{$\bm{\blacksquare}$}). The
+measured frequency distribution (\textcolor{myred}{\LARGE$\bm{\bullet}$}) is also
+shown. We note the following:
 \begin{itemize}
 \item The application to the full-network (upper plot) leads to two
   completely different distributions (even different number of modes);
-  clearly the two statistics are not even approximately equivalent for
-  inferential purposes.
-\item The application to the sample leads to deceivingly similar
-  distributions (empty triangles and empty squares), which can only be
-  distinguished on a logarithmic scale. This could lead to the erroneous
-  conclusion that the two statistics are approximately equivalent.
+  clearly the two sets of statistics are not even approximately equivalent
+  for inferential purposes.
+\item The application at the sample level leads to deceivingly similar
+  distributions (\textcolor{mygreen}{$\bm{\triangledown}$} and
+  \textcolor{myblue}{$\bm{\square}$}), which can only be distinguished on a
+  logarithmic scale. This could lead to the erroneous conclusion that the
+  two statistics are approximately equivalent.
 \item The difference between marginals from the full-network distribution
   and the distributions obtained at the sample level (filled vs empty
   markers) is larger than the difference between different statistics
@@ -1289,10 +1292,10 @@ obtained by marginalizing the full-network distribution to the sample size
   level (although this closeness is not a valid criterion for their
   goodness).
 \end{itemize}
-Therefore, the two maximum-entropy applications lead to different results,
-and the application at the full-network level is clearly superior, leading
-to a clearer distinction between the effect of considering different
-statistics.
+Therefore, the maximum-entropy application at the sample level and at the
+full-network level lead to different results; the latter is not only more
+meaningful but also superior because it shows clearly the different
+informational sufficiency of the two sets of statistics.
 
 
 

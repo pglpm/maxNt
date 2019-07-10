@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-07-10T14:04:12+0200
+%% Last-Updated: 2019-07-10T21:31:16+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -697,7 +697,8 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\ysh}{H}
 \newcommand*{\ybu}{H_{\text{B}}}
 
-\newcommand*{\yR}{\bm{R}}
+\newcommand*{\yRR}{R}
+\newcommand*{\yR}{\bm{\yRR}}
 
 \newcommand*{\ynuu}{\nu}
 \newcommand*{\ynu}{\bm{\ynuu}}
@@ -1386,10 +1387,10 @@ approximation of the probability distribution~\eqref{eq:probability_AT}.
 
 \bigskip
 
-We therefore want to assess how well the maximum-entropy distributions of
-\fig~\ref{fig:plots_6mom} answer our two questions above. We do this by
-sampling from the probability density $\pf(\yF \| \yD \yI)$ through
-Markov-chain Monte Carlo. The density is
+Let's therefore examine the full density $\pf(\yF \| \yD \yI)$ given by the
+probability calculus. Its derivation is given in appendix***; here we
+briefly discuss its mathematical features and examine the answers it
+provides. Its form is this:
 \begin{equation}
   \label{eq:density_proportional}
   \pf(\yF \| \yD \yI) \propto
@@ -1397,6 +1398,44 @@ Markov-chain Monte Carlo. The density is
   \Nd(\yd\yF \| 0, \yds)\;
   \exp[-\yL\;\ysh(\yF;\yR)]
 \end{equation}
+and the three main terms have the following meaning:
+
+$\exp[-\yL\;\ysh(\yF;\yR)]$ expresses our pre-data uncertainty about the
+possible frequency distributions. Here
+$\ysh(\yF;\yR)\defd \sum_{\yA}\yFF_{\yA}\ln\frac{\yFF_{\yA}}{\yRR_{\yA}}$
+is the relative entropy or discrimination information
+\citep{kullback1987,jaynes1963,hobson1969,hobsonetal1973}, $\yR$ is a
+reference distribution, and $\yL$ a positive parameter. This density is
+proportional to the number of ways in which the frequency distribution
+$\yF$ can be realized if we assume that the activities appear with
+frequencies $\yR$ in the long run, as can be seen using Stirling's
+approximation. For $\yR$ we use the uniform distribution, but any
+biologically sensible distribution, which gives higher frequencies to low
+activities, leads to the same final results. The parameter $\yL$ roughly
+corresponds to the number of data points necessary to change our initial
+belief, and we set it equal to $50$. \mynote{connection with entropic
+  priors
+  \citep{rodriguez1991,skilling1998,catichaetal2004,neumann2007,portamana2017}
+}
+
+$\Nd(\yd\yF \| 0, \yds)$ expresses our belief, hinging on biological
+arguments, that the frequency distribution should be somewhat smooth: if
+the activity levels $\yA-1$ and $\yA+1$ appear roughly equally often, we
+don't believe that the activity $\yA$ could appear with an extremely
+different frequency than theirs. The matrix $\yd$ is the discrete
+equivalent of a fourth-order derivative \mynote{ref}; the probability of
+its squared integral decreases exponentially with standard deviation
+$\yds$. We set this such that the smoothness of the maximum-entropy
+distribution is within two standard deviations, thus allowing for more
+maxima and minima in $\yF$.
+
+The two densities above together express our pre-data beliefs about the
+possible frequency distributions.
+
+$\Nd(\ycm\yF \| \yc, \ycs)$ ***
+
+
+
 
 
 

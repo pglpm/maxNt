@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-07-09T16:57:47+0200
+%% Last-Updated: 2019-07-10T10:12:32+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1220,7 +1220,7 @@ it's sampled from.
 % statistics, of course.
 
 The method introduced in the present work reveals an issue with this
-application at the sample level. The issue doesn't come from the method
+application at the sample level, however. The issue doesn't come from the method
 itself but from a general fact of probability theory. If a probability
 distribution has some sufficient statistics
 \citep[\sect~4.5]{bernardoetal1994}{fortinietal2000}, then its marginals
@@ -1240,9 +1240,10 @@ network of neurons in that area, or for a different sample. Vice versa, if
 we assume that they are informationally sufficient for the full network,
 then we must expect them \emph{not} to be sufficient for any recorded
 sample thereof. Now, questions about sufficient statistics are meant to be
-addressed to a whole brain area, not just to some casually recorded sample.
-Thus, paradoxically, maximum-entropy methods applied at the sample level
-give an answer opposite to the one we might think they're giving.
+addressed to a whole brain area, not just to some specific, casually
+recorded sample. Thus, paradoxically, maximum-entropy methods applied at
+the sample level give an answer opposite to the one we might think they're
+giving.
 
 Questions about informational sufficiency are therefore correctly addressed
 by applying the maximum-entropy method at the full-network level. If a
@@ -1261,18 +1262,20 @@ desired, then the marginal distribution to the sample size should be used.
 But does the application at the full-network level lead to appreciably
 different results from that at the sample level? after all we're interested
 in an approximate informational sufficiency, not in an analytically exact
-one. Figure~\ref{fig:comparisons_marginals} gives a graphical answer to
-this question in the case of our first data set. The upper plot shows the
+one. A correct answer can only be given case by case;
+\fig~\ref{fig:comparisons_marginals} gives a graphical answer to this
+question in the case of our first data set. The upper plot shows the
 maximum-entropy distributions for a full network of $10\,000$ neurons,
 constructed from two moments (\textcolor{mygreen}{\textbf{--~--~--}}) and
 from four moments (\textcolor{myblue}{\textbf{------}}). The lower plot
 shows the maximum-entropy distributions for the sample, from two moments
 (\textcolor{mygreen}{$\bm{\triangledown}$}) and from four moments
 (\textcolor{myblue}{$\bm{\square}$}), and the distributions obtained by
-marginalizing the full-network distribution to the sample size, from two moments (\textcolor{mygreen}{$\bm{\blacktriangledown}$})
-and from four moments (\textcolor{myblue}{$\bm{\blacksquare}$}). The
-measured frequency distribution (\textcolor{myred}{\LARGE$\bm{\bullet}$}) is also
-shown. We note the following:
+marginalizing the full-network distribution to the sample size, from two
+moments (\textcolor{mygreen}{$\bm{\blacktriangledown}$}) and from four
+moments (\textcolor{myblue}{$\bm{\blacksquare}$}). The measured frequency
+distribution (\textcolor{myred}{\LARGE$\bm{\bullet}$}) is also shown. We
+note the following:
 \begin{itemize}
 \item The application to the full-network (upper plot) leads to two
   completely different distributions (even different number of modes);
@@ -1314,7 +1317,11 @@ maximum-entropy distribution is
 
 
 
-***mode of marginal can be very different from the one in full space (minka1998)
+***mode of marginal can be very different from the one in full space
+(minka1998)
+
+*** diff position of mode in marginals says that full distr is extremely
+skewed – not surprising since the base space is bounded.
 
 
 ***in-depth discussion about underlying assumptions, derivation from

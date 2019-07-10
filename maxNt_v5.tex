@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-07-10T10:41:44+0200
+%% Last-Updated: 2019-07-10T11:49:38+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -676,13 +676,14 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\yA}{\yAv}%pop av value
 %conditional assumptions
 \newcommand*{\yH}{\varIota}
-\newcommand*{\yD}{\varDelta}
 \newcommand*{\yHa}{\varIota_\textrm{p}}
 \newcommand*{\yHb}{\varIota_\textrm{s}}
 \newcommand*{\yHc}{\varKappa}
 \newcommand*{\yHd}{\varIota_\textrm{u}}
 \newcommand*{\yHp}{\varIota'}
 \newcommand*{\yHi}{\varIota''}
+\newcommand*{\yI}{\varIota}
+\newcommand*{\yD}{D}
 %Lagr multipliers
 \newcommand*{\yg}{\bm{c}}
 \newcommand*{\yc}{\widehat{\bm{c}}}
@@ -1309,11 +1310,36 @@ informational sufficiency of the two sets of statistics.
 \label{sec:assumptions_formulae}
 
 In \sect~\ref{sec:model} we mentioned that maximum-entropy distributions
-are approximations to the full answers provided by the probability
-calculus. For example we ask: what is the frequency distribution for the
-total activity of the full network across the recorded bins? Several
-frequency distributions are possible, each with a specific probability. The
-maximum-entropy distribution is
+come from a zeroth-order Laplace approximation of the densities obtained
+from the probability calculus. Zeroth-order means that we are simply
+considering the mode of such densities. Let's be more concrete. Consider
+the question: What is the relative-frequency distribution for the different
+activity levels for the full-network, across the recorded bins? Call this
+distribution $(\yFF_{\yA}) \defs \yF$: activity level $\yA$ appeared in
+$T\,\yFF(\yA)$ out of $T$ time bins. We don't know $\yF$, and our
+uncertainty about its possible values is a probability distribution
+$\pf(\yF\|\yD\yI)$ conditional on data $\yD$ and prior knowledge $\yI$,
+which we approximate with a continuous density
+\begin{equation}
+  \label{eq:density_F}
+  \pf(\yF \| \yD \yI)\;\di\yF.
+\end{equation}
+Now consider the related question: What is the activity $\yA_{t}$ of the
+full network at some specific time bin $t$? If we don't know the exact
+sequence of activities during the recording then we don't know $\yA_{t}$;
+if we know the frequency distribution $\yF$ of the activity levels, then
+our probability for $\yA_{t}$ is $\yFF_{\yA_{t}}$, out of combinatorial
+reasons. But if we are also uncertain about $\yF$, with
+probability~\eqref{eq:density_F}, then our probability for $\yA_{t}$ by
+marginalization is
+\begin{equation}
+  \label{eq:probability_AT}
+  \pf(\yA_{t} \| \yD \yI) =
+  \int \yFF_{\yA_{t}}\;   \pf(\yF \| \yD \yI)\;\di\yF.
+\end{equation}
+
+
+
 
 
 

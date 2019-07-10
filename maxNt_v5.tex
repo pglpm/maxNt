@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-07-10T11:49:38+0200
+%% Last-Updated: 2019-07-10T14:04:12+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -663,6 +663,8 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\yff}{f}
 \newcommand*{\yF}{\bm{\yFF}}
 \newcommand*{\yf}{\bm{\yff}}
+\newcommand*{\yFFm}{\yFF^{*}}
+\newcommand*{\yFm}{\yF^{*}}
 
 %\newcommand*{\yx}{\bm{\yxv}}%subpop state
 %\newcommand*{\yxs}{\sav{\yx}}%subpop av state
@@ -687,7 +689,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 %Lagr multipliers
 \newcommand*{\yg}{\bm{c}}
 \newcommand*{\yc}{\widehat{\bm{c}}}
-\newcommand*{\yL}{\bm{\lambda}}
+\newcommand*{\yll}{\bm{\lambda}}
 \newcommand*{\yl}{\bm{l}}
 \newcommand*{\yk}{z}
 \newcommand*{\yK}{\zeta}
@@ -711,6 +713,12 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 %\newcommand*{\fm}{f}
 \newcommand*{\px}{p_{\text{me}}}
 \newcommand*{\pxx}{p}
+\newcommand*{\Nd}{\textrm{N}}
+\newcommand*{\ycm}{\mathte{M}}
+\newcommand*{\ycs}{\sigma}
+\newcommand*{\yL}{L}
+\newcommand*{\yd}{\bm{\varDelta}}
+\newcommand*{\yds}{\delta}
 
 \newcommand*{\mee}{maximum entropy}
 \newcommand*{\me}{maximum-entropy}
@@ -1312,18 +1320,23 @@ informational sufficiency of the two sets of statistics.
 In \sect~\ref{sec:model} we mentioned that maximum-entropy distributions
 come from a zeroth-order Laplace approximation of the densities obtained
 from the probability calculus. Zeroth-order means that we are simply
-considering the mode of such densities. Let's be more concrete. Consider
-the question: What is the relative-frequency distribution for the different
-activity levels for the full-network, across the recorded bins? Call this
-distribution $(\yFF_{\yA}) \defs \yF$: activity level $\yA$ appeared in
-$T\,\yFF(\yA)$ out of $T$ time bins. We don't know $\yF$, and our
-uncertainty about its possible values is a probability distribution
+considering the mode of such densities. Let's be more concrete.
+
+Consider the question: What is the relative-frequency distribution for the
+different activity levels for the full-network, across the recorded bins?
+Call this distribution $(\yFF_{\yA}) \defs \yF$: activity level $\yA$
+appeared in $T\times\yFF(\yA)$ out of $T$ time bins. We don't know $\yF$,
+and our uncertainty about its possible values is a probability distribution
 $\pf(\yF\|\yD\yI)$ conditional on data $\yD$ and prior knowledge $\yI$,
 which we approximate with a continuous density
 \begin{equation}
   \label{eq:density_F}
   \pf(\yF \| \yD \yI)\;\di\yF.
 \end{equation}
+In appendix*** we give a summary of how this density is derived. Note that
+this is a probability distribution over frequency distributions, so we must
+be careful with terminology to avoid confusion.
+
 Now consider the related question: What is the activity $\yA_{t}$ of the
 full network at some specific time bin $t$? If we don't know the exact
 sequence of activities during the recording then we don't know $\yA_{t}$;
@@ -1335,10 +1348,55 @@ marginalization is
 \begin{equation}
   \label{eq:probability_AT}
   \pf(\yA_{t} \| \yD \yI) =
-  \int \yFF_{\yA_{t}}\;   \pf(\yF \| \yD \yI)\;\di\yF.
+  \int \yFF_{\yA_{t}}\;   \pf(\yF \| \yD \yI)\;\di\yF;
 \end{equation}
+our probability distribution for $\yA_{t}$ is thus simply the mean
+$\int \yF\; \pf(\yF \| \yD \yI)\;\di\yF$.
 
+Formulae~\eqref{eq:density_F} and \eqref{eq:probability_AT} show that the
+most probable frequency distribution $\yF$ (if it's unique) and the
+probability distribution for $\yA_{t}$ are generally different: the former
+is the mode of $\pf(\yF \| \yD \yI)$, the latter its mean.
 
+If the probability density $\pf(\yF \| \yD \yI)$ is extremely peaked at some
+frequency distribution $\yFm$, it can be approximately treated as a delta
+density,
+\begin{equation}
+  \label{eq:approx_delta_pF}
+  \pf(\yF \| \yD \yI)\;\di\yF \approx \delta(\yF-\yFm)\;\di\yF,
+\end{equation}
+and consequently the probability for the activity at bin $t$, by
+\eqn~\eqref{eq:probability_AT}, is simply the mode $\yFm$ itself:
+\begin{equation}
+  \label{eq:approx_delta_pA}
+  \pf(\yA_{t} \| \yD \yI) \approx \yFFm_{\yA_{t}}.
+\end{equation}
+The maximum-entropy distribution is exactly this mode $\yFm$, for
+\emph{particular} kinds of probability densities $\pf(\yF \| \yD \yI)$
+which we'll discuss shortly. Formulae~\eqref{eq:approx_delta_pF}
+and~\eqref{eq:approx_delta_pA} show why the maximum-entropy distribution is
+an approximate answer to two different questions.
+
+If the probability density $\pf(\yF \| \yD \yI)$ is not sufficiently
+peaked, however, its mode and mean can be quite different. The
+maximum-entropy approximation can then be inadequate for two reasons.
+First, despite being the mode it can be a poor representative of all the
+possible frequency distributions around the mode. Second, it can be a bad
+approximation of the probability distribution~\eqref{eq:probability_AT}.
+
+\bigskip
+
+We therefore want to assess how well the maximum-entropy distributions of
+\fig~\ref{fig:plots_6mom} answer our two questions above. We do this by
+sampling from the probability density $\pf(\yF \| \yD \yI)$ through
+Markov-chain Monte Carlo. The density is
+\begin{equation}
+  \label{eq:density_proportional}
+  \pf(\yF \| \yD \yI) \propto
+  \Nd(\ycm\yF \| \yc, \ycs)\;
+  \Nd(\yd\yF \| 0, \yds)\;
+  \exp[-\yL\;\ysh(\yF;\yR)]
+\end{equation}
 
 
 
@@ -1917,18 +1975,18 @@ expression~\eqref{eq:constraint_extended} derived in the previous section,
 the method yields the distribution for the full-network activity
 \begin{equation}
   \label{eq:app_maxent_pop}
-  \pf(\yA \| \yHa)  = \frac{1}{\yK(\yL)}\,
-  \binom{\yNv}{\yNv \yA}\,\exp\bigl(\yL\T
+  \pf(\yA \| \yHa)  = \frac{1}{\yK(\yll)}\,
+  \binom{\yNv}{\yNv \yA}\,\exp\bigl(\yll\T
   \tsum_{\ya} \yg_{\ya}\ypp_{\ya\yA}\bigr).
 \end{equation}
-The $m$ Lagrange multipliers $\yL\defd (\lambda_1,\dotsc,\lambda_m)$ must
+The $m$ Lagrange multipliers $\yll\defd (\lambda_1,\dotsc,\lambda_m)$ must
 satisfy the $m$ constraint equations
 \begin{equation}
   \label{eq:app_maxent_pop_constraints}
   \yc = \E(\yg \|\yHa)\equiv %{}\\
- \frac{1}{\yK(\yL)}\sum_{\ya} \sum_{\yA} \yg_{\ya} \ypp_{\ya \yA}
+ \frac{1}{\yK(\yll)}\sum_{\ya} \sum_{\yA} \yg_{\ya} \ypp_{\ya \yA}
 \,
-  \binom{\yNv}{\yNv \yA}\,\exp\bigl(\yL\T
+  \binom{\yNv}{\yNv \yA}\,\exp\bigl(\yll\T
   \tsum_{\ya} \yg_{\ya}\ypp_{\ya\yA}\bigr).
 %  \\ k=1,\dotsc,m.
 \end{equation}
@@ -1937,10 +1995,10 @@ We obtain the distribution for the sample activity by marginalization, using
 \eqn~\eqref{eq:marginal}:
 \begin{equation}
   \label{eq:app_maxent_pop_marg}
-  \pf(\ya \| \yHa)  = \frac{1}{\yK(\yL)}\, 
+  \pf(\ya \| \yHa)  = \frac{1}{\yK(\yll)}\, 
   \sum_{\yA} \ypp_{\ya \yA}
 \,
-  \binom{\yNv}{\yNv \yA}\,\exp\bigl(\yL\T
+  \binom{\yNv}{\yNv \yA}\,\exp\bigl(\yll\T
   \tsum_{\ya} \yg_{\ya}\ypp_{\ya\yA}\bigr).
 \end{equation}
 
@@ -1949,7 +2007,7 @@ The distributions for the sample activity,
 obtained with the two approaches $\yHb$ and $\yHa$, are different. From the
 discussion in the previous section we expect them to be vaguely similar;
 yet they cannot be exactly equal, because their equality would require the
-$2m$ quantities $\yL$ and $\yl$ to satisfy the constraint equations
+$2m$ quantities $\yll$ and $\yl$ to satisfy the constraint equations
 \eqref{eq:app_maxent_pop_constraints} and
 \eqref{eq:app_maxent_sample_constraints}, and in addition also the $n$
 equations $\pf(\ya \| \yHa) = \pf(\ya \| \yHb)$,
@@ -2036,14 +2094,14 @@ probability, to
   \sum_{\yNv} \pf(\ya \| \yNv,\yHd) \,
   \pf(\yNv \|\yHd)
   ={}\\[-\jot]
-  \sum_\yNv \biggl\{\frac{1}{\yK(\yL_\yNv)}\, 
+  \sum_\yNv \biggl\{\frac{1}{\yK(\yll_\yNv)}\, 
   \sum_{\yA} \ypp^{(\yNv)}_{\ya\yA}
 \,
-  \tbinom{\yNv}{\yNv \yA}\,\exp\Bigl[{\yL_\yNv}\T
+  \tbinom{\yNv}{\yNv \yA}\,\exp\Bigl[{\yll_\yNv}\T
   \tsum_{\ya} \yg_{\ya}\ypp^{(\yNv)}_{\ya\yA}\Bigr]\biggr\}
   \;h(\yNv),
 \end{multline}
-where the Lagrange multipliers $\yL_{\yNv}$ and the summation range for
+where the Lagrange multipliers $\yll_{\yNv}$ and the summation range for
 $\yA$ depend on $\yNv$.
 
 As a proof of concept, \fig~\ref{fig:all_three} also shows such a distribution

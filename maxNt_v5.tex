@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-07-10T21:31:16+0200
+%% Last-Updated: 2019-07-11T11:28:12+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1389,45 +1389,52 @@ approximation of the probability distribution~\eqref{eq:probability_AT}.
 
 Let's therefore examine the full density $\pf(\yF \| \yD \yI)$ given by the
 probability calculus. Its derivation is given in appendix***; here we
-briefly discuss its mathematical features and examine the answers it
-provides. Its form is this:
+ discuss its mathematical features and examine the answers it
+provides. Its expression,
 \begin{equation}
   \label{eq:density_proportional}
-  \pf(\yF \| \yD \yI) \propto
-  \Nd(\ycm\yF \| \yc, \ycs)\;
-  \Nd(\yd\yF \| 0, \yds)\;
-  \exp[-\yL\;\ysh(\yF;\yR)]
+  \pf(\yF \| \yD \yI) \propto \exp\biggl[
+-  \frac{\abs{\ycm\yF - \yc}^{2}}{2\ycs^{2}}
+-  \frac{\abs{\yd\yF}^{2}}{2\yds^{2}}
+-\yL\;\ysh(\yF;\yR)\biggr],
 \end{equation}
-and the three main terms have the following meaning:
+consists of three terms:
 
-$\exp[-\yL\;\ysh(\yF;\yR)]$ expresses our pre-data uncertainty about the
-possible frequency distributions. Here
-$\ysh(\yF;\yR)\defd \sum_{\yA}\yFF_{\yA}\ln\frac{\yFF_{\yA}}{\yRR_{\yA}}$
-is the relative entropy or discrimination information
+\textbullet\ The density $\exp[-\yL\;\ysh(\yF;\yR)]$ expresses our pre-data
+uncertainty about the possible frequency distributions. Here
+$\ysh(\yF;\yR)\defd \sum_{\yA}\yFF_{\yA}\ln(\yFF_{\yA}/\yRR_{\yA})$ is the
+relative entropy or discrimination information
 \citep{kullback1987,jaynes1963,hobson1969,hobsonetal1973}, $\yR$ is a
-reference distribution, and $\yL$ a positive parameter. This density is
-proportional to the number of ways in which the frequency distribution
-$\yF$ can be realized if we assume that the activities appear with
-frequencies $\yR$ in the long run, as can be seen using Stirling's
-approximation. For $\yR$ we use the uniform distribution, but any
-biologically sensible distribution, which gives higher frequencies to low
-activities, leads to the same final results. The parameter $\yL$ roughly
-corresponds to the number of data points necessary to change our initial
-belief, and we set it equal to $50$. \mynote{connection with entropic
-  priors
-  \citep{rodriguez1991,skilling1998,catichaetal2004,neumann2007,portamana2017}
-}
+reference distribution, and $\yL$ a positive parameter. This density
+expresses a belief proportional to the number of ways in which the
+frequency distribution $\yF$ can be realized if we assume that the
+activities appear with frequencies $\yR$ in the long run, as can be seen
+using Stirling's approximation. For $\yR$ we choose the uniform
+distribution, but any biologically sensible distribution, such as one
+decreasing exponentially with the activity, leads to the same final
+results. The parameter $\yL$ roughly represents the number of data points
+necessary to change our initial belief, and we set it equal to $50$. This
+density is similar to an \enquote{entropic prior}
+\citep{rodriguez1991,skilling1998,catichaetal2004,portamana2017}[see
+esp.][\sect~3]{neumann2007}.
 
-$\Nd(\yd\yF \| 0, \yds)$ expresses our belief, hinging on biological
-arguments, that the frequency distribution should be somewhat smooth: if
-the activity levels $\yA-1$ and $\yA+1$ appear roughly equally often, we
-don't believe that the activity $\yA$ could appear with an extremely
-different frequency than theirs. The matrix $\yd$ is the discrete
-equivalent of a fourth-order derivative \mynote{ref}; the probability of
-its squared integral decreases exponentially with standard deviation
-$\yds$. We set this such that the smoothness of the maximum-entropy
-distribution is within two standard deviations, thus allowing for more
-maxima and minima in $\yF$.
+\textbullet\ The previous density is corrected by the normal density
+$\exp\Bigl(-\frac{\abs{\yd\yF}^{2}}{2\yds^{2}}\Bigr)$, where the matrix
+$\yd$ is the discrete equivalent of a fourth-order derivative
+operator. %ref?
+This density expresses our belief, hinging on biological arguments, that
+the frequency distribution should be somewhat smooth, without huge
+discontinuities between one activity level and the next. The fourth
+derivative is chosen because it still allows for the presence of modulated
+maxima and minima more than derivatives of lower order do. The standard
+deviation $\yds$ is such that the smoothness of the maximum-entropy
+distribution, taken as a touchstone, is within two standard deviations.
+
+\textbullet\ The normal density
+$\exp\Bigl(-\frac{\abs{\ycm\yF - \yc}^{2}}{2\ycs^{2}}\Bigr)$ is the
+likelihood of the frequency $\yF$ in view of the data $\yc$. The matrix
+$\ycm$ 
+
 
 The two densities above together express our pre-data beliefs about the
 possible frequency distributions.

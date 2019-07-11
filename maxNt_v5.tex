@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-07-11T11:58:39+0200
+%% Last-Updated: 2019-07-11T13:15:49+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -688,7 +688,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\yD}{D}
 %Lagr multipliers
 \newcommand*{\yg}{\bm{c}}
-\newcommand*{\yc}{\widehat{\bm{c}}}
+\newcommand*{\yc}{\Hat{\bm{c}}}
 \newcommand*{\yll}{\bm{\lambda}}
 \newcommand*{\yl}{\bm{l}}
 \newcommand*{\yk}{z}
@@ -717,7 +717,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\Nd}{\textrm{N}}
 \newcommand*{\ycmm}{C}
 \newcommand*{\ycm}{\mathte{\ycmm}}
-\newcommand*{\ycs}{\sigma}
+\newcommand*{\ycs}{\bm{\sigma}}
 \newcommand*{\yL}{L}
 \newcommand*{\yd}{\bm{\varDelta}}
 \newcommand*{\yds}{\delta}
@@ -1350,7 +1350,7 @@ marginalization is
 \begin{equation}
   \label{eq:probability_AT}
   \pf(\yA_{t} \| \yD \yI) =
-  \int \yFF_{\yA_{t}}\;   \pf(\yF \| \yD \yI)\;\di\yF;
+  \smallint \yFF_{\yA_{t}}\;   \pf(\yF \| \yD \yI)\;\di\yF;
 \end{equation}
 our probability distribution for $\yA_{t}$ is thus simply the mean
 $\int \yF\; \pf(\yF \| \yD \yI)\;\di\yF$.
@@ -1444,7 +1444,7 @@ without replacement):
 \ycmm_{\ya,\yA} \defd
   \binom{n}{n\ya}\binom{\yNv-n}{\yNv \yA-n\ya}\binom{\yNv}{\yNv \yA}^{-1}
 \end{equation}
-and $\yc\equiv\yf$ are the measured frequencies. If we only consider some
+and $\yc \defd \yf$ are the measured frequencies. If we only consider some
 factorial moments, instead, then
 \begin{equation}
   \label{eq:constraint_hypergeometric}
@@ -1452,7 +1452,14 @@ factorial moments, instead, then
   \binom{N \yA}{m}\,  \binom{N}{m}^{-1}
 \end{equation}
 as for \eqn~\eqref{eq:equal_m_factorialmoments}, and $\yc$ is the tuple of
-measured factorial moments.
+measured factorial moments. The standard deviations $\ycs$ reflect our
+uncertainty about the measurement results, which can come for example from
+the spike-sorting procedure. Their values are discussed in appendix***.
+
+
+\bigskip
+
+
 
 
 

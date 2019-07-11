@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-07-11T14:53:17+0200
+%% Last-Updated: 2019-07-11T15:32:36+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1278,13 +1278,13 @@ one. A correct answer can only be given case by case;
 question in the case of our first data set. The upper plot shows the
 maximum-entropy distributions for a full network of $10\,000$ neurons,
 constructed from two moments (\textcolor{mygreen}{\textbf{--~--~--}}) and
-from four moments (\textcolor{myblue}{\textbf{------}}). The lower plot
+from four moments (\textcolor{mypurpleblue}{\textbf{------}}). The lower plot
 shows the maximum-entropy distributions for the sample, from two moments
 (\textcolor{mygreen}{$\bm{\triangledown}$}) and from four moments
-(\textcolor{myblue}{$\bm{\square}$}), and the distributions obtained by
+(\textcolor{mypurpleblue}{$\bm{\square}$}), and the distributions obtained by
 marginalizing the full-network distribution to the sample size, from two
 moments (\textcolor{mygreen}{$\bm{\blacktriangledown}$}) and from four
-moments (\textcolor{myblue}{$\bm{\blacksquare}$}). The measured frequency
+moments (\textcolor{mypurpleblue}{$\bm{\blacksquare}$}). The measured frequency
 distribution (\textcolor{myred}{\LARGE$\bm{\bullet}$}) is also shown. We
 note the following:
 \begin{itemize}
@@ -1294,7 +1294,7 @@ note the following:
   for inferential purposes.
 \item The application at the sample level leads to deceivingly similar
   distributions (\textcolor{mygreen}{$\bm{\triangledown}$} and
-  \textcolor{myblue}{$\bm{\square}$}), which can only be distinguished on a
+  \textcolor{mypurpleblue}{$\bm{\square}$}), which can only be distinguished on a
   logarithmic scale. This could lead to the erroneous conclusion that the
   two statistics are approximately equivalent.
 \item The difference between marginals from the full-network distribution
@@ -1504,18 +1504,25 @@ informationally sufficient.
 
 The top plots in the figures show the mean
 $\int \yF \pf(\yF \| \yD \yI)\,\di\yF$
-(\textcolor{myblue}{\textbf{------}}), which is also our belief about the
+(\textcolor{mypurpleblue}{\textbf{------}}), which is also our belief about the
 activity at any single time bin, \eqn~\eqref{eq:probability_AT}, is clearly
 different from the maximum-entropy mode. The latter is therefore not a good
 approximation for the full density~\eqref{eq:density_proportional}, which
 is quite broad, as can be seen from the ten samples
-(\textcolor{mygreen}{------}) drawn from it. The mean and the
-maximum-entropy mode are nevertheless qualitatively similar. In fact, for
-$N=1\,000$ the second peak of the mean is even higher than the
-corresponding maximum-entropy one. The samples also show that generally two
-main frequency peaks of activity are expected, especially for $N=5\,000$.
+(\textcolor{mygreen}{------}) drawn from it. This broadness is not
+surprising: we're making guesses about thousands of neurons from the
+observation of fewer than 100. Yet, the mean and the maximum-entropy mode
+are qualitatively similar. In fact, for $N=1\,000$ the second peak of the
+mean is even higher than the corresponding maximum-entropy one. The samples
+also show that generally two high-frequency regions of activity are
+expected, especially for $N=5\,000$.
 
-
+The bottom plots in the figures show our belief distributions for the
+marginal frequency of each activity level, $\pf(\yFF_{\yA} \| \yD \yI)$,
+with the averages (\textcolor{mypurpleblue}{\textbf{------}}), medians
+(\textcolor{mygreen}{\textbf{--~--~--}}), and 16\% and 84\% quantiles
+(\textcolor{myyellow}{$\bm{\cdot \cdot \cdot \cdot}$} corresponding to one
+standard deviation for a normal distribution).
 
 
 

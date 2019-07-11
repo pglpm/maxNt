@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-07-11T13:29:31+0200
+%% Last-Updated: 2019-07-11T14:53:17+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1353,7 +1353,7 @@ marginalization is
   \int \yFF_{\yA_{t}}\;   \pf(\yF \| \yD \yI)\;\di\yF;
 \end{equation}
 our probability distribution for $\yA_{t}$ is thus simply the mean
-$\int \yF\; \pf(\yF \| \yD \yI)\;\di\yF$.
+$\int \yF \pf(\yF \| \yD \yI)\,\di\yF$.
 
 Formulae~\eqref{eq:density_F} and \eqref{eq:probability_AT} show that the
 most probable frequency distribution $\yF$ (if it's unique) and the
@@ -1473,45 +1473,52 @@ distribution with \emph{Burg's} entropy \citey{burg1975} instead of
 Shannon's \citep{jaynes1986d_r1996}.
 
 
-
-
-
-
-
-***mode of marginal can be very different from the one in full space
-(minka1998)
-
-*** diff position of mode in marginals says that full distr is extremely
-skewed – not surprising since the base space is bounded.
-
-
-***in-depth discussion about underlying assumptions, derivation from
-probability calculus, higher-order approximations beyond maxent and
-"error bars" around the distributions
-
-***We can ask about probability of bimodality etc
+\bigskip
 
 \begin{figure}[!p]
 \centering
 \includegraphics[width=\linewidth]{_scripts/MC_plot1000.pdf}%
 \\[3em]%
-\includegraphics[width=\linewidth]{_scripts/MC_samples1000.pdf}%
+\includegraphics[width=\linewidth]{_scripts/MC_marginal1000.pdf}%
 \caption{***}
-\label{fig:comparisons_marginals}
+\label{fig:MC1000}
 \end{figure}
 % mctests3.nb
 % mcfd_6mom_unif_afssd40st0np_cok_tr_N1000_t50_L50_T0.333333333333333_s60000_a15758.0500981316
-
 \begin{figure}[!p]
 \centering
 \includegraphics[width=\linewidth]{_scripts/MC_plot5000.pdf}%
 \\[3em]%
-\includegraphics[width=\linewidth]{_scripts/MC_samples5000.pdf}%
+\includegraphics[width=\linewidth]{_scripts/MC_marginal5000.pdf}%
 \caption{***}
-\label{fig:comparisons_marginals}
+\label{fig:MC5000}
 \end{figure}
 % mctests3.nb
 % mcfd_6mom_unif_afssd32s_cok_tr_N5000_t180_L50_T0.333333333333333_s25800_a329212306.071189
+The properties of the belief density~\eqref{eq:density_proportional} are
+shown in \fig~\ref{fig:MC1000} for $N=1\,000$ and in \fig~\ref{fig:MC5000}
+for $N=5\,000$, considering the first six factorial moments as our data. It
+turns out that that six moments lead to practically the same result as
+specifying the full frequency distribution for the sample; they are therefore
+informationally sufficient.
+
+The top plots in the figures show the mean
+$\int \yF \pf(\yF \| \yD \yI)\,\di\yF$
+(\textcolor{myblue}{\textbf{------}}), which is also our belief about the
+activity at any single time bin, \eqn~\eqref{eq:probability_AT}, is clearly
+different from the maximum-entropy mode. The latter is therefore not a good
+approximation for the full density~\eqref{eq:density_proportional}, which
+is quite broad, as can be seen from the ten samples
+(\textcolor{mygreen}{------}) drawn from it. The mean and the
+maximum-entropy mode are nevertheless qualitatively similar. In fact, for
+$N=1\,000$ the second peak of the mean is even higher than the
+corresponding maximum-entropy one. The samples also show that generally two
+main frequency peaks of activity are expected, especially for $N=5\,000$.
+
+
+
+
+
 
 
 

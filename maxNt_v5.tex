@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-07-11T13:15:49+0200
+%% Last-Updated: 2019-07-11T13:29:31+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1350,7 +1350,7 @@ marginalization is
 \begin{equation}
   \label{eq:probability_AT}
   \pf(\yA_{t} \| \yD \yI) =
-  \smallint \yFF_{\yA_{t}}\;   \pf(\yF \| \yD \yI)\;\di\yF;
+  \int \yFF_{\yA_{t}}\;   \pf(\yF \| \yD \yI)\;\di\yF;
 \end{equation}
 our probability distribution for $\yA_{t}$ is thus simply the mean
 $\int \yF\; \pf(\yF \| \yD \yI)\;\di\yF$.
@@ -1365,7 +1365,7 @@ frequency distribution $\yFm$, it can be approximately treated as a delta
 density,
 \begin{equation}
   \label{eq:approx_delta_pF}
-  \pf(\yF \| \yD \yI)\;\di\yF \approx \delta(\yF-\yFm)\;\di\yF,
+  \pf(\yF \| \yD \yI)\;\di\yF \approx \delt(\yF-\yFm)\;\di\yF,
 \end{equation}
 and consequently the probability for the activity at bin $t$, by
 \eqn~\eqref{eq:probability_AT}, is simply the mode $\yFm$ itself:
@@ -1401,7 +1401,11 @@ provides. Its expression,
 \end{equation}
 consists of three terms:
 
-\textbullet\ The density $\exp[-\yL\;\ysh(\yF;\yR)]$ expresses our pre-data
+\textbullet\ The density
+\begin{equation}
+\exp[-\yL\;\ysh(\yF;\yR)]\label{eq:entropic_prior}
+\end{equation}
+expresses our pre-data
 uncertainty about the possible frequency distributions. Here
 $\ysh(\yF;\yR)\defd \sum_{\yA}\yFF_{\yA}\ln(\yFF_{\yA}/\yRR_{\yA})$ is the
 relative entropy or discrimination information
@@ -1456,9 +1460,17 @@ measured factorial moments. The standard deviations $\ycs$ reflect our
 uncertainty about the measurement results, which can come for example from
 the spike-sorting procedure. Their values are discussed in appendix***.
 
-
 \bigskip
 
+The post-data belief density~\eqref{eq:density_proportional} has a
+maximum-entropy distribution as a mode approximation when $\ycs$ is small,
+$\yL$ is large, and $\ycs L$ is small. Its mode in fact will be the
+constrained $\yF$ that maximizes the relative entropy $\ysh(\yF;\yR)$. It
+should be noted that a pre-data belief different from the entropic
+one~\eqref{eq:entropic_prior} will lead to a different mode approximation.
+For example, a Dirichlet density would lead to a maximum-entropy
+distribution with \emph{Burg's} entropy \citey{burg1975} instead of
+Shannon's \citep{jaynes1986d_r1996}.
 
 
 

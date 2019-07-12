@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-07-11T16:10:41+0200
+%% Last-Updated: 2019-07-12T11:25:44+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -811,14 +811,15 @@ range over all its mathematically possible values, or only over a
 subset thereof? 
 
 Answering this kind of questions always engages an element of uncertainty.
-Our answers therefore involve both experimental data, such as neuronal
-recordings from specific brain areas, and probabilistic assumptions --
-probabilistic \enquote{models} -- about biological conditions and
-mechanisms that cannot be experimentally ascertained.
+Our answers therefore involve experimental data, such as neuronal
+recordings from specific brain areas, and probabilities or \dobs, based on
+prior knowledge, about biological conditions and mechanisms that cannot be
+experimentally ascertained. Such \dobs\ are often formulated as simplified
+\enquote{models} to be mathematically more tractable.
 
 Despite remarkable advances in recording technologies, the best
 experimental measurements of neuronal activity can still only record a very
-small sample of neurons compared to the numbers that constitute one
+small sample of neurons compared to the numbers that constitute a
 functionally distinguished brain region. Many probabilistic models focus on
 such samples only, somehow neglecting, in their assumptions, that the
 recorded neurons are a sample from a larger network. This kind of isolation
@@ -826,38 +827,39 @@ assumptions sometimes escape attention, being subtly hidden in the
 mathematics. Some probabilistic models try to take also unrecorded neurons
 into account, but become very complex in doing so.
 
-In the present work we give an answer to this question: How much is our
-uncertainty about the \emph{total activity} of a large neuronal network, if
-we have observed the activity of a very small sample thereof? We'll first
-give an answer by combining, in a straightforward way, the maximum-entropy
-method and basic sampling relations of the probability calculus. Later on
-we'll show that this answer can be obtained by exclusively using the
-probability calculus; this point of view shows that the maximum-entropy
-answer is a first approximation to the answers of \emph{four} different
-questions, and also shows the assumptions lying behind it.
+In the present work we give an answer to this question: How much can the
+total activity of a large neuronal network be, if we have observed the
+activity of a very small sample thereof? We'll quantify our \dobs\ about
+the possible answers by combining, in a straightforward way, the
+maximum-entropy method and basic sampling relations of the probability
+calculus. Later on we'll show that our \dobs\ can be quantified by
+exclusively using the probability calculus. This derivation will provide a
+more accurate quantification, revealing that the maximum-entropy answer is
+only a first approximation.
 
 We apply our approach to two concrete data sets: the activity of 65 neurons
 recorded from a rat's Medial Entorhinal Cortex \mynote{ref}, and the
 activity of 159 neurons recorded from a macaque's Motor Cortex
 \mynote{ref}\mynote{add recording length}. In the first data set, the most
 interesting finding is that the most probable frequency distribution for
-the total activity of the full network, if the latter is assumed to be
-larger than 1\,000 neurons, has two very distinct modes, both at low
-activities ($0.7\%$ and $2.6\%$ of simultaneously active neurons within
-$3\;\mathrm{ms}$, see \fig***). The analogous distribution for second data
-set doesn't have two modes but still presents one prominent shoulder in its
-one low-activity mode. Note that these inferred features for the full
-network aren't observed in the sample, nor are they inferred by the
-application of maximum-entropy to the sample alone. \mynote{if we manage
-  the Monte Carlo sampling or other approx: say something about the
-  deviation from the most probable frequency distribution}
+the total activity of the full network has two very distinct modes, both at
+low activities, %($0.7\%$ and $2.6\%$ of simultaneously active neurons
+% within $3\;\mathrm{ms}$,
+see \fig~\ref{fig:plots_6mom}. The analogous frequency distribution for the
+second data set doesn't have two modes but still presents one prominent
+shoulder in its one low-activity mode. Note that these guessed features of
+the full network aren't observed in the sample, nor can they be inferred by
+the application of maximum-entropy \emph{to the sample alone}.
+\mynote{Monte Carlo sampling: say something about the deviation from the
+  most probable frequency distribution}
 
 
 
 \mynote{shall we give a
   two-sentence summary of the main idea here?}
 
-The maximum-entropy method \citep{jaynes1957}[much clearer
+The maximum-entropy or minimum-relative-entropy method
+\citep{jaynes1957}[much clearer
 in][]{jaynes1963}{sivia1996_r2006,hobsonetal1973,jaynes1985b,grandy1980}
 has been used for different kinds of estimations of the neuronal activity
 of various brain areas and about other phenomena of importance to the
@@ -865,10 +867,9 @@ neurosciences, for example gene and protein interaction \citep[for
 example][]{martignonetal1995,bohteetal2000,shlensetal2006,schneidmanetal2006,tkaciketal2006,mackeetal2009b,tkaciketal2009,roudietal2009c,barreiroetal2010,gerwinnetal2010,mackeetal2011b,ganmoretal2011,cohenetal2011,granotatedgietal2013,mackeetal2013,tkaciketal2014b,shimazakietal2015,moraetal2015,lezonetal2006,weigtetal2009}.
 This method is often used to test whether some statistics of the data, for
 example second-order time correlations, is sufficient for quantifying our
-uncertainty about the data. It can be considered as an approximation of
-probabilistic models based on various assumptions of inferential
-sufficiency \citep{jaynes1986d_r1996,portamana2017} -- for example of
-empirical moments or of long-run frequencies.
+\dob\ about some quantities of the system. It can be considered as an
+approximation of probabilistic models based on various assumptions of
+inferential sufficiency \citep{jaynes1986d_r1996,portamana2017}.
 
 \mynote{Say something more about advantages of such question/answer: for
   example we can make statements about total activity of brain area even
@@ -881,6 +882,11 @@ empirical moments or of long-run frequencies.
 
 \mynote{To be continued after structure of the rest of the article is
   clear. Orig intro is on p.~\pageref{orig_intro}}
+
+Our notation and terminology follow \textsc{iso} standards
+\citep{iso1993,iso2006,iso2006b} and Jaynes \citey{jaynes1994_r2003} for
+\dobs. We often simply say \enquote{belief} for \enquote{\dob}.
+
 
 \section{Model: maximum-entropy and sampling}
 \label{sec:model}
@@ -898,9 +904,9 @@ for short. It is also the network-averaged activity of the neurons.
 Obviously $\ya_{t} \in\set{0,1/n,\dotsc,(n-1)/n,1}$; if $\ya_{t}=0$, no
 neuron spikes during bin $t$; if $\ya_{t}=1$, all spike at some point
 during bin $t$. For brevity, let's say \enquote{at $t$} for \enquote{during
-  time bin $t$}. From the activities $\set{\ya_{t}}$ we can count how many
-times the activity levels $\ya=0$, $\ya=1/n$, and so on appeared during the
-recording, obtaining the measured relative-frequency distribution
+  time bin $t$}. From the activities $\set{\ya_{t}}$ we can count how often
+the activity levels $\ya=0$, $\ya=1/n$, and so on appeared during the
+recording, obtaining the distribution of measured relative frequencies
 $(\yff_{\ya}) \defs \yf$. We can also consider the sample activity at time
 bins \emph{outside} of the recorded range. Such activity is unknown to us,
 of course.
@@ -917,8 +923,8 @@ experimental sessions. We assume that there's a area, comprising a
 network of $N$ neurons, from which other sets of neurons had or will have
 the same probability of being recorded, even in other experimental
 sessions, as the set of $n$ neurons that was actually recorded in this
-session. This is our \enquote{full network}\mynote{how about calling it
-  \enquote{the pool}?}. The normalized total activity of these $N$ neurons
+session. This is our \enquote{full network}.\mynote{how about calling it
+  \enquote{the pool}?} The normalized total activity of these $N$ neurons
 at $t$ is $\yA_{t}$. The relative frequencies of the various activity
 levels during the recording were $(\yFF_{\yA}) \defs \yF$. We don't know the
 values $\yA_{t}$ at each $t$, or the frequency distribution $\yF$. We only
@@ -933,15 +939,15 @@ same study conditions. For example: what was its frequency distribution
 during the recording? How much does this frequency distribution change
 across sessions? How much total activity should we expect at any time bin
 during a recording? We cannot answer these questions with certainty; we can
-only give distributions of probability over their possible answers. The
+only give distributions of probability or \dobs\ over their possible answers. The
 approach presented here gives such probability distributions.
 
 \mynote{Move this to intro?}We want to stress the usefulness of making
-quantified guesses about the full-network activity. First of all, this seems to be
-the primary idea behind recording a sample. Second, it allows us to make
-comparisons across experimental sessions; such comparisons would me
-difficult or meaningless made at the level of recorded samples, which
-generally comprise non-overlapping sets of neurons differing also in size.
+quantified guesses about the full-network activity. First of all, this
+seems to be the primary idea behind recording a sample. Second, it allows
+us to make comparisons across experimental sessions; such comparisons would
+me difficult or meaningless if made with the recorded samples, which
+generally comprise non-overlapping sets of neurons and differ in size.
 
 \bigskip
 
@@ -956,29 +962,32 @@ The idea behind our approach is easily summarized:
 Let's discuss these points in detail.
 
 Regarding~\ref{item:maxent_step}, we assume that you're familiar with the
-maximum-entropy method. In short, it amounts to a pair of prescriptions:
-choose the distribution having maximum Shannon entropy among those
-satisfying specific convex constraints, such as fixed averages; and judge
-these averages to be equal to measured averages. We add two remarks about
-this method that are seldom made in the literature. First, the distribution
-$\px(\yA)$ given by this method is the zeroth-order approximation \citep[in
-the sense of Laplace's
+maximum-entropy method. We actually use the \emph{minimum-relative-entropy}
+method \citep{hobsonetal1973}, but call it \enquote{maximum-entropy} for
+brevity. It amounts to a pair of prescriptions: choose the distribution,
+among those satisfying specific convex constraints, such as fixed
+expectations, that has minimum relative entropy with respect to a reference
+distribution, often taken to be the uniform one; and judge those expectations
+to be equal to measured averages. We add two remarks about this method that
+are seldom made in the literature. First, the distribution $\px(\yA)$ given
+by this method is the zeroth-order approximation \citep[in the sense of
+Laplace's
 method:][\chap~4]{debruijn1958_r1961}{tierneyetal1986,strawderman2000} of
 four different distributions for the full network:
 \begin{itemize}
 \item the most probable \emph{frequency} distribution for the total
   activity across the \emph{recorded} bins, %$\yFF(\yA)$,
-\item the most probable \emph{frequency} distribution for the total
-  activity in a very long run of \emph{new} time bins, %$\ynuu(\yA)$,
-\item the \emph{probability} distribution for the value of the total
+\item the \emph{belief} distribution for the value of the total
   activity at any time bin among those \emph{recorded},
   %$\yp(\yA_{t} \| \yH)$ with $1\le t \le T$,
-\item the \emph{probability} distribution for the value of the total
+\item the most probable \emph{frequency} distribution for the total
+  activity in a very long run of \emph{new} time bins, %$\ynuu(\yA)$,
+\item the \emph{belief} distribution for the value of the total
   activity at a \emph{new} time bin.
   % $\yp(\yA_{t} \| \yH)$ with $t<1$ or $t>T$
 \end{itemize}
-The maximum-entropy distribution is thus an approximation of our
-uncertainty about four completely different quantities. Note that the four
+The maximum-entropy distribution is thus an approximation of our belief
+distribution about four completely different quantities. Note that the four
 distributions above numerically differ in higher-order approximations. We
 discuss their differences in \sect***. Second, the maximum-entropy method
 based on the Shannon entropy implicitly makes some assumptions about the
@@ -1079,14 +1088,14 @@ potential functions.
 The number of moments used with this method depends on the questions and
 hypotheses that a researcher is exploring; for example, hypotheses of
 sufficient statistics, such as the sufficiency of pairwise correlations to
-quantify our uncertainty about network activity. In the present work we
+quantify our \dob\ about network activity. In the present work we
 only want to introduce the general method without entering into biological
 questions of this kind.
 
 The particular case in which $n$ moments are constrained is especially
 important: it corresponds to fully constraining the marginal frequency
 distribution for the activity of the sample neurons. In this case, our
-uncertainty about the full-network activity is based on all available
+belief about the full-network activity is based on all available
 measured frequency data. Note that application of the maximum-entropy
 method \emph{at the sample level} is trivial and meaningless in this case
 -- it just gives back the measured frequency distribution. But application
@@ -1328,14 +1337,14 @@ Consider the question: What is the relative-frequency distribution for the
 different activity levels for the full-network, across the recorded bins?
 Call this distribution $(\yFF_{\yA}) \defs \yF$: activity level $\yA$
 appeared in $T\times\yFF(\yA)$ out of $T$ time bins. We don't know $\yF$,
-and our uncertainty about its possible values is a probability distribution
+and our beliefs about its possible values have a distribution
 $\pf(\yF\|\yD\yI)$ conditional on data $\yD$ and prior knowledge $\yI$,
-which we approximate with a continuous density
+which we approximate with a continuous distribution
 \begin{equation}
   \label{eq:density_F}
   \pf(\yF \| \yD \yI)\;\di\yF.
 \end{equation}
-In appendix*** we give a summary of how this density is derived. Note that
+In appendix*** we give a summary of how this distribution is derived. Note that
 this is a probability distribution over frequency distributions, so we must
 be careful with terminology to avoid confusion.
 
@@ -1343,16 +1352,16 @@ Now consider the related question: What is the activity $\yA_{t}$ of the
 full network at some specific time bin $t$? If we don't know the exact
 sequence of activities during the recording then we don't know $\yA_{t}$;
 if we know the frequency distribution $\yF$ of the activity levels, then
-our probability for $\yA_{t}$ is $\yFF_{\yA_{t}}$, out of combinatorial
+our \dob\ about $\yA_{t}$ is $\yFF_{\yA_{t}}$, out of combinatorial
 reasons. But if we are also uncertain about $\yF$, with
-probability~\eqref{eq:density_F}, then our probability for $\yA_{t}$ by
+belief distribution~\eqref{eq:density_F}, then our \dob\ about $\yA_{t}$ by
 marginalization is
 \begin{equation}
   \label{eq:probability_AT}
   \pf(\yA_{t} \| \yD \yI) =
   \int \yFF_{\yA_{t}}\;   \pf(\yF \| \yD \yI)\;\di\yF;
 \end{equation}
-our probability distribution for $\yA_{t}$ is thus simply the mean
+our belief distribution for $\yA_{t}$ is thus simply the mean
 $\int \yF\, \pf(\yF \| \yD \yI)\,\di\yF$.
 
 Formulae~\eqref{eq:density_F} and \eqref{eq:probability_AT} show that the
@@ -1406,7 +1415,7 @@ consists of three terms:
 \exp[-\yL\;\ysh(\yF;\yR)]\label{eq:entropic_prior}
 \end{equation}
 expresses our pre-data
-uncertainty about the possible frequency distributions. Here
+beliefs about the possible frequency distributions. Here
 $\ysh(\yF;\yR)\defd \sum_{\yA}\yFF_{\yA}\ln(\yFF_{\yA}/\yRR_{\yA})$ is the
 relative entropy or discrimination information
 \citep{kullback1987,jaynes1963,hobson1969,hobsonetal1973}, $\yR$ is a
@@ -1457,16 +1466,16 @@ factorial moments, instead, then
 \end{equation}
 as for \eqn~\eqref{eq:equal_m_factorialmoments}, and $\yc$ is the tuple of
 measured factorial moments. The standard deviations $\ycs$ reflect our
-uncertainty about the measurement results, which can come for example from
+beliefs about the measurement results, which can come for example from
 the spike-sorting procedure. Their values are discussed in appendix***.
 
 \bigskip
 
 The post-data belief density~\eqref{eq:density_proportional} has a
 maximum-entropy distribution as a mode approximation when $\ycs$ is small,
-$\yL$ is large, and $\ycs L$ is small. Its mode in fact will be the
-constrained $\yF$ that maximizes the relative entropy $\ysh(\yF;\yR)$. It
-should be noted that a pre-data belief different from the entropic
+$\yL$ is large, and $\ycs L$ is small: the mode will be the constrained
+$\yF$ that minimizes the relative entropy $\ysh(\yF;\yR)$. It should be
+noted that a pre-data belief different from the entropic
 one~\eqref{eq:entropic_prior} will lead to a different mode approximation.
 For example, a Dirichlet density would lead to a maximum-entropy
 distribution with \emph{Burg's} entropy \citep{burg1975} instead of

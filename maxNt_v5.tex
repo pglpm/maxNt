@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-07-12T11:25:44+0200
+%% Last-Updated: 2019-07-13T11:35:37+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -912,26 +912,26 @@ bins \emph{outside} of the recorded range. Such activity is unknown to us,
 of course.
 
 \mynote{maybe move this paragraph to the intro?}Present-day technologies
-enable the recording of neuronal activity from small brain areas
-\mynote{be more specific}. For many animal species, the neurons that are
-recorded within the area are not -- and at present cannot be --
-specifically chosen from among the rest, owing to several limiting factors;
-for example, limitations in the precision with which electrodes are
-inserted, or with which neurons are targeted by viruses. In fact, the set
-of recorded neurons may even change during very long recordings or across
-experimental sessions. We assume that there's a area, comprising a
-network of $N$ neurons, from which other sets of neurons had or will have
-the same probability of being recorded, even in other experimental
-sessions, as the set of $n$ neurons that was actually recorded in this
-session. This is our \enquote{full network}.\mynote{how about calling it
-  \enquote{the pool}?} The normalized total activity of these $N$ neurons
-at $t$ is $\yA_{t}$. The relative frequencies of the various activity
-levels during the recording were $(\yFF_{\yA}) \defs \yF$. We don't know the
-values $\yA_{t}$ at each $t$, or the frequency distribution $\yF$. We only
-know for certain that $\yA_{t} \in \set{0,1/N,\dotsc,(N-1)/N,1}$ and that
-$N\yA_{t} \ge n\ya_{t}$ for obvious reasons. For the time being we assume
-that we know $N$; in \sect*** we discuss the consequences of our lack of
-precise knowledge about this number.
+enable the recording of neuronal activity from small brain areas \mynote{be
+  more specific}. For many animal species, the neurons that are recorded
+within the area are not -- and at present cannot be -- specifically chosen
+from among the rest, owing to several limiting factors; for example,
+limitations in how precisely electrodes are inserted or neurons are
+targeted by viruses. In fact, the set of recorded neurons may even change
+during very long recordings or across experimental sessions. We assume that
+there's an area, comprising a network of $N$ neurons, from which other sets
+of neurons could have been or will be recorded***have the same probability of being recorded, even in
+other experimental sessions, as the set of $n$ neurons that was actually
+recorded in this session. This is our \enquote{full network}.\mynote{how
+  about calling it \enquote{the pool}?} The normalized total activity of
+these $N$ neurons at $t$ is $\yA_{t}$. The relative frequencies of the
+various activity levels during the recording were $(\yFF_{\yA}) \defs \yF$.
+We don't know the values $\yA_{t}$ at each $t$, or the frequency
+distribution $\yF$. We only know for certain that
+$\yA_{t} \in \set{0,1/N,\dotsc,(N-1)/N,1}$ and that $N\yA_{t} \ge n\ya_{t}$
+for obvious reasons. For the time being we assume that we know $N$; in
+\sect*** we discuss the consequences of our lack of precise knowledge about
+this number.
 
 Our questions concern general features of the total activity $\yA$ of the
 full network during and after the recording, and across sessions under the
@@ -1477,9 +1477,10 @@ $\yL$ is large, and $\ycs L$ is small: the mode will be the constrained
 $\yF$ that minimizes the relative entropy $\ysh(\yF;\yR)$. It should be
 noted that a pre-data belief different from the entropic
 one~\eqref{eq:entropic_prior} will lead to a different mode approximation.
-For example, a Dirichlet density would lead to a maximum-entropy
-distribution with \emph{Burg's} entropy \citep{burg1975} instead of
-Shannon's \citep{jaynes1986d_r1996,portamana2009}.
+For example, a Dirichlet density (which is equivalent
+to~\eqref{eq:entropic_prior} with $\yF$ and $\yR$ exchanged) would lead to
+a maximum-entropy distribution with \emph{Burg's} entropy \citep{burg1975}
+instead of Shannon's \citep{jaynes1986d_r1996,portamana2009}.
 
 
 \bigskip
@@ -1489,17 +1490,40 @@ Shannon's \citep{jaynes1986d_r1996,portamana2009}.
 \includegraphics[width=\linewidth]{_scripts/MC_plot1000.pdf}%
 \\[3em]%
 \includegraphics[width=\linewidth]{_scripts/MC_marginal1000.pdf}%
-\caption{***}
+\caption{Entropic prior}
 \label{fig:MC1000}
 \end{figure}
 % mctests3.nb
 % mcfd_6mom_unif_afssd40st0np_cok_tr_N1000_t50_L50_T0.333333333333333_s60000_a15758.0500981316
+%
+\begin{figure}[!p]
+\centering
+\includegraphics[width=\linewidth]{_scripts/MC_plot_unif1000.pdf}%
+\\[3em]%
+\includegraphics[width=\linewidth]{_scripts/MC_marginal_unif1000.pdf}%
+\caption{Prior uniform in $\di\yF$}
+\label{fig:MC1000}
+\end{figure}
+% mctests3.nb
+% mcfd_6mom_uunif_afssd40st0np_cok_tr_N1000_t50_L0_T0.333333333333333_s60000_a15758.0500981316
+%
+\begin{figure}[!p]
+\centering
+\includegraphics[width=\linewidth]{_scripts/MC_plot_dirich1000.pdf}%
+\\[3em]%
+\includegraphics[width=\linewidth]{_scripts/MC_marginal_dirich1000.pdf}%
+\caption{Dirichlet prior (entropic with reversed relative entropy)}
+\label{fig:MC1000}
+\end{figure}
+% mctests3.nb
+% mcfd_6mom_iunif_afssd40st0np_cok_tr_N1000_t50_L1_T0.333333333333333_s60000_a15758.0500981316
+%
 \begin{figure}[!p]
 \centering
 \includegraphics[width=\linewidth]{_scripts/MC_plot5000.pdf}%
 \\[3em]%
 \includegraphics[width=\linewidth]{_scripts/MC_marginal5000.pdf}%
-\caption{***}
+\caption{Entropic prior}
 \label{fig:MC5000}
 \end{figure}
 % mctests3.nb

@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-07-20T18:44:47+0200
+%% Last-Updated: 2019-07-21T17:05:52+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -883,9 +883,10 @@ inferential sufficiency \citep{jaynes1986d_r1996,portamana2017}.
 \mynote{To be continued after structure of the rest of the article is
   clear. Orig intro is on p.~\pageref{orig_intro}}
 
-Our notation and terminology follow \textsc{iso} standards
-\citep{iso1993,iso2006,iso2006b} and Jaynes \citey{jaynes1994_r2003} for
-\dobs. We often simply say \enquote{belief} for \enquote{\dob}.
+Our notation and terminology follow \textsc{iso}
+\citey{iso1993,iso2006,iso2006b} standards and Jaynes
+\citey{jaynes1994_r2003} for \dobs. We often simply say \enquote{belief}
+for \enquote{\dob}.
 
 
 \section{Model: maximum-entropy and sampling}
@@ -919,18 +920,18 @@ from among the rest, owing to several limiting factors; for example,
 limitations in how precisely electrodes are inserted or neurons are
 targeted by viruses. In fact, the set of recorded neurons may even change
 during very long recordings or across experimental sessions. We assume that
-there's an area, comprising a network of $N$ neurons, for which we equally
-believe that any other sample of size $n$ could have been recorded instead
-of the sample of $n$ neurons that was actually recorded. This is our
-\enquote{full network}.\mynote{how about calling it \enquote{the pool}?}
-The normalized total activity of these $N$ neurons at $t$ is $\yA_{t}$. The
-relative frequencies of the various activity levels during the recording
-were $(\yFF_{\yA}) \defs \yF$. We don't know the values $\yA_{t}$ at each
-$t$, or the frequency distribution $\yF$. We only know for certain that
-$\yA_{t} \in \set{0,1/N,\dotsc,(N-1)/N,1}$ and that $N\yA_{t} \ge n\ya_{t}$
-for obvious reasons. For the time being we assume that we know $N$; in
-\sect*** we discuss the consequences of our lack of precise knowledge about
-this number.
+there's an area, comprising a network of $N$ neurons, for which we believe
+that any other sample of size $n$ could have equally plausibly been
+recorded instead of the sample of $n$ neurons that was actually recorded.
+This is our \enquote{full network}.\mynote{how about calling it
+  \enquote{the pool}?} The normalized total activity of these $N$ neurons
+at $t$ is $\yA_{t}$. The relative frequencies of the various activity
+levels during the recording were $(\yFF_{\yA}) \defs \yF$. We don't know
+the values $\yA_{t}$ at each $t$, or the frequency distribution $\yF$. We
+only know for certain that $\yA_{t} \in \set{0,1/N,\dotsc,(N-1)/N,1}$ and
+that $N\yA_{t} \ge n\ya_{t}$ for obvious reasons. For the time being we
+assume that we know $N$; in \sect*** we discuss the consequences of our
+lack of precise knowledge about this number.
 
 Our questions concern general features of the total activity $\yA$ of the
 full network during and after the recording, and across sessions under the
@@ -971,11 +972,11 @@ method \citep{hobsonetal1973}, but call it \enquote{maximum-entropy} for
 brevity. It amounts to a pair of prescriptions: choose the distribution,
 among those satisfying specific convex constraints, such as fixed
 expectations, that has minimum relative entropy with respect to a reference
-distribution, often taken to be the uniform one; and judge those expectations
-to be equal to measured averages. We add two remarks about this method that
-are seldom made in the literature. First, the distribution $\px(\yA)$ given
-by this method is the zeroth-order approximation \citep[in the sense of
-Laplace's
+distribution, often taken to be the uniform one; and judge those
+expectations to be equal to measured averages. We add two remarks about
+this method that are seldom made in the literature. First remark: the
+distribution $\px(\yA)$ given by this method is the zeroth-order
+approximation \citep[in the sense of Laplace's
 method:][\chap~4]{debruijn1958_r1961}{tierneyetal1986,strawderman2000} of
 four different distributions for the full network:
 \begin{itemize}
@@ -992,19 +993,20 @@ four different distributions for the full network:
 \end{itemize}
 The maximum-entropy distribution is thus an approximation of our belief
 distribution about four completely different quantities. Note that the four
-distributions above numerically differ in higher-order approximations. We
-discuss their differences in \sect***. Second, the maximum-entropy method
-based on the Shannon entropy implicitly makes some assumptions about the
-probabilities for the long-run frequency distributions
-\citep{jaynes1986d_r1996,portamana2009,portamana2017}. We discuss these
-assumptions in \sect***.
+distributions above numerically differ in higher-order approximations.
+Second remark: the maximum-entropy method based on the Shannon entropy
+implicitly makes some assumptions about the probabilities for the long-run
+frequency distributions
+\citep{jaynes1986d_r1996,portamana2009,portamana2017}. We say more about
+these two points in \sect***.
 
-In our case, to apply the method for the total activity of the full network
-we need to fix some of the latter's averages, for example its moments. But
-we don't have any measured moments for the full network to equate the
-distribution moments to. Here enters point~\ref{item:sample_step}: the
-probability calculus gives an exact, linear relation between the first $m$
-moments for the full network and the first $m$ for the sample
+In our case, to apply the maximum-entropy prescriptions to the total
+activity of the full network we need to fix some averages of its belief
+distribution, for example the distribution's moments. But we don't have any
+measured moments for the full network to equate the distribution moments
+to. Here enters point~\ref{item:sample_step}: the probability calculus
+gives an exact, linear relation between the first $m$ moments for the full
+network and the first $m$ for the sample
 \citep[\eqns~(16)]{portamanaetal2015}; the ones determine the others and
 vice versa at every time bin. This relation is a classical result of
 sampling theory
@@ -1046,11 +1048,12 @@ if $na=4$ neurons spike in a network of $n=5$, we have $\tbinom{4}{2}=6$
 distinct pairs of simultaneously spiking neurons, and the total number of
 distinct pairs is $\tbinom{5}{2}=10$. The normalized number of spiking
 pairs is therefore $6/10$. Note that the first $m$ factorial moments
-linearly determine the first $m$ power moments and vice versa, because
-$\tbinom{n\ya}{m}$ is a polynomial in $\ya$ of degree $m$; so fixing the
-ones is equivalent to fixing the others. Now we have this extremely
-convenient property: \emph{the first $n$ normalized factorial moments for a
-  sample and for the full network are numerically identical}:
+provide the same information as the first $m$ power moments and vice versa:
+they linearly determine each other because $\tbinom{n\ya}{m}$ is a
+polynomial in $\ya$ of degree $m$. Fixing the ones is therefore equivalent
+to fixing the others. But the normalized factorial moments have this
+extremely convenient property: \emph{the first $n$ normalized factorial
+  moments for a sample and for the full network are numerically identical}:
 \begin{equation}
   \label{eq:equal_m_factorialmoments}
     \sum_{\ya} %m!\,
@@ -1061,29 +1064,29 @@ convenient property: \emph{the first $n$ normalized factorial moments for a
   % \E\condt[\big]{\tbinom{N\yA}{m}\;\tbinom{N}{m}^{-1}}{\yH},
   \qquad 1\le m \le n,
 \end{equation}
-where $\pxx(\yA)$ is the distribution for the full-network activity.
+where $\pxx(\yA)$ is our distribution of belief about the full-network
+activity.
 
 We can therefore apply the maximum-entropy method to obtain a distribution
-for the full network, by constraining its $m$th factorial moment to be
-equal to the sample's recorded average of
-$\tbinom{n\ya}{m}\;\tbinom{n}{m}^{-1}$, for as many $m$ as we please with
-$1\le m \le n$. The constraints on the maximum-entropy distribution
-$\px(\yA)$ for the full network are
+for the full network by constraining its $m$th factorial moment to be equal
+to the sample's recorded average of $\tbinom{n\ya}{m}\;\tbinom{n}{m}^{-1}$,
+for as many $m$ as we please with $1\le m \le n$. In formulae these
+constraints on $\px(\yA)$ are
 \begin{equation}
   \label{eq:final_constraint}
-  \frac{1}{T}\sum_{t}\binom{n\ya_{t}}{m}\,\binom{n}{m}^{-1}
+\underbracket{\frac{1}{T}\sum_{t}\binom{n\ya_{t}}{m}\,\binom{n}{m}^{-1}
   \equiv
    \sum_{\ya}
-  \binom{n \ya}{m}\,  \binom{n}{m}^{-1} \yff_{\ya}
+  \binom{n \ya}{m}\,  \binom{n}{m}^{-1} \yff_{\ya}}_{\text{measured moments}}
   =
-   \sum_{\yA}
-  \binom{N \yA}{m}\,  \binom{N}{m}^{-1}\, \px(\yA)
+   \underbracket{\sum_{\yA}
+  \binom{N \yA}{m}\,  \binom{N}{m}^{-1}\, \px(\yA)}_{\text{distribution moments}}
 \end{equation}
 for all $m$ we wish.
 
 The calculation amounts to a convex optimization
 \citep{meadetal1984}[\chap~10]{pressetal1988_r2007}{fangetal1997,boydetal2004_r2009,portamana2017b}
-and for the numbers $N,n,m$ considered in the next section it can be done
+and for the numbers $N,n,m$ considered in the present work it can be done
 on a modern computer without approximations of normalization constants or
 potential functions.
 
@@ -1092,15 +1095,16 @@ potential functions.
 The number of moments used with this method depends on the questions and
 hypotheses that a researcher is exploring; for example, hypotheses of
 sufficient statistics, such as the sufficiency of pairwise correlations to
-quantify our \dob\ about network activity. In the present work we
-only want to introduce the general method without entering into biological
-questions of this kind.
+quantify our \dob\ about network activity. We discuss this kind of use in
+\sect~\ref{sec:marginalization}.%, but our main goal is to simply introduce
+% the general method without entering into biological questions of this
+% kind.
 
 The particular case in which $n$ moments are constrained is especially
 important: it corresponds to fully constraining the marginal frequency
-distribution for the activity of the sample neurons. In this case, our
-belief about the full-network activity is based on all available
-measured frequency data. Note that application of the maximum-entropy
+distribution for the activity of the sample neurons, $\yf$. In this case,
+our belief about the full-network activity is based on all available
+measured frequency data. Note that the application of the maximum-entropy
 method \emph{at the sample level} is trivial and meaningless in this case
 -- it just gives back the measured frequency distribution. But application
 of the method \emph{at the level of the full network} is not trivial.
@@ -1114,7 +1118,7 @@ explain this point in \sect***.
 \bigskip
 
 In the next section we apply the method just described to the data sets
-from two actual recordings, using *** moments, and discuss the properties
+from two actual recordings, using six moments, and discuss the properties
 of the resulting distributions.
 
 \section{Application: two data sets}

@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-07-22T12:48:21+0200
+%% Last-Updated: 2019-07-22T13:06:53+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -694,7 +694,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\yk}{z}
 \newcommand*{\yK}{\zeta}
 %entropies
-\newcommand*{\ysh}{H}
+\newcommand*{\re}{\textrm{H}}
 \newcommand*{\ybu}{H_{\text{B}}}
 
 \newcommand*{\yRR}{R}
@@ -1401,34 +1401,39 @@ probability calculus. A more complete study (in preparation) with the first
 data set reveals that most of the plausible frequency distributions have
 these important features in common with the maximum-entropy one:
 \begin{itemize}
-\item all activities $\yA/N \lesssim 5\%$ have practically zero frequencies;
+\item all activities $\yA/N \gtrsim 5\%$ have practically zero frequencies;
 \item there are two regions of activity levels with high frequencies,
   roughly separated by a trough of lower frequencies. The frequencies of
   the region on the left ($\yA/N \lesssim 1.8\%$) are higher than those of
   the region on the right ($\yA/N \gtrsim 1.8\%$).
 \end{itemize}
-But there are also differences. For example, plausible frequency
-distributions may have three or four modes instead of just two; and these
-modes are higher than of the the maximum-entropy distribution.
+But there are also differences. For example, many plausible frequency
+distributions have three or four modes instead of just two; and these modes
+are higher than those of the maximum-entropy distribution.
 
 \medskip
 
 The second point is that our degrees of belief about the frequency
 distribution for the full network depend not only on the measured data in
-the sample, but also on our pre-data beliefs $\yI$ about the distribution. Which
-assumptions lead to the maximum-entropy result? This distribution appear
-when our initial belief about the possible frequency distributions $\yF$ is
-quantified by an entropic prior:
+the sample, but also on our pre-data beliefs $\yI$ about the distribution.
+Which assumptions lead to the maximum-entropy result? This distribution
+appear when our initial belief about the possible frequency distributions
+$\yF$ is quantified by an entropic prior
+\citep{neumann2007,rodriguez1991,skilling1998,catichaetal2004,portamana2017}:
 \begin{equation}
   \label{eq:entropic_prior}
-  \pf(\yF \| \yI) \propto  \exp[-\yL\;\ysh(\yF;\yR)]
+  \pf(\yF \| \yI) \propto  \exp[-\yL\;\re(\yF;\yR)]
   \approx \binom{L}{L\yFF_{0}, \dotsc, L\yFF_{N}}\;
   \prod_{\yA}{\yRR_{\yA}}^{L\yFF_{\yA}}
 \end{equation}
-where $\ysh(\yF;\yR)\defd \sum_{\yA}\yFF_{\yA}\ln(\yFF_{\yA}/\yRR_{\yA})$
+where $\re(\yF;\yR)\defd \sum_{\yA}\yFF_{\yA}\ln(\yFF_{\yA}/\yRR_{\yA})$
 is the relative entropy or discrimination information
-\citep{kullback1987,jaynes1963,hobson1969,hobsonetal1973}, $\yR$ is a
-reference distribution, and $\yL$ a positive parameter.
+\citep{kullback1987,jaynes1963,hobson1969,hobsonetal1973}, $\yR$ is the
+reference distribution, and $\yL$ a positive parameter. The approximate
+equality (obtained through Stirling's approximation) shows that this prior
+belief is proportional to the number of ways in which the distribution $\yF$
+can be realized in $L$ time bins. The parameter $L$ roughly quantifies how
+many time bins our data set must have to affect our initial belief.
 
 
 
@@ -1449,8 +1454,6 @@ thus giving an approximate assessment of the informational sufficiency of
 specific subsets of moments. In fact, we saw that the application of
 maximum-entropy only at the sample level leads to misleading results about
 this kind of sufficiency questions.
-
-Let's
 
 
 
@@ -2244,11 +2247,11 @@ the full network:
   \biggl[\prod_{\ya\yA}
 (\ypp_{\ya\yA}\ynuu_{\yA})^{T\yjj_{\ya\yA}}
 \biggr]\;
-\exp[-L\;\ysh(\ynu;\yR)]
+\exp[-L\;\re(\ynu;\yR)]
 \end{multlined}
 \\
 &\appropto \delt(\tsum_{\yA}\ypp_{\ya\yA}\yFF_{\yA} = \yff_{\ya})\;
-\exp[-L\;\ysh(\yF;\yR)]
+\exp[-L\;\re(\yF;\yR)]
 \end{split}
 \end{equation}
 
@@ -2265,11 +2268,11 @@ the full network:
   \biggl[\prod_{\ya}
 (\tsum_{\yA}\ypp_{\ya\yA}\ynuu_{\yA})^{T\yff_{\ya}}
 \biggr]\;
-\exp[-L\;\ysh(\ynu;\yR)]
+\exp[-L\;\re(\ynu;\yR)]
 \\
 &\appropto 
-\exp[-T\;\ysh(\yf; \mathte{\ypp}\ynu)
--L\;\ysh(\ynu;\yR)]
+\exp[-T\;\re(\yf; \mathte{\ypp}\ynu)
+-L\;\re(\ynu;\yR)]
 \end{split}
 \end{equation}
 Note that if some $\yff_{\ya}$ are zero, then the first exponential may
@@ -2290,12 +2293,12 @@ simplex of frequencies $\set{\ynu}$.
   \biggl[\prod_{\ya}
 (\tsum_{\yA}\ypp_{\ya\yA}\ynuu_{\yA})^{T\yff_{\ya}}
 \biggr]\;
-\exp[-L\;\ysh(\ynu;\yR)]
+\exp[-L\;\re(\ynu;\yR)]
 \\
 &\appropto 
 \int\!\di\ynu\;\ynuu_{\yA'}\;
-\exp[-T\;\ysh(\yf; \mathte{\ypp}\ynu)
--L\;\ysh(\ynu;\yR)]
+\exp[-T\;\re(\yf; \mathte{\ypp}\ynu)
+-L\;\re(\ynu;\yR)]
 \end{split}
 \end{equation}
 Note that if some $\yff_{\ya}$ are zero, then the first exponential may

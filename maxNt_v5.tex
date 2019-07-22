@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-07-22T13:06:53+0200
+%% Last-Updated: 2019-07-22T13:24:52+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1399,17 +1399,19 @@ The question, then, is \emph{which features of the maximum-entropy
   distributions?} We can only answer for sure by using the full-fledged
 probability calculus. A more complete study (in preparation) with the first
 data set reveals that most of the plausible frequency distributions have
-these important features in common with the maximum-entropy one:
+three important features in common with the maximum-entropy one:
 \begin{itemize}
 \item all activities $\yA/N \gtrsim 5\%$ have practically zero frequencies;
 \item there are two regions of activity levels with high frequencies,
-  roughly separated by a trough of lower frequencies. The frequencies of
-  the region on the left ($\yA/N \lesssim 1.8\%$) are higher than those of
-  the region on the right ($\yA/N \gtrsim 1.8\%$).
+  roughly separated by a trough of lower frequencies.
+\item The frequencies of the region on the left ($\yA/N \lesssim 1.8\%$)
+  are higher than those of the region on the right ($\yA/N \gtrsim 1.8\%$).
 \end{itemize}
 But there are also differences. For example, many plausible frequency
-distributions have three or four modes instead of just two; and these modes
-are higher than those of the maximum-entropy distribution.
+distributions have three or four modes instead of just two; these modes are
+higher than those of the maximum-entropy distribution; and the bump of high
+frequencies on the right is slightly shifted towards lower activities than
+the corresponding maximum in the maximum-entropy distribution.
 
 \medskip
 
@@ -1417,7 +1419,7 @@ The second point is that our degrees of belief about the frequency
 distribution for the full network depend not only on the measured data in
 the sample, but also on our pre-data beliefs $\yI$ about the distribution.
 Which assumptions lead to the maximum-entropy result? This distribution
-appear when our initial belief about the possible frequency distributions
+appears when our initial belief about the possible frequency distributions
 $\yF$ is quantified by an entropic prior
 \citep{neumann2007,rodriguez1991,skilling1998,catichaetal2004,portamana2017}:
 \begin{equation}
@@ -1426,14 +1428,26 @@ $\yF$ is quantified by an entropic prior
   \approx \binom{L}{L\yFF_{0}, \dotsc, L\yFF_{N}}\;
   \prod_{\yA}{\yRR_{\yA}}^{L\yFF_{\yA}}
 \end{equation}
-where $\re(\yF;\yR)\defd \sum_{\yA}\yFF_{\yA}\ln(\yFF_{\yA}/\yRR_{\yA})$
-is the relative entropy or discrimination information
+where $\re(\yF;\yR)\defd \sum_{\yA}\yFF_{\yA}\ln(\yFF_{\yA}/\yRR_{\yA})$ is
+the relative entropy or discrimination information
 \citep{kullback1987,jaynes1963,hobson1969,hobsonetal1973}, $\yR$ is the
 reference distribution, and $\yL$ a positive parameter. The approximate
-equality (obtained through Stirling's approximation) shows that this prior
-belief is proportional to the number of ways in which the distribution $\yF$
-can be realized in $L$ time bins. The parameter $L$ roughly quantifies how
-many time bins our data set must have to affect our initial belief.
+equality (obtained through Stirling's approximation), where the large
+parentheses denote a multinomial coefficient, shows that this prior belief
+is proportional to the number of ways in which the distribution $\yF$ can
+be realized in $L$ time bins. The parameter $L$ roughly quantifies how many
+time bins our data set must have to affect our initial belief. The
+maximum-entropy approximation is valid when $L$ is large, but small
+compared to the sharpness of the constraints on $\yF$; in our case this
+means $\yL \approx 10$, give or take an order of magnitude.
+
+We could obviously consider pre-data beliefs different
+from~\eqref{eq:entropic_prior}, for example one quantified by a Dirichlet
+distribution (which is equivalent to the above but with $\yF$ and $\yR$
+switched), or a uniform distribution in $\yF$-space. Would these lead to
+markedly different post-data beliefs? A full-fledged probabilistic analysis
+shows that the three typical features listed above still appear with these
+different initial beliefs. They are therefore robust.
 
 
 
@@ -1458,12 +1472,134 @@ this kind of sufficiency questions.
 
 
 
+%%\setlength{\intextsep}{0.5ex}% with wrapfigure
+%\begin{figure}[p!]%{r}{0.4\linewidth} % with wrapfigure
+%  \centering\includegraphics[trim={12ex 0 18ex 0},clip,width=\linewidth]{maxent_saddle.png}\\
+%\caption{caption}\label{fig:comparison_a5}
+%\end{figure}% exp_family_maxent.nb
 
-These results caution us against taking maximum-entropy solutions too
-literally. The full probabilistic analysis allows us to see more clearly
-the extent of our uncertainty and to make better-informed guesses.
 
-\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Acknowledgements
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{acknowledgements}
+  This work is financially supported by the Kavli Foundation and the Centre
+  of Excellence scheme of the  Research Council of Norway (Yasser Roudi group).\\
+  PGLPM thanks Mari, Miri, \amp\ Emma for continuous encouragement and
+  affection; Buster Keaton and Saitama for filling life with awe and
+  inspiration; the developers and maintainers of \LaTeX, Emacs, AUC\TeX,
+  Open Science Framework, Python, Inkscape, Sci-Hub for making a free and
+  unfiltered scientific exchange possible.
+%\rotatebox{15}{P}\rotatebox{5}{I}\rotatebox{-10}{P}\rotatebox{10}{\reflectbox{P}}\rotatebox{-5}{O}.
+%\sourceatright{\autanet}
+\end{acknowledgements}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Appendices
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%\clearpage
+% %\renewcommand*{\appendixpagename}{Appendix}
+% %\renewcommand*{\appendixname}{Appendix}
+% %\appendixpage
+% \appendix
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\defbibnote{prenote}{{\footnotesize (\enquote{de $X$} is listed under D,
+    \enquote{van $X$} under V, and so on, regardless of national
+    conventions.)\par}}
+% \defbibnote{postnote}{\par\medskip\noindent{\footnotesize% Note:
+%     \arxivp \mparcp \philscip \biorxivp}}
+
+\printbibliography[prenote=prenote%,postnote=postnote
+]
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Cut text (won't be compiled)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+When political elections are approaching, mass media are constantly
+bubbling with results and discussions of pre-election polls. Why do we
+conduct pre-election polls and other kinds of survey sampling? The
+simplest, intuitive answer is \enquote{because they give us an idea of what
+  the final election outcomes will be}. Can this answer be made more
+quantitative?
+
+Yes. In the simplest cases, the probability calculus give us simple and
+precise quantitative relations between our expectations about a network
+-- of voters, for instance -- and about a sample thereof. Suppose there are
+$N$ voters, $S$ of which prefer one political candidate and $N-S$ of which
+prefer another. We don't know $S$ or $N-S$. Now take a sample of $n$
+voters, in such a way that we can assume that every set of $n$ voters is
+equally likely to be sampled. In this sample, $s$ voters prefer the first
+candidate, and $n-s$ the second. The probability calculus tells us that our
+expectations of $s/n$ and $S/N$ are equal:
+\begin{equation}\label{eq:poll_equal_expectations}
+  \E(s/n \| \yH) = \E(S/N \| \yH),
+\end{equation}
+where $\yH$ represents our state of knowledge in this example. A more
+precise answer to our original question then is: \enquote{because we
+  \emph{expect} -- in the full probabilistic sense -- to see the same
+  proportion of political preferences in a sample as in the full
+  network}.
+
+The exact equality above extends to other quantities beyond the means $S/N$
+and $s/n$: it holds for all normalized \emph{factorial} moments
+\citep{potts1953,broca2005}[\sect~A]{portamanaetal2015}. These expectation
+equalities follow from a precise relation between our \dobs\ about the
+polled voters and about all voters. The relations above are powerful
+because they hold no matter what the probability distribution $\pf(S\|\yH)$
+may be.
+
+\bigskip
+
+These probabilistic properties are of outstanding importance in
+neuroscience, where we try to understand the workings of brain areas that
+may include tens of thousands of neurons, but we can record only few tens
+or hundreds of them. Whenever we record the activity of $n$ neurons we're
+effectively polling them on the activity of all $N$ neurons under the
+recording device -- those that could equally likely have been sampled
+instead. Suppose the recorded activities are time-binned and binarized. At
+every time bin $t$, $s(t)$ out of the $n$ neurons \enquote{vote} for
+activity, and $n-s(t)$ vote for silence. The probability calculus tells us
+that expectation equalities such as~\eqref{eq:poll_equal_expectations} hold
+for the total activity $S(t)$ of the full network of $N$ neurons that
+could have been recorded. 
+
+Expectation properties are especially important for the maximum-entropy
+method, which is used for various purposes in the neuroscientific
+literature. This method is typically applied constraining the equality of
+expectations and empirical averages. Expectation equalities such
+as~\eqref{eq:poll_equal_expectations} then have a far-reaching consequence:
+\emph{from empirical statistics of the activity of a \textbf{sample} of
+  neurons we can construct maximum-entropy distributions for the total
+  activity of the \textbf{full network} of neurons that could have been
+  sampled by the recording device}.
+
+
+
+% In the present work we show how to use the maximum-entropy method to assign
+% a probability distribution for the total activity at a new time bin of a
+% network of neurons, \emph{most of which can be unrecorded}, given
+% specific statistics about the activity of a recorded \emph{sample} of the
+% full network. This kind of probability assignment is extremely important
+% in neuroscience: we try to understand the workings of brain areas that may
+% include tens of thousands of neurons, but we can record only few tens or
+% hundreds of them.
+
+% Our approach also corrects a slight misuse of the maximum-entropy method
+% as sometimes appears in the literature. When this method is applied to a
+% set of neurons, it implicitly assumes that the set is completely isolated
+% from other neurons. We'll reveal this implicit assumption in several ways.
+% The probability distribution thus constructed is therefore affected by this
+% hidden assumption. We'll study in which circumstances the application of
+% the method at the sample level and at the full-network level give
+% similar or different probabilities.
+
+
 \hrule
 OLD TEXT
 \hrule
@@ -2507,136 +2643,6 @@ model down to the sample level and the original sample level model.
 
 \hrule
 \bigskip
-
-
-%%\setlength{\intextsep}{0.5ex}% with wrapfigure
-%\begin{figure}[p!]%{r}{0.4\linewidth} % with wrapfigure
-%  \centering\includegraphics[trim={12ex 0 18ex 0},clip,width=\linewidth]{maxent_saddle.png}\\
-%\caption{caption}\label{fig:comparison_a5}
-%\end{figure}% exp_family_maxent.nb
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Acknowledgements
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\iffalse
-\begin{acknowledgements}
-  PGLPM thanks Mari, Miri, \amp\ Emma for continuous encouragement and
-  affection; Buster Keaton and Saitama for filling life with awe and
-  inspiration; the developers and maintainers of \LaTeX, Emacs, AUC\TeX,
-  Open Science Framework, Python, Inkscape, Sci-Hub for making a free and
-  unfiltered scientific exchange possible.
-%\rotatebox{15}{P}\rotatebox{5}{I}\rotatebox{-10}{P}\rotatebox{10}{\reflectbox{P}}\rotatebox{-5}{O}.
-\sourceatright{\autanet}
-\end{acknowledgements}
-\fi
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Appendices
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\clearpage
-% %\renewcommand*{\appendixpagename}{Appendix}
-% %\renewcommand*{\appendixname}{Appendix}
-% %\appendixpage
-% \appendix
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Bibliography
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\defbibnote{prenote}{{\footnotesize (\enquote{de $X$} is listed under D,
-    \enquote{van $X$} under V, and so on, regardless of national
-    conventions.)\par}}
-% \defbibnote{postnote}{\par\medskip\noindent{\footnotesize% Note:
-%     \arxivp \mparcp \philscip \biorxivp}}
-
-\printbibliography[prenote=prenote%,postnote=postnote
-]
-
-\end{document}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Cut text (won't be compiled)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-
-When political elections are approaching, mass media are constantly
-bubbling with results and discussions of pre-election polls. Why do we
-conduct pre-election polls and other kinds of survey sampling? The
-simplest, intuitive answer is \enquote{because they give us an idea of what
-  the final election outcomes will be}. Can this answer be made more
-quantitative?
-
-Yes. In the simplest cases, the probability calculus give us simple and
-precise quantitative relations between our expectations about a network
--- of voters, for instance -- and about a sample thereof. Suppose there are
-$N$ voters, $S$ of which prefer one political candidate and $N-S$ of which
-prefer another. We don't know $S$ or $N-S$. Now take a sample of $n$
-voters, in such a way that we can assume that every set of $n$ voters is
-equally likely to be sampled. In this sample, $s$ voters prefer the first
-candidate, and $n-s$ the second. The probability calculus tells us that our
-expectations of $s/n$ and $S/N$ are equal:
-\begin{equation}\label{eq:poll_equal_expectations}
-  \E(s/n \| \yH) = \E(S/N \| \yH),
-\end{equation}
-where $\yH$ represents our state of knowledge in this example. A more
-precise answer to our original question then is: \enquote{because we
-  \emph{expect} -- in the full probabilistic sense -- to see the same
-  proportion of political preferences in a sample as in the full
-  network}.
-
-The exact equality above extends to other quantities beyond the means $S/N$
-and $s/n$: it holds for all normalized \emph{factorial} moments
-\citep{potts1953,broca2005}[\sect~A]{portamanaetal2015}. These expectation
-equalities follow from a precise relation between our \dobs\ about the
-polled voters and about all voters. The relations above are powerful
-because they hold no matter what the probability distribution $\pf(S\|\yH)$
-may be.
-
-\bigskip
-
-These probabilistic properties are of outstanding importance in
-neuroscience, where we try to understand the workings of brain areas that
-may include tens of thousands of neurons, but we can record only few tens
-or hundreds of them. Whenever we record the activity of $n$ neurons we're
-effectively polling them on the activity of all $N$ neurons under the
-recording device -- those that could equally likely have been sampled
-instead. Suppose the recorded activities are time-binned and binarized. At
-every time bin $t$, $s(t)$ out of the $n$ neurons \enquote{vote} for
-activity, and $n-s(t)$ vote for silence. The probability calculus tells us
-that expectation equalities such as~\eqref{eq:poll_equal_expectations} hold
-for the total activity $S(t)$ of the full network of $N$ neurons that
-could have been recorded. 
-
-Expectation properties are especially important for the maximum-entropy
-method, which is used for various purposes in the neuroscientific
-literature. This method is typically applied constraining the equality of
-expectations and empirical averages. Expectation equalities such
-as~\eqref{eq:poll_equal_expectations} then have a far-reaching consequence:
-\emph{from empirical statistics of the activity of a \textbf{sample} of
-  neurons we can construct maximum-entropy distributions for the total
-  activity of the \textbf{full network} of neurons that could have been
-  sampled by the recording device}.
-
-
-
-% In the present work we show how to use the maximum-entropy method to assign
-% a probability distribution for the total activity at a new time bin of a
-% network of neurons, \emph{most of which can be unrecorded}, given
-% specific statistics about the activity of a recorded \emph{sample} of the
-% full network. This kind of probability assignment is extremely important
-% in neuroscience: we try to understand the workings of brain areas that may
-% include tens of thousands of neurons, but we can record only few tens or
-% hundreds of them.
-
-% Our approach also corrects a slight misuse of the maximum-entropy method
-% as sometimes appears in the literature. When this method is applied to a
-% set of neurons, it implicitly assumes that the set is completely isolated
-% from other neurons. We'll reveal this implicit assumption in several ways.
-% The probability distribution thus constructed is therefore affected by this
-% hidden assumption. We'll study in which circumstances the application of
-% the method at the sample level and at the full-network level give
-% similar or different probabilities.
-
-
 
 %%% Local Variables: 
 %%% mode: LaTeX

@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-07-21T17:05:52+0200
+%% Last-Updated: 2019-07-22T11:30:14+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1208,32 +1208,33 @@ full-network application.
 \label{sec:marginalization}
 
 In the neurosciences the maximum-entropy method is often applied to
-questions of sufficient statistics. In this section we discuss how our
-proposed application bears on this kind of questions. For concreteness we
-use an example with specific statistics: first and second moments
-(equivalent to mean and correlations), versus first-to-fourth moments. But
-our discussion holds for any  sets of statistics.
+questions of sufficient statistics; for example: do pairwise correlations
+in the neuronal activity provide the same information as the full frequency
+distribution of activities? In this section we discuss how our proposed
+application bears on this kind of questions. % For concreteness we use an
+% example with specific statistics: first and second moments (equivalent to
+% mean and correlations), versus first-to-fourth moments. But our discussion
+% holds for any sets of statistics.
 
-The question is as follows. We want to assess our degree of belief about
-the frequencies of the activities of the sample, or about the sample
-activity in a new time bin. For this assessment we should use all measured
-data we have. But it sometimes happens that dropping part of the data --
-for example, the measured third- and higher-order moments -- leaves our
-assessment almost unchanged: the dropped data are \emph{informationally
-  irrelevant}, or almost so. The remaining data -- for example, first and
-second moments -- are \emph{informationally sufficient}. This informational
-quasi-sufficiency is interesting because it may hint at peculiar biological
-or physical mechanisms or dependencies.
+Let's make the question more precise first. We want to assess our degree of
+belief about the frequencies of the activities of the sample, or about the
+activity of the sample in a new time bin. For this assessment we should use
+all measured data we have. But it sometimes happens that dropping part of
+the data -- for example, the measured third- and higher-order moments --
+leaves our assessment almost unchanged: the dropped data are
+\emph{informationally irrelevant}, or almost so. The remaining data -- for
+example, first and second moments -- are then \emph{informationally
+  sufficient}. This informational quasi-sufficiency is interesting because
+it may hint at peculiar biological  mechanisms or dependencies.
 
-We can approximately check how much some data are irrelevant by simply
-dropping them from the conditional of our degree of belief, and see if the
-latter changes appreciably. When our degree of belief is built with the
-maximum-entropy method, we simply drop some of the data used as constraints
-and see how the resulting distribution changes. For example, we may only
-retain the first two moments (means and correlations) or the first four
-moments. In the neurosciences this check is often done with maximum-entropy
-distributions constructed \emph{for the sample}, ignoring the full network
-it's sampled from.
+We can approximately check how much a part of the data is irrelevant by
+simply dropping it from the conditional of our degree of belief, and see
+if the latter changes appreciably. When our degree of belief is built with
+the maximum-entropy method, we simply drop part of the data used as
+constraints and see how the resulting distribution changes. For example, we
+may only retain the first two moments (means and correlations) or the first
+four moments.
+
 
 
 % For example: does knowledge about
@@ -1248,19 +1249,21 @@ it's sampled from.
 % frequency distribution. This recipe generalizes to any subsets of measured
 % statistics, of course.
 
-The method introduced in the present work reveals an issue with this
-application at the sample level, however. The issue doesn't come from the method
-itself but from a general fact of probability theory. If a probability
-distribution has some sufficient statistics
+In the neurosciences this check is often done with maximum-entropy
+distributions constructed \emph{for the sample}, ignoring the full network
+it's sampled from. The method introduced in the present work, however,
+reveals an issue with this application at the sample level. The issue
+doesn't come from the method itself but from a general fact of probability
+theory. If a probability distribution has some sufficient statistics
 \citep[\sect~4.5]{bernardoetal1994}{fortinietal2000}, then its marginals
 \emph{cannot} have the same sufficient statistics, and vice versa, except
 for trivial cases such as uniform distributions. This generally also holds
 among different marginals: if a marginal has some sufficient statistics,
 another won't have it. This impossibility is known in statistical
 mechanics: marginals of Gibbs states aren't Gibbs states
-\citep{maesetal1999}. Mathematically it corresponds to the general
-impossibility of solving a system of $n$ equations in $m$ unknowns when
-$n>m$ \citep[\sect~3.1]{portamanaetal2015}[\sect~3]{portamanaetal2018b}.
+\citep{maesetal1999}. Mathematically this impossibility translates into a
+system of $n$ independent equations in $m$ unknowns with $n>m$
+\citep[\sect~3.1]{portamanaetal2015}[\sect~3]{portamanaetal2018b}.
 
 In our example this means that if means and pairwise correlations or the
 first four moments are informationally sufficient for a particular sample
@@ -1270,9 +1273,9 @@ we assume that they are informationally sufficient for the full network,
 then we must expect them \emph{not} to be sufficient for any recorded
 sample thereof. Now, questions about sufficient statistics are meant to be
 addressed to a whole brain area, not just to some specific, casually
-recorded sample. Thus, paradoxically, maximum-entropy methods applied at
-the sample level give an answer opposite to the one we might think they're
-giving.
+recorded sample. Thus, paradoxically, maximum-entropy methods applied
+\emph{at the sample level} give an answer opposite to the one we might
+think they're giving.
 
 Questions about informational sufficiency are therefore correctly addressed
 by applying the maximum-entropy method at the full-network level. If a
@@ -1291,20 +1294,20 @@ desired, then the marginal distribution to the sample size should be used.
 But does the application at the full-network level lead to appreciably
 different results from that at the sample level? after all we're interested
 in an approximate informational sufficiency, not in an analytically exact
-one. A correct answer can only be given case by case;
-\fig~\ref{fig:comparisons_marginals} gives a graphical answer to this
+one. A correct answer can only be given case by case.
+Figure~\ref{fig:comparisons_marginals} gives a graphical answer to this
 question in the case of our first data set. The upper plot shows the
 maximum-entropy distributions for a full network of $10\,000$ neurons,
 constructed from two moments (\textcolor{mygreen}{\textbf{--~--~--}}) and
-from four moments (\textcolor{mypurpleblue}{\textbf{------}}). The lower plot
-shows the maximum-entropy distributions for the sample, from two moments
-(\textcolor{mygreen}{$\bm{\triangledown}$}) and from four moments
-(\textcolor{mypurpleblue}{$\bm{\square}$}), and the distributions obtained by
-marginalizing the full-network distribution to the sample size, from two
+from four moments (\textcolor{mypurpleblue}{\textbf{------}}). The lower
+plot shows the maximum-entropy distributions for the sample, from two
+moments (\textcolor{mygreen}{$\bm{\triangledown}$}) and from four moments
+(\textcolor{mypurpleblue}{$\bm{\square}$}), and the distributions obtained
+by marginalizing the full-network distribution to the sample size, from two
 moments (\textcolor{mygreen}{$\bm{\blacktriangledown}$}) and from four
-moments (\textcolor{mypurpleblue}{$\bm{\blacksquare}$}). The measured frequency
-distribution (\textcolor{myred}{\LARGE$\bm{\bullet}$}) is also shown. We
-note the following:
+moments (\textcolor{mypurpleblue}{$\bm{\blacksquare}$}). The measured
+frequency distribution (\textcolor{myred}{\LARGE$\bm{\bullet}$}) is also
+shown. We note the following:
 \begin{itemize}
 \item The application to the full-network (upper plot) leads to two
   completely different distributions (even different number of modes);
@@ -1374,19 +1377,68 @@ $\pxx(N)$ about $N$ and using this to marginalize $N$ out:
 But this would be overkill, owing to the qualitative character of the
 maximum-entropy distribution constructed with exact $N$.
 
+\section{Assumptions and limitations}
+\label{sec:assumptions}
 
+In the study or use of the frequency distribution obtained with the
+procedure here presented we must take into account two important points.
 
+The first point is that there are many possible frequency distributions
+which we believe, to different degrees, could be the true one that happened
+during the recording. The one given by our procedure is simply the one with
+the largest degree of belief, the mode of the belief distribution. The
+space of possible frequency distributions has many dimensions, however --
+thousands or tens of thousands. We must remember that belief distributions
+in high dimensions have counter-intuitive properties. For example, the mode
+or mean can have \emph{atypical} features when compared with the features
+of most other points of the space. The mode and mean can also be very
+different from each other.
 
+The question, then, is \emph{which features of the maximum-entropy
+  frequency distribution are typical of the majority of plausible frequency
+  distributions?} We can only answer for sure by using the full-fledged
+probability calculus. A more complete study (in preparation) with the first
+data set reveals that most of the plausible frequency distributions have
+these important features in common with the maximum-entropy one:
+\begin{itemize}
+\item all activities $\yA \lesssim 0.05\%$ have practically zero frequencies;
+\item there are two regions of activity levels with high frequencies,
+  roughly separated by a trough of lower frequencies. The frequencies of
+  the region on the left ($\yA \lesssim 0.018\%$) are higher than those of
+  the region on the right ($\yA \gtrsim 0.018\%$).
+\end{itemize}
+But there are also differences. For example, plausible frequency
+distributions may have three or four modes instead of just two; and these
+modes are higher than of the the maximum-entropy distribution.
 
-
-
-
-
-
+The second point is that our degrees of belief about the frequency
+distribution for the full network depend not only on the measured data in
+the sample, but also on our pre-data beliefs about the distribution. Which
+assumptions lie behind the maximum-entropy approximation?
 
 
 \section{Summary and discussion}
 \label{sec:summary_discussion}
+
+We have presented a procedure to construct the most plausible frequency
+distribution of population-averaged activities of a network of neurons,
+given the recording about a small sample thereof. This procedure combines
+the maximum-entropy method and basic identities from sampling theory. From
+the application to two real data sets we saw that the frequency
+distributions obtained with our procedure can have features very different
+from the one measured in the sample, such as multiple modes. This procedure
+can also be used with moment constraints of different order -- means,
+population-averaged pairwise correlations, or higher-order correlations --
+thus giving an approximate assessment of the informational sufficiency of
+specific subsets of moments. In fact, we saw that the application of
+maximum-entropy only at the sample level leads to misleading results about
+this kind of sufficiency questions.
+
+Let's
+
+
+
+
 
 These results caution us against taking maximum-entropy solutions too
 literally. The full probabilistic analysis allows us to see more clearly

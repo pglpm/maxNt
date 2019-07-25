@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-07-25T14:43:18+0200
+%% Last-Updated: 2019-07-25T15:46:11+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -694,8 +694,8 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\yk}{z}
 \newcommand*{\yK}{\zeta}
 %entropies
-\newcommand*{\re}{\textrm{H}}
-\newcommand*{\ybu}{H_{\text{B}}}
+\newcommand*{\re}{\Eta}
+\newcommand*{\ybu}{\re_{\text{B}}}
 
 \newcommand*{\yRR}{R}
 \newcommand*{\yR}{\bm{\yRR}}
@@ -816,8 +816,8 @@ a degree of reasonable belief -- that is, probability -- to every possible
 answer. The assessment of this distribution of belief involves experimental
 data, such as recordings of neuronal activity from specific brain areas,
 and pre-data knowledge about biological conditions and mechanisms. Our
-pre-data \dobs\ are often simplified and called \enquote{models} to be
-mathematically more tractable.
+pre-data \dobs\ are often simplified to be mathematically more tractable,
+and are therefore called \enquote{models}.
 
 Despite remarkable advances in recording technologies, the best
 experimental measurements of neuronal activity can still only record a very
@@ -845,16 +845,16 @@ and numerically tractable.
 
 The proposed model is based on the straightforward combination of the
 maximum-entropy method and basic sampling relations from the probability
-calculus. The maximum-entropy or minimum-relative-entropy method
-\citep{jaynes1957}[much clearer
+calculus, discussed in \sect~\ref{sec:model}. The maximum-entropy or
+minimum-relative-entropy method \citep{jaynes1957}[much clearer
 in][]{jaynes1963}{sivia1996_r2006,hobsonetal1973,jaynes1985b,grandy1980}
 has been used for different kinds of estimations of the neuronal activity
 of various brain areas and about other phenomena of importance to the
 neurosciences, for example gene and protein interaction \citep[for
 example][]{martignonetal1995,bohteetal2000,shlensetal2006,schneidmanetal2006,tkaciketal2006,mackeetal2009b,tkaciketal2009,roudietal2009c,barreiroetal2010,gerwinnetal2010,mackeetal2011b,ganmoretal2011,cohenetal2011,granotatedgietal2013,mackeetal2013,tkaciketal2014b,shimazakietal2015,moraetal2015,lezonetal2006,weigtetal2009}.
 
-We illustrate possible uses of our proposed model by applying it to two
-concrete data sets:
+We illustrate possible uses of our proposed model in
+\sect~\ref{sec:application}, by applying it to two concrete data sets:
 \begin{enumerate*}[label=(\alph*)]
 \item the activity of 65 neurons recorded for 20 min from a rat's Medial
   Entorhinal Cortex \citep{stensolaetal2012}, \item the activity of 159
@@ -885,26 +885,45 @@ of the sample data, for example time averages and second-order
 correlations, is sufficient for quantifying our \dob\ about some aspects of
 the neuronal activity of the sample. This use of maximum-entropy at the
 sample level, however, has an important issue. We discuss this issue and
-explain how our approach bypasses it. Moreover, our proposed model gives
-clearer answers to questions of correlation sufficiency: we show this by
-applying it to the two data set above addressing an example question of
-sufficiency: two moments versus four moments.
+explain how our approach bypasses it in \sect~\ref{sec:marginalization}.
+Moreover, our proposed model gives clearer answers to questions of
+correlation sufficiency: we show this by applying it to the two data set
+above addressing an example question of sufficiency, two moments versus
+four moments.
+
+We obviously don't know whether the frequency distribution obtained with
+our approach is the \emph{actual} one which the activity levels of the full
+network had during the recording; it's only the most plausible. In high
+dimensions, however, the features of the most plausible distribution may
+\emph{not} be typical of the majority of most plausible distributions; and
+the set of all possible frequency distributions, if the full network for
+example comprises 1\,000 neurons, is a 1\,000-dimensional space. In
+\sect~\ref{sec:assumptions} we therefore try to assess which features of
+the frequency distribution delivered by our method may be typical and
+therefore expected of the actual one. We find that general features such as
+the bimodality of the first data set are indeed typical. Maximum-entropy
+models can be considered as approximations of Bayesian models based on
+various assumptions of inferential sufficiency
+\citep{jaynes1986d_r1996,portamana2017}. How do our guesses change if we
+modify our pre-data assumptions? We show, in the same section, that the
+typical features indicated by our method are robust against such changes.
+
+\medskip
 
 
 
 
-Maximum-entropy models can be
-considered as approximations of Bayesian models based on various
-assumptions of inferential sufficiency
-\citep{jaynes1986d_r1996,portamana2017}.
+
+
+% (for a full network of 1\,000 neurons and
+% a recording of 500\,000 time bins, for example, there are
+% $\binom{500\,000+1\,000}{1\,000} \approx 10^{3\,131}$ possible frequency
+% distributions).
+
 % Later on we'll show that our \dobs\ can be quantified by
 % exclusively using the probability calculus. This derivation will provide a
 % more accurate quantification, revealing that the maximum-entropy answer is
 % only a first approximation.
-
-We also apply the model to the question of informational sufficiency of
-lower-order moments
-
 
 
 \mynote{Say something more about advantages of such question/answer: for

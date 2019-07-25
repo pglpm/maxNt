@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-07-25T13:53:17+0200
+%% Last-Updated: 2019-07-25T14:43:18+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -852,17 +852,6 @@ has been used for different kinds of estimations of the neuronal activity
 of various brain areas and about other phenomena of importance to the
 neurosciences, for example gene and protein interaction \citep[for
 example][]{martignonetal1995,bohteetal2000,shlensetal2006,schneidmanetal2006,tkaciketal2006,mackeetal2009b,tkaciketal2009,roudietal2009c,barreiroetal2010,gerwinnetal2010,mackeetal2011b,ganmoretal2011,cohenetal2011,granotatedgietal2013,mackeetal2013,tkaciketal2014b,shimazakietal2015,moraetal2015,lezonetal2006,weigtetal2009}.
-This method has often been used to test whether a smaller part of the data,
-for example time averages and second-order correlations, is sufficient for
-quantifying our \dob\ about some aspects of the neuronal activity. We'll
-consider this particular application also for our proposed model.
-Maximum-entropy models can be considered as approximations of Bayesian
-models based on various assumptions of inferential sufficiency
-\citep{jaynes1986d_r1996,portamana2017}.
-% Later on we'll show that our \dobs\ can be quantified by
-% exclusively using the probability calculus. This derivation will provide a
-% more accurate quantification, revealing that the maximum-entropy answer is
-% only a first approximation.
 
 We illustrate possible uses of our proposed model by applying it to two
 concrete data sets:
@@ -873,7 +862,7 @@ concrete data sets:
   \citep{rostamietal2016_r2017}.
 \end{enumerate*}
 For each data set the model gives the most plausible frequency distribution
-with which all levels of total activity of a larger network of thousands of
+with which all levels of total activity of a larger network of 1\,000--10\,000
 neurons appeared during the recording. These guessed frequency
 distributions are distinctly different from the recorded ones for the
 sampled neurons. For the first data set, for example, the frequency
@@ -885,7 +874,36 @@ sample is monotonically decreasing with its maximum at zero activity. The
 frequency distribution for the second data set doesn't have two modes but
 still presents one prominent shoulder in its low-activity mode. Note that
 these guessed features of the full network cannot be inferred by the
-application of maximum-entropy \emph{to the sample alone}.
+application of maximum-entropy \emph{to the sample alone}. Although we don't
+formulate any hypotheses on why the larger network could have two distinct
+low-activity regimes -- the purpose of the present work is only
+methodological -- these results shows that the proposed method can lead to
+the formulation or preliminary assessment of interesting hypotheses.
+
+Maximum-entropy models have often been used to test whether a smaller part
+of the sample data, for example time averages and second-order
+correlations, is sufficient for quantifying our \dob\ about some aspects of
+the neuronal activity of the sample. This use of maximum-entropy at the
+sample level, however, has an important issue. We discuss this issue and
+explain how our approach bypasses it. Moreover, our proposed model gives
+clearer answers to questions of correlation sufficiency: we show this by
+applying it to the two data set above addressing an example question of
+sufficiency: two moments versus four moments.
+
+
+
+
+Maximum-entropy models can be
+considered as approximations of Bayesian models based on various
+assumptions of inferential sufficiency
+\citep{jaynes1986d_r1996,portamana2017}.
+% Later on we'll show that our \dobs\ can be quantified by
+% exclusively using the probability calculus. This derivation will provide a
+% more accurate quantification, revealing that the maximum-entropy answer is
+% only a first approximation.
+
+We also apply the model to the question of informational sufficiency of
+lower-order moments
 
 
 

@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-07-22T13:43:19+0200
+%% Last-Updated: 2019-07-25T11:36:58+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -811,11 +811,13 @@ range over all its mathematically possible values, or only over a
 subset thereof? 
 
 Answering this kind of questions always engages an element of uncertainty.
-Our answers therefore involve experimental data, such as neuronal
-recordings from specific brain areas, and probabilities or \dobs, based on
-prior knowledge, about biological conditions and mechanisms that cannot be
-experimentally ascertained. Such \dobs\ are often formulated as simplified
-\enquote{models} to be mathematically more tractable.
+We can't say \enquote{the answer is such and such}, but can at best assign
+a degree of reasonable belief -- that is, probability -- to every possible
+answer. The assessment of this distribution of belief involves experimental
+data, such as recordings of neuronal activity from specific brain areas,
+and pre-data knowledge about biological conditions and mechanisms. Our
+pre-data \dobs\ are often simplified and called \enquote{models} to be
+mathematically more tractable.
 
 Despite remarkable advances in recording technologies, the best
 experimental measurements of neuronal activity can still only record a very
@@ -825,22 +827,52 @@ such samples only, somehow neglecting, in their assumptions, that the
 recorded neurons are a sample from a larger network. This kind of isolation
 assumptions sometimes escape attention, being subtly hidden in the
 mathematics. Some probabilistic models try to take also unrecorded neurons
-into account, but become very complex in doing so.
+into account individually, and therefore become very complex\mynote{refs}.
+It would be useful to have models that operate in between: addressing the
+larger brain area where a sample comes from, but without adding too much
+complexity and detail about it. Such intermediate models would be useful,
+for example, for preliminary investigations, to help us to decide which
+hypotheses to discard and which to consider for more complex and costly
+studies.
 
-In the present work we give an answer to this question: How much can the
-total activity of a large neuronal network be, if we have observed the
-activity of a very small sample thereof? We'll quantify our \dobs\ about
-the possible answers by combining, in a straightforward way, the
-maximum-entropy method and basic sampling relations of the probability
-calculus. Later on we'll show that our \dobs\ can be quantified by
-exclusively using the probability calculus. This derivation will provide a
-more accurate quantification, revealing that the maximum-entropy answer is
-only a first approximation.
+In the present work we propose such an intermediate model. It answers this
+question: How much can the \emph{total} activity of a large neuronal
+network be, if we have observed the activity of a very small sample
+thereof? This model addresses a larger brain area, avoiding the assumption
+of isolation of the sample. And by focusing on the total activity, rather
+than the activity of individual neurons, it remains simple and numerically
+tractable.
 
-We apply our approach to two concrete data sets: the activity of 65 neurons
-recorded from a rat's Medial Entorhinal Cortex \mynote{ref}, and the
-activity of 159 neurons recorded from a macaque's Motor Cortex
-\mynote{ref}\mynote{add recording length}. In the first data set, the most
+The proposed model is based on the straightforward combination of the
+maximum-entropy method and basic sampling relations from the probability
+calculus. The maximum-entropy or minimum-relative-entropy method
+\citep{jaynes1957}[much clearer
+in][]{jaynes1963}{sivia1996_r2006,hobsonetal1973,jaynes1985b,grandy1980}
+has been used for different kinds of estimations of the neuronal activity
+of various brain areas and about other phenomena of importance to the
+neurosciences, for example gene and protein interaction \citep[for
+example][]{martignonetal1995,bohteetal2000,shlensetal2006,schneidmanetal2006,tkaciketal2006,mackeetal2009b,tkaciketal2009,roudietal2009c,barreiroetal2010,gerwinnetal2010,mackeetal2011b,ganmoretal2011,cohenetal2011,granotatedgietal2013,mackeetal2013,tkaciketal2014b,shimazakietal2015,moraetal2015,lezonetal2006,weigtetal2009}.
+This method has often been used to test whether a smaller part of the data,
+for example time averages and second-order correlations, is sufficient for
+quantifying our \dob\ about some aspects of the neuronal activity. We'll
+consider this particular application also for our proposed model.
+Maximum-entropy models can be considered as approximations of Bayesian
+models based on various assumptions of inferential sufficiency
+\citep{jaynes1986d_r1996,portamana2017}.
+% Later on we'll show that our \dobs\ can be quantified by
+% exclusively using the probability calculus. This derivation will provide a
+% more accurate quantification, revealing that the maximum-entropy answer is
+% only a first approximation.
+
+We apply our proposed model to two concrete data sets:
+\begin{enumerate*}[label=(\alph*)]
+\item the activity of 65 neurons recorded from a rat's Medial Entorhinal
+  Cortex \citep{stensolaetal2012}, \item the activity of 159 neurons
+  recorded from a macaque's Motor Cortex \citep{rostamietal2016_r2017}.
+\end{enumerate*}
+For each data set the model yields***
+
+In the first data set, the most
 interesting finding is that the most probable frequency distribution for
 the total activity of the full network has two very distinct modes, both at
 low activities, %($0.7\%$ and $2.6\%$ of simultaneously active neurons
@@ -858,18 +890,6 @@ the application of maximum-entropy \emph{to the sample alone}.
 \mynote{shall we give a
   two-sentence summary of the main idea here?}
 
-The maximum-entropy or minimum-relative-entropy method
-\citep{jaynes1957}[much clearer
-in][]{jaynes1963}{sivia1996_r2006,hobsonetal1973,jaynes1985b,grandy1980}
-has been used for different kinds of estimations of the neuronal activity
-of various brain areas and about other phenomena of importance to the
-neurosciences, for example gene and protein interaction \citep[for
-example][]{martignonetal1995,bohteetal2000,shlensetal2006,schneidmanetal2006,tkaciketal2006,mackeetal2009b,tkaciketal2009,roudietal2009c,barreiroetal2010,gerwinnetal2010,mackeetal2011b,ganmoretal2011,cohenetal2011,granotatedgietal2013,mackeetal2013,tkaciketal2014b,shimazakietal2015,moraetal2015,lezonetal2006,weigtetal2009}.
-This method is often used to test whether some statistics of the data, for
-example second-order time correlations, is sufficient for quantifying our
-\dob\ about some quantities of the system. It can be considered as an
-approximation of probabilistic models based on various assumptions of
-inferential sufficiency \citep{jaynes1986d_r1996,portamana2017}.
 
 \mynote{Say something more about advantages of such question/answer: for
   example we can make statements about total activity of brain area even

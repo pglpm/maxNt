@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-07-25T11:36:58+0200
+%% Last-Updated: 2019-07-25T13:53:17+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -829,7 +829,7 @@ assumptions sometimes escape attention, being subtly hidden in the
 mathematics. Some probabilistic models try to take also unrecorded neurons
 into account individually, and therefore become very complex\mynote{refs}.
 It would be useful to have models that operate in between: addressing the
-larger brain area where a sample comes from, but without adding too much
+larger brain area whence the sample comes, but without adding too much
 complexity and detail about it. Such intermediate models would be useful,
 for example, for preliminary investigations, to help us to decide which
 hypotheses to discard and which to consider for more complex and costly
@@ -837,11 +837,11 @@ studies.
 
 In the present work we propose such an intermediate model. It answers this
 question: How much can the \emph{total} activity of a large neuronal
-network be, if we have observed the activity of a very small sample
-thereof? This model addresses a larger brain area, avoiding the assumption
-of isolation of the sample. And by focusing on the total activity, rather
-than the activity of individual neurons, it remains simple and numerically
-tractable.
+network have been, given the observation of the activity of a very small
+sample thereof? This model addresses a larger brain area, avoiding the
+assumption of isolation of the sample; and by focusing on the total
+activity, rather than the activity of individual neurons, it remains simple
+and numerically tractable.
 
 The proposed model is based on the straightforward combination of the
 maximum-entropy method and basic sampling relations from the probability
@@ -864,31 +864,29 @@ models based on various assumptions of inferential sufficiency
 % more accurate quantification, revealing that the maximum-entropy answer is
 % only a first approximation.
 
-We apply our proposed model to two concrete data sets:
+We illustrate possible uses of our proposed model by applying it to two
+concrete data sets:
 \begin{enumerate*}[label=(\alph*)]
-\item the activity of 65 neurons recorded from a rat's Medial Entorhinal
-  Cortex \citep{stensolaetal2012}, \item the activity of 159 neurons
-  recorded from a macaque's Motor Cortex \citep{rostamietal2016_r2017}.
+\item the activity of 65 neurons recorded for 20 min from a rat's Medial
+  Entorhinal Cortex \citep{stensolaetal2012}, \item the activity of 159
+  neurons recorded for 15 min from a macaque's Motor Cortex
+  \citep{rostamietal2016_r2017}.
 \end{enumerate*}
-For each data set the model yields***
-
-In the first data set, the most
-interesting finding is that the most probable frequency distribution for
-the total activity of the full network has two very distinct modes, both at
-low activities, %($0.7\%$ and $2.6\%$ of simultaneously active neurons
+For each data set the model gives the most plausible frequency distribution
+with which all levels of total activity of a larger network of thousands of
+neurons appeared during the recording. These guessed frequency
+distributions are distinctly different from the recorded ones for the
+sampled neurons. For the first data set, for example, the frequency
+distribution for the full network has two very distinct modes, both at low
+activities, %($0.7\%$ and $2.6\%$ of simultaneously active neurons
 % within $3\;\mathrm{ms}$,
-see \fig~\ref{fig:plots_6mom}. The analogous frequency distribution for the
-second data set doesn't have two modes but still presents one prominent
-shoulder in its one low-activity mode. Note that these guessed features of
-the full network aren't observed in the sample, nor can they be inferred by
-the application of maximum-entropy \emph{to the sample alone}.
-\mynote{Monte Carlo sampling: say something about the deviation from the
-  most probable frequency distribution}
+see \fig~\ref{fig:plots_6mom}, whereas the frequency distribution for the
+sample is monotonically decreasing with its maximum at zero activity. The
+frequency distribution for the second data set doesn't have two modes but
+still presents one prominent shoulder in its low-activity mode. Note that
+these guessed features of the full network cannot be inferred by the
+application of maximum-entropy \emph{to the sample alone}.
 
-
-
-\mynote{shall we give a
-  two-sentence summary of the main idea here?}
 
 
 \mynote{Say something more about advantages of such question/answer: for

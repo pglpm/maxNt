@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-08-28T14:10:52+0200
+%% Last-Updated: 2019-11-13T16:55:17+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -821,30 +821,45 @@ pre-data \dobs\ are often simplified to be mathematically more tractable,
 and are therefore called \enquote{models}.
 
 Despite remarkable advances in recording technologies, the best
-experimental measurements of neuronal activity can still only record a very
-small sample of neurons compared to the numbers that constitute a
-functionally distinguished brain region. Many probabilistic models focus on
-such samples only, somehow neglecting, in their assumptions, that the
-recorded neurons are a sample from a larger network. This kind of isolation
-assumptions sometimes escape attention, being subtly hidden in the
-mathematics. Some probabilistic models try to take also unrecorded neurons
-into account individually, and therefore become very complex\mynote{refs}.
-It would be useful to have models that operate in between: addressing the
-larger brain area whence the sample comes, but without adding too much
-complexity and detail about it. Such intermediate models would be useful,
-for example, for preliminary investigations, to help us to decide which
-hypotheses to discard and which to consider for more complex and costly
-studies.
+experimental measurements of instantaneous neuronal activity can still only
+record a very small sample of neurons -- hundreds at most -- compared to
+the numbers that constitute a functionally distinguished brain region. Many
+probabilistic models focus on such samples only, somehow neglecting, in
+their assumptions, that the recorded neurons are a sample from a larger
+network. This kind of isolation assumptions sometimes escape attention,
+being subtly hidden in the mathematics. Some probabilistic models try to
+take also unrecorded neurons into account individually, and therefore
+become very complex\mynote{Yasser \amp\ Vahid: refs for here?}. It would be
+useful to have models that operate in between: addressing the larger brain
+area whence the sample comes, but without adding too much complexity and
+detail about it. Such intermediate models would be useful, for example, for
+preliminary investigations, to help us to decide which hypotheses to
+discard and which to consider for more complex and costly studies.
 
+\mynote{[Yasser:] In the present work we aim to address the issue of building probability distributions over a large network using recording from subnetworks by considering the distribution of total population activity as an example. [}
 In the present work we propose such an intermediate model. It answers this
-question: How much can the \emph{total} activity of a large neuronal
+question:\mynote{]} How much can the \emph{total} activity of a large neuronal
 network have been, given the observation of the activity of a very small
 sample thereof? This model addresses a larger brain area, avoiding the
 assumption of isolation of the sample; and by focusing on the total
 activity, rather than the activity of individual neurons, it remains simple
 and numerically tractable.
 
-The proposed model is based on the straightforward combination of the
+We want to stress the usefulness of making a quantified guess about the
+activity of a larger brain area. Such a guess seems indeed to be the
+primary idea behind recording a sample from that area. %  Second, it allows us
+% to make comparisons across experimental sessions; such comparisons would me
+% difficult or meaningless if made with the recorded samples, which generally
+% comprise non-overlapping sets of neurons and differ in size.
+There's also an important methodological reason: the question whether
+correlations of some order are informationally sufficient cannot be
+properly assessed at the sample level. When the difference in size between
+sample and full network is too large, correlation sufficiency for the
+sample implies the \emph{lack} of correlation sufficiency for the larger
+network, and vice versa. This point is explained in detail in
+\sect~\ref{sec:marginalization}.
+
+The model we propose is based on the straightforward combination of the
 maximum-entropy method and basic sampling relations from the probability
 calculus, discussed in \sect~\ref{sec:model}. The maximum-entropy or
 minimum-relative-entropy method \citep{jaynes1957}[much clearer
@@ -939,14 +954,14 @@ for \enquote{\dob}.
 % only a first approximation.
 
 
-\mynote{Say something more about advantages of such question/answer: for
-  example we can make statements about total activity of brain area even
-  across recordings when sampled neurons aren't the same.}
+% \mynote{Say something more about advantages of such question/answer: for
+%   example we can make statements about total activity of brain area even
+%   across recordings when sampled neurons aren't the same.}
 
-\mynote{Add this?: from sampling theory we know that important
-  features of the full network may not be visible in a sample because
-  smoothed out. But using sampling theory in the inverse direction we can
-  infer such full-network features from the sample.}
+% \mynote{Add this?: from sampling theory we know that important
+%   features of the full network may not be visible in a sample because
+%   smoothed out. But using sampling theory in the inverse direction we can
+%   infer such full-network features from the sample.}
 
 % \mynote{To be continued after structure of the rest of the article is
 %   clear. Orig intro is on p.~\pageref{orig_intro}}
@@ -968,55 +983,42 @@ $t$: this is the \emph{total activity} of the sample, or just
 $\ya_{t}=0$, no neuron spikes during bin $t$; if $\ya_{t}=n$, all spike at
 some point during bin $t$. For brevity, let's say \enquote{at $t$} for
 \enquote{during time bin $t$}. If we divide the total activity by the
-population size, $\ya/n \in \set{0,1/n,\dotsc,1}$ we have the normalized
-total activity or population-averaged activity. From the activities
-$\set{\ya_{t}}$ we can count how often the activity levels $\ya=0$,
-$\ya=1$, and so on appeared during the recording, obtaining the
-distribution of measured relative frequencies $(\yff_{\ya}) \defs \yf$. We
-can also consider the sample activity at time bins \emph{outside} of the
-recorded range. Such activity is unknown to us, of course.
+population size we have the normalized total activity or
+population-averaged activity $\ya/n$, ranging from $0$ to $1$ in $1/n$
+steps. From the activities $\set{\ya_{t}}$ we can count how often the
+activity levels $\ya=0$, $\ya=1$, and so on appeared during the recording,
+obtaining the distribution of measured relative frequencies
+$(\yff_{\ya}) \defs \yf$. We can also consider the sample activity at time
+bins \emph{outside} of the recorded period. Such activity is unknown to us,
+of course.
 
-\mynote{maybe move this paragraph to the intro?}Present-day technologies
-enable the recording of neuronal activity from small brain areas \mynote{be
-  more specific}. For many animal species, the neurons that are recorded
-within the area are not -- and at present cannot be -- specifically chosen
-from among the rest, owing to several limiting factors; for example,
-limitations in how precisely electrodes are inserted or neurons are
-targeted by viruses. In fact, the set of recorded neurons may even change
-during very long recordings or across experimental sessions. We assume that
-there's an area, comprising a network of $N$ neurons, for which we believe
-that any other sample of size $n$ could have equally plausibly been
-recorded instead of the sample of $n$ neurons that was actually recorded.
-This is our \enquote{full network}.\mynote{how about calling it
-  \enquote{the pool}?} The total activity of these $N$ neurons at $t$ is
-$\yA_{t}$. The relative frequencies of the various activity levels during
-the recording were $(\yFF_{\yA}) \defs \yF$. We don't know the values
-$\yA_{t}$ at each $t$, or the frequency distribution $\yF$. We only know
-for certain that $\yA_{t} \in \set{0, 1, \dotsc, N}$ and that
-$\yA_{t} \ge \ya_{t}$ for obvious reasons. For the time being we assume
-that we know $N$; in \sect*** we discuss the consequences of our lack of
-precise knowledge about this number.
+
+For many animal species, the neurons that are recorded within a brain area
+are not specifically chosen from among the rest, owing to several limiting
+factors; for example, limitations in how precisely electrodes are inserted
+or neurons are targeted by viruses. The set of recorded neurons may even
+change slightly across experimental sessions that are very far apart in
+time. We assume that there's an area, comprising a network of $N$ neurons,
+for which we believe that any other sample of size $n$ could have equally
+plausibly been recorded instead of the sample of $n$ neurons that was
+actually recorded. We call this larger network the \enquote{full network}.
+The total activity of these $N$ neurons at $t$ is $\yA_{t}$. The relative
+frequencies of the various activity levels during the recording were
+$(\yFF_{\yA}) \defs \yF$. We don't know the values $\yA_{t}$ at each $t$,
+or the frequency distribution $\yF$. We only know for certain that
+$\yA_{t} \in \set{0, 1, \dotsc, N}$ and that $\yA_{t} \ge \ya_{t}$ for
+obvious reasons. For the time being we assume that we know $N$; in
+\sect~\ref{sec:N} we discuss the consequences of our lack of precise
+knowledge about this number.
 
 Our questions concern general features of the total activity $\yA$ of the
 full network during and after the recording, and across sessions under the
 same study conditions. For example: what was its frequency distribution
 during the recording? How much does this frequency distribution change
 across sessions? How much total activity should we expect at any time bin
-during a recording? We cannot answer these questions with certainty; we can
-only give distributions of probability or \dobs\ over their possible answers. The
-approach presented here gives such probability distributions.
+during a recording? The approach presented here gives probability
+distributions over the possible answers to these questions.
 
-\mynote{Move this to intro?}We want to stress the usefulness of making a
-quantified guess about the full-network activity. First of all, this guess
-about a brain area seems to be the primary idea behind recording a sample
-from that area. Second, it allows us to make comparisons across
-experimental sessions; such comparisons would me difficult or meaningless
-if made with the recorded samples, which generally comprise non-overlapping
-sets of neurons and differ in size. Third, only at the full-network level
-can we meaningfully assess whether correlations of some order are
-informationally sufficient: as explained in
-\sect~\ref{sec:marginalization}, any such assessment at the sample level
-leads to conclusions opposite to the ones we think we're reaching.
 
 \bigskip
 
@@ -1030,7 +1032,7 @@ The idea behind our approach is easily summarized:
 \end{enumerate}
 Let's discuss these points in detail.
 
-Regarding~\ref{item:maxent_step}, we assume that you're familiar with the
+Regarding~\ref{item:maxent_step}, we assume familiarity with the
 maximum-entropy method. We actually use the \emph{minimum-relative-entropy}
 method \citep{hobsonetal1973}, but call it \enquote{maximum-entropy} for
 brevity. It amounts to a pair of prescriptions: choose the distribution,
@@ -1056,13 +1058,13 @@ four different distributions for the full network:
   % $\yp(\yA_{t} \| \yH)$ with $t<1$ or $t>T$
 \end{itemize}
 The maximum-entropy distribution is thus an approximation of our belief
-distribution about four completely different quantities. Note that the four
+distribution about four different quantities. Note that the four
 distributions above numerically differ in higher-order approximations.
 Second remark: the maximum-entropy method based on the Shannon entropy
 implicitly makes some assumptions about the probabilities for the long-run
 frequency distributions
-\citep{jaynes1986d_r1996,portamana2009,portamana2017}. We say more about
-these two points in \sect***.
+\citep{jaynes1986d_r1996,portamana2009,portamana2017}. We discuss these two
+points further in \sect~\ref{sec:assumptions}.
 
 In our case, to apply the maximum-entropy prescriptions to the total
 activity of the full network we need to fix some averages of its belief
@@ -1098,8 +1100,8 @@ sample neurons is defined as the average
   % \E\condt[\Bigg]{
   %   \binom{\ya}{m}\,\binom{n}{m}^{-1}}{\yH}
   % \equiv
-  \sum_{\ya} %m!\,
-  \binom{\ya}{m}\,  \binom{n}{m}^{-1}\, \pxx(\ya),
+  \sum_{\ya=0}^{n} %m!\,
+  \displaystyle\binom{\ya}{m} \bigg/ \binom{n}{m}\; \pxx(\ya),
   \qquad 1\le m \le n
 \end{equation}
 % where $\px(\ya \| \yH)$ is the probability for activity $\ya$ given
@@ -1108,7 +1110,7 @@ sample neurons is defined as the average
 This moment can be interpreted as the expectation of the number of distinct
 $m$-tuples of simultaneously spiking neurons (within a bin's time width),
 normalized by the number of distinct $m$-tuples. For example, with $m=2$,
-if $na=4$ neurons spike in a network of $n=5$, we have $\tbinom{4}{2}=6$
+if $a=4$ neurons spike in a network of $n=5$, we have $\tbinom{4}{2}=6$
 distinct pairs of simultaneously spiking neurons, and the total number of
 distinct pairs is $\tbinom{5}{2}=10$. The normalized number of spiking
 pairs is therefore $6/10$. Note that the first $m$ factorial moments

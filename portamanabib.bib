@@ -6,7 +6,7 @@
 %% Home page: http://magnaspesmeretrix.org/
 %% Email (remove ZZ): pglpm0ZZ[at]gmail.com
 %% Created: 2000-08-23T16:53:30+0200
-%% Last-Updated: 2019-07-25T14:09:48+0200
+%% Last-Updated: 2019-11-11T15:22:09+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % NB: This database contains also items whose content's validity I
@@ -20,6 +20,7 @@
 %
 %
 % `arxiv eprints' are located at http://arxiv.org/
+% `HAL eprints' are located at http://hal.archives-ouvertes.fr//
 % `mp_arc eprints' are located at http://www.ma.utexas.edu/mp_arc/
 % `philsci eprints' are located at http://philsci-archive.pitt.edu/
 %
@@ -53,10 +54,11 @@
 %% \providecommand*{\foreignlanguage}[2]{#2}
 %% \providecommand*{\href}[2]{#2}
 %% \providecommand*{\eprint}[2]{\texttt{\href{#1}{#2}}}
+%% \newcommand*{\osfeprint}[1]{\texttt{\href{https://osf.io/#1}{osf.io/#1}}}
+%% \newcommand*{\haleprint}[1]{\texttt{\href{http://hal.archives-ouvertes.fr/#1}{HAL:#1}}}
 %% \newcommand*{\arxiveprint}[1]{\texttt{\href{http://arxiv.org/abs/#1}{arXiv:#1}}}
 %% \newcommand*{\mparceprint}[1]{\texttt{\href{http://www.ma.utexas.edu/mp_arc-bin/mpa?yn=#1}{mp\_arc:#1}}}
 %% \newcommand*{\philscieprint}[1]{\texttt{\href{http://philsci-archive.pitt.edu/archive/#1}{PhilSci:#1}}}
-%% \newcommand*{\osfeprint}[1]{\texttt{\href{https://osf.io/#1}{osf.io/#1}}}
 %% \newcommand*{\biorxiveprint}[1]{\texttt{\urlalt{https://doi.org/10.1101/#1}{bioRxiv doi:\hspace{0pt}10.1101/#1}}}
 %% \newcommand*{\langfrench}{\foreignlanguage{french}}
 %% \newcommand*{\langgerman}{\foreignlanguage{german}}
@@ -94,6 +96,7 @@
 @String{actan = {Acta Numerica}}
 @String{actapa = {Acta Phys.\ Austriaca}}
 @String{adam = {Adv.\ Appl.\ Mech.}}
+@String{adama = {Adv.\ Appl.\ Math.}}
 @String{adap = {Adv.\ Appl.\ Prob.}}
 @String{ade = {Adv.\ Differential Equations}}
 @String{adep = {Ann.\ de Phys.}}
@@ -242,10 +245,11 @@
 @String{cad = {Computer-Aided Des.}}
 @String{caf = {Computers \amp\ Fluids}}
 @String{cagd = {Comput.\ Aided Geomet.\ Des.}}
-@String{camcos = {Comm.\ App.\ Math.\ and Comp.\ Sci.}}
+@String{camcs = {Comm.\ App.\ Math.\ and Comp.\ Sci.}}
 @String{camp = {Comments At.\ Mol.\ Phys.}}
 @String{cb = {Curr.\ Biol.}}
 @String{cbb = {Comput.\ Brain Behav.}}
+@String{cbi = {Chronobiol.\ Int.}}
 @String{cc = {Cereb.\ Cortex}}
 @String{cccc = {Collection Czechoslov.\ Chem.\ Commun.}}
 @String{ccog = {Conscious.\ Cognit.}}
@@ -355,7 +359,7 @@
 @String{ensmath = {\langfrench{L'Enseignement Math{\'e}matique}}}
 @String{entr = {Entropy}}
 @String{eos = {Eos}}
-@String{epid = {Epidemiology}}
+@String{epid = {Epidemiol.}}
 @String{epist = {Epistemologia}}
 @String{epja = {Eur.\ Phys.\ J. A}}
 @String{epjb = {Eur.\ Phys.\ J. B}}
@@ -363,6 +367,7 @@
 @String{epje = {Eur.\ Phys.\ J. E}}
 @String{epjst = {Eur.\ Phys.\ J. Special Topics}}
 @String{epl = {Europhys.\ Lett.}}
+@String{er = {Eval.\ Rev.}}
 @String{erk = {\langgerman{Erkenntnis}}}
 @String{ess = {Encyclopedia of Statistical Sciences 2nd ed.}}
 @String{etfs = {Exp.\ Therm.\ Fluid Sci.}}
@@ -454,6 +459,7 @@
 @String{ijcfd = {Int.\ J. Comput.\ Fluid Dynam.}}
 @String{ijcms = {Int.\ J.  Contemp.\ Math.\ Sciences}}
 @String{ijcnn = {Int.\ Joint Conf.\ Neural Networks}}
+@String{ije = {Int.\ J. Epidemiol.}}
 @String{ijem = {Int.\ J. Engng Math.}}
 @String{ijes = {Int.\ J. Engng Sci.}}
 @String{ijfcs = {Int.\ J. Found.\ Comput.\ Sci.}}
@@ -483,6 +489,7 @@
 @String{imajam = {IMA J. Appl.\ Math.}}
 @String{imajna = {IMA J. Num.\ Anal.}}
 @String{imsc = {IMS Coll.}}
+@String{imslnms = {IMS Lecture Notes Monogr.\ Ser.}}
 @String{ip = {Inverse Probl.}}
 @String{ipm = {Inform.\ Process.\ Manag.}}
 @String{iretct = {IRE Trans.\ Circ.\ Theory}}
@@ -558,6 +565,7 @@
 @String{jhapltd = {Johns Hopkins APL Technical Digest}}
 @String{jhep = {J. High Energy Phys.}}
 @String{jhi = {J. Hist.\ Ideas}}
+@String{jia = {J. Inst.\ Actuaries}}
 @String{jiee = {J. IEE}}
 @String{jima = {J. Inst.\ Maths.\ Applics}}
 @String{jjhg = {Japan J. Human Genet.}}
@@ -792,6 +800,7 @@
 @String{paps = {Proc.\ Am.\ Philos.\ Soc.}}
 @String{pas = {Proc.\ Aristot.\ Soc.}}
 @String{pasa = {Proc.\ Acad.\ Sci.\ Amsterdam (Proc.\ of the Section of Sciences Koninklijke Nederlandse Akademie van Wetenschappen)}}
+@String{pasp = {Publ.\ Astron.\ Soc.\ Pac.}}
 @String{pb = {Physica B}}
 @String{pbpmb = {Progr.\ Biophys.\ Mol.\ Biol.}}
 @String{pbr = {Progr.\ Brain Res.}}
@@ -811,6 +820,7 @@
 @String{pfla = {Phys.\ Fluids A}}
 @String{pgzm = {Phys.\ Ges.\ Z{\"u}rich.\ Mitteilungen}}
 @String{philiss = {Phil.\ Issues}}
+@String{philmath = {\langlatin{Philosophia Mathematica}}}
 @String{philr = {Phil.\ Rev.}}
 @String{philst = {Phil.\ Stud.}}
 @String{phtr = {Phase Transit.}}
@@ -850,6 +860,7 @@
 @String{po = {Progr.\ Optics}}
 @String{poc = {Progr.\ Oceanogr.}}
 @String{pop = {Phys.\ Plasmas}}
+@String{portmath = {Portugal.\ Math.}}
 @String{powdertech = {Powder Tech.}}
 @String{pp = {Plasma Phys.}}
 @String{ppa = {Philos.\ Publ.\ Aff.}}
@@ -938,6 +949,7 @@
 @String{rmp = {Rev.\ Mod.\ Phys.}}
 @String{rms = {Russ.\ Math.\ Surveys (\langnohyph{Uspekhi Mat.\ Nauk})}}
 @String{rmses = {\langitalian{Riv.\ mat.\ scienze econ.\ sociali}}}
+@String{rmta = {Random Matrices: Th.\ Appl.}}
 @String{rnc = {Riv.\ Nuovo Cimento}}
 @String{rpj = {Russ.\ Phys.\ J.}}
 @String{rpp = {Rep.\ Prog.\ Phys.}}
@@ -1168,6 +1180,16 @@ title =	       {Corticonics: Neural circuits of the cerebral cortex},
 publisher =    {Cambridge University Press},
 year =	       {1991},
 address =      {Cambridge}
+}
+
+@Book{aberth1980,
+author =       {Oliver Aberth},
+title =	       {Computable Analysis},
+publisher =    {McGraw-Hill},
+year =	       {1980},
+series =       {Advanced book program},
+address =      {New York},
+keywords =     {computability, computable reals}
 }
 
 @Article{abhyankaretal1976,
@@ -1516,9 +1538,19 @@ pages =	       {349--352}
 @Misc{adamsetal2007,
 author =       {Ryan Prescott Adams and David J. C. MacKay},
 title =	       {Bayesian Online Changepoint Detection},
+howpublished = {\arxiveprint{0710.3742}},
 year =	       {2007},
-note =	       {\arxiveprint{0710.3742}},
 keywords =     {cognitive science, Plinko}
+}
+
+@Article{adamsetal2008,
+author =       {Ryan Prescott Adams and Iain Murray and David J. C. MacKay},
+title =	       {The {Gaussian} Process Density Sampler},
+journal =      nips,
+year =	       {2008},
+volume =       {21},
+pages =	       {9--16},
+keywords =     {non-parametric Bayesian probability theory}
 }
 
 @Article{adamsetal2009,
@@ -1529,6 +1561,13 @@ year =	       {2009},
 volume =       {26},
 pages =	       {9--16},
 keywords =     {probability theory}
+}
+
+@Misc{adamsetal2009b,
+author =       {Ryan Prescott Adams and Iain Murray and David J. C. MacKay},
+title =	       {Nonparametric {Bayesian} Density Modeling with {Gaussian} Processes},
+howpublished = {\arxiveprint{0912.4896}},
+year =	       {2009}
 }
 
 @Book{addisonetal1965,
@@ -2235,6 +2274,18 @@ number =       {2},
 pages =	       {261--272}
 }
 
+@Article{aitkin1991,
+author =       {Murray Aitkin},
+title =	       {Posterior {Bayes} Factors},
+journal =      jrssb,
+year =	       {1991},
+volume =       {53},
+number =       {1},
+pages =	       {111--128},
+note =	       {See also discussion in \citebi{barnardetal1991}},
+mynote =       {Amazingly dull idea, no sense whatever for logic}
+}
+
 @Article{aizenmanetal1987,
 author =       {M. Aizenman and Joel L. Lebowitz and David Ruelle},
 title =	       {Some rigorous results on the {Sherrington-Kirkpatrick} spin glass model},
@@ -2514,6 +2565,17 @@ year =	       {1986},
 volume =       {93},
 number =       {5},
 pages =	       {333--348}
+}
+
+@Book{aldousetal1995,
+editor =       {David J. Aldous and Persi Diaconis and Joel Spencer and and J. Michael Steele},
+title =	       {Discrete Probability and Algorithms},
+publisher =    {Springer},
+year =	       {1995},
+volume =       {72},
+series =       {IMA volumes in mathematics and its applications},
+address =      {New York},
+keywords =     {binary matrices with constrained marginals, probability theory, combinatorics}
 }
 
 @Article{aldrich2008,
@@ -2804,7 +2866,7 @@ title =	       {The Barycentric Calculus of {M{\"o}bius}},
 journal =      pems,
 year =	       {1891},
 volume =       {10},
-pages =	       {2-21},
+pages =	       {2--21},
 keywords =     {affine forms, Grassmann spaces}
 }
 
@@ -3101,6 +3163,16 @@ keywords =     {probability theory},
 origdate =     {1985}
 }
 
+@Article{amari1987,
+author =       {Amari, Shun-ichi},
+title =	       {Differential Geometrical Theory of Statistics},
+journal =      imslnms,
+year =	       {1987},
+volume =       {10},
+pages =	       {19--94},
+keywords =     {probability theory, minimum-discrimination-information, minimum-relative-entropy, symmetries of Fisher-information metric}
+}
+
 @InCollection{amari1994,
 author =       {Shun-ichi Amari},
 title =	       {Information geometry and manifolds of neural networks},
@@ -3118,17 +3190,6 @@ year =	       {2001},
 volume =       {47},
 number =       {5},
 pages =	       {1701--1711}
-}
-
-@Book{amarietal1987,
-author =       {Amari, Shun-ichi and Barndorff-Nielsen, Ole E. and Robert E. Kass and Steffen L. Lauritzen and C. Radhakrishna Rao},
-title =	       {Differential Geometry in Statistical Inference},
-publisher =    {Institute of Mathematical Statistics},
-year =	       {1987},
-volume =       {10},
-series =       {Lecture notes--monograph series},
-address =      {Hayward, USA},
-keywords =     {probability theory, minimum-discrimination-information, minimum-relative-entropy, symmetries of Fisher-information metric}
 }
 
 @Article{amarietal1989,
@@ -4861,16 +4922,29 @@ pages =	       {2417--2431}
 }
 
 @Article{asa2016,
-author =       {{American Statistical Association, Board of Directors}},
+author =       {{\textsc{asa} (American Statistical Association)}},
 title =	       {{ASA} Statement on Statistical Significance and {$p$}-values},
 journal =      amst,
 year =	       {2016},
 volume =       {70},
 number =       {2},
 pages =	       {131--133},
-note =	       {See also introductory editorial in \citebi{wassersteinetal2016} and discussion in \citebi{greenlandetal2016}. \url{https://catalyst.harvard.edu/pdf/biostatsseminar/ASA_s_statement_on_p_values_context_process_and_purpose.pdf}},
+note =	       {Ed.\ by R. L. Wasserstein. See also introductory editorial in \citebi{wassersteinetal2016} and discussion in \citebi{greenlandetal2016}},
 keywords =     {Bayesian probability theory, fallacies of frequentist statistics},
-key =	       {ASA}
+shortauthor =  {\textsc{asa}}
+}
+
+@Article{asa2019,
+author =       {{\textsc{asa} (American Statistical Association)}},
+title =	       {Moving to a World Beyond ``{$p < 0.05$}''},
+journal =      amst,
+year =	       {2019},
+volume =       {73},
+number =       {S1},
+pages =	       {1--19},
+note =	       {Ed.\ by R. L. Wasserstein, A. L. Schirm, N. A. Lazar},
+keywords =     {$p$-values, null-hypothesis testing},
+shortauthor =  {\textsc{asa}}
 }
 
 @Article{asada2005,
@@ -5647,6 +5721,20 @@ address =      {Cham},
 keywords =     {minimum-discrimination-information, minimum-relative-entropy, symmetries of Fisher-information metric, Jeffreys prior}
 }
 
+@Book{aykacetal1977_r1979,
+editor =       {Ahmet Ayka{\c{c}} and Carlo Brumat},
+title =	       {New Developments in the Applications of Bayesian Methods\subtitleproc{: Proceedings of the First European Conference sponsored by the Centre Europ{\'e}en d'Education Permanente (CEDEP) and the Institut Europ{\'e}en d'Administration des Affaires (INSEAD), June 1976}},
+publisher =    {North-Holland},
+year =	       {1979},
+volume =       {119},
+series =       {Contributions to economic analysis},
+address =      {Amsterdam},
+edition =      {2nd pr.},
+note =	       {First publ.\ 1977},
+keywords =     {causality, de Finetti's theorem},
+origdate =     {1977}
+}
+
 @Article{ayoub1974,
 author =       {Raymond G. Ayoub},
 title =	       {Euler and the Zeta Function},
@@ -5703,6 +5791,17 @@ institution =  {\langgerman{Technische Universit{\"a}t Wien}},
 year =	       {1993},
 number =       {TUW-E185.2-BFZ.1-93},
 note =	       {\url{http://www.ucalgary.ca/~rzach/papers/mvnd.html}; a shorter version in \citebi{baazetal1993}}
+}
+
+@Article{bacalladoetal2015,
+author =       {Sergio Bacallado and Persi Diaconis and Susan Holmes},
+title =	       {{de Finetti} Priors using {Markov} chain {Monte Carlo} computations},
+journal =      sc,
+year =	       {2015},
+volume =       {25},
+number =       {4},
+pages =	       {797--808},
+keywords =     {partial exchangeability}
 }
 
 @InCollection{bacciagaluppi2003_r2005,
@@ -7628,6 +7727,18 @@ note =	       {See \citebi{stone1974}},
 keywords =     {cross-validation, model selection}
 }
 
+@Article{barnardetal1991,
+author =       {G. A. Barnard and Dennis V. Lindley and David Cox and R. L. Smith and A. F. M. Smith and A. C. Davison and Michael Goldstein and T. Fearn and D. A. Sprott and A. P. Dawid and H. Akaike and Jack Cuzick and O'Hagan, A. and L. I. Pettit and T. E. Raghunathan and Trevor J. Sweeting and H. Tong and Joe Whittaker and Murray Aitkin},
+title =	       {Discussion of the paper by {Aitkin}},
+journal =      jrssb,
+year =	       {1991},
+volume =       {53},
+number =       {1},
+pages =	       {128--142},
+note =	       {See \citebi{aitkin1991}},
+keywords =     {decision theory (Smith), model selection (Smith), nested models (Lindley)}
+}
+
 @Article{barnardetal2000,
 author =       {John Barnard and Robert McCulloch and Meng, Xiao-Li},
 title =	       {Modeling covariance matrices in terms of standard deviations and correlations, with application to shrinkage},
@@ -7653,7 +7764,7 @@ origdate =     {1978}
 }
 
 @Article{barndorffnielsen1984,
-author =       {Barndorff-Nielsen, O. E.},
+author =       {Barndorff-Nielsen, Ole E.},
 title =	       {Statistical Theory: The Prequential Approach {[}invited discussion{]}},
 journal =      jrssa,
 year =	       {1984},
@@ -7661,6 +7772,16 @@ volume =       {147},
 number =       {2},
 pages =	       {290--292},
 note =	       {See \citebi{dawid1984}}
+}
+
+@Article{barndorffnielsen1987,
+author =       {Barndorff-Nielsen, Ole E.},
+title =	       {Differential and Integral Geometry in Statistical Inference},
+journal =      imslnms,
+year =	       {1987},
+volume =       {10},
+pages =	       {95--162},
+keywords =     {probability theory, minimum-discrimination-information, minimum-relative-entropy, symmetries of Fisher-information metric}
 }
 
 @Book{barndorffnielsenetal1974,
@@ -7671,7 +7792,8 @@ year =	       {1974},
 volume =       {1},
 series =       {Memoirs},
 address =      {Aarhus},
-keywords =     {exchangeability, Bayesian probability theory}
+keywords =     {exchangeability, Bayesian probability theory, sufficient statistics, exponential family, extremal family},
+mynote =       {Rasch: \begin{quotation}First a terminological remark. The ``prediction'' is suggestive of the statistician as a magician who can tell the future. Economists have an expression that is less pretentious: forecasting -- not much more reliable than weather forecasting.\par To speak seriously: you do not really \emph{predict} anything. What you do, is to calculate the distribution of the variate in question, possibly offering its mean value or the like as a likely event -- but only on the assumption that the model -- or a characteristic feature of it -- on which you based this forecasting, still holds, i.e. confronted with what eventually does happen \emph{you are faced with a test of this hypothesis} and nothing else -- \emph{you were not telling what the future would be}!\end{quotation} p.~268. Rasch: \begin{quotation}Next I wish to make it quite explicit, that the reason for using both significance and redundancy lies in the contention that \emph{every model is basically wrong}, i.e.\ it is bound to fail, given enough data.\par When you are in the possession of a set of data you may then either be in the position that your significance test tells you that the model fails, or you may not have got enough observations for that purpose. In the latter case you \emph{cannot yet reject} the model on statistical grounds -- which of course should not be construed as meaning that you really \emph{accept} it. In the former case you have to realize that the model fails -- and I have no sympathy for relaxing the significance requirement for the reason that the data are substantial enough to show it -- but that does not mean that the model is too bad to be applied in the actual case.\par To take a parallel from elementary physics: A ``mathematical pendulum'' is defined as ``a heavy point, swinging frictionless in a weightless string in vacuum''. A contraption like that was never seen; thus as a model for the motion of a real pendulum it is ``unrealistic''. Notwithstanding, it works quite well for a short time interval, but it begins soon to show a systematic decrease of the oscillation angle. To the model -- a second order differential equation -- thus requiring an amendment, a friction term is added, and now it works perfectly well for a long time, even during a few days, until another systematic deviation shows. If needed, a further correction, for air resistance, say, should be attempted -- but as a matter of fact, \emph{this is not needed}, because it has worked well enough for the purpose of the geo-physicist, which was to measure the gravity constant (``g'') with decimal places!\end{quotation} pp.~36--37. Rasch: \enquote{we should never succumb to the illusion that any of our models are correct, but we should certainly aim at \emph{making them adequate for our purposes}} p.~38}
 }
 
 @Article{barndorffnielsenetal1984,
@@ -8696,7 +8818,7 @@ year =	       {2013},
 volume =       {1},
 number =       {1},
 pages =	       {431--451},
-note =	       {\url{https://hal-upec-upem.archives-ouvertes.fr/hal-00851201}}
+note =	       {\haleprint{hal-00851201}}
 }
 
 @Article{batra1972,
@@ -10344,7 +10466,7 @@ volume =       {18},
 number =       {1},
 pages =	       {1--12},
 note =	       {See also comments and rejoinder in \citebi{christensenetal2003}},
-keywords =     {p-value, null-hypothesis}
+keywords =     {$p$-value, null-hypothesis}
 }
 
 @Article{bergeretal1987,
@@ -10356,7 +10478,7 @@ volume =       {82},
 number =       {397},
 pages =	       {112--122},
 note =	       {\url{https://people.eecs.berkeley.edu/~jordan/courses/260-spring09/readings/berger-sellke.pdf}},
-keywords =     {p-values}
+keywords =     {$p$-values}
 }
 
 @Article{bergeretal1987b,
@@ -10367,8 +10489,8 @@ year =	       {1987},
 volume =       {2},
 number =       {3},
 pages =	       {317--335},
-note =	       {\url{https://www2.stat.duke.edu/~berger/papers/p-values.pdf}},
-keywords =     {p-values, null hypothesis}
+note =	       {See also comments and rejoinder in \citebi{coxetal1987}},
+keywords =     {$p$-values, null hypothesis, simple vs composite hypothesis}
 }
 
 @Article{bergeretal1988,
@@ -10380,7 +10502,7 @@ volume =       {76},
 number =       {2},
 pages =	       {159--165},
 note =	       {\url{http://drsmorey.org/research/rdmorey/bibtex/upload/Berger:Berry:1988.pdf}},
-keywords =     {Bayesian probability theory, teaching, p-values}
+keywords =     {Bayesian probability theory, teaching, $p$-values}
 }
 
 @Article{bergeretal1996,
@@ -12079,7 +12201,7 @@ title =	       {Probability and Mathematical Genetics: Papers in Honour of Sir J
 publisher =    {Cambridge University Press},
 year =	       {2010},
 volume =       {378},
-series =       {London Mathematical Society lecture notes series},
+series =       {London Mathematical Society lecture notes},
 address =      {Cambridge},
 keywords =     {Bayesian probability theory, exchangeability}
 }
@@ -12443,6 +12565,17 @@ edition =      {corr.\ repr.},
 note =	       {First publ.\ 1968},
 keywords =     {differential forms, exterior algebra, contraction},
 origdate =     {1968}
+}
+
+@Book{bishopetal1985,
+author =       {Errett Bishop and Douglas Bridges},
+title =	       {Constructive Analysis},
+publisher =    {Springer},
+year =	       {1985},
+volume =       {279},
+series =       {\langgerman{Grundlehren der mathematischen Wissenschaften}},
+address =      {Berlin},
+keywords =     {computability, computable reals}
 }
 
 @Book{biskamp1993,
@@ -14462,7 +14595,7 @@ journal =      aipcp,
 year =	       {2008},
 volume =       {970},
 pages =	       {117--152},
-note =	       {\url{https://hal.archives-ouvertes.fr/hal-00257073}},
+note =	       {\haleprint{hal-00257073}},
 keywords =     {phase transitions, statistical mechanics, thermodynamics, non-extensivity}
 }
 
@@ -14745,6 +14878,19 @@ edition =      {5},
 note =	       {First publ.\ 1970},
 keywords =     {Bayesian probability theory},
 origdate =     {1970}
+}
+
+@Book{boxetal1973_r1992,
+author =       {George E. P. Box and George C. Tiao},
+title =	       {Bayesian Inference in Statistical Analysis},
+publisher =    {Wiley},
+year =	       {1992},
+series =       {Wiley classic library},
+address =      {New York},
+edition =      {repr.},
+note =	       {First publ.\ 1973},
+keywords =     {probability theory},
+origdate =     {1973}
 }
 
 @Misc{boya2002,
@@ -15185,6 +15331,17 @@ pages =	       {650--656},
 keywords =     {electromagnetism, force}
 }
 
+@Article{bragantinietal2019,
+author =       {Daniela Bragantini and B{\o}rge Sivertsen and Philip Gehrman and Stian Lydersen and Ismail C{\"u}neyt G{\"u}zey},
+title =	       {Variations in circadian genes and individual nocturnal symptoms of insomnia. {The} {HUNT} study},
+journal =      cbi,
+year =	       {2019},
+volume =       {36},
+number =       {5},
+pages =	       {681--688},
+keywords =     {probability theory}
+}
+
 @Article{bragg1892,
 author =       {W. H. Bragg},
 title =	       {The ``elastic medium'' method of treating electrostatic theorems},
@@ -15363,6 +15520,14 @@ year =	       {2012},
 volume =       {2012},
 pages =	       {043},
 keywords =     {general relativity, continuum mechanics, consitutive equations}
+}
+
+@Misc{breenetal2019,
+author =       {Philip G. Breen and Christopher N. Foley and Tjarda Boekholt and Portegies Zwart, Simon},
+title =	       {Newton vs the machine: solving the chaotic three-body problem using deep neural networks},
+year =	       {2019},
+note =	       {\arxiveprint{1910.07291}},
+keywords =     {neural nets, machine learning, Newtonian mechanics}
 }
 
 @Article{brehme1968,
@@ -15780,7 +15945,6 @@ note =	       {\url{https://bayes.wustl.edu/glb/bib.html}}
 author =       {Bretthorst, G. Larry},
 title =	       {Bayesian spectrum analysis on quadrature {NMR} data with noise correlations},
 booktitle =    {\citein{skilling1989}},
-publisher =    {},
 year =	       {1989},
 pages =	       {261--273},
 note =	       {\url{https://bayes.wustl.edu/glb/bib.html}},
@@ -16127,6 +16291,20 @@ year =	       {1998},
 volume =       {33},
 number =       {3},
 pages =	       {174--181}
+}
+
+@Book{bridgesetal1987_r1988,
+author =       {Douglas Bridges and Fred Richman},
+title =	       {Varieties of Constructive Mathematics},
+publisher =    {Cambridge University Press},
+year =	       {1988},
+volume =       {97},
+series =       {London Mathematical Society lecture note series},
+address =      {Cambridge},
+edition =      {repr.},
+note =	       {First publ.\ 1987},
+keywords =     {computability, computable reals},
+origdate =     {1987}
 }
 
 @Article{bridgman1914,
@@ -16612,7 +16790,8 @@ volume =       {27},
 number =       {108},
 pages =	       {389--404},
 note =	       {See also \citebi{broad1920}},
-keywords =     {Laplace's rule of succession, prior probability, probability of probability, sampling, Bayesian probability theory, Jeffreys prior}
+keywords =     {Laplace's rule of succession, prior probability, probability of probability, sampling, Bayesian probability theory, Jeffreys prior},
+mynote =       {\enquote{Since probability, like truth, implication, etc., is an attribute of propositions, the laws of probability are laws of logic, not of nature, just like the principle of the syllogism or the law of contradiction. That is, they are principles which hold in all possible worlds, and do not depend on the special structure of the world that actually exists.} \sect~2 p.~392}
 }
 
 @Article{broad1920,
@@ -16624,7 +16803,8 @@ volume =       {29},
 number =       {113},
 pages =	       {11--45},
 note =	       {See also \citebi{broad1918}},
-keywords =     {Laplace's rule of succession, prior probability, probability of probability, sampling, Bayesian probability theory, Jeffreys prior}
+keywords =     {Laplace's rule of succession, prior probability, probability of probability, sampling, Bayesian probability theory, Jeffreys prior},
+mynote =       {\enquote{I cannot directly observe what is very remote in space or what happened before I was born, nor can I now directly observe anything that is going to happen later unless I chance to be a prophet.} \sect~10 p.~27}
 }
 
 @Article{broca2005,
@@ -16799,6 +16979,18 @@ type =	       {A.I. Memo},
 number =       {1293},
 address =      {Cambridge, USA},
 note =	       {\url{http://people.csail.mit.edu/brooks/papers/AIM-1293.pdf}, \url{ftp://publications.ai.mit.edu/ai-publications/pdf/AIM-1293.pdf}}
+}
+
+@Article{brooksetal2002,
+author =       {S. P. Brooks and Jim Smith and Aki Vehtari and Martyn Plummer and Mervyn Stone and Christian P. Robert and D. M. Titterington and J. A. Nelder and Anthony Atkinson and A. P. Dawid and Andrew Lawson and Allan Clark and Jos{\'e} M. Bernardo and Sujit K. Sahu and Sylvia Richardson and Peter Green and Kenneth P. Burnham and Maria DeIorio and Christian P. Robert and David Draper and Alan E. Gelfand and Matilde Trevisani and Jim Hodges and Youngjo Lee and de Luna, Xavier and Xiao-Li Meng and David J. Spiegelhalter and Nicola G. Best and Bradley P. Carlin Van Der Linde, Angelika},
+title =	       {Discussion on the paper by {Spiegelhalter}, {Best}, {Carlin} and {van der Linde}},
+journal =      jrssb,
+year =	       {2002},
+volume =       {64},
+number =       {4},
+pages =	       {616--639},
+note =	       {See \citebi{spiegelhalteretal2002}},
+keywords =     {deviance information criterion}
 }
 
 @Article{brosseauetal1994,
@@ -18437,6 +18629,18 @@ keywords =     {twisted differential forms, electromagnetism, relativity},
 origdate =     {1985}
 }
 
+@Book{burke1985_r1995,
+author =       {James Burke},
+title =	       {The Day the Universe Changed},
+publisher =    {Back Bay Books},
+year =	       {1995},
+address =      {Boston},
+edition =      {rev.\ ed.},
+note =	       {First publ.\ 1985},
+keywords =     {objectivity},
+origdate =     {1985}
+}
+
 @Misc{burke1995,
 author =       {William L. Burke},
 title =	       {{Div, Grad, Curl Are Dead}},
@@ -19456,7 +19660,7 @@ year =	       {2018},
 volume =       {2},
 number =       {9},
 pages =	       {637--644},
-keywords =     {reproducibility, p-values}
+keywords =     {reproducibility, $p$-values}
 }
 
 @Article{campa2008,
@@ -20111,6 +20315,17 @@ number =       {2},
 pages =	       {842--852}
 }
 
+@Article{caronetal2017,
+author =       {Fran{\c{c}}ois Caron and Emily B. Fox},
+title =	       {Sparse graphs using exchangeable random measures},
+journal =      jrssb,
+year =	       {2017},
+volume =       {79},
+number =       {5},
+pages =	       {1295--1366},
+keywords =     {Bayesian probability theory, row-column exchangeability, de Finetti's theorem}
+}
+
 @Book{carpenter1977_r2000,
 author =       {Humphrey Carpenter},
 title =	       {J.~R.~R. Tolkien: A Biography},
@@ -20505,6 +20720,18 @@ journal =      psa,
 year =	       {1978},
 volume =       {1978-1},
 pages =	       {54--59}
+}
+
+@Book{cartwright1989_r2002,
+author =       {Nancy Cartwright},
+title =	       {Nature's Capacities and their Measurement},
+publisher =    {Oxford University Press},
+year =	       {2002},
+address =      {Oxford},
+edition =      {repr.},
+note =	       {First publ.\ 1989},
+keywords =     {causation vs association, probability theory},
+origdate =     {1989}
 }
 
 @Article{cartwright2001,
@@ -21820,6 +22047,18 @@ year =	       {2004},
 note =	       {\arxiveprint{cond-mat/0403555}}
 }
 
+@Article{chandramoulietal2019,
+author =       {Suyog H. Chandramouli and Richard M. Shiffrin and Aki Vehtari and Daniel P. Simpson and Yuling Yao and Andrew Gelman and Danielle J. Navarro and Quentin F. Gronau and Eric-Jan Wagenmakers},
+title =	       {Commentary on {Gronau} and {Wagenmakers}. {Limitations} of ``{Limitations} of {Bayesian} Leave-one-out Cross-Validation for Model Selection''. {Between} the Devil and the Deep Blue Sea: Tensions Between Scientific Judgement and Statistical Model Selection. {Rejoinder}: More Limitations of {Bayesian} Leave-One-Out Cross-Validation},
+journal =      cbb,
+year =	       {2019},
+volume =       {2},
+number =       {1},
+pages =	       {12--47},
+note =	       {See \citebi{gronauetal2019}},
+keywords =     {probability theory}
+}
+
 @Article{chandrasekhar1943,
 author =       {S. Chandrasekhar},
 title =	       {Stochastic Problems in Physics and Astronomy},
@@ -22801,7 +23040,7 @@ keywords =     {continuum mechanics, constitutive equations, closure, geophysica
 @Article{chorinetal2006,
 author =       {Alexandre J. Chorin and Panagiotis Stinis},
 title =	       {Problem reduction, renormalization, and memory},
-journal =      camcos,
+journal =      camcs,
 year =	       {2006},
 volume =       {1},
 number =       {1},
@@ -22839,6 +23078,17 @@ pages =	       {8},
 keywords =     {functional integrals}
 }
 
+@Article{christenetal2010,
+author =       {J. Andr{\'e}s Christen and Colin Fox},
+title =	       {A general purpose sampling algorithm for continuous distributions (the t-walk)},
+journal =      ba,
+year =	       {2010},
+volume =       {5},
+number =       {2},
+pages =	       {263--281},
+keywords =     {Markov-chain Monte Carlo, local invariance}
+}
+
 @Book{christensen1984,
 editor =       {Steven M. Christensen},
 title =	       {Quantum Theory of Gravity: Essays in honor of the 60th birthday of Bryce S DeWitt},
@@ -22857,7 +23107,7 @@ volume =       {59},
 number =       {2},
 pages =	       {121--126},
 note =	       {\url{http://www.stat.ualberta.ca/~wiens/stat665/TAS\%20-\%20testing.pdf}},
-keywords =     {p-value, null-hypothesis testing}
+keywords =     {$p$-value, null-hypothesis testing}
 }
 
 @Article{christensenetal2003,
@@ -22869,7 +23119,7 @@ volume =       {18},
 number =       {1},
 pages =	       {12--32},
 note =	       {See \citebi{berger2003b}},
-keywords =     {p-value, null-hypothesis}
+keywords =     {$p$-value, null-hypothesis}
 }
 
 @Article{christov1988,
@@ -23339,7 +23589,7 @@ keywords =     {probability theory, Pearson correlation coefficient}
 
 @Article{clarketal1989,
 author =       {Herbert H. Clark and Norman Cliff and Joseph B. Kadane and William Kruskal and Judith M. Tanur and Thomas S. Wallsten and David V. Budescu and Robert L. Winkler and Wolf, Jr., Charles and Frederick Mosteller and Cleo Youtz},
-title =	       {Comments, {Codifying} Chance, {On} the Possible Dangers of Isolation, {Representing} and Communicating Uncertainty, and rejoinder {[\enquote{{Quantifying} Probabilistic Expressions}]}},
+title =	       {Comments. {Codifying} Chance. {On} the Possible Dangers of Isolation, {Representing} and Communicating Uncertainty. {Rejoinder} {[\enquote{{Quantifying} Probabilistic Expressions}]}},
 journal =      ss,
 year =	       {1989},
 volume =       {4},
@@ -23615,7 +23865,8 @@ publisher =    {Penguin Books},
 year =	       {1960},
 series =       {Pelican books},
 address =      {Oxford},
-keywords =     {probability theory, de Finetti}
+keywords =     {probability theory, de Finetti},
+mynote =       {\enquote{The last words are italicized to emphasize my suggestion that the training of the mathematical imagination of school-children might be vastly improved if we had as much understanding of \emph{whom} we teach as of \emph{what} we teach.} \sect~2.III p.~37}
 }
 
 @Book{cohen1962,
@@ -25248,7 +25499,7 @@ number =       {3},
 pages =	       {444--466},
 note =	       {See \citebi{chatfield1995}},
 keywords =     {Bayesian probability theory, model comparison, cross-validation},
-mynote =       {\enquote{I believe that the greatest unsolved problem in statistics is communicating the subject to others} N. Davies, p.~445. \enquote{Fundamental to some of the arguments raised in the paper is what is meant by a \emph{model}. The conflict regarding the existence of a or the true model, model uncertainty, identification, selection, misspecification, etc.\ can be resolved if a clear definition of a model is stated. Models have different meanings in different fields. Once a young woman was interviewed for a data handling job in Unilever. She was puzzled by one of the interviewers who asked her whether she had done any modelling. It was found later that to her the question meant whether she had posed for photographs!} J. R. M. Ameen, p.~453. \enquote{How is collecting more data different from arbitrarily splitting the existing data? \emph{After} collecting more data, we again have a single, albeit larger, set of data. To regard the part that we received first as that to be used for model building, and the new part as that for model confirmation, is just as arbitrary as splitting the original data into two parts for these purposes. Furthermore, the process makes little sense in either case. What if the `confirmation' sample fails to confirm the model? However one describes it, the new data are being used for further learning about the model, and it is proper to use all the data explicitly for model inference, as a single data set. This is what the standard Bayesian procedure, now called Bayesian model averaging, would do} A. O'Hagan, p.~460}
+mynote =       {\enquote{I believe that the greatest unsolved problem in statistics is communicating the subject to others} N. Davies, p.~445. \enquote{Fundamental to some of the arguments raised in the paper is what is meant by a \emph{model}. The conflict regarding the existence of a or the true model, model uncertainty, identification, selection, misspecification, etc.\ can be resolved if a clear definition of a model is stated. Models have different meanings in different fields. Once a young woman was interviewed for a data handling job in Unilever. She was puzzled by one of the interviewers who asked her whether she had done any modelling. It was found later that to her the question meant whether she had posed for photographs!} J. R. M. Ameen, p.~453. \enquote{How is collecting more data different from arbitrarily splitting the existing data? \emph{After} collecting more data, we again have a single, albeit larger, set of data. To regard the part that we received first as that to be used for model building, and the new part as that for model confirmation, is just as arbitrary as splitting the original data into two parts for these purposes. Furthermore, the process makes little sense in either case. What if the `confirmation' sample fails to confirm the model? However one describes it, the new data are being used for further learning about the model, and it is proper to use all the data explicitly for model inference, as a single data set. This is what the standard Bayesian procedure, now called Bayesian model averaging, would do} A. O'Hagan, p.~460. \enquote{Finally it does not seem helpful just to say that all models are wrong. The very word model implies simplification and idealization. The idea that complex physical, biological or sociological systems can be exactly described by a few formulae is patently absurd.} Cox, p.~456}
 }
 
 @Article{copeland1966,
@@ -25672,6 +25923,17 @@ series =       {Lecture notes in physics},
 keywords =     {initial-value problem for Einstein's equations}
 }
 
+@Article{cotteretal2013,
+author =       {S. L. Cotter and G. O. Roberts and A. M. Stuart and D. White},
+title =	       {{MCMC} Methods for Functions: Modifying Old Algorithms to Make Them Faster},
+journal =      ss,
+year =	       {2013},
+volume =       {28},
+number =       {3},
+pages =	       {424-446},
+keywords =     {pre-conditioned Crank-Nicolson}
+}
+
 @Book{courant1924_r1966,
 author =       {R. Courant},
 title =	       {Methods of Mathematical Physics. Vol.~I},
@@ -25907,8 +26169,21 @@ pages =	       {195--200},
 keywords =     {probability theory}
 }
 
+@Article{coxetal1987,
+author =       {David R. Cox and Morris L. Eaton and Arnold Zellner and M. J. Bayarri and George Casella and Roger L. Berger and Joseph B. Kadane and James O. Berger and Mohan Delampady},
+title =	       {{[Testing} Precise Hypotheses{:]} {Comments} and rejoinder},
+journal =      ss,
+year =	       {1987},
+volume =       {2},
+number =       {3},
+pages =	       {335--352},
+note =	       {See \citebi{bergeretal1987b}},
+keywords =     {$p$-values, null hypothesis, simple vs composite hypotheses},
+mynote =       {\enquote{Each time I read a contemporary statistical piece in which the word ``objective'' (or some variant thereof) appears, I eagerly await the appearance of a few explanatory remarks that will anchor me to the author's understanding of what the word means. More often than not I wait in vain and am left to guess at the usage.} Eaton p.~338. \enquote{to use ``objectivity'' without some hint of what is meant is incredibly naive in view of the vast literature on the subject. In particular the philosophy of science literature is filled with discussions of the ``objectivity'' issue} Eaton p.~338. \enquote{For the last 15 or so years I have been looking for applied cases in which I might have some serious belief in a null hypothesis. In that time I found only one. An astrologer of my acquaintance believed she could predict on the basis of people's birthdates who is likely to have a drug problem. I arranged\textelp{}} Kadane p.~347. \enquote{My conclusion now from these experiences is that the technique of testing hypotheses is vastly overrated in statistics as a method. It isn't so much that the classical methods give the wrong answers, as Berger and Delampady correctly show, as it is that I find the problem ill-suited to help me do statistics better.} Kadane pp.~347--348}
+}
+
 @Article{coxetal1997,
-author =       {D. R. Cox and A. Philip Dawid and J. K. Ghosh and Dennis Lindley and Jos{\'e} M. Bernardo},
+author =       {David R. Cox and A. Philip Dawid and J. K. Ghosh and Dennis Lindley and Jos{\'e} M. Bernardo},
 title =	       {Comments on {Non-informative priors do not exist}. {Discussion} of a discussion. {Rejoinder}},
 journal =      jspi,
 year =	       {1997},
@@ -27296,6 +27571,28 @@ journal =      prd,
 year =	       {2002},
 volume =       {65},
 pages =	       {084020}
+}
+
+@Book{dalailama2006,
+author =       {{Dalai Lama}},
+title =	       {How to See Yourself As You Really Are},
+publisher =    {Atria Books},
+year =	       {2006},
+address =      {New York},
+note =	       {Transl.\ and ed.\ by J. Hopkins},
+keywords =     {Zen}
+}
+
+@Book{dalailamaetal1998_r2009,
+author =       {{Dalai Lama} and Howard C. Cutler},
+title =	       {The Art of Happiness: A Handbook for Living},
+publisher =    {Penguin Books},
+year =	       {2009},
+address =      {London},
+edition =      {10th anniversary ed.},
+note =	       {First publ.\ 1998},
+keywords =     {Zen},
+origdate =     {1998}
 }
 
 @Article{dalal1980,
@@ -29245,6 +29542,16 @@ note =	       {Repr.\ with Italian transl.\ in \citebi{definetti1993}, pp.~467--
 keywords =     {Bayesian probability theory}
 }
 
+@InCollection{definetti1977,
+author =       {de Finetti, Bruno},
+title =	       {Probabilities of probabilities: a real problem or a misunderstanding?},
+booktitle =    {\citein{aykacetal1977_r1979}},
+year =	       {1977},
+chapter =      {1},
+pages =	       {1--10},
+keywords =     {exchangeability}
+}
+
 @Article{definetti1979,
 author =       {de Finetti, Bruno},
 title =	       {Probability and Exchangeability from a Subjective Point of View},
@@ -29908,6 +30215,18 @@ edition =      {corr.\ printing of 2nd ed.},
 note =	       {First publ.\ 1991},
 keywords =     {maximum-calibre, maximum-entropy, non-equilibrium statistical mechanics},
 origdate =     {1993}
+}
+
+@InCollection{demeyetal2019,
+author =       {Demey, Lorenz and Kooi, Barteld and Sack, Joshua},
+title =	       {Logic and Probability},
+booktitle =    {The Stanford Encyclopedia of Philosophy},
+publisher =    {Metaphysics Research Lab, Stanford University},
+year =	       {2019},
+editor =       {Edward N. Zalta},
+address =      {Stanford},
+note =	       {\url{https://plato.stanford.edu/archives/sum2019/entries/logic-probability/}},
+keywords =     {probability theory, formal logic, propositional calculus}
 }
 
 @Book{demidov2001,
@@ -31014,6 +31333,17 @@ year =	       {2005},
 note =	       {\arxiveprint{quant-ph/0505188}}
 }
 
+@Book{deyetal1998,
+editor =       {Dipak K. Dey and Peter M{\"u}ller and Debajyoti Sinha},
+title =	       {Practical Nonparametric and Semiparametric Bayesian Statistics},
+publisher =    {Springer},
+year =	       {1998},
+volume =       {133},
+series =       {Lecture notes in statistics},
+address =      {New York},
+keywords =     {Dirichlet process}
+}
+
 @Book{deyetal2000,
 editor =       {Dipak K. Dey and Sujit K. Ghosh and Bani K. Mallick},
 title =	       {Generalized linear models: a Bayesian perspective},
@@ -31027,9 +31357,11 @@ keywords =     {statistical models, probability theory}
 
 @Book{deyetal2005,
 editor =       {Dipak K. Dey and C. R. Rao},
-title =	       {Handbook of Statistics 25: Bayesian Thinking, Modeling and Computation},
+title =	       {Bayesian Thinking: Modeling and Computation},
 publisher =    {North-Holland},
 year =	       {2005},
+volume =       {25},
+series =       {Handbook of statistics},
 address =      {Amsterdam},
 keywords =     {reference priors}
 }
@@ -31124,6 +31456,17 @@ volume =       {46},
 number =       {2},
 pages =	       {179--205},
 keywords =     {probability theory}
+}
+
+@Article{diaconis2013,
+author =       {Persi Diaconis},
+title =	       {Some things we've learned (about {Markov} chain {Monte Carlo})},
+journal =      bern,
+year =	       {2013},
+volume =       {19},
+number =       {4},
+pages =	       {1294--1305},
+keywords =     {probability theory, sampling}
 }
 
 @Article{diaconisetal1979,
@@ -31304,6 +31647,15 @@ note =	       {\url{http://nma.berkeley.edu/ark:/28722/bk000471m2r}},
 keywords =     {exchangeability, exponential family, Bayesian probability theory}
 }
 
+@InCollection{diaconisetal1995,
+author =       {Persi Diaconis and Anil Gangolli},
+title =	       {Rectangular arrays with fixed margins},
+booktitle =    {\citein{aldousetal1995}},
+year =	       {1995},
+pages =	       {15--41},
+keywords =     {binary matrices with constrained marginals, probability theory, combinatorics}
+}
+
 @Article{diaconisetal2007,
 author =       {Persi Diaconis and Susan Holmes and Richard Montgomery},
 title =	       {Dynamical Bias in the Coin Toss},
@@ -31329,6 +31681,17 @@ note =	       {See also comments and rejoinder in \citebi{bertietal2008}},
 keywords =     {Glauber dynamics}
 }
 
+@Article{diaconisetal2008b,
+author =       {Persi Diaconis and Svante Janson},
+title =	       {Graph limits and exchangeable random graphs},
+journal =      rendmat,
+year =	       {2008},
+volume =       {28},
+number =       {1},
+pages =	       {33--61},
+keywords =     {exchangeability for matrices, de Finetti's theorem, Bayesian probability theory}
+}
+
 @Article{diaconisetal2010,
 author =       {Persi Diaconis and Kshitij Khare and Saloff-Coste, Laurent},
 title =	       {Gibbs sampling, conjugate priors and coupling},
@@ -31341,6 +31704,17 @@ note =	       {\url{http://statweb.stanford.edu/~cgates/PERSI/papers/gibbscouplm
 keywords =     {exponential family}
 }
 
+@Article{diaconisetal2017,
+author =       {Persi Diaconis and Peter J. Forrester},
+title =	       {Hurwitz and the origins of random matrix theory in mathematics},
+journal =      rmta,
+year =	       {2017},
+volume =       {6},
+number =       {1},
+pages =	       {1730001},
+keywords =     {probability theory, group theory, invariant measures}
+}
+
 @Article{diamondetal1983,
 author =       {George A. Diamond and James S. Forrester},
 title =	       {Clinical Trials and Statistical Verdicts: Probable Grounds for Appeal},
@@ -31349,7 +31723,7 @@ year =	       {1983},
 volume =       {98},
 number =       {3},
 pages =	       {385--394},
-keywords =     {criticism of p-values and confidence intervals}
+keywords =     {criticism of $p$-values and confidence intervals}
 }
 
 @Misc{diazetal2004,
@@ -31460,6 +31834,19 @@ year =	       {1981},
 volume =       {49},
 number =       {10},
 pages =	       {925--930}
+}
+
+@Book{dickens1843_r2002,
+author =       {Charles Dickens},
+title =	       {The Life and Adventures of Martin Chuzzlewit},
+publisher =    {Penguin Books},
+year =	       {2002},
+series =       {Penguin classics},
+address =      {London},
+edition =      {repr.},
+note =	       {Ed.\ with an Introduction and Notes by P. Ingham. First publ.\ 1843},
+keywords =     {Mrs Gamp},
+origdate =     {1843}
 }
 
 @Article{dickey1967,
@@ -32762,7 +33149,8 @@ volume =       {6},
 number =       {4},
 pages =	       {760--808},
 note =	       {See \citebi{gelmanetal1996}},
-keywords =     {Bayesian probability theory, model comparison}
+keywords =     {Bayesian probability theory, model comparison},
+mynote =       {parametric model as subset of model space with pre-data probability different from zero: Draper p.~761}
 }
 
 @Article{dray2017,
@@ -32811,6 +33199,19 @@ volume =       {33},
 number =       {2},
 pages =	       {265--342},
 keywords =     {statistical mechanics, thermodynamics}
+}
+
+@Book{dretske1981_r1982,
+author =       {Fred I. Dretske},
+title =	       {Knowledge and the Flow of Information},
+publisher =    {MIT Press},
+year =	       {1982},
+series =       {Bradford books},
+address =      {Cambridge, USA},
+edition =      {repr.},
+note =	       {First publ.\ 1981},
+keywords =     {formal logic, theory of meaning, syntax, semantics, logic model theory, situation},
+origdate =     {1981}
 }
 
 @Book{drewetal1998,
@@ -33584,6 +33985,28 @@ note =	       {See \citebi{simpsonetal2017,simpsonetal2017b}},
 keywords =     {Bayesian probability theory, priors, exchangeability}
 }
 
+@Article{dunsonetal2007,
+author =       {David B. Dunson and Natesh Pillai and Ju-Hyun Park},
+title =	       {Bayesian Density Regression},
+journal =      jrssb,
+year =	       {2007},
+volume =       {69},
+number =       {2},
+pages =	       {163--183},
+keywords =     {Dirichlet process, Bayesian non-parametrics, normal mixture}
+}
+
+@Article{dunsonetal2008,
+author =       {David B. Dunson and Amy H. Herring and Stephanie M. Engel},
+title =	       {Bayesian Selection and Clustering of Polymorphisms in Functionally Related Genes},
+journal =      jasa,
+year =	       {2008},
+volume =       {103},
+number =       {482},
+pages =	       {534--546},
+keywords =     {Dirichlet process, non-parametric Bayesian probability theory}
+}
+
 @Article{dunwoody1976,
 author =       {N. T. Dunwoody},
 title =	       {Explosion and implosion in a mixture of chemically reacting ideal gases},
@@ -33679,6 +34102,16 @@ volume =       {243},
 number =       {1},
 pages =	       {263--275},
 note =	       {See also \citebi{vienneetal1991,vienneetal1992}}
+}
+
+@PhdThesis{durmus2016,
+author =       {Alain Durmus},
+title =	       {High dimensional {Markov} Chain {Monte Carlo} Methods: theory, methods and application},
+school =       {Universit{\'e} Paris-Saclay},
+year =	       {2016},
+address =      {Paris},
+note =	       {\haleprint{tel-01429303}},
+keywords =     {pre-conditioned Crank-Nicolson}
 }
 
 @Article{dutta2012,
@@ -33803,7 +34236,8 @@ year =	       {2007},
 editor =       {{The Institution of Engineering and Technology}},
 pages =	       {1--6},
 address =      {Edinburgh},
-note =	       {\url{http://www.damtp.cam.ac.uk/user/tong/em/dyson.pdf}}
+note =	       {\url{http://www.damtp.cam.ac.uk/user/tong/em/dyson.pdf}},
+keywords =     {Maxwell's modesty}
 }
 
 @Article{dysonetal1967,
@@ -35206,6 +35640,17 @@ volume =       {18},
 number =       {8},
 pages =	       {861--879},
 keywords =     {continuum mechanics of mixtures, coarsening}
+}
+
+@Article{ehrenberg1982,
+author =       {A. S. C. Ehrenberg},
+title =	       {How Good is Best?},
+journal =      jrssa,
+year =	       {1982},
+volume =       {145},
+number =       {3},
+pages =	       {364--366},
+mynote =       {model selection, model comparison, least squares}
 }
 
 @Article{ehrenfest1910,
@@ -37159,7 +37604,7 @@ journal =      arma,
 year =	       {1977},
 volume =       {66},
 number =       {1},
-pages =	       {1-18},
+pages =	       {1--18},
 keywords =     {continuum mechanics}
 }
 
@@ -37825,6 +38270,38 @@ volume =       {32},
 series =       {\langgerman{Teubner-Texte zur Physik}},
 address =      {Leipzig},
 edition =      {1}
+}
+
+@Article{escobar1994,
+author =       {Michael D. Escobar},
+title =	       {Estimating Normal Means with a {Dirichlet} Process Prior},
+journal =      jasa,
+year =	       {1994},
+volume =       {89},
+number =       {425},
+pages =	       {268--277},
+mynote =       {non-parametric Bayesian probability theory}
+}
+
+@Article{escobaretal1995,
+author =       {Michael D. Escobar and Mike West},
+title =	       {Bayesian Density Estimation and Inference Using Mixtures},
+journal =      jasa,
+year =	       {1995},
+volume =       {90},
+number =       {430},
+pages =	       {577--588},
+keywords =     {Dirichlet process, non-parametric Bayesian probability theory}
+}
+
+@InCollection{escobaretal1998,
+author =       {Michael D. Escobar and Mike West},
+title =	       {Computing Nonparametric Hierarchical Models},
+booktitle =    {\citein{deyetal1998}},
+year =	       {1998},
+chapter =      {\chapb~1},
+pages =	       {1--22},
+keywords =     {Dirichlet process, non-parametric Bayesian probability theory}
 }
 
 @Article{eshelby1949,
@@ -38569,6 +39046,18 @@ year =	       {2004},
 volume =       {69},
 number =       {4},
 pages =	       {043804}
+}
+
+@Article{everittetal2013,
+author =       {Richard Geoffrey Everitt and Christophe Andrieu and Manuel Davy},
+title =	       {Online {Bayesian} Inference in Some Time-Frequency Representations of Non-Stationary Processes},
+journal =      ieeetsp,
+year =	       {2013},
+volume =       {61},
+number =       {22},
+pages =	       {5755--5766},
+note =	       {\url{https://www.reading.ac.uk/web/files/maths/Preprint_13_21_Everitt.pdf}},
+keywords =     {wavelets, probability theory, spectrum analysis}
 }
 
 @Article{eversonetal2000,
@@ -39515,15 +40004,23 @@ pages =	       {615--629},
 keywords =     {exchangeability, Bayesian probability theory, nonparametrics, de Finetti's theorem, Dirichlet process}
 }
 
-@Book{fergusonetal1996,
-editor =       {T. S. Ferguson and L. S. Shapley and J. B. MacQueen},
-title =	       {Statistics, Probability and Game Theory: Papers in Honor of David Blackwell},
-publisher =    {Institute of Mathematical Statistics},
-year =	       {1996},
-volume =       {30},
-series =       {Lecture notes--monograph series},
-address =      {Hayward, USA},
-note =	       {de Finetti's theorem}
+@InCollection{ferguson1983,
+author =       {Thomas S. Ferguson},
+title =	       {Bayesian density estimation by mixtures of normal distributions},
+booktitle =    {\citein{rizvietal1983}},
+year =	       {1983},
+pages =	       {287--302},
+keywords =     {Bayesian non-parametrics, Dirichlet process}
+}
+
+@Article{fergusonetal1992,
+author =       {Thomas S. Ferguson and Eswar G. Phadia and Ram C. Tiwari},
+title =	       {Bayesian nonparametric inference},
+journal =      imslnms,
+year =	       {1992},
+volume =       {17},
+pages =	       {127--150},
+keywords =     {Dirichlet process}
 }
 
 @Article{fergusonetal2006,
@@ -40081,6 +40578,29 @@ number =       {2},
 pages =	       {350--353}
 }
 
+@Book{fienbergetal1975,
+editor =       {Stephen E. Fienberg and Arnold Zellner},
+title =	       {Studies in Bayesian Econometrics and Statistics: In Honor of Leonard J. Savage},
+publisher =    {North-Holland},
+year =	       {1975},
+volume =       {86},
+series =       {Contributions to economic analysis},
+address =      {Amsterdam},
+keywords =     {prior elicitation, identifiability, exchangeability, probability theory}
+}
+
+@Article{fienbergetal2003,
+author =       {Stephen E. Fienberg and Amelia M. Haviland and David Heckerman and Ross Shachter and Joseph B. Kadane and Seraf{\'i}n Moral and Judea Pearl},
+title =	       {{[Statistics} and causal inference: A review{]} Discussion and rejoinder},
+journal =      test,
+year =	       {2003},
+volume =       {12},
+number =       {2},
+pages =	       {319--345},
+note =	       {See \citebi{pearl2003}},
+keywords =     {probability theory, conditional probability}
+}
+
 @PhdThesis{filipowicz2017,
 author =       {Alexandre Filipowicz},
 title =	       {Adapting to Change: The Role of Priors, Surprise and Brain Damage on Mental Model Updating},
@@ -40371,7 +40891,7 @@ publisher =    {Oliver and Boyd},
 year =	       {1956},
 address =      {London},
 note =	       {\url{https://archive.org/details/in.ernet.dli.2015.134555/}},
-keywords =     {p-values}
+keywords =     {$p$-values}
 }
 
 @Article{fisher1961,
@@ -40449,7 +40969,7 @@ mynote =       {Uses a variant of natural deduction calculus}
 
 @Book{fitch1984,
 editor =       {John Fitch},
-title =	       {EUROSAM~84: International Symposium on Symbolic and Algebraic Computation: Cambridge, England, July 9--11, 1984},
+title =	       {EUROSAM~84: International Symposium on Symbolic and Algebraic Computation\subtitleproc{: Cambridge, England, July 9--11, 1984}},
 publisher =    {Springer},
 year =	       {1984},
 volume =       {174},
@@ -40943,6 +41463,14 @@ note =	       {With discussion},
 keywords =     {thermomechanics, statistical mechanics, entropy, second law}
 }
 
+@Misc{fongetal2019,
+author =       {Edwin Fong and Chris Holmes},
+title =	       {On the marginal likelihood and cross-validation},
+howpublished = {\arxiveprint{1905.08737}},
+year =	       {2019},
+keywords =     {log-score, log-likelihood, evidence, probability theory}
+}
+
 @Article{fonsecaetal2000,
 author =       {Alexandre F. Fonseca and Marcus V. Mesquita and {\'A}urea R. Vasconcellos and Roberto Luzzi},
 title =	       {Informational-statistical thermodynamics of a complex system},
@@ -41079,6 +41607,17 @@ year =	       {2006},
 volume =       {96},
 number =       {2},
 pages =	       {020402}
+}
+
+@Article{foremanmackeyetal2013,
+author =       {Foreman-Mackey, Daniel and David W. Hogg and Dustin Lang and Jonathan Goodman},
+title =	       {emcee: The {MCMC Hammer}},
+journal =      pasp,
+year =	       {2013},
+volume =       {125},
+number =       {925},
+pages =	       {306--312},
+keywords =     {Markov-chain Monte Carlo, affine invariance}
 }
 
 @Article{forman1971,
@@ -41997,13 +42536,46 @@ note =	       {\url{https://www.stat.berkeley.edu/users/freedman/}},
 keywords =     {model comparison, Bayesian probability theory, de Finetti, exchangeability, induction}
 }
 
-@InCollection{freedman1996,
+@Article{freedman1996,
 author =       {Freedman, David A.},
 title =	       {{De Finetti's} Theorem in Continuous Time},
-booktitle =    {\citein{fergusonetal1996}},
-publisher =    {},
+journal =      imslnms,
 year =	       {1996},
+volume =       {30},
 pages =	       {83--98}
+}
+
+@Article{freedman1997,
+author =       {David Freedman},
+title =	       {From Association to Causation via Regression},
+journal =      adama,
+year =	       {1997},
+volume =       {18},
+number =       {1},
+pages =	       {59--110},
+keywords =     {linear regression, causality, probability theory}
+}
+
+@Article{freedman2004,
+author =       {David A. Freedman},
+title =	       {Graphical Models for Causation, and the Identification Problem},
+journal =      er,
+year =	       {2004},
+volume =       {28},
+number =       {4},
+pages =	       {267--293},
+keywords =     {causal graphs, causality, probability theory}
+}
+
+@Article{freedman2006,
+author =       {David A. Freedman},
+title =	       {Statistical Models for Causation: What Inferential Leverage Do They Provide?},
+journal =      er,
+year =	       {2006},
+volume =       {30},
+number =       {6},
+pages =	       {691--713},
+keywords =     {causal graphs, causality, probability theory}
 }
 
 @Book{freedmanetal1978_r2007,
@@ -42027,6 +42599,16 @@ volume =       {4},
 number =       {4},
 pages =	       {407--425},
 keywords =     {thermodynamics, ideal gas}
+}
+
+@Book{freemanetal1994,
+editor =       {P. R. Freeman and A. F. M. Smith},
+title =	       {Aspects of Uncertainty: A Tribute to D. V. Lindley},
+publisher =    {Wiley},
+year =	       {1994},
+series =       {Wiley series in probability and statistics},
+address =      {Chichester},
+keywords =     {Dirichlet process, Bayesian non-parametrics, normal mixture, hierarchical models, decision theory}
 }
 
 @Book{frege1952_r1960,
@@ -44279,6 +44861,17 @@ note =	       {\url{https://archive.org/details/in.ernet.dli.2015.377365}},
 keywords =     {Foundations of mechanics, definition of force}
 }
 
+@Article{geisseretal1979,
+author =       {Seymour Geisser and William F. Eddy},
+title =	       {A Predictive Approach to Model Selection},
+journal =      jasa,
+year =	       {1979},
+volume =       {74},
+number =       {365},
+pages =	       {153--160},
+keywords =     {cross-validation, Bayesian probability theory}
+}
+
 @Misc{geissleretal2004,
 author =       {Phillip L. Geissler and David R. Reichman},
 title =	       {Short-ranged attractions in jammed liquids: How cooling can melt a glass},
@@ -44317,6 +44910,17 @@ year =	       {1964},
 address =      {New York},
 note =	       {Transl.\ by E.~Saletan. First publ.\ in Russian 1958},
 origdate =     {1958}
+}
+
+@Article{gelfandetal1994,
+author =       {A. E. Gelfand and D. K. Dey},
+title =	       {Bayesian Model Choice: Asymptotics and Exact Calculations},
+journal =      jrssb,
+year =	       {1994},
+volume =       {56},
+number =       {3},
+pages =	       {501--514},
+keywords =     {log-score, cross-validation}
 }
 
 @Article{gellmannetal1996,
@@ -44420,6 +45024,17 @@ volume =       {66},
 number =       {1},
 pages =	       {8--38},
 keywords =     {conjugate prior, Bayesian probability theory}
+}
+
+@Article{gelmanetal2014,
+author =       {Andrew Gelman and Jessica Hwang and Aki Vehtari},
+title =	       {Understanding predictive information criteria for {Bayesian} models},
+journal =      sc,
+year =	       {2014},
+volume =       {24},
+number =       {6},
+pages =	       {997--1016},
+keywords =     {leave-one-out cross-validation, Bayes factor}
 }
 
 @Article{gelmanetal2017,
@@ -44804,6 +45419,25 @@ pages =	       {881--889},
 keywords =     {neuronal activity as decaying charge}
 }
 
+@Article{gerstneretal1997,
+author =       {Wulfram Gerstner and Werner M. Kistler and Richard Naud and Liam Paninski},
+title =	       {Neural codes: Firing rates and beyond},
+journal =      pnasusa,
+year =	       {1997},
+volume =       {94},
+number =       {24},
+pages =	       {12740--12741},
+keywords =     {spike trains, neuroscience}
+}
+
+@Book{gerstneretal2002,
+author =       {Wulfram Gerstner and Werner M. Kistler},
+title =	       {Spiking Neuron Models: Single Neurons, Populations, Plasticity},
+publisher =    {Cambridge University Press},
+year =	       {2002},
+address =      {Cambridge}
+}
+
 @Book{gerstneretal2014,
 author =       {Wulfram Gerstner and Werner M. Kistler and Richard Naud and Liam Paninski},
 title =	       {Neuronal Dynamics: From Single Neurons to Networks and Models of Cognition},
@@ -45012,17 +45646,6 @@ pages =	       {1903--1905},
 origdate =     {1997}
 }
 
-@Book{ghoshetal1992,
-editor =       {Malay Ghosh and Pramod K. Pathak,},
-title =	       {Current Issues in Statistical Inference: Essays in Honor of D. Basu},
-publisher =    {Institute of Mathematical Statistics},
-year =	       {1992},
-volume =       {17},
-series =       {Lecture notes--monograph series},
-address =      {Beachwood, USA},
-keywords =     {Bayesian probability theory, hierarchical models, empirical Bayes}
-}
-
 @Book{ghoshetal1997,
 author =       {Malay Ghosh and Glen Meeden},
 title =	       {Bayesian Methods for Finite Population Sampling},
@@ -45043,6 +45666,15 @@ year =	       {2003},
 volume =       {425},
 pages =	       {48},
 month =	       sep
+}
+
+@Book{ghoshetal2003b,
+author =       {J. K. Ghosh and R. V. Ramamoorthi},
+title =	       {Bayesian Nonparametrics},
+publisher =    {Springer},
+year =	       {2003},
+series =       {Springer series in statistics},
+keywords =     {Dirichlet process, mixture of normals}
 }
 
 @Article{ghoshetal2005,
@@ -46036,6 +46668,17 @@ year =	       {2006},
 note =	       {\arxiveprint{math.PR/0602091}}
 }
 
+@Article{gneiting2011,
+author =       {Tilmann Gneiting},
+title =	       {Making and Evaluating Point Forecasts},
+journal =      jasa,
+year =	       {2011},
+volume =       {106},
+number =       {494},
+pages =	       {746--762},
+keywords =     {log-scores, utility functions}
+}
+
 @Article{gnutzmannetal2001,
 author =       {Gnutzmann, Sven and {\.Z}yczkowski, Karol},
 title =	       {{R{\'e}nyi-Wehrl} entropies as measures of localization in phase space},
@@ -46564,7 +47207,9 @@ author =       {Irving John Good},
 title =	       {Probability and the Weighing of Evidence},
 publisher =    {Griffin},
 year =	       {1950},
-address =      {London}
+address =      {London},
+keywords =     {Bayesian probability theory, Bayes factors, weight of evidence, composite hypotheses hierarchical model (\sect~6.5)},
+mynote =       {On considering hypotheses about future frequencies: \enquote{An alternative approach would be to define $H$ and $\overline{H}$ as stating that two fixed proportions of the lot would pass the test. This approach would lead to nearly the same results if the lot were assumed to be large compared with the sample} \sect~6.2 pp.~64--65}
 }
 
 @Article{good1952,
@@ -46575,7 +47220,9 @@ year =	       {1952},
 volume =       {14},
 number =       {1},
 pages =	       {107--114},
-keywords =     {Bayesian probability theory, Shannon entropy, maximum entropy, Bayes factor, surprise}
+note =	       {Repr.\ in \citebi{good1983} \chap~1},
+keywords =     {Bayesian probability theory, Shannon entropy, maximum entropy, Bayes factor, surprise, log score (\sect~8), weight of evidence},
+mynote =       {\enquote{Some of you may be thinking of the slogan ``science deals only with what is objective''. If the slogan were true there would be no point for scientific purposes in introducing subjective judgments. But actually the slogan is false. For example, intuition (which is subjective) is the main instrument of original scientific research, according to Einstein. The obsession with objectivity arises largely from the desire to be convincing in published work. There are, however, several activities in which it is less important to convince other people than to find out the truth for oneself. There is another reason for wanting an objective theory, namely that there is a tendency to wishful thinking in subjective judgments. But objectivity is precisely what a subjective theory of probability is for: its function is to introduce extra rationality (and therefore objectivity) into your degrees of belief.} \sect~3 p.~109}
 }
 
 @Article{good1953,
@@ -46621,6 +47268,18 @@ volume =       {103},
 number =       {3},
 pages =	       {200--204},
 keywords =     {Shannon entropy}
+}
+
+@Article{good1956c,
+author =       {Irving John Good},
+title =	       {Which Comes First, Probability or Statistics?},
+journal =      jia,
+year =	       {1956},
+volume =       {82},
+number =       {2},
+pages =	       {249--255},
+note =	       {Partly repr.\ in \citebi{good1983} \chap~5},
+keywords =     {Bayesian probability theory, confidence intervals, maximum likelihood, $p$-values}
 }
 
 @InCollection{good1957,
@@ -46721,7 +47380,31 @@ volume =       {29},
 number =       {3},
 pages =	       {399--418},
 note =	       {See also discussion and reply in \citebi{lindleyetal1967}},
-keywords =     {Johnson-Dirichlet prior, exchangeability, frequencies of frequencies}
+keywords =     {Johnson-Dirichlet prior, exchangeability, frequencies of frequencies, device of imaginary results}
+}
+
+@Article{good1968,
+author =       {Irving John Good},
+title =	       {Corroboration, Explanation, Evolving Probability, Simplicity and a Sharpened Razor},
+journal =      bjps,
+year =	       {1968},
+volume =       {19},
+number =       {2},
+pages =	       {123--143},
+keywords =     {Bayes factors, model comparison, hypothesis testing, induction, weight of evidence}
+}
+
+@Article{good1969,
+author =       {Irving John Good},
+title =	       {A Subjective Evaluation of {Bode's} Law and an `Objective' Test for Approximate Numerical Rationality},
+journal =      jasa,
+year =	       {1969},
+volume =       {64},
+number =       {325},
+pages =	       {23--49},
+note =	       {Partly repr.\ in \citebi{good1983} \chap~13},
+keywords =     {decibel, deciban, weight of evidence, Bayes factor, Bayesian probabilit},
+mynote =       {\enquote{in both a Bayesian and a non-Bayesian analysis we have to guess that some mathematical model in reality is adequate. The main difference is that in a non-Bayesian analysis more is swept under the carpet. This makes non-Bayesian methods politically expedient. The Bayesian is forced to put his cards on the table instead of up his sleeve. He thus helps others to improve his analysis, and this is always possible in a problem concerning the real world.} \sect~2.3 p.~26}
 }
 
 @Article{good1975,
@@ -46732,9 +47415,9 @@ year =	       {1975},
 volume =       {30},
 number =       {1--2},
 pages =	       {39--73},
-note =	       {Repr.\ in \citebi{good1983}, \chap~15, pp.~149--170},
-keywords =     {Bayes factors, model comparison, hypothesis testing, induction},
-mynote =       {\enquote{Note how it is difficult to establish high probability for a hypothesis unless one is able to state other hypotheses clearly enough}, \sect~VI, p.~62}
+note =	       {Partly repr.\ in \citebi{good1983} \chap~15},
+keywords =     {Bayes factors, model comparison, hypothesis testing, induction, weight of evidence},
+mynote =       {\enquote{Note how it is difficult to establish high probability for a hypothesis unless one is able to state other hypotheses clearly enough} \sect~VI p.~62}
 }
 
 @Article{good1976,
@@ -46768,9 +47451,23 @@ year =	       {1980},
 volume =       {31},
 number =       {1},
 pages =	       {489--519},
-note =	       {Repr.\ in \citebi{good1983}, \chap~9, pp.~95--105},
+note =	       {Repr.\ in \citebi{good1983} \chap~9 pp.~95--105},
 keywords =     {hierarchical models, Bayesian probability theory, Dirichlet prior},
 mynote =       {\enquote{Perhaps a statistical argument is not fully Bayesian unless it is subjective enough to be controversial, even if the controversy is between Bayesians themselves} \sect~1, p.~492}
+}
+
+@InCollection{good1981,
+author =       {Irving John Good},
+title =	       {Some Logic and History of Hypothesis Testing},
+booktitle =    {Philosophy in Economics\subtitleproc{: Papers Deriving from and Related to a Workshop on Testability and Explanation in Economics held at Virginia Polytechnic Institute and State University, 1979}},
+publisher =    {Reidel},
+year =	       {1981},
+editor =       {Joseph C. Pitt},
+volume =       {16},
+series =       {The University of Western Ontario series in philosophy of science},
+pages =	       {149--174},
+note =	       {Repr.\ in \citebi{good1983} \chap~14 pp.~129--148},
+keywords =     {Bayes factor, weight of evidence}
 }
 
 @Article{good1982,
@@ -46926,6 +47623,17 @@ year =	       {1972},
 volume =       {44},
 number =       {4},
 pages =	       {249--266}
+}
+
+@Article{goodmanetal2010,
+author =       {Jonathan Goodman and Jonathan Weare},
+title =	       {Ensemble samplers with affine invariance},
+journal =      camcs,
+year =	       {2010},
+volume =       {5},
+number =       {1},
+pages =	       {65--80},
+keywords =     {Markov-chain Monte Carlo}
 }
 
 @Article{goodrichetal1980,
@@ -47221,7 +47929,7 @@ year =	       {1886},
 volume =       {5},
 number =       {1},
 pages =	       {354--362},
-note =	       {\url{https://hal.archives-ouvertes.fr/jpa-00238657}},
+note =	       {\haleprint{jpa-00238657}},
 keywords =     {on light movement, diffraction}
 }
 
@@ -48305,7 +49013,7 @@ keywords =     {continuum mechanics}
 author =       {Kevin Green and Axel Hutt},
 title =	       {Analysis of a {2D} neural field equation with finite transmission speed},
 year =	       {2014},
-note =	       {\url{https://hal.inria.fr/hal-01007667}}
+note =	       {\haleprint{hal-01007667}}
 }
 
 @Book{greenhill1892,
@@ -49025,7 +49733,7 @@ year =	       {2019},
 volume =       {2},
 number =       {1},
 pages =	       {1--11},
-note =	       {\url{http://www.ejwagenmakers.com/papers.html}},
+note =	       {See also comments and rejoinder in \citebi{chandramoulietal2019}},
 keywords =     {probability theory}
 }
 
@@ -49368,7 +50076,7 @@ booktitle =    {Cornelius Lanczos: Collected Published Papers with Commentaries.
 publisher =    {North Carolina State University},
 year =	       {1998},
 editor =       {William R. Davis},
-pages =	       {{2-15}\,--\,{2-23}},
+pages =	       {{2-15}--{2-23}},
 address =      {Raleigh, USA}
 }
 
@@ -51708,8 +52416,18 @@ journal =      ptrsl,
 year =	       {1834},
 volume =       {124},
 pages =	       {247--308},
-note =	       {\url{http://www.maths.tcd.ie/pub/HistMath/People/Hamilton/Papers.html}},
+note =	       {\url{http://www.maths.tcd.ie/pub/HistMath/People/Hamilton/Papers.html}. See also \citebi{hamilton1835}},
 keywords =     {origin of Hamiltonian dynamics}
+}
+
+@Article{hamilton1834b,
+author =       {William Rowan Hamilton},
+title =	       {On the Application to Dynamics of a General Mathematical Method previously applied to Optics},
+journal =      rbaas,
+year =	       {1834},
+volume =       {4},
+pages =	       {513--518},
+note =	       {\url{https://www.archive.org/details/reportofbritisha34brit}, \url{http://www.maths.tcd.ie/pub/HistMath/People/Hamilton/Papers.html}}
 }
 
 @Article{hamilton1835,
@@ -51719,17 +52437,8 @@ journal =      ptrsl,
 year =	       {1835},
 volume =       {125},
 pages =	       {95--144},
-note =	       {\url{http://www.maths.tcd.ie/pub/HistMath/People/Hamilton/Papers.html}},
+note =	       {\url{http://www.maths.tcd.ie/pub/HistMath/People/Hamilton/Papers.html}. See also \citebi{hamilton1834}},
 keywords =     {origin of Hamiltonian dynamics}
-}
-
-@Article{hamilton1835b,
-author =       {William Rowan Hamilton},
-title =	       {On the Application to Dynamics of a General Mathematical Method previously applied to Optics},
-journal =      rbaas,
-year =	       {1835},
-pages =	       {513--518},
-note =	       {\url{http://www.maths.tcd.ie/pub/HistMath/People/Hamilton/Papers.html}}
 }
 
 @Article{hamilton1847,
@@ -52469,7 +53178,7 @@ pages =	       {9223--9232}
 
 @Article{harringtonetal2015,
 author =       {Ian A. Harrington and William Grisham and D. J. Brasier and Shawn P. Gallagher and Samantha S. Gizerian and Rupa G. Gordon and Megan H. Hagenauer and Monica L. Linden and Barbara Lom and Richard Olivo and Noah J. Sandstrom and Shara Stough and Ilya Vilinsky and Michael C. Wiest},
-title =	       {An Instructor’s Guide to (Some of) the Most Amazing Papers in Neuroscience},
+title =	       {An Instructor's Guide to (Some of) the Most Amazing Papers in Neuroscience},
 journal =      jugnse,
 year =	       {2015},
 volume =       {14},
@@ -52556,6 +53265,17 @@ year =	       {1964},
 volume =       {35},
 number =       {2},
 pages =	       {836--845}
+}
+
+@Book{hartl1997_r2020,
+author =       {Daniel L. Hartl},
+title =	       {Essential Genetics and Genomics},
+publisher =    {Jones \amp\ Bartlett Learning},
+year =	       {2020},
+address =      {Burlington, USA},
+edition =      {7},
+note =	       {First publ.\ 1997},
+origdate =     {1997}
 }
 
 @Book{hartle2003,
@@ -55121,7 +55841,7 @@ keywords =     {Rivlin-Ericksen fluid}
 @InCollection{higgsetal1995,
 author =       {Paul G. Higgs and Steven R. Morgan},
 title =	       {Thermodynamics of {RNA} folding. {When} is an {RNA} molecule in equilibrium?},
-booktitle =    {Advances in Artificial Life\subtitleproc{: Third European Conference on Artificial Life: Granada, Spain, June 4--6, 1995. Proceedings}},
+booktitle =    {Advances in Artificial Life: Third European Conference on Artificial Life\subtitleproc{: Granada, Spain, June 4--6, 1995. Proceedings}},
 publisher =    {Springer},
 year =	       {1995},
 editor =       {Federico Mor{\'a}n and Alvaro Moreno and Juan Juli{\'a}n Merelo and Pablo Chac{\'o}n},
@@ -55439,6 +56159,17 @@ pages =	       {677--691},
 keywords =     {de Finetti theorem, nonparametric models, exchangeability}
 }
 
+@Article{hill1980,
+author =       {Bruce M. Hill},
+title =	       {On some statistical paradoxes and non-conglomerability},
+journal =      teio,
+year =	       {1980},
+volume =       {31},
+number =       {1},
+pages =	       {39--66},
+keywords =     {paradoxes of probability theory, convex geometry, countable additivity}
+}
+
 @Article{hill1993,
 author =       {Bruce M. Hill},
 title =	       {Parametric Models for {$A_n$}: Splitting Processes and Mixtures},
@@ -55481,7 +56212,6 @@ year =	       {1995},
 volume =       {10},
 number =       {4},
 pages =	       {354--363},
-note =	       {\url{http://www.math.gatech.edu/~hill/publications/cv.dir/cv.html\#publ}},
 keywords =     {Benford}
 }
 
@@ -55882,6 +56612,16 @@ address =      {Oslo},
 keywords =     {probability theory, exchangeability, extremal family}
 }
 
+@Article{hjortetal2009,
+author =       {Nils Lid Hjort and Stephen G. Walker},
+title =	       {Quantile pyramids for {Bayesian} nonparametrics},
+journal =      as,
+year =	       {2009},
+volume =       {37},
+number =       {1},
+pages =	       {105--131}
+}
+
 @Book{hjortetal2010,
 editor =       {Nils Lid Hjort and Chris Holmes and Peter M{\"u}ller and Stephen G. Walker},
 title =	       {Bayesian Nonparametrics},
@@ -55889,7 +56629,7 @@ publisher =    {Cambridge University Press},
 year =	       {2010},
 series =       {Cambridge series in statistical and probabilistic mathematics},
 address =      {Cambridge},
-keywords =     {exchangeability, Bayesian probability theory}
+keywords =     {exchangeability, Bayesian probability theory, Dirichlet process}
 }
 
 @Article{hnizdo1997,
@@ -56619,6 +57359,16 @@ pages =	       {1311--1320},
 keywords =     {Use of Planck's new quantum hypothesis for the calculation of the rotational energy of diatomic gases, quantum theory}
 }
 
+@Article{holmenetal2014,
+author =       {Turid Lingaas Holmen and Grete Bratberg and Steinar Krokstad and Arnulf Langhammer and Kristian Hveem and Kristian Midthjell and Jon Heggland and Jostein Holmen},
+title =	       {Cohort profile of the {Young-HUNT} Study, {Norway}: a population-based study of adolescents},
+journal =      ije,
+year =	       {2014},
+volume =       {43},
+number =       {2},
+pages =	       {536--544}
+}
+
 @Article{holmetal1998,
 author =       {Holm, Darryl D. and Vladimir Zeitlin},
 title =	       {Hamilton's principle for quasigeostrophic motion},
@@ -56824,7 +57574,16 @@ institution =  {Institute for Advanced Study},
 year =	       {1979},
 address =      {Princeton},
 note =	       {\url{http://www.stat.berkeley.edu/~aldous/Research/hoover.pdf}},
-keywords =     {partial exchangeability, sufficiency, probability theory}
+keywords =     {partial exchangeability, sufficiency, probability theory, de Finetti's theorem}
+}
+
+@InCollection{hoover1982,
+author =       {Douglas N. Hoover},
+title =	       {Row-column exchangeability and a generalized model for probability},
+booktitle =    {\citein{kochetal1982}},
+year =	       {1982},
+pages =	       {281--291},
+keywords =     {partial exchangeability, sufficiency, probability theory, de Finetti's theorem}
 }
 
 @Book{hoover1991,
@@ -56975,6 +57734,20 @@ volume =       {49},
 number =       {10},
 pages =	       {943, 949},
 keywords =     {non-equilibrium thermodynamics}
+}
+
+@InCollection{horgeretal2018,
+author =       {Felix Horger and Tobias W{\"u}rfl and Vincent Christlein and Andreas Maier},
+title =	       {Towards Arbitrary Noise Augmentation -- Deep Learning for Sampling from Arbitrary Probability Distributions},
+booktitle =    {Machine Learning for Medical Image Reconstruction: First International Workshop, MLMIR 2018\subtitleproc{: Held in Conjunction with MICCAI 2018. Granada, Spain, September 16, 2018}},
+publisher =    {Springer},
+year =	       {2018},
+editor =       {Florian Knoll and Andreas Maier and Daniel Rueckert},
+volume =       {11074},
+series =       {Lecture notes in computer science},
+pages =	       {129--137},
+address =      {Cham},
+keywords =     {probability theory, Markov-chain Monte Carlo}
 }
 
 @Book{hornetal1985_r1990,
@@ -58075,12 +58848,13 @@ pages =	       {341--347},
 note =	       {See also}
 }
 
-@Book{huthetal2000_r2002,
+@Book{huthetal2000_r2004,
 author =       {Michael R. A. Huth and Mark D. Ryan},
 title =	       {Logic in Computer Science: Modelling and reasoning about systems},
 publisher =    {Cambridge University Press},
-year =	       {2002},
+year =	       {2004},
 address =      {Cambridge},
+edition =      {2},
 note =	       {First publ.\ 2000},
 keywords =     {formal logic, natural deduction},
 origdate =     {2000}
@@ -58172,7 +58946,7 @@ pages =	       {2061--2067}
 @InProceedings{hutter2003b,
 author =       {Marcus Hutter},
 title =	       {On the Existence and Convergence of Computable Universal Priors},
-booktitle =    {Algorithmic Learning Theory: 14th International Conference, ALT 2003, Sapporo, Japan, October 17-19, 2003, Proceedings},
+booktitle =    {Algorithmic Learning Theory: 14th International Conference, ALT 2003\subtitleproc{: Sapporo, Japan, October 17-19, 2003}},
 year =	       {2003},
 editor =       {Ricard Gavald{\`a} and Klaus P. Jantke and Eiji Takimoto},
 volume =       {2842},
@@ -58856,111 +59630,123 @@ key =	       {ISMVL93}
 
 @Manual{iso1993,
 title =	       {Quantities and units},
-author =       {\textsc{iso}},
+author =       {{\textsc{iso} (International Organization for Standardization)}},
 organization = {International Organization for Standardization},
 address =      {Geneva},
 edition =      {3},
 year =	       {1993},
-keywords =     {standard, probability theory, terminology, mechanics, mathematics}
+keywords =     {standard, probability theory, terminology, mechanics, mathematics},
+shortauthor =  {\textsc{iso}}
 }
 
 @Manual{iso2006,
 title =	       {ISO 3534-1:2006: Statistics -- Vocabulary and symbols -- Part 1: General statistical terms and terms used in probability},
-author =       {\textsc{iso}},
+author =       {{\textsc{iso} (International Organization for Standardization)}},
 organization = {International Organization for Standardization},
 address =      {Geneva},
 year =	       {2006},
-keywords =     {standard, probability theory, terminology, repeatability, reproducibility}
+keywords =     {standard, probability theory, terminology, repeatability, reproducibility},
+shortauthor =  {\textsc{iso}}
 }
 
 @Manual{iso2006b,
 title =	       {ISO 3534-2:2006: Statistics -- Vocabulary and symbols -- Part 2: Applied statistics},
-author =       {\textsc{iso}},
+author =       {{\textsc{iso} (International Organization for Standardization)}},
 organization = {International Organization for Standardization},
 address =      {Geneva},
 year =	       {2006},
-keywords =     {standard, probability theory, terminology, repeatability, reproducibility}
+keywords =     {standard, probability theory, terminology, repeatability, reproducibility},
+shortauthor =  {\textsc{iso}}
 }
 
 @Manual{iso2007,
 title =	       {ISO 80000-5:2007: Quantities and units 5: Thermodynamics},
-author =       {\textsc{iso}},
+author =       {{\textsc{iso} (International Organization for Standardization)}},
 organization = {International Organization for Standardization},
 address =      {Geneva},
 year =	       {2007},
-keywords =     {standard, probability theory, terminology, mechanics, mathematics}
+keywords =     {standard, probability theory, terminology, mechanics, mathematics},
+shortauthor =  {\textsc{iso}}
 }
 
 @Manual{iso2008,
 title =	       {ISO 80000-6:2008: Quantities and units 6: Electromagnetism},
-author =       {\textsc{iso}},
+author =       {{\textsc{iso} (International Organization for Standardization)}},
 organization = {International Organization for Standardization},
 address =      {Geneva},
 year =	       {2008},
-keywords =     {standard, probability theory, terminology, mechanics, mathematics}
+keywords =     {standard, probability theory, terminology, mechanics, mathematics},
+shortauthor =  {\textsc{iso}}
 }
 
 @Manual{iso2008b,
 title =	       {ISO 80000-7:2008: Quantities and units 7: Light},
-author =       {\textsc{iso}},
+author =       {{\textsc{iso} (International Organization for Standardization)}},
 organization = {International Organization for Standardization},
 address =      {Geneva},
 year =	       {2008},
-keywords =     {standard, probability theory, terminology, mechanics, mathematics}
+keywords =     {standard, probability theory, terminology, mechanics, mathematics},
+shortauthor =  {\textsc{iso}}
 }
 
 @Manual{iso2008c,
 title =	       {ISO 80000-13:2008: Quantities and units 13: Information science and technology},
-author =       {\textsc{iso}},
+author =       {{\textsc{iso} (International Organization for Standardization)}},
 organization = {International Organization for Standardization},
 address =      {Geneva},
 year =	       {2008},
-keywords =     {standard, probability theory, terminology, mechanics, mathematics}
+keywords =     {standard, probability theory, terminology, mechanics, mathematics},
+shortauthor =  {\textsc{iso}}
 }
 
 @Manual{iso2009,
 title =	       {ISO 80000-1:2009: Quantities and units 1: General},
-author =       {\textsc{iso}},
+author =       {{\textsc{iso} (International Organization for Standardization)}},
 organization = {International Organization for Standardization},
 address =      {Geneva},
 year =	       {2009},
-keywords =     {standard, probability theory, terminology, mechanics, mathematics}
+keywords =     {standard, probability theory, terminology, mechanics, mathematics},
+shortauthor =  {\textsc{iso}}
 }
 
 @Manual{iso2009b,
 title =	       {ISO 80000-2:2009: Quantities and units 2: Mathematical signs and symbols to be used in the natural sciences and technology},
-author =       {\textsc{iso}},
+author =       {{\textsc{iso} (International Organization for Standardization)}},
 organization = {International Organization for Standardization},
 address =      {Geneva},
 year =	       {2009},
-keywords =     {standard, probability theory, terminology, mechanics, mathematics}
+keywords =     {standard, probability theory, terminology, mechanics, mathematics},
+shortauthor =  {\textsc{iso}}
 }
 
 @Manual{iso2009c,
 title =	       {ISO 80000-3:2009: Quantities and units 3: Space and time},
-author =       {\textsc{iso}},
+author =       {{\textsc{iso} (International Organization for Standardization)}},
 organization = {International Organization for Standardization},
 address =      {Geneva},
 year =	       {2009},
-keywords =     {standard, probability theory, terminology, mechanics, mathematics}
+keywords =     {standard, probability theory, terminology, mechanics, mathematics},
+shortauthor =  {\textsc{iso}}
 }
 
 @Manual{iso2009d,
 title =	       {ISO 80000-9:2009: Quantities and units 9: Physical chemistry and molecular physics},
-author =       {\textsc{iso}},
+author =       {{\textsc{iso} (International Organization for Standardization)}},
 organization = {International Organization for Standardization},
 address =      {Geneva},
 year =	       {2009},
-keywords =     {standard, probability theory, terminology, mechanics, mathematics}
+keywords =     {standard, probability theory, terminology, mechanics, mathematics},
+shortauthor =  {\textsc{iso}}
 }
 
 @Manual{iso2009e,
 title =	       {ISO 80000-12:2009: Quantities and units 12: Solid state physics},
-author =       {\textsc{iso}},
+author =       {{\textsc{iso} (International Organization for Standardization)}},
 organization = {International Organization for Standardization},
 address =      {Geneva},
 year =	       {2009},
-keywords =     {standard, probability theory, terminology, mechanics, mathematics}
+keywords =     {standard, probability theory, terminology, mechanics, mathematics},
+shortauthor =  {\textsc{iso}}
 }
 
 @Article{ispolatovetal2001,
@@ -59106,7 +59892,7 @@ keywords =     {numerical integration}
 
 @Manual{iupac1988_r1998,
 title =	       {Quantities, Units and Symbols in Physical Chemistry},
-author =       {\textsc{iupac}},
+author =       {{\textsc{iupac} (International Union of Pure and Applied Chemistry)}},
 organization = {International Union of Pure and Applied Chemistry},
 address =      {Research Triangle Park, USA},
 edition =      {rev.\ second ed.},
@@ -59114,11 +59900,12 @@ year =	       {1998},
 note =	       {\url{http://old.iupac.org/publications/books/gbook/}; prepared for publication by Ian Mills, Tomislav Cvita{\v{s}}, Klaus Homann, Nikola Kallay, and Kozo Kuchitsu. First publ.\ 1988},
 keywords =     {standard, SI},
 mynote =       {third ed.\ \citebi{iupac1988_r2007}},
-origdate =     {1988}
+origdate =     {1988},
+shortauthor =  {\textsc{iupac}}
 }
 
 @Book{iupac1988_r2007,
-author =       {{International Union of Pure and Applied Chemistry}},
+author =       {{\textsc{iupac} (International Union of Pure and Applied Chemistry)}},
 title =	       {Quantities, Units and Symbols in Physical Chemistry},
 publisher =    {RSC},
 year =	       {2007},
@@ -59127,7 +59914,7 @@ edition =      {3},
 note =	       {Prepared for publication by E. Richard Cohen, Tomislav Cvita{\v{s}}, Jeremy G. Frey, Bertil Holmstr{\"o}m, Kozo Kuchitsu, Roberto Marquardt, Ian Mills, Franco Pavese, Martin Quack, J{\"u}rgen Stohner, Herbert L. Strauss, Michio Takami, Anders J Thor. First publ.\ 1988},
 keywords =     {standard, SI},
 origdate =     {1988},
-author =       {\textsc{iupac}}
+shortauthor =  {\textsc{iupac}}
 }
 
 @Article{ivanovic1981,
@@ -59392,6 +60179,15 @@ year =	       {2005},
 note =	       {\arxiveprint{quant-ph/0512105}}
 }
 
+@PhdThesis{jacobsen2019,
+author =       {Bente Jacobsen},
+title =	       {Connectivity of Interneurons in the Entorhinal Cortex},
+school =       {NTNU Norwegian University for Science and Technology},
+year =	       {2019},
+address =      {Trondheim},
+keywords =     {probability theory, binary matrices}
+}
+
 @Article{jacobsenetal1990,
 author =       {R. T. Jacobsen and W. P. Clarke and S. G. Penoncello and R. D. McCarty},
 title =	       {A thermodynamic property formulation for air. {I}. {Single-phase} equation of state from {$60$} to {$873~\mathrm{K}$} at pressures to {$70~\mathrm{MPa}$}},
@@ -59553,7 +60349,8 @@ title =	       {Geometry of {Bloch} vectors in two-qubit system},
 journal =      pla,
 year =	       {2001},
 volume =       {286},
-pages =	       {383--390}
+pages =	       {383--390},
+keywords =     {convex geometry, quantum state space}
 }
 
 @Article{jakobsenetal2008,
@@ -60226,10 +61023,11 @@ mynote =       {\enquote{One of the major unsolved riddles of probability theory
 @InCollection{jaynes1980,
 author =       {Jaynes, Edwin Thompson},
 title =	       {Marginalization and prior probabilities},
-booktitle =    {Bayesian Analysis in Econometrics and Statistics},
+booktitle =    {\citein{zellner1980}},
 publisher =    {North-Holland},
 year =	       {1980},
-pages =	       {43},
+pages =	       {43--78},
+chapter =      {\chapb~5},
 address =      {Amsterdam},
 note =	       {\url{http://bayes.wustl.edu/etj/node1.html}, see also \citebi{jaynes1980b}}
 }
@@ -60360,14 +61158,14 @@ pages =	       {115},
 note =	       {\url{http://bayes.wustl.edu/etj/node1.html}}
 }
 
-@InCollection{jaynes1985b,
+@Misc{jaynes1985b_r1996,
 author =       {Jaynes, Edwin Thompson},
 title =	       {Macroscopic prediction},
-booktitle =    {\citein{haken1985}},
-year =	       {1985},
-pages =	       {254--269},
-note =	       {Updated version 1996 at \url{http://bayes.wustl.edu/etj/node1.html}},
-keywords =     {maximum-calibre principle, statistical mechanics, thermodynamics}
+howpublished = {\url{http://bayes.wustl.edu/etj/node1.html}},
+year =	       {1996},
+note =	       {First publ.\ in \citebi{haken1985} pp.~254--269},
+keywords =     {maximum-calibre principle, statistical mechanics, thermodynamics},
+origdate =     {1985}
 }
 
 @InCollection{jaynes1985c,
@@ -60382,8 +61180,9 @@ note =	       {With discussion by J. J. Deely, A. F. Smith, J. R. M. Ameen, J. B
 @Misc{jaynes1985d_r1993,
 author =       {Jaynes, Edwin Thompson},
 title =	       {Inferential Scattering},
+howpublished = {\url{http://bayes.wustl.edu/etj/node1.html}},
 year =	       {1993},
-note =	       {\url{http://bayes.wustl.edu/etj/node1.html}. Extensively rewritten version of a paper first publ.\ 1985 in \citebi{smithetal1985}, pp.~377--398},
+note =	       {First publ.\ 1985 in \citebi{smithetal1985} pp.~377--398},
 origdate =     {1985}
 }
 
@@ -60637,23 +61436,25 @@ keywords =     {probability theory, stochastic differential equations}
 
 @Manual{jcgm1993,
 title =	       {Guide to the Expression of Uncertainty in Measurement},
-author =       {\textsc{jcgm}},
+author =       {{\textsc{jcgm} (Joint Committee for Guides in Metrology)}},
 organization = {Joint Committee for Guides in Metrology (JCGM), BIPM, IEC, IFCC, ILAC, ISO, IUPAC, IUPAP, OIML},
 edition =      {1},
 year =	       {1993},
 note =	       {See the updated version \citebi{jcgm1993_r2012}},
-keywords =     {standard, probability theory, terminology}
+keywords =     {standard, probability theory, terminology},
+shortauthor =  {\textsc{jcgm}}
 }
 
 @Manual{jcgm1993_r2012,
 title =	       {Guide to the Expression of Uncertainty in Measurement},
-author =       {\textsc{jcgm}},
+author =       {{\textsc{jcgm} (Joint Committee for Guides in Metrology)}},
 organization = {Joint Committee for Guides in Metrology (JCGM), BIPM, IEC, IFCC, ILAC, ISO, IUPAC, IUPAP, OIML},
 edition =      {corr.\ version},
 year =	       {2012},
 note =	       {\url{http://www.bipm.org/en/publications/guides/gum.html}. Includes various supplements. First publ. 1993.},
 keywords =     {Bayesian probability theory, Bayes theorem, Monte Carlo sampling, t-student distribution, \enquote{GUM 1995 with minor corrections}},
-origdate =     {1993}
+origdate =     {1993},
+shortauthor =  {\textsc{jcgm}}
 }
 
 @Book{jeans1904_r1925,
@@ -61155,6 +61956,18 @@ author =       {Christopher G. Jesudason},
 title =	       {Linear algebra of reduced units and discussion of temperature parameter},
 year =	       {2004},
 note =	       {\arxiveprint{physics/0403033}}
+}
+
+@Book{jevons1874_r1883,
+author =       {W. Stanley Jevons},
+title =	       {The Principles of Science: A Treatise on Logic and Scientific Method},
+publisher =    {Macmillan},
+year =	       {1883},
+address =      {London},
+edition =      {3},
+note =	       {\url{https://archive.org/details/principlesofsci00jevo/}. First publ.\ 1874},
+keywords =     {Bayesian probability theory, formal logic},
+origdate =     {1874}
 }
 
 @Misc{jiang2006,
@@ -62510,6 +63323,18 @@ note =	       {\url{https://www4.stat.ncsu.edu/~wilson/bayes/Kadane80.pdf}},
 keywords =     {Bayesian probability theory, predictive approach}
 }
 
+@InCollection{kadaneetal1980b,
+author =       {Joseph B. Kadane and James M. Dickey},
+title =	       {Bayesian Decision Theory and the Simplification of Models},
+booktitle =    {Evaluation of Econometric Models},
+publisher =    {Academic Press},
+year =	       {1980},
+editor =       {Jan Kmenta and James B. Ramsey},
+pages =	       {245--268},
+address =      {New York},
+note =	       {\url{https://www.nber.org/chapters/c11704}}
+}
+
 @Article{kadaneetal1982,
 author =       {Joseph B. Kadane and Dennis V. Lindley and A. Philip Dawid},
 title =	       {The Well-Calibrated {Bayesian}: {Comments} and rejoinder},
@@ -62810,6 +63635,17 @@ note =	       {\arxiveprint{1412.2044}},
 keywords =     {evidence, Bayesian probability theory, improper priors, model comparison}
 }
 
+@Article{kamatani2018,
+author =       {Kengo Kamatani},
+title =	       {Efficient strategy for the {Markov} chain {Monte Carlo} in high-dimension with heavy-tailed target probability distribution},
+journal =      bern,
+year =	       {2018},
+volume =       {24},
+number =       {4B},
+pages =	       {3711--3750},
+keywords =     {probability theory, pre-conditioned Crank-Nicolson}
+}
+
 @Article{kambetal1987,
 author =       {Alexander Kamb and Linda E. Iverson and Mark A. Tanouye},
 title =	       {Molecular characterization of {\emph{Shaker}}, a {Drosophila} gene that encodes a potassium channel},
@@ -62887,7 +63723,7 @@ journal =      managsci,
 year =	       {1960},
 volume =       {6},
 number =       {4},
-pages =	       {366-422},
+pages =	       {366--422},
 note =	       {First publ.\ in Russian 1939},
 keywords =     {Vasershtejn-Kantorovich distance},
 origdate =     {1939}
@@ -63081,7 +63917,7 @@ year =	       {1989},
 volume =       {4},
 number =       {3},
 pages =	       {188--219},
-note =	       {\url{http://lib.stat.cmu.edu/~kass/papers/geometry.pdf}. See also comments and rejoinder in \citebi{amarietal1989}},
+note =	       {See also comments and rejoinder in \citebi{amarietal1989}},
 keywords =     {probability theory, minimum-discrimination-information, minimum-relative-entropy, symmetries of Fisher-information metric}
 }
 
@@ -63477,7 +64313,7 @@ volume =       {93},
 number =       {3},
 pages =	       {191--197},
 note =	       {\url{http://gauss.stat.su.se/gu/sg/2012VT/penny.pdf}},
-keywords =     {coin tossing, probability theory}
+keywords =     {coin tossing, probability theory, "random"}
 }
 
 @Article{keller1989,
@@ -63950,7 +64786,7 @@ keywords =     {spin dimer}
 
 @Book{kernisberneretal2005,
 editor =       {Kern-Isberner, Gabriele and Wilhelm R{\"o}dder and Friedhelm Kulmann},
-title =	       {Conditionals, Information, and Inference: International Workshop, WCII 2002, Hagen, Germany, May 13--15, 2002, Revised Selected Papers},
+title =	       {Conditionals, Information, and Inference: International Workshop, WCII 2002\subtitleproc{: Hagen, Germany, May 13--15, 2002, Revised Selected Papers}},
 publisher =    {Springer},
 year =	       {2005},
 volume =       {3301},
@@ -64501,7 +65337,8 @@ journal =      pla,
 year =	       {2003},
 volume =       {314},
 number =       {5--6},
-pages =	       {339--349}
+pages =	       {339--349},
+keywords =     {convex geometry, quantum state space}
 }
 
 @Article{kimuraetal2004,
@@ -64511,7 +65348,8 @@ journal =      osid,
 year =	       {2005},
 volume =       {12},
 number =       {3},
-pages =	       {207--229}
+pages =	       {207--229},
+keywords =     {convex geometry, quantum state space}
 }
 
 @Book{kindermannetal1980,
@@ -65190,7 +66028,7 @@ author =       {John R. Klauder and E. C. G. Sudarshan},
 title =	       {Fundamentals of Quantum Optics},
 publisher =    {Benjamin},
 year =	       {1968},
-series =       {The mathematical physics monograph series},
+series =       {Mathematical physics monograph series},
 address =      {New York}
 }
 
@@ -65910,6 +66748,18 @@ title =	       {{Many Labs 2}: Investigating Variation in Replicability Across S
 year =	       {2018},
 note =	       {\texttt{\urlalt{https://doi.org/10.31234/osf.io/9654g}{PsyArXiv doi:10.31234/osf.io/9654g}}},
 keywords =     {reproducibility}
+}
+
+@Book{klemkeetal1980_r1988,
+editor =       {E. D. Klemke and Robert Hollinger and David Wyss Rudge and A. David Kline},
+title =	       {Introductory Readings in the Philosophy of Science},
+publisher =    {Prometheus},
+year =	       {1988},
+address =      {Buffalo, USA},
+edition =      {3},
+note =	       {First publ.\ 1980},
+keywords =     {objectivity},
+origdate =     {1980}
 }
 
 @Misc{klibanov2005,
@@ -67700,6 +68550,24 @@ number =       {6},
 pages =	       {2916--2924}
 }
 
+@Misc{krnjajicetal2011,
+author =       {Milovan Krnjaji{\'c} and David Draper},
+title =	       {Bayesian Model Specification: Some problems related to model choice and calibration},
+howpublished = {\url{http://hdl.handle.net/10379/3804}},
+year =	       {2011},
+keywords =     {cross-validation, model selection, log-score}
+}
+
+@Article{krnjajicetal2014,
+author =       {Milovan Krnjaji{\'c} and David Draper},
+title =	       {Bayesian model comparison: Log scores and \emph{{DIC}}},
+journal =      spl,
+year =	       {2014},
+volume =       {88},
+pages =	       {9--14},
+keywords =     {cross-validation, model selection, log-score}
+}
+
 @Article{kroemer1980,
 author =       {Herbert Kroemer},
 title =	       {How incorrect is the classical partition function for the ideal gas?},
@@ -67762,6 +68630,16 @@ volume =       {196},
 number =       {3},
 pages =	       {203--211},
 keywords =     {non-local continuum mechanics, non-local elastostatics}
+}
+
+@Article{krokstadetal2013,
+author =       {Steinar Krokstad and Arnulf Langhammer and Kristian Hveem and Turid Lingaas Holmen and Kristian Midthjell and T. R. Stene and Grete Bratberg and Jon Heggland and Jostein Holmen},
+title =	       {Cohort profile: the {HUNT} study, {Norway}},
+journal =      ije,
+year =	       {2013},
+volume =       {42},
+number =       {4},
+pages =	       {968--977}
 }
 
 @Article{krolletal1973,
@@ -67878,7 +68756,7 @@ keywords =     {Bayesian probability theory}
 }
 
 @Article{kruschke2013,
-author =       {Kruschke, John K.},
+author =       {John K. Kruschke},
 title =	       {Bayesian Estimation Supersedes the {$t$}~Test},
 journal =      jepg,
 year =	       {2013},
@@ -67887,6 +68765,18 @@ number =       {2},
 pages =	       {573--603},
 note =	       {\url{http://www.indiana.edu/~kruschke/BEST/}},
 keywords =     {t-test}
+}
+
+@Article{kruschkeetal2018,
+author =       {John K. Kruschke and Torrin M. Liddell},
+title =	       {Bayesian data analysis for newcomers},
+journal =      pnbr,
+year =	       {2018},
+volume =       {25},
+number =       {1},
+pages =	       {155--177},
+note =	       {\url{https://psyarxiv.com/nqfr5/}},
+keywords =     {Bayesian probability theory, $p$-values}
 }
 
 @Article{kruskaletal1979,
@@ -67898,7 +68788,7 @@ volume =       {47},
 number =       {1--3},
 pages =	       {13--24, 111--127, 245--265},
 note =	       {See also \citebi{kruskaletal1980}},
-keywords =     {randomization, probability theory}
+keywords =     {randomization, probability theory, disagreement between authors}
 }
 
 @Article{kruskaletal1980,
@@ -69715,7 +70605,7 @@ year =	       {1986},
 volume =       {1},
 number =       {3},
 pages =	       {364--378},
-note =	       {Transl.\ of \citebi{laplace1774} by S. M. Stigler. See also the translator's introduction \citebi{stigler1986}},
+note =	       {Transl.\ of \citebi{laplace1774} by S. M. Stigler. See also the translator's introduction in \citebi{stigler1986}},
 keywords =     {probability theory}
 }
 
@@ -70173,8 +71063,7 @@ booktitle =    {\citein{barndorffnielsenetal1974}},
 year =	       {1974},
 pages =	       {249--269},
 note =	       {With discussion. Repr.\ without discussion in \citebi{lauritzen1974_r1974}},
-keywords =     {sufficient statistics, exchangeability, exponential family, Bayesian probability theory, extremal family},
-mynote =       {Rasch: \begin{quotation}First a terminological remark. The ``prediction'' is suggestive of the statistician as a magician who can tell the future. Economists have an expression that is less pretentious: forecasting -- not much more reliable than weather forecasting.\par To speak seriously: you do not really \emph{predict} anything. What you do, is to calculate the distribution of the variate in question, possibly offering its mean value or the like as a likely event -- but only on the assumption that the model -- or a characteristic feature of it -- on which you based this forecasting, still holds, i.e. confronted with what eventually does happen \emph{you are faced with a test of this hypothesis} and nothing else -- \emph{you were not telling what the future would be}!\end{quotation}, p.~268}
+keywords =     {sufficient statistics, exchangeability, exponential family, Bayesian probability theory, extremal family}
 }
 
 @Article{lauritzen1974_r1974,
@@ -70222,6 +71111,16 @@ number =       {2},
 pages =	       {65--83},
 note =	       {See also discussion and reply in \citebi{barndorffnielsenetal1984}},
 keywords =     {exchangeability, sufficiency, probability theory, Bayesian probability theory, extremal family}
+}
+
+@Article{lauritzen1987,
+author =       {Steffen L. Lauritzen},
+title =	       {Statistical Manifolds},
+journal =      imslnms,
+year =	       {1987},
+volume =       {10},
+pages =	       {163--216},
+keywords =     {probability theory, minimum-discrimination-information, minimum-relative-entropy, symmetries of Fisher-information metric, extreme models, exchangeability}
 }
 
 @Misc{lauritzen2007,
@@ -70752,11 +71651,12 @@ note =	       {\url{https://www.stat.washington.edu/people/jaw/COURSES/580s/581/
 keywords =     {probability theory}
 }
 
-@InCollection{lecam1996,
+@Article{lecam1996,
 author =       {Le Cam, Lucien M.},
 title =	       {Comparison of Experiments: A Short Review},
-booktitle =    {\citein{fergusonetal1996}},
+journal =      imslnms,
 year =	       {1996},
+volume =       {30},
 pages =	       {127--138},
 keywords =     {statistical models, parametric models, decision theory}
 }
@@ -72461,13 +73361,16 @@ pages =	       {209--218},
 keywords =     {statistical mechanics, thermodynamics, quantum mechanics, equipartition}
 }
 
-@Book{lewisetal1932,
+@Book{lewisetal1932_r1959,
 author =       {Clarence Irving Lewis and Cooper Harold Langford},
 title =	       {Symbolic Logic},
-publisher =    {The Century Company},
-year =	       {1932},
-series =       {The Century philosophy series},
-address =      {New York}
+publisher =    {Dover},
+year =	       {1959},
+series =       {Dover books on intermediate and advanced mathematics},
+address =      {New York},
+edition =      {2},
+note =	       {First publ.\ 1932},
+origdate =     {1932}
 }
 
 @Article{lewisetal1956,
@@ -73045,7 +73948,7 @@ keywords =     {general relativity, differential geometry},
 mynote =       {Abbott, B. P. and Abbott, R. and Abbott, T. D. and Abernathy, M. R. and Acernese, F. and Ackley, K. and Adams, C. and Adams, T. and Addesso, P. and Adhikari, R. X. and Adya, V. B. and Affeldt, C. and Agathos, M. and Agatsuma, K. and Aggarwal, N. and Aguiar, O. D. and Aiello, L. and Ain, A. and Ajith, P. and Allen, B. and Allocca, A. and Altin, P. A. and Anderson, S. B. and Anderson, W. G. and Arai, K. and Arain, M. A. and Araya, M. C. and Arceneaux, C. C. and Areeda, J. S. and Arnaud, N. and Arun, K. G. and Ascenzi, S. and Ashton, G. and Ast, M. and Aston, S. M. and Astone, P. and Aufmuth, P. and Aulbert, C. and Babak, S. and Bacon, P. and Bader, M. K. M. and Baker, P. T. and Baldaccini, F. and Ballardin, G. and Ballmer, S. W. and Barayoga, J. C. and Barclay, S. E. and Barish, B. C. and Barker, D. and Barone, F. and Barr, B. and Barsotti, L. and Barsuglia, M. and Barta, D. and Bartlett, J. and Barton, M. A. and Bartos, I. and Bassiri, R. and Basti, A. and Batch, J. C. and Baune, C. and Bavigadda, V. and Bazzan, M. and Behnke, B. and Bejger, M. and Belczynski, C. and Bell, A. S. and Bell, C. J. and Berger, B. K. and Bergman, J. and Bergmann, G. and Berry, C. P. L. and Bersanetti, D. and Bertolini, A. and Betzwieser, J. and Bhagwat, S. and Bhandare, R. and Bilenko, I. A. and Billingsley, G. and Birch, J. and Birney, R. and Birnholtz, O. and Biscans, S. and Bisht, A. and Bitossi, M. and Biwer, C. and Bizouard, M. A. and Blackburn, J. K. and Blair, C. D. and Blair, D. G. and Blair, R. M. and Bloemen, S. and Bock, O. and Bodiya, T. P. and Boer, M. and Bogaert, G. and Bogan, C. and Bohe, A. and Bojtos, P. and Bond, C. and Bondu, F. and Bonnand, R. and Boom, B. A. and Bork, R. and Boschi, V. and Bose, S. and Bouffanais, Y. and Bozzi, A. and Bradaschia, C. and Brady, P. R. and Braginsky, V. B. and Branchesi, M. and Brau, J. E. and Briant, T. and Brillet, A. and Brinkmann, M. and Brisson, V. and Brockill, P. and Brooks, A. F. and Brown, D. A. and Brown, D. D. and Brown, N. M. and Buchanan, C. C. and Buikema, A. and Bulik, T. and Bulten, H. J. and Buonanno, A. and Buskulic, D. and Buy, C. and Byer, R. L. and Cabero, M. and Cadonati, L. and Cagnoli, G. and Cahillane, C. and Bustillo, J. Calder\'on and Callister, T. and Calloni, E. and Camp, J. B. and Cannon, K. C. and Cao, J. and Capano, C. D. and Capocasa, E. and Carbognani, F. and Caride, S. and Diaz, J. Casanueva and Casentini, C. and Caudill, S. and Cavagli\`a, M. and Cavalier, F. and Cavalieri, R. and Cella, G. and Cepeda, C. B. and Baiardi, L. Cerboni and Cerretani, G. and Cesarini, E. and Chakraborty, R. and Chalermsongsak, T. and Chamberlin, S. J. and Chan, M. and Chao, S. and Charlton, P. and Chassande-Mottin, E. and Chen, H. Y. and Chen, Y. and Cheng, C. and Chincarini, A. and Chiummo, A. and Cho, H. S. and Cho, M. and Chow, J. H. and Christensen, N. and Chu, Q. and Chua, S. and Chung, S. and Ciani, G. and Clara, F. and Clark, J. A. and Cleva, F. and Coccia, E. and Cohadon, P.-F. and Colla, A. and Collette, C. G. and Cominsky, L. and Constancio, M. and Conte, A. and Conti, L. and Cook, D. and Corbitt, T. R. and Cornish, N. and Corsi, A. and Cortese, S. and Costa, C. A. and Coughlin, M. W. and Coughlin, S. B. and Coulon, J.-P. and Countryman, S. T. and Couvares, P. and Cowan, E. E. and Coward, D. M. and Cowart, M. J. and Coyne, D. C. and Coyne, R. and Craig, K. and Creighton, J. D. E. and Creighton, T. D. and Cripe, J. and Crowder, S. G. and Cruise, A. M. and Cumming, A. and Cunningham, L. and Cuoco, E. and Canton, T. Dal and Danilishin, S. L. and D'Antonio, S. and Danzmann, K. and Darman, N. S. and Da Silva Costa, C. F. and Dattilo, V. and Dave, I. and Daveloza, H. P. and Davier, M. and Davies, G. S. and Daw, E. J. and Day, R. and De, S. and DeBra, D. and Debreczeni, G. and Degallaix, J. and De Laurentis, M. and Del\'eglise, S. and Del Pozzo, W. and Denker, T. and Dent, T. and Dereli, H. and Dergachev, V. and DeRosa, R. T. and De Rosa, R. and DeSalvo, R. and Dhurandhar, S. and D{\'i}az, M. C. and Di Fiore, L. and Di Giovanni, M. and Di Lieto, A. and Di Pace, S. and Di Palma, I. and Di Virgilio, A. and Dojcinoski, G. and Dolique, V. and Donovan, F. and Dooley, K. L. and Doravari, S. and Douglas, R. and Downes, T. P. and Drago, M. and Drever, R. W. P. and Driggers, J. C. and Du, Z. and Ducrot, M. and Dwyer, S. E. and Edo, T. B. and Edwards, M. C. and Effler, A. and Eggenstein, H.-B. and Ehrens, P. and Eichholz, J. and Eikenberry, S. S. and Engels, W. and Essick, R. C. and Etzel, T. and Evans, M. and Evans, T. M. and Everett, R. and Factourovich, M. and Fafone, V. and Fair, H. and Fairhurst, S. and Fan, X. and Fang, Q. and Farinon, S. and Farr, B. and Farr, W. M. and Favata, M. and Fays, M. and Fehrmann, H. and Fejer, M. M. and Feldbaum, D. and Ferrante, I. and Ferreira, E. C. and Ferrini, F. and Fidecaro, F. and Finn, L. S. and Fiori, I. and Fiorucci, D. and Fisher, R. P. and Flaminio, R. and Fletcher, M. and Fong, H. and Fournier, J.-D. and
 Franco, S. and Frasca, S. and Frasconi, F. and Frede, M. and Frei, Z. and Freise, A. and Frey, R. and Frey, V. and Fricke, T. T. and Fritschel, P. and Frolov, V. V. and Fulda, P. and Fyffe, M. and Gabbard, H. A. G. and Gair, J. R. and Gammaitoni, L. and Gaonkar, S. G. and Garufi, F. and Gatto, A. and Gaur, G. and Gehrels, N. and Gemme, G. and Gendre, B. and Genin, E. and Gennai, A. and George, J. and Gergely, L. and Germain, V. and Ghosh, Abhirup and Ghosh, Archisman and Ghosh, S. and Giaime, J. A. and Giardina, K. D. and Giazotto, A. and Gill, K. and Glaefke, A. and Gleason, J. R. and Goetz, E. and Goetz, R. and Gondan, L. and Gonz\'alez, G. and Castro, J. M. Gonzalez and Gopakumar, A. and Gordon, N. A. and Gorodetsky, M. L. and Gossan, S. E. and Gosselin, M. and Gouaty, R. and Graef, C. and Graff, P. B. and Granata, M. and Grant, A. and Gras, S. and Gray, C. and Greco, G. and Green, A. C. and Greenhalgh, R. J. S. and Groot, P. and Grote, H. and Grunewald, S. and Guidi, G. M. and Guo, X. and Gupta, A. and Gupta, M. K. and Gushwa, K. E. and Gustafson, E. K. and Gustafson, R. and Hacker, J. J. and Hall, B. R. and Hall, E. D. and Hammond, G. and Haney, M. and Hanke, M. M. and Hanks, J. and Hanna, C. and Hannam, M. D. and Hanson, J. and Hardwick, T. and Harms, J. and Harry, G. M. and Harry, I. W. and Hart, M. J. and Hartman, M. T. and Haster, C.-J. and Haughian, K. and Healy, J. and Heefner, J. and Heidmann, A. and Heintze, M. C. and Heinzel, G. and Heitmann, H. and Hello, P. and Hemming, G. and Hendry, M. and Heng, I. S. and Hennig, J. and Heptonstall, A. W. and Heurs, M. and Hild, S. and Hoak, D. and Hodge, K. A. and Hofman, D. and Hollitt, S. E. and Holt, K. and Holz, D. E. and Hopkins, P. and Hosken, D. J. and Hough, J. and Houston, E. A. and Howell, E. J. and Hu, Y. M. and Huang, S. and Huerta, E. A. and Huet, D. and Hughey, B. and Husa, S. and Huttner, S. H. and Huynh-Dinh, T. and Idrisy, A. and Indik, N. and Ingram, D. R. and Inta, R. and Isa, H. N. and Isac, J.-M. and Isi, M. and Islas, G. and Isogai, T. and Iyer, B. R. and Izumi, K. and Jacobson, M. B. and Jacqmin, T. and Jang, H. and Jani, K. and Jaranowski, P. and Jawahar, S. and Jim\'enez-Forteza, F. and Johnson, W. W. and Johnson-McDaniel, N. K. and Jones, D. I. and Jones, R. and Jonker, R. J. G. and Ju, L. and Haris, K. and Kalaghatgi, C. V. and Kalogera, V. and Kandhasamy, S. and Kang, G. and Kanner, J. B. and Karki, S. and Kasprzack, M. and Katsavounidis, E. and Katzman, W. and Kaufer, S. and Kaur, T. and Kawabe, K. and Kawazoe, F. and K\'ef\'elian, F. and Kehl, M. S. and Keitel, D. and Kelley, D. B. and Kells, W. and Kennedy, R. and Keppel, D. G. and Key, J. S. and Khalaidovski, A. and Khalili, F. Y. and Khan, I. and Khan, S. and Khan, Z. and Khazanov, E. A. and Kijbunchoo, N. and Kim, C. and Kim, J. and Kim, K. and Kim, Nam-Gyu and Kim, Namjun and Kim, Y.-M. and King, E. J. and King, P. J. and Kinzel, D. L. and Kissel, J. S. and Kleybolte, L. and Klimenko, S. and Koehlenbeck, S. M. and Kokeyama, K. and Koley, S. and Kondrashov, V. and Kontos, A. and Koranda, S. and Korobko, M. and Korth, W. Z. and Kowalska, I. and Kozak, D. B. and Kringel, V. and Krishnan, B. and Kr\'olak, A. and Krueger, C. and Kuehn, G. and Kumar, P. and Kumar, R. and Kuo, L. and Kutynia, A. and Kwee, P. and Lackey, B. D. and Landry, M. and Lange, J. and Lantz, B. and Lasky, P. D. and Lazzarini, A. and Lazzaro, C. and Leaci, P. and Leavey, S. and Lebigot, E. O. and Lee, C. H. and Lee, H. K. and Lee, H. M. and Lee, K. and Lenon, A. and Leonardi, M. and Leong, J. R. and Leroy, N. and Letendre, N. and Levin, Y. and Levine, B. M. and Li, T. G. F. and Libson, A. and Littenberg, T. B. and Lockerbie, N. A. and Logue, J. and Lombardi, A. L. and London, L. T. and Lord, J. E. and Lorenzini, M. and Loriette, V. and Lormand, M. and Losurdo, G. and Lough, J. D. and Lousto, C. O. and Lovelace, G. and L\"uck, H. and Lundgren, A. P. and Luo, J. and Lynch, R. and Ma, Y. and MacDonald, T. and Machenschalk, B. and MacInnis, M. and Macleod, D. M. and Maga\~na-Sandoval, F. and Magee, R. M. and Mageswaran, M. and Majorana, E. and Maksimovic, I. and Malvezzi, V. and Man, N. and Mandel, I. and Mandic, V. and Mangano, V. and Mansell, G. L. and Manske, M. and Mantovani, M. and Marchesoni, F. and Marion, F. and M\'arka, S. and M\'arka, Z. and Markosyan, A. S. and Maros, E. and Martelli, F. and Martellini, L. and Martin, I. W. and Martin, R. M. and Martynov, D. V. and Marx, J. N. and Mason, K. and Masserot, A. and Massinger, T. J. and Masso-Reid, M. and Matichard, F. and Matone, L. and Mavalvala, N. and Mazumder, N. and Mazzolo, G. and McCarthy, R. and McClelland, D. E. and McCormick, S. and McGuire, S. C. and McIntyre, G. and McIver, J. and McManus, D. J. and McWilliams, S. T. and Meacher, D. and Meadors, G. D. and Meidam, J. and Melatos, A. and Mendell, G. and Mendoza-Gandara, D. and Mercer, R. A. and Merilh, E. and Merzougui, M. and Meshkov, S. and Messenger, C. and Messick, C. and Meyers, P. M.
 and Mezzani, F. and Miao, H. and Michel, C. and Middleton, H. and Mikhailov, E. E. and Milano, L. and Miller, J. and Millhouse, M. and Minenkov, Y. and Ming, J. and Mirshekari, S. and Mishra, C. and Mitra, S. and Mitrofanov, V. P. and Mitselmakher, G. and Mittleman, R. and Moggi, A. and Mohan, M. and Mohapatra, S. R. P. and Montani, M. and Moore, B. C. and Moore, C. J. and Moraru, D. and Moreno, G. and Morriss, S. R. and Mossavi, K. and Mours, B. and Mow-Lowry, C. M. and Mueller, C. L. and Mueller, G. and Muir, A. W. and Mukherjee, Arunava and Mukherjee, D. and Mukherjee, S. and Mukund, N. and Mullavey, A. and Munch, J. and Murphy, D. J. and Murray, P. G. and Mytidis, A. and Nardecchia, I. and Naticchioni, L. and Nayak, R. K. and Necula, V. and Nedkova, K. and Nelemans, G. and Neri, M. and Neunzert, A. and Newton, G. and Nguyen, T. T. and Nielsen, A. B. and Nissanke, S. and Nitz, A. and Nocera, F. and Nolting, D. and Normandin, M. E. N. and Nuttall, L. K. and Oberling, J. and Ochsner, E. and O'Dell, J. and Oelker, E. and Ogin, G. H. and Oh, J. J. and Oh, S. H. and Ohme, F. and Oliver, M. and Oppermann, P. and Oram, Richard J. and O'Reilly, B. and O'Shaughnessy, R. and Ott, C. D. and Ottaway, D. J. and Ottens, R. S. and Overmier, H. and Owen, B. J. and Pai, A. and Pai, S. A. and Palamos, J. R. and Palashov, O. and Palomba, C. and Pal-Singh, A. and Pan, H. and Pan, Y. and Pankow, C. and Pannarale, F. and Pant, B. C. and Paoletti, F. and Paoli, A. and Papa, M. A. and Paris, H. R. and Parker, W. and Pascucci, D. and Pasqualetti, A. and Passaquieti, R. and Passuello, D. and Patricelli, B. and Patrick, Z. and Pearlstone, B. L. and Pedraza, M. and Pedurand, R. and Pekowsky, L. and Pele, A. and Penn, S. and Perreca, A. and Pfeiffer, H. P. and Phelps, M. and Piccinni, O. and Pichot, M. and Pickenpack, M. and Piergiovanni, F. and Pierro, V. and Pillant, G. and Pinard, L. and Pinto, I. M. and Pitkin, M. and Poeld, J. H. and Poggiani, R. and Popolizio, P. and Post, A. and Powell, J. and Prasad, J. and Predoi, V. and Premachandra, S. S. and Prestegard, T. and Price, L. R. and Prijatelj, M. and Principe, M. and Privitera, S. and Prix, R. and Prodi, G. A. and Prokhorov, L. and Puncken, O. and Punturo, M. and Puppo, P. and P\"urrer, M. and Qi, H. and Qin, J. and Quetschke, V. and Quintero, E. A. and Quitzow-James, R. and Raab, F. J. and Rabeling, D. S. and Radkins, H. and Raffai, P. and Raja, S. and Rakhmanov, M. and Ramet, C. R. and Rapagnani, P. and Raymond, V. and Razzano, M. and Re, V. and Read, J. and Reed, C. M. and Regimbau, T. and Rei, L. and Reid, S. and Reitze, D. H. and Rew, H. and Reyes, S. D. and Ricci, F. and Riles, K. and Robertson, N. A. and Robie, R. and Robinet, F. and Rocchi, A. and Rolland, L. and Rollins, J. G. and Roma, V. J. and Romano, J. D. and Romano, R. and Romanov, G. and Romie, J. H. and Rosi{\'n}ska, D. and Rowan, S. and R\"udiger, A. and Ruggi, P. and Ryan, K. and Sachdev, S. and Sadecki, T. and Sadeghian, L. and Salconi, L. and Saleem, M. and Salemi, F. and Samajdar, A. and Sammut, L. and Sampson, L. M. and Sanchez, E. J. and Sandberg, V. and Sandeen, B. and Sanders, G. H. and Sanders, J. R. and Sassolas, B. and Sathyaprakash, B. S. and Saulson, P. R. and Sauter, O. and Savage, R. L. and Sawadsky, A. and Schale, P. and Schilling, R. and Schmidt, J. and Schmidt, P. and Schnabel, R. and Schofield, R. M. S. and Sch\"onbeck, A. and Schreiber, E. and Schuette, D. and Schutz, B. F. and Scott, J. and Scott, S. M. and Sellers, D. and Sengupta, A. S. and Sentenac, D. and Sequino, V. and Sergeev, A. and Serna, G. and Setyawati, Y. and Sevigny, A. and Shaddock, D. A. and Shaffer, T. and Shah, S. and Shahriar, M. S. and Shaltev, M. and Shao, Z. and Shapiro, B. and Shawhan, P. and Sheperd, A. and Shoemaker, D. H. and Shoemaker, D. M. and Siellez, K. and Siemens, X. and Sigg, D. and Silva, A. D. and Simakov, D. and Singer, A. and Singer, L. P. and Singh, A. and Singh, R. and Singhal, A. and Sintes, A. M. and Slagmolen, B. J. J. and Smith, J. R. and Smith, M. R. and Smith, N. D. and Smith, R. J. E. and Son, E. J. and Sorazu, B. and Sorrentino, F. and Souradeep, T. and Srivastava, A. K. and Staley, A. and Steinke, M. and Steinlechner, J. and Steinlechner, S. and Steinmeyer, D. and Stephens, B. C. and Stevenson, S. P. and Stone, R. and Strain, K. A. and Straniero, N. and Stratta, G. and Strauss, N. A. and Strigin, S. and Sturani, R. and Stuver, A. L. and Summerscales, T. Z. and Sun, L. and Sutton, P. J. and Swinkels, B. L. and Szczepa{\'n}czyk, M. J. and Tacca, M. and Talukder, D. and Tanner, D. B. and T\'apai, M. and Tarabrin, S. P. and Taracchini, A. and Taylor, R. and Theeg, T. and Thirugnanasambandam, M. P. and Thomas, E. G. and Thomas, M. and Thomas, P. and Thorne, K. A. and Thorne, K. S. and Thrane, E. and Tiwari, S. and Tiwari, V. and Tokmakov, K. V. and Tomlinson, C. and Tonelli, M. and Torres, C. V. and Torrie, C. I. and T\"oyr\"a, D. and Travasso, F. and Traylor, G. and Trifir\`o, D. and Tringali,
-M. C. and Trozzo, L. and Tse, M. and Turconi, M. and Tuyenbayev, D. and Ugolini, D. and Unnikrishnan, C. S. and Urban, A. L. and Usman, S. A. and Vahlbruch, H. and Vajente, G. and Valdes, G. and Vallisneri, M. and van Bakel, N. and van Beuzekom, M. and van den Brand, J. F. J. and Van Den Broeck, C. and Vander-Hyde, D. C. and van der Schaaf, L. and van Heijningen, J. V. and van Veggel, A. A. and Vardaro, M. and Vass, S. and Vas\'uth, M. and Vaulin, R. and Vecchio, A. and Vedovato, G. and Veitch, J. and Veitch, P. J. and Venkateswara, K. and Verkindt, D. and Vetrano, F. and Vicer\'e, A. and Vinciguerra, S. and Vine, D. J. and Vinet, J.-Y. and Vitale, S. and Vo, T. and Vocca, H. and Vorvick, C. and Voss, D. and Vousden, W. D. and Vyatchanin, S. P. and Wade, A. R. and Wade, L. E. and Wade, M. and Waldman, S. J. and Walker, M. and Wallace, L. and Walsh, S. and Wang, G. and Wang, H. and Wang, M. and Wang, X. and Wang, Y. and Ward, H. and Ward, R. L. and Warner, J. and Was, M. and Weaver, B. and Wei, L.-W. and Weinert, M. and Weinstein, A. J. and Weiss, R. and Welborn, T. and Wen, L. and We\ss{}els, P. and Westphal, T. and Wette, K. and Whelan, J. T. and Whitcomb, S. E. and White, D. J. and Whiting, B. F. and Wiesner, K. and Wilkinson, C. and Willems, P. A. and Williams, L. and Williams, R. D. and Williamson, A. R. and Willis, J. L. and Willke, B. and Wimmer, M. H. and Winkelmann, L. and Winkler, W. and Wipf, C. C. and Wiseman, A. G. and Wittel, H. and Woan, G. and Worden, J. and Wright, J. L. and Wu, G. and Yablon, J. and Yakushin, I. and Yam, W. and Yamamoto, H. and Yancey, C. C. and Yap, M. J. and Yu, H. and Yvert, M. and Zadro{\.z}ny, A. and Zangrando, L. and Zanolin, M. and Zendri, J.-P. and Zevin, M. and Zhang, F. and Zhang, L. and Zhang, M. and Zhang, Y. and Zhao, C. and Zhou, M. and Zhou, Z. and Zhu, X. J. and Zucker, M. E. and Zuraw, S. E. and Zweizig, J.}
+M. C. and Trozzo, L. and Tse, M. and Turconi, M. and Tuyenbayev, D. and Ugolini, D. and Unnikrishnan, C. S. and Urban, A. L. and Usman, S. A. and Vahlbruch, H. and Vajente, G. and Valdes, G. and Vallisneri, M. and van Bakel, N. and van Beuzekom, M. and van den Brand, J. F. J. and Van Den Broeck, C. and Vander-Hyde, D. C. and van der Schaaf, L. and van Heijningen, J. V. and van Veggel, A. A. and Vardaro, M. and Vass, S. and Vas\'uth, M. and Vaulin, R. and Vecchio, A. and Vedovato, G. and Veitch, J. and Veitch, P. J. and Venkateswara, K. and Verkindt, D. and Vetrano, F. and Vicer\'e, A. and Vinciguerra, S. and Vine, D. J. and Vinet, J.-Y. and Vitale, S. and Vo, T. and Vocca, H. and Vorvick, C. and Voss, D. and Vousden, W. D. and Vyatchanin, S. P. and Wade, A. R. and Wade, L. E. and Wade, M. and Waldman, S. J. and Walker, M. and Wallace, L. and Walsh, S. and Wang, G. and Wang, H. and Wang, M. and Wang, X. and Wang, Y. and Ward, H. and Ward, R. L. and Warner, J. and Was, M. and Weaver, B. and Wei, L.-W. and Weinert, M. and Weinstein, A. J. and Weiss, R. and Welborn, T. and Wen, L. and We{\ss}els, P. and Westphal, T. and Wette, K. and Whelan, J. T. and Whitcomb, S. E. and White, D. J. and Whiting, B. F. and Wiesner, K. and Wilkinson, C. and Willems, P. A. and Williams, L. and Williams, R. D. and Williamson, A. R. and Willis, J. L. and Willke, B. and Wimmer, M. H. and Winkelmann, L. and Winkler, W. and Wipf, C. C. and Wiseman, A. G. and Wittel, H. and Woan, G. and Worden, J. and Wright, J. L. and Wu, G. and Yablon, J. and Yakushin, I. and Yam, W. and Yamamoto, H. and Yancey, C. C. and Yap, M. J. and Yu, H. and Yvert, M. and Zadro{\.z}ny, A. and Zangrando, L. and Zanolin, M. and Zendri, J.-P. and Zevin, M. and Zhang, F. and Zhang, L. and Zhang, M. and Zhang, Y. and Zhao, C. and Zhou, M. and Zhou, Z. and Zhu, X. J. and Zucker, M. E. and Zuraw, S. E. and Zweizig, J.}
 }
 
 @TechReport{lijoietal2012,
@@ -73426,6 +74329,17 @@ note =	       {See \citebi{dawid1979}. \url{http://distancecovariance.googlecode
 keywords =     {Bayesian probability theory, exchangeability}
 }
 
+@Article{lindleyetal1981,
+author =       {Dennis V. Lindley and Melvin R. Novick},
+title =	       {The Role of Exchangeability in Inference},
+journal =      as,
+year =	       {1981},
+volume =       {9},
+number =       {1},
+pages =	       {45--58},
+keywords =     {Bayesian probability theory, causation, causality, partial exchangeability, decision theory, spurious correlation}
+}
+
 @Article{lindleyetal1982,
 author =       {Dennis V. Lindley and Morris H. DeGroot and A. P. Dempster and Irving John Good and Bruce M. Hill and Robert E. Kass and Glenn Shafer},
 title =	       {{[}{Lindley's} Paradox{]} {Comments} and rejoinder},
@@ -73435,7 +74349,8 @@ volume =       {77},
 number =       {378},
 pages =	       {334--351},
 note =	       {See \citebi{shafer1982}},
-keywords =     {evidence, Bayesian probability theory, improper priors, rare events, measure theory, importance of conditional}
+keywords =     {evidence, Bayesian probability theory, improper priors, rare events, measure theory, importance of conditional},
+mynote =       {Hill: \enquote{Finally, I'd like to suggest that such words as ``evidence'' or ``belief'' not be used until one has specified the operational meaning to be attached to them. In physics and other highly developed sciences it has become largely accepted that words unaccompanied by operational meaning are suspect, and likely to prove meaningless \citex{bridgman1927_r1958}. This would seem to be particularly important in a less highly developed field such as statistics, where many are misled by terminology} p.~346}
 }
 
 @Article{lindner2006,
@@ -73936,6 +74851,18 @@ number =       {1},
 pages =	       {55--66}
 }
 
+@Article{lo1984,
+author =       {Albert Y. Lo},
+title =	       {On a Class of {Bayesian} Nonparametric Estimates: {I}. {Density} Estimates},
+journal =      as,
+year =	       {1984},
+volume =       {12},
+number =       {1},
+pages =	       {351--357},
+note =	       {See also \citebi{loetal1989}},
+keywords =     {normal mixture, Dirichlet process}
+}
+
 @Article{lo1986,
 author =       {Albert Y. Lo},
 title =	       {Bayesian Statistical Inference for Sampling a Finite Population},
@@ -73998,6 +74925,18 @@ publisher =    {Academic Press},
 year =	       {1974},
 address =      {New York},
 keywords =     {continuum mechanics}
+}
+
+@Article{loetal1989,
+author =       {Albert Y. Lo and Weng, Chung-Sing},
+title =	       {On a Class of {Bayesian} Nonparametric Estimates: {II}. {Hazard} rate estimates},
+journal =      aism,
+year =	       {1989},
+volume =       {41},
+number =       {2},
+pages =	       {227--245},
+note =	       {See also \citebi{lo1984}},
+keywords =     {normal mixture, Dirichlet process}
 }
 
 @Article{loewdin1967,
@@ -75238,6 +76177,17 @@ year =	       {2003},
 note =	       {\arxiveprint{cond-mat/0307325}}
 }
 
+@Article{lynch1984,
+author =       {James Lynch},
+title =	       {Canonical row-column-exchangeable arrays},
+journal =      jmva,
+year =	       {1984},
+volume =       {15},
+number =       {1},
+pages =	       {135--140},
+keywords =     {partial exchangeability, sufficiency, probability theory}
+}
+
 @Book{lynch2001,
 editor =       {Michael P. Lynch},
 title =	       {The Nature of Truth: Classic and Contemporary Perspectives},
@@ -75429,7 +76379,8 @@ author =       {Anders M{\aa}nsson and Porta Mana, Piero Giovanni Luca and Gunna
 title =	       {Numerical {Bayesian} state assignment for a three-level quantum system. {I}. {Absolute}-frequency data; constant and {Gaussian}-like priors},
 year =	       {2006},
 note =	       {\arxiveprint{quant-ph/0612105}},
-keywords =     {Bayesian probability theory, statistical models}
+keywords =     {Bayesian probability theory, statistical models},
+keywords =     {convex geometry, quantum state space, Bloch vector}
 }
 
 @Misc{maanssonetal2007,
@@ -76002,7 +76953,7 @@ author =       {George W. Mackey},
 title =	       {The Mathematical Foundations of Quantum Mechanics: A Lecture-Note Volume},
 publisher =    {Benjamin},
 year =	       {1963},
-series =       {The mathematical physics monograph series},
+series =       {Mathematical physics monograph series},
 address =      {New York},
 keywords =     {statistical models?}
 }
@@ -76618,6 +77569,16 @@ series =       {Universitext},
 address =      {London},
 note =	       {First publ.\ in Russian 2011},
 origdate =     {2011}
+}
+
+@PhdThesis{maksimovic2013,
+author =       {Petar Maksimovi{\'c}},
+title =	       {Development and Verification of Probability Logics and Logical Frameworks},
+school =       {University of Nice - Sophia Antipolis},
+year =	       {2013},
+address =      {Sophia Antipolis, France},
+note =	       {\haleprint{tel-00907854}},
+keywords =     {modal logic, semantics, syntax, probability theory, completeness}
 }
 
 @Article{malament1977,
@@ -78363,6 +79324,17 @@ year =	       {1997},
 pages =	       {255--257}
 }
 
+@Article{mathai1993,
+author =       {A. M. Mathai},
+title =	       {On Noncentral Generalized {Laplacianness} of Quadratic Forms in Normal Variables},
+journal =      jmva,
+year =	       {1993},
+volume =       {45},
+number =       {2},
+pages =	       {239--240},
+keywords =     {difference of gamma beliefs}
+}
+
 @Book{mathai1997,
 author =       {A. M. Mathai},
 title =	       {Jacobians of Matrix Transformations and Functions of Matrix Argument},
@@ -79005,6 +79977,18 @@ note =	       {Repr.\ in \citebi{maxwell1890b_r1965} doc.~XXVIII pp.~26--78},
 keywords =     {statistical mechanics, thermodynamics, heat conduction}
 }
 
+@Article{maxwell1870,
+author =       {Maxwell, (Clerk Maxwell), James},
+title =	       {Address},
+journal =      rbaas,
+year =	       {1870},
+volume =       {40},
+pages =	       {1--9},
+note =	       {\url{https://archive.org/details/reportofbritisha71brit}. Repr.\ in \citebi{maxwell1890b_r1965} doc.~XLI pp.~215--229. See also \citebi{dyson2007}},
+keywords =     {Maxwell's equations, electromagnetism, electrodynamics},
+mynote =       {\enquote{We form a theory from these partial data, and we ascribe any deviation of the actual phenomena from this theory to disturbing causes. At the same time we confess that what we call disturbing causes are simply those parts of the true circumstances which we do not know or have neglected, and we endeavour in future to take account of them. We thus acknowledge that the so-called disturbance is a mere figment of the mind, not a fact of nature, and that in natural action there is no disturbance} p.~9}
+}
+
 @Book{maxwell1871,
 author =       {Maxwell, (Clerk Maxwell), James},
 title =	       {Theory of Heat},
@@ -79603,7 +80587,7 @@ author =       {Peter McCullagh},
 title =	       {Exchangeability and regression models},
 booktitle =    {\citein{davisonetal2005}},
 year =	       {2005},
-chapter =      {4, Bibliography},
+chapter =      {\chapb~4, Bibliography},
 pages =	       {89--113, 257--289},
 note =	       {\url{http://www.stat.uchicago.edu/~pmcc/pubs/exchangeability.pdf}},
 keywords =     {time series}
@@ -80169,6 +81153,17 @@ volume =       {25},
 number =       {8},
 pages =	       {2404--2417},
 note =	       {\url{http://bayes.wustl.edu/Manual/MeadPapanicolaou.pdf}}
+}
+
+@Article{mechleretal2011,
+author =       {Ferenc Mechler and Jonathan D. Victor and Ifije Ohiorhenuan and Anita M. Schmid and Qin Hu},
+title =	       {Three-dimensional localization of neurons in cortical tetrode recordings},
+journal =      jnp,
+year =	       {2011},
+volume =       {106},
+number =       {2},
+pages =	       {828--848},
+keywords =     {neuronal recording, local field potential}
 }
 
 @Book{meckeetal2000,
@@ -81388,6 +82383,17 @@ note =	       {First publ.\ 1948},
 origdate =     {1948}
 }
 
+@Article{milne2007,
+author =       {Peter Milne},
+title =	       {On {G{\"o}del} Sentences and What They Say},
+journal =      philmath,
+year =	       {2007},
+volume =       {15},
+number =       {2},
+pages =	       {193--226},
+keywords =     {G\"odel's theorem, formal logic}
+}
+
 @Article{milner1933,
 author =       {S. R. Milner},
 title =	       {On the Foundations of the Electron Wave Equation},
@@ -81554,7 +82560,7 @@ author =       {Thomas P. Minka},
 title =	       {Nuances of probability theory},
 howpublished = {\url{https://tminka.github.io/papers/nuances.html}},
 year =	       {2006},
-keywords =     {Bayesian probability theory, p-values, randomness}
+keywords =     {Bayesian probability theory, $p$-values, randomness}
 }
 
 @Article{minkowski1897,
@@ -81996,7 +83002,7 @@ keywords =     {classical mechanics, spin}
 @InCollection{momiglianoetal2004,
 author =       {Alberto Momigliano and Alwen Tiu},
 title =	       {Induction and Co-induction in Sequent Calculus},
-booktitle =    {Types for Proofs and Programs: International Workshop, TYPES 2003, Torino, Italy, April 30 -- May 4, 2003},
+booktitle =    {Types for Proofs and Programs: International Workshop, TYPES 2003\subtitleproc{: Torino, Italy, April 30 -- May 4, 2003}},
 publisher =    {Springer},
 year =	       {2004},
 editor =       {Berardi, Stefano and Coppo, Mario and Damiani, Ferruccio},
@@ -82159,6 +83165,20 @@ volume =       {70},
 pages =	       {1--11},
 note =	       {See also \citebi{montanaroetal1981,montanaroetal1981b}},
 keywords =     {probability theory}
+}
+
+@Book{montavonetal1998_r2012,
+editor =       {Gr{\'e}goire Montavon and Genevi{\`e}ve B. Orr and Klaus-Robert M{\"u}ller},
+title =	       {Neural Networks: Tricks of the Trade},
+publisher =    {Springer},
+year =	       {2012},
+volume =       {7700},
+series =       {Lecture notes in computer science},
+address =      {Berlin},
+edition =      {2},
+note =	       {First publ.\ 1998},
+keywords =     {early stopping, machine learning, cross-validation},
+origdate =     {1998}
 }
 
 @Article{montbrioetal2015,
@@ -83075,6 +84095,28 @@ note =	       {\url{https://www.stat.cmu.edu/Exams/mosteller.pdf}},
 keywords =     {Bayesian probability theory, prior specification}
 }
 
+@Book{mostelleretal1977,
+author =       {Frederick Mosteller and John W. Tukey},
+title =	       {Data Analysis and Regression: A Second Course in Statistics},
+publisher =    {Addison-Wesley},
+year =	       {1977},
+series =       {Addison-Wesley series in behavioral science: quantitative methods},
+address =      {Reading, USA},
+keywords =     {probability theory}
+}
+
+@Book{mostelleretal1983_r2013,
+author =       {Frederick Mosteller and Stephen E. Fienberg and Robert E. K. Rourke},
+title =	       {Beginning statistics with data analysis},
+publisher =    {Dover},
+year =	       {2013},
+address =      {Mineola, USA},
+edition =      {repr.},
+note =	       {First publ.\ 1983},
+keywords =     {model comparison, model selection},
+origdate =     {1983}
+}
+
 @Article{mostelleretal1989,
 author =       {Frederick Mosteller and Cleo Youtz},
 title =	       {Quantifying Probabilistic Expressions},
@@ -83083,7 +84125,7 @@ year =	       {1989},
 volume =       {4},
 number =       {4},
 pages =	       {2--12},
-note =	       {\url{http://web.stanford.edu/~clark/1990s/Mosteller,\%20F.\%20_\%20Youtz,\%20C.\%20_Quantifying\%20probabilistic\%20expressions_\%201990.pdf}. See also comments and rejoinder in \citebi{clarketal1989}},
+note =	       {See also comments and rejoinder in \citebi{clarketal1989}},
 keywords =     {Bayesian probability theory}
 }
 
@@ -84651,6 +85693,18 @@ keywords =     {deep learning, probability theory},
 mynote =       {has some confused ideas, believes in physical probabilities, and confuses the Bayesian Occam razor as saying that models should be simple (in some absolute sense)}
 }
 
+@Article{neal2000,
+author =       {Radford M. Neal},
+title =	       {Markov Chain Sampling Methods for {Dirichlet} Process Mixture Models},
+journal =      jcgs,
+year =	       {2000},
+volume =       {9},
+number =       {2},
+pages =	       {249--265},
+note =	       {\url{https://www.cs.toronto.edu/~radford/mixmc.abstract.html}},
+keywords =     {Dirichlet process, Bayesian non-parametrics, normal mixture}
+}
+
 @Article{nebel2004,
 author =       {Markus E. Nebel},
 title =	       {Investigation of the {Bernoulli} model for {RNA} secondary structures},
@@ -85752,23 +86806,25 @@ note =	       {See \citebi{corbetetal1972,corbetetal1972_e1973}}
 
 @Manual{nist1994,
 title =	       {Guidelines for Evaluating and Expressing the Uncertainty of {NIST} Measurement Results: {NIST} technical note 1297, 1994 edition},
-author =       {\textsc{nist}},
+author =       {{\textsc{nist} (National Institute of Standards and Technology)}},
 organization = {National Institute of Standards and Technology},
 address =      {Washington, D.C.},
 year =	       {1994},
 note =	       {\url{http://physics.nist.gov/cuu/Uncertainty/bibliography.html}},
 keywords =     {standard},
+shortauthor =  {\textsc{nist}},
 key =	       {NIST}
 }
 
 @Manual{nist1995,
 title =	       {Guide for the Use of the {International System of Units} ({SI}): {NIST} special publication 811, 1995 edition},
-author =       {\textsc{nist}},
+author =       {{\textsc{nist} (National Institute of Standards and Technology)}},
 organization = {National Institute of Standards and Technology},
 address =      {Washington, D.C.},
 year =	       {1995},
 note =	       {\url{http://physics.nist.gov/cuu/Uncertainty/bibliography.html}},
 keywords =     {standard},
+shortauthor =  {\textsc{nist}},
 key =	       {NIST}
 }
 
@@ -87604,7 +88660,8 @@ year =	       {1974},
 volume =       {376},
 series =       {Lecture notes in mathematics},
 address =      {Berlin},
-keywords =     {consistency of Bayes prediction, true hypothesis, Bayesian probability theory, model comparison, relative entropy, Shannon entropy, Kullback-Leibler divergence}
+keywords =     {consistency of Bayes prediction, true hypothesis, Bayesian probability theory, model comparison, relative entropy, Shannon entropy, Kullback-Leibler divergence},
+mynote =       {\enquote{It is historically interesting that the expression ``weight of evidence'', in its technical sense, anticipated the term ``likelihood'' by over forty years.} \sect~1.4.2 p.~12}
 }
 
 @Article{ostillietal2013,
@@ -89298,6 +90355,30 @@ edition =      {2},
 note =	       {First publ.\ 2000},
 keywords =     {Bayesian probability theory},
 origdate =     {2000}
+}
+
+@Article{pearl2003,
+author =       {Judea Pearl},
+title =	       {Statistics and causal inference: A review},
+journal =      test,
+year =	       {2003},
+volume =       {12},
+number =       {2},
+pages =	       {281--318},
+note =	       {See also discussion and rejoinder in \citebi{fienbergetal2003}},
+keywords =     {probability theory, conditional probability}
+}
+
+@InCollection{pearl2004,
+author =       {Judea Pearl},
+title =	       {Robustness of Causal Claims},
+booktitle =    {Uncertainty in Artificial Intelligence, Proceedings\subtitleproc{: Banff, Canada, July 7--11 2004}},
+publisher =    {AUAI Press},
+year =	       {2004},
+editor =       {Joseph Halpern and Christopher Meek},
+pages =	       {446--453},
+address =      {Arlington},
+note =	       {\arxiveprint{1207.4173}}
 }
 
 @Article{pearle1970,
@@ -91278,6 +92359,17 @@ pages =	       {237--238},
 keywords =     {polar continua}
 }
 
+@Article{pierce1973,
+author =       {Donald A. Pierce},
+title =	       {On Some Difficulties in a Frequency Theory of Inference},
+journal =      as,
+year =	       {1973},
+volume =       {1},
+number =       {2},
+pages =	       {241--250},
+keywords =     {Bayesian probability theory, confidence intervals, losing bets}
+}
+
 @Article{pierrehumbertetal1994,
 author =       {Raymond T. Pierrehumbert and Isaac M. Held and Kyle L. Swanson},
 title =	       {Spectra of local and nonlocal two-dimensional turbulence},
@@ -91550,6 +92642,19 @@ volume =       {32},
 number =       {4},
 pages =	       {567--579},
 keywords =     {exponential family, probability theory}
+}
+
+@Book{pitman2002_r2006,
+author =       {Jim Pitman},
+title =	       {Combinatorial Stochastic Processes\subtitleproc{: Ecole d'Et{\'e} de Probabilit{\'e}s de Saint-Flour XXXII -- 2002}},
+publisher =    {Springer},
+year =	       {2006},
+volume =       {1875},
+series =       {Lecture notes in mathematics},
+address =      {Berlin},
+note =	       {First publ.\ 2002 as technical report. \emph{Page numbers refer to the electronic version at} \url{http://bibserver.berkeley.edu/csp/april05/bookcsp.pdf}},
+keywords =     {exchangeability, probability theory},
+origdate =     {2002}
 }
 
 @Article{pitowsky1982,
@@ -93082,7 +94187,7 @@ note =	       {In preparation; draft available at \osfeprint{8pwc7}}
 author =       {Porta Mana, Piero Giovanni Luca},
 title =	       {Maximum-entropy from the probability calculus: exchangeability, sufficiency},
 year =	       {2017},
-note =	       {\osfeprint{xdy72}, \arxiveprint{1706.02561}},
+note =	       {\osfeprint{xdy72}, \haleprint{hal-01533985}, \arxiveprint{1706.02561}},
 keywords =     {probability theory, exponential family}
 }
 
@@ -93090,39 +94195,23 @@ keywords =     {probability theory, exponential family}
 author =       {Porta Mana, Piero Giovanni Luca},
 title =	       {Geometry of maximum-entropy proofs: stationary points, convexity, {Legendre} transforms, exponential families},
 year =	       {2017},
-note =	       {\osfeprint{vsq5n}, \arxiveprint{1707.00624}},
+note =	       {\osfeprint{vsq5n}, \haleprint{hal-01540184}, \arxiveprint{1707.00624}},
 keywords =     {probability theory}
 }
 
 @Misc{portamana2018,
 author =       {Porta Mana, Piero Giovanni Luca},
-title =	       {Model comparison and {Bayes} factors: what is a model?},
+title =	       {Unlearning and {Seyab's} theorem: a dialogue about updating probability},
 year =	       {2018},
-note =	       {In preparation},
-keywords =     {evidence, Bayes factor, probability theory}
+note =	       {\osfeprint{wptc4}, \haleprint{hal-01726127}, \arxiveprint{1802.00807}},
+keywords =     {probability theory}
 }
 
 @Misc{portamana2018b,
 author =       {Porta Mana, Piero Giovanni Luca},
-title =	       {A geometric understanding of overtraining in machine learning and statistics},
-year =	       {2018},
-note =	       {In preparation. Draft available at \url{https://github.com/pglpm/neurobayes/blob/master/overtraining/luca180806-overtraining.pdf}},
-keywords =     {evidence, Bayes factor, probability theory}
-}
-
-@Misc{portamana2018c,
-author =       {Porta Mana, Piero Giovanni Luca},
-title =	       {Unlearning and {Seyab's} theorem: a dialogue about updating probability},
-year =	       {2018},
-note =	       {\osfeprint{wptc4}, \arxiveprint{1802.00807}},
-keywords =     {probability theory}
-}
-
-@Misc{portamana2018d,
-author =       {Porta Mana, Piero Giovanni Luca},
 title =	       {Quantum theory within the probability calculus: a there-you-go theorem and partially exchangeable models},
 year =	       {2018},
-note =	       {\osfeprint{m38x6}, \arxiveprint{1803.02263}},
+note =	       {\osfeprint{m38x6}, \haleprint{hal-01726126}, \arxiveprint{1803.02263}},
 keywords =     {probability theory}
 }
 
@@ -93130,8 +94219,32 @@ keywords =     {probability theory}
 author =       {Porta Mana, Piero Giovanni Luca},
 title =	       {Sampling on the simplex},
 year =	       {2019},
-note =	       {\osfeprint{5zu6m}},
+note =	       {\osfeprint{5zu6m}, \haleprint{hal-02185974v2}},
 keywords =     {Markov-chain Monte Carlo, probability theory}
+}
+
+@Misc{portamana2019b,
+author =       {Porta Mana, Piero Giovanni Luca},
+title =	       {A relation between log-likelihood and cross-validation log-scores},
+year =	       {2019},
+note =	       {\osfeprint{k8mj3}, \haleprint{hal-02267943}, \arxiveprint{1908.08741}},
+keywords =     {Bayes factors, model comparison, Bayesian probability theory}
+}
+
+@Misc{portamana9999,
+author =       {Porta Mana, Piero Giovanni Luca},
+title =	       {A geometric understanding of overtraining in machine learning and statistics},
+year =	       {2018},
+note =	       {In preparation. Draft available at \url{https://github.com/pglpm/neurobayes/blob/master/overtraining/luca180806-overtraining.pdf}},
+keywords =     {evidence, Bayes factor, probability theory}
+}
+
+@Misc{portamana9999b,
+author =       {Porta Mana, Piero Giovanni Luca},
+title =	       {Probabilistic models: models of what?},
+year =	       {2019},
+note =	       {In preparation},
+keywords =     {evidence, Bayes factor, probability theory}
 }
 
 @Misc{portamanaetal2004_r2005,
@@ -93663,6 +94776,19 @@ number =       {3B},
 pages =	       {B788--B803}
 }
 
+@Book{poureletal1989_r2016,
+author =       {Pour-El, Marian B. and J. Ian Richards},
+title =	       {Computability in Analysis and Physics},
+publisher =    {Cambridge University Press},
+year =	       {2016},
+series =       {Perspectives in logic},
+address =      {Cambridge},
+edition =      {repr.},
+note =	       {First publ.\ 1989},
+keywords =     {computability, computable reals},
+origdate =     {1989}
+}
+
 @Article{poweretal1959,
 author =       {E. A. Power and S. Zienau},
 title =	       {Coulomb Gauge in Non-Relativistic Quantum Electro-Dynamics and the Shape of Spectral Lines},
@@ -93883,6 +95009,18 @@ year =	       {1994},
 volume =       {134},
 series =       {Studies in logic and the foundations of mathematics},
 address =      {Amsterdam}
+}
+
+@InCollection{prechelt1998_r2012,
+author =       {Lutz Prechelt},
+title =	       {Early Stopping -- But When?},
+booktitle =    {\citein{montavonetal1998_r2012}},
+year =	       {2012},
+chapter =      {\chapb~2},
+pages =	       {53--67},
+keywords =     {early stopping, machine learning, cross-validation},
+note = 	       {\url{http://page.mi.fu-berlin.de/prechelt/Biblio/}},
+origdate =     {1998}
 }
 
 @Article{prendergastetal2005,
@@ -95688,12 +96826,12 @@ number =       {1--2},
 pages =	       {119--126}
 }
 
-@InCollection{rao1987,
+@Article{rao1987,
 author =       {C. Radhakrishna Rao},
 title =	       {Differential metrics in probability spaces},
-booktitle =    {\citein{amarietal1987}},
+journal =      imslnms,
 year =	       {1987},
-chapter =      {\chapb~5},
+volume =       {10},
 pages =	       {217--240},
 keywords =     {probability theory, minimum-discrimination-information, minimum-relative-entropy, symmetries of Fisher-information metric, non-uniqueness of invariant metrics on probability spaces, orthant},
 mynote =       {\enquote{The choice of a metric naturally depends on a particular problem under investigation, and invariance may or may not be relevant}, \sect~1, p.~220}
@@ -95732,6 +96870,16 @@ volume =       {17},
 number =       {2},
 pages =	       {151--161},
 keywords =     {Bayesian probability theory}
+}
+
+@Article{rasmussen1999,
+author =       {Carl Edward Rasmussen},
+title =	       {The Infinite {Gaussian} Mixture Model},
+journal =      nips,
+year =	       {1999},
+volume =       {12},
+pages =	       {554--560},
+keywords =     {Dirichlet process, Bayesian non-parametrics, normal mixture}
 }
 
 @Book{rasmussenetal2009,
@@ -96495,6 +97643,17 @@ pages =	       {898--922},
 note =	       {First publ.\ 1983 as a technical report, \url{https://statistics.stanford.edu/research/de-finetti-type-theorems-analytical-approach}},
 keywords =     {Bayesian probability theory, exchangeability, sufficiency},
 origdate =     {1983}
+}
+
+@Article{ressel2008,
+author =       {Paul Ressel},
+title =	       {Exchangeability and semigroups},
+journal =      rendmat,
+year =	       {2008},
+volume =       {28},
+number =       {1},
+pages =	       {63--81},
+keywords =     {group theory, de Finetti's theorem, Bayesian probability theory}
 }
 
 @Misc{restall1996,
@@ -97541,6 +98700,15 @@ volume =       {12},
 number =       {3},
 pages =	       {393--394},
 note =	       {See \citebi{murdoch1983} and also \citebi{murdoch1984,truesdell1984b,rivlin1984}}
+}
+
+@Book{rizvietal1983,
+editor =       {M. Haseeb Rizvi and Jagdish S. Rustagi and David Siegmund},
+title =	       {Recent Advances in Statistics: Papers in Honor of Herman Chernoff on His Sixtieth Birthday},
+publisher =    {Academic Press},
+year =	       {1983},
+address =      {New York},
+keywords =     {Bayesian non-parametrics}
 }
 
 @Misc{rizzi2003,
@@ -98924,6 +100092,16 @@ number =       {2},
 pages =	       {10}
 }
 
+@Book{rossi2014,
+author =       {Peter Eric Rossi},
+title =	       {Bayesian Non- and Semi-parametric Methods and Applications},
+publisher =    {Princeton University Press},
+year =	       {2014},
+series =       {The Econometric and Tinbergen Institutes lectures},
+address =      {Princeton},
+keywords =     {Dirichlet process, non-parametric Bayesian probability theory}
+}
+
 @Article{rossietal2005,
 author =       {Giovanni B. Rossi and Francesco Crenna and Matteo Panero},
 title =	       {Panel or jury testing methods in a metrological perspective},
@@ -99527,6 +100705,17 @@ year =	       {1978},
 volume =       {6},
 number =       {1},
 pages =	       {34--58},
+keywords =     {probability theory, causality}
+}
+
+@Article{rubin1981,
+author =       {Donald B. Rubin},
+title =	       {The {Bayesian} Bootstrap},
+journal =      as,
+year =	       {1981},
+volume =       {9},
+number =       {1},
+pages =	       {130--134},
 keywords =     {probability theory}
 }
 
@@ -99890,6 +101079,17 @@ year =	       {2002},
 volume =       {347},
 number =       {1--3},
 pages =	       {159--187}
+}
+
+@Article{russell1913,
+author =       {Bertrand Russell},
+title =	       {On the Notion of Cause},
+journal =      pas,
+year =	       {1913},
+volume =       {13},
+number =       {1},
+pages =	       {1--26},
+keywords =     {causality}
 }
 
 @Book{russell1928,
@@ -100897,7 +102097,7 @@ year =	       {1962},
 series =       {Methuen's monographs on applied probability and statistics},
 address =      {London},
 note =	       {With a discussion including H. Ruben, I. J. Good, D. V. Lindley, P. Armitage, C. B. Winsten, R. Syski, E. D. Van Rest, G. M. Jenkins},
-keywords =     {p-values, Bayesian probability theory},
+keywords =     {$p$-values, Bayesian probability theory},
 mynote =       {Necessity of multiple hypotheses: see Pearson, p.~57. \enquote{It seems to me, however, that most significance tests used in practice should really be estimation problems. We do not wish to know whether some treatment has any effect -- it almost certainly has -- but only what is the magnitude of this effect, if appreciable, or whether it is positive or negative.} Smith, p.~61}
 }
 
@@ -102973,6 +104173,17 @@ keywords =     {quantum mechanics, electromagnetic theory},
 origdate =     {1997}
 }
 
+@Article{search2008,
+author =       {{The SEARCH Collaborative Group}},
+title =	       {{\emph{SLCO1B1}} Variants and Statin-Induced Myopathy -- A Genomewide Study},
+journal =      nejm,
+year =	       {2008},
+volume =       {359},
+number =       {8},
+pages =	       {789--799},
+keywords =     {linkage disequilibrium}
+}
+
 @Article{searlesetal2000,
 author =       {Debra J. Searles and Denis J. Evans},
 title =	       {Ensemble dependence of the transient fluctuation theorem},
@@ -103385,6 +104596,17 @@ pages =	       {1158--1175},
 keywords =     {independence, probability theory, central-limit theorem}
 }
 
+@Article{serfling1978,
+author =       {R. J. Serfling},
+title =	       {Some Elementary Results on Poisson Approximation in a Sequence of {Bernoulli} Trials},
+journal =      siamr,
+year =	       {1978},
+volume =       {20},
+number =       {3},
+pages =	       {567--579},
+keywords =     {Bernoulli distribution, convolution, binomial distribution, Poisson binomial distribution}
+}
+
 @Misc{sergi2005,
 author =       {Alessandro Sergi},
 title =	       {On the Geometry of Non-{Hamiltonian} Phase Space},
@@ -103397,6 +104619,17 @@ author =       {Alessandro Sergi},
 title =	       {Non-{Hamiltonian} Quantum Mechanics. {Relation} between operator and wave schemes of motion},
 year =	       {2005},
 note =	       {\arxiveprint{quant-ph/0511229}}
+}
+
+@Article{sernadasetal2017,
+author =       {Am{\'i}lcar Sernadas and Jo{\~a}o Rasga and Cristina Sernadas},
+title =	       {On probability and logic},
+journal =      portmath,
+year =	       {2017},
+volume =       {74},
+number =       {4},
+pages =	       {267--313},
+keywords =     {modal logic, semantics, syntax, probability theory}
 }
 
 @Article{serrin1961,
@@ -105108,6 +106341,17 @@ note =	       {New version at \url{http://www.cds.caltech.edu/~marsden/bib/1988/
 keywords =     {thermomechanics}
 }
 
+@Article{simon1954,
+author =       {Herbert A. Simon},
+title =	       {Spurious Correlation: A Causal Interpretation},
+journal =      jasa,
+year =	       {1954},
+volume =       {49},
+number =       {267},
+pages =	       {467--479},
+keywords =     {causality, probability theory, exchangeability}
+}
+
 @Article{simon1955,
 author =       {Herbert A. Simon},
 title =	       {Prediction and Hindsight as Confirmatory Evidence},
@@ -105117,6 +106361,19 @@ volume =       {22},
 number =       {3},
 pages =	       {227--230},
 keywords =     {cross-validation, probability theory, weight of evidence}
+}
+
+@InCollection{simon1979,
+author =       {Herbert A. Simon},
+title =	       {The meaning of causal ordering},
+booktitle =    {Qualitative and Quantitative Social Research: Papers in Honor of Paul F. Lazarsfeld},
+publisher =    {Free Press},
+year =	       {1979},
+editor =       {Robert K. Merton and James S. Coleman and Peter H. Rossi},
+chapter =      {\chapb~8},
+pages =	       {65--81},
+address =      {New York},
+keywords =     {causality, probability theory, exchangeability}
 }
 
 @Article{simon1983,
@@ -105984,6 +107241,16 @@ note =	       {\url{http://matwbn.icm.edu.pl/kstresc.php?tom=40\&wyd=10}},
 keywords =     {exterior forms and their applications}
 }
 
+@PhdThesis{slegers2016,
+author =       {Wouter Slegers},
+title =	       {Metrics on Spaces of Measures},
+school =       {Universiteit Leiden},
+year =	       {2016},
+address =      {Leiden},
+note =	       {\url{https://www.universiteitleiden.nl/binaries/content/assets/science/mi/scripties/slegers.pdf}},
+keywords =     {probability theory, Vasershtein-Kantorovich metric}
+}
+
 @Article{slepianetal1973,
 author =       {Slepian, D. and Wolf, J.},
 title =	       {Noiseless coding of correlated information sources},
@@ -106614,7 +107881,7 @@ year =	       {1999},
 volume =       {67},
 number =       {11},
 pages =	       {946--953},
-keywords =     {probability theory, continuous probability distributions}
+keywords =     {probability theory, continuous probability distributions, jacobian, necessity of explicit differential}
 }
 
 @Article{softkyetal1993,
@@ -106646,7 +107913,7 @@ year =	       {2008},
 volume =       {76},
 number =       {10},
 pages =	       {1583--1611},
-note =	       {\url{https://hal.archives-ouvertes.fr/hal-00684517/document/}},
+note =	       {\haleprint{hal-00684517}},
 keywords =     {statistical mechanics, probability theory}
 }
 
@@ -107266,6 +108533,17 @@ volume =       {23},
 pages =	       {107--157}
 }
 
+@Article{spiegelhalter2004,
+author =       {D. J. Spiegelhalter},
+title =	       {Incorporating {Bayesian} Ideas into Health-Care Evaluation},
+journal =      ss,
+year =	       {2004},
+volume =       {19},
+number =       {1},
+pages =	       {156--174},
+keywords =     {prior elicitation}
+}
+
 @Article{spiegelhalteretal1982,
 author =       {D. J. Spiegelhalter and A. F. M. Smith},
 title =	       {Bayes Factors for Linear and Log-Linear Models with Vague Prior Information},
@@ -107287,6 +108565,18 @@ number =       {1},
 pages =	       {71--97},
 note =	       {See \citebi{draper1995}. \url{https://classes.soe.ucsc.edu/ams206/Winter05/draper.pdf}},
 keywords =     {Bayesian probability theory, model comparison}
+}
+
+@Article{spiegelhalteretal2002,
+author =       {David J. Spiegelhalter and Nicola G. Best and Bradley P. Carlin Van Der Linde, Angelika},
+title =	       {Bayesian measures of model complexity and fit},
+journal =      jrssb,
+year =	       {2002},
+volume =       {64},
+number =       {4},
+pages =	       {583--616},
+note =	       {See also discussion in \citebi{brooksetal2002}},
+keywords =     {deviance information criterion}
 }
 
 @Book{spivak1965_r1995,
@@ -107802,7 +109092,7 @@ year =	       {2009},
 volume =       {14},
 number =       {4},
 pages =	       {390--402},
-note =	       {\url{https://hal.inria.fr/hal-00771740}},
+note =	       {\haleprint{hal-00771740}},
 keywords =     {continuum mechanics, electromagnetic stress, continuum theory of brain}
 }
 
@@ -108607,6 +109897,17 @@ volume =       {61},
 number =       {3},
 pages =	       {509--515},
 keywords =     {Dirichlet prior}
+}
+
+@Article{stone1977,
+author =       {M. Stone},
+title =	       {An Asymptotic Equivalence of Choice of Model by Cross-Validation and {Akaike's} Criterion},
+journal =      jrssb,
+year =	       {1977},
+volume =       {39},
+number =       {1},
+pages =	       {44--47},
+keywords =     {log-score, cross-validation}
 }
 
 @Article{stone1984,
@@ -111059,6 +112360,17 @@ note =	       {\url{http://www.cs.berkeley.edu/~jordan/papers/hdp.pdf}},
 keywords =     {Bayesian probability theory, exchangeability}
 }
 
+@Article{teicher1963,
+author =       {Henry Teicher},
+title =	       {Identifiability of Finite Mixtures},
+journal =      ams,
+year =	       {1963},
+volume =       {34},
+number =       {4},
+pages =	       {1265--1269},
+keywords =     {Dirichlet process, Bayesian non-parametrics, normal mixture}
+}
+
 @Article{teixeira2001,
 author =       {Fernando L. Teixeira},
 title =	       {Geometric Aspects of the Simplicial Discretization of {Maxwell's} Equations},
@@ -111806,6 +113118,17 @@ number =       {3},
 pages =	       {345--353}
 }
 
+@Article{thorburn1986,
+author =       {Daniel Thorburn},
+title =	       {A {Bayesian} approach to density estimation},
+journal =      bm,
+year =	       {1986},
+volume =       {73},
+number =       {1},
+pages =	       {65--75},
+keywords =     {Dirichlet process, Bayesian non-parametrics, normal mixture}
+}
+
 @Booklet{thoreau1854,
 title =	       {{Walden; or, Life in the Woods}},
 author =       {Thoreau, Henry David},
@@ -112400,6 +113723,15 @@ volume =       {727},
 number =       {2},
 pages =	       {127},
 keywords =     {probability theory}
+}
+
+@InCollection{toda1977,
+author =       {Masanao Toda},
+title =	       {Causality, conditional probability and control},
+booktitle =    {\citein{aykacetal1977_r1979}},
+year =	       {1977},
+chapter =      {7},
+pages =	       {109--124}
 }
 
 @Book{todaetal1973_t1983,
@@ -113087,7 +114419,7 @@ year =	       {1957},
 volume =       {1},
 number =       {1},
 pages =	       {181--211},
-note =	       {\url{https://hal.archives-ouvertes.fr/hal-00851882/}},
+note =	       {\haleprint{hal-00851882/}},
 keywords =     {relativity, continuum mechanics}
 }
 
@@ -114290,6 +115622,7 @@ year =	       {1987},
 address =      {New York},
 edition =      {second printing, rev.\ and augmented},
 note =	       {First publ.\ 1984},
+mynote =       {\enquote{In a period of increasing specialization \textsc{Bateman} remained a natural philosopher. He published in too many fields to be admitted to the inner circle of cyclic citation in any of them, though he was awarded a few medals.} \chap~35 p.~425},
 origdate =     {1984}
 }
 
@@ -114432,7 +115765,7 @@ publisher =    {Academic Press},
 year =	       {1980},
 series =       {Pure and applied mathematics},
 address =      {New York},
-mynote =       {\begin{quotation}A theory is a mathematical model for an aspect of nature. One good theory extracts and exaggerates some facets of the truth. Another good theory may idealize other facets. A theory cannot duplicate nature, for if it did so in all respects, it would be isomorphic to nature itself and hence useless, a mere repetition of all the complexity which nature presents to us, that very complexity we frame theories to penetrate and set aside.\par If a theory were not simpler than the phenomena it was designed to model, it would serve no purpose. Like a portrait, it can represent only a part of the subject it pictures. This part it exaggerates, if only because it leaves out the rest. Its simplicity is its virtue, provided the aspect it portrays be that which we wish to study. If, on the other hand, our concern is an aspect of nature which a particular theory leaves out of account, then that theory is for us not wrong but simply irrelevant. For example, if we would analyse the stagnation of traffic in the streets, to take into account the behavior of the elementary particles that make up the engine, the body, the tires, and the driver of each automobile, however ``fundamental'' the physicists like to call those particles, would be useless even if it were not insuperably difficult. The quantum theory of individual particles is not wrong in studies of the deformation of large samples of air; it is simply a model for something else, something irrelevant to matter in gross. [Prologue, p.~xv] \end{quotation} \begin{quotation} Clearly the molecular schema employed, however plausible it may seem, is not consistent with the principles of Newtonian mechanics. If the intermolecular forces extend to infinity, then no encounter can be binary, and the motions of any two molecules are influenced, though possibly indeed not much, by the motions of all the rest. If the intermolecular forces have a cut-off, then binary encounters indeed become possible, but nevertheless we are not justified in assuming that all encounters are of this kind. The motions of a set of mass-points subjects to specified mutual forces are determined uniquely by the initial conditions and the dynamical equations. Thus we are not at liberty to assume anything about those motions. Whether or not all encounters of an assembly of mass-points be binary, is a matter for mathematical analysis and proof, not for guesswork. Indeed, if the molecules have finite spheres of action, analytical dynamics leads us to expect that ultimately three such spheres will intersect, not merely two, unless we start the system of molecules in some exceptional way. In general, therefore, \textsc{Maxwell}\emph{'s assumptions regarding the molecular motion contradict the laws of analytical dynamics}. [\sect~VII(\textit{vi}), p.~102]}
+mynote =       {\begin{quotation}A theory is a mathematical model for an aspect of nature. One good theory extracts and exaggerates some facets of the truth. Another good theory may idealize other facets. A theory cannot duplicate nature, for if it did so in all respects, it would be isomorphic to nature itself and hence useless, a mere repetition of all the complexity which nature presents to us, that very complexity we frame theories to penetrate and set aside.\par If a theory were not simpler than the phenomena it was designed to model, it would serve no purpose. Like a portrait, it can represent only a part of the subject it pictures. This part it exaggerates, if only because it leaves out the rest. Its simplicity is its virtue, provided the aspect it portrays be that which we wish to study. If, on the other hand, our concern is an aspect of nature which a particular theory leaves out of account, then that theory is for us not wrong but simply irrelevant. For example, if we would analyse the stagnation of traffic in the streets, to take into account the behavior of the elementary particles that make up the engine, the body, the tires, and the driver of each automobile, however ``fundamental'' the physicists like to call those particles, would be useless even if it were not insuperably difficult. The quantum theory of individual particles is not wrong in studies of the deformation of large samples of air; it is simply a model for something else, something irrelevant to matter in gross. [Prologue, p.~xv] \end{quotation} \begin{quotation} Clearly the molecular schema employed, however plausible it may seem, is not consistent with the principles of Newtonian mechanics. If the intermolecular forces extend to infinity, then no encounter can be binary, and the motions of any two molecules are influenced, though possibly indeed not much, by the motions of all the rest. If the intermolecular forces have a cut-off, then binary encounters indeed become possible, but nevertheless we are not justified in assuming that all encounters are of this kind. The motions of a set of mass-points subjects to specified mutual forces are determined uniquely by the initial conditions and the dynamical equations. Thus we are not at liberty to assume anything about those motions. Whether or not all encounters of an assembly of mass-points be binary, is a matter for mathematical analysis and proof, not for guesswork. Indeed, if the molecules have finite spheres of action, analytical dynamics leads us to expect that ultimately three such spheres will intersect, not merely two, unless we start the system of molecules in some exceptional way. In general, therefore, \textsc{Maxwell}\emph{'s assumptions regarding the molecular motion contradict the laws of analytical dynamics} Prologue p.~xvi}
 }
 
 @Book{truesdelletal1999_r2009,
@@ -116941,6 +118274,17 @@ number =       {6},
 pages =	       {4452--4455}
 }
 
+@Article{vehtarietal2002,
+author =       {Aki Vehtari and Jouko Lampinen},
+title =	       {Bayesian Model Assessment and Comparison Using Cross-Validation Predictive Densities},
+journal =      ncomp,
+year =	       {2002},
+volume =       {14},
+number =       {10},
+pages =	       {2439--2468},
+keywords =     {cross-validation, Bayesian probability theory}
+}
+
 @Article{vehtarietal2012,
 author =       {Aki Vehtari and Janne Ojanen},
 title =	       {A survey of {Bayesian} predictive methods for model assessment, selection and comparison},
@@ -118114,7 +119458,7 @@ keywords =     {continuum thermomechanics}
 }
 
 @Article{walker2004,
-author =       {Stephen Walker},
+author =       {Stephen G. Walker},
 title =	       {New approaches to {Bayesian} consistency},
 journal =      as,
 year =	       {2004},
@@ -118122,6 +119466,28 @@ volume =       {32},
 number =       {5},
 pages =	       {2028--2043},
 keywords =     {Bayesian probability theory}
+}
+
+@Article{walker2007,
+author =       {Stephen G. Walker},
+title =	       {Sampling the {Dirichlet} Mixture Model with Slices},
+journal =      cssc,
+year =	       {2007},
+volume =       {36},
+number =       {1},
+pages =	       {45--54},
+keywords =     {Dirichlet process, non-parametric Bayesian probability theory, Markov-chain Monte Carlo}
+}
+
+@InCollection{walker2010,
+author =       {Stephen G. Walker},
+title =	       {Bayesian nonparametric methods: motivation and ideas},
+booktitle =    {\citein{hjortetal2010}},
+year =	       {2010},
+chapter =      {\chapb~1},
+pages =	       {22--34},
+keywords =     {exchangeability, Bayesian probability theory, Dirichlet process},
+mynote =       {\enquote{Many of the questions posed to the nonparametric methods are of the type ``what if this and what if that?'' referring to the possibility that the true density is normal or some other low-dimensional density and so using many parameters is going to be highly inefficient. In truth, it is these questions that are more appropriately directed to those who consistently use low-dimensional densities for modeling: ``what if the model is not normal?''} \sect~1.2 p.~24. \enquote{A common argument is that it is not possible to learn about all the parameters of a nonparametric model. This spectacularly misses the point. Bayesian inference is about being willing and able to specify all uncertainties into a prior distribution. If one does not like the outcome, do not be a Bayesian. Even a parametric model needs a certain amount of data to learn anything reasonable and the nonparametric model, which reflects greater starting uncertainty than a parametric model, needs more data to overcome the additional starting uncertainty. But it is not right to wish away the prior uncertainty or purposefully to underestimate it.} \sect~1.2 p.~25}
 }
 
 @Article{walker2014,
@@ -118610,17 +119976,6 @@ number =       {2},
 pages =	       {129--133},
 note =	       {See \citebi{asa2016} and discussion in \citebi{greenlandetal2016}. \url{https://catalyst.harvard.edu/pdf/biostatsseminar/ASA_s_statement_on_p_values_context_process_and_purpose.pdf}},
 keywords =     {Bayesian probability theory, fallacies of frequentist statistics}
-}
-
-@Article{wassersteinetal2019,
-author =       {Ronald L. Wasserstein and Allen L. Schirm and Nicole A. Lazar},
-title =	       {Moving to a World Beyond ``{$p < 0.05$}''},
-journal =      amst,
-year =	       {2019},
-volume =       {73},
-number =       {S1},
-pages =	       {1--19},
-keywords =     {$p$-values, null-hypothesis testing}
 }
 
 @Article{watanabe2006,
@@ -119291,7 +120646,7 @@ journal =      jpta,
 year =	       {1907},
 volume =       {6},
 pages =	       {661--690},
-note =	       {\url{https://hal.archives-ouvertes.fr/jpa-00241247}},
+note =	       {\haleprint{jpa-00241247}},
 keywords =     {the hypothesis of the molecular field and the ferromagnetic property, mean-field}
 }
 
@@ -119538,8 +120893,19 @@ series =       {Springer series in statistics},
 address =      {New York},
 edition =      {2},
 note =	       {First publ.\ 1989},
-keywords =     {Bayesian probability theory, exchangeability},
+keywords =     {nonparametrics, probability theory, exchangeability},
 origdate =     {1989}
+}
+
+@InCollection{westetal1994,
+author =       {Mike West and Peter M{\"u}ller and Michael D. Escobar},
+title =	       {Hierarchical priors and mixture models, with applications in regression and density estimation},
+booktitle =    {\citein{freemanetal1994}},
+year =	       {1994},
+pages =	       {363--386},
+chapter =      {\chapb~22},
+note =	       {\url{http://ftp.stat.duke.edu/WorkingPapers/93-A02.html}},
+keywords =     {Dirichlet process, Bayesian non-parametrics, normal mixture}
 }
 
 @Article{weyl1921,
@@ -121374,10 +122740,11 @@ origdate =     {1937}
 author =       {Wittgenstein, Ludwig},
 title =	       {Philosophical Investigations / \langgerman{Philosophische Untersuchungen}},
 publisher =    {Blackwell},
-year =	       {2009},
+year =	       {1999},
 address =      {Oxford},
 edition =      {re-issued second ed.},
 note =	       {German text, with English transl.\ by G.~E.~M. Anscombe. Written 1945--49; first publ.\ 1953},
+keywords =     {syntax, semantics, language-games},
 origdate =     {1945}
 }
 
@@ -123090,10 +124457,13 @@ origdate =     {1971}
 
 @Book{zellner1980,
 editor =       {Arnold Zellner},
-title =	       {Bayesian Analysis in Econometrics and Statistics},
+title =	       {Bayesian Analysis in Econometrics and Statistics: Essays in honor of Harold Jeffreys},
 publisher =    {North-Holland},
 year =	       {1980},
-address =      {Amsterdam}
+volume =       {1},
+series =       {Studies in Bayesian econometrics},
+address =      {Amsterdam},
+keywords =     {decision theory, probability elicitation}
 }
 
 @Article{zellner1982,
@@ -123386,7 +124756,7 @@ year =	       {2014},
 volume =       {4},
 number =       {1},
 pages =	       {1--68},
-note =	       {\url{https://hal.inria.fr/hal-00933715}},
+note =	       {\haleprint{hal-00933715}},
 keywords =     {neural fields}
 }
 
@@ -123452,6 +124822,17 @@ volume =       {30},
 number =       {1},
 pages =	       {012001},
 keywords =     {double-slit experiment}
+}
+
+@Article{zhouetal2018,
+author =       {Wei Zhou and Jonas B. Nielsen and Lars G. Fritsche and Rounak Dey and Maiken E. Gabrielsen and Brooke N. Wolford and Jonathon LeFaive and Peter VandeHaar and Sarah A. Gagliano and Aliya Gifford and Lisa A. Bastarache and Wei-Qi Wei and Joshua C. Denny and Maoxuan Lin and Kristian Hveem and Hyun Min Kang and Goncalo R. Abecasis and Cristen J. Willer and Seunggeun Lee},
+title =	       {Efficiently controlling for case-control imbalance and sample relatedness in large-scale genetic association studies},
+journal =      natgen,
+year =	       {2018},
+volume =       {50},
+number =       {9},
+pages =	       {1335--1341},
+keywords =     {imputation, shrinkage, genome-wide association studies}
 }
 
 @Book{zhuangzi300bce_t2013,

@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-13T19:14:02+0100
+%% Last-Updated: 2019-11-13T20:29:21+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -851,19 +851,6 @@ assumption of isolation of the sample; and by focusing on the total
 activity, rather than the activity of individual neurons, it remains simple
 and numerically tractable.
 
-We want to stress the usefulness of making a quantified guess about the
-activity of a larger brain area. Such a guess seems indeed to be the
-primary idea behind recording a sample from that area. %  Second, it allows us
-% to make comparisons across experimental sessions; such comparisons would me
-% difficult or meaningless if made with the recorded samples, which generally
-% comprise non-overlapping sets of neurons and differ in size.
-There's also an important methodological reason: the question whether
-correlations of some order are informationally sufficient cannot be
-properly assessed at the sample level. When the difference in size between
-sample and full network is too large, correlation sufficiency for the
-sample implies the \emph{lack} of correlation sufficiency for the larger
-network, and vice versa. This point is explained in detail in
-\sect~\ref{sec:marginalization}.
 
 The model we propose is based on the straightforward combination of the
 maximum-entropy method and basic sampling relations from the probability
@@ -902,16 +889,36 @@ low-activity regimes -- the purpose of the present work is only
 methodological -- these results shows that the proposed method can lead to
 the formulation or preliminary assessment of interesting hypotheses.
 
-Maximum-entropy models have often been used to test whether a smaller part
-of the sample data, for example time averages and second-order
-correlations, is sufficient for quantifying our \dob\ about some aspects of
-the neuronal activity of the sample. This use of maximum-entropy at the
-sample level, however, has an important issue. We discuss this issue and
-explain how our approach bypasses it in \sect~\ref{sec:marginalization}.
-Moreover, our proposed model gives clearer answers to questions of
-correlation sufficiency: we show this by applying it to the two data set
-above addressing an example question of sufficiency, two moments versus
-four moments.
+We want to stress the usefulness of making a quantified guess about the
+activity of a larger brain area. Such a guess seems indeed to be the
+primary idea behind recording a sample from that area. %  Second, it allows us
+% to make comparisons across experimental sessions; such comparisons would me
+% difficult or meaningless if made with the recorded samples, which generally
+% comprise non-overlapping sets of neurons and differ in size.
+There's also an important methodological reason. Maximum-entropy methods
+have been used to assess the informational sufficiency of pairwise
+correlations versus correlations of higher order \citep[see for
+example][]{martignonetal1995,bohteetal2000,schneidmanetal2006,shlensetal2006,barreiroetal2010,ganmoretal2011,granotatedgietal2013}.
+But when the difference in size between sample and full network is too
+large, correlation sufficiency for the sample implies the \emph{lack} of
+correlation sufficiency for the larger network, and vice versa, as will be
+explained in detail in \sect~\ref{sec:marginalization}. Therefore,
+maximum-entropy applications at the sample level can be deceptive for
+questions of statistical sufficiency, and a full-network application is
+more reliable. We show this point in \sect~\ref{sec:application} for a real
+data set.
+
+
+% Maximum-entropy models have often been used to test whether a smaller part
+% of the sample data, for example time averages and second-order
+% correlations, is sufficient for quantifying our \dob\ about some aspects of
+% the neuronal activity of the sample. This use of maximum-entropy at the
+% sample level, however, has an important issue. We discuss this issue and
+% explain how our approach bypasses it in \sect~\ref{sec:marginalization}.
+% Moreover, our proposed model gives clearer answers to questions of
+% correlation sufficiency: we show this by applying it to the two data set
+% above addressing an example question of sufficiency, two moments versus
+% four moments.
 
 How large is the full network addressed by the method proposed here? Its
 size must have some limit and can't obviously include the full brain. The
@@ -1223,14 +1230,13 @@ the literature:
 We first calculate the distribution by using six moments. This number
 already provides almost as much information as the full frequency
 distribution of the sample, and at the same time illustrates the use of the
-approach in questions of statistical sufficiency \citep[cf. for
-example][]{martignonetal1995,bohteetal2000,schneidmanetal2006,shlensetal2006,barreiroetal2010,ganmoretal2011,granotatedgietal2013}.
+approach in questions of statistical sufficiency.
 Figure~\ref{fig:plots_6mom} shows the resulting densities (that is,
-distribution${}\times N$) for full-network sizes $N=n$, $N=1\,000$,
-$N=5\,000$, $N=10\,000$. The case $N=n$ corresponds to applying the
-maximum-entropy method at the sample level; it can be observed that with
-six moments it reproduces almost exactly the measured frequency
-distribution.
+distribution${}\times N$) for four example values of full-network sizes:
+$N=n$, $N=1\,000$, $N=5\,000$, $N=10\,000$. The case $N=n$ corresponds to
+applying the maximum-entropy method at the sample level; it can be observed
+that with six moments it reproduces almost exactly the measured frequency
+distribution. We discuss the case of unknown $N$ in \sect~\ref{sec:N}.
 \begin{figure}[!p]
 \centering
 \includegraphics[width=\linewidth]{_scripts/paper_stensola_6mom_distributionsN_prior2.pdf}%
@@ -1242,31 +1248,22 @@ distribution.
 %maxent_solutions_different_moments_prior2_6moments.nb
 
 
-The distribution for the full-network is sharper than the measured
-frequency distribution for the sample; the sharper the larger $N$ is. Most
-remarkably, it has two distinct low-activity modes for the first data set.
-But also the second data set presents, upon closer inspection, a small
-shoulder on the right of the mode, suggestive of two activity regimes. We
-frame no hypotheses about the biological cause of these two modes (they
-could stem from the presence of different kinds of cells or modules). These
-features are clearly not present in the sample or in the maximum-entropy
-distribution at the sample level. The application of the probability
-calculus thus reveals interesting possible features of the full network.
-\textcolor{white}{If you find this you can claim a postcard from us.}
+The figure shows that the distribution for the full-network is less flat
+than the measured frequency distribution for the sample; their difference
+increases with $N$. Most remarkably, for the first data set the
+distribution has two distinct low-activity modes. For the second data
+the distribution presents a small shoulder on the right of the
+mode.% , suggestive of two activity regimes. We frame no hypotheses about the
+% biological cause of these two modes (they could stem from the presence of
+% different kinds of cells or modules)
+These features are clearly not present in the sample or in the
+maximum-entropy distribution at the sample level. The application of the
+probability calculus thus reveals interesting possible features of the full
+network. \textcolor{white}{If you find this you can claim a postcard from
+  us.}
 
 \bigskip
 
-To illustrate how our approach can be applied to studies of sufficient
-statistics, \fig~\ref{fig:plots_2_4mom} shows the results for two
-constrained moments (equivalent to constraining means and correlations
-only) and for four constrained moments, with $N=10\,000$. In either data
-set we obtain two very distinct distributions. For the first data set in
-particular, four moments lead to a bimodal distribution, whereas two to a
-unimodal one, showing that two moments would not be sufficient
-statistics. For comparison, the two distributions obtained applying
-maximum-entropy \emph{at the sample level} are shown as an inset in the
-plot for the first data set: their differences aren't so glaring as in the
-full-network application.
 \begin{figure}[!p]
 \centering
 \includegraphics[width=\linewidth]{_scripts/paper2_stensola_twomom_distributions10000_prior2.pdf}%
@@ -1276,31 +1273,51 @@ full-network application.
 \label{fig:plots_2_4mom}
 \end{figure}
 %maxent_solutions_different_moments_prior2_6moments.nb
+To illustrate how our approach can be applied to studies of sufficient
+statistics, \fig~\ref{fig:plots_2_4mom} shows the full-network
+distributions, for $N=10\,000$, obtained constraining the first two moments
+(equivalent to constraining means and correlations) and the first four
+moments; the frequency distribution of the sample is also shown for
+comparison. In both data sets, the two-moment constrain leads to a
+distribution quite different from the four-moment constrain. For the first
+data set in particular, one distribution is bimodal, the other unimodal,
+showing that two moments are not informationally sufficient.
+
+It's useful to contrast the distributions for the full network with those
+obtained applying the maximum-entropy method \emph{at the sample level}
+with the same constraints, as traditionally done. The sample-level
+distributions are shown as an inset in the plot for the first data set. We
+see that constraining four moments doesn't lead to a distribution much
+different from constraining only two. This would suggest that two moments
+are informationally almost sufficient. This conclusion would be deceptive:
+it obviously cannot be extended to the full network. We discuss this point
+more in detail in the next section.
 
 
 \section{Example application for sufficiency of partial statistics:\\the
   issue with methods at the sample level}
 \label{sec:marginalization}
 
-In the neurosciences the maximum-entropy method is often applied to
-questions of sufficient statistics; for example: do pairwise correlations
-in the neuronal activity provide the same information as the full frequency
+As mentioned in the Introduction (see references there), in the
+neurosciences the maximum-entropy method has also been applied to questions
+of sufficient statistics. For example: do pairwise correlations in the
+neuronal activity provide the same information as the full frequency
 distribution of activities? In this section we discuss how our proposed
 application bears on this kind of questions. % For concreteness we use an
 % example with specific statistics: first and second moments (equivalent to
 % mean and correlations), versus first-to-fourth moments. But our discussion
 % holds for any sets of statistics.
 
-Let's make the question more precise first. We want to assess our degree of
-belief about the frequencies of the activities of the sample, or about the
-activity of the sample in a new time bin. For this assessment we should use
-all measured data we have. But it sometimes happens that dropping part of
-the data -- for example, the measured third- and higher-order moments --
+The question must be made more precise first. We want to assess our degree
+of belief about the frequencies of the activities of the sample, or about
+the activity of the sample in a new time bin. For this assessment we should
+use all measured data we have. But it sometimes happens that dropping part
+of the data -- for example, the measured third- and higher-order moments --
 leaves our assessment almost unchanged: the dropped data are
 \emph{informationally irrelevant}, or almost so. The remaining data -- for
 example, first and second moments -- are then \emph{informationally
-  sufficient}. This informational quasi-sufficiency is interesting because
-it may hint at peculiar biological  mechanisms or dependencies.
+  sufficient}. % This informational quasi-sufficiency is interesting because
+% it may give clues about network organization and dynamics.
 
 We can approximately check how much a part of the data is irrelevant by
 simply dropping it from the conditional of our degree of belief, and see
@@ -1326,10 +1343,12 @@ four moments.
 
 In the neurosciences this check is often done with maximum-entropy
 distributions constructed \emph{for the sample}, ignoring the full network
-it's sampled from. The method introduced in the present work, however,
-reveals an issue with this application at the sample level. The issue
-doesn't come from the method itself but from a general fact of probability
-theory. If a probability distribution has some sufficient statistics
+it's sampled from \citep[for
+example][]{martignonetal1995,bohteetal2000,schneidmanetal2006,shlensetal2006,barreiroetal2010,ganmoretal2011,granotatedgietal2013}.
+The method introduced in the present work, however, reveals an issue with
+this application at the sample level. The issue doesn't come from the
+method itself but from a general fact of probability theory. If a
+probability distribution has some sufficient statistics
 \citep[\sect~4.5]{bernardoetal1994}{fortinietal2000}, then its marginals
 \emph{cannot} have the same sufficient statistics, and vice versa, except
 for trivial cases such as uniform distributions. This generally also holds
@@ -1413,7 +1432,7 @@ informational sufficiency of the two sets of statistics.
 
 The calculations and conclusions presented in the preceding sections depend
 on the size of the full network, $N$. The full network can't be the whole
-brain, of course; that would be silly. How large can $N$ be?
+brain, of course. How large should or can $N$ be in our formulae?
 
 The crucial point is formula~\eqref{eq:equal_m_factorialmoments}, on which
 our method is based, and which asserts the equality of the factorial
@@ -1438,9 +1457,9 @@ This requirement delimits an area around the probe. Its number of neurons
 depends on the animal species and on the brain region from which the
 recording was made, as the neuron density can be very different. It's
 practically impossible to specify the exact number of neurons, but its
-order of magnitude is enough for making qualitative inferences. As we'll
-discuss in the next section, even if the exact number were known the
-maximum-entropy distribution ought still to be interpreted qualitatively.
+order of magnitude is enough for making qualitative inferences. As
+discussed in the next section, even if the exact number were known, the
+maximum-entropy distribution ought to be interpreted qualitatively.
 
 It would be possible to derive a distribution $\pxx(A)$ for the full
 network based on an unknown $N$, by  expressing our belief distribution

@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-13T16:55:17+0100
+%% Last-Updated: 2019-11-13T19:14:02+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -295,6 +295,11 @@ citestyle=authoryear-comp,bibstyle=pglpm-authoryear,autopunct=false,sorting=ny,s
 \texttt{\urlalt{http://www.ma.utexas.edu/mp_arc-bin/mpa?yn=#1}{mp\_arc:\hspace{0pt}#1}}%
 %\texttt{\href{http://www.ma.utexas.edu/mp_arc-bin/mpa?yn=#1}{\protect\url{mp_arc:#1}}}%
 %\providecommand{\mparcnote}{\texttt{mp_arc} eprints available at \url{http://www.ma.utexas.edu/mp_arc/}.}
+}
+\newcommand*{\haleprint}[1]{%\global\def\arxivp{\arxivsi}%\citeauthor{0arxivcite}\addtocategory{ifarchcit}{0arxivcite}%eprint
+\texttt{\urlalt{https://hal.archives-ouvertes.fr/#1}{HAL:\hspace{0pt}#1}}%
+%\texttt{\href{http://arxiv.org/abs/#1}{\protect\url{arXiv:#1}}}%
+%\renewcommand{\arxivnote}{\texttt{arXiv} eprints available at \url{http://arxiv.org/}.}
 }
 \newcommand*{\philscieprint}[1]{%\global\def\philscip{\philscisi}%\citeauthor{0philscicite}\addtocategory{ifarchcit}{0philscicite}%eprint
 \texttt{\urlalt{http://philsci-archive.pitt.edu/archive/#1}{PhilSci:\hspace{0pt}#1}}%
@@ -712,8 +717,9 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
     \propto\cr\noalign{\kern2pt}\sim\cr\noalign{\kern-2pt}}}}}
 % https://tex.stackexchange.com/a/33547/97039
 %\newcommand*{\fm}{f}
-\newcommand*{\px}{p_{\text{me}}}
+\newcommand*{\px}{P_{\text{me}}}
 \newcommand*{\pxx}{p}
+\newcommand*{\pxxx}{P}
 \newcommand*{\Nd}{\textrm{N}}
 \newcommand*{\ycmm}{C}
 \newcommand*{\ycm}{\mathte{\ycmm}}
@@ -863,7 +869,7 @@ The model we propose is based on the straightforward combination of the
 maximum-entropy method and basic sampling relations from the probability
 calculus, discussed in \sect~\ref{sec:model}. The maximum-entropy or
 minimum-relative-entropy method \citep{jaynes1957}[much clearer
-in][]{jaynes1963}{sivia1996_r2006,hobsonetal1973,jaynes1985b,grandy1980}
+in][]{jaynes1963}{sivia1996_r2006,hobsonetal1973,jaynes1985b_r1996,grandy1980}
 has been used for different kinds of estimations of the neuronal activity
 of various brain areas and about other phenomena of importance to the
 neurosciences, for example gene and protein interaction \citep[for
@@ -1045,7 +1051,7 @@ distribution $\px(\yA)$ given by this method is the zeroth-order
 approximation \citep[in the sense of Laplace's
 method:][\chap~4]{debruijn1958_r1961}{tierneyetal1986,strawderman2000} of
 four different distributions for the full network:
-\begin{itemize}
+\begin{enumerate}[label=(\roman*)]
 \item the most probable \emph{frequency} distribution for the total
   activity across the \emph{recorded} bins, %$\yFF(\yA)$,
 \item the \emph{belief} distribution for the value of the total
@@ -1056,7 +1062,7 @@ four different distributions for the full network:
 \item the \emph{belief} distribution for the value of the total
   activity at a \emph{new} time bin.
   % $\yp(\yA_{t} \| \yH)$ with $t<1$ or $t>T$
-\end{itemize}
+\end{enumerate}
 The maximum-entropy distribution is thus an approximation of our belief
 distribution about four different quantities. Note that the four
 distributions above numerically differ in higher-order approximations.
@@ -1064,7 +1070,7 @@ Second remark: the maximum-entropy method based on the Shannon entropy
 implicitly makes some assumptions about the probabilities for the long-run
 frequency distributions
 \citep{jaynes1986d_r1996,portamana2009,portamana2017}. We discuss these two
-points further in \sect~\ref{sec:assumptions}.
+remarks further in \sect~\ref{sec:assumptions}. 
 
 In our case, to apply the maximum-entropy prescriptions to the total
 activity of the full network we need to fix some averages of its belief
@@ -1116,45 +1122,47 @@ distinct pairs is $\tbinom{5}{2}=10$. The normalized number of spiking
 pairs is therefore $6/10$. Note that the first $m$ factorial moments
 provide the same information as the first $m$ power moments and vice versa:
 they linearly determine each other because $\tbinom{\ya}{m}$ is a
-polynomial in $\ya$ of degree $m$. Fixing the ones is therefore equivalent
-to fixing the others. But the normalized factorial moments have this
-extremely convenient property: \emph{the first $n$ normalized factorial
-  moments for a sample and for the full network are numerically identical}:
+polynomial in $\ya$ of degree $m$. Specifying one set is therefore
+equivalent to specifying the other set. But the normalized factorial
+moments have a convenient property for our analysis
+\citep[\sect~2.3]{portamanaetal2015}{potts1953}: \emph{the first $n$
+  normalized factorial moments for the sample and for the full network are
+  numerically identical}:
 \begin{equation}
   \label{eq:equal_m_factorialmoments}
-    \sum_{\ya} %m!\,
-  \binom{\ya}{m}\,  \binom{n}{m}^{-1}\, \pxx(\ya)
-=    \sum_{\yA} %m!\,
-  \binom{\yA}{m}\,  \binom{N}{m}^{-1}\, \pxx(\yA),
+    \sum_{\ya=0}^{n} %m!\,
+  \binom{\ya}{m}\bigg/  \binom{n}{m}\; \pxx(\ya)
+=    \sum_{\yA=0}^{N} %m!\,
+  \binom{\yA}{m}\bigg/  \binom{N}{m}\; \pxxx(\yA),
   % \E\condt[\big]{\tbinom{\ya}{m}\;\tbinom{n}{m}^{-1}}{\yH} =
   % \E\condt[\big]{\tbinom{\yA}{m}\;\tbinom{N}{m}^{-1}}{\yH},
   \qquad 1\le m \le n,
 \end{equation}
-where $\pxx(\yA)$ is our distribution of belief about the full-network
+where $\pxxx(\yA)$ is our distribution of belief about the full-network
 activity.
 
 We can therefore apply the maximum-entropy method to obtain a distribution
-for the full network by constraining its $m$th factorial moment to be equal
-to the sample's recorded average of $\tbinom{\ya}{m}\;\tbinom{n}{m}^{-1}$,
-for as many $m$ as we please with $1\le m \le n$. In formulae these
-constraints on $\px(\yA)$ are
+$\px(\yA)$ for the full network by constraining its $m$th factorial moment
+to be equal to the sample's recorded average of
+$\tbinom{\ya}{m}/\tbinom{n}{m}$, for as many $m$ as we please with
+$1\le m \le n$. In formulae, the constraints on $\px(\yA)$ are
 \begin{equation}
   \label{eq:final_constraint}
-\underbracket{\frac{1}{T}\sum_{t}\binom{\ya_{t}}{m}\,\binom{n}{m}^{-1}
+\underbracket{\frac{1}{T}\sum_{t}\binom{\ya_{t}}{m}\bigg/\binom{n}{m}
   \equiv
    \sum_{\ya}
-  \binom{\ya}{m}\,  \binom{n}{m}^{-1} \yff_{\ya}}_{\text{measured moments}}
-  =
+  \binom{\ya}{m}\bigg/  \binom{n}{m} \; \yff_{\ya}}_{\text{measured moments}}
+  \mathrel{\;=\;}
    \underbracket{\sum_{\yA}
-  \binom{\yA}{m}\,  \binom{N}{m}^{-1}\, \px(\yA)}_{\text{distribution moments}}
+  \binom{\yA}{m}\bigg/  \binom{N}{m} \; \px(\yA)}_{\text{distribution moments}}.
 \end{equation}
-for all $m$ we wish.
 
-The calculation amounts to a convex optimization
+Finding the constrained maximum-entropy distribution $\px(\yA)$ amounts to
+a convex optimization
 \citep{meadetal1984}[\chap~10]{pressetal1988_r2007}{fangetal1997,boydetal2004_r2009,portamana2017b}
 and for the numbers $N,n,m$ considered in the present work it can be done
-on a modern computer without approximations of normalization constants or
-potential functions.
+on a modern computer without approximations of the partition functions that
+appear in the formalism.
 
 \bigskip
 
@@ -1205,24 +1213,24 @@ the literature:
   $3\;\textrm{ms}$ width.
 \end{itemize}
 
-For concreteness's sake we'll consider the maximum-entropy distribution
-$\px(\yA)$ as \emph{the most probable frequency distribution} for the
-full-network activity during the recording; but remember that it is also
-the approximation of three other distributions, as discussed in the
-previous section.
+% In the followingFrom a Bayesian point of view, the maximum-entropy distribution $\px(\yA)$
+% can be considered as \emph{the most probable frequency distribution} for
+% the full-network activity during the recording. But it also approximates
+% three other distributions, as discussed in the previous section.
 
 \bigskip
 
 We first calculate the distribution by using six moments. This number
 already provides almost as much information as the full frequency
 distribution of the sample, and at the same time illustrates the use of the
-approach in questions of statistic sufficiency (typically limited to two or
-three moments). Figure~\ref{fig:plots_6mom} shows the resulting densities
-(that is, distribution${}\times N$) for full-network sizes $N=n$,
-$N=1\,000$, $N=5\,000$, $N=10\,000$\mynote{motivate?}. The case $N=n$
-corresponds to applying the maximum-entropy method at the sample level; it
-can be observed that with six moments it reproduces almost exactly the
-measured frequency distribution.
+approach in questions of statistical sufficiency \citep[cf. for
+example][]{martignonetal1995,bohteetal2000,schneidmanetal2006,shlensetal2006,barreiroetal2010,ganmoretal2011,granotatedgietal2013}.
+Figure~\ref{fig:plots_6mom} shows the resulting densities (that is,
+distribution${}\times N$) for full-network sizes $N=n$, $N=1\,000$,
+$N=5\,000$, $N=10\,000$. The case $N=n$ corresponds to applying the
+maximum-entropy method at the sample level; it can be observed that with
+six moments it reproduces almost exactly the measured frequency
+distribution.
 \begin{figure}[!p]
 \centering
 \includegraphics[width=\linewidth]{_scripts/paper_stensola_6mom_distributionsN_prior2.pdf}%

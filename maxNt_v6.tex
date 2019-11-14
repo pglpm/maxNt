@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-14T00:39:01+0100
+%% Last-Updated: 2019-11-14T22:48:47+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1264,6 +1264,10 @@ network. \textcolor{white}{If you find this you can claim a postcard from
 
 \bigskip
 
+\subsection*{Use with moment constraints}
+\label{sec:use_moments}
+
+
 \begin{figure}[!p]
 \centering
 \includegraphics[width=\linewidth]{_scripts/paper2_stensola_twomom_distributions10000_prior2.pdf}%
@@ -1277,15 +1281,16 @@ To illustrate how our approach can be applied to studies of sufficient
 statistics, \fig~\ref{fig:plots_2_4mom} shows the full-network
 distributions, for $N=10\,000$, obtained constraining the first two moments
 (equivalent to constraining means and correlations) and the first four
-moments; the frequency distribution of the sample is also shown for
-comparison. In both data sets, the two-moment constrain leads to a
-distribution quite different from the four-moment constrain. For the first
-data set in particular, one distribution is bimodal, the other unimodal,
-showing that two moments are not informationally sufficient.
+moments. The frequency distribution of the sample is also shown for
+comparison. In both data sets the two-moment constraint leads to a
+distribution quite different from the four-moment constraint. For the first
+data set in particular, one distribution is bimodal, the other unimodal:
+this difference shows that the first two moments alone are \emph{not}
+informationally sufficient for this specific data set.
 
-It's useful to contrast the distributions for the full network with those
-obtained applying the maximum-entropy method \emph{at the sample level}
-with the same constraints, as traditionally done. The sample-level
+It is instructive to contrast the distributions for the full network with
+those obtained applying the maximum-entropy method \emph{at the sample
+  level} with the same constraints, as traditionally done. The sample-level
 distributions are shown as an inset in the plot for the first data set. We
 see that constraining four moments doesn't lead to a distribution much
 different from constraining only two. This would suggest that two moments
@@ -1384,7 +1389,14 @@ desired, then the marginal distribution to the sample size should be used.
 \caption{***}
 \label{fig:comparisons_marginals}
 \end{figure}
-%comparison_ME_sample_full_levels.nb
+% comparison_ME_sample_full_levels.nb
+%
+% relentropies of sample2mom, marg2mom, sample4mom, marg4mom:
+% 322.72, -85.7627, -42.8005, -4.23746
+% correspond to probability ratios of
+% 1., 8.11718\times 10^{102}, 3.69524\times 10^{121}, 2.06704\times 10^{138}
+% comparison_ME_sample_full_levels.nb
+%
 But does the application at the full-network level lead to appreciably
 different results from that at the sample level? after all we're interested
 in an approximate informational sufficiency, not in an analytically exact

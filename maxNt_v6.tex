@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-15T21:36:39+0100
+%% Last-Updated: 2019-11-16T00:42:52+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1364,14 +1364,12 @@ $m$ unknowns with more equations than unknowns, $n>m$
 
 This fact is important for our analysis. If, say, means and pairwise
 correlations seem informationally sufficient for a particular sample from a
-brain area, then they may well be \emph{insufficient} for the full network
-of neurons constituting that area, and vice versa. If what interests us is
-\enquote{cooperativity} or \enquote{interaction} of a brain area, we cannot
-therefore reliably use maximum-entropy distributions \emph{for a sample
-  only} thereof. Yet the neuroscientific literature is besprinkled with
-such sample-level analyses
-\citep[\eg][]{martignonetal1995,bohteetal2000,schneidmanetal2006,shlensetal2006,barreiroetal2010,ganmoretal2011,granotatedgietal2013}.
-The approach presented here bypasses this problem instead, because the
+brain area, then they may well not be sufficient for the full network of
+neurons constituting that area, and vice versa. So if what interests us is
+\enquote{cooperativity} or \enquote{interaction} of a brain area, it is
+unreliable to use a maximum-entropy distribution constructed only for the
+sample. % \citep[contrast this with some literature, \eg][]{martignonetal1995,bohteetal2000,schneidmanetal2006,shlensetal2006,barreiroetal2010,ganmoretal2011,granotatedgietal2013}
+The approach presented here avoids this problem, because the
 maximum-entropy method is applied to obtain the distribution of the full
 network, not of the sample alone.
 
@@ -1385,17 +1383,20 @@ network, not of the sample alone.
 \end{figure}
 % comparison_ME_sample_full_levels.nb
 %
-% relentropies of sample2mom, marg2mom, sample4mom, marg4mom:
-% -322.72, -85.7627, -42.8005, -4.23746 nats =
-% -1401.56, -372.462, -185.88, -18.403 db
+% relentropies of sample2mom, marg2mom, sample4mom, marg4mom, marg6mom
+% -322.72, -85.7627, -42.8005, -4.23746, -4.26796 nats =
+% -1401.56, -372.462, -185.88, -18.403, -18.5355 dB
 % correspond to probability ratios of
-% 1., 8.11718\times 10^{102}, 3.69524\times 10^{121}, 2.06704\times 10^{138}
+% 1., 8.11718\times 10^{102}, 3.69524\times 10^{121}, 2.06704\times 10^{138},
+% 2.00495\times 10^{138}
 %
 % difference in relentropies between 4 mom and 2 mom:
-% sample level: 279.92 nats = 1215.68 db
-% marg level: 81.5252 nats =  354.059 db
+% sample level: 279.92 nats = 1215.68 dB
+% marg level: 81.5252 nats =  354.059 dB
+% difference in relentropies between 6 mom and 4 mom:
+% marg level: -0.0305024 nats = -0.13247 dB
 % correspond to prob ratios of
-% 3.69524\times 10^{121},2.5465\times 10^{35}
+% 3.69524\times 10^{121},2.5465\times 10^{35}, 0.969958
 %
 % comparison_ME_sample_full_levels.nb
 %

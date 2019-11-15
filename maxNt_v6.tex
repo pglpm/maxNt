@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-15T15:18:17+0100
+%% Last-Updated: 2019-11-15T15:51:26+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1330,13 +1330,15 @@ second moments -- are then \emph{informationally
   sufficient}. % This informational quasi-sufficiency is interesting because
 % it may give clues about network organization and dynamics.
 
-We can approximately check how much a part of the data is irrelevant by
-simply dropping it from the conditional of our probability, and see if the
-latter changes appreciably. When our degree of belief is built with the
-maximum-entropy method, this is done by dropping part of the constraints
-and see how the resulting distribution changes. For example, we may only
-retain the first two moments (means and correlations) or the first four
-moments.
+We can check how much a part of the data is irrelevant by simply dropping
+it from the conditional of our probabilities, and see if the latter change
+appreciably. When our probabilities are built with the maximum-entropy
+method, this is done by dropping part of the constraints and see how the
+resulting distribution changes. For example, we may only retain the first
+two moments (means and correlations) or the first four moments. This
+procedure is equivalent to calculating and comparing the probabilities of
+our hypotheses about sufficiency, conditional the data, assuming their
+pre-data probabilities to be equal. We perform this calculation below.
 
 
 
@@ -1351,6 +1353,8 @@ moments.
 % resulting distributions are compared with each other and with the measured
 % frequency distribution. This recipe generalizes to any subsets of measured
 % statistics, of course.
+
+
 
 In the neurosciences this check is often done with maximum-entropy
 distributions constructed \emph{for the sample}, ignoring the full network
@@ -1411,6 +1415,19 @@ desired, then the marginal distribution to the sample size should be used.
 %
 % comparison_ME_sample_full_levels.nb
 %
+
+ This procedure is equivalent to calculating and comparing the
+probabilities of our hypotheses about sufficiency, conditional the data, if
+their pre-data probability to be equal; so that for example
+\begin{equation}
+  \label{eq:compare_hypoth_conditional}
+  \pf(\text{\small\enquote{first two moments are sufficient}} \| \text{\small data}) \propto
+  \pf(\text{\small data} \|
+  \text{\small\enquote{first two moments are sufficient}}).
+\end{equation}
+
+
+
 But does the application at the full-network level lead to appreciably
 different results from that at the sample level? after all we're interested
 in an approximate informational sufficiency, not in an analytically exact

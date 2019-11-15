@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-15T15:15:50+0100
+%% Last-Updated: 2019-11-15T15:18:17+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1325,18 +1325,18 @@ sample in a new time bin. For this assessment we should use all measured
 data we have. But it sometimes happens that dropping part of the data --
 for example, the measured third- and higher-order moments -- leaves our
 assessment almost unchanged: the dropped data are \emph{informationally
-  irrelevant}, or almost so. The remaining data -- for example, first and
+  irrelevant} or almost so. The remaining data -- for example, first and
 second moments -- are then \emph{informationally
   sufficient}. % This informational quasi-sufficiency is interesting because
 % it may give clues about network organization and dynamics.
 
 We can approximately check how much a part of the data is irrelevant by
-simply dropping it from the conditional of our degree of belief, and see
-if the latter changes appreciably. When our degree of belief is built with
-the maximum-entropy method, we simply drop part of the data used as
-constraints and see how the resulting distribution changes. For example, we
-may only retain the first two moments (means and correlations) or the first
-four moments.
+simply dropping it from the conditional of our probability, and see if the
+latter changes appreciably. When our degree of belief is built with the
+maximum-entropy method, this is done by dropping part of the constraints
+and see how the resulting distribution changes. For example, we may only
+retain the first two moments (means and correlations) or the first four
+moments.
 
 
 

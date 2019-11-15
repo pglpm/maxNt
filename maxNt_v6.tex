@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-14T22:48:47+0100
+%% Last-Updated: 2019-11-15T15:15:50+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -603,7 +603,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 %\newcommand*{\etc}{{etc.}}
 %\newcommand*{\ie}{{i.e.}}
 %\newcommand*{\ca}{{c.}}
-%\newcommand*{\eg}{{e.g.}}
+\newcommand*{\eg}{{e.g.}}
 \newcommand*{\foll}{{ff.}}
 %\newcommand*{\viz}{{viz}}
 \newcommand*{\cf}{{cf.}}
@@ -897,16 +897,14 @@ primary idea behind recording a sample from that area. %  Second, it allows us
 % comprise non-overlapping sets of neurons and differ in size.
 There's also an important methodological reason. Maximum-entropy methods
 have been used to assess the informational sufficiency of pairwise
-correlations versus correlations of higher order \citep[see for
+correlations and correlations of higher order \citep[see for
 example][]{martignonetal1995,bohteetal2000,schneidmanetal2006,shlensetal2006,barreiroetal2010,ganmoretal2011,granotatedgietal2013}.
 But when the difference in size between sample and full network is too
 large, correlation sufficiency for the sample implies the \emph{lack} of
-correlation sufficiency for the larger network, and vice versa, as will be
-explained in detail in \sect~\ref{sec:marginalization}. Therefore,
+correlation sufficiency for the larger network, and vice versa. Therefore,
 maximum-entropy applications at the sample level can be deceptive for
 questions of statistical sufficiency, and a full-network application is
-more reliable. We show this point in \sect~\ref{sec:application} for a real
-data set.
+more reliable. We discuss this point in detail in \sect~\ref{sec:marginalization}.
 
 
 % Maximum-entropy models have often been used to test whether a smaller part
@@ -1262,7 +1260,6 @@ probability calculus thus reveals interesting possible features of the full
 network. \textcolor{white}{If you find this you can claim a postcard from
   us.}
 
-\bigskip
 
 \subsection*{Use with moment constraints}
 \label{sec:use_moments}
@@ -1284,43 +1281,52 @@ distributions, for $N=10\,000$, obtained constraining the first two moments
 moments. The frequency distribution of the sample is also shown for
 comparison. In both data sets the two-moment constraint leads to a
 distribution quite different from the four-moment constraint. For the first
-data set in particular, one distribution is bimodal, the other unimodal:
-this difference shows that the first two moments alone are \emph{not}
-informationally sufficient for this specific data set.
+data set in particular, one distribution is bimodal, the other unimodal.
+This visual difference shows directly -- without the need to calculate
+relative entropies, for example -- that the first two moments alone are
+\emph{not} informationally sufficient for this specific data set.
 
-It is instructive to contrast the distributions for the full network with
-those obtained applying the maximum-entropy method \emph{at the sample
-  level} with the same constraints, as traditionally done. The sample-level
-distributions are shown as an inset in the plot for the first data set. We
-see that constraining four moments doesn't lead to a distribution much
-different from constraining only two. This would suggest that two moments
-are informationally almost sufficient. This conclusion would be deceptive:
-it obviously cannot be extended to the full network. We discuss this point
-more in detail in the next section.
+It is instructive to contrast the conclusions about correlation sufficiency
+reached through this full-network analysis, with those we would have
+reached by applying the maximum-entropy method \emph{at the sample
+  level}, as traditionally done. Such a comparison involves an important
+methodological caveat, so we discuss it in full in the next section.
 
 
-\section{Example application for sufficiency of partial statistics:\\the
-  issue with methods at the sample level}
+\section{Quantifying the importance of higher-order correlations:\\
+  the limitations of methods at the sample level}
 \label{sec:marginalization}
 
 As mentioned in the Introduction (see references there), in the
-neurosciences the maximum-entropy method has also been applied to questions
-of sufficient statistics. For example: do pairwise correlations in the
-neuronal activity provide the same information as the full frequency
-distribution of activities? In this section we discuss how our proposed
-application bears on this kind of questions. % For concreteness we use an
+neurosciences the maximum-entropy method has also been used as a way of
+quantifying the \enquote{cooperativity} \citep{gersteinetal1985} or
+\enquote{interaction}
+\citep{martignonetal1995,schneidmanetal2006,shlensetal2006} or
+\enquote{synchrony} \citep{bohteetal2000,amarietal2003} of neuronal
+activity. In this section we discuss how our proposed
+application bears on this kind of quantification. % For concreteness we use an
 % example with specific statistics: first and second moments (equivalent to
-% mean and correlations), versus first-to-fourth moments. But our discussion
-% holds for any sets of statistics.
+% mean and correlations), versus first-to-fourth moments. But our
+% discussion holds for any sets of statistics.
 
-The question must be made more precise first. We want to assess our degree
-of belief about the frequencies of the activities of the sample, or about
-the activity of the sample in a new time bin. For this assessment we should
-use all measured data we have. But it sometimes happens that dropping part
-of the data -- for example, the measured third- and higher-order moments --
-leaves our assessment almost unchanged: the dropped data are
-\emph{informationally irrelevant}, or almost so. The remaining data -- for
-example, first and second moments -- are then \emph{informationally
+Let us translate this question into more precise terms first, because
+\enquote{cooperativity}, \enquote{interaction}, and similar notions are
+vague. A translation in terms of \emph{informational sufficiency} seems to
+suit all these notions \parentext{for an intuitive understanding of
+  sufficiency, which goes back to \cite{fisher1922}, see \eg\
+  \cite[\sect~4.5]{bernardoetal1994}; \cite[\chap~8,
+  \sect~14.2]{jaynes1994_r2003}; \cite{cifarellietal1982};
+  \cite{kullbacketal1951}. For technical results and connections with the
+  notion of symmetry see \eg\
+  \cite{darmois1935,neyman1935,koopman1936,pitman1936,halmosetal1949,bahadur1954,berk1972,lauritzen1974,cifarellietal1980,cifarellietal1981,diaconisetal1981,lauritzen1982_r1988,diaconis1992,furmanczyketal1998,fortinietal2000,nogalesetal2000,kallenberg2005,lauritzen2007,ayetal2015}}.
+The idea is as follows. We want to assess our degree of belief about the
+frequencies of the activities of the sample, or about the activity of the
+sample in a new time bin. For this assessment we should use all measured
+data we have. But it sometimes happens that dropping part of the data --
+for example, the measured third- and higher-order moments -- leaves our
+assessment almost unchanged: the dropped data are \emph{informationally
+  irrelevant}, or almost so. The remaining data -- for example, first and
+second moments -- are then \emph{informationally
   sufficient}. % This informational quasi-sufficiency is interesting because
 % it may give clues about network organization and dynamics.
 
@@ -1392,9 +1398,17 @@ desired, then the marginal distribution to the sample size should be used.
 % comparison_ME_sample_full_levels.nb
 %
 % relentropies of sample2mom, marg2mom, sample4mom, marg4mom:
-% 322.72, -85.7627, -42.8005, -4.23746
+% -322.72, -85.7627, -42.8005, -4.23746 nats =
+% -1401.56, -372.462, -185.88, -18.403 db
 % correspond to probability ratios of
 % 1., 8.11718\times 10^{102}, 3.69524\times 10^{121}, 2.06704\times 10^{138}
+%
+% difference in relentropies between 4 mom and 2 mom:
+% sample level: 279.92 nats = 1215.68 db
+% marg level: 81.5252 nats =  354.059 db
+% correspond to prob ratios of
+% 3.69524\times 10^{121},2.5465\times 10^{35}
+%
 % comparison_ME_sample_full_levels.nb
 %
 But does the application at the full-network level lead to appreciably

@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-15T15:51:26+0100
+%% Last-Updated: 2019-11-15T19:22:27+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1299,10 +1299,11 @@ methodological caveat, so we discuss it in full in the next section.
 
 As mentioned in the Introduction (see references there), in the
 neurosciences the maximum-entropy method has also been used as a way of
-quantifying the \enquote{cooperativity} \citep{gersteinetal1985} or
+quantifying the \enquote{cooperativity} \citep[\eg][]{gersteinetal1985} or
 \enquote{interaction}
-\citep{martignonetal1995,schneidmanetal2006,shlensetal2006} or
-\enquote{synchrony} \citep{bohteetal2000,amarietal2003} of neuronal
+\citep[\eg][]{martignonetal1995,schneidmanetal2006,shlensetal2006} or
+\enquote{synchrony} \citep[\eg][we're only citing the first papers using
+these terms]{bohteetal2000,amarietal2003} of neuronal
 activity. In this section we discuss how our proposed
 application bears on this kind of quantification. % For concreteness we use an
 % example with specific statistics: first and second moments (equivalent to
@@ -1312,33 +1313,36 @@ application bears on this kind of quantification. % For concreteness we use an
 Let us translate this question into more precise terms first, because
 \enquote{cooperativity}, \enquote{interaction}, and similar notions are
 vague. A translation in terms of \emph{informational sufficiency} seems to
-suit all these notions \parentext{for an intuitive understanding of
-  sufficiency, which goes back to \cite{fisher1922}, see \eg\
-  \cite[\sect~4.5]{bernardoetal1994}; \cite[\chap~8,
-  \sect~14.2]{jaynes1994_r2003}; \cite{cifarellietal1982};
+suit all these notions \parentext{for the technical definition and
+  intuitive understanding of sufficiency, which goes back to
+  \cite{fisher1922}, see \eg\ \cite[\sect~4.5]{bernardoetal1994};
+  \cite[\chap~8, \sect~14.2]{jaynes1994_r2003}; \cite{cifarellietal1982};
   \cite{kullbacketal1951}. For technical results and connections with the
   notion of symmetry see \eg\
   \cite{darmois1935,neyman1935,koopman1936,pitman1936,halmosetal1949,bahadur1954,berk1972,lauritzen1974,cifarellietal1980,cifarellietal1981,diaconisetal1981,lauritzen1982_r1988,diaconis1992,furmanczyketal1998,fortinietal2000,nogalesetal2000,kallenberg2005,lauritzen2007,ayetal2015}}.
-The idea is as follows. We want to assess our degree of belief about the
+The idea is as follows. We want to assess our probabilities about the
 frequencies of the activities of the sample, or about the activity of the
 sample in a new time bin. For this assessment we should use all measured
-data we have. But it sometimes happens that dropping part of the data --
-for example, the measured third- and higher-order moments -- leaves our
-assessment almost unchanged: the dropped data are \emph{informationally
-  irrelevant} or almost so. The remaining data -- for example, first and
-second moments -- are then \emph{informationally
+data and statistics we have. But it can be the case that dropping part of
+the data or statistics -- for example, the measured third- and higher-order
+moments -- leaves our probabilities almost unchanged. This means that the dropped
+statistics are \emph{informationally irrelevant} or almost so. The
+remaining statistics -- for example, first and second moments -- are then
+\emph{informationally
   sufficient}. % This informational quasi-sufficiency is interesting because
 % it may give clues about network organization and dynamics.
 
-We can check how much a part of the data is irrelevant by simply dropping
-it from the conditional of our probabilities, and see if the latter change
-appreciably. When our probabilities are built with the maximum-entropy
-method, this is done by dropping part of the constraints and see how the
-resulting distribution changes. For example, we may only retain the first
-two moments (means and correlations) or the first four moments. This
-procedure is equivalent to calculating and comparing the probabilities of
-our hypotheses about sufficiency, conditional the data, assuming their
-pre-data probabilities to be equal. We perform this calculation below.
+We can thus quantify how much a subset of statistics is relevant with
+respect to a larger set by keeping only the subset in the conditional of
+our probabilities, and checking how much the latter change. When our
+probabilities are built with the maximum-entropy method, this means keeping
+only part of the constraints (and re-maximizing the entropy). For example,
+keeping only the first two moments (means and correlations) out of the
+first four moments. This procedure is actually equivalent to comparing the
+probabilities of our hypotheses about sufficiency, conditional the
+\emph{full} data, assuming their pre-data probabilities to be equal. We
+show this equivalence below and perform the calculations for our first data
+set.
 
 
 
@@ -1354,37 +1358,34 @@ pre-data probabilities to be equal. We perform this calculation below.
 % frequency distribution. This recipe generalizes to any subsets of measured
 % statistics, of course.
 
+Before applying this idea to neuronal activity, however, it is important to
+keep in mind that \emph{informational sufficiency is not preserved under
+  sampling}: if a probability distribution has some sufficient statistics,
+then its marginals \emph{cannot} have the same sufficient statistics, and
+vice versa, except for trivial cases such as uniform probability
+distributions. This generally also holds among different marginals: if a
+statistics is sufficient for some marginal, then it will not be sufficient
+for another marginal. This impossibility is known in statistical mechanics:
+marginals of Gibbs states are not Gibbs states \citep{maesetal1999}.
+Mathematically this impossibility comes from the Pitman-Koopman theorem
+\citep{koopman1936,pitman1936,darmois1935} connecting sufficient statistics
+and the exponential family, and translates into the general impossibility
+of solving a system of $n$ independent equations in $m$ unknowns with more
+equations than unknowns, $n>m$ \citep[\sect~3.1]{portamanaetal2015}.
 
+This fact is important in the analysis of neural activity when it is based
+on small samples from brain regions. If means and pairwise correlations
+seem informationally sufficient for a particular sample from a brain area,
+then they may well be \emph{insufficient} for the full network of neurons
+constituting that area. Vice versa, if they are informationally sufficient
+for the full network, then they may turn out \emph{not} to be sufficient
+(or less so) for any recorded sample thereof. Hence, if we wonder about
+\enquote{cooperativity} or \enquote{interaction} of a brain area, we cannot
+reliably use maximum-entropy distributions \emph{for a sample only}. Yet
+the neuroscientific literature is besprinkled with such sample-level
+analyses
+\citep[\eg][]{martignonetal1995,bohteetal2000,schneidmanetal2006,shlensetal2006,barreiroetal2010,ganmoretal2011,granotatedgietal2013}.
 
-In the neurosciences this check is often done with maximum-entropy
-distributions constructed \emph{for the sample}, ignoring the full network
-it's sampled from \citep[for
-example][]{martignonetal1995,bohteetal2000,schneidmanetal2006,shlensetal2006,barreiroetal2010,ganmoretal2011,granotatedgietal2013}.
-The method introduced in the present work, however, reveals an issue with
-this application at the sample level. The issue doesn't come from the
-method itself but from a general fact of probability theory. If a
-probability distribution has some sufficient statistics
-\citep[\sect~4.5]{bernardoetal1994}{fortinietal2000}, then its marginals
-\emph{cannot} have the same sufficient statistics, and vice versa, except
-for trivial cases such as uniform distributions. This generally also holds
-among different marginals: if a marginal has some sufficient statistics,
-another won't have it. This impossibility is known in statistical
-mechanics: marginals of Gibbs states aren't Gibbs states
-\citep{maesetal1999}. Mathematically this impossibility translates into a
-system of $n$ independent equations in $m$ unknowns with $n>m$
-\citep[\sect~3.1]{portamanaetal2015}[\sect~3]{portamanaetal2018b}.
-
-In our example this means that if means and pairwise correlations or the
-first four moments are informationally sufficient for a particular sample
-from a brain area, then they \emph{cannot} be sufficient for the full
-network of neurons in that area, or for a different sample. Vice versa, if
-we assume that they are informationally sufficient for the full network,
-then we must expect them \emph{not} to be sufficient for any recorded
-sample thereof. Now, questions about sufficient statistics are meant to be
-addressed to a whole brain area, not just to some specific, casually
-recorded sample. Thus, paradoxically, maximum-entropy methods applied
-\emph{at the sample level} give an answer opposite to the one we might
-think they're giving.
 
 Questions about informational sufficiency are therefore correctly addressed
 by applying the maximum-entropy method at the full-network level. If a

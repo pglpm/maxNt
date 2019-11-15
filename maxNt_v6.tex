@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-15T19:22:27+0100
+%% Last-Updated: 2019-11-15T21:36:39+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1302,7 +1302,7 @@ neurosciences the maximum-entropy method has also been used as a way of
 quantifying the \enquote{cooperativity} \citep[\eg][]{gersteinetal1985} or
 \enquote{interaction}
 \citep[\eg][]{martignonetal1995,schneidmanetal2006,shlensetal2006} or
-\enquote{synchrony} \citep[\eg][we're only citing the first papers using
+\enquote{synchrony} \citep[\eg][-- we're only citing early papers using
 these terms]{bohteetal2000,amarietal2003} of neuronal
 activity. In this section we discuss how our proposed
 application bears on this kind of quantification. % For concreteness we use an
@@ -1310,87 +1310,70 @@ application bears on this kind of quantification. % For concreteness we use an
 % mean and correlations), versus first-to-fourth moments. But our
 % discussion holds for any sets of statistics.
 
-Let us translate this question into more precise terms first, because
-\enquote{cooperativity}, \enquote{interaction}, and similar notions are
-vague. A translation in terms of \emph{informational sufficiency} seems to
-suit all these notions \parentext{for the technical definition and
-  intuitive understanding of sufficiency, which goes back to
-  \cite{fisher1922}, see \eg\ \cite[\sect~4.5]{bernardoetal1994};
-  \cite[\chap~8, \sect~14.2]{jaynes1994_r2003}; \cite{cifarellietal1982};
-  \cite{kullbacketal1951}. For technical results and connections with the
-  notion of symmetry see \eg\
-  \cite{darmois1935,neyman1935,koopman1936,pitman1936,halmosetal1949,bahadur1954,berk1972,lauritzen1974,cifarellietal1980,cifarellietal1981,diaconisetal1981,lauritzen1982_r1988,diaconis1992,furmanczyketal1998,fortinietal2000,nogalesetal2000,kallenberg2005,lauritzen2007,ayetal2015}}.
-The idea is as follows. We want to assess our probabilities about the
+\enquote{Cooperativity}, \enquote{interaction}, and similar terms are
+vague, so we need to translate them into a more precise notion first. We
+propose the notion of \emph{informational sufficiency}
+\citep[\sect~4.5]{bernardoetal1994}[\chap~8 \amp\
+\sect~14.2]{jaynes1994_r2003}{cifarellietal1982,kullbacketal1951}[the
+notion goes back to][]{fisher1922} because it relates to those terms, is
+intuitive, and connects directly to probability theory and maximum-entropy
+distributions. Its idea is as follows. Our probabilities about the
 frequencies of the activities of the sample, or about the activity of the
-sample in a new time bin. For this assessment we should use all measured
-data and statistics we have. But it can be the case that dropping part of
+sample in a new time bin, are in principle conditional on all experimental
+data and statistics we have. But it can be the case that discarding part of
 the data or statistics -- for example, the measured third- and higher-order
-moments -- leaves our probabilities almost unchanged. This means that the dropped
-statistics are \emph{informationally irrelevant} or almost so. The
-remaining statistics -- for example, first and second moments -- are then
-\emph{informationally
-  sufficient}. % This informational quasi-sufficiency is interesting because
+moments -- leaves our probabilities almost unchanged. This means that the
+discarded statistics are \emph{informationally irrelevant} or almost so.
+The remaining statistics -- for example, first and second moments -- are
+\emph{informationally sufficient}. \parentext{For more technical results
+  and connections with the notion of symmetry see \eg\
+  \cite{darmois1935,neyman1935,koopman1936,pitman1936,halmosetal1949,bahadur1954,berk1972,lauritzen1974,cifarellietal1980,cifarellietal1981,diaconisetal1981,lauritzen1982_r1988,diaconis1992,furmanczyketal1998,fortinietal2000,nogalesetal2000,kallenberg2005,lauritzen2007,ayetal2015}.}
+% This informational quasi-sufficiency is interesting because
 % it may give clues about network organization and dynamics.
 
-We can thus quantify how much a subset of statistics is relevant with
-respect to a larger set by keeping only the subset in the conditional of
-our probabilities, and checking how much the latter change. When our
-probabilities are built with the maximum-entropy method, this means keeping
-only part of the constraints (and re-maximizing the entropy). For example,
-keeping only the first two moments (means and correlations) out of the
-first four moments. This procedure is actually equivalent to comparing the
-probabilities of our hypotheses about sufficiency, conditional the
-\emph{full} data, assuming their pre-data probabilities to be equal. We
-show this equivalence below and perform the calculations for our first data
-set.
+We can thus quantify the informational relevance of a subset of statistics,
+for example first and second moments (means and correlations), with respect
+to a larger set, for example the first four moments, by comparing the
+probabilities conditional on the subset and on the full set. For
+probabilities built with the maximum-entropy method, this means comparing
+those constrained on the subset and on the full set. This procedure is
+actually equivalent to comparing the probabilities of the two hypotheses
+about sufficiency, conditional the \emph{full} data, assuming their
+pre-data probabilities to be equal. We show this equivalence below and
+perform the calculations for our first data set.
 
+\medskip
 
-
-% For example: does knowledge about
-% third-order correlations change our state of uncertainty about network
-% activity in an appreciable way, compared to knowledge about second-order
-% correlations only? The method is used as follows to answer this question.
-% We imagine to be ignorant of the measured frequency distribution for the
-% network activity, and to know only up to second-order measured statistics,
-% or up to third-order. Two maximum-entropy distributions are then built,
-% constrained under the two sets of moments under comparison. Finally, the
-% resulting distributions are compared with each other and with the measured
-% frequency distribution. This recipe generalizes to any subsets of measured
-% statistics, of course.
-
-Before applying this idea to neuronal activity, however, it is important to
-keep in mind that \emph{informational sufficiency is not preserved under
-  sampling}: if a probability distribution has some sufficient statistics,
-then its marginals \emph{cannot} have the same sufficient statistics, and
-vice versa, except for trivial cases such as uniform probability
-distributions. This generally also holds among different marginals: if a
-statistics is sufficient for some marginal, then it will not be sufficient
-for another marginal. This impossibility is known in statistical mechanics:
-marginals of Gibbs states are not Gibbs states \citep{maesetal1999}.
+Before applying this notion to neuronal activity, however, we must keep in
+mind that \emph{informational sufficiency is not preserved under sampling}:
+if a probability distribution has some sufficient statistics, then its
+marginals, such as the distribution for a sample, \emph{cannot} have the
+same sufficient statistics, and vice versa; except for trivial cases such
+as uniform probability distributions. % This generally holds also among
+% different marginals: if a statistics is sufficient for some marginal, then
+% it will not be sufficient for another marginal.
+This impossibility is known in statistical mechanics: if a system is
+described by a Gibbs state, its subsystems cannot be perfectly described by
+Gibbs states \citep[\eg][and references therein]{maesetal1999}.
 Mathematically this impossibility comes from the Pitman-Koopman theorem
 \citep{koopman1936,pitman1936,darmois1935} connecting sufficient statistics
-and the exponential family, and translates into the general impossibility
-of solving a system of $n$ independent equations in $m$ unknowns with more
-equations than unknowns, $n>m$ \citep[\sect~3.1]{portamanaetal2015}.
+and the exponential family of distributions, and translates into the
+general impossibility of solving a system of $n$ independent equations in
+$m$ unknowns with more equations than unknowns, $n>m$
+\citep[\sect~3.1]{portamanaetal2015}.
 
-This fact is important in the analysis of neural activity when it is based
-on small samples from brain regions. If means and pairwise correlations
-seem informationally sufficient for a particular sample from a brain area,
-then they may well be \emph{insufficient} for the full network of neurons
-constituting that area. Vice versa, if they are informationally sufficient
-for the full network, then they may turn out \emph{not} to be sufficient
-(or less so) for any recorded sample thereof. Hence, if we wonder about
+This fact is important for our analysis. If, say, means and pairwise
+correlations seem informationally sufficient for a particular sample from a
+brain area, then they may well be \emph{insufficient} for the full network
+of neurons constituting that area, and vice versa. If what interests us is
 \enquote{cooperativity} or \enquote{interaction} of a brain area, we cannot
-reliably use maximum-entropy distributions \emph{for a sample only}. Yet
-the neuroscientific literature is besprinkled with such sample-level
-analyses
+therefore reliably use maximum-entropy distributions \emph{for a sample
+  only} thereof. Yet the neuroscientific literature is besprinkled with
+such sample-level analyses
 \citep[\eg][]{martignonetal1995,bohteetal2000,schneidmanetal2006,shlensetal2006,barreiroetal2010,ganmoretal2011,granotatedgietal2013}.
-
-
-Questions about informational sufficiency are therefore correctly addressed
-by applying the maximum-entropy method at the full-network level. If a
-comparison with the measured frequencies of the sample activities is
-desired, then the marginal distribution to the sample size should be used.
+The approach presented here bypasses this problem instead, because the
+maximum-entropy method is applied to obtain the distribution of the full
+network, not of the sample alone.
 
 \begin{figure}[!p]
 \centering

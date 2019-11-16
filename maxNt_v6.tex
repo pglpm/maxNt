@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-16T00:42:52+0100
+%% Last-Updated: 2019-11-16T18:08:44+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -656,7 +656,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\av}{\widebar} %pop average
 \newcommand*{\sav}{\widebar} %subpop average
 
-\newcommand*{\ypp}{G}
+\newcommand*{\yG}{G}
 
 %\newcommand*{\yXv}{\varSigma}
 \newcommand*{\yAv}{A}
@@ -730,6 +730,8 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 
 \newcommand*{\mee}{maximum entropy}
 \newcommand*{\me}{maximum-entropy}
+
+\newcommand*{\sh}{\mathrm{\varEta}}
 %%% Custom macros end @@@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1172,9 +1174,10 @@ appear in the formalism.
 \bigskip
 
 The number of moments used with this method depends on the questions and
-hypotheses that a researcher is exploring; for example, hypotheses of
-sufficient statistics, such as the sufficiency of pairwise correlations to
-quantify our \dob\ about network activity. We discuss this kind of use in
+hypotheses that a researcher is exploring; for example, hypotheses about
+the \enquote{cooperativity} or \enquote{interaction} -- for example,
+pairwise or higher-order -- of the network activity. We discuss this kind
+of use in
 \sect~\ref{sec:marginalization}.%, but our main goal is to simply introduce
 % the general method without entering into biological questions of this
 % kind.
@@ -1273,7 +1276,7 @@ network. \textcolor{white}{If you find this you can claim a postcard from
 \caption{***}
 \label{fig:plots_2_4mom}
 \end{figure}
-%maxent_solutions_different_moments_prior2_6moments.nb
+% maxent_solutions_different_moments_prior2_6moments.nb
 To illustrate how our approach can be applied to studies of sufficient
 statistics, \fig~\ref{fig:plots_2_4mom} shows the full-network
 distributions, for $N=10\,000$, obtained constraining the first two moments
@@ -1311,25 +1314,36 @@ application bears on this kind of quantification. % For concreteness we use an
 % discussion holds for any sets of statistics.
 
 \enquote{Cooperativity}, \enquote{interaction}, and similar terms are
-vague, so we need to translate them into a more precise notion first. We
-propose the notion of \emph{informational sufficiency}
+vague, so we need to translate them into a more precise notion first. Here
+we use the notion of \emph{informational sufficiency}
 \citep[\sect~4.5]{bernardoetal1994}[\chap~8 \amp\
 \sect~14.2]{jaynes1994_r2003}{cifarellietal1982,kullbacketal1951}[the
 notion goes back to][]{fisher1922} because it relates to those terms, is
-intuitive, and connects directly to probability theory and maximum-entropy
-distributions. Its idea is as follows. Our probabilities about the
-frequencies of the activities of the sample, or about the activity of the
-sample in a new time bin, are in principle conditional on all experimental
-data and statistics we have. But it can be the case that discarding part of
-the data or statistics -- for example, the measured third- and higher-order
-moments -- leaves our probabilities almost unchanged. This means that the
-discarded statistics are \emph{informationally irrelevant} or almost so.
-The remaining statistics -- for example, first and second moments -- are
+intuitive, and is connected with maximum-entropy distributions. Its idea is
+as follows. Our probabilities about the frequencies of the activities of
+the sample, or about the activity of the sample in a new time bin, are in
+principle conditional on all experimental data and statistics we have. But
+it can be the case that discarding part of the data or statistics -- for
+example, the measured third- and higher-order moments -- leaves our
+probabilities almost unchanged. This means that the discarded statistics
+are \emph{informationally irrelevant} or almost so. The remaining
+statistics -- for example, first and second moments -- are
 \emph{informationally sufficient}. \parentext{For more technical results
   and connections with the notion of symmetry see \eg\
   \cite{darmois1935,neyman1935,koopman1936,pitman1936,halmosetal1949,bahadur1954,berk1972,lauritzen1974,cifarellietal1980,cifarellietal1981,diaconisetal1981,lauritzen1982_r1988,diaconis1992,furmanczyketal1998,fortinietal2000,nogalesetal2000,kallenberg2005,lauritzen2007,ayetal2015}.}
 % This informational quasi-sufficiency is interesting because
 % it may give clues about network organization and dynamics.
+
+There's a tight connection between informational sufficiency and
+maximum-entropy distributions
+\citep{jaynes1982b}[\sect~4.5.4]{bernardoetal1994}: if a probability
+distribution for repetitive phenomena has a sufficient statistics, then by
+the Pitman-Koopman theorem \citep{koopman1936,pitman1936,darmois1935}[for
+later analyses and the discrete case
+see][]{hipp1974,andersen1970,denny1967,denny1972,fraser1963,barankinetal1963,barndorffnielsen1978_r2014}
+it is a mixture of exponential distributions of maximum-entropy form.
+
+
 
 We can thus quantify the informational relevance of a subset of statistics,
 for example first and second moments (means and correlations), with respect
@@ -1338,10 +1352,9 @@ probabilities conditional on the subset and on the full set. For
 probabilities built with the maximum-entropy method, this means comparing
 those constrained on the subset and on the full set. This procedure is
 actually equivalent to comparing the probabilities of the two hypotheses
-about sufficiency, conditional the \emph{full} data, assuming their
+about sufficiency, conditional on the \emph{full} data, assuming their
 pre-data probabilities to be equal. We show this equivalence below and
 perform the calculations for our first data set.
-
 \medskip
 
 Before applying this notion to neuronal activity, however, we must keep in
@@ -1373,6 +1386,40 @@ The approach presented here avoids this problem, because the
 maximum-entropy method is applied to obtain the distribution of the full
 network, not of the sample alone.
 
+\bigskip
+
+Let us illustrate the remarks above with our first data set.
+
+A natural procedure to compare the informational sufficiency of two
+different sets of moments $M'\defd\set{1,\dotsc,m'}$ and
+$M''\defd \set{1,\dotsc,m''}$ is as follows:
+\begin{enumerate*}[label=(\roman*)]
+\item calculate the relative entropies of the measured frequencies $\yf$
+  and the sample marginals of the maximum-entropy distributions built with
+  the two corresponding sets of constraints;
+\item multiply these relative entropies by the number of time bins of the
+  recording;
+\item take their difference.
+\end{enumerate*}
+In formulae,
+\begin{multline}
+  \label{eq:measure_suffic}
+T  \sum_{\ya} \yff_{\ya} \log\frac{\yff_{\ya}}{
+  \sum_{\yA}\yG_{\ya\yA}\px(\yA \| M')}
+-
+T  \sum_{\ya} \yff_{\ya} \log\frac{\yff_{\ya}}{
+  \sum_{\yA}\yG_{\ya\yA}\px(\yA \| M'')}\\
+{}\equiv
+T  \sum_{\ya} \yff_{\ya} \log\frac{
+  \sum_{\yA}\yG_{\ya\yA}\px(\yA \| M'')}{
+  \sum_{\yA}\yG_{\ya\yA}\px(\yA \| M')}.
+\end{multline}
+
+
+
+This is a natural measure because
+
+
 \begin{figure}[!p]
 \centering
 \includegraphics[width=\linewidth]{_scripts/comparison_full.pdf}%
@@ -1383,21 +1430,20 @@ network, not of the sample alone.
 \end{figure}
 % comparison_ME_sample_full_levels.nb
 %
-% relentropies of sample2mom, marg2mom, sample4mom, marg4mom, marg6mom
-% -322.72, -85.7627, -42.8005, -4.23746, -4.26796 nats =
-% -1401.56, -372.462, -185.88, -18.403, -18.5355 dB
-% correspond to probability ratios of
-% 1., 8.11718\times 10^{102}, 3.69524\times 10^{121}, 2.06704\times 10^{138},
-% 2.00495\times 10^{138}
+% relentropies of sample2mom, sample4mom, sample5mom, marg2mom, marg4mom, marg5mom
+% -322.72,-42.8005,-39.4917,-85.7626,-4.23725,-4.20059 nats =
+% -1401.56,-185.88,-171.51,-372.462,-18.4021,-18.2429 dB
 %
 % difference in relentropies between 4 mom and 2 mom:
 % sample level: 279.92 nats = 1215.68 dB
-% marg level: 81.5252 nats =  354.059 dB
-% difference in relentropies between 6 mom and 4 mom:
-% marg level: -0.0305024 nats = -0.13247 dB
+% marg level: 81.525 nats =  354.06 dB
+% difference in relentropies between 5 mom and 4 mom:
+% sample level: 3.30882 nats = 14.37 dB
+% marg level: 0.0366623 nats = 0.159223 dB
 % correspond to prob ratios of
-% 3.69524\times 10^{121},2.5465\times 10^{35}, 0.969958
-%
+% sample: 3.69524\times 10^{121}, 27.3529
+% marg: 2.5469\times 10^{35}, 1.03734
+% 
 % comparison_ME_sample_full_levels.nb
 %
 
@@ -2039,7 +2085,7 @@ via the conditional probability
   \label{eq:conditional_hypergeometric}
   \pf(\ya \|\yA, \yH)=
   \binom{n}{n\ya}\binom{\yNv-n}{\yNv \yA-n\ya}\binom{\yNv}{\yNv \yA}^{-1}
-  \defs \ypp_{\ya\yA},
+  \defs \yG_{\ya\yA},
 \end{equation}
 which is a hypergeometric distribution, typical of \enquote{drawing without
   replacement} problems. The combinatorial proof of this expression is in
@@ -2055,7 +2101,7 @@ activity of the sample:
   \pf(\yA \| \yH)
   = 
   \sum_{\yA}
-  \ypp_{\ya\yA}\,
+  \yG_{\ya\yA}\,
   \pf(\yA \| \yH).
 \end{gather}
 It should be proved that the probability distribution for the full activity
@@ -2072,7 +2118,7 @@ theorem~\eqref{eq:joint_plaus_N_homog} as the distribution for the full
 network.
 
 The conditional probability
-$\pf(\ya \|\yA, \yH) \equiv \ypp_{\ya \yA}$, besides
+$\pf(\ya \|\yA, \yH) \equiv \yG_{\ya \yA}$, besides
 relating the distributions for the network and sample activities via
 marginalization, also allows us to express the expectation value of any
 function of the sample activity, $\yg_{\ya}$, in terms of the distribution
@@ -2083,18 +2129,18 @@ for the full network, as follows:
   \equiv
   \sum_{\ya} \yg_{\ya}\,\pf(\ya \| \yH)
   =
-  \sum_{\ya} \yg_{\ya} \sum_{\yA} \ypp_{\ya\yA}\,\pf(\yA \| \yH)
+  \sum_{\ya} \yg_{\ya} \sum_{\yA} \yG_{\ya\yA}\,\pf(\yA \| \yH)
   =%{}\\
-  \sum_{\yA} \bigl( \tsum_{\ya} \yg_{\ya}  \ypp_{\ya\yA} \bigr)\,
+  \sum_{\yA} \bigl( \tsum_{\ya} \yg_{\ya}  \yG_{\ya\yA} \bigr)\,
   \pf(\yA \| \yH),
 %  =
-%  \sum_{N\yA=0}^N \sum_{n\ya=0}^n f(\ya)\ypp_{\ya\yA}\,\p(\yXf=\yA \| \yH)
+%  \sum_{N\yA=0}^N \sum_{n\ya=0}^n f(\ya)\yG_{\ya\yA}\,\p(\yXf=\yA \| \yH)
 %  \equiv  \expeb{\yg^*}.
 \end{equation}
 where the second step uses \eqn~\eqref{eq:subpop_average}. The last
 expression shows that the expectation of the function $\yg_{\ya}$ is equal to
 the expectation of the function
-$\yg^*(\yA) \defd \sum_{\ya} \yg_{\ya}\,\ypp_{\ya\yA}$.
+$\yg^*(\yA) \defd \sum_{\ya} \yg_{\ya}\,\yG_{\ya\yA}$.
 
 \bigskip
 
@@ -2105,7 +2151,7 @@ sample, have a  value $\yc$ obtained from observed data,
   network}:
 \begin{equation}
   \label{eq:constraint_extended}
-  \yc = \E(\yg \| \yH) \equiv \sum_{\yA} \bigl( \tsum_{\ya} \yg_{\ya}  \ypp_{\ya\yA} \bigr)\;
+  \yc = \E(\yg \| \yH) \equiv \sum_{\yA} \bigl( \tsum_{\ya} \yg_{\ya}  \yG_{\ya\yA} \bigr)\;
   \pf(\yA \| \yH).
 \end{equation}
 
@@ -2115,7 +2161,7 @@ find
 \begin{multline}
   \label{eq:expe_products}
 %  \label{eq:pullback_m_expectations}
-%  \ypp^*\colon \sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}}
+%  \yG^*\colon \sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}}
 %  \mapsto
     % \bigl( \sav{\underbrace{\yx \dotsm \yx}_{\text{$m$ factors}}}\bigr)^* =
     % \av{\underbrace{\yX \dotsm \yX}_{\text{$m$ factors}}},
@@ -2160,7 +2206,7 @@ have the same value.
 \includegraphics[width=\linewidth]{pop_sample_projection3.pdf}%
 \caption{Log-density plot of the hypergeometric distribution
   $%\pf(\ya \|\yA, \yH)=
-\ypp_{\ya\yA} \defd  \raisebox{0pt}[0pt][1ex]{}\binom{n}{n\ya}\binom{\yNv-n}{\yNv \yA-n\ya}\binom{\yNv}{\yNv \yA}^{-1}$ for $\yNv=5000$, $n=200$. (Band artifacts may appear in the
+\yG_{\ya\yA} \defd  \raisebox{0pt}[0pt][1ex]{}\binom{n}{n\ya}\binom{\yNv-n}{\yNv \yA-n\ya}\binom{\yNv}{\yNv \yA}^{-1}$ for $\yNv=5000$, $n=200$. (Band artifacts may appear in the
   colourbar depending on your \textsc{pdf} viewer.)}
 \label{fig:hypergeom_proj}
 \end{figure}%hypergeometric_identity.nb
@@ -2169,7 +2215,7 @@ be surprising: we intuitively \emph{expect} that the proportion of coloured
 balls sampled from an urn should be roughly equal to the proportion of
 coloured ball contained in the urn. The formulae in the present section
 formalize and mathematically express our intuition. The hypergeometric
-distribution $\ypp_{\ya\yA}$ plays an important role in this
+distribution $\yG_{\ya\yA}$ plays an important role in this
 formalization. A look at its plot, \fig~\ref{fig:hypergeom_proj}, reveals
 that it is a sort of \enquote{fuzzy identity transformation}, or fuzzy
 Kronecker delta, between the $\yA$-space $\set{0,\dotsc,\yNv}$ and
@@ -2183,7 +2229,7 @@ that
 where $\yg$ is any smooth function defined on $\clcl{0,1}$. These approximate
 equalities express the intuitive fact that \emph{our uncertainty about the
   sample is representative of our uncertainty about the network and
-  about other samples}, and vice versa. When $n=\yNv$, $\ypp_{\ya\yA}$
+  about other samples}, and vice versa. When $n=\yNv$, $\yG_{\ya\yA}$
 becomes the identity matrix and the approximate equalities above become
 exact -- of course, since we have sampled the full network.
 
@@ -2192,7 +2238,7 @@ probability distributions. In the next section we will in fact emphasize
 their differences. If the distribution for the network average $\yA$ is
 bimodal, for example, the bimodality can be lost in the distribution for
 the sample average $\ya$, owing to the coarsening effect of
-$\ypp_{\ya\yA}$.
+$\yG_{\ya\yA}$.
 
 % They should be contrasted with the limits
 % $\pf(\yxs=a) \to \pf(\yXf=a)$ and $\expeb{\yg_{\yxs}} \to \expeb{\yg_{\yXf}}$, as
@@ -2254,17 +2300,17 @@ the method yields the distribution for the full-network activity
   \label{eq:app_maxent_pop}
   \pf(\yA \| \yHa)  = \frac{1}{\yK(\yll)}\,
   \binom{\yNv}{\yNv \yA}\,\exp\bigl(\yll\T
-  \tsum_{\ya} \yg_{\ya}\ypp_{\ya\yA}\bigr).
+  \tsum_{\ya} \yg_{\ya}\yG_{\ya\yA}\bigr).
 \end{equation}
 The $m$ Lagrange multipliers $\yll\defd (\lambda_1,\dotsc,\lambda_m)$ must
 satisfy the $m$ constraint equations
 \begin{equation}
   \label{eq:app_maxent_pop_constraints}
   \yc = \E(\yg \|\yHa)\equiv %{}\\
- \frac{1}{\yK(\yll)}\sum_{\ya} \sum_{\yA} \yg_{\ya} \ypp_{\ya \yA}
+ \frac{1}{\yK(\yll)}\sum_{\ya} \sum_{\yA} \yg_{\ya} \yG_{\ya \yA}
 \,
   \binom{\yNv}{\yNv \yA}\,\exp\bigl(\yll\T
-  \tsum_{\ya} \yg_{\ya}\ypp_{\ya\yA}\bigr).
+  \tsum_{\ya} \yg_{\ya}\yG_{\ya\yA}\bigr).
 %  \\ k=1,\dotsc,m.
 \end{equation}
 
@@ -2273,10 +2319,10 @@ We obtain the distribution for the sample activity by marginalization, using
 \begin{equation}
   \label{eq:app_maxent_pop_marg}
   \pf(\ya \| \yHa)  = \frac{1}{\yK(\yll)}\, 
-  \sum_{\yA} \ypp_{\ya \yA}
+  \sum_{\yA} \yG_{\ya \yA}
 \,
   \binom{\yNv}{\yNv \yA}\,\exp\bigl(\yll\T
-  \tsum_{\ya} \yg_{\ya}\ypp_{\ya\yA}\bigr).
+  \tsum_{\ya} \yg_{\ya}\yG_{\ya\yA}\bigr).
 \end{equation}
 
 The distributions for the sample activity,
@@ -2372,10 +2418,10 @@ probability, to
   \pf(\yNv \|\yHd)
   ={}\\[-\jot]
   \sum_\yNv \biggl\{\frac{1}{\yK(\yll_\yNv)}\, 
-  \sum_{\yA} \ypp^{(\yNv)}_{\ya\yA}
+  \sum_{\yA} \yG^{(\yNv)}_{\ya\yA}
 \,
   \tbinom{\yNv}{\yNv \yA}\,\exp\Bigl[{\yll_\yNv}\T
-  \tsum_{\ya} \yg_{\ya}\ypp^{(\yNv)}_{\ya\yA}\Bigr]\biggr\}
+  \tsum_{\ya} \yg_{\ya}\yG^{(\yNv)}_{\ya\yA}\Bigr]\biggr\}
   \;h(\yNv),
 \end{multline}
 where the Lagrange multipliers $\yll_{\yNv}$ and the summation range for
@@ -2503,12 +2549,12 @@ the full network:
   \delt(\tsum_{\ya}\yjj_{\ya\yA} = \yFF_{\yA})\times{}\\
   \binom{T}{T\yj}\;
   \biggl[\prod_{\ya\yA}
-(\ypp_{\ya\yA}\ynuu_{\yA})^{T\yjj_{\ya\yA}}
+(\yG_{\ya\yA}\ynuu_{\yA})^{T\yjj_{\ya\yA}}
 \biggr]\;
 \exp[-L\;\re(\ynu;\yR)]
 \end{multlined}
 \\
-&\appropto \delt(\tsum_{\yA}\ypp_{\ya\yA}\yFF_{\yA} = \yff_{\ya})\;
+&\appropto \delt(\tsum_{\yA}\yG_{\ya\yA}\yFF_{\yA} = \yff_{\ya})\;
 \exp[-L\;\re(\yF;\yR)]
 \end{split}
 \end{equation}
@@ -2524,12 +2570,12 @@ the full network:
   \p(\ynu \|\yf,\yH) &\propto
     \binom{T}{T\yf}\;
   \biggl[\prod_{\ya}
-(\tsum_{\yA}\ypp_{\ya\yA}\ynuu_{\yA})^{T\yff_{\ya}}
+(\tsum_{\yA}\yG_{\ya\yA}\ynuu_{\yA})^{T\yff_{\ya}}
 \biggr]\;
 \exp[-L\;\re(\ynu;\yR)]
 \\
 &\appropto 
-\exp[-T\;\re(\yf; \mathte{\ypp}\ynu)
+\exp[-T\;\re(\yf; \mathte{\yG}\ynu)
 -L\;\re(\ynu;\yR)]
 \end{split}
 \end{equation}
@@ -2549,13 +2595,13 @@ simplex of frequencies $\set{\ynu}$.
   \int\!\di\ynu\;\ynuu_{\yA'}\;
   \binom{T}{T\yf}\;
   \biggl[\prod_{\ya}
-(\tsum_{\yA}\ypp_{\ya\yA}\ynuu_{\yA})^{T\yff_{\ya}}
+(\tsum_{\yA}\yG_{\ya\yA}\ynuu_{\yA})^{T\yff_{\ya}}
 \biggr]\;
 \exp[-L\;\re(\ynu;\yR)]
 \\
 &\appropto 
 \int\!\di\ynu\;\ynuu_{\yA'}\;
-\exp[-T\;\re(\yf; \mathte{\ypp}\ynu)
+\exp[-T\;\re(\yf; \mathte{\yG}\ynu)
 -L\;\re(\ynu;\yR)]
 \end{split}
 \end{equation}

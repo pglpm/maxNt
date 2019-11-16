@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-16T19:24:32+0100
+%% Last-Updated: 2019-11-17T00:27:31+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -725,8 +725,8 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\ycm}{\mathte{\ycmm}}
 \newcommand*{\ycs}{\bm{\sigma}}
 \newcommand*{\yL}{L}
-\newcommand*{\yd}{\bm{\varDelta}}
-\newcommand*{\yds}{\delta}
+%\newcommand*{\yd}{\bm{\varDelta}}
+\newcommand*{\ydi}{\varDelta}
 
 \newcommand*{\mee}{maximum entropy}
 \newcommand*{\me}{maximum-entropy}
@@ -1390,86 +1390,55 @@ network, not of the sample alone.
 
 Let us illustrate the remarks above with our first data set.
 
-A natural procedure to compare the informational sufficiency of two
-different sets of moments $M'\defd\set{1,\dotsc,m'}$ and
-$M''\defd \set{1,\dotsc,m''}$ is as follows:
-\begin{enumerate*}[label=(\roman*)]
-\item calculate the relative entropies of the measured frequencies $\yf$
-  and the sample marginals of the maximum-entropy distributions built with
-  the two corresponding sets of constraints;
-\item multiply these relative entropies by the number of time bins of the
-  recording;
-\item take their difference.
-\end{enumerate*}
-In formulae,
+We measure the difference $\ydi(M'',M')$ in informational sufficiency
+between a set of moments, say $M''\defd\set{1,\dotsc,m''}$, and another, say
+$M'\defd \set{1,\dotsc,m'}$, as follows:
+\begin{enumerate}[label=(\roman*)]
+\item from each maximum-entropy distributions $\px(\yA \| M)$ for the full
+  network, built from each set of constraints $M=M',M''$, calculate the
+  marginal distribution for the sample:
+\begin{equation}
+  \label{eq:sample_marginal}
+  \pxx(\ya \| M) = \sum_{\yA}\yG_{\ya \yA}\px(\yA \| M),
+  \qquad M=M',M'';
+\end{equation}
+\item calculate the relative entropies of the measured frequency
+  distribution $\yf$ with respect to each sample marginal, and multiply
+  them by the number of time bins $T$:
+  \begin{equation}
+    \label{eq:relentropy_T}
+    T\,\sh[\yf; \pxx(\ya \| M)] \defd  T  \sum_{\ya} \yff_{\ya} \ln\frac{\yff_{\ya}}{
+      \pxx(\ya \| M)},
+    \qquad M=M',M'';    
+  \end{equation}
+\item take the difference: 
 \begin{multline}
   \label{eq:measure_suffic}
-  \text{difference in informational sufficiency between $M'$ and $M''$} \defd{}\\
-T  \sum_{\ya} \yff_{\ya} \ln\frac{\yff_{\ya}}{
-  \sum_{\yA}\yG_{\ya\yA}\px(\yA \| M')}
--
-T  \sum_{\ya} \yff_{\ya} \ln\frac{\yff_{\ya}}{
-  \sum_{\yA}\yG_{\ya\yA}\px(\yA \| M'')} \equiv{}\\
+  \ydi(M'',M') \defd
+  T \,\sh[\yf; \pxx(\ya \| M')]
+  -
+  T \,\sh[\yf; \pxx(\ya \| M'')]
+  \equiv{}\\
 T  \sum_{\ya} \yff_{\ya} \ln\frac{
   \sum_{\yA}\yG_{\ya\yA}\px(\yA \| M'')}{
   \sum_{\yA}\yG_{\ya\yA}\px(\yA \| M')}.
 \end{multline}
-Why is this a natural measure? Let's ask how much more probable is the
-sufficiency of one set with respect to the other, conditional on our data
-$\yf$:
-\begin{equation}
-  \label{eq:ratio_prob_suffic}
-  \pf(M'' \| \yf)/
-  \pf(M' \| \yf).
-\end{equation}
-Now, the probability of observing activity $\ya$ in the sample at any time
-bin is the sample marginal of the maximum-entropy distribution for the full
-network, owing to the excheangeability assumption implicit in the
-maximum-entropy method:
-\begin{equation}
-  \label{eq:sample_marginal}
-  \pxx(\ya_{t} \| M) = \sum_{\yA}\yG_{\ya_{t}\,\yA}\px(\yA \| M).
-\end{equation}
-The probability of observing one sequence $(\ya_{t})$ with frequencies
-$\yf$ is therefore
-\begin{equation}
-  \label{eq:prob_frequencies}
-  \prod_{t=1}^{T} \pxx(\ya_{t} \| M) \equiv
-  \prod_{\ya=0}^{n} \pxx(\ya \| M)^{T\,\yff_{\ya}} \equiv
-  \prod_{\ya=0}^{n}\biggl[\sum_{\yA}\yG_{\ya\yA}\px(\yA \| M)\biggr]^{T\,\yff_{\ya}}.
-\end{equation}
-The probability of observing the frequencies $\yf$ is obtained multiplying this
-by their multiplicity factor, the multinomial coefficient
-\begin{equation}
-  \label{eq:multiplicity_factor}
-  \binom{T}{T\yf} \defd \frac{T!}{\prod_{\ya}(T\,\yff_{\ya})!}
-  \approx \prod_{\ya}{\yff_{\ya}}^{-T\,\yff_{\ya}},
-\end{equation}
-the last expression coming from Stirling's approximation
-\citep[Lemma~2.2]{csiszaretal2004b}.
-If we assign equal pre-data probabilities to the two hypotheses $M'$ and $M''$,
-each probability in the ratio~\eqref{eq:ratio_prob_suffic} then becomes, by
-Bayes's theorem,
-\begin{multline}
-  \label{eq:prob_proportional_relentropy}
-  \pf(M \| \yf) \propto
-  \pf(\yf \| M) \times\text{\small const} \propto
-  \binom{T}{T\yf}\,  \prod_{\ya}\biggl[\sum_{\yA}\yG_{\ya\yA}\px(\yA \| M)\biggr]^{
-    T\,\yff_{\ya}}
-   \approx{}\\
-  \prod_{\ya}{\yff_{\ya}}^{-T\,\yff_{\ya}}
-  \times
-  \prod_{\ya}\biggl[\sum_{\yA}\yG_{\ya\yA}\px(\yA \| M)\biggr]^{
-    T\,\yff_{\ya}}.
-\end{multline}
-The logarithm of the probability above is easily seen to be the number of
-bins $T$ multiplied by relative entropy between the frequency distribution
-$\yf$ and the sample marginal of the maximum-entropy distribution.
+\end{enumerate}
+The measure $\ydi(M'',M')$ so defined is positive if $M''$ is \enquote{more
+  informationally sufficient} than $M'$.
 
-Thus, the difference~\eqref{eq:measure_suffic} is the logarithm of the
-probability ratio~\eqref{eq:ratio_prob_suffic}. The exponential of the
-difference~\eqref{eq:measure_suffic} tells us how much more probable is the
-set $M''$ to be sufficient than the set $M'$.
+Why is this a natural measure? Because, if we assign equal pre-data
+probabilities to the two hypotheses $M''$ and $M'$, then the exponential of
+$\ydi(M'',M')$ is approximately equal to the ratio of their probabilities
+conditional on the data $\yf$ -- their Bayes factor:
+\begin{equation}
+  \label{eq:bayes_factor}
+  \ydi(M'',M') \approx
+  \ln\bigl[\pf(M'' \| \yf)/
+  \pf(M' \| \yf)\bigr].
+\end{equation}
+So the exponential of $\ydi(M'',M')$ tells us how much more probable $M''$
+is than $M'$, in view of the data $\yf$. We prove this in appendix**
 
 \begin{figure}[!p]
 \centering
@@ -1712,6 +1681,68 @@ this kind of sufficiency questions.
 % %\renewcommand*{\appendixname}{Appendix}
 % %\appendixpage
 % \appendix
+
+
+
+Let's ask how much more probable is the
+sufficiency of one set with respect to the other, conditional on our data
+$\yf$:
+\begin{equation}
+  \label{eq:ratio_prob_suffic}
+  \pf(M'' \| \yf)/
+  \pf(M' \| \yf).
+\end{equation}
+Now, the probability of observing activity $\ya$ in the sample at any time
+bin is the sample marginal of the maximum-entropy distribution for the full
+network, owing to the excheangeability assumption implicit in the
+maximum-entropy method:
+\begin{equation}
+  \label{eq:sample_marginal}
+  \pxx(\ya_{t} \| M) = \sum_{\yA}\yG_{\ya_{t}\,\yA}\px(\yA \| M).
+\end{equation}
+The probability of observing one sequence $(\ya_{t})$ with frequencies
+$\yf$ is therefore
+\begin{equation}
+  \label{eq:prob_frequencies}
+  \prod_{t=1}^{T} \pxx(\ya_{t} \| M) \equiv
+  \prod_{\ya=0}^{n} \pxx(\ya \| M)^{T\,\yff_{\ya}} \equiv
+  \prod_{\ya=0}^{n}\biggl[\sum_{\yA}\yG_{\ya\yA}\px(\yA \| M)\biggr]^{T\,\yff_{\ya}}.
+\end{equation}
+The probability of observing the frequencies $\yf$ is obtained multiplying this
+by their multiplicity factor, the multinomial coefficient
+\begin{equation}
+  \label{eq:multiplicity_factor}
+  \binom{T}{T\yf} \defd \frac{T!}{\prod_{\ya}(T\,\yff_{\ya})!}
+  \approx \prod_{\ya}{\yff_{\ya}}^{-T\,\yff_{\ya}},
+\end{equation}
+the last expression coming from Stirling's approximation
+\citep[Lemma~2.2]{csiszaretal2004b}.
+If we assign equal pre-data probabilities to the two hypotheses $M'$ and $M''$,
+each probability in the ratio~\eqref{eq:ratio_prob_suffic} then becomes, by
+Bayes's theorem,
+\begin{multline}
+  \label{eq:prob_proportional_relentropy}
+  \pf(M \| \yf) \propto
+  \pf(\yf \| M) \times\text{\small const} \propto
+  \binom{T}{T\yf}\,  \prod_{\ya}\biggl[\sum_{\yA}\yG_{\ya\yA}\px(\yA \| M)\biggr]^{
+    T\,\yff_{\ya}}
+   \approx{}\\
+  \prod_{\ya}{\yff_{\ya}}^{-T\,\yff_{\ya}}
+  \times
+  \prod_{\ya}\biggl[\sum_{\yA}\yG_{\ya\yA}\px(\yA \| M)\biggr]^{
+    T\,\yff_{\ya}}.
+\end{multline}
+The logarithm of the probability above is easily seen to be the number of
+bins $T$ multiplied by relative entropy between the frequency distribution
+$\yf$ and the sample marginal of the maximum-entropy distribution.
+
+Thus, the difference~\eqref{eq:measure_suffic} is the logarithm of the
+probability ratio~\eqref{eq:ratio_prob_suffic}. The exponential of the
+difference~\eqref{eq:measure_suffic} tells us how much more probable is the
+set $M''$ to be sufficient than the set $M'$.
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Bibliography

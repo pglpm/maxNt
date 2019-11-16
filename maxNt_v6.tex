@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-16T18:08:44+0100
+%% Last-Updated: 2019-11-16T19:24:32+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1404,21 +1404,72 @@ $M''\defd \set{1,\dotsc,m''}$ is as follows:
 In formulae,
 \begin{multline}
   \label{eq:measure_suffic}
-T  \sum_{\ya} \yff_{\ya} \log\frac{\yff_{\ya}}{
+  \text{difference in informational sufficiency between $M'$ and $M''$} \defd{}\\
+T  \sum_{\ya} \yff_{\ya} \ln\frac{\yff_{\ya}}{
   \sum_{\yA}\yG_{\ya\yA}\px(\yA \| M')}
 -
-T  \sum_{\ya} \yff_{\ya} \log\frac{\yff_{\ya}}{
-  \sum_{\yA}\yG_{\ya\yA}\px(\yA \| M'')}\\
-{}\equiv
-T  \sum_{\ya} \yff_{\ya} \log\frac{
+T  \sum_{\ya} \yff_{\ya} \ln\frac{\yff_{\ya}}{
+  \sum_{\yA}\yG_{\ya\yA}\px(\yA \| M'')} \equiv{}\\
+T  \sum_{\ya} \yff_{\ya} \ln\frac{
   \sum_{\yA}\yG_{\ya\yA}\px(\yA \| M'')}{
   \sum_{\yA}\yG_{\ya\yA}\px(\yA \| M')}.
 \end{multline}
+Why is this a natural measure? Let's ask how much more probable is the
+sufficiency of one set with respect to the other, conditional on our data
+$\yf$:
+\begin{equation}
+  \label{eq:ratio_prob_suffic}
+  \pf(M'' \| \yf)/
+  \pf(M' \| \yf).
+\end{equation}
+Now, the probability of observing activity $\ya$ in the sample at any time
+bin is the sample marginal of the maximum-entropy distribution for the full
+network, owing to the excheangeability assumption implicit in the
+maximum-entropy method:
+\begin{equation}
+  \label{eq:sample_marginal}
+  \pxx(\ya_{t} \| M) = \sum_{\yA}\yG_{\ya_{t}\,\yA}\px(\yA \| M).
+\end{equation}
+The probability of observing one sequence $(\ya_{t})$ with frequencies
+$\yf$ is therefore
+\begin{equation}
+  \label{eq:prob_frequencies}
+  \prod_{t=1}^{T} \pxx(\ya_{t} \| M) \equiv
+  \prod_{\ya=0}^{n} \pxx(\ya \| M)^{T\,\yff_{\ya}} \equiv
+  \prod_{\ya=0}^{n}\biggl[\sum_{\yA}\yG_{\ya\yA}\px(\yA \| M)\biggr]^{T\,\yff_{\ya}}.
+\end{equation}
+The probability of observing the frequencies $\yf$ is obtained multiplying this
+by their multiplicity factor, the multinomial coefficient
+\begin{equation}
+  \label{eq:multiplicity_factor}
+  \binom{T}{T\yf} \defd \frac{T!}{\prod_{\ya}(T\,\yff_{\ya})!}
+  \approx \prod_{\ya}{\yff_{\ya}}^{-T\,\yff_{\ya}},
+\end{equation}
+the last expression coming from Stirling's approximation
+\citep[Lemma~2.2]{csiszaretal2004b}.
+If we assign equal pre-data probabilities to the two hypotheses $M'$ and $M''$,
+each probability in the ratio~\eqref{eq:ratio_prob_suffic} then becomes, by
+Bayes's theorem,
+\begin{multline}
+  \label{eq:prob_proportional_relentropy}
+  \pf(M \| \yf) \propto
+  \pf(\yf \| M) \times\text{\small const} \propto
+  \binom{T}{T\yf}\,  \prod_{\ya}\biggl[\sum_{\yA}\yG_{\ya\yA}\px(\yA \| M)\biggr]^{
+    T\,\yff_{\ya}}
+   \approx{}\\
+  \prod_{\ya}{\yff_{\ya}}^{-T\,\yff_{\ya}}
+  \times
+  \prod_{\ya}\biggl[\sum_{\yA}\yG_{\ya\yA}\px(\yA \| M)\biggr]^{
+    T\,\yff_{\ya}}.
+\end{multline}
+The logarithm of the probability above is easily seen to be the number of
+bins $T$ multiplied by relative entropy between the frequency distribution
+$\yf$ and the sample marginal of the maximum-entropy distribution.
 
-
-
-This is a natural measure because
-
+Thus, the difference~\eqref{eq:measure_suffic} is the logarithm of the
+probability ratio~\eqref{eq:ratio_prob_suffic}. The exponential of the
+difference~\eqref{eq:measure_suffic} tells us how much more probable is the
+set $M''$ to be sufficient than the set $M'$.
 
 \begin{figure}[!p]
 \centering
@@ -1447,15 +1498,6 @@ This is a natural measure because
 % comparison_ME_sample_full_levels.nb
 %
 
- This procedure is equivalent to calculating and comparing the
-probabilities of our hypotheses about sufficiency, conditional the data, if
-their pre-data probability to be equal; so that for example
-\begin{equation}
-  \label{eq:compare_hypoth_conditional}
-  \pf(\text{\small\enquote{first two moments are sufficient}} \| \text{\small data}) \propto
-  \pf(\text{\small data} \|
-  \text{\small\enquote{first two moments are sufficient}}).
-\end{equation}
 
 
 

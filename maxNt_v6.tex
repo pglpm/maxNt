@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-17T15:08:12+0100
+%% Last-Updated: 2019-11-17T16:12:37+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1447,15 +1447,7 @@ us how much more probable the data $\yf$ are, in view of $M''$ vs $M'$. If
 we also introduce the pre-data probabilities of the two hypotheses we
 obtain their probabilities conditional on the data.
 
-\begin{figure}[!p]
-\centering
-\includegraphics[width=\linewidth]{_scripts/comparison_full.pdf}%
-\\[3em]%
-\includegraphics[width=\linewidth]{_scripts/trunct_comparison_marginals.pdf}%
-\caption{***}
-\label{fig:comparisons_marginals}
-\end{figure}
-% comparison_ME_sample_full_levels.nb
+% NUMERICAL RESULTS
 %
 % relentropies of sample2mom, sample4mom, sample5mom, marg2mom, marg4mom, marg5mom
 % -322.72,-42.8005,-39.4917,-85.7626,-4.23725,-4.20059 nats =
@@ -1527,46 +1519,83 @@ the full-network level, $N=10\,000$, versus the hypothesis $M_{5, n}$ of
 that is, the data are 15 orders of magnitude more likely under the first
 hypothesis than under the second.
 
-But does the application at the full-network level lead to appreciably
-different results from that at the sample level? after all we're interested
-in an approximate informational sufficiency, not in an analytically exact
-one. A correct answer can only be given case by case.
-Figure~\ref{fig:comparisons_marginals} gives a graphical answer to this
-question in the case of our first data set. The upper plot shows the
-maximum-entropy distributions for a full network of $10\,000$ neurons,
-constructed from two moments (\textcolor{mygreen}{\textbf{--~--~--}}) and
-from four moments (\textcolor{mypurpleblue}{\textbf{------}}). The lower
-plot shows the maximum-entropy distributions for the sample, from two
-moments (\textcolor{mygreen}{$\bm{\triangledown}$}) and from four moments
-(\textcolor{mypurpleblue}{$\bm{\square}$}), and the distributions obtained
-by marginalizing the full-network distribution to the sample size, from two
-moments (\textcolor{mygreen}{$\bm{\blacktriangledown}$}) and from four
-moments (\textcolor{mypurpleblue}{$\bm{\blacksquare}$}). The measured
-frequency distribution (\textcolor{myred}{\LARGE$\bm{\bullet}$}) is also
-shown. We note the following:
-\begin{itemize}
-\item The application to the full-network (upper plot) leads to two
-  completely different distributions (even different number of modes);
-  clearly the two sets of statistics are not even approximately equivalent
-  for inferential purposes.
-\item The application at the sample level leads to deceivingly similar
-  distributions (\textcolor{mygreen}{$\bm{\triangledown}$} and
-  \textcolor{mypurpleblue}{$\bm{\square}$}), which can only be distinguished on a
-  logarithmic scale. This could lead to the erroneous conclusion that the
-  two statistics are approximately equivalent.
-\item The difference between marginals from the full-network distribution
-  and the distributions obtained at the sample level (filled vs empty
-  markers) is larger than the difference between different statistics
-  (triangles vs squares).
-\item The marginals of the application to the full network are closer to
-  the measured frequencies than the distributions obtained at the sample
-  level (although this closeness is not a valid criterion for their
-  goodness).
-\end{itemize}
-Therefore, the maximum-entropy application at the sample level and at the
-full-network level lead to different results; the latter is not only more
-meaningful but also superior because it shows clearly the different
-informational sufficiency of the two sets of statistics.
+\bigskip
+
+The conclusions as regards \enquote{cooperativity} or \enquote{interaction}
+that we reach by applying the maximum-entropy method to the full network,
+as proposed here, are not only different from the application at the sample
+level, but also visually clearer. The plot of \fig~\ref{fig:plots_2_4mom},
+showing the two clearly different distributions constrained by two and four
+moments, should be compared with the plot for the distributions obtained at
+the sample level under the same constraints, shown in
+\fig~\ref{fig:comparisons_marginals} as dashed lines with empty red
+circles (\textcolor{myred}{\LARGE$\bm{\mathord{\circ}}$}) and empty blue
+squares (\textcolor{mypurpleblue}{$\bm{\square}$}). The measured
+frequencies are shown as filled black triangles
+(\textcolor{black}{$\bm{\triangledown}$}). It is necessary to use a
+logarithmic scale to see the differences, which appear mainly in the tail.
+\begin{figure}[!b]
+\centering
+% \includegraphics[width=\linewidth]{_scripts/comparison_full.pdf}%
+% \\[3em]%
+\includegraphics[width=\linewidth]{_scripts/trunct_comparison_marginals.pdf}%
+\caption{***}
+\label{fig:comparisons_marginals}
+\end{figure}
+% comparison_ME_sample_full_levels.nb
+
+The same plot also shows the marginals obtained from applying the method to
+a full network with $N=10\,000$ and the same constraints, that is, the
+sample marginals of \fig~\ref{fig:plots_2_4mom}. The two-moment
+distribution is represented by filled red circles
+(\textcolor{myred}{\LARGE$\bm{\bullet}$}), and the four-moment one by
+filled blue squares (\textcolor{mypurpleblue}{$\bm{\blacksquare}$}). The
+full-network distribution fits the measured frequencies very well if we
+only keep four moments.
+
+
+
+
+% But does the application at the full-network level lead to appreciably
+% different results from that at the sample level? after all we're interested
+% in an approximate informational sufficiency, not in an analytically exact
+% one. A correct answer can only be given case by case.
+% Figure~\ref{fig:comparisons_marginals} gives a graphical answer to this
+% question in the case of our first data set. The upper plot shows the
+% maximum-entropy distributions for a full network of $10\,000$ neurons,
+% constructed from two moments (\textcolor{mygreen}{\textbf{--~--~--}}) and
+% from four moments (\textcolor{mypurpleblue}{\textbf{------}}). The lower
+% plot shows the maximum-entropy distributions for the sample, from two
+% moments (\textcolor{mygreen}{$\bm{\triangledown}$}) and from four moments
+% (\textcolor{mypurpleblue}{$\bm{\square}$}), and the distributions obtained
+% by marginalizing the full-network distribution to the sample size, from two
+% moments (\textcolor{mygreen}{$\bm{\blacktriangledown}$}) and from four
+% moments (\textcolor{mypurpleblue}{$\bm{\blacksquare}$}). The measured
+% frequency distribution (\textcolor{myred}{\LARGE$\bm{\bullet}$}) is also
+% shown. We note the following:
+% \begin{itemize}
+% \item The application to the full-network (upper plot) leads to two
+%   completely different distributions (even different number of modes);
+%   clearly the two sets of statistics are not even approximately equivalent
+%   for inferential purposes.
+% \item The application at the sample level leads to deceivingly similar
+%   distributions (\textcolor{mygreen}{$\bm{\triangledown}$} and
+%   \textcolor{mypurpleblue}{$\bm{\square}$}), which can only be distinguished on a
+%   logarithmic scale. This could lead to the erroneous conclusion that the
+%   two statistics are approximately equivalent.
+% \item The difference between marginals from the full-network distribution
+%   and the distributions obtained at the sample level (filled vs empty
+%   markers) is larger than the difference between different statistics
+%   (triangles vs squares).
+% \item The marginals of the application to the full network are closer to
+%   the measured frequencies than the distributions obtained at the sample
+%   level (although this closeness is not a valid criterion for their
+%   goodness).
+% \end{itemize}
+% Therefore, the maximum-entropy application at the sample level and at the
+% full-network level lead to different results; the latter is not only more
+% meaningful but also superior because it shows clearly the different
+% informational sufficiency of the two sets of statistics.
 
 
 \section{The full-network size $N$}

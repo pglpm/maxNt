@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-17T00:27:31+0100
+%% Last-Updated: 2019-11-17T15:08:12+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -732,6 +732,8 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\me}{maximum-entropy}
 
 \newcommand*{\sh}{\mathrm{\varEta}}
+\newcommand*{\nat}{\textrm{nat}}
+\newcommand*{\hart}{\textrm{Hart}}
 %%% Custom macros end @@@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1407,7 +1409,7 @@ $M'\defd \set{1,\dotsc,m'}$, as follows:
   them by the number of time bins $T$:
   \begin{equation}
     \label{eq:relentropy_T}
-    T\,\sh[\yf; \pxx(\ya \| M)] \defd  T  \sum_{\ya} \yff_{\ya} \ln\frac{\yff_{\ya}}{
+    T\,\sh[\yf; \pxx(\ya \| M)] \defd  T  \sum_{\ya} \yff_{\ya} \log\frac{\yff_{\ya}}{
       \pxx(\ya \| M)},
     \qquad M=M',M'';    
   \end{equation}
@@ -1419,7 +1421,7 @@ $M'\defd \set{1,\dotsc,m'}$, as follows:
   -
   T \,\sh[\yf; \pxx(\ya \| M'')]
   \equiv{}\\
-T  \sum_{\ya} \yff_{\ya} \ln\frac{
+T  \sum_{\ya} \yff_{\ya} \log\frac{
   \sum_{\yA}\yG_{\ya\yA}\px(\yA \| M'')}{
   \sum_{\yA}\yG_{\ya\yA}\px(\yA \| M')}.
 \end{multline}
@@ -1427,18 +1429,23 @@ T  \sum_{\ya} \yff_{\ya} \ln\frac{
 The measure $\ydi(M'',M')$ so defined is positive if $M''$ is \enquote{more
   informationally sufficient} than $M'$.
 
-Why is this a natural measure? Because, if we assign equal pre-data
-probabilities to the two hypotheses $M''$ and $M'$, then the exponential of
-$\ydi(M'',M')$ is approximately equal to the ratio of their probabilities
-conditional on the data $\yf$ -- their Bayes factor:
+Why is this a natural measure? Because $\ydi(M'',M')$ is equal to the
+log-ratio of the likelihoods of the hypotheses $M''$ and $M'$ in view of
+the data $\yf$:
 \begin{equation}
   \label{eq:bayes_factor}
-  \ydi(M'',M') \approx
-  \ln\bigl[\pf(M'' \| \yf)/
-  \pf(M' \| \yf)\bigr].
+  \ydi(M'',M') =
+  \log\bigl[\pf(\yf \| M'')/
+  \pf(\yf \| M')\bigr].
 \end{equation}
-So the exponential of $\ydi(M'',M')$ tells us how much more probable $M''$
-is than $M'$, in view of the data $\yf$. We prove this in appendix**
+This is called their \emph{relative weight of evidence}, the logarithm of
+their \emph{relative Bayes factor}
+\citep[\chap~6]{good1950}{good1975,good1981,good1985,good1983}[\sect~1.4]{osteyeeetal1974}{mackay1992,kassetal1995}[see
+also][p.~421]{jeffreys1936}[\chaps~V, VI, A]{jeffreys1939_r1983}. We prove
+this in appendix**. So the exponential (same base) of $\ydi(M'',M')$ tells
+us how much more probable the data $\yf$ are, in view of $M''$ vs $M'$. If
+we also introduce the pre-data probabilities of the two hypotheses we
+obtain their probabilities conditional on the data.
 
 \begin{figure}[!p]
 \centering
@@ -1464,11 +1471,61 @@ is than $M'$, in view of the data $\yf$. We prove this in appendix**
 % sample: 3.69524\times 10^{121}, 27.3529
 % marg: 2.5469\times 10^{35}, 1.03734
 % 
+% comparison N vs n:
+% 2 mom: 236.958 nats = 1029.09 dB, 8.11758\times 10^{102}
+% 4 mom: 38.5632 nats = 167.478 dB, 5.59496*10^16
+% 5 mom: 35.2911 nats = 153.267 dB, 2.12185*10^15
+%
 % comparison_ME_sample_full_levels.nb
 %
 
+\bigskip
 
+Consider the three sets of constraints $M_{2}$, $M_{4}$, $M_{5}$ consisting
+in the first two, four, five moments. For a full network of size
+$N=10\,000$, we obtain the following differences:
+\begin{equation}
+  \label{eq:diff_suff_N}
+  \begin{split}
+  \ydi(M_{4},M_{2}) &= 81\;\nat = 35\;\hart,
+\\    \ydi(M_{5},M_{4}) &= 0.037\;\nat = 0.016\;\hart,
+  \end{split}
+\end{equation}
+where the Hartley ($\hart$) denotes base-10 logarithms
+\citep[\sect~C.4]{iso2009}. In words, the measured frequencies of the
+sample activity are 35 orders of magnitude more probable under sufficiency
+of the first four moments are sufficient, than under sufficiency of the
+first two only; but they are about equally probable ($10^{0.016} = 1.04$)
+whether we consider the first five moments to be sufficient or just the
+first four.
 
+Compare the results above with those obtained by applying the method at the
+sample level only:
+\begin{equation}
+  \label{eq:diff_suff_n}
+  \begin{split}
+  \ydi_{\text{sample level}}(M_{4},M_{2}) &= 280\;\nat = 1\,220\;\hart,
+\\    \ydi_{\text{sample level}}(M_{5},M_{4}) &= 3.3\;\nat = 1.4\;\hart,
+\end{split}
+\end{equation}
+that is, the data are 1\,220 orders of magnitude more probable conditional
+on four moments as opposed to two, and $10^{1.4}=25$ times more probable
+conditional on five moments as opposed to five.
+
+The application at the full-network level therefore leads to different
+conclusions about the relative importance of the moments from the
+application at the sample level. It is also possible to use the
+measure~\eqref{eq:measure_suffic} and its probabilistic
+meaninig~\eqref{eq:bayes_factor} to compare the probability of the data
+$\yf$ conditional on the hypothesis $M_{5, N}$ of 5-moment sufficiency at
+the full-network level, $N=10\,000$, versus the hypothesis $M_{5, n}$ of
+5-moment sufficiency at the sample level, $N=n=65$. We obtain
+\begin{equation}
+  \label{eq:diff_suff_n}
+  \ydi(M_{5, N}, M_{5, n}) = 35\;\nat = 15\;\hart,
+\end{equation}
+that is, the data are 15 orders of magnitude more likely under the first
+hypothesis than under the second.
 
 But does the application at the full-network level lead to appreciably
 different results from that at the sample level? after all we're interested
@@ -1607,7 +1664,7 @@ $\yF$ is quantified by an entropic prior
   \approx \binom{L}{L\yFF_{0}, \dotsc, L\yFF_{N}}\;
   \prod_{\yA}{\yRR_{\yA}}^{L\yFF_{\yA}}
 \end{equation}
-where $\re(\yF;\yR)\defd \sum_{\yA}\yFF_{\yA}\ln(\yFF_{\yA}/\yRR_{\yA})$ is
+where $\re(\yF;\yR)\defd \sum_{\yA}\yFF_{\yA}\log(\yFF_{\yA}/\yRR_{\yA})$ is
 the relative entropy or discrimination information
 \citep{kullback1987,jaynes1963,hobson1969,hobsonetal1973}, $\yR$ is the
 reference distribution, and $\yL$ a positive parameter. The approximate

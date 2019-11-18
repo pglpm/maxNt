@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-18T20:56:20+0100
+%% Last-Updated: 2019-11-18T22:24:37+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1521,7 +1521,7 @@ hypothesis than under the second.
 
 \bigskip
 
-The conclusions regarding \enquote{cooperativity} or \enquote{interaction}
+The conclusions about \enquote{cooperativity} or \enquote{interaction}
 that we reach by applying the maximum-entropy method to the full network,
 as proposed here, are not only different from the application at the sample
 level, but also visually clearer. The plot of \fig~\ref{fig:plots_2_4mom},
@@ -1625,11 +1625,20 @@ distribution:
   \label{eq:hypergeometric_relation}
     \pxx(\ya)=
   \binom{n}{\ya}\;\binom{N-n}{\yA-\ya}\;\binom{N}{\yA}^{-1}
-\;\pxx(\yA),
+\;\pxxx(\yA),
 \end{equation}
 characteristic of \enquote{drawing without replacement}
 \citep[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}.
-In other words, $N$ must be such that we equally believe other samples of
+In other words, $N$ is the size of the pool of all neurons that could just
+as well have been recorded by our measuring procedure. \enquote{Just as
+  well} indicates equal degrees of belief. Whether the equality of such
+beliefs is justified, or for which sampling procedures it could be
+justified, is the fundamental, deep question of sampling theory, which we
+cannot discuss here of course \citep[see \eg\ the discussions and
+references in][]{ericson1969,smith1976}.
+
+
+must be such that we equally believe other samples of
 size $n$ could have been recorded by the electrodes or the probe used. This
 is indeed what we stated in \sect~\ref{sec:model}.
 

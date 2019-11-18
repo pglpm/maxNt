@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-18T10:30:55+0100
+%% Last-Updated: 2019-11-18T10:37:30+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1440,10 +1440,10 @@ This is called their \emph{relative weight of evidence}, the logarithm of
 their \emph{relative Bayes factor}
 \citep[\chap~6]{good1950}{good1975,good1981,good1985,good1983}[\sect~1.4]{osteyeeetal1974}{mackay1992,kassetal1995}[see
 also][p.~421]{jeffreys1936}[\chaps~V, VI, A]{jeffreys1939_r1983}. We prove
-this in appendix**. So the exponential (same base) of $\ydi(M'',M')$ tells
-us how much more probable the data $\yf$ are, in view of $M''$ vs $M'$. If
-we also introduce the pre-data probabilities of the two hypotheses we
-obtain their probabilities conditional on the data.
+this equality in appendix**. So the exponential of $\ydi(M'',M')$ tells
+us how much more probable the data $\yf$ are, conditional on $M''$ versus $M'$. If
+we assign the pre-data probabilities of the two hypotheses, this measure
+also gives us the ratio of their probabilities conditional on the data.
 
 % NUMERICAL RESULTS
 %
@@ -1484,10 +1484,9 @@ $N=10\,000$, we obtain the following differences:
 where the Hartley ($\hart$) denotes base-10 logarithms
 \citep[\sect~C.4]{iso2009}. In words, the measured frequencies of the
 sample activity are 35 orders of magnitude more probable under sufficiency
-of the first four moments are sufficient, than under sufficiency of the
-first two only; but they are about equally probable ($10^{0.016} = 1.04$)
-whether we consider the first five moments to be sufficient or just the
-first four.
+of the first four moments than under sufficiency of the first two only; but
+they are about equally probable ($10^{0.016} = 1.04$) whether we consider
+the first five moments to be sufficient or just the first four.
 
 Compare the results above with those obtained by applying the method at the
 sample level only:
@@ -1499,14 +1498,14 @@ sample level only:
 \end{split}
 \end{equation}
 that is, the data are 1\,220 orders of magnitude more probable conditional
-on four moments as opposed to two, and $10^{1.4}=25$ times more probable
-conditional on five moments as opposed to five.
+on four moments than conditional on two, and $10^{1.4}=25$ times more
+probable conditional on five moments than on four moments.
 
 The application at the full-network level therefore leads to different
 conclusions about the relative importance of the moments from the
 application at the sample level. It is also possible to use the
 measure~\eqref{eq:measure_suffic} and its probabilistic
-meaninig~\eqref{eq:bayes_factor} to compare the probability of the data
+meaning~\eqref{eq:bayes_factor} to compare the probability of the data
 $\yf$ conditional on the hypothesis $M_{5, N}$ of 5-moment sufficiency at
 the full-network level, $N=10\,000$, versus the hypothesis $M_{5, n}$ of
 5-moment sufficiency at the sample level, $N=n=65$. We obtain

@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-18T10:37:30+0100
+%% Last-Updated: 2019-11-18T13:35:04+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -882,7 +882,7 @@ sampled neurons. For the first data set, for example, the frequency
 distribution for the full network has two very distinct modes, both at low
 activities, %($0.7\%$ and $2.6\%$ of simultaneously active neurons
 % within $3\;\mathrm{ms}$,
-see \fig~\ref{fig:plots_6mom}, whereas the frequency distribution for the
+see \fig~\ref{fig:plots_5mom}, whereas the frequency distribution for the
 sample is monotonically decreasing with its maximum at zero activity. The
 frequency distribution for the second data set doesn't have two modes but
 still presents one prominent shoulder in its low-activity mode. Note that
@@ -1230,11 +1230,10 @@ the literature:
 
 \bigskip
 
-We first calculate the distribution by using six moments. This number
+We first calculate the distribution by using five moments. This number
 already provides almost as much information as the full frequency
-distribution of the sample, and at the same time illustrates the use of the
-approach in questions of statistical sufficiency.
-Figure~\ref{fig:plots_6mom} shows the resulting densities (that is,
+distribution of the sample (see \sect~\ref{sec:marginalization}).
+Figure~\ref{fig:plots_5mom} shows the resulting densities (that is,
 distribution${}\times N$) for four example values of full-network sizes:
 $N=n$, $N=1\,000$, $N=5\,000$, $N=10\,000$. The case $N=n$ corresponds to
 applying the maximum-entropy method at the sample level; it can be observed
@@ -1242,11 +1241,11 @@ that with six moments it reproduces almost exactly the measured frequency
 distribution. We discuss the case of unknown $N$ in \sect~\ref{sec:N}.
 \begin{figure}[!p]
 \centering
-\includegraphics[width=\linewidth]{_scripts/paper_stensola_6mom_distributionsN_prior2.pdf}%
+\includegraphics[width=\linewidth]{_scripts/newpaper_stensola_5mom_distributionsN_priorc.pdf}%
 \\[3em]%
-\includegraphics[width=\linewidth]{_scripts/paper_riehle_6mom_distributionsN_prior2.pdf}%
+\includegraphics[width=\linewidth]{_scripts/newpaper_riehle_5mom_distributionsN_priorc.pdf}%
 \caption{***}
-\label{fig:plots_6mom}
+\label{fig:plots_5mom}
 \end{figure}
 %maxent_solutions_different_moments_prior2_6moments.nb
 
@@ -1472,7 +1471,7 @@ also gives us the ratio of their probabilities conditional on the data.
 \bigskip
 
 Consider the three sets of constraints $M_{2}$, $M_{4}$, $M_{5}$ consisting
-in the first two, four, five moments. For a full network of size
+of the first two, four, five moments. For a full network of size
 $N=10\,000$, we obtain the following differences:
 \begin{equation}
   \label{eq:diff_suff_N}
@@ -1518,7 +1517,7 @@ hypothesis than under the second.
 
 \bigskip
 
-The conclusions as regards \enquote{cooperativity} or \enquote{interaction}
+The conclusions regarding \enquote{cooperativity} or \enquote{interaction}
 that we reach by applying the maximum-entropy method to the full network,
 as proposed here, are not only different from the application at the sample
 level, but also visually clearer. The plot of \fig~\ref{fig:plots_2_4mom},

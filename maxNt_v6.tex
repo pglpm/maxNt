@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-18T13:35:04+0100
+%% Last-Updated: 2019-11-18T20:56:20+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -262,7 +262,7 @@ citestyle=authoryear-comp,bibstyle=pglpm-authoryear,autopunct=false,sorting=ny,s
 %\appto{\citesetup}{\footnotesize}% smaller font for citations
 \defbibheading{bibliography}[\bibname]{\section*{#1}\addcontentsline{toc}{section}{#1}%\markboth{#1}{#1}
 }
-\newcommand*{\citep}{\parencites}
+\newcommand*{\citep}{\footcites}
 \newcommand*{\citey}{\parencites*}
 %\renewcommand*{\cite}{\parencite}
 %\newcommand*{\citeps}{\parencites}
@@ -1329,9 +1329,9 @@ example, the measured third- and higher-order moments -- leaves our
 probabilities almost unchanged. This means that the discarded statistics
 are \emph{informationally irrelevant} or almost so. The remaining
 statistics -- for example, first and second moments -- are
-\emph{informationally sufficient}. \parentext{For more technical results
+\emph{informationally sufficient}.\footnote{For more technical results
   and connections with the notion of symmetry see \eg\
-  \cite{darmois1935,neyman1935,koopman1936,pitman1936,halmosetal1949,bahadur1954,berk1972,lauritzen1974,cifarellietal1980,cifarellietal1981,diaconisetal1981,lauritzen1982_r1988,diaconis1992,furmanczyketal1998,fortinietal2000,nogalesetal2000,kallenberg2005,lauritzen2007,ayetal2015}.}
+  \cite{darmois1935,neyman1935,koopman1936,pitman1936,halmosetal1949,bahadur1954,berk1972,lauritzen1974,lauritzen1982_r1988,lauritzen2007,cifarellietal1980,cifarellietal1981,diaconisetal1981,diaconis1992,furmanczyketal1998,fortinietal2000,nogalesetal2000,kallenberg2005,ayetal2015}.}
 % This informational quasi-sufficiency is interesting because
 % it may give clues about network organization and dynamics.
 
@@ -1424,7 +1424,7 @@ T  \sum_{\ya} \yff_{\ya} \log\frac{
 \end{multline}
 \end{enumerate}
 The measure $\ydi(M'',M')$ so defined is positive if $M''$ is \enquote{more
-  informationally sufficient} than $M'$.
+  informationally sufficient} than $M'$, and negative otherwise.
 
 Why is this a natural measure? Because $\ydi(M'',M')$ is equal to the
 log-ratio of the likelihoods of the hypotheses $M''$ and $M'$ in view of
@@ -1439,10 +1439,11 @@ This is called their \emph{relative weight of evidence}, the logarithm of
 their \emph{relative Bayes factor}
 \citep[\chap~6]{good1950}{good1975,good1981,good1985,good1983}[\sect~1.4]{osteyeeetal1974}{mackay1992,kassetal1995}[see
 also][p.~421]{jeffreys1936}[\chaps~V, VI, A]{jeffreys1939_r1983}. We prove
-this equality in appendix**. So the exponential of $\ydi(M'',M')$ tells
-us how much more probable the data $\yf$ are, conditional on $M''$ versus $M'$. If
-we assign the pre-data probabilities of the two hypotheses, this measure
-also gives us the ratio of their probabilities conditional on the data.
+this equality in appendix**. So the exponential of $\ydi(M'',M')$ tells us
+how much more probable the data $\yf$ are conditional on $M''$, than
+conditional on $M'$. We can also combine this measure with pre-data
+probabilities for the two hypotheses to obtain the ratio of their
+probabilities conditional on the data.
 
 % NUMERICAL RESULTS
 %
@@ -1470,9 +1471,9 @@ also gives us the ratio of their probabilities conditional on the data.
 
 \bigskip
 
-Consider the three sets of constraints $M_{2}$, $M_{4}$, $M_{5}$ consisting
-of the first two, four, five moments. For a full network of size
-$N=10\,000$, we obtain the following differences:
+In our case consider for example three sets of constraints $M_{2}$,
+$M_{4}$, $M_{5}$, consisting of the first two, four, five moments. For a
+full network of size $N=10\,000$, we obtain the following differences:
 \begin{equation}
   \label{eq:diff_suff_N}
   \begin{split}
@@ -1481,11 +1482,14 @@ $N=10\,000$, we obtain the following differences:
   \end{split}
 \end{equation}
 where the Hartley ($\hart$) denotes base-10 logarithms
-\citep[\sect~C.4]{iso2009}. In words, the measured frequencies of the
-sample activity are 35 orders of magnitude more probable under sufficiency
-of the first four moments than under sufficiency of the first two only; but
-they are about equally probable ($10^{0.016} = 1.04$) whether we consider
-the first five moments to be sufficient or just the first four.
+\citep[\sect~C.4]{iso2009}[it was called \enquote{ban} and used by Turing
+and Good in their code-breaking work at Bletchley
+Park:][]{good1985,good1950,good1969}[\sect~4.2]{jaynes1994_r2003}. In
+words, the measured frequencies of the sample activity are 35 orders of
+magnitude more probable under sufficiency of the first four moments than
+under sufficiency of the first two only; but they are about equally
+probable ($10^{0.016} = 1.04$) whether we consider the first five moments
+to be sufficient or just the first four.
 
 Compare the results above with those obtained by applying the method at the
 sample level only:
@@ -1598,24 +1602,32 @@ moments.
 \section{The full-network size $N$}
 \label{sec:N}
 
+% results for post-data probabilities of N given data and 5 moments:
+% N=65,1000,2000,5000,10000
+% 1.40169\times 10^{-16}, 0.0439602, 0.139657, 0.251064, 0.297726, 0.267594
+%
+% using 1/N pre-data prob:
+% 1.04099\times 10^{-14}, 0.212211, 0.337085, 0.242394, 0.143722, 0.0645882
+% 
+% maxent_solutions_different_moments_prior2_6moments.nb
+
 The calculations and conclusions presented in the preceding sections depend
 on the size of the full network, $N$. The full network can't be the whole
 brain, of course. How large should or can $N$ be in our formulae?
 
 The crucial point is formula~\eqref{eq:equal_m_factorialmoments}, on which
 our method is based, and which asserts the equality of the factorial
-moments of the full network and its sample, (or, equivalently, asserting
-that the power moments for the one are linear functions of the power
-moments for the other). This formula is only valid if our beliefs about the
-activity of the sample  $\pxx(\ya)$ and that of the full network
-$\pxx(\yA)$ are related by a hypergeometric distribution:
+moments of the full network and those of the sample. This formula is only
+valid if our beliefs about the activity of the sample $\pxx(\ya)$ and that
+of the full network $\pxx(\yA)$ are related by a hypergeometric
+distribution:
 \begin{equation}
   \label{eq:hypergeometric_relation}
     \pxx(\ya)=
   \binom{n}{\ya}\;\binom{N-n}{\yA-\ya}\;\binom{N}{\yA}^{-1}
-\;\pxx(\yA).
+\;\pxx(\yA),
 \end{equation}
-This is a relation of \enquote{drawing without replacement}
+characteristic of \enquote{drawing without replacement}
 \citep[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}.
 In other words, $N$ must be such that we equally believe other samples of
 size $n$ could have been recorded by the electrodes or the probe used. This

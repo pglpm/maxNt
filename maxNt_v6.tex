@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-19T14:54:26+0100
+%% Last-Updated: 2019-11-19T16:21:29+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1112,6 +1112,7 @@ These two steps are more straightforward if instead of power moments we use
 factorial moment of a distribution $\pxx(\ya)$ for the activity of the
 sample neurons is defined as the average
 \begin{equation}
+  \label{eq:def_factorial_moment_a}
   % \E\condt[\Bigg]{
   %   \binom{\ya}{m}\,\binom{n}{m}^{-1}}{\yH}
   % \equiv
@@ -1840,7 +1841,50 @@ this kind of sufficiency questions.
 \section{Derivation of the maximum-entropy distribution}
 \label{sec:derivation_maxent_fullnet}
 
+Here is a summary derivation of the maximum-entropy distribution for the
+full network constrained by a set of factorial moments. For further details
+see Porta Mana \etal\ \citey{portamanaetal2015}.
 
+\bigskip
+
+First of all the sampling relation. We have a set of $N$ units, $\yA$ of
+which have some specific property, and we sample in an unknown way $n$ of
+the $N$ units. The probability that $\ya$ of the $n$ sampled units have that
+property is then given by the hypergeometric distribution
+\begin{equation}
+  \label{eq:conditional_hypergeometric}
+  \yG_{\ya\yA} \defd \pf(\ya \|\yA, n,N)=
+  \binom{n}{n\ya}\binom{\yNv-n}{\yNv \yA-n\ya}\binom{\yNv}{\yNv \yA}^{-1}.
+\end{equation}
+typical of \enquote{drawing without replacement}
+\citep[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}.
+In the following leave $n$, $N$ implicit in the conditional. If we are
+uncertain about the number $\yA$, with belief $P(\yA)$, then by the theorem
+of total probability our belief about $\ya$ is
+\begin{equation}
+  \label{eq:belief_sample_unknown_A}
+  p(\ya)= \sum_{\yA} \yG_{\ya\yA} \;P(\A).
+\end{equation}
+In our case the units are neurons, the set is the full network, and the
+property is their being active in a specific time bin.
+
+From the definition of normalized factorial
+moment~\eqref{eq:def_factorial_moment_a}, the expression for the hypergeometric
+distribution~\eqref{eq:conditional_hypergeometric}, and the
+relation~\eqref{eq:belief_sample_unknown_A} between our beliefs about $\ya$
+and $\yA$, it is possible to prove using some combinatorial juggling the
+equality~\eqref{eq:equal_m_factorialmoments} between the factorial moments
+of sample and full network.
+
+\bigskip
+
+For the construction of a maximum-entropy distribution from generic
+constraints see Jaynes \citey{jaynes1963}[\chap~11]{jaynes1994_r2003}. More
+precisely we use the minimum relative-entropy principle
+\citep{hobsonetal1973,csiszar1985}[\sect~5.2.2]{sivia1996_r2006} with
+respect to a reference distribution. For the solution of the extremization
+problem see Mead \etal\ \citey{meadetal1984} and the extensive text by Fang
+\etal\ \citey{fangetal1997}.
 
 Let us apply the relative-\me\ method \citep{sivia1996_r2006,meadetal1984}
 directly to sampled neurons; denote this approach by $\yHb$. Then we apply

@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-19T16:21:29+0100
+%% Last-Updated: 2019-11-19T17:09:08+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -695,7 +695,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\yg}{\bm{c}}
 \newcommand*{\yc}{\Hat{\bm{c}}}
 \newcommand*{\yll}{\bm{\lambda}}
-\newcommand*{\yl}{\bm{l}}
+\newcommand*{\yl}{\lambda}
 \newcommand*{\yk}{z}
 \newcommand*{\yK}{\zeta}
 %entropies
@@ -952,8 +952,8 @@ A summary of all points above is given in the final
 
 Our notation and terminology follow \textsc{iso}
 \citey{iso1993,iso2006,iso2006b} standards and Jaynes
-\citey{jaynes1994_r2003} for \dobs. We often simply say \enquote{belief}
-for \enquote{\dob}.
+\citey{jaynes1994_r2003} for \dobs. We use \enquote{\dob},
+\enquote{belief}, and \enquote{probability} interchangeably.
 
 
 
@@ -1863,102 +1863,77 @@ uncertain about the number $\yA$, with belief $P(\yA)$, then by the theorem
 of total probability our belief about $\ya$ is
 \begin{equation}
   \label{eq:belief_sample_unknown_A}
-  p(\ya)= \sum_{\yA} \yG_{\ya\yA} \;P(\A).
+  p(\ya)= \sum_{\yA} \yG_{\ya\yA} \;P(\yA).
 \end{equation}
 In our case the units are neurons, the set is the full network, and the
 property is their being active in a specific time bin.
 
 From the definition of normalized factorial
-moment~\eqref{eq:def_factorial_moment_a}, the expression for the hypergeometric
-distribution~\eqref{eq:conditional_hypergeometric}, and the
+moment~\eqref{eq:def_factorial_moment_a}, the expression for the
+hypergeometric distribution~\eqref{eq:conditional_hypergeometric}, and the
 relation~\eqref{eq:belief_sample_unknown_A} between our beliefs about $\ya$
-and $\yA$, it is possible to prove using some combinatorial juggling the
+and $\yA$, and using some combinatorial juggling, one can prove the
 equality~\eqref{eq:equal_m_factorialmoments} between the factorial moments
 of sample and full network.
 
 \bigskip
 
 For the construction of a maximum-entropy distribution from generic
-constraints see Jaynes \citey{jaynes1963}[\chap~11]{jaynes1994_r2003}. More
-precisely we use the minimum relative-entropy principle
+expectation constraints see Jaynes
+\citey{jaynes1963}[\chap~11]{jaynes1994_r2003}. More precisely we use the
+minimum relative-entropy method
 \citep{hobsonetal1973,csiszar1985}[\sect~5.2.2]{sivia1996_r2006} with
 respect to a reference distribution. For the solution of the extremization
-problem see Mead \etal\ \citey{meadetal1984} and the extensive text by Fang
-\etal\ \citey{fangetal1997}.
+problem using Lagrangians and Lagrange multipliers see Mead \etal\
+\citey{meadetal1984} and the extensive texts by Fang \etal\
+\citey{fangetal1997} and Boyd \etal\ \citey{boydetal2004_r2009}. For a
+geometric understanding of the extremization and of the relation between
+expectations and multipliers see Porta Mana \citey{portamana2017b}.
 
-Let us apply the relative-\me\ method \citep{sivia1996_r2006,meadetal1984}
-directly to sampled neurons; denote this approach by $\yHb$. Then we apply
-the method to the full network of neurons, most of which are unsampled;
-denote this approach by $\yHa$.
-
-Applied directly to the sampled neurons, the method yields the distribution
-\begin{equation}
-  \label{eq:app_maxent_sample}
-  \pf(\ya \|\yHb)
-  =\frac{1}{\yk(\yl)}\,
-  \binom{n}{n\ya}
-  \exp[\yl\T \yg_{\ya}]
-\end{equation}
-where $\yk(\yl)$ is a normalization constant. The binomial in front of the
-exponential appears because we must account for the multiplicity by which
-the network-average activity $\ya$ can be realized: $\ya=0$ can be
-realized in only one way (all neurons inactive), $\ya=1/n$ can be realized
-in $n$ ways (one active neuron out of $n$), and so on. This term is analogous to
-the \enquote{density of states} in front of the Boltzmann factor in
-statistical mechanics \citep[\chap~16]{callen1960_r1985}. The $m$ Lagrange
-multipliers $\yl\defd (l_1,\dotsc,l_m)$ must satisfy the $m$ constraint
-equations
-\begin{equation}
-  \label{eq:app_maxent_sample_constraints}
-  \yc = \E(\yg \|\yHb) \equiv
-  \frac{1}{\yk(\yl)}\sum_{\ya}  \yg_{\ya} \binom{n}{n\ya}
-  \exp[\yl\T \yg_{\ya}].%, \qquad k=1,\dotsc,m.
-\end{equation}
-
-Applied to the full network, using the constraint
-expression~\eqref{eq:constraint_extended} derived in the previous section,
-the method yields the distribution for the full-network activity
+The result has the standard exponential-family form
 \begin{equation}
   \label{eq:app_maxent_pop}
-  \pf(\yA \| \yHa)  = \frac{1}{\yK(\yll)}\,
-  \binom{\yNv}{\yNv \yA}\,\exp\bigl(\yll\T
-  \tsum_{\ya} \yg_{\ya}\yG_{\ya\yA}\bigr).
+  \begin{gathered}
+  \px(\yA)  = \frac{1}{Z(\yll)}\;
+  g(\yA)\;
+  \exp\Biggl[\sum_{m}\yl_{m}\;
+  \binom{\yA}{m}\binom{N}{m}^{-1}
+  \Biggr],
+  \\
+  Z(\yll)\defd \sum_{\yA}g(\yA)\;
+  \exp\Biggl[\sum_{m}\yl_{m}\;
+  \binom{\yA}{m}\binom{N}{m}^{-1}
+  \Biggr],
+\end{gathered}
 \end{equation}
-The $m$ Lagrange multipliers $\yll\defd (\lambda_1,\dotsc,\lambda_m)$ must
-satisfy the $m$ constraint equations
+where $g(\yA)$ is the reference distribution and $\yll\defd (\yl_{m})$ are
+the Lagrange multipliers, satisfying the implicit
+constraint equations~\eqref{eq:final_constraint}:
 \begin{equation}
-  \label{eq:app_maxent_pop_constraints}
-  \yc = \E(\yg \|\yHa)\equiv %{}\\
- \frac{1}{\yK(\yll)}\sum_{\ya} \sum_{\yA} \yg_{\ya} \yG_{\ya \yA}
-\,
-  \binom{\yNv}{\yNv \yA}\,\exp\bigl(\yll\T
-  \tsum_{\ya} \yg_{\ya}\yG_{\ya\yA}\bigr).
-%  \\ k=1,\dotsc,m.
+  \label{eq:constraint_eq_lambda}
+  \sum_{\yA}
+  \tbinom{\yA}{m}\tbinom{N}{m}^{-1}\;
+  \tfrac{1}{Z(\yll)}\;
+  g(\yA)\;
+  \exp\biggl[\sum_{m}\yl_{m}\;
+  \tbinom{\yA}{m}\tbinom{N}{m}^{-1}
+  \biggr]
+=
+  \sum_{\ya}
+  \tbinom{\ya}{m} \tbinom{n}{m}^{-1} \; \yff_{\ya},\quad
+  m\in M.
 \end{equation}
 
-We obtain the distribution for the sample activity by marginalization, using
-\eqn~\eqref{eq:marginal}:
-\begin{equation}
-  \label{eq:app_maxent_pop_marg}
-  \pf(\ya \| \yHa)  = \frac{1}{\yK(\yll)}\, 
-  \sum_{\yA} \yG_{\ya \yA}
-\,
-  \binom{\yNv}{\yNv \yA}\,\exp\bigl(\yll\T
-  \tsum_{\ya} \yg_{\ya}\yG_{\ya\yA}\bigr).
-\end{equation}
-
-The distributions for the sample activity,
-\eqns~\eqref{eq:app_maxent_pop_marg} and \eqref{eq:app_maxent_sample},
-obtained with the two approaches $\yHb$ and $\yHa$, are different. From the
-discussion in the previous section we expect them to be vaguely similar;
-yet they cannot be exactly equal, because their equality would require the
-$2m$ quantities $\yll$ and $\yl$ to satisfy the constraint equations
-\eqref{eq:app_maxent_pop_constraints} and
-\eqref{eq:app_maxent_sample_constraints}, and in addition also the $n$
-equations $\pf(\ya \| \yHa) = \pf(\ya \| \yHb)$,
-$\ya=1/n,\dotsc,1$ (one equation is taken care of by the normalization of
-the distributions). We would have a set of $2m+n$ equations in $2m$
-unknowns.
+The reference distribution $g(\yA)$ represents our pre-data beliefs about
+the activity levels $\yA$. We know that the majority of neurons in a brain
+area are rarely simultaneously active within a window of some milliseconds,
+so we could choose a distribution with slightly higher weights on low
+values of $\yA$. On the other hand, considering the number of ways in which
+$\yA$ out of $N$ neurons can be simultaneously active would suggest the
+multiplicity distribution proportional to $\binom{N}{\yA}$. It turns out
+that our results of \sects~\ref{sec:application}--\ref{sec:marginalization}
+are actually quite insensitive to the choice between these two possible
+reference distributions, or even a uniform reference distribution.
 
 
 \section{Measure of informational sufficiency}

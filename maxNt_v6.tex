@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-18T22:37:13+0100
+%% Last-Updated: 2019-11-19T08:53:02+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1427,8 +1427,8 @@ The measure $\ydi(M'',M')$ so defined is positive if $M''$ is \enquote{more
   informationally sufficient} than $M'$, and negative otherwise.
 
 Why is this a natural measure? Because $\ydi(M'',M')$ is equal to the
-log-ratio of the likelihoods of the hypotheses $M''$ and $M'$ in view of
-the data $\yf$:
+log-ratio of the probabilities of the data $\yf$ conditional on the
+hypotheses $M''$ and $M'$:
 \begin{equation}
   \label{eq:bayes_factor}
   \ydi(M'',M') =
@@ -1516,7 +1516,7 @@ the full-network level, $N=10\,000$, versus the hypothesis $M_{5, n}$ of
   \label{eq:diff_suff_n}
   \ydi(M_{5, N}, M_{5, n}) = 35\;\nat = 15\;\hart,
 \end{equation}
-that is, the data are 15 orders of magnitude more likely under the first
+that is, the data are 15 orders of magnitude more probable under the first
 hypothesis than under the second.
 
 \bigskip
@@ -1634,26 +1634,66 @@ as well have been recorded by our measuring procedure. \enquote{Just as
   well} indicates equal degrees of belief. Whether the equality of such
 beliefs is justified, or for which sampling procedures it could be
 justified, is the fundamental, deep question of sampling theory, which we
-cannot discuss here of course \citep[see \eg\ the discussions and
+cannot discuss here of course \citep[see \eg\ the discussions, reviews, and
 references in][]{ericson1969,smith1976}. $N$ therefore depends on factors
-such as: the shape and dimensions of the recording probe; the inaccuracy in
-its insertion, leading for example to slightly different insertion points
-or angles; the density of neurons around the point of insertion of the
-probe.
+such as: the shape, dimensions, and technical specifications of the
+recording probe; the inaccuracy in the insertion of the probe, leading for
+example to slightly different insertion points or angles; the density of
+neurons around the probe; and similar. $N$ can only be assessed case by
+case. The plots of \fig~\ref{fig:plots_5mom} suggest that its order of
+might be enough for qualitative inferences. As discussed in the next
+section, even if the exact number $N$ were known, the maximum-entropy
+distribution ought to be interpreted qualitatively or semi-quantitatively.
 
-Its order of magnitude is enough for making qualitative inferences. As
-discussed in the next section, even if the exact number were known, the
-maximum-entropy distribution ought to be interpreted qualitatively.
-
-It would be possible to derive a distribution $\pxx(A)$ for the full
-network based on an unknown $N$, by  expressing our belief distribution
-$\pxx(N)$ about $N$ and using this to marginalize $N$ out:
+If our uncertainty about $N$ spans several orders of magnitude, we can of
+course assign a probability to the possible values of $N$ based on our
+background information and the frequency data $\yf$. The procedure is
+similar to that of \sect~\ref{sec:marginalization} and appendix***. The
+probability for the data $\yf$ conditional on a set of constraints $M$ and
+$N$ is the exponential of the relative entropy~\eqref{eq:relentropy_T}:
 \begin{equation}
-  \label{eq:marginalize_N}
-  \pxx(A \| \text{$N$ \small unknown}) = \sum_{N} \px(\yA \| N)\;\pxx(N).
+  \label{eq:prob_data_from_N}
+  \pf(\yf \| M, N) \approx \exp\bigl\{
+  T\,\sh[\yf; \pxx(\ya \| M, N)]\bigr\}.
 \end{equation}
-But this would be overkill, owing to the qualitative character of the
-maximum-entropy distribution constructed with exact $N$.
+If our pre-data probability for $N$ is $p(N)$, then by Bayes's theorem
+\begin{equation}
+  \label{eq:prob_N_from_data}
+  \pf(N \| M, \yf) \propto p(N)\;\exp\bigl\{
+  T\,\sh[\yf; \pxx(\ya \| M, N)]\bigr\}.
+\end{equation}
+
+Here is a simple illustrative example with our first data set. Suppose our
+uncertainty spans slightly more than an order of magnitude, from $N=1\,000$
+to $N=20\,000$. Divide this range roughly into thirds of order of
+magnitude, considering the values
+$N\in \set{1\,000, 2\,000, 5\,000, 10\,000, 20\,000}$. Assuming five
+moments $M$ are sufficient,
+formula~\eqref{eq:prob_data_from_N} gives
+\begin{equation}
+  \label{eq:data1_f_from_N}
+  \begin{gathered}
+  \pf(\yf \| N=1\,000, M) =  0.00222,\qquad
+  \pf(\yf \| N=2\,000, M) =  0.00704,\\
+  \pf(\yf \| N=5\,000, M) =  0.0127,\qquad
+  \pf(\yf \| N=10\,000, M) =  0.0150,\\
+  \pf(\yf \| N=20\,000, M) =  0.0135.
+\end{gathered}
+\end{equation}
+Our uncertainty is about a scale factor, so it can be represented by equal
+pre-data probabilities $1/5$ about these partial orders of magnitude. Thus
+from~\eqref{eq:data1_f_from_N} we find 
+\begin{equation}
+  \label{eq:data1_N_from_f}
+  \begin{gathered}
+  \pf(N=1\,000 \| \yf, M) =  0.044,\qquad
+  \pf(N=2\,000 \| \yf, M) =  0.140,\\
+  \pf(N=5\,000 \| \yf, M) =  0.251,\qquad
+  \pf(N=10\,000 \| \yf, M) =  0.298,\\
+  \pf(N=20\,000 \| \yf, M) =  0.267,
+\end{gathered}
+\end{equation}
+which gives a slightly higher probability to $N=10\,000$.
 
 \section{Limitations and assumptions}
 \label{sec:assumptions}

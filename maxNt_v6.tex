@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-19T08:53:02+0100
+%% Last-Updated: 2019-11-19T14:47:34+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1641,8 +1641,8 @@ recording probe; the inaccuracy in the insertion of the probe, leading for
 example to slightly different insertion points or angles; the density of
 neurons around the probe; and similar. $N$ can only be assessed case by
 case. The plots of \fig~\ref{fig:plots_5mom} suggest that its order of
-might be enough for qualitative inferences. As discussed in the next
-section, even if the exact number $N$ were known, the maximum-entropy
+magnitude might be enough for qualitative inferences. As discussed in the
+next section, even if the exact number $N$ were known, the maximum-entropy
 distribution ought to be interpreted qualitatively or semi-quantitatively.
 
 If our uncertainty about $N$ spans several orders of magnitude, we can of
@@ -1650,26 +1650,26 @@ course assign a probability to the possible values of $N$ based on our
 background information and the frequency data $\yf$. The procedure is
 similar to that of \sect~\ref{sec:marginalization} and appendix***. The
 probability for the data $\yf$ conditional on a set of constraints $M$ and
-$N$ is the exponential of the relative entropy~\eqref{eq:relentropy_T}:
+$N$ is the exponential of minus the relative entropy~\eqref{eq:relentropy_T}:
 \begin{equation}
   \label{eq:prob_data_from_N}
-  \pf(\yf \| M, N) \approx \exp\bigl\{
-  T\,\sh[\yf; \pxx(\ya \| M, N)]\bigr\}.
+  \pf(\yf \| M, N) = \binom{T}{T\yf}\;\prod_{a}\pxx(\ya \| M, N)^{T\,\yff_{a}}
+  \approx \exp\bigl\{  -T\,\sh[\yf; \pxx(\ya \| M, N)]\bigr\}.
 \end{equation}
 If our pre-data probability for $N$ is $p(N)$, then by Bayes's theorem
 \begin{equation}
   \label{eq:prob_N_from_data}
-  \pf(N \| M, \yf) \propto p(N)\;\exp\bigl\{
-  T\,\sh[\yf; \pxx(\ya \| M, N)]\bigr\}.
+  \pf(N \| M, \yf) \propto
+  p(N)\;\exp\bigl\{-T\,\sh[\yf; \pxx(\ya \| M, N)]\bigr\}.
 \end{equation}
 
 Here is a simple illustrative example with our first data set. Suppose our
 uncertainty spans slightly more than an order of magnitude, from $N=1\,000$
 to $N=20\,000$. Divide this range roughly into thirds of order of
 magnitude, considering the values
-$N\in \set{1\,000, 2\,000, 5\,000, 10\,000, 20\,000}$. Assuming five
-moments $M$ are sufficient,
-formula~\eqref{eq:prob_data_from_N} gives
+$N\in \set{1\,000, 2\,000, 5\,000, 10\,000, 20\,000}$. Assuming the set $M$
+of first five moments is sufficient, formula~\eqref{eq:prob_data_from_N}
+gives
 \begin{equation}
   \label{eq:data1_f_from_N}
   \begin{gathered}
@@ -1680,9 +1680,9 @@ formula~\eqref{eq:prob_data_from_N} gives
   \pf(\yf \| N=20\,000, M) =  0.0135.
 \end{gathered}
 \end{equation}
-Our uncertainty is about a scale factor, so it can be represented by equal
-pre-data probabilities $1/5$ about these partial orders of magnitude. Thus
-from~\eqref{eq:data1_f_from_N} we find 
+Since our uncertainty regards a scale factor, it can be represented by
+equal pre-data probabilities $1/5$ about these partial orders of magnitude.
+Thus from~\eqref{eq:data1_f_from_N} we find
 \begin{equation}
   \label{eq:data1_N_from_f}
   \begin{gathered}
@@ -1694,6 +1694,22 @@ from~\eqref{eq:data1_f_from_N} we find
 \end{gathered}
 \end{equation}
 which gives a slightly higher probability to $N=10\,000$.
+
+\bigskip
+
+In this way we can make inferences -- for example about the sufficiency of
+a set of moments, or about the marginal sample distribution -- that take
+into account our uncertainty about $N$. We must make sure to avoid
+circularities, though: for example, we can't assume a set of moments $M$ to
+be sufficient and assess our uncertainty about $N$ conditional on it, and
+then use this uncertainty to assess the sufficiency of $M$. But we can
+approximately assess the sufficiency of a subset of moments $M' \subset M$
+taking into account the uncertainty of $N$ conditional on $M$.
+
+A rigorous assessment would involve a more expensive, full Bayesian
+calculation; but such calculation would make the whole maximum-entropy
+approach superfluous. We discuss this final point in the next section.
+
 
 \section{Limitations and assumptions}
 \label{sec:assumptions}

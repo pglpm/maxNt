@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-19T14:47:34+0100
+%% Last-Updated: 2019-11-19T14:54:26+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1835,9 +1835,90 @@ this kind of sufficiency questions.
 % %\renewcommand*{\appendixpagename}{Appendix}
 % %\renewcommand*{\appendixname}{Appendix}
 % %\appendixpage
-% \appendix
+\appendix
+
+\section{Derivation of the maximum-entropy distribution}
+\label{sec:derivation_maxent_fullnet}
 
 
+
+Let us apply the relative-\me\ method \citep{sivia1996_r2006,meadetal1984}
+directly to sampled neurons; denote this approach by $\yHb$. Then we apply
+the method to the full network of neurons, most of which are unsampled;
+denote this approach by $\yHa$.
+
+Applied directly to the sampled neurons, the method yields the distribution
+\begin{equation}
+  \label{eq:app_maxent_sample}
+  \pf(\ya \|\yHb)
+  =\frac{1}{\yk(\yl)}\,
+  \binom{n}{n\ya}
+  \exp[\yl\T \yg_{\ya}]
+\end{equation}
+where $\yk(\yl)$ is a normalization constant. The binomial in front of the
+exponential appears because we must account for the multiplicity by which
+the network-average activity $\ya$ can be realized: $\ya=0$ can be
+realized in only one way (all neurons inactive), $\ya=1/n$ can be realized
+in $n$ ways (one active neuron out of $n$), and so on. This term is analogous to
+the \enquote{density of states} in front of the Boltzmann factor in
+statistical mechanics \citep[\chap~16]{callen1960_r1985}. The $m$ Lagrange
+multipliers $\yl\defd (l_1,\dotsc,l_m)$ must satisfy the $m$ constraint
+equations
+\begin{equation}
+  \label{eq:app_maxent_sample_constraints}
+  \yc = \E(\yg \|\yHb) \equiv
+  \frac{1}{\yk(\yl)}\sum_{\ya}  \yg_{\ya} \binom{n}{n\ya}
+  \exp[\yl\T \yg_{\ya}].%, \qquad k=1,\dotsc,m.
+\end{equation}
+
+Applied to the full network, using the constraint
+expression~\eqref{eq:constraint_extended} derived in the previous section,
+the method yields the distribution for the full-network activity
+\begin{equation}
+  \label{eq:app_maxent_pop}
+  \pf(\yA \| \yHa)  = \frac{1}{\yK(\yll)}\,
+  \binom{\yNv}{\yNv \yA}\,\exp\bigl(\yll\T
+  \tsum_{\ya} \yg_{\ya}\yG_{\ya\yA}\bigr).
+\end{equation}
+The $m$ Lagrange multipliers $\yll\defd (\lambda_1,\dotsc,\lambda_m)$ must
+satisfy the $m$ constraint equations
+\begin{equation}
+  \label{eq:app_maxent_pop_constraints}
+  \yc = \E(\yg \|\yHa)\equiv %{}\\
+ \frac{1}{\yK(\yll)}\sum_{\ya} \sum_{\yA} \yg_{\ya} \yG_{\ya \yA}
+\,
+  \binom{\yNv}{\yNv \yA}\,\exp\bigl(\yll\T
+  \tsum_{\ya} \yg_{\ya}\yG_{\ya\yA}\bigr).
+%  \\ k=1,\dotsc,m.
+\end{equation}
+
+We obtain the distribution for the sample activity by marginalization, using
+\eqn~\eqref{eq:marginal}:
+\begin{equation}
+  \label{eq:app_maxent_pop_marg}
+  \pf(\ya \| \yHa)  = \frac{1}{\yK(\yll)}\, 
+  \sum_{\yA} \yG_{\ya \yA}
+\,
+  \binom{\yNv}{\yNv \yA}\,\exp\bigl(\yll\T
+  \tsum_{\ya} \yg_{\ya}\yG_{\ya\yA}\bigr).
+\end{equation}
+
+The distributions for the sample activity,
+\eqns~\eqref{eq:app_maxent_pop_marg} and \eqref{eq:app_maxent_sample},
+obtained with the two approaches $\yHb$ and $\yHa$, are different. From the
+discussion in the previous section we expect them to be vaguely similar;
+yet they cannot be exactly equal, because their equality would require the
+$2m$ quantities $\yll$ and $\yl$ to satisfy the constraint equations
+\eqref{eq:app_maxent_pop_constraints} and
+\eqref{eq:app_maxent_sample_constraints}, and in addition also the $n$
+equations $\pf(\ya \| \yHa) = \pf(\ya \| \yHb)$,
+$\ya=1/n,\dotsc,1$ (one equation is taken care of by the normalization of
+the distributions). We would have a set of $2m+n$ equations in $2m$
+unknowns.
+
+
+\section{Measure of informational sufficiency}
+\label{sec:measure_suff}
 
 Let's ask how much more probable is the
 sufficiency of one set with respect to the other, conditional on our data

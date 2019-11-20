@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-20T11:41:20+0100
+%% Last-Updated: 2019-11-20T16:55:01+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1039,36 +1039,100 @@ distribution that approximately answers all these questions.
 
 The idea behind our approach is easily summarized:
 \begin{enumerate}[label=(\alph*)]
-\item \label{item:sample_step} Using sampling theory we determine the
+\item\label{item:sample_step} Using sampling theory we determine the
   relation between some expected values -- specifically, moments -- for the
   total activity $\ya$ of the sample and corresponding expected values $M$
   for the total activity $\yA$ of the full network.
-\item \label{item:maxent_step} Using the maximum-entropy method we build a
+\item\label{item:maxent_step} Using the maximum-entropy method we build a
   distribution $\px(\yA \| M, N)$ for the total activity of the full
   network of $N$ neurons, using as constraints the expected values $M$
   found in the previous step.
 \end{enumerate}
 We now discuss the ideas behind these steps more in detail, leaving their
-precise mathematical implementation to
-appendix~\ref{sec:derivation_maxent_fullnet}.
+precise mathematical implementation and a more detailed list of references
+to appendix~\ref{sec:derivation_maxent_fullnet}.
 
-Step~\ref{item:sample_step} is possible because the probability calculus
-gives an exact, linear relation between the first $m$ moments for the full
-network and the first $m$ for the sample
-\citep[\eqns~(16)]{portamanaetal2015}; the ones determine the others and
-vice versa at every time bin. This relation holds for any belief
-distribution $\pxxx(\yA)$ for the full-network activity and its marginal
-$\pxx(\ya)$ for the sample activity. It is a classical result of sampling
-theory.
+\medskip
 
-***
+Step~\ref{item:sample_step}, a result of sampling theory, is just an
+application of the probability calculus, which gives an exact linear
+relation between the first $m$ moments for the full network and the first
+$m$ for the sample \citep[\eqns~(16)]{portamanaetal2015}. The ones
+determine the others and vice versa at every time bin. This relation holds
+for any belief distribution $\pxxx(\yA_{t})$ for the full-network activity
+and its marginal $\pxx(\ya_{t})$ for the sample activity at that bin.
 
-\citep[\chaps~I--IV]{whitworth1867_r1965}[\chap~II]{feller1950_r1968}[\chap~3]{jaynes1994_r2003}[see
-also][]{whitworth1897}.
+This sampling relation is even more straightforward if instead of power
+moments we use \emph{normalized factorial moments} \citep{potts1953}. The
+$m$th normalized factorial moment of a distribution $\pxx(\ya)$ is
+\begin{equation}
+  \label{eq:def_factorial_moment_a}
+  \E\Biggl[\binom{\ya}{m} \Biggr]\bigg/\binom{n}{m}
+  \equiv
+  \sum_{\ya=0}^{n} %m!\,
+  \displaystyle\binom{\ya}{m} \bigg/ \binom{n}{m}\; \pxx(\ya),
+  \qquad 1\le m \le n,
+\end{equation}
+% where $\px(\ya \| \yH)$ is the probability for activity $\ya$ given
+% assumptions $\yH$; \enquote{$\ya$} may refer to any recorded bin or to a
+% new bin.
+that is, the expected number of distinct $m$-tuples of simultaneously
+spiking neurons (within a time-bin's width), normalized by the maximum
+possible number of distinct $m$-tuples. % For
+% example, with $m=2$, if $a=4$ neurons spike in a network of $n=5$, we
+% have $\tbinom{4}{2}=6$ distinct pairs of simultaneously spiking neurons,
+% and the total number of distinct pairs is $\tbinom{5}{2}=10$. The
+% normalized number of spiking pairs is therefore $6/10$.
+Note that the first $m$ factorial moments together provide the same
+information as the first $m$ power moments together, and vice versa: they
+are linearly related because $\tbinom{\ya}{m}$ is a polynomial in $\ya$ of
+degree $m$. % Specifying one set is therefore
+% equivalent to specifying the other set.
+But the normalized factorial moments have a convenient property for our
+analysis: \emph{the first $n$ normalized factorial moments for the sample
+  and for the full network are numerically identical}:
+\begin{equation}
+  \label{eq:equal_m_factorialmoments}
+  \begin{split}
+  \E\Biggl[\binom{\ya}{m} \Biggr]\bigg/\binom{n}{m}
+  &=
+  \E\Biggl[\binom{\yA}{m} \Biggr]\bigg/\binom{N}{m}
+  \qquad\text{or}\\
+    \sum_{\ya=0}^{n} %m!\,
+  \binom{\ya}{m}\bigg/  \binom{n}{m}\; \pxx(\ya)
+&=    \sum_{\yA=0}^{N} %m!\,
+  \binom{\yA}{m}\bigg/  \binom{N}{m}\; \pxxx(\yA),\qquad
+  % \E\condt[\big]{\tbinom{\ya}{m}\;\tbinom{n}{m}^{-1}}{\yH} =
+  % \E\condt[\big]{\tbinom{\yA}{m}\;\tbinom{N}{m}^{-1}}{\yH},
+  1\le m \le n.
+\end{split}
+\end{equation}
+% where $\pxxx(\yA)$ is our distribution of belief about the full-network
+% activity, and $\pxx$
 
-Combining this result with the maximum-entropy prescription
-\enquote{moments${}={}$measured moments} for the sample, we have that the
-measured moments for the sample determine the moments for the full network:
+
+\medskip
+
+
+In step~\ref{item:maxent_step} we actually use the
+\emph{minimum-relative-entropy} method
+\citep{hobsonetal1973,csiszar1985}[\sect~5.2.2]{sivia1996_r2006} with
+respect to a uniform reference distribution. We'll still call it
+\enquote{maximum-entropy} for brevity. It amounts to two prescriptions:
+choose the distribution, among those satisfying specific convex constraints
+such as fixed expectations, that has minimum relative entropy with respect
+to a reference distribution; and judge those expectations to be equal to
+some measured averages, typically time averages.
+
+In our case we don't have measured time averages of the quantity
+$\binom{\yA}{m}$ to equate to the factorial moment
+$\E\bigl[\binom{\yA}{m}\bigr]$ of the full-network distribution
+$\pxxx(\yA)$. But \eqn~\eqref{eq:equal_m_factorialmoments} of
+step~\ref{item:sample_step} comes to our rescue, because it says that the
+expectations for the full network are determined by those for the sample
+$\E\bigl[\binom{\ya}{m}\bigr]$, and we do have the time averages of the
+corresponding sample quantity $\binom{\ya}{m}$. So we can combine the two
+steps:
 \begin{equation*}
   \label{eq:chain_prescription_moments}
   \mathrlap{\overbracket{\phantom{\text{measured moments} \rightarrow
@@ -1078,64 +1142,54 @@ measured moments for the sample determine the moments for the full network:
   \rightarrow
     \text{full-network moments}}_{\textit{sampling theory}}
 \end{equation*}
-
-These two steps are more straightforward if instead of power moments we use
-\emph{normalized factorial moments} \citep{potts1953}. The $m$th normalized
-factorial moment of a distribution $\pxx(\ya)$ for the activity of the
-sample neurons is defined as the average
+and apply the maximum-entropy method to obtain a distribution
+$\px(\yA \| M, N)$ for the full network of $N$ neurons by constraining some
+of its factorial moments, for example $M=\set{1,\dotsc,m'}$ with $m'\le n$,
+to be equal to the sample's recorded averages. In formulae, the constraints
+on $\pxxx(\yA)$ are
 \begin{equation}
-  \label{eq:def_factorial_moment_a}
-  % \E\condt[\Bigg]{
-  %   \binom{\ya}{m}\,\binom{n}{m}^{-1}}{\yH}
-  % \equiv
-  \sum_{\ya=0}^{n} %m!\,
-  \displaystyle\binom{\ya}{m} \bigg/ \binom{n}{m}\; \pxx(\ya),
-  \qquad 1\le m \le n
+  \label{eq:final_constraint}
+\underbracket{\frac{1}{T}\sum_{t}\binom{\ya_{t}}{m}\bigg/\binom{n}{m}
+  \equiv
+   \sum_{\ya}
+  \binom{\ya}{m}\bigg/  \binom{n}{m} \; \yff_{\ya}}_{\text{measured moments}}
+  \mathrel{\;=\;}
+   \underbracket{\sum_{\yA}
+     \binom{\yA}{m}\bigg/  \binom{N}{m} \; \pxxx(\yA)}_{\text{distribution moments}},
+   \quad m\in M.
 \end{equation}
-% where $\px(\ya \| \yH)$ is the probability for activity $\ya$ given
-% assumptions $\yH$; \enquote{$\ya$} may refer to any recorded bin or to a
-% new bin.
-This moment can be interpreted as the expectation of the number of distinct
-$m$-tuples of simultaneously spiking neurons (within a bin's time width),
-normalized by the number of distinct $m$-tuples. For example, with $m=2$,
-if $a=4$ neurons spike in a network of $n=5$, we have $\tbinom{4}{2}=6$
-distinct pairs of simultaneously spiking neurons, and the total number of
-distinct pairs is $\tbinom{5}{2}=10$. The normalized number of spiking
-pairs is therefore $6/10$. Note that the first $m$ factorial moments
-provide the same information as the first $m$ power moments and vice versa:
-they linearly determine each other because $\tbinom{\ya}{m}$ is a
-polynomial in $\ya$ of degree $m$. Specifying one set is therefore
-equivalent to specifying the other set. But the normalized factorial
-moments have a convenient property for our analysis
-\citep[\sect~2.3]{portamanaetal2015}{potts1953}: \emph{the first $n$
-  normalized factorial moments for the sample and for the full network are
-  numerically identical}:
+
+The result is the
+distribution of the form
 \begin{equation}
-  \label{eq:equal_m_factorialmoments}
-    \sum_{\ya=0}^{n} %m!\,
-  \binom{\ya}{m}\bigg/  \binom{n}{m}\; \pxx(\ya)
-=    \sum_{\yA=0}^{N} %m!\,
-  \binom{\yA}{m}\bigg/  \binom{N}{m}\; \pxxx(\yA),
-  % \E\condt[\big]{\tbinom{\ya}{m}\;\tbinom{n}{m}^{-1}}{\yH} =
-  % \E\condt[\big]{\tbinom{\yA}{m}\;\tbinom{N}{m}^{-1}}{\yH},
-  \qquad 1\le m \le n,
+  \label{eq:app_maxent_pop_first}
+  \begin{gathered}
+  \px(\yA \| M, N)  = \frac{1}{Z(\yll)}\;
+%  g(\yA)\;
+  \exp\Biggl[\sum_{m}\yl_{m}\;
+  \binom{\yA}{m}\bigg/\binom{N}{m}
+  \Biggr]
+  \\
+\text{with}\qquad  Z(\yll)\defd \sum_{\yA}
+  % g(\yA)\;
+  \exp\Biggl[\sum_{m}\yl_{m}\;
+  \binom{\yA}{m}\bigg/\binom{N}{m}
+  \Biggr],
+\end{gathered}
 \end{equation}
-where $\pxxx(\yA)$ is our distribution of belief about the full-network
-activity.
+where the parameters $\yll$ are determined by the
+constraints~\eqref{eq:final_constraint}. It is further discussed in
+appendix~\ref{sec:derivation_maxent_fullnet}.
 
+\bigskip
 
+Before applying the formula above to two concrete data sets we want to add
+two remarks about the maximum-entropy method that are seldom made in the
+neuroscientific literature.
 
-Regarding~\ref{item:maxent_step}, we assume familiarity with the
-maximum-entropy method. We actually use the \emph{minimum-relative-entropy}
-method \citep{hobsonetal1973}, but call it \enquote{maximum-entropy} for
-brevity. It amounts to a pair of prescriptions: choose the distribution,
-among those satisfying specific convex constraints, such as fixed
-expectations, that has minimum relative entropy with respect to a reference
-distribution, often taken to be the uniform one; and judge those
-expectations to be equal to measured averages. We add two remarks about
-this method that are seldom made in the literature. First remark: the
-distribution $\px(\yA \| M, N)$ given by this method is the zeroth-order
-approximation \citep[\mynote{move to sect}in the sense of Laplace's
+First remark: the distribution $\px(\yA \| M, N)$ given by this method is
+the zeroth-order approximation \citep[\mynote{move to sect}in the sense of
+Laplace's
 method:][\chap~4]{debruijn1958_r1961}{tierneyetal1986,strawderman2000} of
 four different distributions for the full network:
 \begin{enumerate}[label=(\roman*)]
@@ -1157,27 +1211,6 @@ for the long-run frequency distributions \citep[\mynote{move to
   sect}]{jaynes1986d_r1996,portamana2009,portamana2017}. We discuss these
 two remarks further in \sect~\ref{sec:assumptions}.
 
-In our case, to apply the maximum-entropy prescription to the total
-activity of the full network we need to fix some averages of its belief
-distribution, for example the distribution's moments. But we don't have any
-measured moments for the full network to equate the distribution moments
-to. 
-
-We can therefore apply the maximum-entropy method to obtain a distribution
-$\px(\yA)$ for the full network by constraining its $m$th factorial moment
-to be equal to the sample's recorded average of
-$\tbinom{\ya}{m}/\tbinom{n}{m}$, for as many $m$ as we please with
-$1\le m \le n$. In formulae, the constraints on $\px(\yA)$ are
-\begin{equation}
-  \label{eq:final_constraint}
-\underbracket{\frac{1}{T}\sum_{t}\binom{\ya_{t}}{m}\bigg/\binom{n}{m}
-  \equiv
-   \sum_{\ya}
-  \binom{\ya}{m}\bigg/  \binom{n}{m} \; \yff_{\ya}}_{\text{measured moments}}
-  \mathrel{\;=\;}
-   \underbracket{\sum_{\yA}
-  \binom{\yA}{m}\bigg/  \binom{N}{m} \; \px(\yA)}_{\text{distribution moments}}.
-\end{equation}
 
 Finding the constrained maximum-entropy distribution $\px(\yA)$ amounts to
 a convex optimization
@@ -1185,6 +1218,11 @@ a convex optimization
 and for the numbers $N,n,m$ considered in the present work it can be done
 on a modern computer without approximations of the partition functions that
 appear in the formalism.
+
+***
+
+
+
 
 \bigskip
 
@@ -1884,9 +1922,10 @@ From the definition of normalized factorial
 moment~\eqref{eq:def_factorial_moment_a}, the expression for the
 hypergeometric distribution~\eqref{eq:conditional_hypergeometric}, and the
 relation~\eqref{eq:belief_sample_unknown_A} between our beliefs about $\ya$
-and $\yA$, and using some combinatorial juggling, one can prove the
-equality~\eqref{eq:equal_m_factorialmoments} between the factorial moments
-of sample and full network.
+and $\yA$, and using some combinatorial juggling
+\citep[\chaps~I--IV]{whitworth1867_r1965}[\chap~II]{feller1950_r1968}[appendix~A]{portamanaetal2015}{potts1953}, one
+can prove the equality~\eqref{eq:equal_m_factorialmoments} between the
+factorial moments of sample and full network.
 
 \bigskip
 

@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-19T17:09:08+0100
+%% Last-Updated: 2019-11-20T11:41:20+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1031,66 +1031,38 @@ full network during and after the recording, and across sessions under the
 same study conditions. For example: what was its frequency distribution
 during the recording? How much does this frequency distribution change
 across sessions? How much total activity should we expect at any time bin
-during a recording? The approach presented here gives probability
-distributions over the possible answers to these questions.
+during a recording? The approach presented here gives a probability
+distribution that approximately answers all these questions.
 
 
 \bigskip
 
 The idea behind our approach is easily summarized:
 \begin{enumerate}[label=(\alph*)]
-  \item\label{item:maxent_step} we build a distribution $\px(\yA)$ for the total
-  activity of the full network using the maximum-entropy method;
-  \item\label{item:sample_step} the constrained averages used in the
-  maximum-entropy method for the full network are, in turn, determined via
-  sampling theory from the constrained averages for the sample.
+\item \label{item:sample_step} Using sampling theory we determine the
+  relation between some expected values -- specifically, moments -- for the
+  total activity $\ya$ of the sample and corresponding expected values $M$
+  for the total activity $\yA$ of the full network.
+\item \label{item:maxent_step} Using the maximum-entropy method we build a
+  distribution $\px(\yA \| M, N)$ for the total activity of the full
+  network of $N$ neurons, using as constraints the expected values $M$
+  found in the previous step.
 \end{enumerate}
-Let's discuss these points in detail.
+We now discuss the ideas behind these steps more in detail, leaving their
+precise mathematical implementation to
+appendix~\ref{sec:derivation_maxent_fullnet}.
 
-Regarding~\ref{item:maxent_step}, we assume familiarity with the
-maximum-entropy method. We actually use the \emph{minimum-relative-entropy}
-method \citep{hobsonetal1973}, but call it \enquote{maximum-entropy} for
-brevity. It amounts to a pair of prescriptions: choose the distribution,
-among those satisfying specific convex constraints, such as fixed
-expectations, that has minimum relative entropy with respect to a reference
-distribution, often taken to be the uniform one; and judge those
-expectations to be equal to measured averages. We add two remarks about
-this method that are seldom made in the literature. First remark: the
-distribution $\px(\yA)$ given by this method is the zeroth-order
-approximation \citep[in the sense of Laplace's
-method:][\chap~4]{debruijn1958_r1961}{tierneyetal1986,strawderman2000} of
-four different distributions for the full network:
-\begin{enumerate}[label=(\roman*)]
-\item the most probable \emph{frequency} distribution for the total
-  activity across the \emph{recorded} bins, %$\yFF(\yA)$,
-\item the \emph{belief} distribution for the value of the total
-  activity at any time bin among those \emph{recorded},
-  %$\yp(\yA_{t} \| \yH)$ with $1\le t \le T$,
-\item the most probable \emph{frequency} distribution for the total
-  activity in a very long run of \emph{new} time bins, %$\ynuu(\yA)$,
-\item the \emph{belief} distribution for the value of the total
-  activity at a \emph{new} time bin.
-  % $\yp(\yA_{t} \| \yH)$ with $t<1$ or $t>T$
-\end{enumerate}
-The maximum-entropy distribution is thus an approximation of our belief
-distribution about four different quantities. Note that the four
-distributions above numerically differ in higher-order approximations.
-Second remark: the maximum-entropy method based on the Shannon entropy
-implicitly makes some assumptions about the probabilities for the long-run
-frequency distributions
-\citep{jaynes1986d_r1996,portamana2009,portamana2017}. We discuss these two
-remarks further in \sect~\ref{sec:assumptions}. 
-
-In our case, to apply the maximum-entropy prescriptions to the total
-activity of the full network we need to fix some averages of its belief
-distribution, for example the distribution's moments. But we don't have any
-measured moments for the full network to equate the distribution moments
-to. Here enters point~\ref{item:sample_step}: the probability calculus
+Step~\ref{item:sample_step} is possible because the probability calculus
 gives an exact, linear relation between the first $m$ moments for the full
 network and the first $m$ for the sample
 \citep[\eqns~(16)]{portamanaetal2015}; the ones determine the others and
-vice versa at every time bin. This relation is a classical result of
-sampling theory
+vice versa at every time bin. This relation holds for any belief
+distribution $\pxxx(\yA)$ for the full-network activity and its marginal
+$\pxx(\ya)$ for the sample activity. It is a classical result of sampling
+theory.
+
+***
+
 \citep[\chaps~I--IV]{whitworth1867_r1965}[\chap~II]{feller1950_r1968}[\chap~3]{jaynes1994_r2003}[see
 also][]{whitworth1897}.
 
@@ -1150,6 +1122,46 @@ moments have a convenient property for our analysis
 \end{equation}
 where $\pxxx(\yA)$ is our distribution of belief about the full-network
 activity.
+
+
+
+Regarding~\ref{item:maxent_step}, we assume familiarity with the
+maximum-entropy method. We actually use the \emph{minimum-relative-entropy}
+method \citep{hobsonetal1973}, but call it \enquote{maximum-entropy} for
+brevity. It amounts to a pair of prescriptions: choose the distribution,
+among those satisfying specific convex constraints, such as fixed
+expectations, that has minimum relative entropy with respect to a reference
+distribution, often taken to be the uniform one; and judge those
+expectations to be equal to measured averages. We add two remarks about
+this method that are seldom made in the literature. First remark: the
+distribution $\px(\yA \| M, N)$ given by this method is the zeroth-order
+approximation \citep[\mynote{move to sect}in the sense of Laplace's
+method:][\chap~4]{debruijn1958_r1961}{tierneyetal1986,strawderman2000} of
+four different distributions for the full network:
+\begin{enumerate}[label=(\roman*)]
+\item the most probable \emph{frequency} distribution for the total
+  activity across the \emph{recorded} bins, %$\yFF(\yA)$,
+\item the \emph{belief} distribution for the value of the total
+  activity at any time bin among those \emph{recorded},
+  %$\yp(\yA_{t} \| \yH)$ with $1\le t \le T$,
+\item the most probable \emph{frequency} distribution for the total
+  activity in a very long run of \emph{new} time bins, %$\ynuu(\yA)$,
+\item the \emph{belief} distribution for the value of the total
+  activity at a \emph{new} time bin.
+  % $\yp(\yA_{t} \| \yH)$ with $t<1$ or $t>T$
+\end{enumerate}
+Note that the four distributions above numerically differ in higher-order
+approximations. Second remark: the maximum-entropy method based on the
+Shannon entropy implicitly makes some assumptions about the probabilities
+for the long-run frequency distributions \citep[\mynote{move to
+  sect}]{jaynes1986d_r1996,portamana2009,portamana2017}. We discuss these
+two remarks further in \sect~\ref{sec:assumptions}.
+
+In our case, to apply the maximum-entropy prescription to the total
+activity of the full network we need to fix some averages of its belief
+distribution, for example the distribution's moments. But we don't have any
+measured moments for the full network to equate the distribution moments
+to. 
 
 We can therefore apply the maximum-entropy method to obtain a distribution
 $\px(\yA)$ for the full network by constraining its $m$th factorial moment

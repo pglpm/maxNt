@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-20T16:55:01+0100
+%% Last-Updated: 2019-11-20T17:26:55+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1185,13 +1185,15 @@ appendix~\ref{sec:derivation_maxent_fullnet}.
 
 Before applying the formula above to two concrete data sets we want to add
 two remarks about the maximum-entropy method that are seldom made in the
-neuroscientific literature.
+neuroscientific literature. They are important for the interpretation of
+the results and are further discussed in \sect~\ref{sec:assumptions}.
 
-First remark: the distribution $\px(\yA \| M, N)$ given by this method is
-the zeroth-order approximation \citep[\mynote{move to sect}in the sense of
-Laplace's
-method:][\chap~4]{debruijn1958_r1961}{tierneyetal1986,strawderman2000} of
-four different distributions for the full network:
+
+First, the distribution $\px(\yA \| M, N)$ given by this method is the
+zeroth-order approximation (in the sense of Laplace's
+method)\citep[\chap~4]{debruijn1958_r1961}{tierneyetal1986,strawderman2000}
+of four different distributions for the full network, which differ
+numerically from one another in higher-order approximations:
 \begin{enumerate}[label=(\roman*)]
 \item the most probable \emph{frequency} distribution for the total
   activity across the \emph{recorded} bins, %$\yFF(\yA)$,
@@ -1204,23 +1206,16 @@ four different distributions for the full network:
   activity at a \emph{new} time bin.
   % $\yp(\yA_{t} \| \yH)$ with $t<1$ or $t>T$
 \end{enumerate}
-Note that the four distributions above numerically differ in higher-order
-approximations. Second remark: the maximum-entropy method based on the
-Shannon entropy implicitly makes some assumptions about the probabilities
-for the long-run frequency distributions \citep[\mynote{move to
-  sect}]{jaynes1986d_r1996,portamana2009,portamana2017}. We discuss these
-two remarks further in \sect~\ref{sec:assumptions}.
 
 
-Finding the constrained maximum-entropy distribution $\px(\yA)$ amounts to
-a convex optimization
-\citep{meadetal1984}[\chap~10]{pressetal1988_r2007}{fangetal1997,boydetal2004_r2009,portamana2017b}
-and for the numbers $N,n,m$ considered in the present work it can be done
-on a modern computer without approximations of the partition functions that
-appear in the formalism.
-
-***
-
+Second, the maximum-entropy method % (based on the \emph{Shannon} relative
+% entropy, as opposed to other entropy functions such as Burg's
+% \citeyear{burg1975})
+rests on some implicit assumptions about the probabilities for the long-run
+frequency distribution of activities. The often heard statement that it's
+\enquote{the maximally unbiased (or non-committal) distribution} must be
+taken with a grain of salt. \citep[\mynote{move to
+  sect}]{jaynes1986d_r1996,portamana2009,portamana2017}.
 
 
 

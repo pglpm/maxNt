@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-20T17:26:55+0100
+%% Last-Updated: 2019-11-20T20:23:20+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1181,17 +1181,37 @@ where the parameters $\yll$ are determined by the
 constraints~\eqref{eq:final_constraint}. It is further discussed in
 appendix~\ref{sec:derivation_maxent_fullnet}.
 
+The number and degrees of the constraining moments depend on the questions
+and hypotheses that a researcher is exploring; for example, hypotheses
+about the \enquote{cooperativity} or \enquote{interaction} in the network
+activity. We discuss this kind of use in \sect~\ref{sec:marginalization}.
+Note that the constraint equation~\eqref{eq:final_constraint} for the
+distribution~\eqref{eq:app_maxent_pop_first} \emph{may not have exact
+  solutions} if $N$ is strictly larger than $n$; and the possible
+discrepancy increases with the number of constraints. The essential reason
+for this discrepancy is the approximate character of two assumptions on
+which the maximum-entropy method is based and of one assumption specific to
+our application: measured moments equal expectations (or equivalently that
+the number of time bins $T$ is infinite), the order of the time bins is
+irrelevant, and that all full-network subsets with $\yA$ neurons are
+equally likely to be generating a total activity $\yA$. We discuss these
+assumptions in \sect~\ref{sec:assumptions}.
+
+%, but our main goal is to simply introduce
+% the general method without entering into biological questions of this
+% kind.
+
+
 \bigskip
 
 Before applying the formula above to two concrete data sets we want to add
-two remarks about the maximum-entropy method that are seldom made in the
+three remarks on the maximum-entropy method that are seldom made in the
 neuroscientific literature. They are important for the interpretation of
 the results and are further discussed in \sect~\ref{sec:assumptions}.
 
-
-First, the distribution $\px(\yA \| M, N)$ given by this method is the
+First, a maximum-entropy distribution, like $\px(\yA \| M, N)$, is the
 zeroth-order approximation (in the sense of Laplace's
-method)\citep[\chap~4]{debruijn1958_r1961}{tierneyetal1986,strawderman2000}
+approximation)\citep[\chap~4]{debruijn1958_r1961}{tierneyetal1986,strawderman2000}
 of four different distributions for the full network, which differ
 numerically from one another in higher-order approximations:
 \begin{enumerate}[label=(\roman*)]

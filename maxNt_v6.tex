@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-21T16:46:09+0100
+%% Last-Updated: 2019-11-22T15:47:19+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1086,7 +1086,8 @@ possible number of distinct $m$-tuples. % For
 Note that the first $m$ factorial moments together provide the same
 information as the first $m$ power moments together, and vice versa: they
 are linearly related because $\tbinom{\ya}{m}$ is a polynomial in $\ya$ of
-degree $m$. % Specifying one set is therefore
+degree $m$. So we'll just say \enquote{first $m$ moments} from now
+on. % Specifying one set is therefore
 % equivalent to specifying the other set.
 But the normalized factorial moments have a convenient property for our
 analysis: \emph{the first $n$ normalized factorial moments for the sample
@@ -1258,8 +1259,8 @@ the literature:
   classified as grid cells) from rat Medial Entorhinal Cortex, recorded for
   about 20 minutes. Their spikes are binned into $T=417\,641$ bins of
   $3\;\textrm{ms}$ width.
-\item The \textbf{second data set}, from
-  \textcite{rostamietal2016_r2017}, %\texttt{data\_RS.npy}
+\item The \textbf{second data set}, from \textcite[data courtesy by A.
+  Riehle and T. Brochier]{rostamietal2016_r2017}, %\texttt{data\_RS.npy}
   consists of $n=159$ neurons from macaque Motor Cortex, recorded for about
   15 minutes. Their spikes are binned into $T=300\,394$ bins of
   $3\;\textrm{ms}$ width.
@@ -1272,15 +1273,15 @@ the literature:
 
 \bigskip
 
-We first calculate the distribution by using five moments. This number
-already provides almost as much information as the full frequency
-distribution of the sample (see next section). Figure~\ref{fig:plots_5mom}
-shows the resulting densities (distribution${}\times N$) for three example
-values of full-network sizes: $N=1\,000$, $N=5\,000$, $N=10\,000$. The
-frequency distribution of the sample activity is also shown, and in the
-plot it is indistinguishable from the maximum-entropy distribution for
-$N=n$, that is, applied at the sample level. We discuss the case of unknown
-$N$ in \sect~\ref{sec:N}.
+The full-network maximum-entropy distribution is calculated using five
+moments. This number already provides almost as much information as the
+full frequency distribution of the sample (see next section).
+Figure~\ref{fig:plots_5mom} shows the resulting densities
+(distribution${}\times N$) for three example values of full-network sizes:
+$N=1\,000$, $N=5\,000$, $N=10\,000$. The frequency distribution of the
+sample activity is also shown, and in the plot it would be indistinguishable from
+the maximum-entropy distribution for $N=n$, that is, applied at the sample
+level. We discuss the case of unknown $N$ in \sect~\ref{sec:N}.
 \begin{figure}[!p]
 \centering
 \includegraphics[width=\linewidth]{_scripts/newpaper_stensola_5mom_distributionsN_priorc.pdf}%
@@ -1291,6 +1292,12 @@ $N$ in \sect~\ref{sec:N}.
 \end{figure}
 % maxent_solutions_different_moments_prior2_6moments.nb
 
+The most expensive calculation, for $N=10\,000$, takes less than 15 minutes
+on a laptop with two $2\;\textrm{GHz}$ cores. In all cases the moments were
+recovered with relative errors smaller than $10^{-12}$.
+% 1000:  3*10^-13 %
+% 5000: 7*10^-13 %, 581 s
+% 10000: 6*10^-11 %, 737 s
 
 The figure shows that the distribution for the full-network is less flat
 than the measured frequency distribution for the sample; their difference
@@ -1305,6 +1312,26 @@ maximum-entropy distribution at the sample level. The application of the
 probability calculus thus reveals interesting possible features of the full
 network. \textcolor{white}{If you find this you can claim a postcard from
   us.}
+
+These results show the potential usefulness of this maximum-entropy
+approach. For example, some researchers could be interested in the
+hypothesis that two distinct cell types or assemblies be present in the
+region where the recording was made. Finding a full-network distribution
+such as that in the upper panel of \fig~\ref{fig:plots_5mom} would provide
+some evidence for this hypothesis. If the researchers also have reasons to
+suspect that a specific set of the sampled neurons are of one type, and the
+remaining of the other type, they could further apply the method to the two
+sets separately. Finding two distributions with a single peak each would
+then provide some evidence that their separation was correct. In the case
+of data set 1, 27--29 sampled neurons were identified as grid cells
+belonging to 3--4 functional modules, see \cite{dunnetal2015}. The two
+peaks in the distribution obtained with our approach could reflect the grid
+vs non-grid distinction, or two groups of modules, or a combination of
+these cases.
+
+The important point is that ***
+
+
 
 
 \bigskip

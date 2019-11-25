@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-25T17:35:14+0100
+%% Last-Updated: 2019-11-25T17:52:38+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1326,33 +1326,32 @@ population. \textcolor{white}{If you find this you can claim a postcard from
 \label{fig:plots_cellsubsets}
 \end{figure}
 % maxent_solutions_different_moments_partial.nb
-These results show the potential usefulness of this maximum-entropy
-approach. Here is a \emph{toy} example of possible uses. We could be
-interested in the hypothesis that two distinct cell types or assemblies be
-present in the region where the recording was made. Finding a
-full-population distribution such as that in the upper panel of
-\fig~\ref{fig:plots_5mom} would provide some evidence for this hypothesis.
-Let's further imagine that we have reasons for suspecting that a specific
-set of the sampled neurons are of one type, and the remaining of the other
-type. In the case of data set 1, 27 of the 65 sampled neurons were
-identified as grid cells belonging to 3--4 functional modules, see
-\cite{dunnetal2015}. Could the two peaks in the distribution of
-\fig~\ref{fig:plots_5mom} reflect the activities of grid versus non-grid
-cells? We apply the method to these two sets of neurons individually, using
-$N=4\,150$ for the grid set and $N=5\,850$ for the non-grid set, to reflect
-their proportions in the recorded sample. The results are shown in the
-upper panel of \fig~\ref{fig:plots_cellsubsets}. The distribution for the
-larger population of grid cells (\textcolor{mygreen}{green triangles})
-seems to have one, broad peak, close to the first peak of the
-full-population distribution. The distribution for the larger population of
-non-grid cells (\textcolor{myred}{red circles}) has two peaks instead,
-roughly at the same positions as the full-population distribution
-(\textcolor{myblue}{blue curve}) but closer in height. So it would seem
-that the population of grid cells is contributing to the first peak of the
-full population, but it isn't the sole contributor. We can also assess how
-much the distributions for the two sets are independent. If they were
-completely independent, the full-population distribution would be given by
-their convolution:
+These results suggest that this maximum-entropy approach could be very
+useful. Here is a toy example of possible uses. We could be interested in
+the hypothesis that two distinct cell types or assemblies be present in the
+region where the recording was made. Finding a full-population distribution
+with two peaks, as in the upper panel of \fig~\ref{fig:plots_5mom}, would
+provide some evidence for this hypothesis. Let's further imagine that we
+have reasons for suspecting that a specific set of the sampled neurons are
+of one type, and the remaining of the other type. In the case of the first
+data set, 27 of the 65 sampled neurons were identified as grid cells
+belonging to 3--4 functional modules, see \cite{dunnetal2015}. Could the
+two peaks in the distribution of \fig~\ref{fig:plots_5mom} reflect the
+activities of grid versus non-grid cells? We apply the method to these two
+sets of neurons individually, using $N=4\,150$ for the grid set and
+$N=5\,850$ for the non-grid set, to reflect their proportions in the
+recorded sample. The results are shown in the upper panel of
+\fig~\ref{fig:plots_cellsubsets}. The distribution for the larger
+population of grid cells (\textcolor{mygreen}{green triangles}) seems to
+have one, broad peak, close to the first peak of the full-population
+distribution. The distribution for the larger population of non-grid cells
+(\textcolor{myred}{red circles}) has two peaks instead, roughly at the same
+positions as the full-population distribution (\textcolor{myblue}{blue
+  curve}) but closer in height. So it would seem that the population of
+grid cells is contributing to the first peak of the full population, but it
+isn't the sole contributor. We can also assess how much the distributions
+for the two sets are independent. If they were completely independent, the
+full-population distribution would be given by their convolution:
 \begin{equation}
   \label{eq:convolution}
   P_{\text{full}}(\yA) =  \smashoperator{\sum_{\yA'=0}^{\yA}} P_{\text{grid}}(\yA')\;

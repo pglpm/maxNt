@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-22T15:47:19+0100
+%% Last-Updated: 2019-11-25T17:35:14+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -20,7 +20,7 @@ british%
 \newcommand*{\firstdraft}{4 November 2015}
 \newcommand*{\firstpublished}{***}
 \newcommand*{\propertitle}{Maximum-entropy distributions for a 
-  neuronal network\\ from subnetwork data {\large\color{myred}[draft]}%\\{\large ***}%
+  neuronal population\\ from subpopulation data {\large\color{myred}[draft]}%\\{\large ***}%
 }
 \newcommand*{\pdftitle}{\propertitle}
 \newcommand*{\headtitle}{Maximum-entropy from sample data}
@@ -758,21 +758,21 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \begin{abstract}\labelsep 0pt%
   \noindent \mynote{Abstract must be rewritten once paper is ready}This
   work shows how to build a maximum-entropy probabilistic model for the
-  total activity of a network of neurons, given only some activity data or
-  statistics -- for example, empirical moments -- of a \emph{subnetwork}
+  total activity of a population of neurons, given only some activity data or
+  statistics -- for example, empirical moments -- of a \emph{subpopulation}
   thereof. This kind of model is useful because neuronal recordings are
-  always limited to a very small sample of a network of neurons.
+  always limited to a very small sample of a population of neurons.
 %
   The model is applied to two sets of neuronal data available in the
   literature. In some cases it makes interesting forecasts about the larger
-  network -- for example, two low-regime modes in the frequency
+  population -- for example, two low-regime modes in the frequency
   distribution for the total activity -- that are not visible in the sample
   data or in maximum-entropy models applied only to the sample.
 %
   For the two datasets, the maximum-entropy probability model applied only
-  to the subnetwork is compared with the marginal probability
+  to the subpopulation is compared with the marginal probability
   distribution obtained from the maximum-entropy model applied to the full
-  network. On a linear probability scale no large differences are
+  population. On a linear probability scale no large differences are
   visible, but on a logarithmic scale the two distributions show very
   different behaviours, especially in the tails.
   \\\noindent\emph{\footnotesize Note: Dear Reader \amp\ Peer, this
@@ -812,7 +812,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 
 
 \section{Introduction:\\a simple model for questions about large neuronal
-  networks}
+  populations}
 \label{sec:intro}
 
 What correlations are important for the description of the multi-neuronal
@@ -836,7 +836,7 @@ record a very small sample of neurons -- hundreds at most -- compared to
 the numbers that constitute a functionally distinguished brain region. Many
 probabilistic models focus on such samples only, somehow neglecting, in
 their assumptions, that the recorded neurons are a sample from a larger
-network. This kind of isolation assumptions sometimes escape attention,
+population. This kind of isolation assumptions sometimes escape attention,
 being subtly hidden in the mathematics. Some probabilistic models try to
 take also unrecorded neurons into account individually, and therefore
 become very complex\mynote{Yasser \amp\ Vahid: refs for here?}. It would be
@@ -846,10 +846,10 @@ detail about it. Such intermediate models would be useful, for example, for
 preliminary investigations, to help us to decide which hypotheses to
 discard and which to consider for more complex and costly studies.
 
-\mynote{[Yasser:] In the present work we aim to address the issue of building probability distributions over a large network using recording from subnetworks by considering the distribution of total population activity as an example. [}
+\mynote{[Yasser:] In the present work we aim to address the issue of building probability distributions over a large population using recording from subpopulations by considering the distribution of total population activity as an example. [}
 In the present work we propose such an intermediate model. It answers this
 question:\mynote{]} How much can the \emph{total} activity of a large neuronal
-network have been, given the observation of the activity of a very small
+population have been, given the observation of the activity of a very small
 sample thereof? This model addresses a larger brain area, avoiding the
 assumption of isolation of the sample; and by focusing on the total
 activity, rather than the activity of individual neurons, it remains simple
@@ -875,20 +875,20 @@ We illustrate possible uses of our proposed model in
   \citep{rostamietal2016_r2017}.
 \end{enumerate*}
 For each data set the model gives the most plausible frequency distribution
-with which all levels of total activity of a larger network of 1\,000--10\,000
+with which all levels of total activity of a larger population of 1\,000--10\,000
 neurons appeared during the recording. These guessed frequency
 distributions are distinctly different from the recorded ones for the
 sampled neurons. For the first data set, for example, the frequency
-distribution for the full network has two very distinct modes, both at low
+distribution for the full population has two very distinct modes, both at low
 activities, %($0.7\%$ and $2.6\%$ of simultaneously active neurons
 % within $3\;\mathrm{ms}$,
 see \fig~\ref{fig:plots_5mom}, whereas the frequency distribution for the
 sample is monotonically decreasing with its maximum at zero activity. The
 frequency distribution for the second data set doesn't have two modes but
 still presents one prominent shoulder in its low-activity mode. Note that
-these guessed features of the full network cannot be inferred by the
+these guessed features of the full population cannot be inferred by the
 application of maximum-entropy \emph{to the sample alone}. Although we don't
-formulate any hypotheses on why the larger network could have two distinct
+formulate any hypotheses on why the larger population could have two distinct
 low-activity regimes -- the purpose of the present work is only
 methodological -- these results shows that the proposed method can lead to
 the formulation or preliminary assessment of interesting hypotheses.
@@ -903,11 +903,11 @@ There's also an important methodological reason. Maximum-entropy methods
 have been used to assess the informational sufficiency of pairwise
 correlations and correlations of higher order \citep[see for
 example][]{martignonetal1995,bohteetal2000,schneidmanetal2006,shlensetal2006,barreiroetal2010,ganmoretal2011,granotatedgietal2013}.
-But when the difference in size between sample and full network is too
+But when the difference in size between sample and full population is too
 large, correlation sufficiency for the sample implies the \emph{lack} of
-correlation sufficiency for the larger network, and vice versa. Therefore,
+correlation sufficiency for the larger population, and vice versa. Therefore,
 maximum-entropy applications at the sample level can be deceptive for
-questions of statistical sufficiency, and a full-network application is
+questions of statistical sufficiency, and a full-population application is
 more reliable. We discuss this point in detail in \sect~\ref{sec:marginalization}.
 
 
@@ -922,17 +922,17 @@ more reliable. We discuss this point in detail in \sect~\ref{sec:marginalization
 % above addressing an example question of sufficiency, two moments versus
 % four moments.
 
-How large is the full network addressed by the method proposed here? Its
+How large is the full population addressed by the method proposed here? Its
 size must have some limit and can't obviously include the full brain. The
 size is determined by the validity of the formulae from sampling theory and
 discussed in \sect~\ref{sec:N}.
 
 We obviously don't know whether the frequency distribution obtained with
 our approach is the \emph{actual} one which the activity levels of the full
-network had during the recording; it's only the most plausible. In high
+population had during the recording; it's only the most plausible. In high
 dimensions, however, the features of the most plausible distribution may
 \emph{not} be typical of the majority of most plausible distributions; and
-the set of all possible frequency distributions, if the full network for
+the set of all possible frequency distributions, if the full population for
 example comprises 1\,000 neurons, is a 1\,000-dimensional space. In
 \sect~\ref{sec:assumptions} we therefore try to assess which features of
 the frequency distribution delivered by our method may be typical and
@@ -958,7 +958,7 @@ Our notation and terminology follow \textsc{iso}
 
 
 
-% (for a full network of 1\,000 neurons and
+% (for a full population of 1\,000 neurons and
 % a recording of 500\,000 time bins, for example, there are
 % $\binom{500\,000+1\,000}{1\,000} \approx 10^{3\,131}$ possible frequency
 % distributions).
@@ -974,9 +974,9 @@ Our notation and terminology follow \textsc{iso}
 %   across recordings when sampled neurons aren't the same.}
 
 % \mynote{Add this?: from sampling theory we know that important
-%   features of the full network may not be visible in a sample because
+%   features of the full population may not be visible in a sample because
 %   smoothed out. But using sampling theory in the inverse direction we can
-%   infer such full-network features from the sample.}
+%   infer such full-population features from the sample.}
 
 % \mynote{To be continued after structure of the rest of the article is
 %   clear. Orig intro is on p.~\pageref{orig_intro}}
@@ -990,7 +990,7 @@ Let's introduce some context and notation for our problem.
 
 The context we consider is as follows. During an experimental session we
 have recorded the spiking activities of $n$ neurons for a certain amount of
-time. These neurons are our \enquote{sample} or \enquote{subnetwork}. Their
+time. These neurons are our \enquote{sample} or \enquote{subpopulation}. Their
 spikes are binned into $T$ time bins and binarized to $\set{0,1}$ values in
 each bin. Call $\ya_{t}$ the number of neurons that fire during time bin
 $t$: this is the \emph{total activity} of the sample, or just
@@ -1013,10 +1013,10 @@ are not specifically chosen from among the rest, owing to several limiting
 factors; for example, limitations in how precisely electrodes are inserted
 or neurons are targeted by viruses. The set of recorded neurons may even
 change slightly across experimental sessions that are very far apart in
-time. We assume that there's an area, comprising a network of $N$ neurons,
+time. We assume that there's an area, comprising a population of $N$ neurons,
 for which we believe that any other sample of size $n$ could have equally
 plausibly been recorded instead of the sample of $n$ neurons that was
-actually recorded. We call this larger network the \enquote{full network}.
+actually recorded. We call this larger population the \enquote{full population}.
 The total activity of these $N$ neurons at $t$ is $\yA_{t}$. The relative
 frequencies of the various activity levels during the recording were
 $(\yFF_{\yA}) \defs \yF$. We don't know the values $\yA_{t}$ at each $t$,
@@ -1027,7 +1027,7 @@ obvious reasons. For the time being we assume that we know $N$; in
 knowledge about this number.
 
 Our questions concern general features of the total activity $\yA$ of the
-full network during and after the recording, and across sessions under the
+full population during and after the recording, and across sessions under the
 same study conditions. For example: what was its frequency distribution
 during the recording? How much does this frequency distribution change
 across sessions? How much total activity should we expect at any time bin
@@ -1042,10 +1042,10 @@ The idea behind our approach is easily summarized:
 \item\label{item:sample_step} Using sampling theory we determine the
   relation between some expected values -- specifically, moments -- for the
   total activity $\ya$ of the sample and corresponding expected values $M$
-  for the total activity $\yA$ of the full network.
+  for the total activity $\yA$ of the full population.
 \item\label{item:maxent_step} Using the maximum-entropy method we build a
   distribution $\px(\yA \| M, N)$ for the total activity of the full
-  network of $N$ neurons, using as constraints the expected values $M$
+  population of $N$ neurons, using as constraints the expected values $M$
   found in the previous step.
 \end{enumerate}
 We now discuss the ideas behind these steps more in detail, leaving their
@@ -1056,10 +1056,10 @@ to appendix~\ref{sec:derivation_maxent_fullnet}.
 
 Step~\ref{item:sample_step}, a result of sampling theory, is just an
 application of the probability calculus, which gives an exact linear
-relation between the first $m$ moments for the full network and the first
+relation between the first $m$ moments for the full population and the first
 $m$ for the sample \citep[\eqns~(16)]{portamanaetal2015}. The ones
 determine the others and vice versa at every time bin. This relation holds
-for any belief distribution $\pxxx(\yA_{t})$ for the full-network activity
+for any belief distribution $\pxxx(\yA_{t})$ for the full-population activity
 and its marginal $\pxx(\ya_{t})$ for the sample activity at that bin.
 
 This sampling relation is even more straightforward if instead of power
@@ -1079,7 +1079,7 @@ $m$th normalized factorial moment of a distribution $\pxx(\ya)$ is
 that is, the expected number of distinct $m$-tuples of simultaneously
 spiking neurons (within a time-bin's width), normalized by the maximum
 possible number of distinct $m$-tuples. % For
-% example, with $m=2$, if $a=4$ neurons spike in a network of $n=5$, we
+% example, with $m=2$, if $a=4$ neurons spike in a population of $n=5$, we
 % have $\tbinom{4}{2}=6$ distinct pairs of simultaneously spiking neurons,
 % and the total number of distinct pairs is $\tbinom{5}{2}=10$. The
 % normalized number of spiking pairs is therefore $6/10$.
@@ -1091,7 +1091,7 @@ on. % Specifying one set is therefore
 % equivalent to specifying the other set.
 But the normalized factorial moments have a convenient property for our
 analysis: \emph{the first $n$ normalized factorial moments for the sample
-  and for the full network are numerically identical}:
+  and for the full population are numerically identical}:
 \begin{equation}
   \label{eq:equal_m_factorialmoments}
   \begin{split}
@@ -1108,7 +1108,7 @@ analysis: \emph{the first $n$ normalized factorial moments for the sample
   1\le m \le n.
 \end{split}
 \end{equation}
-% where $\pxxx(\yA)$ is our distribution of belief about the full-network
+% where $\pxxx(\yA)$ is our distribution of belief about the full-population
 % activity, and $\pxx$
 
 
@@ -1127,10 +1127,10 @@ some measured averages, typically time averages.
 
 In our case we don't have measured time averages of the quantity
 $\binom{\yA}{m}$ to equate to the factorial moment
-$\E\bigl[\binom{\yA}{m}\bigr]$ of the full-network distribution
+$\E\bigl[\binom{\yA}{m}\bigr]$ of the full-population distribution
 $\pxxx(\yA)$. But \eqn~\eqref{eq:equal_m_factorialmoments} of
 step~\ref{item:sample_step} comes to our rescue, because it says that the
-expectations for the full network are determined by those for the sample
+expectations for the full population are determined by those for the sample
 $\E\bigl[\binom{\ya}{m}\bigr]$, and we do have the time averages of the
 corresponding sample quantity $\binom{\ya}{m}$. So we can combine the two
 steps:
@@ -1141,10 +1141,10 @@ steps:
   \text{measured moments} \rightarrow
         \underbracket{\text{sample moments}
   \rightarrow
-    \text{full-network moments}}_{\textit{sampling theory}}
+    \text{full-population moments}}_{\textit{sampling theory}}
 \end{equation*}
 and apply the maximum-entropy method to obtain a distribution
-$\px(\yA \| M, N)$ for the full network of $N$ neurons by constraining some
+$\px(\yA \| M, N)$ for the full population of $N$ neurons by constraining some
 of its factorial moments, for example $M=\set{1,\dotsc,m'}$ with $m'\le n$,
 to be equal to the sample's recorded averages. In formulae, the constraints
 on $\pxxx(\yA)$ are
@@ -1184,7 +1184,7 @@ appendix~\ref{sec:derivation_maxent_fullnet}.
 
 The number and degrees of the constraining moments depend on the questions
 and hypotheses that a researcher is exploring; for example, hypotheses
-about the \enquote{cooperativity} or \enquote{interaction} in the network
+about the \enquote{cooperativity} or \enquote{interaction} in the population
 activity. We discuss this kind of use in \sect~\ref{sec:marginalization}.
 Note that the constraint equation~\eqref{eq:final_constraint} for the
 distribution~\eqref{eq:app_maxent_pop_first} may not have exact solutions
@@ -1195,7 +1195,7 @@ maximum-entropy and of one assumption specific to our application: measured
 moments equal expectations (or equivalently, the number of time bins $T$ is
 infinite), the order of the time bins is irrelevant, and an activity level
 $\yA$ can be equally likely be generated by any set of $\yA$ neurons in the
-full network. The magnitude of this discrepancy can be a signature of the
+full population. The magnitude of this discrepancy can be a signature of the
 (at least temporary) presence of a \enquote{neuronal assembly}
 \citep[\chap~12]{gerstneretal2014}{hebb1949_r2002}. We discuss this matter
 in \sect~\ref{sec:assumptions}.
@@ -1214,7 +1214,7 @@ the results and are further discussed in \sect~\ref{sec:assumptions}.
 First, a maximum-entropy distribution like $\px(\yA \| M, N)$ is the
 zeroth-order approximation (in the sense of Laplace's
 approximation)\citep[\chap~4]{debruijn1958_r1961}{tierneyetal1986,strawderman2000}
-of four different distributions for the full network, which differ
+of four different distributions for the full population, which differ
 numerically from one another in higher-order approximations:
 \begin{enumerate}[label=(\roman*)]
 \item the most probable \emph{frequency} distribution for the total
@@ -1268,20 +1268,23 @@ the literature:
 
 % In the followingFrom a Bayesian point of view, the maximum-entropy distribution $\px(\yA)$
 % can be considered as \emph{the most probable frequency distribution} for
-% the full-network activity during the recording. But it also approximates
+% the full-population activity during the recording. But it also approximates
 % three other distributions, as discussed in the previous section.
 
 \bigskip
 
-The full-network maximum-entropy distribution is calculated using five
-moments. This number already provides almost as much information as the
+The full-population maximum-entropy distribution is calculated using five
+moments. This number seems to provide almost as much information as the
 full frequency distribution of the sample (see next section).
 Figure~\ref{fig:plots_5mom} shows the resulting densities
-(distribution${}\times N$) for three example values of full-network sizes:
-$N=1\,000$, $N=5\,000$, $N=10\,000$. The frequency distribution of the
-sample activity is also shown, and in the plot it would be indistinguishable from
-the maximum-entropy distribution for $N=n$, that is, applied at the sample
-level. We discuss the case of unknown $N$ in \sect~\ref{sec:N}.
+(distribution${}\times N$) for three example values of full-population
+sizes: $N=1\,000$ (\textcolor{mygreen}{green diamonds}), $N=5\,000$
+(\textcolor{myred}{red circles}), $N=10\,000$ (\textcolor{myblue}{blue
+  curve}). The frequency distribution of the sample activity is also shown
+(\textcolor{black}{black triangles}), and in the plot it would be
+indistinguishable from the maximum-entropy distribution for $N=n$, that is,
+applied at the sample level. We discuss the case of unknown $N$ in
+\sect~\ref{sec:N}.
 \begin{figure}[!p]
 \centering
 \includegraphics[width=\linewidth]{_scripts/newpaper_stensola_5mom_distributionsN_priorc.pdf}%
@@ -1299,42 +1302,84 @@ recovered with relative errors smaller than $10^{-12}$.
 % 5000: 7*10^-13 %, 581 s
 % 10000: 6*10^-11 %, 737 s
 
-The figure shows that the distribution for the full-network is less flat
-than the measured frequency distribution for the sample; their difference
-increases with $N$. Most remarkably, for the first data set the
-distribution has two distinct low-activity modes. For the second data set
-the distribution presents a small shoulder on the right of the
-mode.% , suggestive of two activity regimes. We frame no hypotheses about the
+The figure shows that the distribution for the full-population is more
+peaked than the measured frequency distribution for the sample; their
+difference increases with $N$. Most remarkably, for the first data set
+(upper panel) the distribution for the full population has two distinct
+low-activity modes. For the second data set (lower panel) the distribution
+presents a small shoulder on the right of the mode.
+% , suggestive of two activity regimes. We frame no hypotheses about the
 % biological cause of these two modes (they could stem from the presence of
 % different kinds of cells or modules)
-These features are clearly not present in the sample frequencies or in the
+Such features are clearly not present in the sample frequencies or in the
 maximum-entropy distribution at the sample level. The application of the
 probability calculus thus reveals interesting possible features of the full
-network. \textcolor{white}{If you find this you can claim a postcard from
+population. \textcolor{white}{If you find this you can claim a postcard from
   us.}
 
+\begin{figure}[!p]
+\centering
+\includegraphics[width=\linewidth]{_scripts/newpaper3_gridvsnogrid.pdf}%
+\\[3em]%
+\includegraphics[width=\linewidth]{_scripts/newpaper3_gridconv.pdf}%
+\caption{***}
+\label{fig:plots_cellsubsets}
+\end{figure}
+% maxent_solutions_different_moments_partial.nb
 These results show the potential usefulness of this maximum-entropy
-approach. For example, some researchers could be interested in the
-hypothesis that two distinct cell types or assemblies be present in the
-region where the recording was made. Finding a full-network distribution
-such as that in the upper panel of \fig~\ref{fig:plots_5mom} would provide
-some evidence for this hypothesis. If the researchers also have reasons to
-suspect that a specific set of the sampled neurons are of one type, and the
-remaining of the other type, they could further apply the method to the two
-sets separately. Finding two distributions with a single peak each would
-then provide some evidence that their separation was correct. In the case
-of data set 1, 27--29 sampled neurons were identified as grid cells
-belonging to 3--4 functional modules, see \cite{dunnetal2015}. The two
-peaks in the distribution obtained with our approach could reflect the grid
-vs non-grid distinction, or two groups of modules, or a combination of
-these cases.
+approach. Here is a \emph{toy} example of possible uses. We could be
+interested in the hypothesis that two distinct cell types or assemblies be
+present in the region where the recording was made. Finding a
+full-population distribution such as that in the upper panel of
+\fig~\ref{fig:plots_5mom} would provide some evidence for this hypothesis.
+Let's further imagine that we have reasons for suspecting that a specific
+set of the sampled neurons are of one type, and the remaining of the other
+type. In the case of data set 1, 27 of the 65 sampled neurons were
+identified as grid cells belonging to 3--4 functional modules, see
+\cite{dunnetal2015}. Could the two peaks in the distribution of
+\fig~\ref{fig:plots_5mom} reflect the activities of grid versus non-grid
+cells? We apply the method to these two sets of neurons individually, using
+$N=4\,150$ for the grid set and $N=5\,850$ for the non-grid set, to reflect
+their proportions in the recorded sample. The results are shown in the
+upper panel of \fig~\ref{fig:plots_cellsubsets}. The distribution for the
+larger population of grid cells (\textcolor{mygreen}{green triangles})
+seems to have one, broad peak, close to the first peak of the
+full-population distribution. The distribution for the larger population of
+non-grid cells (\textcolor{myred}{red circles}) has two peaks instead,
+roughly at the same positions as the full-population distribution
+(\textcolor{myblue}{blue curve}) but closer in height. So it would seem
+that the population of grid cells is contributing to the first peak of the
+full population, but it isn't the sole contributor. We can also assess how
+much the distributions for the two sets are independent. If they were
+completely independent, the full-population distribution would be given by
+their convolution:
+\begin{equation}
+  \label{eq:convolution}
+  P_{\text{full}}(\yA) =  \smashoperator{\sum_{\yA'=0}^{\yA}} P_{\text{grid}}(\yA')\;
+  P_{\text{non-grid}}(\yA-\yA'). %, \qquad \yA \in \set{1,\dotsc,10\,000}
+\end{equation}
+However, the lower panel of
+figure~\ref{fig:plots_cellsubsets} shows that such convolution
+(\textcolor{black}{black diamonds}) is different from the full-population
+distribution (\textcolor{myblue}{blue curve}): the two peaks of the former
+are closer in position and height. This means that the population
+distributions of grid and non-grid cells are \emph{not} independent:
+knowledge of the activity of either set gives us some information about the
+activity of the other.
 
-The important point is that ***
+\medskip
+
+The toy analysis just given should  be taken not literally, but just
+as an illustration of the method's possible applications. The important point
+is that this method is computationally very cheap but can provide useful
+insights, even if just qualitative ones.
 
 
 
 
-\bigskip
+\section{Quantifying the importance of higher-order correlations:\\
+  the limitations of methods at the sample level}
+\label{sec:marginalization}
 
 \begin{figure}[!p]
 \centering
@@ -1347,7 +1392,7 @@ The important point is that ***
 % maxent_solutions_different_moments_prior2_6moments.nb
 To illustrate how our approach can be applied to studies of
 \enquote{cooperativity} or \enquote{interaction},
-\fig~\ref{fig:plots_2_4mom} shows the full-network distributions, for
+\fig~\ref{fig:plots_2_4mom} shows the full-population distributions, for
 $N=10\,000$, obtained constraining the first two moments (in
 \textcolor{red}{red}, equivalent to constraining means and correlations)
 and the first four moments (in \textcolor{blue}{blue}). The frequency
@@ -1360,13 +1405,10 @@ even approximately equivalent.
 
 It is instructive to contrast this conclusion with that we would have
 reached by applying the maximum-entropy method \emph{at the sample level},
-as traditionally done. Such a comparison involves an important
-methodological caveat, so we discuss it in full in the next section.
+as traditionally done. Such a comparison involves some important
+methodological caveat which we wish to discuss first.
 
 
-\section{Quantifying the importance of higher-order correlations:\\
-  the limitations of methods at the sample level}
-\label{sec:marginalization}
 
 As mentioned in the Introduction (see references there), in the
 neurosciences the maximum-entropy method has also been used as a way of
@@ -1400,7 +1442,7 @@ statistics -- for example, first and second moments -- are
   and connections with the notion of symmetry see \eg\
   \cite{darmois1935,neyman1935,koopman1936,pitman1936,halmosetal1949,bahadur1954,berk1972,lauritzen1974,lauritzen1982_r1988,lauritzen2007,cifarellietal1980,cifarellietal1981,diaconisetal1981,diaconis1992,furmanczyketal1998,fortinietal2000,nogalesetal2000,kallenberg2005,ayetal2015}.}
 % This informational quasi-sufficiency is interesting because
-% it may give clues about network organization and dynamics.
+% it may give clues about population organization and dynamics.
 
 There's a tight connection between informational sufficiency and
 maximum-entropy distributions
@@ -1443,14 +1485,14 @@ than unknowns, $n>m$ \citep[\sect~3.1]{portamanaetal2015}.
 
 This fact is important for our analysis. If, say, means and pairwise
 correlations seem informationally sufficient for a particular sample from a
-brain area, then they may well not be sufficient for the full network of
+brain area, then they may well not be sufficient for the full population of
 neurons constituting that area, and vice versa. So if what interests us is
 \enquote{cooperativity} or \enquote{interaction} of a brain area, it is
 unreliable to use a maximum-entropy distribution constructed only for the
 sample. % \citep[contrast this with some literature, \eg][]{martignonetal1995,bohteetal2000,schneidmanetal2006,shlensetal2006,barreiroetal2010,ganmoretal2011,granotatedgietal2013}
 The approach presented here avoids this problem, because the
 maximum-entropy method is applied to obtain the distribution of the full
-network, not of the sample alone.
+population, not of the sample alone.
 
 \bigskip
 
@@ -1461,7 +1503,7 @@ between a set of moments, say $M''\defd\set{1,\dotsc,m''}$, and another, say
 $M'\defd \set{1,\dotsc,m'}$, as follows:
 \begin{enumerate}[label=(\roman*)]
 \item from each maximum-entropy distributions $\px(\yA \| M)$ for the full
-  network, built from each set of constraints $M=M',M''$, calculate the
+  population, built from each set of constraints $M=M',M''$, calculate the
   marginal distribution for the sample:
 \begin{equation}
   \label{eq:sample_marginal}
@@ -1541,7 +1583,7 @@ ratio of their probabilities conditional on the data
 
 In our case consider for example three sets of constraints $M_{2}$,
 $M_{4}$, $M_{5}$, consisting of the first two, four, five moments. For a
-full network of size $N=10\,000$, we obtain the following differences:
+full population of size $N=10\,000$, we obtain the following differences:
 \begin{equation}
   \label{eq:diff_suff_N}
   \begin{split}
@@ -1572,13 +1614,13 @@ that is, the data are 1\,220 orders of magnitude more probable conditional
 on four moments than conditional on two, and $10^{1.4}=25$ times more
 probable conditional on five moments than on four moments.
 
-The application at the full-network level therefore leads to different
+The application at the full-population level therefore leads to different
 conclusions about the relative importance of the moments from the
 application at the sample level. It is also possible to use the
 measure~\eqref{eq:measure_suffic} and its probabilistic
 meaning~\eqref{eq:bayes_factor} to compare the probability of the data
 $\yf$ conditional on the hypothesis $M_{5, N}$ of 5-moment sufficiency at
-the full-network level, $N=10\,000$, versus the hypothesis $M_{5, n}$ of
+the full-population level, $N=10\,000$, versus the hypothesis $M_{5, n}$ of
 5-moment sufficiency at the sample level, $N=n=65$. We obtain
 \begin{equation}
   \label{eq:diff_suff_n}
@@ -1590,7 +1632,7 @@ hypothesis than under the second.
 \bigskip
 
 The conclusions about \enquote{cooperativity} or \enquote{interaction}
-that we reach by applying the maximum-entropy method to the full network,
+that we reach by applying the maximum-entropy method to the full population,
 as proposed here, are not only different from the application at the sample
 level, but also visually clearer. The plot of \fig~\ref{fig:plots_2_4mom},
 showing the two clearly different distributions constrained by two and four
@@ -1613,37 +1655,37 @@ logarithmic scale to see the differences, which appear mainly in the tail.
 % comparison_ME_sample_full_levels.nb
 
 The same plot also shows the marginals obtained from applying the method to
-a full network with $N=10\,000$ and the same constraints, that is, the
+a full population with $N=10\,000$ and the same constraints, that is, the
 sample marginals of \fig~\ref{fig:plots_2_4mom}. The two-moment
 distribution is represented by filled red circles
 (\textcolor{myred}{\LARGE$\bm{\bullet}$}), and the four-moment one by
 filled blue squares (\textcolor{mypurpleblue}{$\bm{\blacksquare}$}). The
-full-network distribution fits the measured frequencies
+full-population distribution fits the measured frequencies
 (\textcolor{black}{$\bm{\triangledown}$}) very well if we constrain only four
 moments.
 
 
 
 
-% But does the application at the full-network level lead to appreciably
+% But does the application at the full-population level lead to appreciably
 % different results from that at the sample level? after all we're interested
 % in an approximate informational sufficiency, not in an analytically exact
 % one. A correct answer can only be given case by case.
 % Figure~\ref{fig:comparisons_marginals} gives a graphical answer to this
 % question in the case of our first data set. The upper plot shows the
-% maximum-entropy distributions for a full network of $10\,000$ neurons,
+% maximum-entropy distributions for a full population of $10\,000$ neurons,
 % constructed from two moments (\textcolor{mygreen}{\textbf{--~--~--}}) and
 % from four moments (\textcolor{mypurpleblue}{\textbf{------}}). The lower
 % plot shows the maximum-entropy distributions for the sample, from two
 % moments (\textcolor{mygreen}{$\bm{\triangledown}$}) and from four moments
 % (\textcolor{mypurpleblue}{$\bm{\square}$}), and the distributions obtained
-% by marginalizing the full-network distribution to the sample size, from two
+% by marginalizing the full-population distribution to the sample size, from two
 % moments (\textcolor{mygreen}{$\bm{\blacktriangledown}$}) and from four
 % moments (\textcolor{mypurpleblue}{$\bm{\blacksquare}$}). The measured
 % frequency distribution (\textcolor{myred}{\LARGE$\bm{\bullet}$}) is also
 % shown. We note the following:
 % \begin{itemize}
-% \item The application to the full-network (upper plot) leads to two
+% \item The application to the full-population (upper plot) leads to two
 %   completely different distributions (even different number of modes);
 %   clearly the two sets of statistics are not even approximately equivalent
 %   for inferential purposes.
@@ -1652,22 +1694,22 @@ moments.
 %   \textcolor{mypurpleblue}{$\bm{\square}$}), which can only be distinguished on a
 %   logarithmic scale. This could lead to the erroneous conclusion that the
 %   two statistics are approximately equivalent.
-% \item The difference between marginals from the full-network distribution
+% \item The difference between marginals from the full-population distribution
 %   and the distributions obtained at the sample level (filled vs empty
 %   markers) is larger than the difference between different statistics
 %   (triangles vs squares).
-% \item The marginals of the application to the full network are closer to
+% \item The marginals of the application to the full population are closer to
 %   the measured frequencies than the distributions obtained at the sample
 %   level (although this closeness is not a valid criterion for their
 %   goodness).
 % \end{itemize}
 % Therefore, the maximum-entropy application at the sample level and at the
-% full-network level lead to different results; the latter is not only more
+% full-population level lead to different results; the latter is not only more
 % meaningful but also superior because it shows clearly the different
 % informational sufficiency of the two sets of statistics.
 
 
-\section{The full-network size $N$}
+\section{The full-population size $N$}
 \label{sec:N}
 
 % results for post-data probabilities of N given data and 5 moments:
@@ -1680,14 +1722,14 @@ moments.
 % maxent_solutions_different_moments_prior2_6moments.nb
 
 The calculations and conclusions presented in the preceding sections depend
-on the size of the full network, $N$. The full network can't be the whole
+on the size of the full population, $N$. The full population can't be the whole
 brain, of course. How large should or can $N$ be in our formulae?
 
 The crucial point is formula~\eqref{eq:equal_m_factorialmoments}, on which
 our method is based, and which asserts the equality of the factorial
-moments of the full network and those of the sample. This formula is only
+moments of the full population and those of the sample. This formula is only
 valid if our beliefs about the activity of the sample $\pxx(\ya)$ and that
-of the full network $\pxx(\yA)$ are related by a hypergeometric
+of the full population $\pxx(\yA)$ are related by a hypergeometric
 distribution:
 \begin{equation}
   \label{eq:hypergeometric_relation}
@@ -1818,7 +1860,7 @@ the corresponding maximum in the maximum-entropy distribution.
 \medskip
 
 The second point is that our degrees of belief about the frequency
-distribution for the full network depend not only on the measured data in
+distribution for the full population depend not only on the measured data in
 the sample, but also on our pre-data beliefs $\yI$ about the distribution.
 Which assumptions lead to the maximum-entropy result? This distribution
 appears when our initial belief about the possible frequency distributions
@@ -1858,7 +1900,7 @@ different initial beliefs. They are therefore robust.
 \label{sec:summary_discussion}
 
 We have presented a procedure to construct the most plausible frequency
-distribution of population-averaged activities of a network of neurons,
+distribution of population-averaged activities of a population of neurons,
 given the recording about a small sample thereof. This procedure combines
 the maximum-entropy method and basic identities from sampling theory. From
 the application to two real data sets we saw that the frequency
@@ -1909,7 +1951,7 @@ this kind of sufficiency questions.
 \label{sec:derivation_maxent_fullnet}
 
 Here is a summary derivation of the maximum-entropy distribution for the
-full network constrained by a set of factorial moments. For further details
+full population constrained by a set of factorial moments. For further details
 see Porta Mana \etal\ \citey{portamanaetal2015}.
 
 \bigskip
@@ -1932,7 +1974,7 @@ of total probability our belief about $\ya$ is
   \label{eq:belief_sample_unknown_A}
   p(\ya)= \sum_{\yA} \yG_{\ya\yA} \;P(\yA).
 \end{equation}
-In our case the units are neurons, the set is the full network, and the
+In our case the units are neurons, the set is the full population, and the
 property is their being active in a specific time bin.
 
 From the definition of normalized factorial
@@ -1942,7 +1984,7 @@ relation~\eqref{eq:belief_sample_unknown_A} between our beliefs about $\ya$
 and $\yA$, and using some combinatorial juggling
 \citep[\chaps~I--IV]{whitworth1867_r1965}[\chap~II]{feller1950_r1968}[appendix~A]{portamanaetal2015}{potts1953}, one
 can prove the equality~\eqref{eq:equal_m_factorialmoments} between the
-factorial moments of sample and full network.
+factorial moments of sample and full population.
 
 \bigskip
 
@@ -2017,7 +2059,7 @@ $\yf$:
 \end{equation}
 Now, the probability of observing activity $\ya$ in the sample at any time
 bin is the sample marginal of the maximum-entropy distribution for the full
-network, owing to the excheangeability assumption implicit in the
+population, owing to the excheangeability assumption implicit in the
 maximum-entropy method:
 \begin{equation}
   \label{eq:sample_marginal}
@@ -2093,7 +2135,7 @@ simplest, intuitive answer is \enquote{because they give us an idea of what
 quantitative?
 
 Yes. In the simplest cases, the probability calculus give us simple and
-precise quantitative relations between our expectations about a network
+precise quantitative relations between our expectations about a population
 -- of voters, for instance -- and about a sample thereof. Suppose there are
 $N$ voters, $S$ of which prefer one political candidate and $N-S$ of which
 prefer another. We don't know $S$ or $N-S$. Now take a sample of $n$
@@ -2108,7 +2150,7 @@ where $\yH$ represents our state of knowledge in this example. A more
 precise answer to our original question then is: \enquote{because we
   \emph{expect} -- in the full probabilistic sense -- to see the same
   proportion of political preferences in a sample as in the full
-  network}.
+  population}.
 
 The exact equality above extends to other quantities beyond the means $S/N$
 and $s/n$: it holds for all normalized \emph{factorial} moments
@@ -2130,7 +2172,7 @@ instead. Suppose the recorded activities are time-binned and binarized. At
 every time bin $t$, $s(t)$ out of the $n$ neurons \enquote{vote} for
 activity, and $n-s(t)$ vote for silence. The probability calculus tells us
 that expectation equalities such as~\eqref{eq:poll_equal_expectations} hold
-for the total activity $S(t)$ of the full network of $N$ neurons that
+for the total activity $S(t)$ of the full population of $N$ neurons that
 could have been recorded. 
 
 Expectation properties are especially important for the maximum-entropy
@@ -2140,16 +2182,16 @@ expectations and empirical averages. Expectation equalities such
 as~\eqref{eq:poll_equal_expectations} then have a far-reaching consequence:
 \emph{from empirical statistics of the activity of a \textbf{sample} of
   neurons we can construct maximum-entropy distributions for the total
-  activity of the \textbf{full network} of neurons that could have been
+  activity of the \textbf{full population} of neurons that could have been
   sampled by the recording device}.
 
 
 
 % In the present work we show how to use the maximum-entropy method to assign
 % a probability distribution for the total activity at a new time bin of a
-% network of neurons, \emph{most of which can be unrecorded}, given
+% population of neurons, \emph{most of which can be unrecorded}, given
 % specific statistics about the activity of a recorded \emph{sample} of the
-% full network. This kind of probability assignment is extremely important
+% full population. This kind of probability assignment is extremely important
 % in neuroscience: we try to understand the workings of brain areas that may
 % include tens of thousands of neurons, but we can record only few tens or
 % hundreds of them.
@@ -2160,7 +2202,7 @@ as~\eqref{eq:poll_equal_expectations} then have a far-reaching consequence:
 % from other neurons. We'll reveal this implicit assumption in several ways.
 % The probability distribution thus constructed is therefore affected by this
 % hidden assumption. We'll study in which circumstances the application of
-% the method at the sample level and at the full-network level give
+% the method at the sample level and at the full-population level give
 % similar or different probabilities.
 
 
@@ -2239,14 +2281,14 @@ following steps. Consider the recorded activity of a sample of $n$ neurons.
   Let the variable $\yav_i(t)\in\set{0,1}$ denote the activity of the $i$th
   sampled neuron at time bin $t$. Collectively denote the $n$ activities
   with $\yaa(t) \defd \bigl(\yav_1(t),\dotsc,\yav_n(t)\bigr)$. The
-  network-averaged activity at that bin is
+  population-averaged activity at that bin is
   $\ya(t) \defd \sum_i \yav_i(t)/n$. If we count the number of distinct
   pairs of active neurons at that bin we combinatorially find
   $\tbinom{n\ya(t)}{2}\equiv n\ya(t)\,[n\ya(t)-1]/2$. There can be at
   most $\tbinom{n}{2}$ simultaneously active pairs, so the
-  network-averaged pair activity is
+  population-averaged pair activity is
   $\av{\yaa \yaa}(t) \defd \tbinom{n}{2}^{-1}\tbinom{n\ya(t)}{2}$. With some
-  combinatorics we see that the network-averaged activity of $m$-tuples
+  combinatorics we see that the population-averaged activity of $m$-tuples
   of neurons is
   \begin{equation}
     \label{eq:products_intermsof_average}
@@ -2299,7 +2341,7 @@ vague notion of \enquote{cooperativity}. Two persons who apply this
 procedure to the same data will obtain the same numbers. Different
 protocols can be based on the \me\ method, for instance protocols that take
 into account the activities or pair activities of specific neurons rather
-than network averages, or even protocols that take into account time
+than population averages, or even protocols that take into account time
 dependence.
 
 The purpose of the present work is not to assess the merits of \me\ methods
@@ -2312,47 +2354,47 @@ complex versions of the method, possibly except versions that use
 \enquote{hidden} neurons
 \citep{smolensky1986,kulkarnietal2007,huang2015,dunnetal2017}. The problem is
 that the recorded neurons are a \emph{sample} from a larger, unrecorded
-network, but the \me\ method as applied above is treating them as
+population, but the \me\ method as applied above is treating them as
 isolated from the rest of the brain. Hence, the results it provides cannot
 be rightfully extrapolated. We will give a mathematical proof of this. Let
 us first analyse this issue in more detail.
 
 Suppose that the neurons were recorded with electrodes covering an area of
 some square millimetres \citep[\cf][]{berenyietal2014}. This recording is a
-sample of the activity of the neuronal network under the recording
+sample of the activity of the neuronal population under the recording
 device, which can amount to tens of thousands of neurons
 \citep{abeles1991}. We could even consider the recorded neurons as a sample
 of a brain area more extended than the recording device.
 
 The characterization of the cooperativity of the recorded sample would have
 little meaning if we did not expect its results to generalize to a larger,
-unrecorded network -- at the very least the network under the
+unrecorded population -- at the very least the population under the
 recording device. In other words, we expect that the conclusions drawn with
 the \me\ methods about the sampled neurons should somehow extrapolate to
 unrecorded neurons in some larger area, from which the recorded neurons
 were sampled. In statistical terms we are assuming that the recorded
 neurons are a \emph{representative sample} of some larger neuronal
-network. Probability theory tells us how to make inferences from a
-sample to the larger network from which it is sampled \parentext{see
+population. Probability theory tells us how to make inferences from a
+sample to the larger population from which it is sampled \parentext{see
   references below}.
 
 We can apply the \me\ method to the sample, as described in the above
 protocol, to generate probability distributions for the activity of the
 sample. But, given that our sample is representative of a larger
-network, we can also apply the \me\ method to the larger (unrecorded)
-network. The constraints are the same: the time averages of the sampled
-data, since they constitute representative data about the larger network
+population, we can also apply the \me\ method to the larger (unrecorded)
+population. The constraints are the same: the time averages of the sampled
+data, since they constitute representative data about the larger population
 as well. The method thus yields a probability distribution for the larger
-network, and the distribution for the sample is obtained by
+population, and the distribution for the sample is obtained by
 marginalization. The problem is that \emph{the distributions obtained from
   these two applications differ}. Which choice is most meaningful?
 
 In this work we develop the second way of applying the \me\ method, at the
-level of the larger network, and show that its results differ from the
+level of the larger population, and show that its results differ from the
 application at the sample level. We also consider the case where the size
-of the larger network is unknown.
+of the larger population is unknown.
 
-To apply the \me\ method to the larger, unsampled network, it is
+To apply the \me\ method to the larger, unsampled population, it is
 necessary to use probability relations relevant to sampling
 \citep{ghoshetal1997}[parts~I,
 VI]{freedmanetal1978_r2007}[\chap~8]{gelmanetal1995_r2014}[\chap~3]{jaynes1994_r2003}.
@@ -2373,17 +2415,17 @@ degree of belief which \enquote{would be agreed by all rational men if
 
 
 
-\section{Probability relations between network and  sample}
+\section{Probability relations between population and  sample}
 \label{sec:prob_samples}
 
 We have already introduced the notation for the sample neurons. We
 introduce an analogous notation for the $\yNv$ neurons constituting the
-larger network, but using the corresponding capital letters:
+larger population, but using the corresponding capital letters:
 $\yAv_{i}(t)$ is the activity of the $i$th neuron at time bin $t$,
 $\yA(t) \defd \sum_{i} \yAv_{i}(t)/\yNv$ is the activity at that
-bin averaged over the larger network, and so on.
+bin averaged over the larger population, and so on.
 
-The probability relations between sample and larger network are valid at
+The probability relations between sample and larger population are valid at
 every time bin. As we mentioned above, the \me\ distribution refers to any
 time bin or to a new bin. For these reasons we will now omit the time-bin
 argument \enquote{$(t)$} from our expressions. 
@@ -2397,7 +2439,7 @@ argument \enquote{$(t)$} from our expressions.
 %       stands for \enquote{the activity of the $\iota$th neuron is $\yAv_{\iota}$}},
 %     \\
 %     &\text{\enquote{$\yXf = \yA$} 
-%       stands for \enquote{the (network-averaged) activity of the neurons is $\yA$}},
+%       stands for \enquote{the (population-averaged) activity of the neurons is $\yA$}},
 %     \\
 %     &\text{\enquote{$\yxv_i = \yav_i$} 
 %       stands for \enquote{the activity of the $i$th sample neuron is $\yav_i$}},
@@ -2408,7 +2450,7 @@ argument \enquote{$(t)$} from our expressions.
 
 If $\yHc$ denotes our state of knowledge -- the evidence and assumptions
 backing our probability assignments -- our uncertainty about the full
-activity of the larger network is expressed by the joint probability
+activity of the larger population is expressed by the joint probability
 distribution
 \begin{equation}
   \label{eq:joint_plaus}
@@ -2432,14 +2474,14 @@ in Gelman \etal\ \citey[\chap~8]{gelmanetal1995_r2014} and Jaynes
 \citey[\chap~3]{jaynes1994_r2003}.
 
 We need to make an initial probability assignment for the state of the full
-network before any experimental observations are made. This initial
+population before any experimental observations are made. This initial
 assignment will be modified by our experimental observations, and these can
-involve just a sample of the network. Our state of knowledge and initial
+involve just a sample of the population. Our state of knowledge and initial
 probability assignment should reflect that samples are somehow
-representative of the whole network.
+representative of the whole population.
 
 In this state of knowledge, denoted $\yH$, we know that the neurons in the
-network are biologically or functionally similar, for example in
+population are biologically or functionally similar, for example in
 morphology or the kind of input or output they receive or give. But we are
 completely ignorant about the physical details of the individual neurons.
 Our ignorance is therefore symmetric under permutations of neuron
@@ -2448,13 +2490,13 @@ that is symmetric under permutations of neuron identities; such a
 distribution is usually called \emph{finitely exchangeable}
 \citep{ericson1969}[\chap~1]{ghoshetal1997}. We stress that this
 probability assignment is just an expression of the symmetry of our
-\emph{ignorance} about the state of the network, not an expression of
+\emph{ignorance} about the state of the population, not an expression of
 some biologic or physical symmetry or identity of the neurons.
 
 The \emph{representation theorem for finite exchangeability} states that,
 in the state of knowledge $\yH$, the symmetric distribution for the full
 activity is completely determined by the distribution for its
-network-average:
+population-average:
 \begin{equation}
   \label{eq:joint_plaus_N_homog}
   \pf(\yAA \|  \yH) \equiv
@@ -2475,7 +2517,7 @@ non-binary and continuum cases are given by de~Finetti
 \citey{diaconis1977,diaconisetal1980}, Heath \amp\ Sudderth
 \citey{heathetal1976}.
 
-Our uncertainties about the full network and the sample are connected
+Our uncertainties about the full population and the sample are connected
 via the conditional probability
 \begin{equation}
   \label{eq:conditional_hypergeometric}
@@ -2502,7 +2544,7 @@ activity of the sample:
 \end{gather}
 It should be proved that the probability distribution for the full activity
 of the sample is also symmetric and completely determined by the
-distribution of its network-averaged activity:
+distribution of its population-averaged activity:
 \begin{equation}
   \label{eq:marginal}
   \pf(\yaa \| \yH) = \binom{n}{n\ya}^{-1} \pf(\ya \| \yH).
@@ -2511,14 +2553,14 @@ This is intuitively clear: our initial symmetric ignorance should also
 apply to the sample. The distribution for the
 sample~\eqref{eq:subpop_average} indeed satisfies the same representation
 theorem~\eqref{eq:joint_plaus_N_homog} as the distribution for the full
-network.
+population.
 
 The conditional probability
 $\pf(\ya \|\yA, \yH) \equiv \yG_{\ya \yA}$, besides
-relating the distributions for the network and sample activities via
+relating the distributions for the population and sample activities via
 marginalization, also allows us to express the expectation value of any
 function of the sample activity, $\yg_{\ya}$, in terms of the distribution
-for the full network, as follows:
+for the full population, as follows:
 \begin{equation}
   \label{eq:pullback_P}
   \E(\yg\|I)
@@ -2544,7 +2586,7 @@ The final expression in \eqn~\eqref{eq:pullback_P} is important for our
 \me\ application: the requirement that the function $\yg$, defined for the
 sample, have a  value $\yc$ obtained from observed data,
 \emph{translates into a linear constraint for the distribution of the full
-  network}:
+  population}:
 \begin{equation}
   \label{eq:constraint_extended}
   \yc = \E(\yg \| \yH) \equiv \sum_{\yA} \bigl( \tsum_{\ya} \yg_{\ya}  \yG_{\ya\yA} \bigr)\;
@@ -2582,7 +2624,7 @@ find
 \equiv    \E(\av{\underbrace{\yAA \dotsm \yAA}_{\text{$m$ factors}}} \| \yH),
 \end{multline}
 that is, \emph{the expected values of the $m$-activities of the sample and
-  of the full network are equal}. The proof of the middle equality uses
+  of the full population are equal}. The proof of the middle equality uses
 the expression for the $m$th factorial moment of the hypergeometric
 distribution and can be found in \textcite{potts1953}. Similar relations
 can be found for the raw moments $\E(\ya^m)$ and $\E(\yA^m)$, which
@@ -2591,7 +2633,7 @@ can be written in terms of the product expectations using
 
 Thus, in a \me\ application, when we require the expectation of the
 $m$-activity of a sample to have a particular value, we are also
-requiring  the expectation of the $m$-activity of the full network to
+requiring  the expectation of the $m$-activity of the full population to
 have the same value.
 
 \bigskip
@@ -2606,7 +2648,7 @@ have the same value.
   colourbar depending on your \textsc{pdf} viewer.)}
 \label{fig:hypergeom_proj}
 \end{figure}%hypergeometric_identity.nb
-These expectation equalities between sample and full network should not
+These expectation equalities between sample and full population should not
 be surprising: we intuitively \emph{expect} that the proportion of coloured
 balls sampled from an urn should be roughly equal to the proportion of
 coloured ball contained in the urn. The formulae in the present section
@@ -2624,14 +2666,14 @@ that
 \end{equation}
 where $\yg$ is any smooth function defined on $\clcl{0,1}$. These approximate
 equalities express the intuitive fact that \emph{our uncertainty about the
-  sample is representative of our uncertainty about the network and
+  sample is representative of our uncertainty about the population and
   about other samples}, and vice versa. When $n=\yNv$, $\yG_{\ya\yA}$
 becomes the identity matrix and the approximate equalities above become
-exact -- of course, since we have sampled the full network.
+exact -- of course, since we have sampled the full population.
 
 But the approximate equalities above may miss important features of the two
 probability distributions. In the next section we will in fact emphasize
-their differences. If the distribution for the network average $\yA$ is
+their differences. If the distribution for the population average $\yA$ is
 bimodal, for example, the bimodality can be lost in the distribution for
 the sample average $\ya$, owing to the coarsening effect of
 $\yG_{\ya\yA}$.
@@ -2639,20 +2681,20 @@ $\yG_{\ya\yA}$.
 % They should be contrasted with the limits
 % $\pf(\yxs=a) \to \pf(\yXf=a)$ and $\expeb{\yg_{\yxs}} \to \expeb{\yg_{\yXf}}$, as
 % $n\to \yNv$, do: these limits are trivially, universally valid because the
-% sample becomes the full network as $n\to \yNv$. In particular, these limits
+% sample becomes the full population as $n\to \yNv$. In particular, these limits
 % hold even in cases where the conditional probability
 % $\pf(\yxs = \ya \|\yXf=\yA)$ is not a fuzzy identity, our uncertainties
-% about sample and about network can differ wildly, and the approximate
+% about sample and about population can differ wildly, and the approximate
 % equalities~\eqref{eq:roughly_equal_nN} do not hold.
 
 
 
-\section{Maximum-entropy: sample level \vs\ full-network level}
+\section{Maximum-entropy: sample level \vs\ full-population level}
 \label{sec:specific_initial_probability}
 
 In the previous section we have seen that observations about a sample can
 be used as constraints on the distribution for the activity of the full
-network. Let us use such constraints with the \me\ method. Suppose that
+population. Let us use such constraints with the \me\ method. Suppose that
 we want to constrain $m$ functions of the sample activity, vectorially
 written $\yg \defd (c_1,\dotsc,c_m)$, to $m$ values
 $\yc \defd (\widehat{c}_1,\dotsc,\widehat{c}_m)$. These functions are typically $k$-activities
@@ -2662,7 +2704,7 @@ $\yc = \sum_t \yg[\ya(t)]/T$.
 
 Let us apply the relative-\me\ method \citep{sivia1996_r2006,meadetal1984}
 directly to sampled neurons; denote this approach by $\yHb$. Then we apply
-the method to the full network of neurons, most of which are unsampled;
+the method to the full population of neurons, most of which are unsampled;
 denote this approach by $\yHa$.
 
 Applied directly to the sampled neurons, the method yields the distribution
@@ -2675,7 +2717,7 @@ Applied directly to the sampled neurons, the method yields the distribution
 \end{equation}
 where $\yk(\yl)$ is a normalization constant. The binomial in front of the
 exponential appears because we must account for the multiplicity by which
-the network-average activity $\ya$ can be realized: $\ya=0$ can be
+the population-average activity $\ya$ can be realized: $\ya=0$ can be
 realized in only one way (all neurons inactive), $\ya=1/n$ can be realized
 in $n$ ways (one active neuron out of $n$), and so on. This term is analogous to
 the \enquote{density of states} in front of the Boltzmann factor in
@@ -2689,9 +2731,9 @@ equations
   \exp[\yl\T \yg_{\ya}].%, \qquad k=1,\dotsc,m.
 \end{equation}
 
-Applied to the full network, using the constraint
+Applied to the full population, using the constraint
 expression~\eqref{eq:constraint_extended} derived in the previous section,
-the method yields the distribution for the full-network activity
+the method yields the distribution for the full-population activity
 \begin{equation}
   \label{eq:app_maxent_pop}
   \pf(\yA \| \yHa)  = \frac{1}{\yK(\yll)}\,
@@ -2735,7 +2777,7 @@ the distributions). We would have a set of $2m+n$ equations in $2m$
 unknowns.
 
 Hence, \emph{the applications of \me\ at the sample level and at the
-  full-network level are inequivalent}. They lead to numerically
+  full-population level are inequivalent}. They lead to numerically
 different distributions for the sample activity $\yaa$.
 
 %%% FIGURES %%%
@@ -2744,7 +2786,7 @@ different distributions for the sample activity $\yaa$.
 \centering
 \includegraphics[width=\linewidth]{different_maxent_pop_sample_200_realdata_2mom.pdf}%
 \caption{Linear and log-plots of $\pf(\ya)$ constructed by \me\ at
-  the network level followed by sample marginalization (blue triangles),
+  the population level followed by sample marginalization (blue triangles),
   \eqn~\eqref{eq:app_maxent_pop_marg}, and at the sample level (red
   circles), \eqn~\eqref{eq:app_maxent_sample}, with $\yNv=5000$,
   $n=200$, and constraints as in \eqn~\eqref{eq:constraints}.}
@@ -2755,7 +2797,7 @@ different distributions for the sample activity $\yaa$.
 \centering
 \includegraphics[width=\linewidth]{different_maxent_pop_sample_200_realdata_4mom.pdf}% 
 \caption{Linear and log-plots of $\pf(\ya)$ constructed by \me\ at
-  the network level followed by sample marginalization (blue triangles),
+  the population level followed by sample marginalization (blue triangles),
   \eqn~\eqref{eq:app_maxent_pop_marg}, and at the sample level (red
   circles), \eqn~\eqref{eq:app_maxent_sample}, with $\yNv=5000$,
   $n=200$, and constraints as in \eqn~\eqref{eq:constraints}.}
@@ -2770,16 +2812,16 @@ different distributions for the sample activity $\yaa$.
   \textcolor{myred}{\textbf{red squares:}} \me\ at the sample level,
   \eqn~\eqref{eq:app_maxent_sample};
   \textcolor{mypurpleblue}{\textbf{blue triangles:}} \me\ at the
-  network level, \eqn~\eqref{eq:app_maxent_pop_marg} with
+  population level, \eqn~\eqref{eq:app_maxent_pop_marg} with
   $\yNv=10\,000$, followed by sample marginalization;
-  \textcolor{myyellow}{\textbf{yellow circles:}} \me\ at the network
-  level with unknown network size,
+  \textcolor{myyellow}{\textbf{yellow circles:}} \me\ at the population
+  level with unknown population size,
   \eqn~\eqref{eq:app_maxent_pop_marg_unknown_N}, according to the
-  distribution~\eqref{eq:pdf_popsize} for the network.}
+  distribution~\eqref{eq:pdf_popsize} for the population.}
 \label{fig:all_three}
 \end{figure}%maxent_pop_or_sample.nb\fi
 The distribution obtained at the sample level will show different
-features from the one obtained at the network level, like displaced or
+features from the one obtained at the population level, like displaced or
 additional modes or particular tail behaviour. We show an example of this
 discrepancy in \fig~\ref{fig:all_three}, for
 $\yNv=10\,000$, $n=200$, and the two constraints
@@ -2793,14 +2835,14 @@ $\yNv=10\,000$, $n=200$, and the two constraints
 \end{equation}
 which come from the actual recording of circa 200 neurons from macaque
 motor cortex \citep{rostamietal2016_r2017}. The distribution obtained at the
-network level (blue triangles) has a higher and displaced mode and a quite
+population level (blue triangles) has a higher and displaced mode and a quite
 different behaviour for activities around $0.5$ than the distribution
 obtained at the sample level (red squares).
 
 \bigskip
 
 In our discussion we have so far assumed the size $\yNv$ of the larger
-network to be known. This is rarely the case, however. We usually are
+population to be known. This is rarely the case, however. We usually are
 uncertain about $\yNv$ and can only guess its order of magnitude. In such a
 state of knowledge $\yHd$ our ignorance about the possible value of $\yNv$
 is expressed by a probability distribution $\pf(\yNN=\yNv \|\yHd)=h(\yNv)$,
@@ -2930,9 +2972,9 @@ distributions are often very vague about the latter point.
 
 Here are the distributions for our \dobs\ about three different quantities,
 assuming an entropic pre-data distribution for the long-run frequencies of
-the full network:
+the full population:
 
-\textbf{The frequency distribution $\yF$ of the full-network activity
+\textbf{The frequency distribution $\yF$ of the full-population activity
   \emph{during the recording}}
 
 \begin{equation}
@@ -2957,7 +2999,7 @@ the full network:
 
 \bigskip
 
-\textbf{The long-run frequency distribution $\ynu$ of the full-network
+\textbf{The long-run frequency distribution $\ynu$ of the full-population
   activity}
 
 \begin{equation}
@@ -2981,7 +3023,7 @@ simplex of frequencies $\set{\ynu}$.
 
 \bigskip
 
-\textbf{The activity $\yA'$ of the full-network
+\textbf{The activity $\yA'$ of the full-population
   in a \emph{new} time bin}
 
 \begin{equation}
@@ -3024,9 +3066,9 @@ belief: our \dob\ that the activity at the next time bin will
 differ from the activity at the present one is roughly proportional to the
 difference in the two subsequent activities.
 
-The formulae say that we have equal beliefs about the underlying network
+The formulae say that we have equal beliefs about the underlying population
 states having the same activity. This isn't really our belief, for we
-believe there are interactions between the neurons and subnetworks thereof.
+believe there are interactions between the neurons and subpopulations thereof.
 
 
 \section{Discussion}
@@ -3034,50 +3076,50 @@ believe there are interactions between the neurons and subnetworks thereof.
 
 The purpose of the present work was to point out and show, in a simple
 set-up, that the \me\ method can be applied to recorded neuronal data in a
-way that accounts for the larger network from which the data are
+way that accounts for the larger population from which the data are
 sampled, \eqns~\eqref{eq:app_maxent_pop}--\eqref{eq:app_maxent_pop_marg}.
 This application leads to results that differ from the standard application
 which only considers the sample in isolation,
 \eqns~\eqref{eq:app_maxent_sample}--\eqref{eq:app_maxent_sample_constraints}.
 We gave a numerical example of this difference. We have also shown how to
-extend the new application when the size of the larger network is
+extend the new application when the size of the larger population is
 unknown, \eqn~\eqref{eq:app_maxent_pop_marg_unknown_N}.
 
 The latter formula, in particular, shows that the standard way of applying
 \me\ 
-implicitly assumes that \emph{no} larger network exists beyond the
+implicitly assumes that \emph{no} larger population exists beyond the
 recorded sample of neurons. One could in fact object to the application at
-the network level, and say that the traditional way of applying \me,
+the population level, and say that the traditional way of applying \me,
 \eqn~\eqref{eq:app_maxent_sample}, yields different results because it does
 not make assumptions about the size $\yNv$ of a possibly existing larger
-network. Such a state of uncertainty, however, is correctly formalized
+population. Such a state of uncertainty, however, is correctly formalized
 according to the laws of probability by introducing a probability
 distribution for $\yNv$, and is expressed by
 \eqn~\eqref{eq:app_maxent_pop_marg_unknown_N}. This expression cannot
 generally be equal to~\eqref{eq:app_maxent_sample} unless the distribution
 for $\yNv$ gives unit probability to $\yNv=n$; that is, unless the sample
-\emph{is} the full network, and no larger network exists.
+\emph{is} the full population, and no larger population exists.
 
 The standard \me\ approach therefore assumes that the recorded neurons
-constitute a special subnetwork, isolated from the larger network of
+constitute a special subpopulation, isolated from the larger population of
 neurons in which it is embedded, and which was also present under the
 recording device. This assumption is unrealistic. The \me\ approach at the
-network level does not make such assumption and is therefore preferable.
+population level does not make such assumption and is therefore preferable.
 It may reveal features in a data set that were unnoticed by the standard
 \me\ approach.
 
 % This hidden assumption of isolation is unreasonable. It amounts to say that
 % the neurons we distinguished and tracked with our recording device are a
 % very special, isolated set among all those that could have been recorded.
-% It is for this reason that we find the \me\ application at the network
-% level preferable. Physical models of neuronal networks usually include some
-% sort of external input, mimicking an embedding in a larger network. The
-% \me\ distribution obtained at the network level may reveal features in a
+% It is for this reason that we find the \me\ application at the population
+% level preferable. Physical models of neuronal populations usually include some
+% sort of external input, mimicking an embedding in a larger population. The
+% \me\ distribution obtained at the population level may reveal features in a
 % data set that were unnoticed by the standard \me\ model.
 
 
 The difference in the resulting distributions between the applications at
-the sample and at the network levels appears in the use of Boltzmann
+the sample and at the population levels appears in the use of Boltzmann
 machines with hidden units \citep{lerouxetal2008}, although by a different
 conceptual route. It also appears in statistical mechanics: if a system is
 statistically described by a \me\ Gibbs state, its subsystems cannot be
@@ -3094,7 +3136,7 @@ sharper predictions about the final physical state thanks to our knowledge
 of its preceding dynamics. In this example, though, both distributions are
 usually extremely sharp and practically lead to the same predictions. In
 neuroscientific applications, the difference in predictions of the sample
-\vs\ full-network applications can instead be very relevant.
+\vs\ full-population applications can instead be very relevant.
 
 The idea of the new application leads in fact to more questions. For
 instance:
@@ -3113,13 +3155,13 @@ Owing to space limitations we must leave a thorough investigation of these
 questions to future work.
 
 Finally, we would like to point out the usefulness and importance of the
-probability formulae that relate our states of knowledge about a network
+probability formulae that relate our states of knowledge about a population
 and its samples, presented in \sect~\ref{sec:prob_samples}. This kind of
 formulae is essential in neuroscience, where we try to understand
 properties of extended brain areas from partial observations. The
 formulae presented here reflect a simple, symmetric state of ignorance.
 More work is needed \citep[\cf][]{levinaetal2017} to extend these formulae
-to account for finer knowledge of the cerebral cortex and its network
+to account for finer knowledge of the cerebral cortex and its population
 properties.
 
 
@@ -3138,14 +3180,14 @@ the recorded neurons. With such probabilistic models one aims to address
 numerous issues: What correlations are important in describing the
 multi-neuronal pattern? How does the pattern of activity covary with
 external stimuli or experimental conditions? What dimensionality does the
-neural data live in and how is this related to the underlying network
+neural data live in and how is this related to the underlying population
 interactions? The probabilistic models can also be used to make predictions
 about the structure of the neural code, by studying the properties of the
 fitted model, or by generating synthetic data from it.
 
 In general, despite the rapid advances in recording technology, the best
 experimental measurements of neuronal activity still only provide data from
-a small subset of neurons that comprise a neuronal network. A wealth of
+a small subset of neurons that comprise a neuronal population. A wealth of
 studies on building probabilistic models of neural data focuses on
 describing such subsets, ignoring the fact that the observed neurons is a
 small group in a much bigger set of hidden neurons. Some other studies do
@@ -3153,7 +3195,7 @@ include hidden variables which, amongst other things, aim to model the
 global features of the unrecorded neurons, but we still lack a through
 understanding of how to include the role of hidden neurons in probabilistic
 models, how our inferences about the recorded activity would be affected by
-them, and what we can we say about the rest of the network by studying the
+them, and what we can we say about the rest of the population by studying the
 heavily subsampled recordings. In this paper, we aim to address these
 questions in the case of a simple maximum entropy model, namely the
 homogeneous maximum entropy model.
@@ -3161,45 +3203,45 @@ homogeneous maximum entropy model.
 The maximum entropy approach has been used in a variety of setting for
 building statistical models of complex systems and datasets, ranging from
 neuronal activity in the retina, in the cortex, protein sequences, gene
-regulatory networks and natural images. The general idea is, for a dataset,
+regulatory populations and natural images. The general idea is, for a dataset,
 to write down the distribution that maximizes the entropy of state
 variables, given some low order statistics. Now given the fact that the
-recorded neurons are a fraction of the neurons in the network, several
+recorded neurons are a fraction of the neurons in the population, several
 quantitative questions arise that we will address in this paper: given the
 data from the sampled neurons, can we build a maximum entropy model over
-the whole network? Once we build such a network level maximum entropy
+the whole population? Once we build such a population level maximum entropy
 model, can we see features in the neural activity which cannot be directly
 seen from a model build from the sampled neurons? Since we can marginalize
-down the network level maximum entropy model to the sampled network, how
+down the population level maximum entropy model to the sampled population, how
 does this margianzlied maximum entropy model match the sample level model?
 
 All these questions can be answered in the case of the homogeneous maximum
 entropy model. First we show how to go from the sample level maximum
-entropy level to the network level, by assuming different sizes of the
-network and also by assuming an uninformative prior over the size of the
-network. This is done by inferring the statistics of correlation functions
-at the network level from those of the sample level by using simple
+entropy level to the population level, by assuming different sizes of the
+population and also by assuming an uninformative prior over the size of the
+population. This is done by inferring the statistics of correlation functions
+at the population level from those of the sample level by using simple
 counting arguments. We then find that, when applied to experimental
 recordings from the Medial Entorhinal Cortex of rats and the monkey visual
-cortex, this network level maximum entropy model may exhibit features that
+cortex, this population level maximum entropy model may exhibit features that
 the sample level model does not predict. Specifically, we observed modes in
-the distribution of the activity in the network level model that do not
+the distribution of the activity in the population level model that do not
 show up in the sample level. We study how the assumed size of the full
-network affects the appearance of these modes and find that there is a
-minimum size of the full network for which such modes can be observed. We
-then compared the distribution found by marginalizing the full network
+population affects the appearance of these modes and find that there is a
+minimum size of the full population for which such modes can be observed. We
+then compared the distribution found by marginalizing the full population
 maximum entropy model down to the sample level, and the distribution fit
 directly to the sample level. For the two datasets that we tested, we found
 that the two distributions match each other to a large degree but that
 there are also differences between them. We quantify how these differences
-also depend on the assumed size of the network and find that …(WE SHOULD
-TEST SHI) This predicts that for a large enough network (DO WE PREDICT
-THAT IF THE FULL NETWORK GETS BIGGER THE DIFFERENCE ALSO GET BIGGER)?…
+also depend on the assumed size of the population and find that …(WE SHOULD
+TEST SHI) This predicts that for a large enough population (DO WE PREDICT
+THAT IF THE FULL POPULATION GETS BIGGER THE DIFFERENCE ALSO GET BIGGER)?…
 
 The rest of the paper is organized as follows. We first describe how to go
-from the sample level maximum entropy model to the full network maximum
+from the sample level maximum entropy model to the full population maximum
 entropy model. In section 2, we apply this to the two experimental datasets
-and study the effect of the assumed size of the network as well as the
+and study the effect of the assumed size of the population as well as the
 moments that we use for building the maximum entropy model. In section 3 we
 compare the distributions found from marginalizing the maximum entropy
 model down to the sample level and the original sample level model.

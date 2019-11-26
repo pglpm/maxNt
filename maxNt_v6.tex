@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-26T14:21:20+0100
+%% Last-Updated: 2019-11-26T14:27:05+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1528,16 +1528,16 @@ log-ratio of the probabilities of the data $\yf$ conditional on the
 hypotheses $M''$ and $M'$:
 \begin{equation}
   \label{eq:bayes_factor}
-  \ydi(M'',M') =
-  \log\bigl[\pf(\yf \| M'')/
-  \pf(\yf \| M')\bigr].
+  \ydi_{N}(M'',M') =
+  \log\bigl[\pf(\yf \| M'',N)/
+  \pf(\yf \| M',N)\bigr].
 \end{equation}
 This is called their \emph{relative weight of evidence}, the logarithm of
 their \emph{relative Bayes factor}
 \citep[\chap~6]{good1950}{good1975,good1981,good1985,good1983}[\sect~1.4]{osteyeeetal1974}{mackay1992,kassetal1995}[see
 also][p.~421]{jeffreys1936}[\chaps~V, VI, A]{jeffreys1939_r1983}. We prove
-this equality in appendix~\ref{sec:measure_suff}. So the exponential of
-$\ydi(M'',M')$ tells us how much more probable the data $\yf$ are
+this equality in appendix~\ref{sec:measure_suff}. The exponential of
+$\ydi_{N}(M'',M')$ tells us how much more probable the data $\yf$ are
 conditional on $M''$, than conditional on $M'$. We can also combine this
 measure with pre-data probabilities for the two hypotheses to obtain the
 ratio of their probabilities conditional on the data
@@ -1575,8 +1575,8 @@ larger population of size $N=10\,000$, we obtain the following differences:
 \begin{equation}
   \label{eq:diff_suff_N}
   \begin{split}
-  \ydi(M_{4},M_{2}) &= 81\;\nat = 35\;\hart,
-\\    \ydi(M_{5},M_{4}) &= 0.037\;\nat = 0.016\;\hart,
+  \ydi_{N}(M_{4},M_{2}) &= 81\;\nat = 35\;\hart,
+\\    \ydi_{N}(M_{5},M_{4}) &= 0.037\;\nat = 0.016\;\hart,
   \end{split}
 \end{equation}
 where the Hartley ($\hart$) denotes base-10 logarithms
@@ -1585,22 +1585,27 @@ and Good in their code-breaking work at Bletchley
 Park:][]{good1985,good1950,good1969}[\sect~4.2]{jaynes1994_r2003}. In
 words, the measured frequencies of the sample activity are 35 orders of
 magnitude more probable under sufficiency of the first four moments than
-under sufficiency of the first two only; but they are about equally
-probable ($10^{0.016} = 1.04$) whether we consider the first five moments
-to be sufficient or just the first four.
+under sufficiency of the first two only. But they are about as probable
+($10^{0.016} = 1.04$) considering the first five moments to be sufficient
+as considering the first four moments only.
 
 Compare the results above with those obtained by applying the method at the
-sample level only:
+sample level, that is, with $N=n$:
 \begin{equation}
   \label{eq:diff_suff_n}
   \begin{split}
-  \ydi_{\text{sample level}}(M_{4},M_{2}) &= 280\;\nat = 1\,220\;\hart,
-\\    \ydi_{\text{sample level}}(M_{5},M_{4}) &= 3.3\;\nat = 1.4\;\hart,
+  \ydi_{n}(M_{4},M_{2}) &= 280\;\nat = 1\,220\;\hart,
+\\    \ydi_{n}(M_{5},M_{4}) &= 3.3\;\nat = 1.4\;\hart.
 \end{split}
 \end{equation}
-that is, the data are 1\,220 orders of magnitude more probable conditional
-on four moments than conditional on two, and $10^{1.4}=25$ times more
-probable conditional on five moments than on four moments.
+The data are 1\,220 orders of magnitude more probable conditional on four
+moments than conditional on two, and $10^{1.4}=25$ times more probable
+conditional on five moments than on four moments.
+
+
+***
+
+
 
 The application at the larger-population level therefore leads to different
 conclusions about the relative importance of the moments from the

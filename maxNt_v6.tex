@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-25T19:19:26+0100
+%% Last-Updated: 2019-11-26T10:47:14+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -662,7 +662,8 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\yAv}{A}
 %\newcommand*{\yxv}{s}
 \newcommand*{\yav}{a}
-\newcommand*{\yNv}{N}
+\newcommand*{\yNg}{N_{\text{g}}}
+\newcommand*{\yNng}{N_{\text{ng}}}
 \newcommand*{\yNN}{\varNu}
 \newcommand*{\yFF}{F}
 \newcommand*{\yff}{f}
@@ -815,45 +816,47 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
   populations}
 \label{sec:intro}
 
-What correlations are important for the description of the multi-neuronal
-activity in a specific brain area? How does such activity change when
-external stimuli or experimental conditions change? Does such activity
-range over all its mathematically possible values, or only over a
-subset thereof? 
+What correlations are dominant in the neuronal activity of a specific brain
+area? How does such activity change when external stimuli or the activity
+of other areas change? Does such activity range over all its mathematically
+possible values, or only within restricted bounds?
 
 Answering this kind of questions always engages an element of uncertainty.
-We can't say \enquote{the answer is such and such}, but can at best assign
-a degree of reasonable belief -- that is, probability -- to every possible
-answer. The assessment of this distribution of belief involves experimental
-data, such as recordings of neuronal activity from specific brain areas,
-and pre-data knowledge about biological conditions and mechanisms. Our
-pre-data \dobs\ are often simplified to be mathematically more tractable,
-and are therefore called \enquote{models}.
+We cannot say \enquote{the answer is such and such}; at best we can assign
+degrees of reasonable belief -- that is, probabilities -- to the possible
+answers. The assessment of this distribution of belief involves
+experimental data, such as recordings of neuronal activity from specific
+brain areas, and pre-data knowledge about biological conditions and
+mechanisms. Our pre-data \dobs\ are often simplified, to be mathematically
+tractable, and are therefore called \enquote{models}.
 
-Despite remarkable advances in recording technologies, the best
-experimental measurements of instantaneous neuronal activity can still only
-record a very small sample of neurons -- hundreds at most -- compared to
-the numbers that constitute a functionally distinguished brain region. Many
-probabilistic models focus on such samples only, somehow neglecting, in
-their assumptions, that the recorded neurons are a sample from a larger
-population. This kind of isolation assumptions sometimes escape attention,
-being subtly hidden in the mathematics. Some probabilistic models try to
-take also unrecorded neurons into account individually, and therefore
-become very complex\mynote{Yasser \amp\ Vahid: refs for here?}. It would be
-useful to have models that operate in between: addressing the larger brain
-area whence the sample comes, but without adding too much complexity and
-detail about it. Such intermediate models would be useful, for example, for
-preliminary investigations, to help us to decide which hypotheses to
-discard and which to consider for more complex and costly studies.
+The best experimental measurements of instantaneous neuronal activity use
+remarkable technologies, but can still only record a very small sample of
+neurons -- hundreds at most -- compared to the numbers that constitute a
+functionally distinguished brain region. Many probabilistic models focus on
+such samples only: they somehow neglect, in their mathematical assumptions,
+that the recorded neurons are a sample from a larger population. Such
+isolating assumptions sometimes escape attention, being subtly hidden in
+the mathematics. Some probabilistic models try to take unrecorded neurons
+into account -- but by describing each neuron individually, thus becoming
+very complex \citep{huang2015,battistinetal2017}. It would be useful to
+explore models that operate in between, addressing the larger brain area
+whence the sample comes, but collectively, without asking about individual
+neuronal details. Such intermediate models would be useful for preliminary
+investigations, to help us to decide which hypotheses to discard and which
+to consider for more complex and costly studies, or to suggest new
+hypotheses.
 
-\mynote{[Yasser:] In the present work we aim to address the issue of building probability distributions over a large population using recording from subpopulations by considering the distribution of total population activity as an example. [}
-In the present work we propose such an intermediate model. It answers this
-question:\mynote{]} How much can the \emph{total} activity of a large neuronal
-population have been, given the observation of the activity of a very small
-sample thereof? This model addresses a larger brain area, avoiding the
-assumption of isolation of the sample; and by focusing on the total
-activity, rather than the activity of individual neurons, it remains simple
-and numerically tractable.
+\mynote{[Yasser:] In the present work we aim to address the issue of
+  building probability distributions over a large population using
+  recording from subpopulations by considering the distribution of total
+  population activity as an example. [} In the present work we propose such
+an intermediate probability model. It answers this question: How much was
+the \emph{total} activity of a large neuronal population, given the
+observation of the activity of a very small sample thereof? This model
+addresses a larger brain area, avoiding the assumption of isolation of the
+sample; and by focusing on the total activity, rather than the activity of
+individual neurons, it remains simple and numerically tractable.
 
 
 The model we propose is based on the straightforward combination of the
@@ -861,9 +864,9 @@ maximum-entropy method and basic sampling relations from the probability
 calculus, discussed in \sect~\ref{sec:model}. The maximum-entropy or
 minimum-relative-entropy method \citep{jaynes1957}[much clearer
 in][]{jaynes1963}{sivia1996_r2006,hobsonetal1973,jaynes1985b_r1996,grandy1980}
-has been used for different kinds of estimations of the neuronal activity
-of various brain areas and about other phenomena of importance to the
-neurosciences, for example gene and protein interaction \citep[for
+has been used for different kinds of investigations about the neuronal
+activity of various brain areas and about other phenomena of importance to
+the neurosciences, for example gene and protein interaction \citep[for
 example][]{martignonetal1995,bohteetal2000,shlensetal2006,schneidmanetal2006,tkaciketal2006,mackeetal2009b,tkaciketal2009,roudietal2009c,barreiroetal2010,gerwinnetal2010,mackeetal2011b,ganmoretal2011,cohenetal2011,granotatedgietal2013,mackeetal2013,tkaciketal2014b,shimazakietal2015,moraetal2015,lezonetal2006,weigtetal2009}.
 
 We illustrate possible uses of our proposed model in
@@ -874,41 +877,45 @@ We illustrate possible uses of our proposed model in
   neurons recorded for 15 min from a macaque's Motor Cortex
   \citep{rostamietal2016_r2017}.
 \end{enumerate*}
-For each data set the model gives the most plausible frequency distribution
-with which all levels of total activity of a larger population of 1\,000--10\,000
-neurons appeared during the recording. These guessed frequency
-distributions are distinctly different from the recorded ones for the
-sampled neurons. For the first data set, for example, the frequency
-distribution for the full population has two very distinct modes, both at low
-activities, %($0.7\%$ and $2.6\%$ of simultaneously active neurons
+For each data set the model gives us the most plausible frequencies with
+which all levels of total activity of a larger population of
+1\,000--10\,000 neurons appeared during the recording. These guessed
+frequency distributions are distinctly different from the recorded ones for
+the sampled neurons. For the first data set, for example, the frequency
+distribution for the larger population has two very distinct modes, both at
+low activities %($0.7\%$ and $2.6\%$ of simultaneously active neurons
 % within $3\;\mathrm{ms}$,
-see \fig~\ref{fig:plots_5mom}, whereas the frequency distribution for the
+(see \fig~\ref{fig:plots_5mom}), whereas the frequency distribution for the
 sample is monotonically decreasing with its maximum at zero activity. The
-frequency distribution for the second data set doesn't have two modes but
-still presents one prominent shoulder in its low-activity mode. Note that
-these guessed features of the full population cannot be inferred by the
-application of maximum-entropy \emph{to the sample alone}. Although we don't
-formulate any hypotheses on why the larger population could have two distinct
-low-activity regimes -- the purpose of the present work is only
-methodological -- these results shows that the proposed method can lead to
-the formulation or preliminary assessment of interesting hypotheses.
+frequency distribution for the second data set presents one prominent
+shoulder in its low-activity mode. These results show that the proposed
+method can lead to the formulation or preliminary assessment of interesting
+hypotheses, as we will illustrate with a toy example. Note that these
+guessed features of the full population could not be inferred by the
+application of maximum-entropy \emph{to the sample alone}.
 
-We want to stress the usefulness of making a quantified guess about the
-activity of a larger brain area. Such a guess seems indeed to be the
-primary idea behind recording a sample from that area. %  Second, it allows us
-% to make comparisons across experimental sessions; such comparisons would me
-% difficult or meaningless if made with the recorded samples, which generally
-% comprise non-overlapping sets of neurons and differ in size.
-There's also an important methodological reason. Maximum-entropy methods
-have been used to assess the informational sufficiency of pairwise
-correlations and correlations of higher order \citep[see for
+% We want to stress the usefulness of making a quantified guess about the
+% activity of a larger brain area. Such a guess seems indeed to be the
+% primary idea behind recording a sample from that area. %  Second, it allows us
+% % to make comparisons across experimental sessions; such comparisons would me
+% % difficult or meaningless if made with the recorded samples, which generally
+% % comprise non-overlapping sets of neurons and differ in size.
+% There's also an important methodological reason.
+
+Our approach also solves a methodological problem in the use of
+maximum-entropy methods to assess the \enquote{cooperativity},
+\enquote{interaction}, or \enquote{synchrony} in neuronal activity, for
+example studying its pairwise correlations and correlations of higher order
+\citep[see for
 example][]{martignonetal1995,bohteetal2000,schneidmanetal2006,shlensetal2006,barreiroetal2010,ganmoretal2011,granotatedgietal2013}.
-But when the difference in size between sample and full population is too
-large, correlation sufficiency for the sample implies the \emph{lack} of
-correlation sufficiency for the larger population, and vice versa. Therefore,
-maximum-entropy applications at the sample level can be deceptive for
-questions of statistical sufficiency, and a full-population application is
-more reliable. We discuss this point in detail in \sect~\ref{sec:marginalization}.
+When the difference in size between a large population and a sample thereof
+is too large, the presence of some inferential properties of correlations
+for the sample implies the \emph{lack} of such properties for the larger
+population, and vice versa. Maximum-entropy applications at the sample
+level can therefore deceive us in questions regarding the cooperativity of
+the larger population. The application to the larger population is more
+reliable. We discuss this point in detail in
+\sect~\ref{sec:marginalization}.
 
 
 % Maximum-entropy models have often been used to test whether a smaller part
@@ -927,9 +934,9 @@ size must have some limit and can't obviously include the full brain. The
 size is determined by the validity of the formulae from sampling theory and
 discussed in \sect~\ref{sec:N}.
 
-We obviously don't know whether the frequency distribution obtained with
-our approach is the \emph{actual} one which the activity levels of the full
-population had during the recording; it's only the most plausible. In high
+\mynote{review this}We obviously don't know whether the activity levels of
+the larger population really had the frequencies given by the model, during
+the recording. The model gives our most plausible guess. In high
 dimensions, however, the features of the most plausible distribution may
 \emph{not} be typical of the majority of most plausible distributions; and
 the set of all possible frequency distributions, if the full population for
@@ -1338,40 +1345,42 @@ data set, 27 of the 65 sampled neurons were identified as grid cells
 belonging to 3--4 functional modules, see \cite{dunnetal2015}. Could the
 two peaks in the distribution of \fig~\ref{fig:plots_5mom} reflect the
 activities of grid versus non-grid cells? We apply the method to these two
-sets of neurons individually, using $N=4\,150$ for the grid set and
-$N=5\,850$ for the non-grid set, to reflect their proportions in the
-recorded sample. The results are shown in the upper panel of
-\fig~\ref{fig:plots_cellsubsets}. The distribution for the larger
+sets of neurons individually, using $\yNg=4\,150$ for the grid set and
+$\yNng=5\,850$ for the non-grid set, to reflect their proportions (27/65
+and 38/65) in the recorded sample. The results are shown in the upper panel
+of \fig~\ref{fig:plots_cellsubsets}. The distribution for the larger
 population of grid cells (\textcolor{mygreen}{green triangles}) seems to
 have one, broad peak, close to the first peak of the full-population
 distribution. The distribution for the larger population of non-grid cells
 (\textcolor{myred}{red circles}) has two peaks instead, roughly at the same
-positions as the full-population distribution (\textcolor{myblue}{blue
-  curve}) but closer in height. So it would seem that the population of
-grid cells is contributing to the first peak of the full population, but it
-isn't the sole contributor. We can also assess if the distributions for the
-two sets are independent. If they were independent, the full-population
-distribution would be given by their convolution:
+normalized activities as the peaks of the full-population distribution
+(\textcolor{myblue}{blue curve}) but closer in height. It would thus seem
+that the population of grid cells is contributing to the first peak of the
+full population, but it is not the sole contributor. We can also assess if
+the distributions for the two sets of neurons are independent. If they were
+independent, the full-population distribution would be given by their
+convolution:
 \begin{equation}
   \label{eq:convolution}
-  P_{\text{full}}(\yA) =  \smashoperator{\sum_{\yA'=\max(0,\yA-5850)}^{\min(\yA,4150)}} P_{\text{grid}}(\yA')\;
-  P_{\text{non-grid}}(\yA-\yA'). %, \qquad \yA \in \set{1,\dotsc,10\,000}
+  P_{\text{full}}(\yA) = \sum_{\yA'} P_{\text{grid}}(\yA')\;
+  P_{\text{non-grid}}(\yA-\yA') %, \qquad \yA \in \set{1,\dotsc,10\,000}
 \end{equation}
-However, the lower panel of
+where the index $\yA'$ runs from $\max(0,\yA-\yNng)$ to $\min(\yA,\yNg)$.
+But this is not the case: the lower panel of
 figure~\ref{fig:plots_cellsubsets} shows that such convolution
-(\textcolor{black}{black diamonds}) is different from the full-population
-distribution (\textcolor{myblue}{blue curve}): the two peaks of the former
-are closer in position and height. This means that the population
-distributions of grid and non-grid cells are \emph{not} independent:
-knowledge of the activity of either set gives us some information about the
-activity of the other.
+(\textcolor{black}{black diamonds}) is quite different from the
+full-population distribution (\textcolor{myblue}{blue curve}): the two
+peaks of the former are closer in position and height than those of the
+latter. The population distributions of grid and non-grid cells are
+therefore \emph{not} independent: knowledge of the activity of either set
+gives us some information about the activity of the other.
 
 \medskip
 
 The toy analysis just given should be taken not literally, but just as an
 illustration of the method's possible applications. The important point is
-that this method is computationally very cheap but can provide useful
-insights, even if just qualitatively.
+that this method is computationally very cheap and yet can provide useful
+insights, even if just qualitative ones.
 
 
 
@@ -1963,7 +1972,7 @@ property is then given by the hypergeometric distribution
 \begin{equation}
   \label{eq:conditional_hypergeometric}
   \yG_{\ya\yA} \defd \pf(\ya \|\yA, n,N)=
-  \binom{n}{n\ya}\binom{\yNv-n}{\yNv \yA-n\ya}\binom{\yNv}{\yNv \yA}^{-1}.
+  \binom{n}{n\ya}\binom{N-n}{N \yA-n\ya}\binom{N}{N \yA}^{-1}.
 \end{equation}
 typical of \enquote{drawing without replacement}
 \citep[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}.
@@ -2419,10 +2428,10 @@ degree of belief which \enquote{would be agreed by all rational men if
 \label{sec:prob_samples}
 
 We have already introduced the notation for the sample neurons. We
-introduce an analogous notation for the $\yNv$ neurons constituting the
+introduce an analogous notation for the $N$ neurons constituting the
 larger population, but using the corresponding capital letters:
 $\yAv_{i}(t)$ is the activity of the $i$th neuron at time bin $t$,
-$\yA(t) \defd \sum_{i} \yAv_{i}(t)/\yNv$ is the activity at that
+$\yA(t) \defd \sum_{i} \yAv_{i}(t)/N$ is the activity at that
 bin averaged over the larger population, and so on.
 
 The probability relations between sample and larger population are valid at
@@ -2454,9 +2463,9 @@ activity of the larger population is expressed by the joint probability
 distribution
 \begin{equation}
   \label{eq:joint_plaus}
-  \pf(\yAv_1, \yAv_2, \dotsc, \yAv_\yNv \| \yHc)
+  \pf(\yAv_1, \yAv_2, \dotsc, \yAv_N \| \yHc)
   \quad\text{or}\quad
-\pf(\yAA \| \yHc), \quad \yAA \in \set{0,1}^\yNv.
+\pf(\yAA \| \yHc), \quad \yAA \in \set{0,1}^N.
 \end{equation}
 Our uncertainty about the state of the sample is likewise expressed by
 \begin{equation}
@@ -2502,13 +2511,13 @@ population-average:
   \pf(\yAA \|  \yH) \equiv
   \sum_{\yA}\pf(\yAA \| \yA, \yH)\,
   \pf(\yA \| \yH) =
-  \binom{\yNv}{\yNv\yA}^{-1} \pf(\yA \| \yH).
+  \binom{N}{N\yA}^{-1} \pf(\yA \| \yH).
 \end{equation}
 The equivalence on the left is just an application of the law of total
 probability; the equality on the right is the statement of the theorem.
 This result is intuitive: owing to symmetry, we must assign equal
-probabilities to all $\tbinom{\yNv}{\yNv\yA}$ activity vectors with
-$\yNv\yA$ active neurons; the probability of each activity vector is
+probabilities to all $\tbinom{N}{N\yA}$ activity vectors with
+$N\yA$ active neurons; the probability of each activity vector is
 therefore given by that of the average activity divided by the number of
 possible vector values. Proof of this theorem and generalizations to
 non-binary and continuum cases are given by de~Finetti
@@ -2522,7 +2531,7 @@ via the conditional probability
 \begin{equation}
   \label{eq:conditional_hypergeometric}
   \pf(\ya \|\yA, \yH)=
-  \binom{n}{n\ya}\binom{\yNv-n}{\yNv \yA-n\ya}\binom{\yNv}{\yNv \yA}^{-1}
+  \binom{n}{n\ya}\binom{N-n}{N \yA-n\ya}\binom{N}{N \yA}^{-1}
   \defs \yG_{\ya\yA},
 \end{equation}
 which is a hypergeometric distribution, typical of \enquote{drawing without
@@ -2617,10 +2626,10 @@ find
     % \sum_{N \yA=0}^N %m!\,
     % \binom{N-m}{N \yA-m} \binom{N}{N \yA}^{-1} \p(\yXf=\yA \| \yH)
     ={}\\
-    \binom{\yNv}{m}^{-1}
+    \binom{N}{m}^{-1}
     % \frac{(N-m)!}{N!}
     \sum_{\yA} %m!\,
-    \binom{\yNv \yA}{m}\, \pf(\yA \| \yH)
+    \binom{N \yA}{m}\, \pf(\yA \| \yH)
 \equiv    \E(\av{\underbrace{\yAA \dotsm \yAA}_{\text{$m$ factors}}} \| \yH),
 \end{multline}
 that is, \emph{the expected values of the $m$-activities of the sample and
@@ -2644,7 +2653,7 @@ have the same value.
 \includegraphics[width=\linewidth]{pop_sample_projection3.pdf}%
 \caption{Log-density plot of the hypergeometric distribution
   $%\pf(\ya \|\yA, \yH)=
-\yG_{\ya\yA} \defd  \raisebox{0pt}[0pt][1ex]{}\binom{n}{n\ya}\binom{\yNv-n}{\yNv \yA-n\ya}\binom{\yNv}{\yNv \yA}^{-1}$ for $\yNv=5000$, $n=200$. (Band artifacts may appear in the
+\yG_{\ya\yA} \defd  \raisebox{0pt}[0pt][1ex]{}\binom{n}{n\ya}\binom{N-n}{N \yA-n\ya}\binom{N}{N \yA}^{-1}$ for $N=5000$, $n=200$. (Band artifacts may appear in the
   colourbar depending on your \textsc{pdf} viewer.)}
 \label{fig:hypergeom_proj}
 \end{figure}%hypergeometric_identity.nb
@@ -2656,7 +2665,7 @@ formalize and mathematically express our intuition. The hypergeometric
 distribution $\yG_{\ya\yA}$ plays an important role in this
 formalization. A look at its plot, \fig~\ref{fig:hypergeom_proj}, reveals
 that it is a sort of \enquote{fuzzy identity transformation}, or fuzzy
-Kronecker delta, between the $\yA$-space $\set{0,\dotsc,\yNv}$ and
+Kronecker delta, between the $\yA$-space $\set{0,\dotsc,N}$ and
 $\ya$-space $\set{0,\dotsc,n}$. From \eqn~\eqref{eq:marginal} we thus have
 that
 \begin{equation}
@@ -2667,7 +2676,7 @@ that
 where $\yg$ is any smooth function defined on $\clcl{0,1}$. These approximate
 equalities express the intuitive fact that \emph{our uncertainty about the
   sample is representative of our uncertainty about the population and
-  about other samples}, and vice versa. When $n=\yNv$, $\yG_{\ya\yA}$
+  about other samples}, and vice versa. When $n=N$, $\yG_{\ya\yA}$
 becomes the identity matrix and the approximate equalities above become
 exact -- of course, since we have sampled the full population.
 
@@ -2680,8 +2689,8 @@ $\yG_{\ya\yA}$.
 
 % They should be contrasted with the limits
 % $\pf(\yxs=a) \to \pf(\yXf=a)$ and $\expeb{\yg_{\yxs}} \to \expeb{\yg_{\yXf}}$, as
-% $n\to \yNv$, do: these limits are trivially, universally valid because the
-% sample becomes the full population as $n\to \yNv$. In particular, these limits
+% $n\to N$, do: these limits are trivially, universally valid because the
+% sample becomes the full population as $n\to N$. In particular, these limits
 % hold even in cases where the conditional probability
 % $\pf(\yxs = \ya \|\yXf=\yA)$ is not a fuzzy identity, our uncertainties
 % about sample and about population can differ wildly, and the approximate
@@ -2737,7 +2746,7 @@ the method yields the distribution for the full-population activity
 \begin{equation}
   \label{eq:app_maxent_pop}
   \pf(\yA \| \yHa)  = \frac{1}{\yK(\yll)}\,
-  \binom{\yNv}{\yNv \yA}\,\exp\bigl(\yll\T
+  \binom{N}{N \yA}\,\exp\bigl(\yll\T
   \tsum_{\ya} \yg_{\ya}\yG_{\ya\yA}\bigr).
 \end{equation}
 The $m$ Lagrange multipliers $\yll\defd (\lambda_1,\dotsc,\lambda_m)$ must
@@ -2747,7 +2756,7 @@ satisfy the $m$ constraint equations
   \yc = \E(\yg \|\yHa)\equiv %{}\\
  \frac{1}{\yK(\yll)}\sum_{\ya} \sum_{\yA} \yg_{\ya} \yG_{\ya \yA}
 \,
-  \binom{\yNv}{\yNv \yA}\,\exp\bigl(\yll\T
+  \binom{N}{N \yA}\,\exp\bigl(\yll\T
   \tsum_{\ya} \yg_{\ya}\yG_{\ya\yA}\bigr).
 %  \\ k=1,\dotsc,m.
 \end{equation}
@@ -2759,7 +2768,7 @@ We obtain the distribution for the sample activity by marginalization, using
   \pf(\ya \| \yHa)  = \frac{1}{\yK(\yll)}\, 
   \sum_{\yA} \yG_{\ya \yA}
 \,
-  \binom{\yNv}{\yNv \yA}\,\exp\bigl(\yll\T
+  \binom{N}{N \yA}\,\exp\bigl(\yll\T
   \tsum_{\ya} \yg_{\ya}\yG_{\ya\yA}\bigr).
 \end{equation}
 
@@ -2788,7 +2797,7 @@ different distributions for the sample activity $\yaa$.
 \caption{Linear and log-plots of $\pf(\ya)$ constructed by \me\ at
   the population level followed by sample marginalization (blue triangles),
   \eqn~\eqref{eq:app_maxent_pop_marg}, and at the sample level (red
-  circles), \eqn~\eqref{eq:app_maxent_sample}, with $\yNv=5000$,
+  circles), \eqn~\eqref{eq:app_maxent_sample}, with $N=5000$,
   $n=200$, and constraints as in \eqn~\eqref{eq:constraints}.}
 \label{fig:diff_maxent_pop_sample}
 \end{figure}%maxent_pop_or_sample.nb
@@ -2799,7 +2808,7 @@ different distributions for the sample activity $\yaa$.
 \caption{Linear and log-plots of $\pf(\ya)$ constructed by \me\ at
   the population level followed by sample marginalization (blue triangles),
   \eqn~\eqref{eq:app_maxent_pop_marg}, and at the sample level (red
-  circles), \eqn~\eqref{eq:app_maxent_sample}, with $\yNv=5000$,
+  circles), \eqn~\eqref{eq:app_maxent_sample}, with $N=5000$,
   $n=200$, and constraints as in \eqn~\eqref{eq:constraints}.}
 \label{fig:diff_maxent_pop_sample_realdata}
 \end{figure}%maxent_pop_or_sample.nb
@@ -2813,7 +2822,7 @@ different distributions for the sample activity $\yaa$.
   \eqn~\eqref{eq:app_maxent_sample};
   \textcolor{mypurpleblue}{\textbf{blue triangles:}} \me\ at the
   population level, \eqn~\eqref{eq:app_maxent_pop_marg} with
-  $\yNv=10\,000$, followed by sample marginalization;
+  $N=10\,000$, followed by sample marginalization;
   \textcolor{myyellow}{\textbf{yellow circles:}} \me\ at the population
   level with unknown population size,
   \eqn~\eqref{eq:app_maxent_pop_marg_unknown_N}, according to the
@@ -2824,7 +2833,7 @@ The distribution obtained at the sample level will show different
 features from the one obtained at the population level, like displaced or
 additional modes or particular tail behaviour. We show an example of this
 discrepancy in \fig~\ref{fig:all_three}, for
-$\yNv=10\,000$, $n=200$, and the two constraints
+$N=10\,000$, $n=200$, and the two constraints
 \begin{equation}
   \label{eq:constraints}
   \E(\ya) = 0.0478,\qquad
@@ -2841,38 +2850,38 @@ obtained at the sample level (red squares).
 
 \bigskip
 
-In our discussion we have so far assumed the size $\yNv$ of the larger
+In our discussion we have so far assumed the size $N$ of the larger
 population to be known. This is rarely the case, however. We usually are
-uncertain about $\yNv$ and can only guess its order of magnitude. In such a
-state of knowledge $\yHd$ our ignorance about the possible value of $\yNv$
-is expressed by a probability distribution $\pf(\yNN=\yNv \|\yHd)=h(\yNv)$,
+uncertain about $N$ and can only guess its order of magnitude. In such a
+state of knowledge $\yHd$ our ignorance about the possible value of $N$
+is expressed by a probability distribution $\pf(\yNN=N \|\yHd)=h(N)$,
 and the marginal distribution for the sample
 activity~\eqref{eq:app_maxent_pop_marg} is modified, by the law of total
 probability, to
 \begin{multline}
   \label{eq:app_maxent_pop_marg_unknown_N}
   \pf(\ya \| \yHd)  =
-  \sum_{\yNv} \pf(\ya \| \yNv,\yHd) \,
-  \pf(\yNv \|\yHd)
+  \sum_{N} \pf(\ya \| N,\yHd) \,
+  \pf(N \|\yHd)
   ={}\\[-\jot]
-  \sum_\yNv \biggl\{\frac{1}{\yK(\yll_\yNv)}\, 
-  \sum_{\yA} \yG^{(\yNv)}_{\ya\yA}
+  \sum_N \biggl\{\frac{1}{\yK(\yll_N)}\, 
+  \sum_{\yA} \yG^{(N)}_{\ya\yA}
 \,
-  \tbinom{\yNv}{\yNv \yA}\,\exp\Bigl[{\yll_\yNv}\T
-  \tsum_{\ya} \yg_{\ya}\yG^{(\yNv)}_{\ya\yA}\Bigr]\biggr\}
-  \;h(\yNv),
+  \tbinom{N}{N \yA}\,\exp\Bigl[{\yll_N}\T
+  \tsum_{\ya} \yg_{\ya}\yG^{(N)}_{\ya\yA}\Bigr]\biggr\}
+  \;h(N),
 \end{multline}
-where the Lagrange multipliers $\yll_{\yNv}$ and the summation range for
-$\yA$ depend on $\yNv$.
+where the Lagrange multipliers $\yll_{N}$ and the summation range for
+$\yA$ depend on $N$.
 
 As a proof of concept, \fig~\ref{fig:all_three} also shows such a distribution
 (yellow circles) for the same constraints as above, and a probability
-distribution for $\yNv$ inspired by Jeffreys
+distribution for $N$ inspired by Jeffreys
 \citep[\sect~4.8]{jeffreys1939_r1983}:
 \begin{equation}
   \label{eq:pdf_popsize}
-  h(\yNv) \propto 1/\yNv, \qquad
-  \yNv \in\set{1\,000,\; 2\,000,\; \dotsc,\;10\,000}.
+  h(N) \propto 1/N, \qquad
+  N \in\set{1\,000,\; 2\,000,\; \dotsc,\;10\,000}.
 \end{equation}
 
 \section{Derivation from the probability calculus}
@@ -3091,13 +3100,13 @@ implicitly assumes that \emph{no} larger population exists beyond the
 recorded sample of neurons. One could in fact object to the application at
 the population level, and say that the traditional way of applying \me,
 \eqn~\eqref{eq:app_maxent_sample}, yields different results because it does
-not make assumptions about the size $\yNv$ of a possibly existing larger
+not make assumptions about the size $N$ of a possibly existing larger
 population. Such a state of uncertainty, however, is correctly formalized
 according to the laws of probability by introducing a probability
-distribution for $\yNv$, and is expressed by
+distribution for $N$, and is expressed by
 \eqn~\eqref{eq:app_maxent_pop_marg_unknown_N}. This expression cannot
 generally be equal to~\eqref{eq:app_maxent_sample} unless the distribution
-for $\yNv$ gives unit probability to $\yNv=n$; that is, unless the sample
+for $N$ gives unit probability to $N=n$; that is, unless the sample
 \emph{is} the full population, and no larger population exists.
 
 The standard \me\ approach therefore assumes that the recorded neurons

@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-26T13:28:00+0100
+%% Last-Updated: 2019-11-26T13:40:59+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1225,8 +1225,18 @@ Before applying the formula above to two concrete data sets we want to add
 two remarks about the maximum-entropy method that are seldom made in the
 neuroscientific literature. They are important for the interpretation of
 the results and are further discussed in \sect~\ref{sec:assumptions}.
-First, a maximum-entropy distribution like $\px(\yA \| M, N)$ is the
-zeroth-order approximation (in the sense of Laplace's approximation
+First, the maximum-entropy
+method % (based on the \emph{Shannon} relative
+% entropy, as opposed to other entropy functions such as Burg's
+% \citeyear{burg1975})
+rests on some implicit assumptions about the probabilities for the long-run
+frequency distribution of activities, besides the assumptions just
+mentioned at the end of the previous paragraph. So the often-heard
+statement that it gives \enquote{the maximally unbiased (or non-committal)
+  distribution} must be taken with a grain of salt. \citep[\mynote{move to
+  sect}]{jaynes1986d_r1996,portamana2009,portamana2017}. Second, a
+maximum-entropy distribution like $\px(\yA \| M, N)$ is the zeroth-order
+approximation (in the sense of Laplace's approximation
 \citep[\chap~4]{debruijn1958_r1961}{tierneyetal1986,strawderman2000}) of
 four distinct distributions for the larger population, which differ
 numerically from one another in higher-order approximations:
@@ -1234,7 +1244,7 @@ numerically from one another in higher-order approximations:
 \item the most probable \emph{frequency} distribution for the total
   activity across the \emph{recorded} bins, %$\yFF(\yA)$,
 \item the \emph{belief} distribution for the value of the total
-  activity at any time bin among those \emph{recorded},
+  activity at any time bin among the \emph{recorded} ones,
   %$\yp(\yA_{t} \| \yH)$ with $1\le t \le T$,
 \item the most probable \emph{frequency} distribution for the total
   activity in a very long run of \emph{new} time bins, %$\ynuu(\yA)$,
@@ -1243,24 +1253,8 @@ numerically from one another in higher-order approximations:
   % $\yp(\yA_{t} \| \yH)$ with $t<1$ or $t>T$
 \end{enumerate}
 The validity of the maximum-entropy approximation decreases as the ratio
-$N/T$ increases. Second, the maximum-entropy
-method % (based on the \emph{Shannon} relative
-% entropy, as opposed to other entropy functions such as Burg's
-% \citeyear{burg1975})
-rests on some implicit assumptions about the probabilities for the long-run
-frequency distribution of activities, besides the assumptions mentioned at
-the end of the previous paragraph. So the often heard statement that it
-gives \enquote{the maximally unbiased (or non-committal) distribution} must
-be taken with a grain of salt. \citep[\mynote{move to
-  sect}]{jaynes1986d_r1996,portamana2009,portamana2017}.
+$N/T$ increases. 
 
-
-
-\bigskip
-
-In the next section we apply the method just described to the data sets
-from two actual recordings and discuss the properties of the resulting
-distributions.
 
 \section{Example application: two data sets}
 \label{sec:application}
@@ -1269,10 +1263,9 @@ We apply the method just described to two data sets publicly available in
 the literature:
 \begin{itemize}[wide]
 \item The \textbf{first data set}, from \textcite[rat
-  14147]{stensolaetal2012}, consists of $n=65$ neurons (27 of which
-  classified as grid cells) from rat Medial Entorhinal Cortex, recorded for
-  about 20 minutes. Their spikes are binned into $T=417\,641$ bins of
-  $3\;\textrm{ms}$ width.
+  14147]{stensolaetal2012}, consists of $n=65$ neurons from rat Medial
+  Entorhinal Cortex, recorded for about 20 minutes. Their spikes are binned
+  into $T=417\,641$ bins of $3\;\textrm{ms}$ width.
 \item The \textbf{second data set}, from \textcite[data courtesy by A.
   Riehle and T. Brochier]{rostamietal2016_r2017}, %\texttt{data\_RS.npy}
   consists of $n=159$ neurons from macaque Motor Cortex, recorded for about
@@ -1287,16 +1280,16 @@ the literature:
 
 \bigskip
 
-The larger-population maximum-entropy distribution is calculated using five
-moments. This number seems to provide almost as much information as the
-full frequency distribution of the sample (see next section).
+The maximum-entropy distribution for the larger population is calculated
+using five moments. This number seems to provide almost as much information
+as the full frequency distribution of the sample (see next section).
 Figure~\ref{fig:plots_5mom} shows the resulting densities
 (distribution${}\times N$) for three example values of larger-population
 sizes: $N=1\,000$ (\textcolor{mygreen}{green diamonds}), $N=5\,000$
 (\textcolor{myred}{red circles}), $N=10\,000$ (\textcolor{myblue}{blue
-  curve}). The frequency distribution of the sample activity is also shown
+  curve}). The frequency density of the sample activity is also shown
 (\textcolor{black}{black triangles}), and in the plot it would be
-indistinguishable from the maximum-entropy distribution for $N=n$, that is,
+indistinguishable from the maximum-entropy density for $N=n$, that is,
 applied at the sample level. We discuss the case of unknown $N$ in
 \sect~\ref{sec:N}.
 \begin{figure}[!p]
@@ -1312,24 +1305,24 @@ applied at the sample level. We discuss the case of unknown $N$ in
 The most expensive calculation, for $N=10\,000$, takes less than 15 minutes
 on a laptop with two $2\;\textrm{GHz}$ cores. In all cases the moments were
 recovered with relative errors smaller than $10^{-12}$.
-% 1000:  3*10^-13 %
-% 5000: 7*10^-13 %, 581 s
-% 10000: 6*10^-11 %, 737 s
+% 1000:  3*10^-13 \%
+% 5000: 7*10^-13 \%, 581 s
+% 10000: 6*10^-11 \%, 737 s
 
 The figure shows that the distribution for the larger-population is more
 peaked than the measured frequency distribution for the sample; their
 difference increases with $N$. Most remarkably, for the first data set
 (upper panel) the distribution for the larger population has two distinct
 low-activity modes. For the second data set (lower panel) the distribution
-presents a small shoulder on the right of the mode.
+presents a small shoulder on the right of its mode.
 % , suggestive of two activity regimes. We frame no hypotheses about the
 % biological cause of these two modes (they could stem from the presence of
 % different kinds of cells or modules)
 Such features are clearly not present in the sample frequencies or in the
 maximum-entropy distribution at the sample level. The application of the
-probability calculus thus reveals interesting possible features of the larger
-population. \textcolor{white}{If you find this you can claim a postcard from
-  us.}
+probability calculus thus reveals interesting features of the larger
+population. \textcolor{white}{If you find this you can claim a postcard
+  from us.}
 
 \begin{figure}[!p]
 \centering
@@ -1340,16 +1333,16 @@ population. \textcolor{white}{If you find this you can claim a postcard from
 \label{fig:plots_cellsubsets}
 \end{figure}
 % maxent_solutions_different_moments_partial.nb
-These results suggest that this maximum-entropy approach could be very
-useful. Here is a toy example of possible uses. We could be interested in
-the hypothesis that two distinct cell types or assemblies be present in the
-region where the recording was made. Finding a larger-population distribution
-with two peaks, as in the upper panel of \fig~\ref{fig:plots_5mom}, would
-provide some evidence for this hypothesis. Let's further imagine that we
-have reasons for suspecting that a specific set of the sampled neurons are
-of one type, and the remaining of the other type. In the case of the first
+Here is a toy example of possible uses of this maximum-entropy approach,
+based on the first data set. We could be interested in the hypothesis that
+two distinct cell types or assemblies be present in the region where the
+recording was made. Finding a larger-population distribution with two
+peaks, as in the upper panel of \fig~\ref{fig:plots_5mom}, would provide
+some evidence for this hypothesis. Let's further imagine that we have
+reasons for suspecting that a specific set of the sampled neurons is of the
+first type, and the remaining of the second type. In the case of the first
 data set, 27 of the 65 sampled neurons were identified as grid cells
-belonging to 3--4 functional modules, see \cite{dunnetal2015}. Could the
+belonging to 3--4 functional modules \citep{dunnetal2015}. Could the
 two peaks in the distribution of \fig~\ref{fig:plots_5mom} reflect the
 activities of grid versus non-grid cells? We apply the method to these two
 sets of neurons individually, using $\yNg=4\,150$ for the grid set and
@@ -1363,10 +1356,10 @@ distribution. The distribution for the larger population of non-grid cells
 normalized activities as the peaks of the larger-population distribution
 (\textcolor{myblue}{blue curve}) but closer in height. It would thus seem
 that the population of grid cells is contributing to the first peak of the
-larger population, but it is not the sole contributor. We can also assess if
-the distributions for the two sets of neurons are independent. If they were
-independent, the larger-population distribution would be given by their
-convolution:
+larger population, but it is not the sole contributor. We can also assess
+if the distributions for the two sets of neurons are independent. If they
+were independent, the larger-population distribution would be given by
+their convolution:
 \begin{equation}
   \label{eq:convolution}
   P_{\text{full}}(\yA) = \sum_{\yA'} P_{\text{grid}}(\yA')\;

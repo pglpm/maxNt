@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-26T10:47:14+0100
+%% Last-Updated: 2019-11-26T12:30:07+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -878,12 +878,17 @@ We illustrate possible uses of our proposed model in
   \citep{rostamietal2016_r2017}.
 \end{enumerate*}
 For each data set the model gives us the most plausible frequencies with
-which all levels of total activity of a larger population of
-1\,000--10\,000 neurons appeared during the recording. These guessed
-frequency distributions are distinctly different from the recorded ones for
-the sampled neurons. For the first data set, for example, the frequency
-distribution for the larger population has two very distinct modes, both at
-low activities %($0.7\%$ and $2.6\%$ of simultaneously active neurons
+which all levels of total activity of a much larger population,
+1\,000--10\,000 neurons, appeared during the recording. For example it can
+tell us that 60 out of 10\,000 neurons were likely active during 1\% of the
+recording time (though not necessarily always the same 60), 250 neurons out
+of 10\,000 were active during 0.4\% of the time, and so on. The precise
+meaning of this frequency distribution is explained in
+\sect~\ref{sec:model}. For the two example data sets, the guessed frequency
+distributions in the larger population are distinctly different from those
+in the sample. For the first data set the frequency distribution for the
+larger population has two very distinct modes, both at low
+activities %($0.7\%$ and $2.6\%$ of simultaneously active neurons
 % within $3\;\mathrm{ms}$,
 (see \fig~\ref{fig:plots_5mom}), whereas the frequency distribution for the
 sample is monotonically decreasing with its maximum at zero activity. The
@@ -990,56 +995,59 @@ Our notation and terminology follow \textsc{iso}
 
 
 
-\section{The approach: maximum-entropy and sampling}
+\section{Method: maximum-entropy and sampling}
 \label{sec:model}
 
-Let's introduce some context and notation for our problem.
+Let's introduce some context and mathematical notation.
 
 The context we consider is as follows. During an experimental session we
 have recorded the spiking activities of $n$ neurons for a certain amount of
-time. These neurons are our \enquote{sample} or \enquote{subpopulation}. Their
-spikes are binned into $T$ time bins and binarized to $\set{0,1}$ values in
-each bin. Call $\ya_{t}$ the number of neurons that fire during time bin
-$t$: this is the \emph{total activity} of the sample, or just
-\enquote{activity} for short. Obviously $\ya_{t} \in\set{0,1,\dotsc,n}$; if
-$\ya_{t}=0$, no neuron spikes during bin $t$; if $\ya_{t}=n$, all spike at
-some point during bin $t$. For brevity, let's say \enquote{at $t$} for
-\enquote{during time bin $t$}. If we divide the total activity by the
-population size we have the normalized total activity or
-population-averaged activity $\ya/n$, ranging from $0$ to $1$ in $1/n$
-steps. From the activities $\set{\ya_{t}}$ we can count how often the
-activity levels $\ya=0$, $\ya=1$, and so on appeared during the recording,
-obtaining the distribution of measured relative frequencies
-$(\yff_{\ya}) \defs \yf$. We can also consider the sample activity at time
-bins \emph{outside} of the recorded period. Such activity is unknown to us,
-of course.
+time. These neurons are our \enquote{sample}. Their spikes are binned into
+$T$ time bins and binarized to $\set{0,1}$ values in each bin. Call
+$\ya_{t}$ the number of neurons that fire during time bin $t$: this is the
+\emph{total activity} of the sample, or just \enquote{activity} for short.
+Obviously $\ya_{t} \in\set{0,1,\dotsc,n}$; if $\ya_{t}=0$, no neuron spikes
+during bin $t$; if $\ya_{t}=n$, all spike at some point during bin $t$, and
+so on. For brevity, let's say \enquote{at $t$} for \enquote{during time bin
+  $t$}. If we divide the total activity by the population size we have the
+\emph{normalized total activity} or population-averaged activity $\ya/n$,
+ranging from $0$ to $1$ in $1/n$ steps. From the activities $\set{\ya_{t}}$
+we can count how often the activity levels $\ya=0$, $\ya=1$, and so on
+appeared during the recording, obtaining the distribution of measured
+relative frequencies $(\yff_{\ya}) \defs \yf$. We can also consider the
+(unknown) sample activity at time bins \emph{outside} of the recorded
+period.
 
 
 For many animal species, the neurons that are recorded within a brain area
 are not specifically chosen from among the rest, owing to several limiting
-factors; for example, limitations in how precisely electrodes are inserted
-or neurons are targeted by viruses. The set of recorded neurons may even
-change slightly across experimental sessions that are very far apart in
-time. We assume that there's an area, comprising a population of $N$ neurons,
-for which we believe that any other sample of size $n$ could have equally
-plausibly been recorded instead of the sample of $n$ neurons that was
-actually recorded. We call this larger population the \enquote{full population}.
-The total activity of these $N$ neurons at $t$ is $\yA_{t}$. The relative
+factors; for example, limitations in how precisely electrodes are inserted.
+The sample of recorded neurons may even change slightly across experimental
+sessions that are very far apart in time. We assume that there's an area,
+comprising a population of $N$ neurons, for which we believe that any other
+sample of size $n$ could have equally plausibly been recorded instead of
+the sample of $n$ neurons that was actually recorded. This is what we will
+mean with \enquote{larger population}. This population need not be a whole
+functionally or anatomically distinct region. Loosely speaking it is the
+area of which we believe our sample to be \enquote{representative}
+\citep[with the warnings that accompany that term:][]{kruskaletal1979c}.
+
+The total activity of the $N$ neurons at $t$ is $\yA_{t}$. The relative
 frequencies of the various activity levels during the recording were
 $(\yFF_{\yA}) \defs \yF$. We don't know the values $\yA_{t}$ at each $t$,
 or the frequency distribution $\yF$. We only know for certain that
-$\yA_{t} \in \set{0, 1, \dotsc, N}$ and that $\yA_{t} \ge \ya_{t}$ for
-obvious reasons. For the time being we assume that we know $N$; in
-\sect~\ref{sec:N} we discuss the consequences of our lack of precise
-knowledge about this number.
+$\yA_{t} \in \set{0, 1, \dotsc, N}$, that $\yA_{t} \ge \ya_{t}$, and that
+$N-\yA_{t} \ge n-\ya_{t}$ for obvious reasons. For the time being we assume
+that we know $N$; in \sect~\ref{sec:N} we discuss the consequences of our
+lack of precise knowledge about this number.
 
 Our questions concern general features of the total activity $\yA$ of the
-full population during and after the recording, and across sessions under the
-same study conditions. For example: what was its frequency distribution
-during the recording? How much does this frequency distribution change
-across sessions? How much total activity should we expect at any time bin
-during a recording? The approach presented here gives a probability
-distribution that approximately answers all these questions.
+larger population during and after the recording, and across sessions under
+the same study conditions. For example: what was its frequency distribution
+$\yF$ during the recording? How much does this frequency distribution
+change across sessions? How much total activity should we expect at any
+time bin during a recording? The approach presented here gives a
+probability distribution that approximately answers all these questions.
 
 
 \bigskip
@@ -1049,9 +1057,9 @@ The idea behind our approach is easily summarized:
 \item\label{item:sample_step} Using sampling theory we determine the
   relation between some expected values -- specifically, moments -- for the
   total activity $\ya$ of the sample and corresponding expected values $M$
-  for the total activity $\yA$ of the full population.
+  for the total activity $\yA$ of the larger population.
 \item\label{item:maxent_step} Using the maximum-entropy method we build a
-  distribution $\px(\yA \| M, N)$ for the total activity of the full
+  distribution $\px(\yA \| M, N)$ for the total activity of the larger
   population of $N$ neurons, using as constraints the expected values $M$
   found in the previous step.
 \end{enumerate}
@@ -1063,10 +1071,10 @@ to appendix~\ref{sec:derivation_maxent_fullnet}.
 
 Step~\ref{item:sample_step}, a result of sampling theory, is just an
 application of the probability calculus, which gives an exact linear
-relation between the first $m$ moments for the full population and the first
+relation between the first $m$ moments for the larger population and the first
 $m$ for the sample \citep[\eqns~(16)]{portamanaetal2015}. The ones
 determine the others and vice versa at every time bin. This relation holds
-for any belief distribution $\pxxx(\yA_{t})$ for the full-population activity
+for any belief distribution $\pxxx(\yA_{t})$ for the larger-population activity
 and its marginal $\pxx(\ya_{t})$ for the sample activity at that bin.
 
 This sampling relation is even more straightforward if instead of power
@@ -1098,7 +1106,7 @@ on. % Specifying one set is therefore
 % equivalent to specifying the other set.
 But the normalized factorial moments have a convenient property for our
 analysis: \emph{the first $n$ normalized factorial moments for the sample
-  and for the full population are numerically identical}:
+  and for the larger population are numerically identical}:
 \begin{equation}
   \label{eq:equal_m_factorialmoments}
   \begin{split}
@@ -1115,7 +1123,7 @@ analysis: \emph{the first $n$ normalized factorial moments for the sample
   1\le m \le n.
 \end{split}
 \end{equation}
-% where $\pxxx(\yA)$ is our distribution of belief about the full-population
+% where $\pxxx(\yA)$ is our distribution of belief about the larger-population
 % activity, and $\pxx$
 
 
@@ -1134,10 +1142,10 @@ some measured averages, typically time averages.
 
 In our case we don't have measured time averages of the quantity
 $\binom{\yA}{m}$ to equate to the factorial moment
-$\E\bigl[\binom{\yA}{m}\bigr]$ of the full-population distribution
+$\E\bigl[\binom{\yA}{m}\bigr]$ of the larger-population distribution
 $\pxxx(\yA)$. But \eqn~\eqref{eq:equal_m_factorialmoments} of
 step~\ref{item:sample_step} comes to our rescue, because it says that the
-expectations for the full population are determined by those for the sample
+expectations for the larger population are determined by those for the sample
 $\E\bigl[\binom{\ya}{m}\bigr]$, and we do have the time averages of the
 corresponding sample quantity $\binom{\ya}{m}$. So we can combine the two
 steps:
@@ -1148,10 +1156,10 @@ steps:
   \text{measured moments} \rightarrow
         \underbracket{\text{sample moments}
   \rightarrow
-    \text{full-population moments}}_{\textit{sampling theory}}
+    \text{larger-population moments}}_{\textit{sampling theory}}
 \end{equation*}
 and apply the maximum-entropy method to obtain a distribution
-$\px(\yA \| M, N)$ for the full population of $N$ neurons by constraining some
+$\px(\yA \| M, N)$ for the larger population of $N$ neurons by constraining some
 of its factorial moments, for example $M=\set{1,\dotsc,m'}$ with $m'\le n$,
 to be equal to the sample's recorded averages. In formulae, the constraints
 on $\pxxx(\yA)$ are
@@ -1202,7 +1210,7 @@ maximum-entropy and of one assumption specific to our application: measured
 moments equal expectations (or equivalently, the number of time bins $T$ is
 infinite), the order of the time bins is irrelevant, and an activity level
 $\yA$ can be equally likely be generated by any set of $\yA$ neurons in the
-full population. The magnitude of this discrepancy can be a signature of the
+larger population. The magnitude of this discrepancy can be a signature of the
 (at least temporary) presence of a \enquote{neuronal assembly}
 \citep[\chap~12]{gerstneretal2014}{hebb1949_r2002}. We discuss this matter
 in \sect~\ref{sec:assumptions}.
@@ -1221,7 +1229,7 @@ the results and are further discussed in \sect~\ref{sec:assumptions}.
 First, a maximum-entropy distribution like $\px(\yA \| M, N)$ is the
 zeroth-order approximation (in the sense of Laplace's
 approximation)\citep[\chap~4]{debruijn1958_r1961}{tierneyetal1986,strawderman2000}
-of four different distributions for the full population, which differ
+of four different distributions for the larger population, which differ
 numerically from one another in higher-order approximations:
 \begin{enumerate}[label=(\roman*)]
 \item the most probable \emph{frequency} distribution for the total
@@ -1275,16 +1283,16 @@ the literature:
 
 % In the followingFrom a Bayesian point of view, the maximum-entropy distribution $\px(\yA)$
 % can be considered as \emph{the most probable frequency distribution} for
-% the full-population activity during the recording. But it also approximates
+% the larger-population activity during the recording. But it also approximates
 % three other distributions, as discussed in the previous section.
 
 \bigskip
 
-The full-population maximum-entropy distribution is calculated using five
+The larger-population maximum-entropy distribution is calculated using five
 moments. This number seems to provide almost as much information as the
 full frequency distribution of the sample (see next section).
 Figure~\ref{fig:plots_5mom} shows the resulting densities
-(distribution${}\times N$) for three example values of full-population
+(distribution${}\times N$) for three example values of larger-population
 sizes: $N=1\,000$ (\textcolor{mygreen}{green diamonds}), $N=5\,000$
 (\textcolor{myred}{red circles}), $N=10\,000$ (\textcolor{myblue}{blue
   curve}). The frequency distribution of the sample activity is also shown
@@ -1309,10 +1317,10 @@ recovered with relative errors smaller than $10^{-12}$.
 % 5000: 7*10^-13 %, 581 s
 % 10000: 6*10^-11 %, 737 s
 
-The figure shows that the distribution for the full-population is more
+The figure shows that the distribution for the larger-population is more
 peaked than the measured frequency distribution for the sample; their
 difference increases with $N$. Most remarkably, for the first data set
-(upper panel) the distribution for the full population has two distinct
+(upper panel) the distribution for the larger population has two distinct
 low-activity modes. For the second data set (lower panel) the distribution
 presents a small shoulder on the right of the mode.
 % , suggestive of two activity regimes. We frame no hypotheses about the
@@ -1320,7 +1328,7 @@ presents a small shoulder on the right of the mode.
 % different kinds of cells or modules)
 Such features are clearly not present in the sample frequencies or in the
 maximum-entropy distribution at the sample level. The application of the
-probability calculus thus reveals interesting possible features of the full
+probability calculus thus reveals interesting possible features of the larger
 population. \textcolor{white}{If you find this you can claim a postcard from
   us.}
 
@@ -1336,7 +1344,7 @@ population. \textcolor{white}{If you find this you can claim a postcard from
 These results suggest that this maximum-entropy approach could be very
 useful. Here is a toy example of possible uses. We could be interested in
 the hypothesis that two distinct cell types or assemblies be present in the
-region where the recording was made. Finding a full-population distribution
+region where the recording was made. Finding a larger-population distribution
 with two peaks, as in the upper panel of \fig~\ref{fig:plots_5mom}, would
 provide some evidence for this hypothesis. Let's further imagine that we
 have reasons for suspecting that a specific set of the sampled neurons are
@@ -1350,15 +1358,15 @@ $\yNng=5\,850$ for the non-grid set, to reflect their proportions (27/65
 and 38/65) in the recorded sample. The results are shown in the upper panel
 of \fig~\ref{fig:plots_cellsubsets}. The distribution for the larger
 population of grid cells (\textcolor{mygreen}{green triangles}) seems to
-have one, broad peak, close to the first peak of the full-population
+have one, broad peak, close to the first peak of the larger-population
 distribution. The distribution for the larger population of non-grid cells
 (\textcolor{myred}{red circles}) has two peaks instead, roughly at the same
-normalized activities as the peaks of the full-population distribution
+normalized activities as the peaks of the larger-population distribution
 (\textcolor{myblue}{blue curve}) but closer in height. It would thus seem
 that the population of grid cells is contributing to the first peak of the
-full population, but it is not the sole contributor. We can also assess if
+larger population, but it is not the sole contributor. We can also assess if
 the distributions for the two sets of neurons are independent. If they were
-independent, the full-population distribution would be given by their
+independent, the larger-population distribution would be given by their
 convolution:
 \begin{equation}
   \label{eq:convolution}
@@ -1369,7 +1377,7 @@ where the index $\yA'$ runs from $\max(0,\yA-\yNng)$ to $\min(\yA,\yNg)$.
 But this is not the case: the lower panel of
 figure~\ref{fig:plots_cellsubsets} shows that such convolution
 (\textcolor{black}{black diamonds}) is quite different from the
-full-population distribution (\textcolor{myblue}{blue curve}): the two
+larger-population distribution (\textcolor{myblue}{blue curve}): the two
 peaks of the former are closer in position and height than those of the
 latter. The population distributions of grid and non-grid cells are
 therefore \emph{not} independent: knowledge of the activity of either set
@@ -1400,7 +1408,7 @@ insights, even if just qualitative ones.
 % maxent_solutions_different_moments_prior2_6moments.nb
 To illustrate how our approach can be applied to studies of
 \enquote{cooperativity} or \enquote{interaction},
-\fig~\ref{fig:plots_2_4mom} shows the full-population distributions, for
+\fig~\ref{fig:plots_2_4mom} shows the larger-population distributions, for
 $N=10\,000$, obtained constraining the first two moments (in
 \textcolor{red}{red}, equivalent to constraining means and correlations)
 and the first four moments (in \textcolor{blue}{blue}). The frequency
@@ -1494,13 +1502,13 @@ than unknowns, $n>m$ \citep[\sect~3.1]{portamanaetal2015}.
 
 This fact is important for our analysis. If, say, means and pairwise
 correlations seem informationally sufficient for a particular sample from a
-brain area, then they may well not be sufficient for the full population of
+brain area, then they may well not be sufficient for the larger population of
 neurons constituting that area, and vice versa. So if what interests us is
 \enquote{cooperativity} or \enquote{interaction} of a brain area, it is
 unreliable to use a maximum-entropy distribution constructed only for the
 sample. % \citep[contrast this with some literature, \eg][]{martignonetal1995,bohteetal2000,schneidmanetal2006,shlensetal2006,barreiroetal2010,ganmoretal2011,granotatedgietal2013}
 The approach presented here avoids this problem, because the
-maximum-entropy method is applied to obtain the distribution of the full
+maximum-entropy method is applied to obtain the distribution of the larger
 population, not of the sample alone.
 
 \bigskip
@@ -1511,7 +1519,7 @@ We measure the difference $\ydi(M'',M')$ in informational sufficiency
 between a set of moments, say $M''\defd\set{1,\dotsc,m''}$, and another, say
 $M'\defd \set{1,\dotsc,m'}$, as follows:
 \begin{enumerate}[label=(\roman*)]
-\item from each maximum-entropy distributions $\px(\yA \| M)$ for the full
+\item from each maximum-entropy distributions $\px(\yA \| M)$ for the larger
   population, built from each set of constraints $M=M',M''$, calculate the
   marginal distribution for the sample:
 \begin{equation}
@@ -1592,7 +1600,7 @@ ratio of their probabilities conditional on the data
 
 In our case consider for example three sets of constraints $M_{2}$,
 $M_{4}$, $M_{5}$, consisting of the first two, four, five moments. For a
-full population of size $N=10\,000$, we obtain the following differences:
+larger population of size $N=10\,000$, we obtain the following differences:
 \begin{equation}
   \label{eq:diff_suff_N}
   \begin{split}
@@ -1623,13 +1631,13 @@ that is, the data are 1\,220 orders of magnitude more probable conditional
 on four moments than conditional on two, and $10^{1.4}=25$ times more
 probable conditional on five moments than on four moments.
 
-The application at the full-population level therefore leads to different
+The application at the larger-population level therefore leads to different
 conclusions about the relative importance of the moments from the
 application at the sample level. It is also possible to use the
 measure~\eqref{eq:measure_suffic} and its probabilistic
 meaning~\eqref{eq:bayes_factor} to compare the probability of the data
 $\yf$ conditional on the hypothesis $M_{5, N}$ of 5-moment sufficiency at
-the full-population level, $N=10\,000$, versus the hypothesis $M_{5, n}$ of
+the larger-population level, $N=10\,000$, versus the hypothesis $M_{5, n}$ of
 5-moment sufficiency at the sample level, $N=n=65$. We obtain
 \begin{equation}
   \label{eq:diff_suff_n}
@@ -1641,7 +1649,7 @@ hypothesis than under the second.
 \bigskip
 
 The conclusions about \enquote{cooperativity} or \enquote{interaction}
-that we reach by applying the maximum-entropy method to the full population,
+that we reach by applying the maximum-entropy method to the larger population,
 as proposed here, are not only different from the application at the sample
 level, but also visually clearer. The plot of \fig~\ref{fig:plots_2_4mom},
 showing the two clearly different distributions constrained by two and four
@@ -1664,37 +1672,37 @@ logarithmic scale to see the differences, which appear mainly in the tail.
 % comparison_ME_sample_full_levels.nb
 
 The same plot also shows the marginals obtained from applying the method to
-a full population with $N=10\,000$ and the same constraints, that is, the
+a larger population with $N=10\,000$ and the same constraints, that is, the
 sample marginals of \fig~\ref{fig:plots_2_4mom}. The two-moment
 distribution is represented by filled red circles
 (\textcolor{myred}{\LARGE$\bm{\bullet}$}), and the four-moment one by
 filled blue squares (\textcolor{mypurpleblue}{$\bm{\blacksquare}$}). The
-full-population distribution fits the measured frequencies
+larger-population distribution fits the measured frequencies
 (\textcolor{black}{$\bm{\triangledown}$}) very well if we constrain only four
 moments.
 
 
 
 
-% But does the application at the full-population level lead to appreciably
+% But does the application at the larger-population level lead to appreciably
 % different results from that at the sample level? after all we're interested
 % in an approximate informational sufficiency, not in an analytically exact
 % one. A correct answer can only be given case by case.
 % Figure~\ref{fig:comparisons_marginals} gives a graphical answer to this
 % question in the case of our first data set. The upper plot shows the
-% maximum-entropy distributions for a full population of $10\,000$ neurons,
+% maximum-entropy distributions for a larger population of $10\,000$ neurons,
 % constructed from two moments (\textcolor{mygreen}{\textbf{--~--~--}}) and
 % from four moments (\textcolor{mypurpleblue}{\textbf{------}}). The lower
 % plot shows the maximum-entropy distributions for the sample, from two
 % moments (\textcolor{mygreen}{$\bm{\triangledown}$}) and from four moments
 % (\textcolor{mypurpleblue}{$\bm{\square}$}), and the distributions obtained
-% by marginalizing the full-population distribution to the sample size, from two
+% by marginalizing the larger-population distribution to the sample size, from two
 % moments (\textcolor{mygreen}{$\bm{\blacktriangledown}$}) and from four
 % moments (\textcolor{mypurpleblue}{$\bm{\blacksquare}$}). The measured
 % frequency distribution (\textcolor{myred}{\LARGE$\bm{\bullet}$}) is also
 % shown. We note the following:
 % \begin{itemize}
-% \item The application to the full-population (upper plot) leads to two
+% \item The application to the larger-population (upper plot) leads to two
 %   completely different distributions (even different number of modes);
 %   clearly the two sets of statistics are not even approximately equivalent
 %   for inferential purposes.
@@ -1703,22 +1711,22 @@ moments.
 %   \textcolor{mypurpleblue}{$\bm{\square}$}), which can only be distinguished on a
 %   logarithmic scale. This could lead to the erroneous conclusion that the
 %   two statistics are approximately equivalent.
-% \item The difference between marginals from the full-population distribution
+% \item The difference between marginals from the larger-population distribution
 %   and the distributions obtained at the sample level (filled vs empty
 %   markers) is larger than the difference between different statistics
 %   (triangles vs squares).
-% \item The marginals of the application to the full population are closer to
+% \item The marginals of the application to the larger population are closer to
 %   the measured frequencies than the distributions obtained at the sample
 %   level (although this closeness is not a valid criterion for their
 %   goodness).
 % \end{itemize}
 % Therefore, the maximum-entropy application at the sample level and at the
-% full-population level lead to different results; the latter is not only more
+% larger-population level lead to different results; the latter is not only more
 % meaningful but also superior because it shows clearly the different
 % informational sufficiency of the two sets of statistics.
 
 
-\section{The full-population size $N$}
+\section{The larger-population size $N$}
 \label{sec:N}
 
 % results for post-data probabilities of N given data and 5 moments:
@@ -1731,14 +1739,14 @@ moments.
 % maxent_solutions_different_moments_prior2_6moments.nb
 
 The calculations and conclusions presented in the preceding sections depend
-on the size of the full population, $N$. The full population can't be the whole
+on the size of the larger population, $N$. The larger population can't be the whole
 brain, of course. How large should or can $N$ be in our formulae?
 
 The crucial point is formula~\eqref{eq:equal_m_factorialmoments}, on which
 our method is based, and which asserts the equality of the factorial
-moments of the full population and those of the sample. This formula is only
+moments of the larger population and those of the sample. This formula is only
 valid if our beliefs about the activity of the sample $\pxx(\ya)$ and that
-of the full population $\pxx(\yA)$ are related by a hypergeometric
+of the larger population $\pxx(\yA)$ are related by a hypergeometric
 distribution:
 \begin{equation}
   \label{eq:hypergeometric_relation}
@@ -1869,7 +1877,7 @@ the corresponding maximum in the maximum-entropy distribution.
 \medskip
 
 The second point is that our degrees of belief about the frequency
-distribution for the full population depend not only on the measured data in
+distribution for the larger population depend not only on the measured data in
 the sample, but also on our pre-data beliefs $\yI$ about the distribution.
 Which assumptions lead to the maximum-entropy result? This distribution
 appears when our initial belief about the possible frequency distributions
@@ -1960,7 +1968,7 @@ this kind of sufficiency questions.
 \label{sec:derivation_maxent_fullnet}
 
 Here is a summary derivation of the maximum-entropy distribution for the
-full population constrained by a set of factorial moments. For further details
+larger population constrained by a set of factorial moments. For further details
 see Porta Mana \etal\ \citey{portamanaetal2015}.
 
 \bigskip
@@ -1983,7 +1991,7 @@ of total probability our belief about $\ya$ is
   \label{eq:belief_sample_unknown_A}
   p(\ya)= \sum_{\yA} \yG_{\ya\yA} \;P(\yA).
 \end{equation}
-In our case the units are neurons, the set is the full population, and the
+In our case the units are neurons, the set is the larger population, and the
 property is their being active in a specific time bin.
 
 From the definition of normalized factorial
@@ -1993,7 +2001,7 @@ relation~\eqref{eq:belief_sample_unknown_A} between our beliefs about $\ya$
 and $\yA$, and using some combinatorial juggling
 \citep[\chaps~I--IV]{whitworth1867_r1965}[\chap~II]{feller1950_r1968}[appendix~A]{portamanaetal2015}{potts1953}, one
 can prove the equality~\eqref{eq:equal_m_factorialmoments} between the
-factorial moments of sample and full population.
+factorial moments of sample and larger population.
 
 \bigskip
 
@@ -2067,7 +2075,7 @@ $\yf$:
   \pf(M' \| \yf).
 \end{equation}
 Now, the probability of observing activity $\ya$ in the sample at any time
-bin is the sample marginal of the maximum-entropy distribution for the full
+bin is the sample marginal of the maximum-entropy distribution for the larger
 population, owing to the excheangeability assumption implicit in the
 maximum-entropy method:
 \begin{equation}
@@ -2158,7 +2166,7 @@ expectations of $s/n$ and $S/N$ are equal:
 where $\yH$ represents our state of knowledge in this example. A more
 precise answer to our original question then is: \enquote{because we
   \emph{expect} -- in the full probabilistic sense -- to see the same
-  proportion of political preferences in a sample as in the full
+  proportion of political preferences in a sample as in the larger
   population}.
 
 The exact equality above extends to other quantities beyond the means $S/N$
@@ -2181,7 +2189,7 @@ instead. Suppose the recorded activities are time-binned and binarized. At
 every time bin $t$, $s(t)$ out of the $n$ neurons \enquote{vote} for
 activity, and $n-s(t)$ vote for silence. The probability calculus tells us
 that expectation equalities such as~\eqref{eq:poll_equal_expectations} hold
-for the total activity $S(t)$ of the full population of $N$ neurons that
+for the total activity $S(t)$ of the larger population of $N$ neurons that
 could have been recorded. 
 
 Expectation properties are especially important for the maximum-entropy
@@ -2191,7 +2199,7 @@ expectations and empirical averages. Expectation equalities such
 as~\eqref{eq:poll_equal_expectations} then have a far-reaching consequence:
 \emph{from empirical statistics of the activity of a \textbf{sample} of
   neurons we can construct maximum-entropy distributions for the total
-  activity of the \textbf{full population} of neurons that could have been
+  activity of the \textbf{larger population} of neurons that could have been
   sampled by the recording device}.
 
 
@@ -2200,7 +2208,7 @@ as~\eqref{eq:poll_equal_expectations} then have a far-reaching consequence:
 % a probability distribution for the total activity at a new time bin of a
 % population of neurons, \emph{most of which can be unrecorded}, given
 % specific statistics about the activity of a recorded \emph{sample} of the
-% full population. This kind of probability assignment is extremely important
+% larger population. This kind of probability assignment is extremely important
 % in neuroscience: we try to understand the workings of brain areas that may
 % include tens of thousands of neurons, but we can record only few tens or
 % hundreds of them.
@@ -2211,7 +2219,7 @@ as~\eqref{eq:poll_equal_expectations} then have a far-reaching consequence:
 % from other neurons. We'll reveal this implicit assumption in several ways.
 % The probability distribution thus constructed is therefore affected by this
 % hidden assumption. We'll study in which circumstances the application of
-% the method at the sample level and at the full-population level give
+% the method at the sample level and at the larger-population level give
 % similar or different probabilities.
 
 
@@ -2482,7 +2490,7 @@ Purves \citey[parts~I, VI]{freedmanetal1978_r2007}; summaries can be found
 in Gelman \etal\ \citey[\chap~8]{gelmanetal1995_r2014} and Jaynes
 \citey[\chap~3]{jaynes1994_r2003}.
 
-We need to make an initial probability assignment for the state of the full
+We need to make an initial probability assignment for the state of the larger
 population before any experimental observations are made. This initial
 assignment will be modified by our experimental observations, and these can
 involve just a sample of the population. Our state of knowledge and initial
@@ -2526,7 +2534,7 @@ non-binary and continuum cases are given by de~Finetti
 \citey{diaconis1977,diaconisetal1980}, Heath \amp\ Sudderth
 \citey{heathetal1976}.
 
-Our uncertainties about the full population and the sample are connected
+Our uncertainties about the larger population and the sample are connected
 via the conditional probability
 \begin{equation}
   \label{eq:conditional_hypergeometric}
@@ -2561,7 +2569,7 @@ distribution of its population-averaged activity:
 This is intuitively clear: our initial symmetric ignorance should also
 apply to the sample. The distribution for the
 sample~\eqref{eq:subpop_average} indeed satisfies the same representation
-theorem~\eqref{eq:joint_plaus_N_homog} as the distribution for the full
+theorem~\eqref{eq:joint_plaus_N_homog} as the distribution for the larger
 population.
 
 The conditional probability
@@ -2569,7 +2577,7 @@ $\pf(\ya \|\yA, \yH) \equiv \yG_{\ya \yA}$, besides
 relating the distributions for the population and sample activities via
 marginalization, also allows us to express the expectation value of any
 function of the sample activity, $\yg_{\ya}$, in terms of the distribution
-for the full population, as follows:
+for the larger population, as follows:
 \begin{equation}
   \label{eq:pullback_P}
   \E(\yg\|I)
@@ -2594,7 +2602,7 @@ $\yg^*(\yA) \defd \sum_{\ya} \yg_{\ya}\,\yG_{\ya\yA}$.
 The final expression in \eqn~\eqref{eq:pullback_P} is important for our
 \me\ application: the requirement that the function $\yg$, defined for the
 sample, have a  value $\yc$ obtained from observed data,
-\emph{translates into a linear constraint for the distribution of the full
+\emph{translates into a linear constraint for the distribution of the larger
   population}:
 \begin{equation}
   \label{eq:constraint_extended}
@@ -2633,7 +2641,7 @@ find
 \equiv    \E(\av{\underbrace{\yAA \dotsm \yAA}_{\text{$m$ factors}}} \| \yH),
 \end{multline}
 that is, \emph{the expected values of the $m$-activities of the sample and
-  of the full population are equal}. The proof of the middle equality uses
+  of the larger population are equal}. The proof of the middle equality uses
 the expression for the $m$th factorial moment of the hypergeometric
 distribution and can be found in \textcite{potts1953}. Similar relations
 can be found for the raw moments $\E(\ya^m)$ and $\E(\yA^m)$, which
@@ -2642,7 +2650,7 @@ can be written in terms of the product expectations using
 
 Thus, in a \me\ application, when we require the expectation of the
 $m$-activity of a sample to have a particular value, we are also
-requiring  the expectation of the $m$-activity of the full population to
+requiring  the expectation of the $m$-activity of the larger population to
 have the same value.
 
 \bigskip
@@ -2657,7 +2665,7 @@ have the same value.
   colourbar depending on your \textsc{pdf} viewer.)}
 \label{fig:hypergeom_proj}
 \end{figure}%hypergeometric_identity.nb
-These expectation equalities between sample and full population should not
+These expectation equalities between sample and larger population should not
 be surprising: we intuitively \emph{expect} that the proportion of coloured
 balls sampled from an urn should be roughly equal to the proportion of
 coloured ball contained in the urn. The formulae in the present section
@@ -2678,7 +2686,7 @@ equalities express the intuitive fact that \emph{our uncertainty about the
   sample is representative of our uncertainty about the population and
   about other samples}, and vice versa. When $n=N$, $\yG_{\ya\yA}$
 becomes the identity matrix and the approximate equalities above become
-exact -- of course, since we have sampled the full population.
+exact -- of course, since we have sampled the larger population.
 
 But the approximate equalities above may miss important features of the two
 probability distributions. In the next section we will in fact emphasize
@@ -2690,7 +2698,7 @@ $\yG_{\ya\yA}$.
 % They should be contrasted with the limits
 % $\pf(\yxs=a) \to \pf(\yXf=a)$ and $\expeb{\yg_{\yxs}} \to \expeb{\yg_{\yXf}}$, as
 % $n\to N$, do: these limits are trivially, universally valid because the
-% sample becomes the full population as $n\to N$. In particular, these limits
+% sample becomes the larger population as $n\to N$. In particular, these limits
 % hold even in cases where the conditional probability
 % $\pf(\yxs = \ya \|\yXf=\yA)$ is not a fuzzy identity, our uncertainties
 % about sample and about population can differ wildly, and the approximate
@@ -2698,11 +2706,11 @@ $\yG_{\ya\yA}$.
 
 
 
-\section{Maximum-entropy: sample level \vs\ full-population level}
+\section{Maximum-entropy: sample level \vs\ larger-population level}
 \label{sec:specific_initial_probability}
 
 In the previous section we have seen that observations about a sample can
-be used as constraints on the distribution for the activity of the full
+be used as constraints on the distribution for the activity of the larger
 population. Let us use such constraints with the \me\ method. Suppose that
 we want to constrain $m$ functions of the sample activity, vectorially
 written $\yg \defd (c_1,\dotsc,c_m)$, to $m$ values
@@ -2713,7 +2721,7 @@ $\yc = \sum_t \yg[\ya(t)]/T$.
 
 Let us apply the relative-\me\ method \citep{sivia1996_r2006,meadetal1984}
 directly to sampled neurons; denote this approach by $\yHb$. Then we apply
-the method to the full population of neurons, most of which are unsampled;
+the method to the larger population of neurons, most of which are unsampled;
 denote this approach by $\yHa$.
 
 Applied directly to the sampled neurons, the method yields the distribution
@@ -2740,9 +2748,9 @@ equations
   \exp[\yl\T \yg_{\ya}].%, \qquad k=1,\dotsc,m.
 \end{equation}
 
-Applied to the full population, using the constraint
+Applied to the larger population, using the constraint
 expression~\eqref{eq:constraint_extended} derived in the previous section,
-the method yields the distribution for the full-population activity
+the method yields the distribution for the larger-population activity
 \begin{equation}
   \label{eq:app_maxent_pop}
   \pf(\yA \| \yHa)  = \frac{1}{\yK(\yll)}\,
@@ -2786,7 +2794,7 @@ the distributions). We would have a set of $2m+n$ equations in $2m$
 unknowns.
 
 Hence, \emph{the applications of \me\ at the sample level and at the
-  full-population level are inequivalent}. They lead to numerically
+  larger-population level are inequivalent}. They lead to numerically
 different distributions for the sample activity $\yaa$.
 
 %%% FIGURES %%%
@@ -2981,9 +2989,9 @@ distributions are often very vague about the latter point.
 
 Here are the distributions for our \dobs\ about three different quantities,
 assuming an entropic pre-data distribution for the long-run frequencies of
-the full population:
+the larger population:
 
-\textbf{The frequency distribution $\yF$ of the full-population activity
+\textbf{The frequency distribution $\yF$ of the larger-population activity
   \emph{during the recording}}
 
 \begin{equation}
@@ -3008,7 +3016,7 @@ the full population:
 
 \bigskip
 
-\textbf{The long-run frequency distribution $\ynu$ of the full-population
+\textbf{The long-run frequency distribution $\ynu$ of the larger-population
   activity}
 
 \begin{equation}
@@ -3032,7 +3040,7 @@ simplex of frequencies $\set{\ynu}$.
 
 \bigskip
 
-\textbf{The activity $\yA'$ of the full-population
+\textbf{The activity $\yA'$ of the larger-population
   in a \emph{new} time bin}
 
 \begin{equation}
@@ -3107,7 +3115,7 @@ distribution for $N$, and is expressed by
 \eqn~\eqref{eq:app_maxent_pop_marg_unknown_N}. This expression cannot
 generally be equal to~\eqref{eq:app_maxent_sample} unless the distribution
 for $N$ gives unit probability to $N=n$; that is, unless the sample
-\emph{is} the full population, and no larger population exists.
+\emph{is} the larger population, and no larger population exists.
 
 The standard \me\ approach therefore assumes that the recorded neurons
 constitute a special subpopulation, isolated from the larger population of
@@ -3145,7 +3153,7 @@ sharper predictions about the final physical state thanks to our knowledge
 of its preceding dynamics. In this example, though, both distributions are
 usually extremely sharp and practically lead to the same predictions. In
 neuroscientific applications, the difference in predictions of the sample
-\vs\ full-population applications can instead be very relevant.
+\vs\ larger-population applications can instead be very relevant.
 
 The idea of the new application leads in fact to more questions. For
 instance:
@@ -3235,20 +3243,20 @@ recordings from the Medial Entorhinal Cortex of rats and the monkey visual
 cortex, this population level maximum entropy model may exhibit features that
 the sample level model does not predict. Specifically, we observed modes in
 the distribution of the activity in the population level model that do not
-show up in the sample level. We study how the assumed size of the full
+show up in the sample level. We study how the assumed size of the larger
 population affects the appearance of these modes and find that there is a
-minimum size of the full population for which such modes can be observed. We
-then compared the distribution found by marginalizing the full population
+minimum size of the larger population for which such modes can be observed. We
+then compared the distribution found by marginalizing the larger population
 maximum entropy model down to the sample level, and the distribution fit
 directly to the sample level. For the two datasets that we tested, we found
 that the two distributions match each other to a large degree but that
 there are also differences between them. We quantify how these differences
 also depend on the assumed size of the population and find that …(WE SHOULD
 TEST SHI) This predicts that for a large enough population (DO WE PREDICT
-THAT IF THE FULL POPULATION GETS BIGGER THE DIFFERENCE ALSO GET BIGGER)?…
+THAT IF THE LARGER POPULATION GETS BIGGER THE DIFFERENCE ALSO GET BIGGER)?…
 
 The rest of the paper is organized as follows. We first describe how to go
-from the sample level maximum entropy model to the full population maximum
+from the sample level maximum entropy model to the larger population maximum
 entropy model. In section 2, we apply this to the two experimental datasets
 and study the effect of the assumed size of the population as well as the
 moments that we use for building the maximum entropy model. In section 3 we

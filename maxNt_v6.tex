@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-26T14:27:05+0100
+%% Last-Updated: 2019-11-26T16:21:29+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1584,10 +1584,30 @@ where the Hartley ($\hart$) denotes base-10 logarithms
 and Good in their code-breaking work at Bletchley
 Park:][]{good1985,good1950,good1969}[\sect~4.2]{jaynes1994_r2003}. In
 words, the measured frequencies of the sample activity are 35 orders of
-magnitude more probable under sufficiency of the first four moments than
-under sufficiency of the first two only. But they are about as probable
-($10^{0.016} = 1.04$) considering the first five moments to be sufficient
-as considering the first four moments only.
+magnitude more probable assuming sufficiency of the first four moments than
+assuming sufficiency of the first two only. But they are about as probable
+($10^{0.016} = 1.04$) assuming sufficiency of the first five moments as of
+the first four moments only.
+
+\begin{figure}[!p]
+\centering
+\includegraphics[width=\linewidth]{_scripts/newpaper2_stensola_twomom_distributions10000_priorc.pdf}%
+\\[3em]%
+\includegraphics[width=\linewidth]{_scripts/newpaper2_riehle_twomom_distributions10000_prior2.pdf}%
+\caption{***}
+\label{fig:plots_2_4mom}
+\end{figure}
+% maxent_solutions_different_moments_prior2_6moments.nb
+These informational differences shows clearly in the shapes of the
+distribution themselves, plotted in the upper panel of
+\fig~\ref{fig:plots_2_4mom}. The two-moment distribution
+(\textcolor{myred}{dashed red}) is unimodal, the four-moment distribution
+(\textcolor{myblue}{solid blue}) is bimodal. The five-moment distribution
+would not be distinguishable from the four-moment one. The lower panel in
+the figure shows the corresponding distributions for the second data set;
+also in this case they are visually very distinct.
+
+\medskip
 
 Compare the results above with those obtained by applying the method at the
 sample level, that is, with $N=n$:
@@ -1602,64 +1622,19 @@ The data are 1\,220 orders of magnitude more probable conditional on four
 moments than conditional on two, and $10^{1.4}=25$ times more probable
 conditional on five moments than on four moments.
 
-
-***
-
-
-
-The application at the larger-population level therefore leads to different
-conclusions about the relative importance of the moments from the
-application at the sample level. It is also possible to use the
-measure~\eqref{eq:measure_suffic} and its probabilistic
-meaning~\eqref{eq:bayes_factor} to compare the probability of the data
-$\yf$ conditional on the hypothesis $M_{5, N}$ of 5-moment sufficiency at
-the larger-population level, $N=10\,000$, versus the hypothesis $M_{5, n}$ of
-5-moment sufficiency at the sample level, $N=n=65$. We obtain
-\begin{equation}
-  \label{eq:diff_suff_n}
-  \ydi(M_{5, N}, M_{5, n}) = 35\;\nat = 15\;\hart,
-\end{equation}
-that is, the data are 15 orders of magnitude more probable under the first
-hypothesis than under the second.
-
-\bigskip
-
-
+The conclusions about \enquote{cooperativity} or \enquote{interaction} that
+we reach by applying the maximum-entropy method to the larger population,
+as proposed here, are therefore different from those applying it at the
+sample level -- and also visually clearer. The plot in the upper panel of
+\fig~\ref{fig:plots_2_4mom}, showing the two clearly different
+distributions constrained by two and four moments, should be compared with
+the plot for the distributions obtained at the sample level under the same
+constraints, shown in \fig~\ref{fig:comparisons_marginals} as
+\textcolor{myred}{red circles} and \textcolor{myblue}{blue squares}. The
+measured frequencies (black triangles) are also shown. It is necessary to
+use a logarithmic scale to see the differences, which appear mainly in the
+tail.
 \begin{figure}[!p]
-\centering
-\includegraphics[width=\linewidth]{_scripts/newpaper2_stensola_twomom_distributions10000_priorc.pdf}%
-\\[3em]%
-\includegraphics[width=\linewidth]{_scripts/newpaper2_riehle_twomom_distributions10000_prior2.pdf}%
-\caption{***}
-\label{fig:plots_2_4mom}
-\end{figure}
-% maxent_solutions_different_moments_prior2_6moments.nb
-Figure~\ref{fig:plots_2_4mom} shows the larger-population distributions, for
-$N=10\,000$, obtained constraining the first two moments (in
-\textcolor{red}{red}, equivalent to constraining means and correlations)
-and the first four moments (in \textcolor{blue}{blue}). The frequency
-distribution for the sample is also shown for comparison. In both data sets
-the two-moment constraint leads to a distribution quite different from the
-that of the four-moment constraint. For the first data set in particular,
-one distribution is bimodal, the other unimodal. This visual difference
-shows directly that the two sets of moments are not even approximately
-equivalent; a quantitative comparison is given below.
-
-
-The conclusions about \enquote{cooperativity} or \enquote{interaction}
-that we reach by applying the maximum-entropy method to the larger population,
-as proposed here, are not only different from the application at the sample
-level, but also visually clearer. The plot of \fig~\ref{fig:plots_2_4mom},
-showing the two clearly different distributions constrained by two and four
-moments, should be compared with the plot for the distributions obtained at
-the sample level under the same constraints, shown in
-\fig~\ref{fig:comparisons_marginals} as dashed lines with empty red
-circles (\textcolor{myred}{\LARGE$\bm{\mathord{\circ}}$}) and empty blue
-squares (\textcolor{mypurpleblue}{$\bm{\square}$}). The measured
-frequencies are shown as filled black triangles
-(\textcolor{black}{$\bm{\triangledown}$}). It is necessary to use a
-logarithmic scale to see the differences, which appear mainly in the tail.
-\begin{figure}[!b]
 \centering
 % \includegraphics[width=\linewidth]{_scripts/comparison_full.pdf}%
 % \\[3em]%
@@ -1669,15 +1644,28 @@ logarithmic scale to see the differences, which appear mainly in the tail.
 \end{figure}
 % comparison_ME_sample_full_levels.nb
 
-The same plot also shows the marginals obtained from applying the method to
-a larger population with $N=10\,000$ and the same constraints, that is, the
-sample marginals of \fig~\ref{fig:plots_2_4mom}. The two-moment
-distribution is represented by filled red circles
-(\textcolor{myred}{\LARGE$\bm{\bullet}$}), and the four-moment one by
-filled blue squares (\textcolor{mypurpleblue}{$\bm{\blacksquare}$}). The
-larger-population distribution fits the measured frequencies
-(\textcolor{black}{$\bm{\triangledown}$}) very well if we constrain only four
-moments.
+\medskip
+
+% 4 mom: 38.5632 nats = 167.478 dB, 5.59496*10^16
+% 5 mom: 35.2911 nats = 153.267 dB, 2.12185*10^15
+
+It is also possible to use the measure~\eqref{eq:measure_suffic} and its
+probabilistic meaning~\eqref{eq:bayes_factor} to compare the probability of
+the data $\yf$ conditional on the hypothesis $(M_{4},N)$ of four-moment
+sufficiency at the larger-population level, $N=10\,000$, versus the
+hypothesis $(M_{4}, n)$ of four-moment sufficiency at the sample level,
+$N=n=65$. We obtain
+\begin{equation}
+  \label{eq:diff_suff_n}
+  \ydi[(M_{4}, N), (M_{4}, n)] = 39\;\nat = 17\;\hart,
+\end{equation}
+that is, the data are 17 orders of magnitude more probable under the first
+hypothesis than under the second. This result is also shown in
+\fig~\ref{fig:comparisons_marginals}, where we see that the four-moment
+distribution constructed at the larger-population level
+(\textcolor{myblue}{blue filled squares}) fits the measured frequency
+distribution (black triangles) more closely than the corresponding
+sample-level distribution (\textcolor{myblue}{blue empty squares}).
 
 
 
@@ -1692,7 +1680,7 @@ moments.
 % constructed from two moments (\textcolor{mygreen}{\textbf{--~--~--}}) and
 % from four moments (\textcolor{mypurpleblue}{\textbf{------}}). The lower
 % plot shows the maximum-entropy distributions for the sample, from two
-% moments (\textcolor{mygreen}{$\bm{\triangledown}$}) and from four moments
+% moments (\textcolor{mygreen}{$\bm{\blacktriangledown}$}) and from four moments
 % (\textcolor{mypurpleblue}{$\bm{\square}$}), and the distributions obtained
 % by marginalizing the larger-population distribution to the sample size, from two
 % moments (\textcolor{mygreen}{$\bm{\blacktriangledown}$}) and from four
@@ -1705,7 +1693,7 @@ moments.
 %   clearly the two sets of statistics are not even approximately equivalent
 %   for inferential purposes.
 % \item The application at the sample level leads to deceivingly similar
-%   distributions (\textcolor{mygreen}{$\bm{\triangledown}$} and
+%   distributions (\textcolor{mygreen}{$\bm{\blacktriangledown}$} and
 %   \textcolor{mypurpleblue}{$\bm{\square}$}), which can only be distinguished on a
 %   logarithmic scale. This could lead to the erroneous conclusion that the
 %   two statistics are approximately equivalent.

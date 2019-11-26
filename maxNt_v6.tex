@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-26T16:38:20+0100
+%% Last-Updated: 2019-11-26T22:02:42+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -617,7 +617,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 %\newcommand*{\nbd}{\nobreakdash}%
 %\newcommand*{\bd}{\hspace{0pt}}%
 %\def\hy{-\penalty0\hskip0pt\relax}
-%\newcommand*{\labelbis}[1]{\tag*{(\ref{#1})$_\text{r}$}}
+\newcommand*{\labelbis}[1]{\tag*{(\ref{#1})$_\text{r}$}}
 %\newcommand*{\mathbox}[2][.8]{\parbox[t]{#1\columnwidth}{#2}}
 %\newcommand*{\zerob}[1]{\makebox[0pt][l]{#1}}
 \newcommand*{\tprod}{\mathop{\textstyle\prod}\nolimits}
@@ -1725,28 +1725,27 @@ sample-level distribution (\textcolor{myblue}{blue empty squares}).
 % maxent_solutions_different_moments_prior2_6moments.nb
 
 The calculations and conclusions presented in the preceding sections depend
-on the size of the larger population, $N$. The larger population can't be the whole
-brain, of course. How large should or can $N$ be in our formulae?
+on the size $N$ of the larger population. The larger population can't be
+the whole brain, of course. How large should or can $N$ be in our formulae?
 
-The crucial point is formula~\eqref{eq:equal_m_factorialmoments}, on which
-our method is based, and which asserts the equality of the factorial
-moments of the larger population and those of the sample. This formula is only
-valid if our beliefs about the activity of the sample $\pxx(\ya)$ and that
-of the larger population $\pxx(\yA)$ are related by a hypergeometric
-distribution:
+The crucial point is our belief distribution for the activity of the
+sample conditional on the activity of the larger population, given by
+formula~\eqref{eq:conditional_hypergeometric} in
+appendix~\ref{sec:derivation_maxent_fullnet}, reproduced here:
 \begin{equation}
-  \label{eq:hypergeometric_relation}
-    \pxx(\ya)=
-  \binom{n}{\ya}\;\binom{N-n}{\yA-\ya}\;\binom{N}{\yA}^{-1}
-\;\pxxx(\yA),
+  \labelbis{eq:conditional_hypergeometric}
+  \yG_{\ya\yA} \defd \pf(\ya \|\yA, n,N)=
+  \binom{n}{\ya}\binom{N-n}{\yA-\ya}\binom{N}{\yA}^{-1}
 \end{equation}
-characteristic of \enquote{drawing without replacement}
+which leads to the equality of factorial
+moments~\eqref{eq:equal_m_factorialmoments}, on which our approach rests.
+The conditional probability above is characteristic of \enquote{drawing
+  without replacement}
 \citep[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}.
-In other words, $N$ is the size of the pool of all neurons that could just
-as well have been recorded by our measuring procedure. \enquote{Just as
-  well} indicates equal degrees of belief. Whether the equality of such
-beliefs is justified, or for which sampling procedures it could be
-justified, is the fundamental, deep question of sampling theory, which we
+In other words, consider the pool of neurons which we equally believe could
+have been recorded. $N$ is the size of that pool. Whether the equality of
+such beliefs is justified, or for which sampling procedures it could be
+justified, is a fundamental, deep question of sampling theory, which we
 cannot discuss here of course \citep[see \eg\ the discussions, reviews, and
 references in][]{ericson1969,smith1976}. $N$ therefore depends on factors
 such as: the shape, dimensions, and technical specifications of the
@@ -1969,7 +1968,7 @@ property is then given by the hypergeometric distribution
 \begin{equation}
   \label{eq:conditional_hypergeometric}
   \yG_{\ya\yA} \defd \pf(\ya \|\yA, n,N)=
-  \binom{n}{n\ya}\binom{N-n}{N \yA-n\ya}\binom{N}{N \yA}^{-1}.
+  \binom{n}{\ya}\binom{N-n}{\yA-\ya}\binom{N}{\yA}^{-1}
 \end{equation}
 typical of \enquote{drawing without replacement}
 \citep[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}.

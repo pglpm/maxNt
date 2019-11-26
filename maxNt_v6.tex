@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-26T12:30:07+0100
+%% Last-Updated: 2019-11-26T13:28:00+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1030,7 +1030,8 @@ the sample of $n$ neurons that was actually recorded. This is what we will
 mean with \enquote{larger population}. This population need not be a whole
 functionally or anatomically distinct region. Loosely speaking it is the
 area of which we believe our sample to be \enquote{representative}
-\citep[with the warnings that accompany that term:][]{kruskaletal1979c}.
+\citep[with the warnings that accompany that
+term:][]{kruskaletal1979b,kruskaletal1979c}.
 
 The total activity of the $N$ neurons at $t$ is $\yA_{t}$. The relative
 frequencies of the various activity levels during the recording were
@@ -1056,26 +1057,26 @@ The idea behind our approach is easily summarized:
 \begin{enumerate}[label=(\alph*)]
 \item\label{item:sample_step} Using sampling theory we determine the
   relation between some expected values -- specifically, moments -- for the
-  total activity $\ya$ of the sample and corresponding expected values $M$
+  total activity $\ya$ of the sample and corresponding expected values %$M$
   for the total activity $\yA$ of the larger population.
 \item\label{item:maxent_step} Using the maximum-entropy method we build a
   distribution $\px(\yA \| M, N)$ for the total activity of the larger
   population of $N$ neurons, using as constraints the expected values $M$
   found in the previous step.
 \end{enumerate}
-We now discuss the ideas behind these steps more in detail, leaving their
+We now discuss the ideas behind these steps more in detail, but leave their
 precise mathematical implementation and a more detailed list of references
 to appendix~\ref{sec:derivation_maxent_fullnet}.
 
 \medskip
 
-Step~\ref{item:sample_step}, a result of sampling theory, is just an
-application of the probability calculus, which gives an exact linear
-relation between the first $m$ moments for the larger population and the first
-$m$ for the sample \citep[\eqns~(16)]{portamanaetal2015}. The ones
-determine the others and vice versa at every time bin. This relation holds
-for any belief distribution $\pxxx(\yA_{t})$ for the larger-population activity
-and its marginal $\pxx(\ya_{t})$ for the sample activity at that bin.
+Step~\ref{item:sample_step} is just an application of the probability
+calculus, which gives an exact linear relation between the first $m$
+moments for the larger population and the first $m$ for the sample
+\citep[\eqns~(16)]{portamanaetal2015}. The ones determine the others and
+vice versa at every time bin. This relation holds for any belief
+distribution $\pxxx(\yA_{t})$ for the larger-population activity and its
+marginal $\pxx(\ya_{t})$ for the sample activity at that bin.
 
 This sampling relation is even more straightforward if instead of power
 moments we use \emph{normalized factorial moments} \citep{potts1953}. The
@@ -1092,7 +1093,7 @@ $m$th normalized factorial moment of a distribution $\pxx(\ya)$ is
 % assumptions $\yH$; \enquote{$\ya$} may refer to any recorded bin or to a
 % new bin.
 that is, the expected number of distinct $m$-tuples of simultaneously
-spiking neurons (within a time-bin's width), normalized by the maximum
+active neurons (within a time-bin's width), normalized by the maximum
 possible number of distinct $m$-tuples. % For
 % example, with $m=2$, if $a=4$ neurons spike in a population of $n=5$, we
 % have $\tbinom{4}{2}=6$ distinct pairs of simultaneously spiking neurons,
@@ -1104,9 +1105,9 @@ are linearly related because $\tbinom{\ya}{m}$ is a polynomial in $\ya$ of
 degree $m$. So we'll just say \enquote{first $m$ moments} from now
 on. % Specifying one set is therefore
 % equivalent to specifying the other set.
-But the normalized factorial moments have a convenient property for our
-analysis: \emph{the first $n$ normalized factorial moments for the sample
-  and for the larger population are numerically identical}:
+But the normalized factorial moments have a mathematically convenient
+property for our analysis: \emph{the first $n$ normalized factorial moments
+  for the sample and for the larger population are numerically identical}:
 \begin{equation}
   \label{eq:equal_m_factorialmoments}
   \begin{split}
@@ -1135,18 +1136,19 @@ In step~\ref{item:maxent_step} we actually use the
 \citep{hobsonetal1973,csiszar1985}[\sect~5.2.2]{sivia1996_r2006} with
 respect to a uniform reference distribution. We'll still call it
 \enquote{maximum-entropy} for brevity. It amounts to two prescriptions:
-choose the distribution, among those satisfying specific convex constraints
-such as fixed expectations, that has minimum relative entropy with respect
-to a reference distribution; and judge those expectations to be equal to
-some measured averages, typically time averages.
+first, take the distributions satisfying specific convex constraints --
+such as fixed expectations -- and among them select the one having minimum
+relative entropy with respect to a reference distribution; second, judge
+those expectations to be equal to some measured averages, typically time
+averages.
 
-In our case we don't have measured time averages of the quantity
-$\binom{\yA}{m}$ to equate to the factorial moment
+In our case we don't know the time averages of the quantity
+$\binom{\yA}{m}$, so we cannot directly equate them to the factorial moment
 $\E\bigl[\binom{\yA}{m}\bigr]$ of the larger-population distribution
 $\pxxx(\yA)$. But \eqn~\eqref{eq:equal_m_factorialmoments} of
 step~\ref{item:sample_step} comes to our rescue, because it says that the
-expectations for the larger population are determined by those for the sample
-$\E\bigl[\binom{\ya}{m}\bigr]$, and we do have the time averages of the
+expectation for the larger population are determined by that for the sample
+$\E\bigl[\binom{\ya}{m}\bigr]$, and we do have the time average of its
 corresponding sample quantity $\binom{\ya}{m}$. So we can combine the two
 steps:
 \begin{equation*}
@@ -1158,11 +1160,10 @@ steps:
   \rightarrow
     \text{larger-population moments}}_{\textit{sampling theory}}
 \end{equation*}
-and apply the maximum-entropy method to obtain a distribution
-$\px(\yA \| M, N)$ for the larger population of $N$ neurons by constraining some
-of its factorial moments, for example $M=\set{1,\dotsc,m'}$ with $m'\le n$,
-to be equal to the sample's recorded averages. In formulae, the constraints
-on $\pxxx(\yA)$ are
+We obtain a distribution $\px(\yA \| M, N)$ for the larger population of
+$N$ neurons by constraining some of its factorial moments, for example
+$M=\set{1,\dotsc,m'}$ with $m'\le n$, to be equal to the sample's recorded
+averages. In formulae, the constraints on $\pxxx(\yA)$ are
 \begin{equation}
   \label{eq:final_constraint}
 \underbracket{\frac{1}{T}\sum_{t}\binom{\ya_{t}}{m}\bigg/\binom{n}{m}
@@ -1175,8 +1176,7 @@ on $\pxxx(\yA)$ are
    \quad m\in M.
 \end{equation}
 
-The result is the
-distribution of the form
+The result is the distribution of the form
 \begin{equation}
   \label{eq:app_maxent_pop_first}
   \begin{gathered}
@@ -1194,26 +1194,25 @@ distribution of the form
 \end{gathered}
 \end{equation}
 where the parameters $\yll$ are determined by the
-constraints~\eqref{eq:final_constraint}. It is further discussed in
-appendix~\ref{sec:derivation_maxent_fullnet}.
+constraints~\eqref{eq:final_constraint}. This formula is further discussed
+in appendix~\ref{sec:derivation_maxent_fullnet}.
 
-The number and degrees of the constraining moments depend on the questions
-and hypotheses that a researcher is exploring; for example, hypotheses
-about the \enquote{cooperativity} or \enquote{interaction} in the population
-activity. We discuss this kind of use in \sect~\ref{sec:marginalization}.
-Note that the constraint equation~\eqref{eq:final_constraint} for the
+The amount and degrees of the constraining moments depend on the questions
+and hypotheses that a researcher is exploring. We give some examples in the
+next two sections. Note that the constraint
+equation~\eqref{eq:final_constraint} for the
 distribution~\eqref{eq:app_maxent_pop_first} may not have exact solutions
 if $N$ is strictly larger than $n$; and the possible discrepancy typically
-increases with the number of constraints. The essential reason for this
-discrepancy is the approximate character of two assumptions behind the
-maximum-entropy and of one assumption specific to our application: measured
-moments equal expectations (or equivalently, the number of time bins $T$ is
-infinite), the order of the time bins is irrelevant, and an activity level
-$\yA$ can be equally likely be generated by any set of $\yA$ neurons in the
-larger population. The magnitude of this discrepancy can be a signature of the
-(at least temporary) presence of a \enquote{neuronal assembly}
-\citep[\chap~12]{gerstneretal2014}{hebb1949_r2002}. We discuss this matter
-in \sect~\ref{sec:assumptions}.
+increases with the number of constraints. This discrepancy comes from the
+approximate character of two assumptions behind the maximum-entropy method
+and of one assumption specific to our application: that the order of the
+time bins is irrelevant, that measured moments equal expectations (or
+equivalently, the number of time bins $T$ is infinite), and that an
+activity level $\yA$ can equally likely be generated by any set of $\yA$
+neurons in the larger population. The magnitude of this discrepancy can be
+a signature of the (at least temporary) presence of a \enquote{neuronal
+  assembly} \citep[\chap~12]{gerstneretal2014}{hebb1949_r2002}. We discuss
+this matter in \sect~\ref{sec:assumptions}.
 
 %, but our main goal is to simply introduce
 % the general method without entering into biological questions of this
@@ -1227,9 +1226,9 @@ two remarks about the maximum-entropy method that are seldom made in the
 neuroscientific literature. They are important for the interpretation of
 the results and are further discussed in \sect~\ref{sec:assumptions}.
 First, a maximum-entropy distribution like $\px(\yA \| M, N)$ is the
-zeroth-order approximation (in the sense of Laplace's
-approximation)\citep[\chap~4]{debruijn1958_r1961}{tierneyetal1986,strawderman2000}
-of four different distributions for the larger population, which differ
+zeroth-order approximation (in the sense of Laplace's approximation
+\citep[\chap~4]{debruijn1958_r1961}{tierneyetal1986,strawderman2000}) of
+four distinct distributions for the larger population, which differ
 numerically from one another in higher-order approximations:
 \begin{enumerate}[label=(\roman*)]
 \item the most probable \emph{frequency} distribution for the total

@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-26T13:40:59+0100
+%% Last-Updated: 2019-11-26T14:07:21+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1350,13 +1350,13 @@ $\yNng=5\,850$ for the non-grid set, to reflect their proportions (27/65
 and 38/65) in the recorded sample. The results are shown in the upper panel
 of \fig~\ref{fig:plots_cellsubsets}. The distribution for the larger
 population of grid cells (\textcolor{mygreen}{green triangles}) seems to
-have one, broad peak, close to the first peak of the larger-population
+have one broad peak, close to the first peak of the larger-population
 distribution. The distribution for the larger population of non-grid cells
 (\textcolor{myred}{red circles}) has two peaks instead, roughly at the same
 normalized activities as the peaks of the larger-population distribution
 (\textcolor{myblue}{blue curve}) but closer in height. It would thus seem
-that the population of grid cells is contributing to the first peak of the
-larger population, but it is not the sole contributor. We can also assess
+that the population of grid cells is contributing to the first mode of the
+larger population, but it is not its sole contributor. We can also assess
 if the distributions for the two sets of neurons are independent. If they
 were independent, the larger-population distribution would be given by
 their convolution:
@@ -1377,10 +1377,11 @@ gives us some information about the activity of the other.
 
 \medskip
 
-The toy analysis just given should be taken not literally, but just as an
+The toy analysis above should not be taken literally, but just as an
 illustration of the method's possible applications. The important point is
-that this method is computationally very cheap and yet can provide useful
-insights, even if just qualitative ones.
+that this method is computationally very cheap and yet it can provide
+useful insights, even if just qualitative ones, and even suggest new
+hypotheses.
 
 
 
@@ -1389,48 +1390,23 @@ insights, even if just qualitative ones.
   the limitations of methods at the sample level}
 \label{sec:marginalization}
 
-\begin{figure}[!p]
-\centering
-\includegraphics[width=\linewidth]{_scripts/newpaper2_stensola_twomom_distributions10000_priorc.pdf}%
-\\[3em]%
-\includegraphics[width=\linewidth]{_scripts/newpaper2_riehle_twomom_distributions10000_prior2.pdf}%
-\caption{***}
-\label{fig:plots_2_4mom}
-\end{figure}
-% maxent_solutions_different_moments_prior2_6moments.nb
-To illustrate how our approach can be applied to studies of
-\enquote{cooperativity} or \enquote{interaction},
-\fig~\ref{fig:plots_2_4mom} shows the larger-population distributions, for
-$N=10\,000$, obtained constraining the first two moments (in
-\textcolor{red}{red}, equivalent to constraining means and correlations)
-and the first four moments (in \textcolor{blue}{blue}). The frequency
-distribution for the sample is also shown for comparison. In both data sets
-the two-moment constraint leads to a distribution quite different from the
-that of the four-moment constraint. For the first data set in particular,
-one distribution is bimodal, the other unimodal. Interpreted in terms of
-This visual difference shows directly that the two sets of moments are not
-even approximately equivalent.
-
-It is instructive to contrast this conclusion with that we would have
-reached by applying the maximum-entropy method \emph{at the sample level},
-as traditionally done. Such a comparison involves some important
-methodological caveat which we wish to discuss first.
-
-\bigskip
-
-
 As mentioned in the Introduction (see references there), in the
 neurosciences the maximum-entropy method has also been used as a way of
 quantifying the \enquote{cooperativity} \citep[\eg][]{gersteinetal1985} or
 \enquote{interaction}
 \citep[\eg][]{martignonetal1995,schneidmanetal2006,shlensetal2006} or
 \enquote{synchrony} \citep[\eg][-- we're only citing early papers using
-these terms]{bohteetal2000,amarietal2003} of neuronal
-activity. In this section we discuss how our proposed
-application bears on this kind of quantification. % For concreteness we use an
+these terms]{bohteetal2000,amarietal2003} of neuronal activity. Most, if
+not all, such applications apply the method \emph{at the sample level}. In
+this section we discuss how our proposed application bears on this kind of
+quantification and compare it with the traditional application at the
+sample level. But such a comparison involves some important methodological
+caveats which we wish to discuss first.% For concreteness we use an
 % example with specific statistics: first and second moments (equivalent to
 % mean and correlations), versus first-to-fourth moments. But our
 % discussion holds for any sets of statistics.
+
+\bigskip
 
 \enquote{Cooperativity}, \enquote{interaction}, and similar terms are
 vague, so we need to translate them into a more precise notion first. Here
@@ -1639,6 +1615,28 @@ that is, the data are 15 orders of magnitude more probable under the first
 hypothesis than under the second.
 
 \bigskip
+
+
+\begin{figure}[!p]
+\centering
+\includegraphics[width=\linewidth]{_scripts/newpaper2_stensola_twomom_distributions10000_priorc.pdf}%
+\\[3em]%
+\includegraphics[width=\linewidth]{_scripts/newpaper2_riehle_twomom_distributions10000_prior2.pdf}%
+\caption{***}
+\label{fig:plots_2_4mom}
+\end{figure}
+% maxent_solutions_different_moments_prior2_6moments.nb
+Figure~\ref{fig:plots_2_4mom} shows the larger-population distributions, for
+$N=10\,000$, obtained constraining the first two moments (in
+\textcolor{red}{red}, equivalent to constraining means and correlations)
+and the first four moments (in \textcolor{blue}{blue}). The frequency
+distribution for the sample is also shown for comparison. In both data sets
+the two-moment constraint leads to a distribution quite different from the
+that of the four-moment constraint. For the first data set in particular,
+one distribution is bimodal, the other unimodal. This visual difference
+shows directly that the two sets of moments are not even approximately
+equivalent; a quantitative comparison is given below.
+
 
 The conclusions about \enquote{cooperativity} or \enquote{interaction}
 that we reach by applying the maximum-entropy method to the larger population,

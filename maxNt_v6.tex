@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-26T22:02:42+0100
+%% Last-Updated: 2019-11-27T11:44:52+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1742,20 +1742,31 @@ moments~\eqref{eq:equal_m_factorialmoments}, on which our approach rests.
 The conditional probability above is characteristic of \enquote{drawing
   without replacement}
 \citep[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}.
-In other words, consider the pool of neurons which we equally believe could
-have been recorded. $N$ is the size of that pool. Whether the equality of
-such beliefs is justified, or for which sampling procedures it could be
-justified, is a fundamental, deep question of sampling theory, which we
-cannot discuss here of course \citep[see \eg\ the discussions, reviews, and
-references in][]{ericson1969,smith1976}. $N$ therefore depends on factors
-such as: the shape, dimensions, and technical specifications of the
-recording probe; the inaccuracy in the insertion of the probe, leading for
-example to slightly different insertion points or angles; the density of
-neurons around the probe; and similar. $N$ can only be assessed case by
-case. The plots of \fig~\ref{fig:plots_5mom} suggest that its order of
-magnitude might be enough for qualitative inferences. As discussed in the
-next section, even if the exact number $N$ were known, the maximum-entropy
-distribution ought to be interpreted qualitatively or semi-quantitatively.
+In other words, consider the pool of all neurons which we believe -- with
+equal degree for each neuron -- could have been recorded. $N$ is the size
+of that pool. $N$ therefore depends on factors such as: the shape,
+dimensions, and technical specifications of the recording probe; the
+inaccuracy in the insertion of the probe, leading for example to slightly
+different insertion points or angles; the density of neurons around the
+probe. But it also depends on the homogeneity of the brain region where the
+recording was made: if we believe that it doesn't matter whether the probe
+had been inserted in some other point of the same brain region, then
+formula~\eqref{eq:conditional_hypergeometric} is appropriate. Thus $N$ can
+only be assessed case by case.
+
+Whether such beliefs are justified, or for which sampling procedures they
+can be justified, is a fundamental, deep question of sampling theory, which
+we cannot discuss here \citep[see \eg\ the discussions, reviews, and
+references in][]{ericson1969,smith1976,kruskaletal1979c,kruskaletal1980}.
+It is of course possible to probabilistically assess, case by case, whether
+this assumption is appropriate. It good to keep in mind that such
+assessment rests, in turn, on similar assumptions at a higher level.
+
+Luckily the plots of \fig~\ref{fig:plots_5mom} suggest that the order of
+magnitude of $N$ ought to be enough for qualitative inferences. As
+discussed in the next section, even if the exact number $N$ were known, the
+maximum-entropy distribution ought to be interpreted qualitatively or
+semi-quantitatively.
 
 If our uncertainty about $N$ spans several orders of magnitude, we can of
 course assign a probability to the possible values of $N$ based on our

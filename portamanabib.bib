@@ -6,7 +6,7 @@
 %% Home page: http://magnaspesmeretrix.org/
 %% Email (remove ZZ): pglpm0ZZ[at]gmail.com
 %% Created: 2000-08-23T16:53:30+0200
-%% Last-Updated: 2019-11-27T13:53:18+0100
+%% Last-Updated: 2019-11-29T15:21:48+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % NB: This database contains also items whose content's validity I
@@ -414,6 +414,7 @@
 @String{hpls = {Hist.\ Philos.\ Life Sci.}}
 @String{hspbs = {Hist.\ Stud.\ Phys.\ Biol.\ Sci.}}
 @String{hsps = {Hist.\ Stud.\ Phys.\ Sci.}}
+@String{ht = {\langlatin{Hermathena}}}
 @String{iac = {Inform.\ and Contr.}}
 @String{iansssrsm = {Izv.\ Akad.\ Nauk SSSR Ser.\ Mat.}}
 @String{ibmjrd = {IBM J. Res. \amp\ Dev.}}
@@ -1041,6 +1042,7 @@
 @String{tcogsci = {Trends Cognit.\ Sci.}}
 @String{tcps = {Trans.\ Cambridge Philos.\ Soc.}}
 @String{tcs = {Theor.\ Computer Sci.}}
+@String{tcsys = {Theory Comput.\ Syst.}}
 @String{teachp = {Teach.\ Philos.}}
 @String{techm = {\langgerman{Technische Mechanik}}}
 @String{teio = {\langnohyph{Trabajos de Estad{\'i}stica y de Investigaci{\'o}n Operativa}}}
@@ -1183,6 +1185,17 @@ year =	       {1991},
 address =      {Cambridge}
 }
 
+@Article{aberth1968,
+author =       {Oliver Aberth},
+title =	       {Analysis in the Computable Number Field},
+journal =      jacm,
+year =	       {1968},
+volume =       {15},
+number =       {2},
+pages =	       {275--299},
+keywords =     {computability, computable reals, computable analysis}
+}
+
 @Book{aberth1980,
 author =       {Oliver Aberth},
 title =	       {Computable Analysis},
@@ -1191,6 +1204,30 @@ year =	       {1980},
 series =       {Advanced book program},
 address =      {New York},
 keywords =     {computability, computable reals}
+}
+
+@Book{aberth2000_r2007,
+author =       {Oliver Aberth},
+title =	       {Introduction to Precise Numerical Methods},
+publisher =    {Academic Press},
+year =	       {2007},
+address =      {Burlington, USA},
+edition =      {2},
+note =	       {First publ.\ 2000},
+keywords =     {computable number field, computable analysis},
+origdate =     {2000}
+}
+
+@Book{aberth2001_r2004,
+author =       {Oliver Aberth},
+title =	       {Computable calculus},
+publisher =    {Academic Press},
+year =	       {2004},
+address =      {San Diego},
+edition =      {repr.},
+note =	       {First publ.\ 2001},
+keywords =     {computable number field, computable analysis},
+origdate =     {2001}
 }
 
 @Article{abhyankaretal1976,
@@ -35052,6 +35089,17 @@ pages =	       {300--309},
 keywords =     {random sampling, probability theory}
 }
 
+@Article{edgeworth1884,
+author =       {Francis Ysidro Edgeworth},
+title =	       {Chance and law},
+journal =      ht,
+year =	       {1884},
+volume =       {5},
+number =       {10},
+pages =	       {154--163},
+keywords =     {probability theory, physics}
+}
+
 @Article{edgeworth1885,
 author =       {Francis Ysidro Edgeworth},
 title =	       {The calculus of probabilities applied to psychical research},
@@ -35108,6 +35156,16 @@ number =       {1},
 pages =	       {72--81},
 note =	       {See also \citebi{edgeworth1898,edgeworth1899}},
 keywords =     {inverse hyperbolic sine transform, normal distribution, probability theory, logit-normal distribution}
+}
+
+@Article{edgeworth1905,
+author =       {Francis Ysidro Edgeworth},
+title =	       {The Law of Error},
+journal =      tcps,
+year =	       {1905},
+volume =       {20},
+pages =	       {36--65, 113--141},
+keywords =     {de Finetti's theorem, exchangeability, Bayesian probability theory, Laplace, induction}
 }
 
 @Article{edgeworth1922,
@@ -76885,18 +76943,6 @@ note =	       {\url{http://www.inference.org.uk/mackay/amino.ps.gz}, \url{http:/
 keywords =     {Dirichlet distribution}
 }
 
-@Article{mackay1995,
-author =       {David J. C. MacKay},
-title =	       {Bayesian neural networks and density networks},
-journal =      nimpra,
-year =	       {1995},
-volume =       {354},
-number =       {1},
-pages =	       {73--80},
-note =	       {\url{http://www.inference.org.uk/mackay/ch_learning.pdf}},
-keywords =     {Dirichlet distribution}
-}
-
 @Book{mackay1995_r2003,
 author =       {David J. C. MacKay},
 title =	       {Information Theory, Inference, and Learning Algorithms},
@@ -76906,6 +76952,18 @@ address =      {Cambridge},
 note =	       {\url{http://www.inference.phy.cam.ac.uk/mackay/itila/}. First publ.\ 1995},
 keywords =     {probability theory, communication theory, maximum entropy},
 origdate =     {1995}
+}
+
+@Article{mackay1995b,
+author =       {David J. C. MacKay},
+title =	       {Bayesian neural networks and density networks},
+journal =      nimpra,
+year =	       {1995},
+volume =       {354},
+number =       {1},
+pages =	       {73--80},
+note =	       {\url{http://www.inference.org.uk/mackay/ch_learning.pdf}},
+keywords =     {Dirichlet distribution}
 }
 
 @InCollection{mackay1996,
@@ -94435,6 +94493,17 @@ year =	       {2018},
 note =	       {In preparation. Draft available at \url{https://github.com/pglpm/genobayes/blob/master/genobayes2.pdf}}
 }
 
+@Article{porteretal2017,
+author =       {Michelle Porter and Adam Day and Rodney Downey},
+title =	       {Notes on Computable Analysis},
+journal =      tcsys,
+year =	       {2017},
+volume =       {60},
+number =       {1},
+pages =	       {53--111},
+keywords =     {computable number field}
+}
+
 @Book{portetal1995,
 editor =       {Robert F. Port and van Gelder, Timothy},
 title =	       {Mind as Motion: Explorations in the Dynamics of Cognition},
@@ -97960,6 +98029,16 @@ author =       {Marijan Ribari{\v{c}} and Luka {\v{S}}u{\v{s}}ter{\v{s}}i{\v{c}}
 title =	       {Search for an equation of motion of a classical pointlike charge},
 year =	       {2005},
 note =	       {\arxiveprint{physics/0511033}}
+}
+
+@Article{rice1954,
+author =       {H. G. Rice},
+title =	       {Recursive real numbers},
+journal =      pams,
+year =	       {1954},
+volume =       {5},
+pages =	       {784--791},
+keywords =     {computable number field, computable analysis}
 }
 
 @Article{richardson1930,

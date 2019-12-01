@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-11-29T17:03:17+0100
+%% Last-Updated: 2019-12-01T15:24:42+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1840,14 +1840,64 @@ calculation; but such calculation would make the whole maximum-entropy
 approach superfluous. We discuss this final point in the next section.
 
 
-\section{Assumptions and limitations}
+\section{Assumptions, approximations, limitations}
 \label{sec:assumptions}
 
 The limitations of the proposed approach can be appraised by examining the
-assumptions on which it rests. And its assumptions become clear within a
-full-fledged probabilistic approach to our inference problem, at least
-qualitatively sketched.
+assumptions and approximations on which it rests. Its assumptions and
+approximations become clear within a full-fledged probabilistic approach to
+our inference problem, at least qualitatively sketched.
 
+The first and most important assumption of this kind of maximum-entropy
+application in neuroscience is that the order of the time bins has no
+relevance; or equivalently that the frequencies of the activity during a
+recording are informationally sufficient. Note that the maximum-entropy
+method in statistical physics is meant to be used not with this assumption,
+but with averages across \emph{repetitions} of the same experiment: its
+constraints represent macroscopically \emph{reproducible} quantities and
+kinematics, even in non-equilibrium
+\citep{jaynes1957,guntonetal1983,tikochinskyetal1984,grandy1988,berryetal1988,deroecketal2005_r2006,touchette2009}.
+
+An assumption of our specific application is that all subsets of $\yA$
+neurons in the larger population are equally likely to give rise to total
+activity $\yA$, at every time bin. A mathematically equivalent assumption
+is that $n$ neurons are sampled anew at each time bin.
+
+Both assumptions above make sense as hypotheses for judging the
+informational relevance of correlations of some order, as in
+\sect~\ref{sec:marginalization}, to be compared with hypotheses about more
+realistic time dependences and clustering.
+
+
+In an exact calculation based on the two assumptions above, the probability
+of the sequences of sample and larger-population activities,
+$(\ya_{t}, \yA_{t})$, would involve the joint frequencies of total
+activities of sample and larger population $F_{\ya,\yA}$, multiplied by the
+number of time bins $T$:
+\begin{equation}
+  \label{eq:prob_joint_frequencies}
+  \underbracket{\prod_{t} \pxx(\ya_{t}, \yA_{t})}_{\mathclap{\textit{prob. of joint sequence}}} \equiv
+  \prod_{\ya,\yA} \pxx(\ya, \yA)^{T\,F_{\ya,\yA}} =
+  \prod_{\ya,\yA}\bigl[\underbracket{\vphantom{\underline{g}}\yG_{\ya\yA}\;\pxx(\yA)}_{\mathclap{\textit{sampling relation}}}\bigr]^{T\,F_{\ya,\yA}}.
+\end{equation}
+The reasoning would be similar to that leading to
+\eqn~\eqref{eq:prob_frequencies} of appendix~\ref{sec:measure_suff}.
+Conditioning on the frequencies $\yf$ of the sample would correspond to
+constraining the marginal $\sum_{\yA}F_{\ya,\yA}=\yff_{\ya}$. The
+maximum-entropy method approximates $T$ with infinity, thus treating the
+probability above as a delta. The result is that
+\begin{enumerate*}[label=(\roman*)]
+\item the probability for the total activity $\yA$ becomes equal to its
+  observed frequency;
+\item the frequency of sample activity $\ya$ conditional on
+  larger-population activity $\yA$ is constrained to equal the
+  hypergeometric distribution $\yG_{\ya\yA}$,
+  \eqn~\eqref{eq:conditional_hypergeometric}.
+\end{enumerate*}
+Without this approximation the latter conditional frequency can differ from
+$\yG_{\ya\yA}$, and this is expected if the number of bins $T$ is not much
+larger than the number of possible joint possibilities, roughly
+$n\times N$. Discrepancies of order $nN/T$ are therefore expected.
 
 
 
@@ -2095,7 +2145,7 @@ population, owing to the excheangeability assumption implicit in the
 maximum-entropy method:
 \begin{equation}
   \label{eq:sample_marginal}
-  \pxx(\ya_{t} \| M) = \sum_{\yA}\yG_{\ya_{t}\,\yA}\px(\yA \| M).
+  \pxx(\ya_{t} \| M) = \sum_{\yA}\yG_{\ya_{t}\,\yA}\;\px(\yA \| M).
 \end{equation}
 The probability of observing one sequence $(\ya_{t})$ with frequencies
 $\yf$ is therefore
@@ -2103,7 +2153,7 @@ $\yf$ is therefore
   \label{eq:prob_frequencies}
   \prod_{t=1}^{T} \pxx(\ya_{t} \| M) \equiv
   \prod_{\ya=0}^{n} \pxx(\ya \| M)^{T\,\yff_{\ya}} \equiv
-  \prod_{\ya=0}^{n}\biggl[\sum_{\yA}\yG_{\ya\yA}\px(\yA \| M)\biggr]^{T\,\yff_{\ya}}.
+  \prod_{\ya=0}^{n}\biggl[\sum_{\yA}\yG_{\ya\yA}\;\px(\yA \| M)\biggr]^{T\,\yff_{\ya}}.
 \end{equation}
 The probability of observing the frequencies $\yf$ is obtained multiplying this
 by their multiplicity factor, the multinomial coefficient

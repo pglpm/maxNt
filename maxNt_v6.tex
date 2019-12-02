@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-02T15:04:31+0100
+%% Last-Updated: 2019-12-02T17:12:16+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1902,28 +1902,28 @@ informational relevance of correlations of some order, as in
 realistic time dependences and clustering.
 
 From these two assumptions the probability calculus allows us to calculate
-the probability for the frequency distribution $\yF$ given the observed
-frequency distribution for the sample $\yf$. The result is a mixture of
-terms involving the joint frequencies of total activities of sample and
-larger population $J_{\ya,\yA}$, multiplied by the number of time bins $T$:
+the probability $\pxx(\yF \| \yf )$ for the frequency distribution $\yF$
+given the observed frequency distribution for the sample $\yf$. The result
+is a mixture of terms involving the joint frequencies of total activities
+of sample and larger population $J_{\ya,\yA}$, multiplied by the number of
+time bins $T$:
 \begin{equation}
   \label{eq:prob_joint_frequencies}
 %\pxx[\yF \| \yf ] \propto
-\prod_{\ya,\yA}\bigl(\yG_{\ya\yA}\;\nu_{\yA}\bigr)^{T\,J_{\ya,\yA}},
+ \sum_{\bm{J}} \prod_{\ya,\yA}\bigl(\yG_{\ya\yA}\;\nu_{\yA}\bigr)^{T\,J_{\ya,\yA}}
+  \qquad
+  \text{with}\quad \tsum_{\yA}J_{\ya,\yA}=\yff_{\ya},
+  \quad \tsum_{\ya}J_{\ya,\yA}=\yFF_{\yA},
 \end{equation}
-with weights $q(\ynu)$, and with the marginal of the joint frequency
-constrained Conditioning on the frequencies $\yf$ of the sample
-would correspond to constraining the marginal
-$\sum_{\yA}F_{\ya,\yA}=\yff_{\ya}$. The maximum-entropy method approximates
-$T$ with infinity, thus treating the probability above as a delta. The
-result is that
+with weights $q(\ynu)$. The maximum-entropy method approximates $T$ with
+infinity, thus treating the probability above as a delta. The result is
+that
 \begin{enumerate*}[label=(\roman*)]
-\item the probability and observed frequency for the total activity $\yA$
-  are constrained to be equal,
-\item the frequency of sample activity $\ya$ conditional on
+\item the frequency distribution $\yF$ for the experiment and the long-run
+  one $\ynu$ are constrained to be equal,
+\item the frequency of the sample activity $\ya$ conditional on the
   larger-population activity $\yA$ is constrained to equal the
-  hypergeometric distribution $\yG_{\ya\yA}$,
-  \eqn~\eqref{eq:conditional_hypergeometric}.
+  hypergeometric distribution $\yG_{\ya\yA}$.
 \end{enumerate*}
 Without this approximation the latter conditional frequency can differ from
 $\yG_{\ya\yA}$, and this is expected if the number of bins $T$ is not much
@@ -1931,7 +1931,7 @@ larger than the number of possible joint possibilities, roughly
 $n\times N$.
 
 The final assumption in the maximum-entropy method regards the form of the
-probability $\pxxx(\yA)$ in the expression above.
+probability $\pxx(\ynu)$ in the expressions above.
 
 
 

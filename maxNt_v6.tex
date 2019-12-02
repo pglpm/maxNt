@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-01T23:27:33+0100
+%% Last-Updated: 2019-12-02T10:04:27+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1843,19 +1843,41 @@ approach superfluous. We discuss this final point in the next section.
 \section{Assumptions, approximations, limitations}
 \label{sec:assumptions}
 
-The limitations of the proposed approach can be appraised by examining the
+The limitations of approach here proposed can be appraised by examining the
 assumptions and approximations on which it rests. Its assumptions and
-approximations become clear within a full-fledged probabilistic approach to
-our inference problem, at least qualitatively sketched.
+approximations become clear within a full-fledged probabilistic inference
+problem, which we sketch qualitatively.
 
 The first and most important assumption of this kind of maximum-entropy
-application in neuroscience is that the order of the time bins has no
-relevance; or equivalently that the frequencies of the activity during a
-recording are informationally sufficient. *** markov here \citep{diaconisetal1980c,geetal2012} *** Note that the
-maximum-entropy method in statistical physics is meant to be used not with
-this assumption, but with averages across \emph{repetitions} of the same
-experiment: its constraints represent macroscopically \emph{reproducible}
-quantities and kinematics, even in non-equilibrium
+application in neuroscience can be expressed in three equivalent ways:
+\begin{enumerate*}[(\roman*)]
+\item the order of the time bins has no relevance; \item the frequencies of
+  the activity during a recording are informationally sufficient for
+  inferences about unrecorded times; \item our degree of belief about the
+  sequence of activities is invariant under permutations of the time bins,
+  that is, exchangeable \citep[\chap~4]{bernardoetal1994_r2000}{dawid2013}.
+\end{enumerate*}
+Equating time averages and expectations, \eqn~\eqref{eq:final_constraint},
+would not make sense without this assumption. Its mathematical consequence
+\citep{definetti1930,hewittetal1955} is that the probability of observing a
+frequency distribution $(\yFF_{\yA})$ in $T$ time bins is given by a
+mixture of terms
+\begin{equation}
+  \label{eq:mixture_from_definetti}
+  \exp[-T\;\sh(\yF;\ynu)] \quad
+  \text{with weights }q(\ynu),
+\end{equation}
+where $\ynu\defd (\nu_{\yA})$ represents the long-run frequency
+distribution for the activity. % Other maximum-entropy models are also used
+% in neuroscience, such as kinetic Ising models
+% \cite{kawasaki1972,mezardetal2011,battistinetal2015}, based on the slightly
+% less drastic assumption of invariance under permutations of sequences
+% having the same starting state and the same transition counts
+% \citep{diaconisetal1980c,geetal2012}.
+Note that the maximum-entropy method in statistical physics is meant to be
+used not with this assumption, but with averages across \emph{repetitions}
+of the same experiment: its constraints represent macroscopically
+\emph{reproducible} quantities and kinematics, even in non-equilibrium
 \citep{jaynes1957,guntonetal1983,tikochinskyetal1984,grandy1988,berryetal1988,deroecketal2005_r2006,touchette2009}.
 
 An assumption of our specific application is that all subsets of $\yA$
@@ -1863,11 +1885,10 @@ neurons in the larger population are equally likely to give rise to total
 activity $\yA$, at every time bin. A mathematically equivalent assumption
 is that $n$ neurons are sampled anew at each time bin.
 
-Both assumptions above make sense as hypotheses for judging the
+Both assumptions above make sense as toy hypotheses for judging the
 informational relevance of correlations of some order, as in
 \sect~\ref{sec:marginalization}, to be compared with hypotheses about more
 realistic time dependences and clustering.
-
 
 In an exact calculation based on the two assumptions above, the probability
 of the sequences of sample and larger-population activities,

@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-02T10:04:27+0100
+%% Last-Updated: 2019-12-02T14:16:29+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1880,10 +1880,16 @@ of the same experiment: its constraints represent macroscopically
 \emph{reproducible} quantities and kinematics, even in non-equilibrium
 \citep{jaynes1957,guntonetal1983,tikochinskyetal1984,grandy1988,berryetal1988,deroecketal2005_r2006,touchette2009}.
 
-An assumption of our specific application is that all subsets of $\yA$
+The second assumption is specific to our application: all subsets of $\yA$
 neurons in the larger population are equally likely to give rise to total
 activity $\yA$, at every time bin. A mathematically equivalent assumption
 is that $n$ neurons are sampled anew at each time bin.
+\begin{equation}
+  \label{eq:assume_sampled_anew}
+  \pxx[(\ya_{1},\dotsc,\ya_{T}), (\yA_{1}, \dotsc, \yA_{T})]
+  = \prod_{t=1}^{T} \pxx(\ya_{t}, \yA_{t})
+  = \prod_{t=1}^{T} \yG_{\ya_{t}\yA_{t}}\;\nu_{\yA_{t}}
+\end{equation}
 
 Both assumptions above make sense as toy hypotheses for judging the
 informational relevance of correlations of some order, as in
@@ -1893,13 +1899,13 @@ realistic time dependences and clustering.
 In an exact calculation based on the two assumptions above, the probability
 of the sequences of sample and larger-population activities,
 $(\ya_{t}, \yA_{t})$, involves the joint frequencies of total activities of
-sample and larger population $F_{\ya,\yA}$, multiplied by the number of
+sample and larger population $J_{\ya,\yA}$, multiplied by the number of
 time bins $T$:
 \begin{equation}
   \label{eq:prob_joint_frequencies}
   \underbracket{\prod_{t} \pxx(\ya_{t}, \yA_{t})}_{\mathclap{\textit{prob. of joint sequence}}} \equiv
-  \prod_{\ya,\yA} \pxx(\ya, \yA)^{T\,F_{\ya,\yA}} =
-  \prod_{\ya,\yA}\bigl[\underbracket{\vphantom{\underline{g}}\yG_{\ya\yA}\;\pxxx(\yA)}_{\mathclap{\textit{sampling relation}}}\bigr]^{T\,F_{\ya,\yA}}.
+  \prod_{\ya,\yA} \pxx(\ya, \yA)^{T\,J_{\ya,\yA}} =
+  \prod_{\ya,\yA}\bigl[\underbracket{\vphantom{\underline{g}}\yG_{\ya\yA}\;\nu_{\yA}}_{\mathclap{\textit{sampling relation}}}\bigr]^{T\,J_{\ya,\yA}}.
 \end{equation}
 The reasoning would be similar to that leading to
 \eqn~\eqref{eq:prob_frequencies} of appendix~\ref{sec:measure_suff}.

@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-02T14:16:29+0100
+%% Last-Updated: 2019-12-02T15:04:31+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1860,11 +1860,13 @@ application in neuroscience can be expressed in three equivalent ways:
 Equating time averages and expectations, \eqn~\eqref{eq:final_constraint},
 would not make sense without this assumption. Its mathematical consequence
 \citep{definetti1930,hewittetal1955} is that the probability of observing a
-frequency distribution $(\yFF_{\yA})$ in $T$ time bins is given by a
-mixture of terms
+sequence of activities $(\yA_{1},\dotsc,\yA_{T})$ with frequencies
+$(\yFF_{\yA})$ is a mixture of terms
 \begin{equation}
   \label{eq:mixture_from_definetti}
-  \exp[-T\;\sh(\yF;\ynu)] \quad
+%  \exp[-T\;\sh(\yF;\ynu)] \quad
+%  \pxxx[(\yA_{1},\dotsc,\yA_{T})] \propto
+  \prod_{\yA=1}^{N}{\nu_{\yA}}^{T\,\yFF_{\yA}} \quad
   \text{with weights }q(\ynu),
 \end{equation}
 where $\ynu\defd (\nu_{\yA})$ represents the long-run frequency
@@ -1883,36 +1885,38 @@ of the same experiment: its constraints represent macroscopically
 The second assumption is specific to our application: all subsets of $\yA$
 neurons in the larger population are equally likely to give rise to total
 activity $\yA$, at every time bin. A mathematically equivalent assumption
-is that $n$ neurons are sampled anew at each time bin.
+is that $n$ neurons are sampled anew at each time bin. This assumption
+allows us to factorize the joint probability of the two sequences of
+activities and apply the sampling
+formula~\eqref{eq:conditional_hypergeometric} at each bin:
 \begin{equation}
   \label{eq:assume_sampled_anew}
-  \pxx[(\ya_{1},\dotsc,\ya_{T}), (\yA_{1}, \dotsc, \yA_{T})]
-  = \prod_{t=1}^{T} \pxx(\ya_{t}, \yA_{t})
-  = \prod_{t=1}^{T} \yG_{\ya_{t}\yA_{t}}\;\nu_{\yA_{t}}
+  \pxx[(\ya_{1},\dotsc,\ya_{T}) \| (\yA_{1}, \dotsc, \yA_{T}) ]
+  = \prod_{t=1}^{T} \pxx(\ya_{t} \| \yA_{t})
+  = \prod_{t=1}^{T} \yG_{\ya_{t}\yA_{t}}.
 \end{equation}
 
-Both assumptions above make sense as toy hypotheses for judging the
+Both assumptions above make sense as reference hypotheses for judging the
 informational relevance of correlations of some order, as in
 \sect~\ref{sec:marginalization}, to be compared with hypotheses about more
 realistic time dependences and clustering.
 
-In an exact calculation based on the two assumptions above, the probability
-of the sequences of sample and larger-population activities,
-$(\ya_{t}, \yA_{t})$, involves the joint frequencies of total activities of
-sample and larger population $J_{\ya,\yA}$, multiplied by the number of
-time bins $T$:
+From these two assumptions the probability calculus allows us to calculate
+the probability for the frequency distribution $\yF$ given the observed
+frequency distribution for the sample $\yf$. The result is a mixture of
+terms involving the joint frequencies of total activities of sample and
+larger population $J_{\ya,\yA}$, multiplied by the number of time bins $T$:
 \begin{equation}
   \label{eq:prob_joint_frequencies}
-  \underbracket{\prod_{t} \pxx(\ya_{t}, \yA_{t})}_{\mathclap{\textit{prob. of joint sequence}}} \equiv
-  \prod_{\ya,\yA} \pxx(\ya, \yA)^{T\,J_{\ya,\yA}} =
-  \prod_{\ya,\yA}\bigl[\underbracket{\vphantom{\underline{g}}\yG_{\ya\yA}\;\nu_{\yA}}_{\mathclap{\textit{sampling relation}}}\bigr]^{T\,J_{\ya,\yA}}.
+%\pxx[\yF \| \yf ] \propto
+\prod_{\ya,\yA}\bigl(\yG_{\ya\yA}\;\nu_{\yA}\bigr)^{T\,J_{\ya,\yA}},
 \end{equation}
-The reasoning would be similar to that leading to
-\eqn~\eqref{eq:prob_frequencies} of appendix~\ref{sec:measure_suff}.
-Conditioning on the frequencies $\yf$ of the sample would correspond to
-constraining the marginal $\sum_{\yA}F_{\ya,\yA}=\yff_{\ya}$. The
-maximum-entropy method approximates $T$ with infinity, thus treating the
-probability above as a delta. The result is that
+with weights $q(\ynu)$, and with the marginal of the joint frequency
+constrained Conditioning on the frequencies $\yf$ of the sample
+would correspond to constraining the marginal
+$\sum_{\yA}F_{\ya,\yA}=\yff_{\ya}$. The maximum-entropy method approximates
+$T$ with infinity, thus treating the probability above as a delta. The
+result is that
 \begin{enumerate*}[label=(\roman*)]
 \item the probability and observed frequency for the total activity $\yA$
   are constrained to be equal,

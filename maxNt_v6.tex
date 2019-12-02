@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-02T17:12:16+0100
+%% Last-Updated: 2019-12-02T22:37:28+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1849,13 +1849,14 @@ approximations become clear within a full-fledged probabilistic inference
 problem, which we sketch qualitatively.
 
 The first and most important assumption of this kind of maximum-entropy
-application in neuroscience can be expressed in three equivalent ways:
+applications in neuroscience can be expressed in two equivalent ways:
 \begin{enumerate*}[(\roman*)]
-\item the order of the time bins has no relevance; \item the frequencies of
-  the activity during a recording are informationally sufficient for
-  inferences about unrecorded times; \item our degree of belief about the
-  sequence of activities is invariant under permutations of the time bins,
-  that is, exchangeable \citep[\chap~4]{bernardoetal1994_r2000}{dawid2013}.
+  % \item the order of the time bins has no relevance;
+\item the frequencies of the activity during a recording are
+  informationally sufficient for inferences about unrecorded times; \item
+  our degree of belief about the sequence of activities is exchangeable
+  \citep[\chap~4]{bernardoetal1994_r2000}{dawid2013}, that is, invariant
+  under permutations of the time bins.
 \end{enumerate*}
 Equating time averages and expectations, \eqn~\eqref{eq:final_constraint},
 would not make sense without this assumption. Its mathematical consequence
@@ -1878,7 +1879,7 @@ distribution for the activity. % Other maximum-entropy models are also used
 % \citep{diaconisetal1980c,geetal2012}.
 Note that the maximum-entropy method in statistical physics is meant to be
 used not with this assumption, but with averages across \emph{repetitions}
-of the same experiment: its constraints represent macroscopically
+of the same experiment, because its constraints represent macroscopically
 \emph{reproducible} quantities and kinematics, even in non-equilibrium
 \citep{jaynes1957,guntonetal1983,tikochinskyetal1984,grandy1988,berryetal1988,deroecketal2005_r2006,touchette2009}.
 
@@ -1888,7 +1889,8 @@ activity $\yA$, at every time bin. A mathematically equivalent assumption
 is that $n$ neurons are sampled anew at each time bin. This assumption
 allows us to factorize the joint probability of the two sequences of
 activities and apply the sampling
-formula~\eqref{eq:conditional_hypergeometric} at each bin:
+relation~\eqref{eq:conditional_hypergeometric} of
+appendix~\ref{sec:derivation_maxent_fullnet} at each bin:
 \begin{equation}
   \label{eq:assume_sampled_anew}
   \pxx[(\ya_{1},\dotsc,\ya_{T}) \| (\yA_{1}, \dotsc, \yA_{T}) ]
@@ -1901,37 +1903,46 @@ informational relevance of correlations of some order, as in
 \sect~\ref{sec:marginalization}, to be compared with hypotheses about more
 realistic time dependences and clustering.
 
-From these two assumptions the probability calculus allows us to calculate
-the probability $\pxx(\yF \| \yf )$ for the frequency distribution $\yF$
-given the observed frequency distribution for the sample $\yf$. The result
-is a mixture of terms involving the joint frequencies of total activities
-of sample and larger population $J_{\ya,\yA}$, multiplied by the number of
-time bins $T$:
+From these two assumptions the probability calculus allows us to derive not
+only the probability for the frequency distribution $\yF$, but also that
+for the joint frequencies of total activities of sample and larger
+population, $J_{\ya,\yA}$, conditional on the observed frequency
+distribution for the sample $\yf$. The result is again a mixture of terms
 \begin{equation}
   \label{eq:prob_joint_frequencies}
 %\pxx[\yF \| \yf ] \propto
- \sum_{\bm{J}} \prod_{\ya,\yA}\bigl(\yG_{\ya\yA}\;\nu_{\yA}\bigr)^{T\,J_{\ya,\yA}}
+  \prod_{\ya,\yA}\bigl(\yG_{\ya\yA}\;\nu_{\yA}\bigr)^{T\,J_{\ya,\yA}}
   \qquad
-  \text{with}\quad \tsum_{\yA}J_{\ya,\yA}=\yff_{\ya},
-  \quad \tsum_{\ya}J_{\ya,\yA}=\yFF_{\yA},
+  \text{with } \tsum_{\yA}J_{\ya,\yA}=\yff_{\ya}
+  %\quad \tsum_{\ya}J_{\ya,\yA}=\yFF_{\yA},
 \end{equation}
-with weights $q(\ynu)$. The maximum-entropy method approximates $T$ with
-infinity, thus treating the probability above as a delta. The result is
-that
+with weights $q(\ynu)$.
+
+The maximum-entropy method approximates $T$ in the probability above with
+infinity, thus treating it as a delta. This leads to two approximate equalities:
 \begin{enumerate*}[label=(\roman*)]
-\item the frequency distribution $\yF$ for the experiment and the long-run
-  one $\ynu$ are constrained to be equal,
-\item the frequency of the sample activity $\ya$ conditional on the
-  larger-population activity $\yA$ is constrained to equal the
-  hypergeometric distribution $\yG_{\ya\yA}$.
+\item of the recorded and long-run frequency distributions $\yF$ and
+  $\ynu$, and therefore also of their probability distributions,
+\item of the hypergeometric distribution $\yG_{\ya\yA}$ and the frequency
+  of the sample activity $\ya$ conditional on the larger-population
+  activity $\yA$.
 \end{enumerate*}
 Without this approximation the latter conditional frequency can differ from
-$\yG_{\ya\yA}$, and this is expected if the number of bins $T$ is not much
+$\yG_{\ya\yA}$ -- and this is expected if the number of bins $T$ is not much
 larger than the number of possible joint possibilities, roughly
 $n\times N$.
 
-The final assumption in the maximum-entropy method regards the form of the
-probability $\pxx(\ynu)$ in the expressions above.
+The final assumption of the maximum-entropy method concerns the form of the
+probability density $\pxx(\ynu)$ in the expressions above. It is taken to
+be either an \enquote{entropic prior}
+\citep{skillingetal1984,rodriguez1991,neumann2007}, which partially takes
+into account the multiplicity of long-run frequencies, or a prior for a
+model with sufficient statistics, which expresses the sufficiency of the
+model under study \citep{portamana2017}. This assumption is crucial for
+obtaining the maximum-entropy method with the Shannon entropy. A different
+density would lead to alternative maximum-entropy methods, for example
+based on the Burg entropy \citep{burg1975} if a Dirichlet density is used
+\citep{jaynes1986d_r1996}.
 
 
 

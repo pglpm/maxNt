@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-03T09:54:02+0100
+%% Last-Updated: 2019-12-03T19:25:44+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1155,7 +1155,7 @@ steps:
   \label{eq:chain_prescription_moments}
   \mathrlap{\overbracket{\phantom{\text{measured averages} \rightarrow
         \text{sample moments}}}^{\textit{maximum-entropy prescription}}}
-  \text{measured moments} \rightarrow
+  \text{measured averages} \rightarrow
         \underbracket{\text{sample moments}
   \rightarrow
     \text{larger-population moments}}_{\textit{sampling theory}}
@@ -1915,7 +1915,7 @@ The first and third assumptions above are the least realistic, but they
 make sense as reference hypotheses for judging the informational relevance
 of correlations of some order, as in \sect~\ref{sec:marginalization}, to be
 compared with hypotheses about more realistic time dependences and
-clustering.
+clustering. They may turn out to approximate well more realistic assumptions.
 
 The two infinity approximations are at the limit of their validity in our
 specific application, so the distributions discussed in our example are
@@ -1924,26 +1924,27 @@ best interpreted as \emph{most probable frequency distributions}.
 The space of possible frequency distributions for the larger population has
 $N$ dimensions, however, and probability distributions in high dimensions
 have counter-intuitive properties. For example, the mode or mean can have
-\emph{atypical} features when compared with the features of most other
-points of the space. The question, then, is \emph{which features of the
-  maximum-entropy frequency distribution are typical of the majority of
-  plausible frequency distributions?} We can only answer for sure by using
-the full-fledged probability calculus. A more complete study (in
-preparation) with the first data set reveals that most of the plausible
-frequency distributions have three important features in common with the
-maximum-entropy one:
-\begin{itemize}
-\item all activities $\yA/N \gtrsim 5\%$ have practically zero frequencies;
-\item there are two regions of activity levels with high frequencies,
-  roughly separated by a trough of lower frequencies.
-\item The frequencies of the region on the left ($\yA/N \lesssim 1.8\%$)
-  are higher than those of the region on the right ($\yA/N \gtrsim 1.8\%$).
-\end{itemize}
-But there are also differences. For example, many plausible frequency
-distributions have three or four modes instead of just two; these modes are
-higher than those of the maximum-entropy distribution; and the bump of high
-frequencies on the right is slightly shifted towards lower activities than
-the corresponding maximum in the maximum-entropy distribution.
+\emph{atypical} features when compared with the majority of other probable
+points of the probability space. The question then is \emph{which features
+  of the maximum-entropy frequency distribution are typical of the majority
+  of plausible frequency distributions?} Preliminary studies using a full
+probability calculation (to be published separately) show that several
+semi-quantitative features of the maximum-entropy distribution are indeed
+typical. For the first data set, for example, most frequency distributions
+have two high-frequency regimes of activity, as in the upper panel of
+\fig~\ref{fig:plots_5mom}, with roughly the same heights and almost the
+same locations, within a few percentages of normalized total activity. Each
+of high-frequency regimes, though, may consist of two or three very close
+modes rather than one.
+
+This means that the maximum-entropy approximation presented here can be
+favourably used to get an idea of what a fully probabilistic calculation
+could yield. -- With a far lower computational cost: for example, for
+$N=1\,000$ the maximum-entropy distribution can be calculated in ten
+minutes on a laptop, whereas the full probability calculation takes several
+days on a high-performance computing cluster.
+
+
 
 % \medskip
 

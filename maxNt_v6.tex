@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-03T09:50:35+0100
+%% Last-Updated: 2019-12-03T09:54:02+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1945,35 +1945,35 @@ higher than those of the maximum-entropy distribution; and the bump of high
 frequencies on the right is slightly shifted towards lower activities than
 the corresponding maximum in the maximum-entropy distribution.
 
-\medskip
+% \medskip
 
-The second point is that our degrees of belief about the frequency
-distribution for the larger population depend not only on the measured data in
-the sample, but also on our pre-data beliefs $\yI$ about the distribution.
-Which assumptions lead to the maximum-entropy result? This distribution
-appears when our initial belief about the possible frequency distributions
-$\yF$ is quantified by an entropic prior
-\citep{neumann2007,rodriguez1991,skilling1998,catichaetal2004,portamana2017}:
-\begin{equation}
-  \label{eq:entropic_prior}
-  \pf(\yF \| \yI) \propto  \exp[-\yL\;\re(\yF;\yR)]
-  \approx \binom{L}{L\yFF_{0}, \dotsc, L\yFF_{N}}\;
-  \prod_{\yA}{\yRR_{\yA}}^{L\yFF_{\yA}}
-\end{equation}
-where $\re(\yF;\yR)\defd \sum_{\yA}\yFF_{\yA}\log(\yFF_{\yA}/\yRR_{\yA})$ is
-the relative entropy or discrimination information
-\citep{kullback1987,jaynes1963,hobson1969,hobsonetal1973}, $\yR$ is the
-reference distribution, and $\yL$ a positive parameter. The approximate
-equality (obtained through Stirling's approximation), where the large
-parentheses denote a multinomial coefficient, shows that this prior belief
-is proportional to the number of ways in which the distribution $\yF$ can
-be realized in $L$ time bins. The parameter $L$ roughly quantifies how many
-time bins our data set must have to affect our initial belief. The
-maximum-entropy approximation is valid when $L$ is large, but small
-compared to the sharpness of the constraints on $\yF$; in our case this
-means $\yL \approx 10$, give or take an order of magnitude.
+% The second point is that our degrees of belief about the frequency
+% distribution for the larger population depend not only on the measured data in
+% the sample, but also on our pre-data beliefs $\yI$ about the distribution.
+% Which assumptions lead to the maximum-entropy result? This distribution
+% appears when our initial belief about the possible frequency distributions
+% $\yF$ is quantified by an entropic prior
+% \citep{neumann2007,rodriguez1991,skilling1998,catichaetal2004,portamana2017}:
+% \begin{equation}
+%   \label{eq:entropic_prior}
+%   \pf(\yF \| \yI) \propto  \exp[-\yL\;\re(\yF;\yR)]
+%   \approx \binom{L}{L\yFF_{0}, \dotsc, L\yFF_{N}}\;
+%   \prod_{\yA}{\yRR_{\yA}}^{L\yFF_{\yA}}
+% \end{equation}
+% where $\re(\yF;\yR)\defd \sum_{\yA}\yFF_{\yA}\log(\yFF_{\yA}/\yRR_{\yA})$ is
+% the relative entropy or discrimination information
+% \citep{kullback1987,jaynes1963,hobson1969,hobsonetal1973}, $\yR$ is the
+% reference distribution, and $\yL$ a positive parameter. The approximate
+% equality (obtained through Stirling's approximation), where the large
+% parentheses denote a multinomial coefficient, shows that this prior belief
+% is proportional to the number of ways in which the distribution $\yF$ can
+% be realized in $L$ time bins. The parameter $L$ roughly quantifies how many
+% time bins our data set must have to affect our initial belief. The
+% maximum-entropy approximation is valid when $L$ is large, but small
+% compared to the sharpness of the constraints on $\yF$; in our case this
+% means $\yL \approx 10$, give or take an order of magnitude.
 
-We could obviously consider pre-data beliefs different
+\mynote{add this above}We could obviously consider pre-data beliefs different
 from~\eqref{eq:entropic_prior}, for example one quantified by a Dirichlet
 distribution (which is equivalent to the above but with $\yF$ and $\yR$
 switched), or a uniform distribution in $\yF$-space. Would these lead to

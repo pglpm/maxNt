@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-02T22:37:28+0100
+%% Last-Updated: 2019-12-03T09:50:35+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1843,10 +1843,11 @@ approach superfluous. We discuss this final point in the next section.
 \section{Assumptions, approximations, limitations}
 \label{sec:assumptions}
 
-The limitations of approach here proposed can be appraised by examining the
-assumptions and approximations on which it rests. Its assumptions and
-approximations become clear within a full-fledged probabilistic inference
-problem, which we sketch qualitatively.
+The limitations of the approach here proposed can be appraised by examining
+the assumptions and approximations on which it rests: three assumptions and
+two approximation all in all. These become in turn clear within a
+full-fledged probabilistic approach. We summarize them here and give a more
+mathematical sketch in appendix~\ref{sec:inference_prob}.
 
 The first and most important assumption of this kind of maximum-entropy
 applications in neuroscience can be expressed in two equivalent ways:
@@ -1854,120 +1855,83 @@ applications in neuroscience can be expressed in two equivalent ways:
   % \item the order of the time bins has no relevance;
 \item the frequencies of the activity during a recording are
   informationally sufficient for inferences about unrecorded times; \item
-  our degree of belief about the sequence of activities is exchangeable
-  \citep[\chap~4]{bernardoetal1994_r2000}{dawid2013}, that is, invariant
-  under permutations of the time bins.
+  our degree of belief about the sequence of activities is invariant under
+  permutations of the time bins.
 \end{enumerate*}
 Equating time averages and expectations, \eqn~\eqref{eq:final_constraint},
 would not make sense without this assumption. Its mathematical consequence
-\citep{definetti1930,hewittetal1955} is that the probability of observing a
-sequence of activities $(\yA_{1},\dotsc,\yA_{T})$ with frequencies
-$(\yFF_{\yA})$ is a mixture of terms
-\begin{equation}
-  \label{eq:mixture_from_definetti}
-%  \exp[-T\;\sh(\yF;\ynu)] \quad
-%  \pxxx[(\yA_{1},\dotsc,\yA_{T})] \propto
-  \prod_{\yA=1}^{N}{\nu_{\yA}}^{T\,\yFF_{\yA}} \quad
-  \text{with weights }q(\ynu),
-\end{equation}
-where $\ynu\defd (\nu_{\yA})$ represents the long-run frequency
-distribution for the activity. % Other maximum-entropy models are also used
-% in neuroscience, such as kinetic Ising models
-% \cite{kawasaki1972,mezardetal2011,battistinetal2015}, based on the slightly
-% less drastic assumption of invariance under permutations of sequences
-% having the same starting state and the same transition counts
-% \citep{diaconisetal1980c,geetal2012}.
-Note that the maximum-entropy method in statistical physics is meant to be
-used not with this assumption, but with averages across \emph{repetitions}
-of the same experiment, because its constraints represent macroscopically
-\emph{reproducible} quantities and kinematics, even in non-equilibrium
+is to relate the probability for the frequency distribution $\yF$ during
+the recording to that of the \emph{long-run} frequency distribution for the
+activities of the larger population. Note that the maximum-entropy method
+in statistical physics is meant to be used not with this assumption, but
+with averages across \emph{repetitions} of the same experiment, because its
+constraints represent macroscopically \emph{reproducible} quantities and
+kinematics, even in non-equilibrium
 \citep{jaynes1957,guntonetal1983,tikochinskyetal1984,grandy1988,berryetal1988,deroecketal2005_r2006,touchette2009}.
 
-The second assumption is specific to our application: all subsets of $\yA$
+The second assumption of the maximum-entropy method concerns the form of
+the probability distribution for the long-run frequencies ensuing from the
+first assumption. It is taken to be either an \enquote{entropic prior}
+\citep{skillingetal1984,rodriguez1991,neumann2007}, which takes into
+account the multiplicity of long-run frequencies through a coefficient $L$,
+or a prior for a model with sufficient statistics, which expresses the
+sufficiency of the moments under study \citep{portamana2017}. This
+assumption is crucial for obtaining the maximum-entropy method with the
+Shannon entropy. A different density leads to alternative maximum-entropy
+methods, for example based on the Burg entropy \citep{burg1975} if a
+Dirichlet density is used \citep{jaynes1986d_r1996}.
+
+The third assumption is specific to our application: all subsets of $\yA$
 neurons in the larger population are equally likely to give rise to total
 activity $\yA$, at every time bin. A mathematically equivalent assumption
 is that $n$ neurons are sampled anew at each time bin. This assumption
 allows us to factorize the joint probability of the two sequences of
 activities and apply the sampling
 relation~\eqref{eq:conditional_hypergeometric} of
-appendix~\ref{sec:derivation_maxent_fullnet} at each bin:
-\begin{equation}
-  \label{eq:assume_sampled_anew}
-  \pxx[(\ya_{1},\dotsc,\ya_{T}) \| (\yA_{1}, \dotsc, \yA_{T}) ]
-  = \prod_{t=1}^{T} \pxx(\ya_{t} \| \yA_{t})
-  = \prod_{t=1}^{T} \yG_{\ya_{t}\yA_{t}}.
-\end{equation}
+appendix~\ref{sec:derivation_maxent_fullnet} at each bin.
 
-Both assumptions above make sense as reference hypotheses for judging the
-informational relevance of correlations of some order, as in
-\sect~\ref{sec:marginalization}, to be compared with hypotheses about more
-realistic time dependences and clustering.
-
-From these two assumptions the probability calculus allows us to derive not
-only the probability for the frequency distribution $\yF$, but also that
-for the joint frequencies of total activities of sample and larger
-population, $J_{\ya,\yA}$, conditional on the observed frequency
-distribution for the sample $\yf$. The result is again a mixture of terms
-\begin{equation}
-  \label{eq:prob_joint_frequencies}
-%\pxx[\yF \| \yf ] \propto
-  \prod_{\ya,\yA}\bigl(\yG_{\ya\yA}\;\nu_{\yA}\bigr)^{T\,J_{\ya,\yA}}
-  \qquad
-  \text{with } \tsum_{\yA}J_{\ya,\yA}=\yff_{\ya}
-  %\quad \tsum_{\ya}J_{\ya,\yA}=\yFF_{\yA},
-\end{equation}
-with weights $q(\ynu)$.
-
-The maximum-entropy method approximates $T$ in the probability above with
-infinity, thus treating it as a delta. This leads to two approximate equalities:
-\begin{enumerate*}[label=(\roman*)]
-\item of the recorded and long-run frequency distributions $\yF$ and
-  $\ynu$, and therefore also of their probability distributions,
-\item of the hypergeometric distribution $\yG_{\ya\yA}$ and the frequency
-  of the sample activity $\ya$ conditional on the larger-population
-  activity $\yA$.
-\end{enumerate*}
-Without this approximation the latter conditional frequency can differ from
-$\yG_{\ya\yA}$ -- and this is expected if the number of bins $T$ is not much
-larger than the number of possible joint possibilities, roughly
-$n\times N$.
-
-The final assumption of the maximum-entropy method concerns the form of the
-probability density $\pxx(\ynu)$ in the expressions above. It is taken to
-be either an \enquote{entropic prior}
-\citep{skillingetal1984,rodriguez1991,neumann2007}, which partially takes
-into account the multiplicity of long-run frequencies, or a prior for a
-model with sufficient statistics, which expresses the sufficiency of the
-model under study \citep{portamana2017}. This assumption is crucial for
-obtaining the maximum-entropy method with the Shannon entropy. A different
-density would lead to alternative maximum-entropy methods, for example
-based on the Burg entropy \citep{burg1975} if a Dirichlet density is used
-\citep{jaynes1986d_r1996}.
+Finally, the maximum-entropy method typically approximates the number $T$
+of time bins, the prior coefficient $L$, and the ratio $T/L$ to infinity.
+These approximations lead to the identification of the four distributions
+listed at the end of \sect~\ref{sec:model}: the recorded frequency
+distribution becomes equal to the long-run one, and also to the probability
+distribution for the activity at recorded and new time bins. In our
+application it also leads to the equality of the hypergeometric
+distribution~\eqref{eq:conditional_hypergeometric} and the conditional
+frequencies of the sample activity $\ya$ given $\yA$. The goodness of this
+approximation decreases as the ratio between the number of possible joint
+states and the number of bins -- roughly $nN/T$ -- increases, and also as
+observed quantities approach their mathematical bounds, such as some
+frequencies $\yff_{\ya}=0$. Without these approximations it is still
+possible to interpret the maximum-entropy
+distribution~\eqref{eq:app_maxent_pop_first} as the mode of the probability
+distribution for the recorded frequencies $\yF$, that is, the most probable
+recorded frequency.
 
 
+\medskip
 
+The first and third assumptions above are the least realistic, but they
+make sense as reference hypotheses for judging the informational relevance
+of correlations of some order, as in \sect~\ref{sec:marginalization}, to be
+compared with hypotheses about more realistic time dependences and
+clustering.
 
+The two infinity approximations are at the limit of their validity in our
+specific application, so the distributions discussed in our example are
+best interpreted as \emph{most probable frequency distributions}.
 
-In the study or use of the frequency distribution obtained with the
-procedure here presented we must take into account two important points.
-
-The first point is that there are many possible frequency distributions
-which we believe, to different degrees, could be the true one that happened
-during the recording. The one given by our procedure is simply the one with
-the largest degree of belief, the mode of the belief distribution. The
-space of possible frequency distributions has many dimensions, however --
-thousands or tens of thousands. We must remember that belief distributions
-in high dimensions have counter-intuitive properties. For example, the mode
-or mean can have \emph{atypical} features when compared with the features
-of most other points of the space. The mode and mean can also be very
-different from each other.
-
-The question, then, is \emph{which features of the maximum-entropy
-  frequency distribution are typical of the majority of plausible frequency
-  distributions?} We can only answer for sure by using the full-fledged
-probability calculus. A more complete study (in preparation) with the first
-data set reveals that most of the plausible frequency distributions have
-three important features in common with the maximum-entropy one:
+The space of possible frequency distributions for the larger population has
+$N$ dimensions, however, and probability distributions in high dimensions
+have counter-intuitive properties. For example, the mode or mean can have
+\emph{atypical} features when compared with the features of most other
+points of the space. The question, then, is \emph{which features of the
+  maximum-entropy frequency distribution are typical of the majority of
+  plausible frequency distributions?} We can only answer for sure by using
+the full-fledged probability calculus. A more complete study (in
+preparation) with the first data set reveals that most of the plausible
+frequency distributions have three important features in common with the
+maximum-entropy one:
 \begin{itemize}
 \item all activities $\yA/N \gtrsim 5\%$ have practically zero frequencies;
 \item there are two regions of activity levels with high frequencies,
@@ -2234,6 +2198,93 @@ probability ratio~\eqref{eq:ratio_prob_suffic}. The exponential of the
 difference~\eqref{eq:measure_suffic} tells us how much more probable is the
 set $M''$ to be sufficient than the set $M'$.
 
+\section{Sketch of inference with the probability calculus}
+\label{sec:inference_prob}
+
+
+The first and most important assumption of this kind of maximum-entropy
+applications in neuroscience can be expressed in two equivalent ways:
+\begin{enumerate*}[(\roman*)]
+  % \item the order of the time bins has no relevance;
+\item the frequencies of the activity during a recording are
+  informationally sufficient for inferences about unrecorded times; \item
+  our degree of belief about the sequence of activities is exchangeable
+  \citep[\chap~4]{bernardoetal1994_r2000}{dawid2013}, that is, invariant
+  under permutations of the time bins.
+\end{enumerate*}
+Equating time averages and expectations, \eqn~\eqref{eq:final_constraint},
+would not make sense without this assumption. Its mathematical consequence
+\citep{definetti1930,hewittetal1955} is that the probability of observing a
+sequence of activities $(\yA_{1},\dotsc,\yA_{T})$ with frequencies
+$(\yFF_{\yA})$ is a mixture of terms
+\begin{equation}
+  \label{eq:mixture_from_definetti}
+%  \exp[-T\;\sh(\yF;\ynu)] \quad
+%  \pxxx[(\yA_{1},\dotsc,\yA_{T})] \propto
+  \prod_{\yA=1}^{N}{\nu_{\yA}}^{T\,\yFF_{\yA}} \quad
+  \text{with weights }q(\ynu),
+\end{equation}
+where $\ynu\defd (\nu_{\yA})$ represents the long-run frequency
+distribution for the activity. % Other maximum-entropy models are also used
+% in neuroscience, such as kinetic Ising models
+% \cite{kawasaki1972,mezardetal2011,battistinetal2015}, based on the slightly
+% less drastic assumption of invariance under permutations of sequences
+% having the same starting state and the same transition counts
+% \citep{diaconisetal1980c,geetal2012}.
+Note that the maximum-entropy method in statistical physics is meant to be
+used not with this assumption, but with averages across \emph{repetitions}
+of the same experiment, because its constraints represent macroscopically
+\emph{reproducible} quantities and kinematics, even in non-equilibrium
+\citep{jaynes1957,guntonetal1983,tikochinskyetal1984,grandy1988,berryetal1988,deroecketal2005_r2006,touchette2009}.
+
+The second assumption is specific to our application: all subsets of $\yA$
+neurons in the larger population are equally likely to give rise to total
+activity $\yA$, at every time bin. A mathematically equivalent assumption
+is that $n$ neurons are sampled anew at each time bin. This assumption
+allows us to factorize the joint probability of the two sequences of
+activities and apply the sampling
+relation~\eqref{eq:conditional_hypergeometric} of
+appendix~\ref{sec:derivation_maxent_fullnet} at each bin:
+\begin{equation}
+  \label{eq:assume_sampled_anew}
+  \pxx[(\ya_{1},\dotsc,\ya_{T}) \| (\yA_{1}, \dotsc, \yA_{T}) ]
+  = \prod_{t=1}^{T} \pxx(\ya_{t} \| \yA_{t})
+  = \prod_{t=1}^{T} \yG_{\ya_{t}\yA_{t}}.
+\end{equation}
+
+Both assumptions above make sense as reference hypotheses for judging the
+informational relevance of correlations of some order, as in
+\sect~\ref{sec:marginalization}, to be compared with hypotheses about more
+realistic time dependences and clustering.
+
+From these two assumptions the probability calculus allows us to derive not
+only the probability for the frequency distribution $\yF$, but also that
+for the joint frequencies of total activities of sample and larger
+population, $J_{\ya,\yA}$, conditional on the observed frequency
+distribution for the sample $\yf$. The result is again a mixture of terms
+\begin{equation}
+  \label{eq:prob_joint_frequencies}
+%\pxx[\yF \| \yf ] \propto
+  \prod_{\ya,\yA}\bigl(\yG_{\ya\yA}\;\nu_{\yA}\bigr)^{T\,J_{\ya,\yA}}
+  \qquad
+  \text{with } \tsum_{\yA}J_{\ya,\yA}=\yff_{\ya}
+  %\quad \tsum_{\ya}J_{\ya,\yA}=\yFF_{\yA},
+\end{equation}
+with weights $q(\ynu)$.
+
+The maximum-entropy method approximates $T$ in the probability above with
+infinity, thus treating it as a delta. This leads to two approximate equalities:
+\begin{enumerate*}[label=(\roman*)]
+\item of the recorded and long-run frequency distributions $\yF$ and
+  $\ynu$, and therefore also of their probability distributions,
+\item of the hypergeometric distribution $\yG_{\ya\yA}$ and the frequency
+  of the sample activity $\ya$ conditional on the larger-population
+  activity $\yA$.
+\end{enumerate*}
+Without this approximation the latter conditional frequency can differ from
+$\yG_{\ya\yA}$ -- and this is expected if the number of bins $T$ is not much
+larger than the number of possible joint possibilities, roughly
+$n\times N$.
 
 
 

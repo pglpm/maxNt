@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-03T19:25:44+0100
+%% Last-Updated: 2019-12-04T13:11:38+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1735,7 +1735,8 @@ appendix~\ref{sec:derivation_maxent_fullnet}, reproduced here:
 \begin{equation}
   \labelbis{eq:conditional_hypergeometric}
   \yG_{\ya\yA} \defd \pf(\ya \|\yA, n,N)=
-  \binom{n}{\ya}\binom{N-n}{\yA-\ya}\binom{N}{\yA}^{-1}
+    \binom{\yA}{\ya}\binom{N-\yA}{n-\ya}\binom{N}{n}^{-1}
+\equiv \binom{n}{\ya}\binom{N-n}{\yA-\ya}\binom{N}{\yA}^{-1}
 \end{equation}
 leading to the equality of factorial
 moments~\eqref{eq:equal_m_factorialmoments}, on which our approach rests.
@@ -1840,8 +1841,10 @@ calculation; but such calculation would make the whole maximum-entropy
 approach superfluous. We discuss this final point in the next section.
 
 
-\section{Assumptions, approximations, limitations}
+\section{Assumptions and approximations}
 \label{sec:assumptions}
+
+\mynote{Rewrite!}
 
 The limitations of the approach here proposed can be appraised by examining
 the assumptions and approximations on which it rests: three assumptions and
@@ -2055,7 +2058,8 @@ property is then given by the hypergeometric distribution
 \begin{equation}
   \label{eq:conditional_hypergeometric}
   \yG_{\ya\yA} \defd \pf(\ya \|\yA, n,N)=
-  \binom{n}{\ya}\binom{N-n}{\yA-\ya}\binom{N}{\yA}^{-1}
+  \binom{\yA}{\ya}\binom{N-\yA}{n-\ya}\binom{N}{n}^{-1}
+\equiv  \binom{n}{\ya}\binom{N-n}{\yA-\ya}\binom{N}{\yA}^{-1}
 \end{equation}
 typical of \enquote{drawing without replacement}
 \citep[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}[\sects~2.1,

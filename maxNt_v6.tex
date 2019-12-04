@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-04T17:01:22+0100
+%% Last-Updated: 2019-12-04T20:38:52+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1844,8 +1844,6 @@ approach superfluous. We discuss this final point in the next section.
 \section{Assumptions and approximations}
 \label{sec:assumptions}
 
-\mynote{Rewrite!}
-
 The possible uses of the method here presented depend on the assumptions
 and approximations on which it rests: three assumptions and two
 approximation all in all. These become clear within a full-fledged
@@ -1877,14 +1875,19 @@ The second assumption, typical of maximum-entropy in general, concerns the
 form of the probability distribution for the long-run frequencies ensuing
 from the first assumption. It is taken to be either an \enquote{entropic
   prior} \citep{skillingetal1984,rodriguez1991,neumann2007}, which takes
-into account the multiplicity of long-run frequencies through a coefficient
-$L$, and a reference distribution, or a prior for a model with sufficient
-statistics, which expresses the sufficiency of the moments under study
-\citep{portamana2017}. This assumption is crucial for obtaining the
-maximum-entropy method with the Shannon entropy. A different density leads
-to alternative maximum-entropy methods, for example based on the Burg
-entropy \citep{burg1975} if a Dirichlet density is used
-\citep{jaynes1986d_r1996}.
+into account the multiplicity of long-run frequencies, or a prior for a
+model with sufficient statistics, which expresses the sufficiency of the
+moments under study \citep{portamana2017}. This assumption is crucial for
+obtaining the maximum-entropy method with the Shannon entropy. A different
+density leads to alternative maximum-entropy methods, for example based on
+the Burg entropy \citep{burg1975} if a Dirichlet density is used
+\citep{jaynes1986d_r1996}. The entropic prior depends on a reference
+distribution and on a coefficient $L$ which determines the sharpness of the
+prior's peak. The computations of the preceding sections were insensitive
+to the reference distribution in their significant digits. We used three
+biologically reasonable alternatives: a flat distribution, one linearly
+decreasing with $\yA$, and a normal one with a broad peak at low
+activities.
 
 The third assumption is specific to our application: all subsets of $\yA$
 neurons in the larger population are equally likely to give rise to total
@@ -1940,7 +1943,9 @@ have two high-frequency regimes of activity, as in the upper panel of
 \fig~\ref{fig:plots_5mom}, with roughly the same heights and almost the
 same locations, within a few percentages of normalized total activity. Each
 of high-frequency regimes, though, may consist of two or three very close
-modes rather than one.
+modes rather than one. The same preliminary studies also indicate that
+these typical features remain with prior choices in the second assumption
+above, for example using a Dirichlet prior instead of an entropic one.
 
 This means that the maximum-entropy approximation presented here can be
 favourably used to get an idea of what a fully probabilistic calculation
@@ -1979,40 +1984,71 @@ days on a high-performance computing cluster.
 % compared to the sharpness of the constraints on $\yF$; in our case this
 % means $\yL \approx 10$, give or take an order of magnitude.
 
-\mynote{add this above}We could obviously consider pre-data beliefs different
-from~\eqref{eq:entropic_prior}, for example one quantified by a Dirichlet
-distribution (which is equivalent to the above but with $\yF$ and $\yR$
-switched), or a uniform distribution in $\yF$-space. Would these lead to
-markedly different post-data beliefs? A full-fledged probabilistic analysis
-shows that the three typical features listed above still appear with these
-different initial beliefs. They are therefore robust.
-
-
 
 
 \section{Summary and discussion}
 \label{sec:summary_discussion}
 
+The reason why we record neurons from a brain region is to have an idea of
+the activity of the other neurons in that region, similarly to survey
+sampling. If we thought that \emph{precisely} the recorded ones were
+exceptions or completely unrelated to the others surrounding the recording
+probe, our recording would serve little purpose. Probabilistic methods that
+allow us to make direct inferences about the larger population are
+therefore useful. But they become complex and sensitive if we ask for very
+detailed inferences.
+
+We have presented a method that allows us to make direct inferences about a
+larger population from very small samples. Its inferences regard only the
+frequencies of the total activity of the larger population, but such
+limited scope makes the method computationally very cheap.
+
+Yet, and most important, the method leads to inferences that are not at all
+trivial and not easily discernible by looking at the sample. We showed this
+by applying the method to two real data sets.
+
+By \enquote{inference} we mean the quantification of a degree of belief
+about possible observations, based on specific assumptions; not the
+response of an oracle. The method gives us a \emph{forecast} based on those
+assumptions, and therefore has two main uses, just like any other
+probabilistic method. If our assumptions are only hypotheses under testing,
+then the subsequent confirmation or confutation of the forecast will
+increase or decrease our confidence in those hypotheses. If we strongly
+trust our assumptions, on the other hand, then we rely on the forecast and
+even use it in place of actual observations, especially if the latter are
+difficult to make. (In fact, we typically shift from the first to the
+second use.) In the preceding sections we have given examples of hypotheses
+that could be explored with the method. The method itself rests on
+assumptions, discussed in \sect~\ref{sec:assumptions}, that can either be
+under test or relied upon, depending on the case.
+
+Some approximations implicit in the method make its numerical results
+semi-quantitative with respect to an analysis based on the full probability
+calculus. The results should not be off by more than a few percentages for
+the normalized total activity and for the frequency density. This
+imprecision, however, is compensated by the extreme computational cheapness
+of the method, far less costly than a full probabilistic analysis. The
+method is therefore very convenient at least for essaying hypotheses. We
+hope to present an exact quantitative comparison with the full
+probabilistic approach in a future publication.
 
 
 
+% \mynote{cite  \cite[p.~440]{maxwell1873c}}
 
-
-\mynote{cite  \cite[p.~440]{maxwell1873c}}
-
-We have presented a procedure to construct the most plausible frequency
-distribution of population-averaged activities of a population of neurons,
-given the recording about a small sample thereof. This procedure combines
-the maximum-entropy method and basic identities from sampling theory. From
-the application to two real data sets we saw that the frequency
-distributions obtained with our procedure can have features very different
-from the one measured in the sample, such as multiple modes. This procedure
-can also be used with moment constraints of different order -- means,
-population-averaged pairwise correlations, or higher-order correlations --
-thus giving an approximate assessment of the informational sufficiency of
-specific subsets of moments. In fact, we saw that the application of
-maximum-entropy only at the sample level leads to misleading results about
-this kind of sufficiency questions.
+% We have presented a procedure to construct the most plausible frequency
+% distribution of population-averaged activities of a population of neurons,
+% given the recording about a small sample thereof. This procedure combines
+% the maximum-entropy method and basic identities from sampling theory. From
+% the application to two real data sets we saw that the frequency
+% distributions obtained with our procedure can have features very different
+% from the one measured in the sample, such as multiple modes. This procedure
+% can also be used with moment constraints of different order -- means,
+% population-averaged pairwise correlations, or higher-order correlations --
+% thus giving an approximate assessment of the informational sufficiency of
+% specific subsets of moments. In fact, we saw that the application of
+% maximum-entropy only at the sample level leads to misleading results about
+% this kind of sufficiency questions.
 
 
 

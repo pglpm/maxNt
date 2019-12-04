@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-04T13:11:38+0100
+%% Last-Updated: 2019-12-04T17:01:22+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1846,14 +1846,15 @@ approach superfluous. We discuss this final point in the next section.
 
 \mynote{Rewrite!}
 
-The limitations of the approach here proposed can be appraised by examining
-the assumptions and approximations on which it rests: three assumptions and
-two approximation all in all. These become in turn clear within a
-full-fledged probabilistic approach. We summarize them here and give a more
-mathematical sketch in appendix~\ref{sec:inference_prob}.
+The possible uses of the method here presented depend on the assumptions
+and approximations on which it rests: three assumptions and two
+approximation all in all. These become clear within a full-fledged
+probabilistic approach. We summarize them here and give a more mathematical
+sketch in appendix~\ref{sec:inference_prob}.
 
-The first and most important assumption of this kind of maximum-entropy
-applications in neuroscience can be expressed in two equivalent ways:
+The first and most important assumption, typical of this kind of
+maximum-entropy application in neuroscience, can be expressed in two
+equivalent ways:
 \begin{enumerate*}[(\roman*)]
   % \item the order of the time bins has no relevance;
 \item the frequencies of the activity during a recording are
@@ -1872,17 +1873,18 @@ constraints represent macroscopically \emph{reproducible} quantities and
 kinematics, even in non-equilibrium
 \citep{jaynes1957,guntonetal1983,tikochinskyetal1984,grandy1988,berryetal1988,deroecketal2005_r2006,touchette2009}.
 
-The second assumption of the maximum-entropy method concerns the form of
-the probability distribution for the long-run frequencies ensuing from the
-first assumption. It is taken to be either an \enquote{entropic prior}
-\citep{skillingetal1984,rodriguez1991,neumann2007}, which takes into
-account the multiplicity of long-run frequencies through a coefficient $L$,
-or a prior for a model with sufficient statistics, which expresses the
-sufficiency of the moments under study \citep{portamana2017}. This
-assumption is crucial for obtaining the maximum-entropy method with the
-Shannon entropy. A different density leads to alternative maximum-entropy
-methods, for example based on the Burg entropy \citep{burg1975} if a
-Dirichlet density is used \citep{jaynes1986d_r1996}.
+The second assumption, typical of maximum-entropy in general, concerns the
+form of the probability distribution for the long-run frequencies ensuing
+from the first assumption. It is taken to be either an \enquote{entropic
+  prior} \citep{skillingetal1984,rodriguez1991,neumann2007}, which takes
+into account the multiplicity of long-run frequencies through a coefficient
+$L$, and a reference distribution, or a prior for a model with sufficient
+statistics, which expresses the sufficiency of the moments under study
+\citep{portamana2017}. This assumption is crucial for obtaining the
+maximum-entropy method with the Shannon entropy. A different density leads
+to alternative maximum-entropy methods, for example based on the Burg
+entropy \citep{burg1975} if a Dirichlet density is used
+\citep{jaynes1986d_r1996}.
 
 The third assumption is specific to our application: all subsets of $\yA$
 neurons in the larger population are equally likely to give rise to total
@@ -1918,7 +1920,7 @@ The first and third assumptions above are the least realistic, but they
 make sense as reference hypotheses for judging the informational relevance
 of correlations of some order, as in \sect~\ref{sec:marginalization}, to be
 compared with hypotheses about more realistic time dependences and
-clustering. They may turn out to approximate well more realistic assumptions.
+clustering. %They may turn out to approximate well more realistic assumptions.
 
 The two infinity approximations are at the limit of their validity in our
 specific application, so the distributions discussed in our example are
@@ -1990,6 +1992,10 @@ different initial beliefs. They are therefore robust.
 
 \section{Summary and discussion}
 \label{sec:summary_discussion}
+
+
+
+
 
 
 \mynote{cite  \cite[p.~440]{maxwell1873c}}

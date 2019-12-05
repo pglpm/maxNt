@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-05T10:25:02+0100
+%% Last-Updated: 2019-12-05T10:55:47+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -737,6 +737,11 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\sh}{\mathrm{\varEta}}
 \newcommand*{\nat}{\textrm{nat}}
 \newcommand*{\hart}{\textrm{Hart}}
+
+\newsubfloat{figure}
+\subcaptionsize{\normalfont}
+\subcaptionlabelfont{\normalfont}
+\subcaptionfont{\normalfont}
 %%% Custom macros end @@@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1299,9 +1304,11 @@ indistinguishable from the maximum-entropy density for $N=n$, that is,
 applied at the sample level. We discuss the case of unknown $N$ in
 \sect~\ref{sec:N}.
 \begin{figure}[!p]
-\centering
+  \centering
+\subcaption[]{\label{fig:plots_5mom_a}}%  
 \includegraphics[width=\linewidth]{_scripts/newpaper_stensola_5mom_distributionsN_priorc.pdf}%
 \\[3em]%
+\subcaption[]{\label{fig:plots_5mom_b}}%  
 \includegraphics[width=\linewidth]{_scripts/newpaper_riehle_5mom_distributionsN_priorc.pdf}%
 \caption{***}
 \label{fig:plots_5mom}
@@ -1317,10 +1324,11 @@ recovered with relative errors smaller than $10^{-12}$.
 
 The figure shows that the distribution for the larger-population is more
 peaked than the measured frequency distribution for the sample; their
-difference increases with $N$. Most remarkably, for the first data set
-(upper panel) the distribution for the larger population has two distinct
-low-activity modes. For the second data set (lower panel) the distribution
-presents a small shoulder on the right of its mode.
+difference increases with $N$. Most remarkably, for the first data set,
+\fig~\ref{fig:plots_5mom_a}, the distribution for the larger population has
+two distinct low-activity modes. For the second data set,
+\fig~\ref{fig:plots_5mom_b}, the distribution presents a small shoulder on
+the right of its mode.
 % , suggestive of two activity regimes. We frame no hypotheses about the
 % biological cause of these two modes (they could stem from the presence of
 % different kinds of cells or modules)
@@ -1332,8 +1340,10 @@ population. \textcolor{white}{If you find this you can claim a postcard
 
 \begin{figure}[!p]
 \centering
+\subcaption[]{\label{fig:plots_cellsubsets_a}}%  
 \includegraphics[width=\linewidth]{_scripts/newpaper3_gridvsnogrid.pdf}%
 \\[3em]%
+\subcaption[]{\label{fig:plots_cellsubsets_b}}%  
 \includegraphics[width=\linewidth]{_scripts/newpaper3_gridconv.pdf}%
 \caption{***}
 \label{fig:plots_cellsubsets}
@@ -1343,7 +1353,7 @@ Here is a toy example of possible uses of this maximum-entropy approach,
 based on the first data set. We could be interested in the hypothesis that
 two distinct cell types or assemblies be present in the region where the
 recording was made. Finding a larger-population distribution with two
-peaks, as in the upper panel of \fig~\ref{fig:plots_5mom}, would provide
+peaks, as in \fig~\ref{fig:plots_5mom_a}, would provide
 some evidence for this hypothesis. Let's further imagine that we have
 reasons for suspecting that a specific set of the sampled neurons is of the
 first type, and the remaining of the second type. In the case of the first
@@ -1353,8 +1363,8 @@ two peaks in the distribution of \fig~\ref{fig:plots_5mom} reflect the
 activities of grid versus non-grid cells? We apply the method to these two
 sets of neurons individually, using $\yNg=4\,150$ for the grid set and
 $\yNng=5\,850$ for the non-grid set, to reflect their proportions (27/65
-and 38/65) in the recorded sample. The results are shown in the upper panel
-of \fig~\ref{fig:plots_cellsubsets}. The distribution for the larger
+and 38/65) in the recorded sample. The results are shown in 
+ \fig~\ref{fig:plots_cellsubsets_a}. The distribution for the larger
 population of grid cells (\textcolor{mygreen}{green triangles}) seems to
 have one broad peak, close to the first peak of the larger-population
 distribution. The distribution for the larger population of non-grid cells
@@ -1372,8 +1382,8 @@ their convolution:
   P_{\text{non-grid}}(\yA-\yA') %, \qquad \yA \in \set{1,\dotsc,10\,000}
 \end{equation}
 where the index $\yA'$ runs from $\max(0,\yA-\yNng)$ to $\min(\yA,\yNg)$.
-But this is not the case: the lower panel of
-figure~\ref{fig:plots_cellsubsets} shows that such convolution
+But this is not the case: 
+figure~\ref{fig:plots_cellsubsets_b} shows that such convolution
 (\textcolor{black}{black diamonds}) is quite different from the
 larger-population distribution (\textcolor{myblue}{blue curve}): the two
 peaks of the former are closer in position and height than those of the
@@ -1597,20 +1607,21 @@ the first four moments only.
 
 \begin{figure}[!p]
 \centering
+\subcaption[]{\label{fig:plots_2_4mom_a}}%  
 \includegraphics[width=\linewidth]{_scripts/newpaper2_stensola_twomom_distributions10000_priorc.pdf}%
 \\[3em]%
+\subcaption[]{\label{fig:plots_2_4mom_b}}%  
 \includegraphics[width=\linewidth]{_scripts/newpaper2_riehle_twomom_distributions10000_prior2.pdf}%
 \caption{***}
 \label{fig:plots_2_4mom}
 \end{figure}
 % maxent_solutions_different_moments_prior2_6moments.nb
 These informational differences shows clearly in the shapes of the
-distribution themselves, plotted in the upper panel of
-\fig~\ref{fig:plots_2_4mom}. The two-moment distribution
+distribution themselves, plotted in 
+\fig~\ref{fig:plots_2_4mom_a}. The two-moment distribution
 (\textcolor{myred}{dashed red}) is unimodal, the four-moment distribution
 (\textcolor{myblue}{solid blue}) is bimodal. The five-moment distribution
-would not be distinguishable from the four-moment one. The lower panel in
-the figure shows the corresponding distributions for the second data set;
+would not be distinguishable from the four-moment one.  Figure~\ref{fig:plots_2_4mom_b} shows the corresponding distributions for the second data set;
 also in this case they are visually very distinct.
 
 \medskip
@@ -1631,8 +1642,8 @@ conditional on five moments than on four moments.
 The conclusions about \enquote{cooperativity} or \enquote{interaction} that
 we reach by applying the maximum-entropy method to the larger population,
 as proposed here, are therefore different from those applying it at the
-sample level -- and also visually clearer. The plot in the upper panel of
-\fig~\ref{fig:plots_2_4mom}, showing the two clearly different
+sample level -- and also visually clearer. The plot in 
+\fig~\ref{fig:plots_2_4mom_a}, showing the two clearly different
 distributions constrained by two and four moments, should be compared with
 the plot for the distributions obtained at the sample level under the same
 constraints, shown in \fig~\ref{fig:comparisons_marginals} as
@@ -1945,8 +1956,8 @@ points of the probability space. The question then is \emph{which features
 probability calculation (to be published separately) show that several
 semi-quantitative features of the maximum-entropy distribution are indeed
 typical. For the first data set, for example, most frequency distributions
-have two high-frequency regimes of activity, as in the upper panel of
-\fig~\ref{fig:plots_5mom}, with roughly the same heights and almost the
+have two high-frequency regimes of activity, as in 
+\fig~\ref{fig:plots_5mom_a}, with roughly the same heights and almost the
 same locations, within a few percentages of normalized total activity. Each
 of high-frequency regimes, though, may consist of two or three very close
 modes rather than one. The same preliminary studies also indicate that

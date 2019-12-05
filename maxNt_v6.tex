@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-05T10:55:47+0100
+%% Last-Updated: 2019-12-05T11:13:56+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1307,10 +1307,13 @@ applied at the sample level. We discuss the case of unknown $N$ in
   \centering
 \subcaption[]{\label{fig:plots_5mom_a}}%  
 \includegraphics[width=\linewidth]{_scripts/newpaper_stensola_5mom_distributionsN_priorc.pdf}%
-\\[3em]%
+\\[2em]%
 \subcaption[]{\label{fig:plots_5mom_b}}%  
 \includegraphics[width=\linewidth]{_scripts/newpaper_riehle_5mom_distributionsN_priorc.pdf}%
-\caption{***}
+\\[2em]%
+\caption{Maximum-entropy distributions for the normalized total activity of
+  the larger population, assuming several population sizes $N$. Five
+  moments are constrained.}
 \label{fig:plots_5mom}
 \end{figure}
 % maxent_solutions_different_moments_prior2_6moments.nb
@@ -1342,10 +1345,15 @@ population. \textcolor{white}{If you find this you can claim a postcard
 \centering
 \subcaption[]{\label{fig:plots_cellsubsets_a}}%  
 \includegraphics[width=\linewidth]{_scripts/newpaper3_gridvsnogrid.pdf}%
-\\[3em]%
+\\[2em]%
 \subcaption[]{\label{fig:plots_cellsubsets_b}}%  
 \includegraphics[width=\linewidth]{_scripts/newpaper3_gridconv.pdf}%
-\caption{***}
+\\[2em]%
+\caption{\subcaptionref{fig:plots_cellsubsets_a} Maximum-entropy
+  distributions for larger subpopulations or grid and non-grid cells.
+  \subcaptionref{fig:plots_cellsubsets_b} Convolution of the two
+  subpopulation distributions; it would be equal to the total distribution
+  if the two distributions were independent.}
 \label{fig:plots_cellsubsets}
 \end{figure}
 % maxent_solutions_different_moments_partial.nb
@@ -1609,10 +1617,13 @@ the first four moments only.
 \centering
 \subcaption[]{\label{fig:plots_2_4mom_a}}%  
 \includegraphics[width=\linewidth]{_scripts/newpaper2_stensola_twomom_distributions10000_priorc.pdf}%
-\\[3em]%
+\\[2em]%
 \subcaption[]{\label{fig:plots_2_4mom_b}}%  
 \includegraphics[width=\linewidth]{_scripts/newpaper2_riehle_twomom_distributions10000_prior2.pdf}%
-\caption{***}
+\\[2em]%
+\caption{Maximum-entropy distributions for the normalized total activity of
+  the larger population, assuming two different sets of constraining moments
+  and a larger population size $N=10\,000$.}
 \label{fig:plots_2_4mom}
 \end{figure}
 % maxent_solutions_different_moments_prior2_6moments.nb
@@ -1656,7 +1667,10 @@ tail.
 % \includegraphics[width=\linewidth]{_scripts/comparison_full.pdf}%
 % \\[3em]%
 \includegraphics[width=\linewidth]{_scripts/trunct_comparison_marginals.pdf}%
-\caption{***}
+\caption{Marginals for the normalized total activity of the sample,
+  obtained from the maximum-entropy distributions with $N=10\,000$ from
+  \fig~\ref{fig:plots_2_4mom_a}, and from maximum-entropy distributions
+  calculated at the sample level, that is with $N=n=65$.}
 \label{fig:comparisons_marginals}
 \end{figure}
 % comparison_ME_sample_full_levels.nb

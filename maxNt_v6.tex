@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-05T11:39:17+0100
+%% Last-Updated: 2019-12-05T23:42:10+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1956,13 +1956,26 @@ of correlations of some order, as in \sect~\ref{sec:marginalization}, to be
 compared with hypotheses about more realistic time dependences and
 clustering. %They may turn out to approximate well more realistic assumptions.
 
+The $T= \infty$ approximation can break the method for specific
+distributions of sample frequencies, if too many moments are used. For
+example take $n=2$ with frequency distribution $\yf=(0.5,0,0.5)$ for the
+activities $\ya=0,1,2$; that is, the sample is silent half of the time and
+completely active half of the time. The first two normalized factorial
+moments have both value $1/2$, and together they uniquely determine $\yf$.
+If we now take $N=3$, it is possible to show that
+\eqn~\eqref{eq:app_maxent_pop_first}, constrained on those two moments, has
+no solution. The simple reason is clear from a sampling perspective: if
+there is zero probability of sampling one active neuron, then there must be
+zero probability of sampling two active ones. Without the $T=\infty$
+approximation this doesn't happen, because the conditional frequency of the
+activity levels and the sampling conditional probability are kept distinct.
+
 The two infinity approximations are at the limit of their validity in our
 specific application, so the distributions discussed in our example are
-best interpreted as \emph{most probable frequency distributions}.
-
-The space of possible frequency distributions for the larger population has
-$N$ dimensions, however, and probability distributions in high dimensions
-have counter-intuitive properties. For example, the mode or mean can have
+best interpreted as \emph{most probable frequency distributions}. The space
+of possible frequency distributions for the larger population has $N$
+dimensions, however, and probability distributions in high dimensions have
+counter-intuitive properties. For example, the mode or mean can have
 \emph{atypical} features when compared with the majority of other probable
 points of the probability space. The question then is \emph{which features
   of the maximum-entropy frequency distribution are typical of the majority
@@ -1970,7 +1983,7 @@ points of the probability space. The question then is \emph{which features
 probability calculation (to be published separately) show that several
 semi-quantitative features of the maximum-entropy distribution are indeed
 typical. For the first data set, for example, most frequency distributions
-have two high-frequency regimes of activity, as in 
+have two high-frequency regimes of activity, as in
 \fig~\ref{fig:plots_5mom_a}, with roughly the same heights and almost the
 same locations, within a few percentages of normalized total activity. Each
 of high-frequency regimes, though, may consist of two or three very close

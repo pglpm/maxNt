@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-04T20:57:30+0100
+%% Last-Updated: 2019-12-05T10:25:02+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -703,8 +703,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\re}{\Eta}
 \newcommand*{\ybu}{\re_{\text{B}}}
 
-\newcommand*{\yRR}{R}
-\newcommand*{\yR}{\bm{\yRR}}
+\newcommand*{\yr}{\bm{r}}
 
 \newcommand*{\ynuu}{\nu}
 \newcommand*{\ynu}{\bm{\ynuu}}
@@ -726,6 +725,9 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\ycm}{\mathte{\ycmm}}
 \newcommand*{\ycs}{\bm{\sigma}}
 \newcommand*{\yL}{L}
+
+\newcommand*{\yla}{\bm{\lambda}}
+\newcommand*{\yJ}{\bm{J}}
 %\newcommand*{\yd}{\bm{\varDelta}}
 \newcommand*{\ydi}{\varDelta}
 
@@ -2249,95 +2251,96 @@ probability ratio~\eqref{eq:ratio_prob_suffic}. The exponential of the
 difference~\eqref{eq:measure_suffic} tells us how much more probable is the
 set $M''$ to be sufficient than the set $M'$.
 
-\section{Sketch of inference with the probability calculus}
+\section{Assumptions and approximations: mathematical sketch}
 \label{sec:inference_prob}
 
-\mynote{Still contains text from \sect~\ref{sec:assumptions}, to be
-  removed. Mainly only the equations will remain.}
+We give here a sketch of the mathematical formulae behind the assumptions
+and approximations discussed in \sect~\ref{sec:assumptions}. We indicate
+them all collectively with $\yI$.
 
-The first and most important assumption of this kind of maximum-entropy
-applications in neuroscience can be expressed in two equivalent ways:
-\begin{enumerate*}[(\roman*)]
-  % \item the order of the time bins has no relevance;
-\item the frequencies of the activity during a recording are
-  informationally sufficient for inferences about unrecorded times; \item
-  our degree of belief about the sequence of activities is exchangeable
-  \citep[\chap~4]{bernardoetal1994_r2000}{dawid2013}, that is, invariant
-  under permutations of the time bins.
-\end{enumerate*}
-Equating time averages and expectations, \eqn~\eqref{eq:final_constraint},
-would not make sense without this assumption. Its mathematical consequence
-\citep{definetti1930,hewittetal1955} is that the probability of observing a
-sequence of activities $(\yA_{1},\dotsc,\yA_{T})$ with frequencies
-$(\yFF_{\yA})$ is a mixture of terms
+The first assumption, of infinite exchangeability
+\citep[\chap~4]{bernardoetal1994_r2000}{dawid2013} of the probability
+distribution $\pf[(\yA_{1},\dotsc, \yA_{T}) \| \yI]$ for the sequence of
+activities, implies the following mixture form by de~Finetti's theorem
+\citep{definetti1930,hewittetal1955}:
 \begin{equation}
   \label{eq:mixture_from_definetti}
 %  \exp[-T\;\sh(\yF;\ynu)] \quad
 %  \pxxx[(\yA_{1},\dotsc,\yA_{T})] \propto
-  \prod_{\yA=1}^{N}{\nu_{\yA}}^{T\,\yFF_{\yA}} \quad
-  \text{with weights }q(\ynu),
+  \pf[(\yA_{1},\dotsc, \yA_{T}) \| \yI]
+  = \int\!\!\!\di\ynu\;\pf(\ynu \|\yI)\,\prod_{\yA=1}^{N}{\nu_{\yA}}^{T\,\yFF_{\yA}},
 \end{equation}
-where $\ynu\defd (\nu_{\yA})$ represents the long-run frequency
-distribution for the activity. % Other maximum-entropy models are also used
-% in neuroscience, such as kinetic Ising models
-% \cite{kawasaki1972,mezardetal2011,battistinetal2015}, based on the slightly
-% less drastic assumption of invariance under permutations of sequences
-% having the same starting state and the same transition counts
-% \citep{diaconisetal1980c,geetal2012}.
-Note that the maximum-entropy method in statistical physics is meant to be
-used not with this assumption, but with averages across \emph{repetitions}
-of the same experiment, because its constraints represent macroscopically
-\emph{reproducible} quantities and kinematics, even in non-equilibrium
-\citep{jaynes1957,guntonetal1983,tikochinskyetal1984,grandy1988,berryetal1988,deroecketal2005_r2006,touchette2009}.
+where $\ynu\defd(\nu_{\yA})$ is the long-run frequency distribution of
+activities in an imaginary continuation or repetition of the recording, and
+$\pf(\ynu \|\yI)\;\di\ynu$ our belief distribution about it.
 
-The second assumption is specific to our application: all subsets of $\yA$
-neurons in the larger population are equally likely to give rise to total
-activity $\yA$, at every time bin. A mathematically equivalent assumption
-is that $n$ neurons are sampled anew at each time bin. This assumption
-allows us to factorize the joint probability of the two sequences of
-activities and apply the sampling
-relation~\eqref{eq:conditional_hypergeometric} of
-appendix~\ref{sec:derivation_maxent_fullnet} at each bin:
-\begin{equation}
+The second assumption concerns the latter degree distribution. It has one
+of these expressions:
+\begin{subequations}\label{eq:maxent_prior}
+  \begin{equation}
+    \label{eq:entropic_prior}
+    \pf(\ynu \| \yI) \propto  \exp[-\yL\;\sh(\yF;\yr)]
+    \approx \binom{L}{L\nu_{0}, \dotsc, L\nu_{N}}\;
+    \prod_{\yA}{r_{\yA}}^{L\nu_{\yA}}  
+  \end{equation}
+  where $\yr\defd(r_{\yA})$ is a reference distribution and the expression
+  in larger parentheses is a multinomial coefficient, or
+  \begin{equation}
+    \label{eq:suff_prior}
+    \pf(\ynu \| \yI) \propto
+    \int\!\!\!\di\yla\;\pf(\yla \| \yI)\;
+    \prod_{\yA}\delt\Biggl\{\ynu_{\yA}-
+    \frac{r_{\yA}}{Z(\yla)}\,\exp\Bigl[
+    \tsum_{m}\lambda_{m}\tbinom{\yA}{m}/\tbinom{N}{m}
+    \Bigr]\Biggr\},
+  \end{equation}
+\end{subequations}
+where $\yla\defd(\lambda_{m})$ are Lagrange multipliers and $Z(\yla)$ a
+normalization factor for the exponential distribution within the delta.
+This is a formal expression saying that our belief about $\ynu$ is an
+exponential parametric model for which the normalized factorial moments are
+informationally sufficient.
+
+The third assumption corresponds to the formula
+\begin{multline}
   \label{eq:assume_sampled_anew}
-  \pxx[(\ya_{1},\dotsc,\ya_{T}) \| (\yA_{1}, \dotsc, \yA_{T}) ]
-  = \prod_{t=1}^{T} \pxx(\ya_{t} \| \yA_{t})
-  = \prod_{t=1}^{T} \yG_{\ya_{t}\yA_{t}}.
-\end{equation}
+  \pf[(\ya_{1},\dotsc,\ya_{T}) \| (\yA_{1}, \dotsc, \yA_{T}), \yI ]
+  ={}\\ \prod_{t=1}^{T} \pf(\ya_{t} \| \yA_{t}, \yI)
+  = \prod_{t=1}^{T} \yG_{\ya_{t}\yA_{t}}
+  \equiv \prod_{\ya,\yA}{\yG_{\ya_{t}\yA_{t}}}^{T\,J_{\ya\yA}},
+\end{multline}
+where $J_{\ya\yA}$ is the joint frequency distribution of the activity
+pairs $(\ya,\yA)$, so that its marginals are the frequency distributions
+$\yf$ and $\yF$. As discussed in \sect~\ref{sec:assumptions} this formula
+follows from either of two beliefs: that all subsets of $\yA$ neurons in
+the larger population are always equally likely to give rise to total
+activity $\yA$, or that a new sampling is done at every time bin.
 
-Both assumptions above make sense as reference hypotheses for judging the
-informational relevance of correlations of some order, as in
-\sect~\ref{sec:marginalization}, to be compared with hypotheses about more
-realistic time dependences and clustering.
-
-From these two assumptions the probability calculus allows us to derive not
-only the probability for the frequency distribution $\yF$, but also that
-for the joint frequencies of total activities of sample and larger
-population, $J_{\ya,\yA}$, conditional on the observed frequency
-distribution for the sample $\yf$. The result is again a mixture of terms
-\begin{equation}
+It can be proved that the formulae above lead to the following belief
+distribution for the joint frequency distribution $\yJ \defd (J_{\ya\yA})$
+conditional on $\yf$:
+\begin{multline}
   \label{eq:prob_joint_frequencies}
-%\pxx[\yF \| \yf ] \propto
-  \prod_{\ya,\yA}\bigl(\yG_{\ya\yA}\;\nu_{\yA}\bigr)^{T\,J_{\ya,\yA}}
-  \qquad
-  \text{with } \tsum_{\yA}J_{\ya,\yA}=\yff_{\ya}
-  %\quad \tsum_{\ya}J_{\ya,\yA}=\yFF_{\yA},
-\end{equation}
-with weights $q(\ynu)$.
+  \pf(\yJ \| \yf, \yI) \propto
+                         \int\!\!\!\di\ynu\;\pf(\ynu\|\yI)\;
+                         \binom{T}{TJ_{0 0},\dotsc,TJ_{n N}}\,
+                         \prod_{\ya,\yA}\bigl(\yG_{\ya\yA}\;\nu_{\yA}\bigr)^{T\,J_{\ya\yA}}
+  \approx{}  \\
+\shoveright{\int\!\!\!\di\ynu\;\pf(\ynu\|\yI)\;
+                         \exp\biggl(
+-T \tsum_{\ya,\yA}J_{\ya\yA}\ln\frac{J_{\ya\yA}}{\yG_{\ya\yA}\;\nu_{\yA}}
+                         \biggr)}
+  \\
+  \text{with}\quad \tsum_{\yA}J_{\ya\yA}=\yff_{\ya},
+\end{multline}
+where $\pf(\ynu\|\yI)$ is either of the
+distributions~\eqref{eq:maxent_prior}. From this belief distribution we can
+find the one for $\yFF_{\yA}\equiv \sum_{\ya}J_{\ya\yA}$ by
+marginalization. Within the exponential we can recognize the relative
+entropy of $\yJ$ with respect to $(\yG_{\ya\yA}\;\nu_{\yA})$, which is the
+reason why these two joint distributions must be equal if $T$ tends to
+infinity.
 
-The maximum-entropy method approximates $T$ in the probability above with
-infinity, thus treating it as a delta. This leads to two approximate equalities:
-\begin{enumerate*}[label=(\roman*)]
-\item of the recorded and long-run frequency distributions $\yF$ and
-  $\ynu$, and therefore also of their probability distributions,
-\item of the hypergeometric distribution $\yG_{\ya\yA}$ and the frequency
-  of the sample activity $\ya$ conditional on the larger-population
-  activity $\yA$.
-\end{enumerate*}
-Without this approximation the latter conditional frequency can differ from
-$\yG_{\ya\yA}$ -- and this is expected if the number of bins $T$ is not much
-larger than the number of possible joint possibilities, roughly
-$n\times N$.
 
 
 

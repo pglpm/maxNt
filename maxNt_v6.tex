@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-06T11:26:19+0100
+%% Last-Updated: 2019-12-06T12:02:48+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -901,7 +901,7 @@ activities %($0.7\%$ and $2.6\%$ of simultaneously active neurons
 sample is monotonically decreasing with its maximum at zero activity. The
 frequency distribution for the second data set presents one prominent
 shoulder in its low-activity mode. These results show that the proposed
-method can lead to the formulation or preliminary assessment of interesting
+model can lead to the formulation or preliminary assessment of interesting
 hypotheses, as we will illustrate with a toy example. Note that these
 guessed features of the full population could not be inferred by the
 application of maximum-entropy \emph{to the sample alone}.
@@ -914,7 +914,7 @@ application of maximum-entropy \emph{to the sample alone}.
 % % comprise non-overlapping sets of neurons and differ in size.
 % There's also an important methodological reason.
 
-Our approach also solves a methodological problem in the use of
+Our model also solves a methodological problem in the use of
 maximum-entropy methods to assess the \enquote{cooperativity},
 \enquote{interaction}, or \enquote{synchrony} in neuronal activity, for
 example studying its pairwise correlations and correlations of higher order
@@ -941,13 +941,13 @@ reliable. We discuss this point in detail in
 % above addressing an example question of sufficiency, two moments versus
 % four moments.
 
-How large is the full population addressed by the method proposed here? Its
+How large is the full population addressed by the model proposed here? Its
 size must have some limit and can't obviously include the full brain. The
 size is determined by the validity of the formulae from sampling theory and
 discussed in \sect~\ref{sec:N}.
 
 In \sect~\ref{sec:assumptions} we discuss in detail the assumptions and
-approximations on which the method is based, from the point of view of the
+approximations on which the model is based, from the point of view of the
 probability calculus. 
 
 % \mynote{review this}We obviously don't know whether the activity levels of
@@ -968,7 +968,7 @@ probability calculus.
 % typical features indicated by our method are robust against such changes.
 
 A summary of all points above and a discussion of the usefulness of the
-method is given in the final \sect~\ref{sec:summary_discussion}.
+model is given in the final \sect~\ref{sec:summary_discussion}.
 
 \medskip
 
@@ -1006,7 +1006,7 @@ Our notation and terminology follow \textsc{iso}
 
 
 
-\section{Method: maximum-entropy and sampling}
+\section{Model: maximum-entropy and sampling}
 \label{sec:model}
 
 Let's introduce some context and mathematical notation.
@@ -1058,7 +1058,7 @@ larger population during and after the recording, and across sessions under
 the same study conditions. For example: what was its frequency distribution
 $\yF$ during the recording? How much does this frequency distribution
 change across sessions? How much total activity should we expect at any
-time bin during a recording? The approach presented here gives a
+time bin during a recording? The model presented here gives a
 probability distribution that approximately answers all these questions.
 
 
@@ -1270,7 +1270,7 @@ decreases as the ratio $nN/T$ increases (see \sect~\ref{sec:assumptions}).
 \section{Example application: two data sets}
 \label{sec:application}
 
-We apply the method just described to two data sets publicly available in
+We apply the model just described to two data sets publicly available in
 the literature:
 \begin{itemize}[wide]
 \item The \textbf{first data set}, from \textcite[rat
@@ -1336,10 +1336,9 @@ the right of its mode.
 % biological cause of these two modes (they could stem from the presence of
 % different kinds of cells or modules)
 Such features are clearly not present in the sample frequencies or in the
-maximum-entropy distribution at the sample level. The application of the
-probability calculus thus reveals interesting features of the larger
-population. \textcolor{white}{If you find this you can claim a postcard
-  from us.}
+maximum-entropy distribution at the sample level. The model thus suggests
+interesting features of the larger population. \textcolor{white}{If you
+  find this you can claim a postcard from us.}
 
 \begin{figure}[!p]
 \centering
@@ -1357,7 +1356,7 @@ population. \textcolor{white}{If you find this you can claim a postcard
 \label{fig:plots_cellsubsets}
 \end{figure}
 % maxent_solutions_different_moments_partial.nb
-Here is a toy example of possible uses of this maximum-entropy approach,
+Here is a toy example of possible uses of this model,
 based on the first data set. We could be interested in the hypothesis that
 two distinct cell types or assemblies be present in the region where the
 recording was made. Finding a larger-population distribution with two
@@ -1368,7 +1367,7 @@ first type, and the remaining of the second type. In the case of the first
 data set, 27 of the 65 sampled neurons were identified as grid cells
 belonging to 3--4 functional modules \citep{dunnetal2015}. Could the
 two peaks in the distribution of \fig~\ref{fig:plots_5mom} reflect the
-activities of grid versus non-grid cells? We apply the method to these two
+activities of grid versus non-grid cells? We apply the model to these two
 sets of neurons individually, using $\yNg=4\,150$ for the grid set and
 $\yNng=5\,850$ for the non-grid set, to reflect their proportions (27/65
 and 38/65) in the recorded sample. The results are shown in 
@@ -1402,8 +1401,8 @@ gives us some information about the activity of the other.
 \medskip
 
 The toy analysis above should not be taken literally, but just as an
-illustration of the method's possible applications. The important point is
-that this method is computationally very cheap and yet it can provide
+illustration of the model's possible applications. The important point is
+that this model is computationally very cheap and yet it can provide
 useful insights, even if just qualitative ones, and even suggest new
 hypotheses.
 

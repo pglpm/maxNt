@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-06T12:02:48+0100
+%% Last-Updated: 2019-12-06T17:01:42+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -832,68 +832,74 @@ We cannot say \enquote{the answer is such and such}; at best we can assign
 degrees of reasonable belief -- that is, probabilities -- to the possible
 answers. The assessment of such distributions of belief involves
 experimental data, such as recordings of neuronal activity from specific
-brain areas, and pre-data knowledge and assumptions about biological
-conditions and mechanisms. Our pre-data \dobs\ are often simplified, to be
-mathematically tractable, and are therefore called \enquote{models}.
+brain areas, and pre-data knowledge and hypotheses about biological
+conditions and mechanisms. When we translate such pre-data beliefs into an
+initial probability distribution we often simplify them in more or less
+realistic ways, to make the analysis mathematically tractable. This is why
+such initial probability distributions are called \enquote{models}.
 
 The best experimental measurements of instantaneous neuronal activity use
 remarkable technologies, but can still only record a very small sample of
 neurons -- hundreds at most -- compared to the numbers that constitute a
 functionally distinguished brain region. Many probabilistic models focus on
-such samples only: they somehow neglect, in their mathematical assumptions,
-that the recorded neurons are a sample from a larger population. Such
-isolating assumptions sometimes escape attention, being subtly hidden in
-the mathematics. Some probabilistic models try to take unrecorded neurons
-into account -- but by describing each neuron individually, thus becoming
-very complex \citep{huang2015,battistinetal2017}. It would be useful to
-explore models that operate in between, addressing the larger brain area
-whence the sample comes, but collectively, without asking about individual
-neuronal details. Such intermediate models would be useful for preliminary
-investigations, to help us to decide which hypotheses to discard and which
-to consider for more complex and costly studies, or to suggest new
-hypotheses.
+such samples only: they neglect that the recorded neurons are a sample from
+a larger population. Such isolating assumptions sometimes escape attention,
+being subtly hidden in the mathematics. Some probabilistic models try to
+take unrecorded neurons into account, but they do so by describing each
+neuron individually, thus becoming very complex
+\citep{huang2015,battistinetal2017}. It would be useful to explore models
+that operate in between, addressing the activity of the larger brain area
+whence the sample comes, but \emph{collectively}, that is, without asking
+about individual neuronal details. Such intermediate models would be useful
+at least for preliminary investigations, to help us to decide which
+hypotheses to discard and which to consider for more complex and costly
+models, or to suggest new hypotheses.
 
 % \mynote{[Yasser:] In the present work we aim to address the issue of
 %   building probability distributions over a large population using
 %   recording from subpopulations by considering the distribution of total
 %   population activity as an example. [} 
-In the present work we propose such
-an intermediate probability model. It answers this question: How much was
-the \emph{total} activity of a large neuronal population, given the
-observation of the activity of a very small sample thereof? This model
-addresses a larger brain area, avoiding the assumption of isolation of the
-sample; and by focusing on the total activity, rather than the activity of
-individual neurons, it remains simple and numerically tractable.
+In the present work we propose such an intermediate probabilistic model. It
+answers this question: How much was the \emph{total} activity of a large
+neuronal population, given the observation of the activity of a very small
+sample thereof? This model addresses a larger brain area, avoiding the
+assumption of isolation of the sample; and by focusing on the total
+activity, rather than the activity of individual neurons, it remains simple
+and numerically tractable.
 
 
-The model we propose is based on the straightforward combination of the
+The model can be viewed as a straightforward combination of the
 maximum-entropy method and basic sampling relations from the probability
 calculus, discussed in \sect~\ref{sec:model}. The maximum-entropy or
 minimum-relative-entropy method \citep{jaynes1957}[much clearer
 in][]{jaynes1963}{sivia1996_r2006,hobsonetal1973,jaynes1985b_r1996,grandy1980}
-has been used for different kinds of investigations about the neuronal
-activity of various brain areas and about other phenomena of importance to
-the neurosciences, for example gene and protein interaction \citep[for
+to build initial probability distributions has been used for different
+kinds of investigations about the neuronal activity of various brain areas
+and about other phenomena of importance to the neurosciences, for example
+gene and protein interaction \citep[for
 example][]{martignonetal1995,bohteetal2000,shlensetal2006,schneidmanetal2006,tkaciketal2006,mackeetal2009b,tkaciketal2009,roudietal2009c,barreiroetal2010,gerwinnetal2010,mackeetal2011b,ganmoretal2011,cohenetal2011,granotatedgietal2013,mackeetal2013,tkaciketal2014b,shimazakietal2015,moraetal2015,lezonetal2006,weigtetal2009}.
+However, our model can also be viewed as an approximation of a more
+detailed model within a fully Bayesian approach; we shall constantly keep
+this point of view in mind in our discussion.
 
-We illustrate possible uses of our proposed model in
-\sect~\ref{sec:application}, by applying it to two concrete data sets:
+We illustrate possible uses of our model in \sect~\ref{sec:application}, by
+applying it to two concrete data sets:
 \begin{enumerate*}[label=(\alph*)]
 \item the activity of 65 neurons recorded for 20 min from a rat's Medial
-  Entorhinal Cortex \citep{stensolaetal2012}, \item the activity of 159
-  neurons recorded for 15 min from a macaque's Motor Cortex
-  \citep{rostamietal2016_r2017}.
+  Entorhinal Cortex \citep{stensolaetal2012},
+\item the activity of 159 neurons recorded for 15 min from a macaque's
+  Motor Cortex \citep{rostamietal2016_r2017}.
 \end{enumerate*}
-For each data set the model gives us the most plausible frequencies with
-which all levels of total activity of a much larger population,
-1\,000--10\,000 neurons, appeared during the recording. For example it can
-tell us that 60 out of 10\,000 neurons were likely active during 1\% of the
-recording time (though not necessarily always the same 60), 250 neurons out
-of 10\,000 were active during 0.4\% of the time, and so on. The precise
-meaning of this frequency distribution is explained in
+For each data set the model gives us the most plausible frequencies of all
+levels of total activity of a much larger population, 1\,000--10\,000
+neurons in size, during the recording. For example it can tell us that 60
+out of 10\,000 neurons were most likely active during 1\% of the recording
+time (though not necessarily always the same 60), 250 neurons out of
+10\,000 were active during 0.4\% of the recording time, and so on. The
+precise meaning of this frequency distribution is explained in
 \sect~\ref{sec:model}. For the two example data sets, the guessed frequency
-distributions in the larger population are distinctly different from those
-in the sample. For the first data set the frequency distribution for the
+distributions for the larger population are distinctly different from those
+for the sample. For the first data set the frequency distribution for the
 larger population has two very distinct modes, both at low
 activities %($0.7\%$ and $2.6\%$ of simultaneously active neurons
 % within $3\;\mathrm{ms}$,
@@ -902,9 +908,10 @@ sample is monotonically decreasing with its maximum at zero activity. The
 frequency distribution for the second data set presents one prominent
 shoulder in its low-activity mode. These results show that the proposed
 model can lead to the formulation or preliminary assessment of interesting
-hypotheses, as we will illustrate with a toy example. Note that these
-guessed features of the full population could not be inferred by the
-application of maximum-entropy \emph{to the sample alone}.
+hypotheses, as we will illustrate with toy examples in
+\sects~\ref{sec:application} and~\ref{sec:marginalization}. Note that it is
+not possible to guess these features of the larger population by applying
+the maximum-entropy method \emph{at the level of the sample alone}.
 
 % We want to stress the usefulness of making a quantified guess about the
 % activity of a larger brain area. Such a guess seems indeed to be the
@@ -921,12 +928,12 @@ example studying its pairwise correlations and correlations of higher order
 \citep[see for
 example][]{martignonetal1995,bohteetal2000,schneidmanetal2006,shlensetal2006,barreiroetal2010,ganmoretal2011,granotatedgietal2013}.
 When the difference in size between a large population and a sample thereof
-is too large, the presence of some inferential properties of correlations
-for the sample implies the \emph{lack} of such properties for the larger
-population, and vice versa. Maximum-entropy applications at the sample
-level can therefore deceive us in questions regarding the cooperativity of
-the larger population. The application to the larger population is more
-reliable. We discuss this point in detail in
+is too large, the sufficiency of correlations of some order for the sample
+implies the \emph{lack} of sufficiency of correlations of the same order
+for the larger population, and vice versa. Maximum-entropy applications at
+the sample level can therefore deceive us in questions regarding the
+cooperativity of the larger population. Our model addresses directly the
+latter instead. We explain this point more precisely in
 \sect~\ref{sec:marginalization}.
 
 
@@ -1410,7 +1417,7 @@ hypotheses.
 
 
 \section{Quantifying the importance of higher-order correlations:\\
-  the limitations of methods at the sample level}
+  the limitations of models at the sample level}
 \label{sec:marginalization}
 
 As mentioned in the Introduction (see references there), in the
@@ -1420,10 +1427,10 @@ quantifying the \enquote{cooperativity} \citep[\eg][]{gersteinetal1985} or
 \citep[\eg][]{martignonetal1995,schneidmanetal2006,shlensetal2006} or
 \enquote{synchrony} \citep[\eg][-- we're only citing early papers using
 these terms]{bohteetal2000,amarietal2003} of neuronal activity. Most, if
-not all, such applications apply the method \emph{at the sample level}. In
+not all, such applications use the method \emph{at the sample level}. In
 this section we discuss how our proposed application bears on this kind of
 quantification and compare it with the traditional application at the
-sample level. But such a comparison involves some important methodological
+sample level. But such a comparison involves some methodological
 caveats which we wish to discuss first.% For concreteness we use an
 % example with specific statistics: first and second moments (equivalent to
 % mean and correlations), versus first-to-fourth moments. But our
@@ -1499,7 +1506,7 @@ in the \enquote{cooperativity} or \enquote{interaction} of a brain area, it
 is unreliable to use a maximum-entropy distribution constructed only for a
 sample
 thereof. % \citep[contrast this with some literature, \eg][]{martignonetal1995,bohteetal2000,schneidmanetal2006,shlensetal2006,barreiroetal2010,ganmoretal2011,granotatedgietal2013}
-The approach presented here avoids this problem because the maximum-entropy
+The model presented here avoids this problem because the maximum-entropy
 method is applied to obtain the distribution of the larger population, not
 of the sample alone.
 
@@ -1636,7 +1643,7 @@ also in this case they are visually very distinct.
 
 \medskip
 
-Compare the results above with those obtained by applying the method at the
+Compare the results above with those obtained by applying the model at the
 sample level, that is, with $N=n$:
 \begin{equation}
   \label{eq:diff_suff_n}
@@ -1770,7 +1777,7 @@ appendix~\ref{sec:derivation_maxent_fullnet}, reproduced here:
 \equiv \binom{n}{\ya}\binom{N-n}{\yA-\ya}\binom{N}{\yA}^{-1}
 \end{equation}
 leading to the equality of factorial
-moments~\eqref{eq:equal_m_factorialmoments}, on which our approach rests.
+moments~\eqref{eq:equal_m_factorialmoments}, on which our model rests.
 This conditional probability, characteristic of \enquote{drawing without
   replacement}
 \citep[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968},
@@ -1868,15 +1875,15 @@ approximately assess the sufficiency of a subset of moments $M' \subset M$
 taking into account the uncertainty of $N$ conditional on $M$.
 
 A rigorous assessment would involve a more expensive, full Bayesian
-calculation; but such calculation would make the whole maximum-entropy
-approach superfluous. We discuss this final point in the next section.
+calculation; but such calculation would make the maximum-entropy
+method superfluous. We discuss this final point in the next section.
 
 
 \section{Assumptions and approximations}
 \label{sec:assumptions}
 
-The possible uses of the method here presented depend on the assumptions
-and approximations on which it rests: three assumptions and two
+The possible uses of the model here presented depend on the assumptions and
+approximations which define it: three main assumptions and two main
 approximation all in all. These become clear within a full-fledged
 probabilistic approach. We summarize them here and give a more mathematical
 sketch in appendix~\ref{sec:inference_prob}.
@@ -1909,7 +1916,7 @@ from the first assumption. It is taken to be either an \enquote{entropic
 into account the multiplicity of long-run frequencies, or a prior for a
 model with sufficient statistics, which expresses the sufficiency of the
 moments under study \citep{portamana2017}. This assumption is crucial for
-obtaining the maximum-entropy method with the Shannon entropy. A different
+deriving the maximum-entropy based on with the Shannon entropy. A different
 density leads to alternative maximum-entropy methods, for example based on
 the Burg entropy \citep{burg1975} if a Dirichlet density is used
 \citep{jaynes1986d_r1996}. The entropic prior depends on a reference
@@ -1929,13 +1936,14 @@ activities and apply the sampling
 relation~\eqref{eq:conditional_hypergeometric} of
 appendix~\ref{sec:derivation_maxent_fullnet} at each bin.
 
-Finally, the maximum-entropy method typically approximates the number $T$
-of time bins, the prior coefficient $L$, and the ratio $T/L$ to infinity.
-These approximations lead to the identification of the four distributions
-listed at the end of \sect~\ref{sec:model}: the recorded frequency
-distribution becomes equal to the long-run one, and also to the probability
-distribution for the activity at recorded and new time bins. In our
-application it also leads to the equality of the hypergeometric
+Finally, the maximum-entropy method is typically equivalent to
+approximating the number $T$ of time bins, the prior coefficient $L$, and
+the ratio $T/L$ to infinity. These approximations lead to the
+identification of the four distributions listed at the end of
+\sect~\ref{sec:model}: the recorded frequency distribution becomes equal to
+the long-run one, and also to the probability distribution for the activity
+at recorded and new time bins. In our application it also leads to the
+equality of the hypergeometric
 distribution~\eqref{eq:conditional_hypergeometric} and the conditional
 frequencies of the sample activity $\ya$ given $\yA$. The goodness of this
 approximation decreases as the ratio between the number of possible joint
@@ -1956,7 +1964,7 @@ of correlations of some order, as in \sect~\ref{sec:marginalization}, to be
 compared with hypotheses about more realistic time dependences and
 clustering. %They may turn out to approximate well more realistic assumptions.
 
-The $T= \infty$ approximation can break the method for specific
+The $T= \infty$ approximation can break our model for specific
 distributions of sample frequencies, if too many moments are used. For
 example take $n=2$ with frequency distribution $\yf=(0.5,0,0.5)$ for the
 activities $\ya=0,1,2$; that is, the sample is silent half of the time and
@@ -2040,44 +2048,44 @@ The reason why we record neurons from a brain region is to have an idea of
 the activity of the other neurons in that region, similarly to survey
 sampling. If we thought that \emph{precisely} the recorded ones were
 exceptions or completely unrelated to the others surrounding the recording
-probe, our recording would serve little purpose. Probabilistic methods that
+probe, our recording would serve little purpose. Probabilistic models that
 allow us to make direct inferences about the larger population are
 therefore useful. But they become complex and sensitive if we ask for very
 detailed inferences.
 
-We have presented a method that allows us to make direct inferences about a
+We have presented a model that allows us to make direct inferences about a
 larger population from very small samples. Its inferences regard only the
 frequencies of the total activity of the larger population, but such
-limited scope makes the method computationally very cheap.
+limited inferential scope makes the model computationally very cheap.
 
-Yet, and most important, the method leads to inferences that are not at all
+Yet, and most important, this model leads to inferences that are not at all
 trivial and not easily discernible by looking at the sample. We showed this
-by applying the method to two real data sets.
+by applying the model to two real data sets.
 
 By \enquote{inference} we mean the quantification of a degree of belief
 about possible observations, based on specific assumptions; not the
-response of an oracle. The method gives us a \emph{forecast} based on those
-assumptions, and therefore has two main uses, just like any other
-probabilistic method. If our assumptions are only hypotheses under testing,
-then the subsequent confirmation or confutation of the forecast will
-increase or decrease our confidence in those hypotheses. If we strongly
-trust our assumptions, on the other hand, then we rely on the forecast and
-even use it in place of actual observations, especially if the latter are
-difficult to make. (In fact, we typically shift from the first to the
-second use.) In the preceding sections we have given examples of hypotheses
-that could be explored with the method. The method itself rests on
-assumptions, discussed in \sect~\ref{sec:assumptions}, that can either be
-under test or relied upon, depending on the case.
+response of an oracle. The model here presented gives us a \emph{forecast}
+based on specific assumptions discussed in \sect~\ref{sec:assumptions}, and
+therefore has two main uses, just like any other probabilistic model. If
+our assumptions are only hypotheses under testing, then the subsequent
+confirmation or confutation of the forecast will increase or decrease our
+confidence in those hypotheses. If we strongly trust our assumptions, on
+the other hand, then we rely on the forecast and even use it in place of
+actual observations, especially if the latter are difficult to make. (In
+fact, we typically shift from the first to the second use.) In the
+preceding sections we have given examples of additional hypotheses that
+could be explored with the present model. The assumptions of the model
+itself (\sect~\ref{sec:assumptions}) can either be under test or relied
+upon, depending on the case.
 
-Some approximations implicit in the method make its numerical results
-semi-quantitative with respect to an analysis based on the full probability
-calculus. The results should not be off by more than a few percentages for
-the normalized total activity and for the frequency density. This
-imprecision, however, is compensated by the extreme computational cheapness
-of the method, far less costly than a full probabilistic analysis. The
-method is therefore very convenient at least for essaying hypotheses. We
-hope to present an exact quantitative comparison with the full
-probabilistic approach in a future publication.
+Some approximations implicit in the model make its numerical results
+semi-quantitative with respect to an exact analysis. The results should not
+be off by more than a few percentages for the normalized total activity and
+for the frequency density. This imprecision, however, is compensated by the
+extreme computational cheapness of the model, far less costly than an exact
+analysis. The model is therefore very convenient at least for essaying
+hypotheses. We hope to present an exact quantitative comparison with the
+full probabilistic approach in a future publication.
 
 
 

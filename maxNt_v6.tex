@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-07T14:46:25+0100
+%% Last-Updated: 2019-12-07T15:36:17+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -2170,15 +2170,16 @@ full probabilistic approach in a future publication.
 \label{sec:derivation_maxent_fullnet}
 
 Here is a summary derivation of the maximum-entropy distribution for the
-larger population constrained by a set of factorial moments. For further details
-see Porta Mana \etal\ \citey{portamanaetal2015}.
+larger population constrained by a set of factorial moments.%  For further details
+% see Porta Mana \etal\ \citey{portamanaetal2015}.
 
 \bigskip
 
-First of all the sampling relation. We have a set of $N$ units, $\yA$ of
-which have some specific property, and we sample in an unknown way $n$ of
-the $N$ units. The probability that $\ya$ of the $n$ sampled units have that
-property is then given by the hypergeometric distribution
+First of all the sampling relation. We have a population of $N$ units --
+neurons -- $\yA$ of which have some specific property -- being active in a
+specific time bin -- and we sample in an unknown way $n$ of the $N$ units.
+The probability that $\ya$ of the $n$ sampled neurons are active is then
+given by the hypergeometric distribution
 \begin{equation}
   \label{eq:conditional_hypergeometric}
   \yG_{\ya\yA} \defd \pf(\ya \|\yA, n,N)=
@@ -2187,16 +2188,14 @@ property is then given by the hypergeometric distribution
 \end{equation}
 typical of \enquote{drawing without replacement}
 \citep[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}[\sects~2.1,
-3.2]{jeffreys1939_r1983}.
-In the following leave $n$, $N$ implicit in the conditional. If we are
-uncertain about the number $\yA$, with belief $P(\yA)$, then by the theorem
-of total probability our belief about $\ya$ is
+3.2]{jeffreys1939_r1983}. In the following we leave $n$, $N$ implicit in
+the conditional. If we are uncertain about the number $\yA$, with belief
+$P(\yA)$, then by the theorem of total probability our belief about $\ya$
+is
 \begin{equation}
   \label{eq:belief_sample_unknown_A}
   p(\ya)= \sum_{\yA} \yG_{\ya\yA} \;P(\yA).
 \end{equation}
-In our case the units are neurons, the set is the larger population, and the
-property is their being active in a specific time bin.
 
 From the definition of normalized factorial
 moment~\eqref{eq:def_factorial_moment_a}, the expression for the
@@ -2226,18 +2225,18 @@ The result has the standard exponential-family form
   \label{eq:app_maxent_pop}
   \begin{gathered}
   \px(\yA)  = \frac{1}{Z(\yll)}\;
-  g(\yA)\;
+  r_{\yA}\;
   \exp\Biggl[\sum_{m}\yl_{m}\;
   \binom{\yA}{m}\binom{N}{m}^{-1}
   \Biggr],
   \\
-  Z(\yll)\defd \sum_{\yA}g(\yA)\;
+  Z(\yll)\defd \sum_{\yA} r_{\yA}\;
   \exp\Biggl[\sum_{m}\yl_{m}\;
   \binom{\yA}{m}\binom{N}{m}^{-1}
   \Biggr],
 \end{gathered}
 \end{equation}
-where $g(\yA)$ is the reference distribution and $\yll\defd (\yl_{m})$ are
+where $(r_{\yA})$ is the reference distribution and $\yll\defd (\yl_{m})$ are
 the Lagrange multipliers, satisfying the implicit
 constraint equations~\eqref{eq:final_constraint}:
 \begin{equation}
@@ -2245,7 +2244,7 @@ constraint equations~\eqref{eq:final_constraint}:
   \sum_{\yA}
   \tbinom{\yA}{m}\tbinom{N}{m}^{-1}\;
   \tfrac{1}{Z(\yll)}\;
-  g(\yA)\;
+  r_{\yA}\;
   \exp\biggl[\sum_{m}\yl_{m}\;
   \tbinom{\yA}{m}\tbinom{N}{m}^{-1}
   \biggr]
@@ -2255,16 +2254,20 @@ constraint equations~\eqref{eq:final_constraint}:
   m\in M.
 \end{equation}
 
-The reference distribution $g(\yA)$ represents our pre-data beliefs about
-the activity levels $\yA$. We know that the majority of neurons in a brain
-area are rarely simultaneously active within a window of some milliseconds,
-so we could choose a distribution with slightly higher weights on low
-values of $\yA$. On the other hand, considering the number of ways in which
-$\yA$ out of $N$ neurons can be simultaneously active would suggest the
-multiplicity distribution proportional to $\binom{N}{\yA}$. It turns out
-that our results of \sects~\ref{sec:application}--\ref{sec:marginalization}
-are actually quite insensitive to the choice between these two possible
-reference distributions, or even a uniform reference distribution.
+The reference distribution $(r_{\yA})$ represents our pre-data beliefs
+about the activity levels $\yA$. We know that the majority of neurons in a
+brain area are rarely simultaneously active within a window of some
+milliseconds, so we could choose a distribution with slightly higher
+weights on low values of $\yA$. On the other hand, considering the number
+of ways in which $\yA$ out of $N$ neurons can be simultaneously active
+would suggest the multiplicity distribution proportional to
+$\binom{N}{\yA}$. It turns out that our results of
+\sects~\ref{sec:application}--\ref{sec:marginalization} are insensitive to
+the choice between these two possible reference distributions, or even a
+uniform reference distribution.
+
+For a derivation from a Bayesian perspective see
+appendix~\ref{sec:inference_prob}.
 
 
 \section{Measure of informational sufficiency}
@@ -2275,11 +2278,10 @@ sufficiency of one set with respect to the other, conditional on our data
 $\yf$:
 \begin{equation}
   \label{eq:ratio_prob_suffic}
-  \pf(M'' \| \yf)/
-  \pf(M' \| \yf).
+  \frac{p(M'' \| \yf)}{ p(M' \| \yf)}.
 \end{equation}
-Now, the probability of observing activity $\ya$ in the sample at any time
-bin is the sample marginal of the maximum-entropy distribution for the larger
+The probability of observing activity $\ya$ in the sample at any time bin
+is the sample marginal of the maximum-entropy distribution for the larger
 population, owing to the excheangeability assumption implicit in the
 maximum-entropy method:
 \begin{equation}
@@ -2324,8 +2326,9 @@ $\yf$ and the sample marginal of the maximum-entropy distribution.
 
 Thus, the difference~\eqref{eq:measure_suffic} is the logarithm of the
 probability ratio~\eqref{eq:ratio_prob_suffic}. The exponential of the
-difference~\eqref{eq:measure_suffic} tells us how much more probable is the
-set $M''$ to be sufficient than the set $M'$.
+difference~\eqref{eq:measure_suffic} tells us how much more probable the
+hypothesis that the set $M''$ is sufficient than the hypothesis that the
+set $M'$ is.
 
 \section{Assumptions and approximations: mathematical sketch}
 \label{sec:inference_prob}

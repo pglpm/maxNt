@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-06T17:16:23+0100
+%% Last-Updated: 2019-12-07T14:46:25+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -836,7 +836,8 @@ brain areas, and pre-data knowledge and hypotheses about biological
 conditions and mechanisms. When we translate such pre-data beliefs into an
 initial probability distribution we often simplify them in more or less
 realistic ways, to make the analysis mathematically tractable. This is why
-such initial probability distributions are called \enquote{models}.
+such initial probability distributions are called \enquote{models}; and
+that is how we intend this word in the present work.
 
 The best experimental measurements of instantaneous neuronal activity use
 remarkable technologies, but can still only record a very small sample of
@@ -852,15 +853,15 @@ that operate in between, addressing the activity of the larger brain area
 whence the sample comes, but \emph{collectively}, that is, without asking
 about individual neuronal details. Such intermediate models would be useful
 at least for preliminary investigations, to help us to decide which
-hypotheses to discard and which to consider for more complex and costly
-models, or to suggest new hypotheses.
+hypotheses to consider or discard for more complex and costly models, or to
+suggest new hypotheses.
 
 % \mynote{[Yasser:] In the present work we aim to address the issue of
 %   building probability distributions over a large population using
 %   recording from subpopulations by considering the distribution of total
 %   population activity as an example. [} 
 In the present work we propose such an intermediate probabilistic model. It
-answers this question: How much was the \emph{total} activity of a large
+answers this question: how much was the \emph{total} activity of a large
 neuronal population, given the observation of the activity of a very small
 sample thereof? This model addresses a larger brain area, avoiding the
 assumption of isolation of the sample; and by focusing on the total
@@ -899,19 +900,18 @@ time (though not necessarily always the same 60), 250 neurons out of
 precise meaning of this frequency distribution is explained in
 \sect~\ref{sec:model}. For the two example data sets, the guessed frequency
 distributions for the larger population are distinctly different from those
-for the sample. For the first data set the frequency distribution for the
-larger population has two very distinct modes, both at low
-activities %($0.7\%$ and $2.6\%$ of simultaneously active neurons
+for the sample. For example, for the first data set the frequency
+distribution for the larger population has two very distinct modes, both at
+low activities %($0.7\%$ and $2.6\%$ of simultaneously active neurons
 % within $3\;\mathrm{ms}$,
 (see \fig~\ref{fig:plots_5mom}), whereas the frequency distribution for the
-sample is monotonically decreasing with its maximum at zero activity. The
-frequency distribution for the second data set presents one prominent
-shoulder in its low-activity mode. These results show that the proposed
-model can lead to the formulation or preliminary assessment of interesting
-hypotheses, as we will illustrate with toy examples in
-\sects~\ref{sec:application} and~\ref{sec:marginalization}. Note that it is
-not possible to guess these features of the larger population by applying
-the maximum-entropy method \emph{at the level of the sample alone}.
+sample is monotonically decreasing with its maximum at zero activity. These
+results show that the proposed model can be used for the formulation or
+preliminary assessment of interesting hypotheses. We illustrate this use
+with toy examples in \sects~\ref{sec:application}
+and~\ref{sec:marginalization}. Note that it is not possible to guess these
+features of the larger population by applying the maximum-entropy method
+\emph{at the level of the sample alone}.
 
 % We want to stress the usefulness of making a quantified guess about the
 % activity of a larger brain area. Such a guess seems indeed to be the
@@ -948,14 +948,17 @@ latter instead. We explain this point more precisely in
 % above addressing an example question of sufficiency, two moments versus
 % four moments.
 
-How large is the full population addressed by the model proposed here? Its
-size must have some limit and can't obviously include the full brain. The
-size is determined by the validity of the formulae from sampling theory and
-discussed in \sect~\ref{sec:N}.
+How large is the \enquote{larger population} considered by the model
+proposed here? It obviously cannot include the full brain. The size of the
+larger population is determined by the validity of the formulae from
+sampling theory, and can range from a set of neurons around the recording
+probe to part of a brain area, depending on some assumptions about the
+recording procedure and the brain region under consideration. This matter
+is discussed in detail in \sect~\ref{sec:N}.
 
 In \sect~\ref{sec:assumptions} we discuss in detail the assumptions and
-approximations on which the model is based, from the point of view of the
-probability calculus. 
+approximations which define our model, from the point of view of the
+probability calculus.
 
 % \mynote{review this}We obviously don't know whether the activity levels of
 % the larger population really had the frequencies given by the model, during
@@ -982,7 +985,7 @@ model is given in the final \sect~\ref{sec:summary_discussion}.
 
 Our notation and terminology follow \textsc{iso}
 \citey{iso1993,iso2006,iso2006b} standards and Jaynes
-\citey{jaynes1994_r2003} for \dobs. We use \enquote{\dob},
+\citey{jaynes1994_r2003} for probability. We use \enquote{\dob},
 \enquote{belief}, and \enquote{probability} interchangeably.
 
 
@@ -1065,13 +1068,14 @@ larger population during and after the recording, and across sessions under
 the same study conditions. For example: what was its frequency distribution
 $\yF$ during the recording? How much does this frequency distribution
 change across sessions? How much total activity should we expect at any
-time bin during a recording? The model presented here gives a
-probability distribution that approximately answers all these questions.
+time bin during a recording? The model presented here gives a probability
+distribution over the answers to these questions.
 
 
 \bigskip
 
-The idea behind our approach is easily summarized:
+The idea behind our approach can be easily summarized in terms of the
+maximum-entropy method:
 \begin{enumerate}[label=(\alph*)]
 \item\label{item:sample_step} Using sampling theory we determine the
   relation between some expected values -- specifically, moments -- for the
@@ -1082,9 +1086,9 @@ The idea behind our approach is easily summarized:
   population of $N$ neurons, using as constraints the expected values $M$
   found in the previous step.
 \end{enumerate}
-We now discuss the ideas behind these steps more in detail, but leave their
-precise mathematical implementation and a more detailed list of references
-to appendix~\ref{sec:derivation_maxent_fullnet}.
+We now discuss these steps more in detail, but leave their precise
+mathematical implementation and a more detailed list of references to
+appendix~\ref{sec:derivation_maxent_fullnet}.
 
 \medskip
 
@@ -1094,18 +1098,29 @@ moments for the larger population and the first $m$ for the sample
 \citep[\eqns~(16)]{portamanaetal2015}. The ones determine the others and
 vice versa at every time bin. This relation holds for any belief
 distribution $\pxxx(\yA_{t})$ for the larger-population activity and its
-marginal $\pxx(\ya_{t})$ for the sample activity at that bin.
+marginal $\pxx(\ya_{t})$ for the sample activity at that bin. These two
+distributions are related by
+\begin{equation}
+  \label{eq:conditional_hypergeometric_t}
+  \pxx(\ya_{t})= \sum_{\yA_{t}=0}^{N} \yG_{\ya_{t}\,\yA_{t}} \;\pxxx(\yA_{t})
+  \qquad \ya_{t} \in \set{0,\dotsc,n},
+\end{equation}
+where $\yG_{\ya\yA}$ is the hypergeometric distribution defined in
+\eqn~\eqref{eq:conditional_hypergeometric}, characteristic of
+\enquote{drawing without replacement}
+\citep[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}.
+
 
 This sampling relation is even more straightforward if instead of power
 moments we use \emph{normalized factorial moments} \citep{potts1953}. The
 $m$th normalized factorial moment of a distribution $\pxx(\ya)$ is
 \begin{equation}
   \label{eq:def_factorial_moment_a}
-  \E\Biggl[\binom{\ya}{m} \Biggr]\bigg/\binom{n}{m}
-  \defd
+  % \E\Biggl[\binom{\ya}{m} \Biggr]\bigg/\binom{n}{m}
+  % \defd
   \sum_{\ya=0}^{n} %m!\,
-  \displaystyle\binom{\ya}{m} \bigg/ \binom{n}{m}\; \pxx(\ya),
-  \qquad 1\le m \le n,
+  \displaystyle\binom{\ya}{m} \bigg/ \binom{n}{m}\; \pxx(\ya)
+  \qquad m \in \set{1,\dotsc,n},
 \end{equation}
 % where $\px(\ya \| \yH)$ is the probability for activity $\ya$ given
 % assumptions $\yH$; \enquote{$\ya$} may refer to any recorded bin or to a
@@ -1124,23 +1139,23 @@ degree $m$. So we'll just say \enquote{first $m$ moments} from now
 on. % Specifying one set is therefore
 % equivalent to specifying the other set.
 But the normalized factorial moments have a mathematically convenient
-property for our analysis: \emph{the first $n$ normalized factorial moments
-  for the sample and for the larger population are numerically identical}:
+property: \emph{the first $n$ normalized factorial moments for the sample
+  and for the larger population are numerically identical}:
 \begin{equation}
   \label{eq:equal_m_factorialmoments}
-  \begin{split}
-  \E\Biggl[\binom{\ya}{m} \Biggr]\bigg/\binom{n}{m}
-  &=
-  \E\Biggl[\binom{\yA}{m} \Biggr]\bigg/\binom{N}{m}
-  \qquad\text{or}\\
+  % \begin{split}
+  % \E\Biggl[\binom{\ya}{m} \Biggr]\bigg/\binom{n}{m}
+  % &=
+  % \E\Biggl[\binom{\yA}{m} \Biggr]\bigg/\binom{N}{m}
+  % \qquad\text{or}\\
     \sum_{\ya=0}^{n} %m!\,
   \binom{\ya}{m}\bigg/  \binom{n}{m}\; \pxx(\ya)
-&=    \sum_{\yA=0}^{N} %m!\,
+=    \sum_{\yA=0}^{N} %m!\,
   \binom{\yA}{m}\bigg/  \binom{N}{m}\; \pxxx(\yA),\qquad
   % \E\condt[\big]{\tbinom{\ya}{m}\;\tbinom{n}{m}^{-1}}{\yH} =
   % \E\condt[\big]{\tbinom{\yA}{m}\;\tbinom{N}{m}^{-1}}{\yH},
-  1\le m \le n.
-\end{split}
+  m \in \set{1,\dotsc,n}.
+%\end{split}
 \end{equation}
 % where $\pxxx(\yA)$ is our distribution of belief about the larger-population
 % activity, and $\pxx$
@@ -1184,15 +1199,16 @@ $M=\set{1,\dotsc,m'}$ with $m'\le n$, to be equal to the sample's recorded
 averages. In formulae, the constraints on $\pxxx(\yA)$ are
 \begin{equation}
   \label{eq:final_constraint}
-\underbracket{\frac{1}{T}\sum_{t}\binom{\ya_{t}}{m}\bigg/\binom{n}{m}
+  \underbracket{\frac{1}{T}\sum_{t}\binom{\ya_{t}}{m}\bigg/\binom{n}{m}
   \equiv
    \sum_{\ya}
   \binom{\ya}{m}\bigg/  \binom{n}{m} \; \yff_{\ya}}_{\text{measured averages}}
-  \mathrel{\;=\;}
+  \mathrel{\;\;=\;\;}
    \underbracket{\sum_{\yA}
-     \binom{\yA}{m}\bigg/  \binom{N}{m} \; \pxxx(\yA)}_{\text{distribution moments}},
-   \quad m\in M.
+     \binom{\yA}{m}\bigg/  \binom{N}{m} \; \pxxx(\yA)}_{\text{distribution moments}}
+   \qquad m\in M.
 \end{equation}
+\smallskip
 
 The result is the distribution of the form
 \begin{equation}
@@ -1211,7 +1227,7 @@ The result is the distribution of the form
   \Biggr],
 \end{gathered}
 \end{equation}
-where the parameters $\yll$ are determined by the
+where the $m'$ parameters $\yll \defd (\yl_{m})$ are determined by the
 constraints~\eqref{eq:final_constraint}. This formula is further discussed
 in appendix~\ref{sec:derivation_maxent_fullnet}.
 
@@ -1220,48 +1236,48 @@ and hypotheses that a researcher is exploring. We give some examples in the
 next two sections. Note that the constraint
 equation~\eqref{eq:final_constraint} for the
 distribution~\eqref{eq:app_maxent_pop_first} may not have exact solutions
-if $N$ is strictly larger than $n$; and the possible discrepancy typically
-increases with the number of constraints. This discrepancy comes from the
-approximate character of two assumptions behind the maximum-entropy method
-and of one assumption specific to our application: that the order of the
-time bins is irrelevant, that measured averages equal expected values (or
-equivalently, the number of time bins $T$ is infinite), and that an
-activity level $\yA$ can equally likely be generated by any set of $\yA$
-neurons in the larger population. The magnitude of this discrepancy can be
-a signature of the (at least temporary) presence of neuronal
-\enquote{assemblies} or \enquote{clusters}
+if $N$ is strictly larger than $n$. The possible discrepancy between its
+two sides typically increases with the number of constraints. This
+discrepancy comes from an approximation implicit in the maximum-entropy
+method combined with one assumption specific to our application: that
+measured averages equal expected values (or equivalently, the number of
+time bins $T$ is infinite), and that an activity level $\yA$ can equally
+likely be generated by any set of $\yA$ neurons in the larger population.
+The magnitude of this discrepancy can be a signature of the presence of
+neuronal \enquote{assemblies} or \enquote{clusters}
 \citep[\chap~12]{gerstneretal2014}{hebb1949_r2002}. We discuss this matter
 in \sect~\ref{sec:assumptions}.
 
-%, but our main goal is to simply introduce
-% the general method without entering into biological questions of this
-% kind.
-
-
 \bigskip
 
-Before applying the formula above to two concrete data sets we want to add
-two remarks about the maximum-entropy method that are seldom made in the
-neuroscientific literature. They are important for the interpretation of
-the results and are further discussed in \sect~\ref{sec:assumptions}.
-First, the maximum-entropy
-method % (based on the \emph{Shannon} relative
-% entropy, as opposed to other entropy functions such as Burg's
-% \citeyear{burg1975})
-rests on some implicit assumptions about the probabilities for the long-run
-frequency distribution of activities, besides the assumptions just
-mentioned at the end of the previous paragraph. So the often-heard
-statement that it gives \enquote{the maximally unbiased (or non-committal)
-  distribution} must be taken with a grain of salt.
-\citep{jaynes1986d_r1996,portamana2009,portamana2017}. Second, a
-maximum-entropy distribution like $\px(\yA \| M, N)$ is the zeroth-order
-approximation (in the sense of Laplace's approximation
+One important question remains about the distribution $\px$ of
+\eqn~\eqref{eq:app_maxent_pop_first}: \emph{what} is it a distribution of?
+-- Of probability? Of relative frequency? The answer is related to an
+important fact about the maximum-entropy method, and also to our
+alternative point of view of the present model.
+
+% Before applying the formula above to two concrete data sets we want to add
+% two remarks about the maximum-entropy method that are seldom made in the
+% neuroscientific literature. They are important for the interpretation of
+% the results and are further discussed in \sect~\ref{sec:assumptions}.
+% First, the maximum-entropy
+% method % (based on the \emph{Shannon} relative
+% % entropy, as opposed to other entropy functions such as Burg's
+% % \citeyear{burg1975})
+% rests on some implicit assumptions about the probabilities for the long-run
+% frequency distribution of activities, besides the assumptions just
+% mentioned at the end of the previous paragraph. So the often-heard
+% statement that it gives \enquote{the maximally unbiased (or non-committal)
+%   distribution} must be taken with a grain of salt.
+% \citep{jaynes1986d_r1996,portamana2009,portamana2017}. Second,
+A maximum-entropy distribution like $\px(\yA \| M, N)$ is equivalent to the
+zeroth-order approximation (in the sense of Laplace's approximation
 \citep[\chap~4]{debruijn1958_r1961}{tierneyetal1986,strawderman2000}) of
 four distinct distributions for the larger population, which differ
 numerically from one another in higher-order approximations:
 \begin{enumerate}[label=(\roman*)]
-\item the most probable \emph{frequency} distribution for the total
-  activity across the \emph{recorded} bins, %$\yFF(\yA)$,
+\item\label{item:prob_freq} the most probable \emph{frequency} distribution
+  for the total activity across the \emph{recorded} bins, %$\yFF(\yA)$,
 \item the \emph{belief} distribution for the value of the total
   activity at any time bin among the \emph{recorded} ones,
   %$\yp(\yA_{t} \| \yH)$ with $1\le t \le T$,
@@ -1271,8 +1287,16 @@ numerically from one another in higher-order approximations:
   activity at a \emph{new} time bin.
   % $\yp(\yA_{t} \| \yH)$ with $t<1$ or $t>T$
 \end{enumerate}
-In the present case the validity of the maximum-entropy approximation
-decreases as the ratio $nN/T$ increases (see \sect~\ref{sec:assumptions}).
+Their mathematical relationship is presented more explicitly in
+appendix~\ref{sec:inference_prob}. The
+distribution~\eqref{eq:app_maxent_pop_first} can therefore be interpreted
+in each of the four ways above, in this approximate sense. In the present
+case the validity of the approximation decreases as the ratio $nN/T$
+increases. The most robust interpretation is~\ref{item:prob_freq}; and this
+is how we prefer to interpret the distribution $\px$: as \emph{the most
+  probable relative-frequency distribution} of the activity $\yA$. See
+\sect~\ref{sec:assumptions} for further discussion about assumptions and
+approximations.
 
 
 \section{Example application: two data sets}
@@ -1767,19 +1791,19 @@ The calculations and conclusions presented in the preceding sections depend
 on the size $N$ of the larger population. The larger population can't be
 the whole brain, of course. How large should or can $N$ be in our formulae?
 
-The crucial point is our belief distribution for the activity of the
-sample conditional on the activity of the larger population, given by
-formula~\eqref{eq:conditional_hypergeometric} in
-appendix~\ref{sec:derivation_maxent_fullnet}, reproduced here:
+The crucial point is our belief distribution for the activity of the sample
+\emph{conditional} on the activity of the larger population. It is given by
+the hypergeometric distribution~\eqref{eq:conditional_hypergeometric},
+reprinted here:
 \begin{equation}
   \labelbis{eq:conditional_hypergeometric}
   \yG_{\ya\yA} \defd \pf(\ya \|\yA, n,N)=
     \binom{\yA}{\ya}\binom{N-\yA}{n-\ya}\binom{N}{n}^{-1}
-\equiv \binom{n}{\ya}\binom{N-n}{\yA-\ya}\binom{N}{\yA}^{-1}
+\equiv \binom{n}{\ya}\binom{N-n}{\yA-\ya}\binom{N}{\yA}^{-1}.
 \end{equation}
-leading to the equality of factorial
-moments~\eqref{eq:equal_m_factorialmoments}, on which our model rests.
-This conditional probability, characteristic of \enquote{drawing without
+This distribution leads to the equality of factorial
+moments~\eqref{eq:equal_m_factorialmoments}, on which our model rests. This
+conditional probability, characteristic of \enquote{drawing without
   replacement}
 \citep[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968},
 ensues when our degree of belief that the $i$th unit (ball or neuron) will
@@ -1983,25 +2007,26 @@ contradictions because the conditional frequencies and conditional
 probabilities are kept distinct.
 
 The two infinity approximations are at the limit of their validity in our
-specific application, so the distributions discussed in our example are
-best interpreted as \emph{most probable frequency distributions}. The space
-of possible frequency distributions for the larger population has $N$
-dimensions, however, and probability distributions in high dimensions have
-counter-intuitive properties. For example, the mode or mean can have
-\emph{atypical} features when compared with the majority of other probable
-points of the probability space. The question then is \emph{which features
-  of the maximum-entropy frequency distribution are typical of the majority
-  of plausible frequency distributions?} Preliminary studies using a full
-probability calculation (to be published separately) show that several
-semi-quantitative features of the maximum-entropy distribution are indeed
-typical. For the first data set, for example, most frequency distributions
-have two high-frequency regimes of activity, as in
-\fig~\ref{fig:plots_5mom_a}, with roughly the same heights and almost the
-same locations, within a few percentages of normalized total activity. Each
-of high-frequency regimes, though, may consist of two or three very close
-modes rather than one. The same preliminary studies also indicate that
-these typical features remain with prior choices in the second assumption
-above, for example using a Dirichlet prior instead of an entropic one.
+examples. For this reason we interpret the distributions as \emph{most
+  probable frequency distributions}, as mentioned at the end of
+\sect~\ref{sec:model}. The space of possible frequency distributions for
+the larger population has $N$ dimensions, however, and probability
+distributions in high dimensions have counter-intuitive properties. For
+example, the mode or mean can have \emph{atypical} features when compared
+with the majority of other probable points of the probability space. The
+question then is \emph{which features of the maximum-entropy frequency
+  distribution are typical of the majority of plausible frequency
+  distributions?} Preliminary studies using a full probability calculation
+(to be published separately) show that several semi-quantitative features
+of the maximum-entropy distribution are indeed typical. For the first data
+set, for example, most frequency distributions have two high-frequency
+regimes of activity, as in \fig~\ref{fig:plots_5mom_a}, with roughly the
+same heights and almost the same locations, within a few percentages of
+normalized total activity. Each of high-frequency regimes, though, may
+consist of two or three very close modes rather than one. The same
+preliminary studies also indicate that these typical features remain with
+prior choices in the second assumption above, for example using a Dirichlet
+prior instead of an entropic one.
 
 This means that the maximum-entropy approximation presented here can be
 favourably used to get an idea of what a fully probabilistic calculation

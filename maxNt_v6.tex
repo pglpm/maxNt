@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-07T21:23:38+0100
+%% Last-Updated: 2019-12-07T21:28:11+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1253,8 +1253,9 @@ in \sect~\ref{sec:assumptions}.
 One important question remains about the distribution $\px$ of
 \eqn~\eqref{eq:app_maxent_pop_first}: \emph{what} is it a distribution of?
 -- Of probability? Of relative frequency? The answer is related to an
-important fact about the maximum-entropy method, and also to our
-alternative point of view of the present model.
+important relation between maximum-entropy distributions and the
+probability calculus, and also to our alternative point of view of the
+present model.
 
 % Before applying the formula above to two concrete data sets we want to add
 % two remarks about the maximum-entropy method that are seldom made in the
@@ -1271,10 +1272,10 @@ alternative point of view of the present model.
 %   distribution} must be taken with a grain of salt.
 % \citep{jaynes1986d_r1996,portamana2009,portamana2017}. Second,
 A maximum-entropy distribution like $\px(\yA \| M, N)$ is equivalent to the
-zeroth-order approximation (in the sense of Laplace's approximation
-\citep[\chap~4]{debruijn1958_r1961}{tierneyetal1986,strawderman2000}) of
-four distinct distributions for the larger population, which differ
-numerically from one another in higher-order approximations:
+zeroth-order (Laplace
+\citep[\chap~4]{debruijn1958_r1961}{tierneyetal1986,strawderman2000})
+approximation of four distinct distributions for the larger population,
+which differ numerically from one another in higher-order approximations:
 \begin{enumerate}[label=(\roman*)]
 \item\label{item:prob_freq} the most probable \emph{frequency} distribution
   for the total activity across the \emph{recorded} bins, %$\yFF(\yA)$,

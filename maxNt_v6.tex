@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-07T15:36:17+0100
+%% Last-Updated: 2019-12-07T17:52:23+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1278,13 +1278,14 @@ numerically from one another in higher-order approximations:
 \begin{enumerate}[label=(\roman*)]
 \item\label{item:prob_freq} the most probable \emph{frequency} distribution
   for the total activity across the \emph{recorded} bins, %$\yFF(\yA)$,
-\item the \emph{belief} distribution for the value of the total
-  activity at any time bin among the \emph{recorded} ones,
+\item\label{item:prob_binin} the \emph{belief} distribution for the value
+  of the total activity at any time bin among the \emph{recorded} ones,
   %$\yp(\yA_{t} \| \yH)$ with $1\le t \le T$,
-\item the most probable \emph{frequency} distribution for the total
-  activity in a very long run of \emph{new} time bins, %$\ynuu(\yA)$,
-\item the \emph{belief} distribution for the value of the total
-  activity at a \emph{new} time bin.
+\item\label{item:prob_longrun} the most probable \emph{frequency}
+  distribution for the total activity in a very long run of \emph{new} time
+  bins, %$\ynuu(\yA)$,
+\item\label{item:prob_binout} the \emph{belief} distribution for the value
+  of the total activity at a \emph{new} time bin.
   % $\yp(\yA_{t} \| \yH)$ with $t<1$ or $t>T$
 \end{enumerate}
 Their mathematical relationship is presented more explicitly in
@@ -2419,6 +2420,25 @@ marginalization. Within the exponential we can recognize the relative
 entropy of $\yJ$ with respect to $(\yG_{\ya\yA}\;\nu_{\yA})$, which is the
 reason why these two joint distributions must be equal if $T$ tends to
 infinity.
+
+From the formulae above we can also find the four distributions mentioned
+at the end of \sect~\ref{sec:model}. The frequency
+distribution~\ref{item:prob_freq} is the mode of $\pf(\yF \| \yf,\yI)$. The
+belief distribution~\ref{item:prob_binin} is
+\begin{equation}
+  \label{eq:prob_binin}
+  \pf(\yA_{t} \| \yf, \yI) =
+  \sum_{\yF} \yFF_{\yA_{t}}\; \pf(\yF \| \yf, \yI),
+  \qquad t \in \set{1,\dotsc,T}.
+\end{equation}
+The frequency distribution~\ref{item:prob_longrun} is the mode of $\pf(\ynu
+\| \yf,\yI)$. Finally, the belief distribution~\ref{item:prob_binout} is
+\begin{equation}
+  \label{eq:prob_binout}
+  \pf(\yA_{t} \| \yf, \yI) =
+  \int\!\!\!\di\ynu\;\nu_{\yA_{t}}\;\pf(\ynu \| \yf, \yI),
+  \qquad t \notin \set{1,\dotsc,T}.
+\end{equation}
 
 
 

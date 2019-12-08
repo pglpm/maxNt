@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-07T21:28:11+0100
+%% Last-Updated: 2019-12-08T20:13:23+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -852,7 +852,7 @@ neuron individually, thus becoming very complex
 that operate in between, addressing the activity of the larger brain area
 whence the sample comes, but \emph{collectively}, that is, without asking
 about individual neuronal details. Such intermediate models would be useful
-at least for preliminary investigations, to help us to decide which
+at least for preliminary investigations, to help us  decide which
 hypotheses to consider or discard for more complex and costly models, or to
 suggest new hypotheses.
 
@@ -880,8 +880,8 @@ and about other phenomena of importance to the neurosciences, for example
 gene and protein interaction \citep[for
 example][]{martignonetal1995,bohteetal2000,shlensetal2006,schneidmanetal2006,tkaciketal2006,mackeetal2009b,tkaciketal2009,roudietal2009c,barreiroetal2010,gerwinnetal2010,mackeetal2011b,ganmoretal2011,cohenetal2011,granotatedgietal2013,mackeetal2013,tkaciketal2014b,shimazakietal2015,moraetal2015,lezonetal2006,weigtetal2009}.
 However, our model can also be viewed as an approximation of a more
-detailed model within a fully Bayesian approach; we shall constantly keep
-this point of view in mind in our discussion.
+detailed model within Bayesian theory; we shall constantly keep this point
+of view in mind in our discussion.
 
 We illustrate possible uses of our model in \sect~\ref{sec:application}, by
 applying it to two concrete data sets:
@@ -1294,7 +1294,7 @@ appendix~\ref{sec:inference_prob}. The
 distribution~\eqref{eq:app_maxent_pop_first} can therefore be interpreted
 in each of the four ways above, in this approximate sense. In the present
 case the validity of the approximation decreases as the ratio $nN/T$
-increases. The most robust interpretation is~\ref{item:prob_freq}; and this
+increases. The most robust interpretation is~\ref{item:prob_freq}, and that
 is how we prefer to interpret the distribution $\px$: as \emph{the most
   probable relative-frequency distribution} of the activity $\yA$. See
 \sect~\ref{sec:assumptions} for further discussion about assumptions and
@@ -1456,9 +1456,9 @@ quantifying the \enquote{cooperativity} \citep[\eg][]{gersteinetal1985} or
 these terms]{bohteetal2000,amarietal2003} of neuronal activity. Most, if
 not all, such applications use the method \emph{at the sample level}. In
 this section we discuss how our proposed application bears on this kind of
-quantification and compare it with the traditional application at the
-sample level. But such a comparison involves some methodological
-caveats which we wish to discuss first.% For concreteness we use an
+quantification and compares with the traditional application at the sample
+level. But such a comparison involves some methodological caveats which we
+wish to discuss first.% For concreteness we use an
 % example with specific statistics: first and second moments (equivalent to
 % mean and correlations), versus first-to-fourth moments. But our
 % discussion holds for any sets of statistics.
@@ -1660,7 +1660,7 @@ the first four moments only.
 \label{fig:plots_2_4mom}
 \end{figure}
 % maxent_solutions_different_moments_prior2_6moments.nb
-These informational differences shows clearly in the shapes of the
+These informational differences show clearly in the shapes of the
 distribution themselves, plotted in 
 \fig~\ref{fig:plots_2_4mom_a}. The two-moment distribution
 (\textcolor{myred}{dashed red}) is unimodal, the four-moment distribution
@@ -1715,17 +1715,18 @@ tail.
 % 5 mom: 35.2911 nats = 153.267 dB, 2.12185*10^15
 
 It is also possible to use the measure~\eqref{eq:measure_suffic} and its
-probabilistic meaning~\eqref{eq:bayes_factor} to compare the probability of
+probabilistic interpretation~\eqref{eq:bayes_factor} to compare the probability of
 the data $\yf$ conditional on the hypothesis $(M_{4},N)$ of four-moment
 sufficiency at the larger-population level, $N=10\,000$, versus the
 hypothesis $(M_{4}, n)$ of four-moment sufficiency at the sample level,
 $N=n=65$. We obtain
 \begin{equation}
   \label{eq:diff_suff_n}
-  \ydi[(M_{4}, N), (M_{4}, n)] = 39\;\nat = 17\;\hart,
+  \ydi[(M_{4}, N), (M_{4}, n)] = 39\;\nat = 17\;\hart.
 \end{equation}
-that is, the data are 17 orders of magnitude more probable under the first
-hypothesis than under the second. This result is also shown in
+% that is, the data are 17 orders of magnitude more probable under the first
+% hypothesis than under the second. 
+This result is also shown in
 \fig~\ref{fig:comparisons_marginals}, where we see that the four-moment
 distribution constructed at the larger-population level
 (\textcolor{myblue}{blue filled squares}) fits the measured frequency
@@ -1943,7 +1944,7 @@ from the first assumption. It is taken to be either an \enquote{entropic
 into account the multiplicity of long-run frequencies, or a prior for a
 model with sufficient statistics, which expresses the sufficiency of the
 moments under study \citep{portamana2017}. This assumption is crucial for
-deriving the maximum-entropy based on with the Shannon entropy. A different
+deriving the maximum-entropy based on the Shannon entropy. A different
 density leads to alternative maximum-entropy methods, for example based on
 the Burg entropy \citep{burg1975} if a Dirichlet density is used
 \citep{jaynes1986d_r1996}. The entropic prior depends on a reference
@@ -2032,7 +2033,7 @@ prior instead of an entropic one.
 
 This means that the maximum-entropy approximation presented here can be
 favourably used to get an idea of what a fully probabilistic calculation
-could yield. -- With a far lower computational cost: for example, for
+could yield, but with a far lower computational cost. For example, for
 $N=1\,000$ the maximum-entropy distribution can be calculated in ten
 minutes on a laptop, whereas the full probability calculation takes several
 days on a high-performance computing cluster.

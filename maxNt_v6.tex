@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-09T10:57:43+0100
+%% Last-Updated: 2019-12-14T18:18:53+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -479,6 +479,14 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \postdisplaypenalty=1549
 \displaywidowpenalty=1602
 \raggedbottom
+
+\paragraphfootnotes
+% \threecolumnfootnotes
+\setlength{\footmarkwidth}{0em}
+%\setlength{\footmarksep}{0em}
+\footmarkstyle{\textsuperscript{\color{myred}\bfseries#1}~}
+%\footmarkstyle{\textsuperscript{[#1]}~}
+
 \selectlanguage{british}\frenchspacing
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -840,21 +848,20 @@ such initial probability distributions are called \enquote{models}; and
 that is how we intend this word in the present work.
 
 The best experimental measurements of instantaneous neuronal activity use
-remarkable technologies, but can still only record a very small sample of
-neurons -- hundreds at most -- compared to the numbers that constitute a
-functionally distinguished brain region. Many probabilistic models focus on
-such samples only: they neglect that the recorded neurons are a sample from
-a larger population. Such isolating assumptions sometimes escape attention,
-being subtly hidden in the mathematics. Some probabilistic models try to
-take unrecorded neurons into account, but they do so by describing each
-neuron individually, thus becoming very complex
-\citep{huang2015,battistinetal2017}. It would be useful to explore models
+remarkable technologies \citep{hongetal2019}, but can still only record a
+very small sample of neurons -- hundreds at most -- compared to the numbers
+that constitute a functionally distinguished brain region. Many
+probabilistic models focus on such samples only: they neglect that the
+recorded neurons are a sample from a larger population. Some probabilistic
+models try to take unrecorded neurons into account, but they do so by
+describing each neuron individually, thus becoming very complex
+\citep{dunnetal2013,huang2015,battistinetal2017,pillowetal2008}. It would be useful to explore models
 that operate in between, addressing the activity of the larger brain area
 whence the sample comes, but \emph{collectively}, that is, without asking
 about individual neuronal details. Such intermediate models would be useful
-at least for preliminary investigations, to help us  decide which
-hypotheses to consider or discard for more complex and costly models, or to
-suggest new hypotheses.
+at least for preliminary investigations, to help us decide which hypotheses
+to consider or discard for more complex and costly models, or to suggest
+new hypotheses.
 
 % \mynote{[Yasser:] In the present work we aim to address the issue of
 %   building probability distributions over a large population using
@@ -872,17 +879,19 @@ and numerically tractable.
 The model can be viewed as a straightforward combination of the
 maximum-entropy method and basic sampling relations from the
 probability-calculus, discussed in \sect~\ref{sec:model}. The
-maximum-entropy or minimum-relative-entropy method \citep{jaynes1957}[much
-clearer
-in][]{jaynes1963}{sivia1996_r2006,hobsonetal1973,jaynes1985b_r1996,grandy1980}
-to build initial probability distributions has been used for different
-kinds of investigations about the neuronal activity of various brain areas
-and about other phenomena of importance to the neurosciences, for example
-gene and protein interaction \citep[for
-example][]{martignonetal1995,bohteetal2000,shlensetal2006,schneidmanetal2006,tkaciketal2006,mackeetal2009b,tkaciketal2009,roudietal2009c,barreiroetal2010,gerwinnetal2010,mackeetal2011b,ganmoretal2011,cohenetal2011,granotatedgietal2013,mackeetal2013,tkaciketal2014b,shimazakietal2015,moraetal2015,lezonetal2006,weigtetal2009}.
-However, our model can also be viewed as an approximation of a more
-detailed model within Bayesian theory; we shall constantly keep this point
-of view in mind in our discussion.
+maximum-entropy or minimum-relative-entropy method
+\citep{jaynes1957}[\chap~11]{jaynes1994_r2003}[for the minimum-relative
+entropy method see:][\sect~4.b]{jaynes1963}[for a more rigorous
+derivation]{hobsonetal1973}[for applications]{sivia1996_r2006}
+%[see also][for applications to irreversible statistical mechanics]{grandy1980}
+to build initial probability distributions has been used in the
+neurosciences for different kinds of investigations about the neuronal
+activity of various brain areas and about other phenomena of importance,
+for example gene and protein interaction
+\citep[]{martignonetal1995,bohteetal2000,shlensetal2006,schneidmanetal2006,tkaciketal2006,roudietal2009c,barreiroetal2010,shimazakietal2015,moraetal2015,lezonetal2006,weigtetal2009}[for
+further references see][]{lathametal2013}. However, our model can also be
+viewed as an approximation of a more detailed model within Bayesian theory;
+we shall constantly keep this point of view in mind in our discussion.
 
 We illustrate possible uses of our model in \sect~\ref{sec:application}, by
 applying it to two concrete data sets:
@@ -1020,7 +1029,7 @@ Our notation and terminology follow \textsc{iso}
 \section{Model: maximum-entropy and sampling,\\ and a Bayesian perspective}
 \label{sec:model}
 
-Let's introduce some context and mathematical notation.
+Some context and mathematical notation first.
 
 The context we consider is as follows. During an experimental session we
 have recorded the spiking activities of $n$ neurons for a certain amount of
@@ -1030,10 +1039,11 @@ $\ya_{t}$ the number of neurons that fire during time bin $t$: this is the
 \emph{total activity} of the sample, or just \enquote{activity} for short.
 Obviously $\ya_{t} \in\set{0,1,\dotsc,n}$; if $\ya_{t}=0$, no neuron spikes
 during bin $t$; if $\ya_{t}=n$, all spike at some point during bin $t$, and
-so on. For brevity, let's say \enquote{at $t$} for \enquote{during time bin
-  $t$}. If we divide the total activity by the population size we have the
-\emph{normalized total activity} or population-averaged activity $\ya/n$,
-ranging from $0$ to $1$ in $1/n$ steps. From the activities $\set{\ya_{t}}$
+so on. For brevity we say \enquote{at $t$} for \enquote{during time bin
+  $t$}. % If we divide the total activity by the population size we have the
+% \emph{normalized total activity} or population-averaged activity $\ya/n$,
+% ranging from $0$ to $1$ in $1/n$ steps.
+From the activities $\set{\ya_{t}}$
 we can count how often the activity levels $\ya=0$, $\ya=1$, and so on
 appeared during the recording, obtaining the distribution of measured
 relative frequencies $(\yff_{\ya}) \defs \yf$. We can also consider the
@@ -1052,13 +1062,13 @@ the sample of $n$ neurons that was actually recorded. This is what we will
 mean with \enquote{larger population}. This population need not be a whole
 functionally or anatomically distinct region. Loosely speaking it is the
 area of which we believe our sample to be \enquote{representative}
-\citep[with the warnings that accompany that
-term:][]{kruskaletal1979b,kruskaletal1979c}.
+\citep[we intend this term in the Meaning~2 of][]{kruskaletal1979b}[or
+Meanings~8 and~9 of][]{kruskaletal1979c}.
 
 The total activity of the $N$ neurons at $t$ is $\yA_{t}$. The relative
 frequencies of the various activity levels during the recording were
-$(\yFF_{\yA}) \defs \yF$. We don't know the values $\yA_{t}$ at each $t$,
-or the frequency distribution $\yF$. We only know for certain that
+$(\yFF_{\yA}) \defs \yF$. The values $\yA_{t}$ at each $t$ and
+the frequency distribution $\yF$ are unknown to us. We only know for certain that
 $\yA_{t} \in \set{0, 1, \dotsc, N}$, that $\yA_{t} \ge \ya_{t}$, and that
 $N-\yA_{t} \ge n-\ya_{t}$ for obvious reasons. For the time being we assume
 that we know $N$; in \sect~\ref{sec:N} we discuss the consequences of our
@@ -1095,7 +1105,7 @@ appendix~\ref{sec:derivation_maxent_fullnet}.
 
 Step~\ref{item:sample_step} is just an application of the probability-calculus, which gives an exact linear relation between the first $m$
 moments for the larger population and the first $m$ for the sample
-\citep[\eqns~(16)]{portamanaetal2015}. The ones determine the others and
+\citep[Appendix]{portamanaetal2015}. The ones determine the others and
 vice versa at every time bin. This relation holds for any belief
 distribution $\pxxx(\yA_{t})$ for the larger-population activity and its
 marginal $\pxx(\ya_{t})$ for the sample activity at that bin. These two
@@ -1108,7 +1118,7 @@ distributions are related by
 where $\yG_{\ya\yA}$ is the hypergeometric distribution defined in
 \eqn~\eqref{eq:conditional_hypergeometric}, characteristic of
 \enquote{drawing without replacement}
-\citep[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}.
+\citep[\chap~3]{jaynes1994_r2003}.%[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}.
 
 
 This sampling relation is even more straightforward if instead of power
@@ -1140,7 +1150,7 @@ on. % Specifying one set is therefore
 % equivalent to specifying the other set.
 But the normalized factorial moments have a mathematically convenient
 property: \emph{the first $n$ normalized factorial moments for the sample
-  and for the larger population are numerically identical}:
+  and for the larger population are numerically identical}:\citep[Appendix]{portamanaetal2015}
 \begin{equation}
   \label{eq:equal_m_factorialmoments}
   % \begin{split}
@@ -1167,13 +1177,16 @@ property: \emph{the first $n$ normalized factorial moments for the sample
 In step~\ref{item:maxent_step} we actually use the
 \emph{minimum-relative-entropy} method
 \citep{hobsonetal1973,csiszar1985}[\sect~5.2.2]{sivia1996_r2006} with
-respect to a uniform reference distribution. We'll still call it
+respect to a uniform reference distribution. We shall still call it
 \enquote{maximum-entropy} for brevity. It amounts to two prescriptions:
 first, take the distributions satisfying specific convex constraints --
 such as fixed expectations -- and among them select the one having minimum
-relative entropy with respect to a reference distribution; second, judge
-those expectations to be equal to some measured averages, typically time
-averages.
+relative entropy with respect to a reference distribution; second, judge --
+and therefore set -- those expectations to be equal to some measured
+averages, typically time averages. (A judgement is required because
+probability expectations and empirical averages are numerically
+different in general; a misjudgement of their approximate equality can lead to
+\enquote{silly answers}, to quote Mackay \cite*[p.~308]{mackay1995_r2003}.)
 
 In our case we don't know the time averages of the quantity
 $\binom{\yA}{m}$, so we cannot directly equate them to the factorial moment
@@ -1410,7 +1423,7 @@ population of grid cells (\textcolor{mygreen}{green triangles}) seems to
 have one broad peak, close to the first peak of the larger-population
 distribution. The distribution for the larger population of non-grid cells
 (\textcolor{myred}{red circles}) has two peaks instead, roughly at the same
-normalized activities as the peaks of the larger-population distribution
+population-averaged activities as the peaks of the larger-population distribution
 (\textcolor{myblue}{blue curve}) but closer in height. It would thus seem
 that the population of grid cells is contributing to the first mode of the
 larger population, but it is not its sole contributor. We can also assess
@@ -2025,7 +2038,7 @@ of the maximum-entropy distribution are indeed typical. For the first data
 set, for example, most frequency distributions have two high-frequency
 regimes of activity, as in \fig~\ref{fig:plots_5mom_a}, with roughly the
 same heights and almost the same locations, within a few percentages of
-normalized total activity. Each of high-frequency regimes, though, may
+population-averaged activity. Each of high-frequency regimes, though, may
 consist of two or three very close modes rather than one. The same
 preliminary studies also indicate that these typical features remain with
 prior choices in the second assumption above, for example using a Dirichlet
@@ -2109,7 +2122,7 @@ upon, depending on the case.
 
 Some approximations implicit in the model make its numerical results
 semi-quantitative with respect to an exact analysis. The results should not
-be off by more than a few percentages for the normalized total activity and
+be off by more than a few percentages for the population-averaged activity and
 for the frequency density. This imprecision, however, is compensated by the
 extreme computational cheapness of the model, far less costly than an exact
 analysis. The model is therefore very convenient at least for essaying

@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-14T18:18:53+0100
+%% Last-Updated: 2019-12-14T18:54:42+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -855,13 +855,13 @@ probabilistic models focus on such samples only: they neglect that the
 recorded neurons are a sample from a larger population. Some probabilistic
 models try to take unrecorded neurons into account, but they do so by
 describing each neuron individually, thus becoming very complex
-\citep{dunnetal2013,huang2015,battistinetal2017,pillowetal2008}. It would be useful to explore models
-that operate in between, addressing the activity of the larger brain area
-whence the sample comes, but \emph{collectively}, that is, without asking
-about individual neuronal details. Such intermediate models would be useful
-at least for preliminary investigations, to help us decide which hypotheses
-to consider or discard for more complex and costly models, or to suggest
-new hypotheses.
+\citep{pillowetal2008,dunnetal2013,tyrchaetal2014,huang2015,battistinetal2017}.
+It would be useful to explore models that operate in between, addressing
+the activity of the larger brain area whence the sample comes, but
+\emph{collectively}, that is, without asking about individual neuronal
+details. Such intermediate models would be useful at least for preliminary
+investigations, to help us decide which hypotheses to consider or discard
+for more complex and costly models, or to suggest new hypotheses.
 
 % \mynote{[Yasser:] In the present work we aim to address the issue of
 %   building probability distributions over a large population using
@@ -1186,7 +1186,7 @@ and therefore set -- those expectations to be equal to some measured
 averages, typically time averages. (A judgement is required because
 probability expectations and empirical averages are numerically
 different in general; a misjudgement of their approximate equality can lead to
-\enquote{silly answers}, to quote Mackay \cite*[p.~308]{mackay1995_r2003}.)
+\enquote{silly answers}, to quote MacKay \citep[p.~308]{mackay1995_r2003}.)
 
 In our case we don't know the time averages of the quantity
 $\binom{\yA}{m}$, so we cannot directly equate them to the factorial moment

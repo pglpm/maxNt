@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-14T18:54:42+0100
+%% Last-Updated: 2019-12-15T00:52:50+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -480,11 +480,10 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \displaywidowpenalty=1602
 \raggedbottom
 
-\paragraphfootnotes
-% \threecolumnfootnotes
-\setlength{\footmarkwidth}{0em}
+%\paragraphfootnotes\setlength{\footmarkwidth}{0em}
+%\twocolumnfootnotes
 %\setlength{\footmarksep}{0em}
-\footmarkstyle{\textsuperscript{\color{myred}\bfseries#1}~}
+\footmarkstyle{\textsuperscript{\color{myred}\scriptsize\bfseries#1}~}
 %\footmarkstyle{\textsuperscript{[#1]}~}
 
 \selectlanguage{british}\frenchspacing
@@ -867,13 +866,13 @@ for more complex and costly models, or to suggest new hypotheses.
 %   building probability distributions over a large population using
 %   recording from subpopulations by considering the distribution of total
 %   population activity as an example. [} 
-In the present work we propose such an intermediate probabilistic model. It
-answers this question: how much was the \emph{total} activity of a large
-neuronal population, given the observation of the activity of a very small
-sample thereof? This model addresses a larger brain area, avoiding the
-assumption of isolation of the sample; and by focusing on the total
-activity, rather than the activity of individual neurons, it remains simple
-and numerically tractable.
+In the present work we propose such an intermediate probabilistic model
+\citep[\cf][]{portamanaetal2015}. It answers this question: how much was
+the \emph{total} activity of a large neuronal population, given the
+observation of the activity of a very small sample thereof? This model
+addresses a larger brain area, avoiding the assumption of isolation of the
+sample; and by focusing on the total activity, rather than the activity of
+individual neurons, it remains simple and numerically tractable.
 
 
 The model can be viewed as a straightforward combination of the
@@ -1285,10 +1284,10 @@ present model.
 %   distribution} must be taken with a grain of salt.
 % \citep{jaynes1986d_r1996,portamana2009,portamana2017}. Second,
 A maximum-entropy distribution like $\px(\yA \| M, N)$ is equivalent to the
-zeroth-order (Laplace
-\citep[\chap~4]{debruijn1958_r1961}{tierneyetal1986,strawderman2000})
-approximation of four distinct distributions for the larger population,
-which differ numerically from one another in higher-order approximations:
+zeroth-order Laplace approximation
+\citep[\chap~4]{debruijn1958_r1961}{tierneyetal1986,strawderman2000} of
+four distinct distributions for the larger population, which differ
+numerically from one another in higher-order approximations:
 \begin{enumerate}[label=(\roman*)]
 \item\label{item:prob_freq} the most probable \emph{frequency} distribution
   for the total activity across the \emph{recorded} bins, %$\yFF(\yA)$,

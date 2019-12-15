@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-15T17:46:35+0100
+%% Last-Updated: 2019-12-15T18:01:21+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1337,28 +1337,32 @@ the literature:
 \bigskip
 
 The maximum-entropy distribution for the larger population is calculated
-using five moments. This number seems to provide almost as much information
-as the full frequency distribution of the sample (see next section).
-Figure~\ref{fig:plots_5mom} shows the resulting densities
-(distribution${}\times N$) for three example values of larger-population
-sizes: $N=1\,000$ (\textcolor{mygreen}{green diamonds}), $N=5\,000$
-(\textcolor{myred}{red circles}), $N=10\,000$ (\textcolor{myblue}{blue
-  curve}). The frequency density of the sample activity is also shown
-(\textcolor{black}{black triangles}), and in the plot it would be
-indistinguishable from the maximum-entropy density for $N=n$, that is,
-applied at the sample level. We discuss the case of unknown $N$ in
-\sect~\ref{sec:N}.
+using five moments, because this number provides almost as much information
+as the full frequency distribution of the sample, as discussed in
+\sect~\ref{sec:marginalization}. Figure~\ref{fig:plots_5mom} shows the
+resulting distributions for three example values of
+larger-population sizes: $N=1\,000$ (\textcolor{mygreen}{green diamonds}),
+$N=5\,000$ (\textcolor{myred}{red circles}), $N=10\,000$
+(\textcolor{myblue}{blue curve}). The frequency density of the sample
+activity is also shown (\textcolor{black}{black triangles}), and in the
+plot it would be indistinguishable from the maximum-entropy density for
+$N=n$, that is, applied at the sample level. We discuss the case of unknown
+$N$ in \sect~\ref{sec:N}.
 \begin{figure}[!p]
   \centering
 \subcaption[]{\label{fig:plots_5mom_a}}%  
 \includegraphics[width=\linewidth]{_scripts/newpaper_stensola_5mom_distributionsN_priorc.pdf}%
-\\[2em]%
+\\[1em]%\mbox{}\vfill\mbox{}%
 \subcaption[]{\label{fig:plots_5mom_b}}%  
 \includegraphics[width=\linewidth]{_scripts/newpaper_riehle_5mom_distributionsN_priorc.pdf}%
-\\[2em]%
-\caption{Maximum-entropy distributions for the normalized total activity of
-  the larger population, assuming several population sizes $N$. Five
-  moments are constrained.}
+\\[1em]%\mbox{}\vfill\mbox{}%
+\caption{Maximum-entropy distributions for the total activity of the larger
+  population, using five moments and assuming several population sizes $N$.
+  In order to compare different $N$, the distributions are multiplied by
+  $N$ (obtaining densities) and the activity divided by $N$ (obtaining a
+  population average). Note how the distributions for large $N$ have very
+  different features from the measured frequency distribution, and how
+  their peaks become more pronounced as $N$ increases.}
 \label{fig:plots_5mom}
 \end{figure}
 % maxent_solutions_different_moments_prior2_6moments.nb
@@ -1401,33 +1405,32 @@ interesting features of the larger population. \textcolor{white}{If you
 \label{fig:plots_cellsubsets}
 \end{figure}
 % maxent_solutions_different_moments_partial.nb
-Here is a toy example of possible uses of this model,
-based on the first data set. We could be interested in the hypothesis that
-two distinct cell types or assemblies be present in the region where the
-recording was made. Finding a larger-population distribution with two
-peaks, as in \fig~\ref{fig:plots_5mom_a}, would provide
-some evidence for this hypothesis. Let's further imagine that we have
-reasons for suspecting that a specific set of the sampled neurons is of the
-first type, and the remaining of the second type. In the case of the first
-data set, 27 of the 65 sampled neurons were identified as grid cells
-belonging to 3--4 functional modules \citep{dunnetal2015}. Could the
-two peaks in the distribution of \fig~\ref{fig:plots_5mom} reflect the
-activities of grid versus non-grid cells? We apply the model to these two
-sets of neurons individually, using $\yNg=4\,150$ for the grid set and
-$\yNng=5\,850$ for the non-grid set, to reflect their proportions (27/65
-and 38/65) in the recorded sample. The results are shown in 
- \fig~\ref{fig:plots_cellsubsets_a}. The distribution for the larger
-population of grid cells (\textcolor{mygreen}{green triangles}) seems to
-have one broad peak, close to the first peak of the larger-population
-distribution. The distribution for the larger population of non-grid cells
-(\textcolor{myred}{red circles}) has two peaks instead, roughly at the same
-population-averaged activities as the peaks of the larger-population distribution
-(\textcolor{myblue}{blue curve}) but closer in height. It would thus seem
-that the population of grid cells is contributing to the first mode of the
-larger population, but it is not its sole contributor. We can also assess
-if the distributions for the two sets of neurons are independent. If they
-were independent, the larger-population distribution would be given by
-their convolution:
+Here is a toy example of possible uses of this model, based on the first
+data set. We could be interested in the hypothesis that two distinct cell
+types or assemblies be present in the region where the recording was made.
+Finding a larger-population distribution with two peaks, as in
+\fig~\ref{fig:plots_5mom_a}, would provide some evidence for this
+hypothesis. We might have reasons for suspecting that a specific set of the
+sampled neurons is of the first type, and the remaining of the second type.
+In the case of the first data set, 27 of the 65 sampled neurons were
+identified as grid cells belonging to 3--4 functional modules
+\citep{stensolaetal2012}. Could the two peaks in the distribution of
+\fig~\ref{fig:plots_5mom} reflect the activities of grid versus non-grid
+cells? We apply the model to these two sets of neurons individually, using
+$\yNg=4\,150$ for the grid set and $\yNng=5\,850$ for the non-grid set, to
+reflect their proportions (27/65 and 38/65) in the recorded sample. The
+results are shown in \fig~\ref{fig:plots_cellsubsets_a}. The distribution
+for the larger population of grid cells (\textcolor{mygreen}{green
+  triangles}) seems to have one broad peak, close to the first peak of the
+larger-population distribution. The distribution for the larger population
+of non-grid cells (\textcolor{myred}{red circles}) has two peaks instead,
+roughly at the same population-averaged activities as the peaks of the
+larger-population distribution (\textcolor{myblue}{blue curve}) but closer
+in height. It would thus seem that the population of grid cells is
+contributing to the first mode of the larger population, but it is not its
+sole contributor. We can also assess if the distributions for the two sets
+of neurons are independent. If they were independent, the larger-population
+distribution would be given by their convolution:
 \begin{equation}
   \label{eq:convolution}
   P_{\text{full}}(\yA) = \sum_{\yA'} P_{\text{grid}}(\yA')\;

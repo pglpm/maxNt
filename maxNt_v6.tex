@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-15T19:19:48+0100
+%% Last-Updated: 2019-12-15T19:33:22+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1485,19 +1485,21 @@ first.% For concreteness we use an
 vague, so we need to translate them into a more precise notion first. Here
 we use the notion of \emph{informational sufficiency}
 \citep[\sect~4.5]{bernardoetal1994}[\chap~8 \amp\
-\sect~14.2]{jaynes1994_r2003}{cifarellietal1982,kullbacketal1951}[the
-notion goes back to][]{fisher1922} because it relates to those terms and
-especially because is tightly connected with maximum-entropy distributions.
-Its idea is as follows. Our probabilities about the frequencies of the
-activities of the sample, or about the activity of the sample in a new time
-bin, are in principle conditional on all experimental data and statistics
-we have. But it can be the case that discarding part of the data or
-statistics -- for example, the third- and higher-order empirical moments --
-leaves our probabilities almost unchanged. This means that the discarded
-statistics are \emph{informationally irrelevant} or almost so. The
-remaining statistics -- for example, first and second empirical moments --
-are \emph{informationally sufficient}.\footnote{For more technical results
-  and connections with the notion of symmetry see \eg\
+\sect~14.2]{jaynes1994_r2003} because it relates to those terms and
+especially because it is tightly connected with maximum-entropy
+distributions. We now shortly explain its meaning and use; please see the
+end of this section for a bibliography with in-depth discussions.
+
+Our probabilities about the frequencies of the activities of the sample, or
+about the activity of the sample in a new time bin, are in principle
+conditional on all experimental data and statistics we have. But it can be
+the case that discarding part of the data or statistics -- for example, the
+third- and higher-order empirical moments -- leaves our probabilities
+almost unchanged. This means that the discarded statistics are
+\emph{informationally irrelevant} or almost so. The remaining statistics --
+for example, first and second empirical moments -- are
+\emph{informationally sufficient}.\footnote{For more technical results and
+  connections with the notion of symmetry see \eg\
   \cite{darmois1935,neyman1935,koopman1936,pitman1936,halmosetal1949,bahadur1954,berk1972,lauritzen1974,lauritzen1982_r1988,lauritzen2007,cifarellietal1980,cifarellietal1981,diaconisetal1981,diaconis1992,furmanczyketal1998,fortinietal2000,nogalesetal2000,kallenberg2005,ayetal2015}.}
 % This informational quasi-sufficiency is interesting because
 % it may give clues about population organization and dynamics.
@@ -1507,7 +1509,8 @@ with maximum-entropy distributions: \emph{if a probability distribution for
   repetitive phenomena has a sufficient statistics, then it is a mixture of
   distributions of maximum-entropy form}. \mynote{move the following
   somewhere else? }This mathematical result comes from the Pitman-Koopman
-theorem\citep{jaynes1982b}[\sect~4.5.4]{bernardoetal1994}
+theorem\citep{cifarellietal1982,kullbacketal1951}[the
+notion goes back to][]{fisher1922} \citep{jaynes1982b}[\sect~4.5.4]{bernardoetal1994}
 \citep{koopman1936,pitman1936,darmois1935}[for later analyses and the
 discrete case
 see][]{hipp1974,andersen1970,denny1967,denny1972,fraser1963,barankinetal1963,barndorffnielsen1978_r2014}

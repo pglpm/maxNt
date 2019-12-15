@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-15T19:43:48+0100
+%% Last-Updated: 2019-12-15T19:49:18+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1484,7 +1484,7 @@ first.% For concreteness we use an
 \enquote{Cooperativity}, \enquote{interaction}, and similar terms are
 vague, so we need to translate them into a more precise notion first. Here
 we use the notion of \emph{informational sufficiency}
-\citep[\sect~4.5]{bernardoetal1994}[\chap~8 and
+\citep{kullbacketal1951}[\sect~4.5]{bernardoetal1994}[\chap~8 and
 \sect~14.2]{jaynes1994_r2003} because it relates to those terms and
 especially because it is tightly connected with maximum-entropy
 distributions. We now shortly explain its meaning and use; please see the
@@ -1498,24 +1498,14 @@ for example, the third- and higher-order empirical moments -- leaves it
 unchanged, or almost so. This means that the discarded statistics are
 \emph{informationally irrelevant} or almost so. The remaining statistics --
 for example, first and second empirical moments -- are
-\emph{informationally sufficient}.\footnote{For more technical results and
-  connections with the notion of symmetry see \eg\
-  \cite{darmois1935,neyman1935,koopman1936,pitman1936,halmosetal1949,bahadur1954,berk1972,lauritzen1974,lauritzen1982_r1988,lauritzen2007,cifarellietal1980,cifarellietal1981,diaconisetal1981,diaconis1992,furmanczyketal1998,fortinietal2000,nogalesetal2000,kallenberg2005,ayetal2015}.}
+\emph{informationally sufficient}.
 % This informational quasi-sufficiency is interesting because
 % it may give clues about population organization and dynamics.
 
-This notion is useful in our present problem, owing to its tight connection
+This notion is useful in our present problem owing to its tight connection
 with maximum-entropy distributions: \emph{if a probability distribution for
   repetitive phenomena has a sufficient statistics, then it is a mixture of
-  distributions of maximum-entropy form}. \mynote{move the following
-  somewhere else? }This mathematical result comes from the Pitman-Koopman
-theorem\citep{cifarellietal1982,kullbacketal1951}[the
-notion goes back to][]{fisher1922} \citep{jaynes1982b}[\sect~4.5.4]{bernardoetal1994}
-\citep{koopman1936,pitman1936,darmois1935}[for later analyses and the
-discrete case
-see][]{hipp1974,andersen1970,denny1967,denny1972,fraser1963,barankinetal1963,barndorffnielsen1978_r2014}
-
-
+  distributions of maximum-entropy form}.
 
 \mynote{modify this paragraph }We can thus quantify the informational
 relevance of a subset of statistics, for example first and second moments
@@ -1752,6 +1742,20 @@ distribution constructed at the larger-population level
 (\textcolor{myblue}{blue filled squares}) fits the measured frequency
 distribution (black triangles) more closely than the corresponding
 sample-level distribution (\textcolor{myblue}{blue empty squares}).
+
+
+
+\bigskip
+\mynote{Short reasoned bibliography about sufficient statistics and its
+  relation to maximum-entropy?} blah blah \footnote{For more technical results and
+  connections with the notion of symmetry see \eg\
+  \cite{darmois1935,neyman1935,koopman1936,pitman1936,halmosetal1949,bahadur1954,berk1972,lauritzen1974,lauritzen1982_r1988,lauritzen2007,cifarellietal1980,cifarellietal1981,diaconisetal1981,diaconis1992,furmanczyketal1998,fortinietal2000,nogalesetal2000,kallenberg2005,ayetal2015}.}
+This mathematical result comes from the Pitman-Koopman
+theorem\citep{cifarellietal1982,kullbacketal1951}[the
+notion goes back to][]{fisher1922} \citep{jaynes1982b}[\sect~4.5.4]{bernardoetal1994}
+\citep{koopman1936,pitman1936,darmois1935}[for later analyses and the
+discrete case
+see][]{hipp1974,andersen1970,denny1967,denny1972,fraser1963,barankinetal1963,barndorffnielsen1978_r2014}
 
 
 

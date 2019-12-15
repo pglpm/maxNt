@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-15T00:52:50+0100
+%% Last-Updated: 2019-12-15T16:26:55+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1102,13 +1102,16 @@ appendix~\ref{sec:derivation_maxent_fullnet}.
 
 \medskip
 
-Step~\ref{item:sample_step} is just an application of the probability-calculus, which gives an exact linear relation between the first $m$
-moments for the larger population and the first $m$ for the sample
-\citep[Appendix]{portamanaetal2015}. The ones determine the others and
-vice versa at every time bin. This relation holds for any belief
-distribution $\pxxx(\yA_{t})$ for the larger-population activity and its
-marginal $\pxx(\ya_{t})$ for the sample activity at that bin. These two
-distributions are related by
+Step~\ref{item:sample_step} is just an application of the
+probability-calculus, which gives an exact linear relation between the
+first $m$ moments for the larger population and the first $m$ for the
+sample \citep[see][for a complete discussion and proofs. Some proofs are
+summarized again here in
+appendix~\ref{sec:derivation_maxent_fullnet}]{portamanaetal2015}. The ones
+determine the others and vice versa at every time bin. This relation holds
+for any belief distribution $\pxxx(\yA_{t})$ for the larger-population
+activity and its marginal $\pxx(\ya_{t})$ for the sample activity at that
+bin. These two distributions are related by
 \begin{equation}
   \label{eq:conditional_hypergeometric_t}
   \pxx(\ya_{t})= \sum_{\yA_{t}=0}^{N} \yG_{\ya_{t}\,\yA_{t}} \;\pxxx(\yA_{t})
@@ -1183,8 +1186,8 @@ such as fixed expectations -- and among them select the one having minimum
 relative entropy with respect to a reference distribution; second, judge --
 and therefore set -- those expectations to be equal to some measured
 averages, typically time averages. (A judgement is required because
-probability expectations and empirical averages are numerically
-different in general; a misjudgement of their approximate equality can lead to
+probability expectations and empirical averages differ numerically in
+general; a misjudgement of their approximate equality can lead to
 \enquote{silly answers}, to quote MacKay \citep[p.~308]{mackay1995_r2003}.)
 
 In our case we don't know the time averages of the quantity
@@ -1244,11 +1247,12 @@ constraints~\eqref{eq:final_constraint}. This formula is further discussed
 in appendix~\ref{sec:derivation_maxent_fullnet}.
 
 The amount and degrees of the constraining moments depend on the questions
-and hypotheses that a researcher is exploring. We give some examples in the
-next two sections. Note that the constraint
-equation~\eqref{eq:final_constraint} for the
-distribution~\eqref{eq:app_maxent_pop_first} may not have exact solutions
-if $N$ is strictly larger than $n$. The possible discrepancy between its
+and hypotheses under study. We give some examples in the
+next two sections.
+
+Note that the constraint equation~\eqref{eq:final_constraint} for the
+distribution~\eqref{eq:app_maxent_pop_first} may not have solutions
+if $N$ is strictly larger than $n$, but it's still possible to find The possible discrepancy between its
 two sides typically increases with the number of constraints. This
 discrepancy comes from an approximation implicit in the maximum-entropy
 method combined with one assumption specific to our application: that
@@ -2362,38 +2366,46 @@ activities, implies the following mixture form by de~Finetti's theorem
 %  \exp[-T\;\sh(\yF;\ynu)] \quad
 %  \pxxx[(\yA_{1},\dotsc,\yA_{T})] \propto
   \pf[(\yA_{1},\dotsc, \yA_{T}) \| \yI]
-  = \int\!\!\!\di\ynu\;\pf(\ynu \|\yI)\,\prod_{\yA=1}^{N}{\nu_{\yA}}^{T\,\yFF_{\yA}},
+  = \int\!\!\!\di\ynu\;\pf(\ynu \|\yI)\,\prod_{\yA=0}^{N}{\nu_{\yA}}^{T\,\yFF_{\yA}},
 \end{equation}
 where $\ynu\defd(\nu_{\yA})$ is the long-run frequency distribution of
 activities in an imaginary continuation or repetition of the recording, and
-$\pf(\ynu \|\yI)\;\di\ynu$ our belief distribution about it.
+$\pf(\ynu \|\yI)\;\di\ynu$ our belief distribution about it. The
+integration is over an $N$-dimensional simplex.
 
-The second assumption concerns the latter degree distribution. It has one
-of these expressions:
-\begin{subequations}\label{eq:maxent_prior}
-  \begin{equation}
-    \label{eq:entropic_prior}
-    \pf(\ynu \| \yI) \propto  \exp[-\yL\;\sh(\yF;\yr)]
-    \approx \binom{L}{L\nu_{0}, \dotsc, L\nu_{N}}\;
-    \prod_{\yA}{r_{\yA}}^{L\nu_{\yA}}  
-  \end{equation}
-  where $\yr\defd(r_{\yA})$ is a reference distribution and the expression
-  in larger parentheses is a multinomial coefficient, or
-  \begin{equation}
-    \label{eq:suff_prior}
-    \pf(\ynu \| \yI) \propto
-    \int\!\!\!\di\yla\;\pf(\yla \| \yI)\;
-    \prod_{\yA}\delt\Biggl\{\ynu_{\yA}-
-    \frac{r_{\yA}}{Z(\yla)}\,\exp\Bigl[
-    \tsum_{m}\lambda_{m}\tbinom{\yA}{m}/\tbinom{N}{m}
-    \Bigr]\Biggr\},
-  \end{equation}
-\end{subequations}
-where $\yla\defd(\lambda_{m})$ are Lagrange multipliers and $Z(\yla)$ a
-normalization factor for the exponential distribution within the delta.
-This is a formal expression saying that our belief about $\ynu$ is an
-exponential parametric model for which the normalized factorial moments are
-informationally sufficient.
+The second assumption concerns the latter distribution. Its density
+function has one of the following expressions:
+\begin{enumerate}[label=(\textit{\alph*}),wide]
+\item an entropic prior \citep{skillingetal1984,rodriguez1991,neumann2007}
+  \begin{subequations}\label{eq:maxent_prior}
+    \begin{equation}
+      \label{eq:entropic_prior}
+      \pf(\ynu \| \yI) \propto  \exp[-\yL\;\sh(\yF;\yr)]
+      \approx \binom{L}{L\nu_{0}, \dotsc, L\nu_{N}}\;
+      \prod_{\yA}{r_{\yA}}^{L\nu_{\yA}}  
+    \end{equation}
+    where $\yr\defd(r_{\yA})$ is a reference distribution and the
+    expression in larger parentheses is a multinomial coefficient;
+  \item a \enquote{sufficiency prior}, from the exponential family, which
+    follows from the Pitman-Koopman theorem if some moments $\set{m}$ are
+    sufficient statistics for our belief about $\ynu$:
+    \begin{equation}
+      \label{eq:suff_prior}
+      \pf(\ynu \| \yI) \propto
+      \int\!\!\!\di\yla\;\pf(\yla \| \yI)\;
+      \prod_{\yA}\delt\Biggl\{\ynu_{\yA}-
+      \frac{r_{\yA}}{Z(\yla)}\,\exp\Bigl[
+      \tsum_{m}\lambda_{m}\tbinom{\yA}{m}/\tbinom{N}{m}
+      \Bigr]\Biggr\},
+    \end{equation}
+  \end{subequations}
+  where $\yla\defd(\lambda_{m})$ are Lagrange multipliers and $Z(\yla)$ a
+  normalization factor for the exponential distribution within the delta.
+  This is a formal expression, the delta symbolizing that the possible
+  domain of $\ynu$ is restricted from an $N$-dimensional simplex to a
+  lower-dimensional subset thereof, parametrized by $\yla$.
+\end{enumerate}
+
 
 The third assumption corresponds to the formula
 \begin{multline}

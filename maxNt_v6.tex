@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-15T18:25:32+0100
+%% Last-Updated: 2019-12-15T19:16:46+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1397,9 +1397,10 @@ Finding a larger-population distribution with two peaks, as in
 \fig~\ref{fig:plots_5mom_a}, would provide some evidence for this
 hypothesis. We might have reasons for suspecting that a specific set of the
 sampled neurons is of the first type, and the remaining of the second type.
-In the case of the first data set, 27 of the 65 sampled neurons were
-identified as grid cells belonging to 3--4 functional modules
-\citep{stensolaetal2012}. Could the two peaks in the distribution of
+In the case of the first data set, 27 of the 65 sampled cells were
+identified as grid cells belonging to 3--4 functional modules, the
+remaining 38 \enquote{non-grid} cells being interneurons and unidentified
+cells \citep{stensolaetal2012}. Could the two peaks in the distribution of
 \fig~\ref{fig:plots_5mom} reflect the activities of grid versus non-grid
 cells? We apply the model to these two sets of neurons individually, using
 $\yNg=4\,150$ for the grid set and $\yNng=5\,850$ for the non-grid set, to
@@ -1467,13 +1468,13 @@ neurosciences the maximum-entropy method has also been used as a way of
 quantifying the \enquote{cooperativity} \citep[\eg][]{gersteinetal1985} or
 \enquote{interaction}
 \citep[\eg][]{martignonetal1995,schneidmanetal2006,shlensetal2006} or
-\enquote{synchrony} \citep[\eg][-- we're only citing early papers using
-these terms]{bohteetal2000,amarietal2003} of neuronal activity. Most, if
-not all, such applications use the method \emph{at the sample level}. In
-this section we discuss how our proposed application bears on this kind of
-quantification and compares with the traditional application at the sample
-level. But such a comparison involves some methodological caveats which we
-wish to discuss first.% For concreteness we use an
+\enquote{synchrony} \citep[\eg]{bohteetal2000,amarietal2003} of neuronal
+activity. Most, if not all, such applications use the method \emph{at the
+  sample level}. In this section we discuss how our proposed application
+bears on this kind of quantification and compares with the traditional
+application at the sample level. But such a comparison involves some
+methodological caveats which we wish to discuss
+first.% For concreteness we use an
 % example with specific statistics: first and second moments (equivalent to
 % mean and correlations), versus first-to-fourth moments. But our
 % discussion holds for any sets of statistics.
@@ -1485,44 +1486,45 @@ vague, so we need to translate them into a more precise notion first. Here
 we use the notion of \emph{informational sufficiency}
 \citep[\sect~4.5]{bernardoetal1994}[\chap~8 \amp\
 \sect~14.2]{jaynes1994_r2003}{cifarellietal1982,kullbacketal1951}[the
-notion goes back to][]{fisher1922} because it relates to those terms, is
-intuitive, and is connected with maximum-entropy distributions. Its idea is
-as follows. Our probabilities about the frequencies of the activities of
-the sample, or about the activity of the sample in a new time bin, are in
-principle conditional on all experimental data and statistics we have. But
-it can be the case that discarding part of the data or statistics -- for
-example, the third- and higher-order empirical moments -- leaves our
-probabilities almost unchanged. This means that the discarded statistics
-are \emph{informationally irrelevant} or almost so. The remaining
-statistics -- for example, first and second empirical moments -- are
-\emph{informationally sufficient}.\footnote{For more technical results and
-  connections with the notion of symmetry see \eg\
+notion goes back to][]{fisher1922} because it relates to those terms and
+especially because is tightly connected with maximum-entropy distributions.
+Its idea is as follows. Our probabilities about the frequencies of the
+activities of the sample, or about the activity of the sample in a new time
+bin, are in principle conditional on all experimental data and statistics
+we have. But it can be the case that discarding part of the data or
+statistics -- for example, the third- and higher-order empirical moments --
+leaves our probabilities almost unchanged. This means that the discarded
+statistics are \emph{informationally irrelevant} or almost so. The
+remaining statistics -- for example, first and second empirical moments --
+are \emph{informationally sufficient}.\footnote{For more technical results
+  and connections with the notion of symmetry see \eg\
   \cite{darmois1935,neyman1935,koopman1936,pitman1936,halmosetal1949,bahadur1954,berk1972,lauritzen1974,lauritzen1982_r1988,lauritzen2007,cifarellietal1980,cifarellietal1981,diaconisetal1981,diaconis1992,furmanczyketal1998,fortinietal2000,nogalesetal2000,kallenberg2005,ayetal2015}.}
 % This informational quasi-sufficiency is interesting because
 % it may give clues about population organization and dynamics.
 
-There's a tight connection between informational sufficiency and
-maximum-entropy distributions
-\citep{jaynes1982b}[\sect~4.5.4]{bernardoetal1994}: if a probability
-distribution for repetitive phenomena has a sufficient statistics, then by
-the Pitman-Koopman theorem \citep{koopman1936,pitman1936,darmois1935}[for
-later analyses and the discrete case
+An important feature of this notion is its tight connection with
+maximum-entropy distributions: \emph{if a probability distribution for
+  repetitive phenomena has a sufficient statistics, then it is a mixture of
+  distributions of maximum-entropy form}. \mynote{move the following
+  somewhere else? }This mathematical result comes from the Pitman-Koopman
+theorem\citep{jaynes1982b}[\sect~4.5.4]{bernardoetal1994}
+\citep{koopman1936,pitman1936,darmois1935}[for later analyses and the
+discrete case
 see][]{hipp1974,andersen1970,denny1967,denny1972,fraser1963,barankinetal1963,barndorffnielsen1978_r2014}
-it is a mixture of exponential distributions of maximum-entropy form.
 
 
 
-We can thus quantify the informational relevance of a subset of statistics,
-for example first and second moments (means and correlations), with respect
-to a larger set, for example the first four moments, by comparing the
-probabilities conditional on the subset and on the full set. For
-probabilities built with the maximum-entropy method, this means comparing
-those constrained on the subset and on the full set. This procedure is
-actually equivalent to comparing the probabilities of the two hypotheses
-about sufficiency, conditional on the \emph{full} data, assuming their
-pre-data probabilities to be equal. We show this equivalence below and
-perform the calculations for our first data set.
-\medskip
+\mynote{modify this paragraph }We can thus quantify the informational
+relevance of a subset of statistics, for example first and second moments
+(means and correlations), with respect to a larger set, for example the
+first four moments, by comparing the probabilities conditional on the
+subset and on the full set. For probabilities built with the
+maximum-entropy method, this means comparing those constrained on the
+subset and on the full set. This procedure is actually equivalent to
+comparing the probabilities of the two hypotheses about sufficiency,
+conditional on the \emph{full} data, assuming their pre-data probabilities
+to be equal. We show this equivalence below and perform the calculations
+for our first data set. \medskip
 
 Before applying this notion to neuronal activity, however, we must keep in
 mind that \emph{informational sufficiency is not preserved under sampling}.

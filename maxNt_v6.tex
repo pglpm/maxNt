@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-15T18:01:21+0100
+%% Last-Updated: 2019-12-15T18:25:32+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1389,21 +1389,6 @@ maximum-entropy distribution at the sample level. The model thus suggests
 interesting features of the larger population. \textcolor{white}{If you
   find this you can claim a postcard from us.}
 
-\begin{figure}[!p]
-\centering
-\subcaption[]{\label{fig:plots_cellsubsets_a}}%  
-\includegraphics[width=\linewidth]{_scripts/newpaper3_gridvsnogrid.pdf}%
-\\[2em]%
-\subcaption[]{\label{fig:plots_cellsubsets_b}}%  
-\includegraphics[width=\linewidth]{_scripts/newpaper3_gridconv.pdf}%
-\\[2em]%
-\caption{\subcaptionref{fig:plots_cellsubsets_a} Maximum-entropy
-  distributions for larger subpopulations or grid and non-grid cells.
-  \subcaptionref{fig:plots_cellsubsets_b} Convolution of the two
-  subpopulation distributions; it would be equal to the total distribution
-  if the two distributions were independent.}
-\label{fig:plots_cellsubsets}
-\end{figure}
 % maxent_solutions_different_moments_partial.nb
 Here is a toy example of possible uses of this model, based on the first
 data set. We could be interested in the hypothesis that two distinct cell
@@ -1419,18 +1404,34 @@ identified as grid cells belonging to 3--4 functional modules
 cells? We apply the model to these two sets of neurons individually, using
 $\yNg=4\,150$ for the grid set and $\yNng=5\,850$ for the non-grid set, to
 reflect their proportions (27/65 and 38/65) in the recorded sample. The
-results are shown in \fig~\ref{fig:plots_cellsubsets_a}. The distribution
-for the larger population of grid cells (\textcolor{mygreen}{green
-  triangles}) seems to have one broad peak, close to the first peak of the
-larger-population distribution. The distribution for the larger population
-of non-grid cells (\textcolor{myred}{red circles}) has two peaks instead,
-roughly at the same population-averaged activities as the peaks of the
-larger-population distribution (\textcolor{myblue}{blue curve}) but closer
-in height. It would thus seem that the population of grid cells is
-contributing to the first mode of the larger population, but it is not its
-sole contributor. We can also assess if the distributions for the two sets
-of neurons are independent. If they were independent, the larger-population
-distribution would be given by their convolution:
+results are shown in \fig~\ref{fig:plots_cellsubsets_a}.
+\begin{figure}[!p]
+\centering
+\subcaption[]{\label{fig:plots_cellsubsets_a}}%  
+\includegraphics[width=\linewidth]{_scripts/newpaper3_gridvsnogrid.pdf}%
+\\[2em]%
+\subcaption[]{\label{fig:plots_cellsubsets_b}}%  
+\includegraphics[width=\linewidth]{_scripts/newpaper3_gridconv.pdf}%
+\\[2em]%
+\caption{\subcaptionref{fig:plots_cellsubsets_a} Maximum-entropy
+  distributions for larger subpopulations or grid and non-grid cells.
+  \subcaptionref{fig:plots_cellsubsets_b} Convolution of the two
+  subpopulation distributions; it would be equal to the total distribution
+  if the two distributions were independent.}
+\label{fig:plots_cellsubsets}
+\end{figure}
+The distribution for the larger population of grid cells
+(\textcolor{mygreen}{green triangles}) seems to have one broad peak, close
+to the first peak of the larger-population distribution. The distribution
+for the larger population of non-grid cells (\textcolor{myred}{red
+  circles}) has two peaks instead, roughly at the same population-averaged
+activities as the peaks of the larger-population distribution
+(\textcolor{myblue}{blue curve}) but closer in height. It would thus seem
+that the population of grid cells is contributing to the first mode of the
+larger population, but it is not its sole contributor. We can also assess
+if the distributions for the two sets of neurons are independent. If they
+were independent, the larger-population distribution would be given by
+their convolution:
 \begin{equation}
   \label{eq:convolution}
   P_{\text{full}}(\yA) = \sum_{\yA'} P_{\text{grid}}(\yA')\;

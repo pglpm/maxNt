@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-15T20:16:51+0100
+%% Last-Updated: 2019-12-15T21:12:20+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -483,7 +483,8 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 %\paragraphfootnotes\setlength{\footmarkwidth}{0em}
 %\twocolumnfootnotes
 %\setlength{\footmarksep}{0em}
-\footmarkstyle{\textsuperscript{\color{myred}\scriptsize\bfseries#1}~}
+\footmarkstyle{\textsuperscript{%\color{myred}
+\scriptsize\bfseries#1}~}
 %\footmarkstyle{\textsuperscript{[#1]}~}
 
 \selectlanguage{british}\frenchspacing
@@ -1487,8 +1488,8 @@ the notion of \emph{informational sufficiency}
 \citep{kullbacketal1951}[\sect~4.5]{bernardoetal1994}[\chap~8 and
 \sect~14.2]{jaynes1994_r2003}. For three reasons:
 \begin{enumerate*}[label=(\roman*)]
-\item it seems closely related to those terms, the way they are used in the
-  literature; \item it is tightly connected with maximum-entropy
+\item it seems closely related to those terms as used in the
+  literature; \item it is mathematically connected with maximum-entropy
   distributions; \item it reveals important consequences of sampling.
 \end{enumerate*}
 We shortly illustrate its meaning and use; please see the end of this

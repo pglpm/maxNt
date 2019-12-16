@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-16T13:30:23+0100
+%% Last-Updated: 2019-12-16T16:01:08+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1667,41 +1667,11 @@ conditional on the data \citep[\cf][]{bretthorst2013}.
 
 \bigskip
 
-In our case consider for example three sets of constraints $M_{2}$,
-$M_{4}$, $M_{5}$, consisting of the first two, four, five moments; and a
-larger population of size $N=10\,000$. Figure~\ref{fig:plots_2_4mom_a}
-shows the resulting distributions for the two data sets.
-
-We note***
-
-
-These informational differences show clearly in the shapes of the
-distribution themselves, plotted in 
-\fig~\ref{fig:plots_2_4mom_a}. The two-moment distribution
-(\textcolor{myred}{dashed red}) is unimodal, the four-moment distribution
-(\textcolor{myblue}{solid blue}) is bimodal. The five-moment distribution
-would not be distinguishable from the four-moment one.  Figure~\ref{fig:plots_2_4mom_b} shows the corresponding distributions for the second data set;
-also in this case they are visually very distinct.
-For a
-larger population of size $N=10\,000$, we obtain the following differences:
-\begin{equation}
-  \label{eq:diff_suff_N}
-  \begin{split}
-  \ydi_{N}(M_{4},M_{2}) &= 81\;\nat = 35\;\hart,
-\\    \ydi_{N}(M_{5},M_{4}) &= 0.037\;\nat = 0.016\;\hart,
-  \end{split}
-\end{equation}
-where the Hartley ($\hart$) denotes base-10 logarithms
-\citep[\sect~C.4]{iso2009}[it was called \enquote{ban} and used by Turing
-and Good in their code-breaking work at Bletchley
-Park: see][]{good1985%,good1950,good1969
-}[\sect~4.2]{jaynes1994_r2003}. In
-words, the measured frequencies of the sample activity are 35 orders of
-magnitude more probable assuming sufficiency of the first four moments than
-assuming sufficiency of the first two only. But they are about as probable
-($10^{0.016} = 1.04$) assuming sufficiency of the first five moments as of
-the first four moments only.
-
+Let's show a concrete application. Consider for example three sets of
+constraints $M_{2}$, $M_{4}$, $M_{5}$, consisting of the first two, four,
+five moments; and a larger population of size $N=10\,000$.
+Figure~\ref{fig:plots_2_4mom} shows the resulting distributions for the two
+data sets.
 \begin{figure}[!p]
 \centering
 \subcaption[]{\label{fig:plots_2_4mom_a}}%  
@@ -1716,18 +1686,52 @@ the first four moments only.
 \label{fig:plots_2_4mom}
 \end{figure}
 % maxent_solutions_different_moments_prior2_6moments.nb
-These informational differences show clearly in the shapes of the
-distribution themselves, plotted in 
-\fig~\ref{fig:plots_2_4mom_a}. The two-moment distribution
-(\textcolor{myred}{dashed red}) is unimodal, the four-moment distribution
-(\textcolor{myblue}{solid blue}) is bimodal. The five-moment distribution
-would not be distinguishable from the four-moment one.  Figure~\ref{fig:plots_2_4mom_b} shows the corresponding distributions for the second data set;
-also in this case they are visually very distinct.
+There is a clear visual difference between the distributions based on two
+(\textcolor{myred}{dashed red}) and on four (\textcolor{myblue}{solid
+  blue}) moments; for the first data set, panel
+\subcaptionref{fig:plots_2_4mom_a}, they even differ in the number of
+modes. On the other hand there is barely any visual difference between the
+distributions based on four and on five (\textcolor{myyellow}{dotted
+  yellow}) moments. From these visual differences we immediately conclude
+that two moments are probably not informationally sufficient, whereas four
+and five should both be. We shall see that the
+measure~\eqref{eq:measure_suffic} reflects what we immediately see.
+
+Compare these plots with those obtained applying the model at the sample
+level (equivalent to $N=n$). With the $M_{2}$ and $M_{4}$ constraints we
+obtain the distributions partly shown in
+\fig~\ref{fig:comparisons_marginals} as \textcolor{myred}{red empty
+  circles} for two moments, and \textcolor{myblue}{blue empty squares} for
+four moments. The measured frequencies (black triangles) are also shown.
+The two distributions can only be distinguished on a logarithmic scale, and
+only in their tails. It would be difficult to visually assess which is more
+probable to be informationally sufficient.
 
 \medskip
 
-Compare the results above with those obtained by applying the model at the
-sample level, that is, with $N=n$:
+Calculation of the weight of evidence~\eqref{eq:measure_suffic} for the
+first data set and $N=10\,000$, corresponding to
+\fig~\ref{fig:plots_2_4mom_a}, leads to the following results:
+\begin{equation}
+  \label{eq:diff_suff_N}
+  \begin{split}
+  \ydi_{N}(M_{4},M_{2}) &= 81\;\nat = 35\;\hart,
+\\    \ydi_{N}(M_{5},M_{4}) &= 0.037\;\nat = 0.016\;\hart,
+  \end{split}
+\end{equation}
+where the Hartley ($\hart$) denotes base-10 logarithms
+\citep[\sect~C.4]{iso2009}[called \enquote{ban} and used by Turing and Good
+in their code-breaking work at Bletchley Park:
+see][]{good1985%,good1950,good1969
+}[\sect~4.2]{jaynes1994_r2003}. In words, our data are 35 orders of
+magnitude more probable by assuming sufficiency of $M_{4}$ than by assuming
+sufficiency of $M_{2}$. But the data are about as probable
+($10^{0.016} = 1.04$) by assuming sufficiency of $M_{4}$ as of $M_{5}$. The
+qualitative visual information of \fig~\ref{fig:plots_2_4mom_a} was
+therefore reliable.
+
+For the model at the sample level, that is, with $N=n$, the weights of
+evidence are
 \begin{equation}
   \label{eq:diff_suff_n}
   \begin{split}

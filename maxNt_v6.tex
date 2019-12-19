@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-16T16:01:08+0100
+%% Last-Updated: 2019-12-19T20:55:39+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1484,39 +1484,40 @@ highlight some methodological caveats.% For concreteness we use an
 
 As a first step we need to translate vague terms like
 \enquote{cooperativity}, \enquote{interaction}, and similar into a more
-precise, operational \citep{bridgman1927_r1958} notion. Here we propose a
-notion that
-\begin{enumerate*}[label=(\roman*)]
-\item seems closely related to those terms as used in the
-  literature; \item is mathematically connected with maximum-entropy
-  distributions; \item reveals important consequences of sampling.
-\end{enumerate*}
-This notion is \emph{informational sufficiency}
+precise, operational \citep[\chap~I]{bridgman1927_r1958} notion. Here we
+propose the notion of \emph{informational sufficiency} (also called
+\enquote{predictive sufficiency})
 \citep{kullbacketal1951}[\sect~4.5]{bernardoetal1994}[\chap~8 and
-\sect~14.2]{jaynes1994_r2003}. Its meaning and the three points above will
-now be illustrated; please see the end of this section for references to
-in-depth discussions and proofs of technical results.
+\sect~14.2]{jaynes1994_r2003}, because
+\begin{enumerate*}[label=(\roman*)]
+\item it seems closely related to those terms as used in the
+  literature; \item it is mathematically connected with maximum-entropy
+  distributions; \item it reveals important consequences of sampling.
+\end{enumerate*}
+Its meaning and the three points above will now be illustrated; please see
+the end of this section for references to in-depth discussions and proofs
+of technical results.
 
 Our belief distribution about the frequencies of the neuronal activities,
 or about the activity in a new time bin, is in principle conditional on all
 experimental data and statistics we have. This distribution, however, can
 be such that it remains unchanged if we discard part of the data or
-statistics -- for example, the third- and higher-order empirical moments --
-but it does change if we discard more. This means that the discarded
-statistics are \emph{informationally irrelevant}: their knowledge does not
-change our beliefs. The remaining statistics -- in the example, first and
-second empirical moments -- are \emph{minimally informationally
-  sufficient}. The qualification \enquote{minimally} will be omitted for
-brevity.
+statistics -- for example, the third- and higher-order empirical moments. % --
+% but it does change if we discard more.
+This means that the discarded statistics are \emph{informationally
+  irrelevant}: knowing them does not change our beliefs. The remaining
+statistics -- in the example, first and second empirical moments -- are
+\emph{informationally sufficient}.%  The qualification \enquote{minimally}
+% will be omitted for brevity.
 % This informational quasi-sufficiency is interesting because
 % it may give clues about population organization and dynamics.
 
 Now let us turn the informational sufficiency of a subset of statistics and
 the informational sufficiency of another subset into two hypotheses. We can
 then ask: which hypothesis is more probable, given the data? equivalently,
-what is the ratio of their probabilities? Translating our question about
-\enquote{cooperativity} into a hypothesis-testing problem about sufficiency
-gives it a well-defined answer determined by the
+what is the ratio of their probabilities? By translating our question about
+\enquote{cooperativity} into a hypothesis-testing problem about sufficiency,
+we can find a well-defined answer determined by the
 probability-calculus. % The ratio of
 % the two probabilities gives us a natural measure of the
 % For example, do
@@ -1524,21 +1525,21 @@ probability-calculus. % The ratio of
 % determine our beliefs? or is it more probable that the first four are
 % needed instead?
 
-But it does more: through a mathematical theorem, it leads to the automatic
-appearance of maximum-entropy distributions: \emph{if a probability
-  distribution for a repetitive phenomenon has some sufficient statistics,
-  then it is a mixture of distributions of maximum-entropy form having
-  those statistics as constraints, and vice versa}. We give detailed
-references about this theorem at the end of this section.
+But such a translation does more: through a mathematical theorem, it leads
+to the automatic appearance of maximum-entropy distributions: \emph{if a
+  probability distribution for a repetitive phenomenon has some sufficient
+  statistics, then it is a mixture of distributions of maximum-entropy form
+  having those statistics as constraints, and vice versa}. See the end of
+this section for detailed references about this theorem.
 % Thus, maximum-entropy distributions automatically appear (as
 % approximations) from the probability-calculus when we test hypotheses
 % about informational sufficiency.
-Its most important consequence is that the probabilities for the two
-hypotheses are approximately proportional, by Bayes's theorem, to the
-probabilities for all the data according to the two maximum-entropy
-distributions constrained on the subsets of statistics (provided we have
-equal pre-data beliefs about the two hypotheses). We shall shortly explain
-and perform this calculation for the first data set.
+Its most important consequence is that, by Bayes's formula, the probability
+that some statistics are informationally sufficient can be approximated by
+finding the maximum-entropy distribution constrained by those statistics
+and then calculating the probability for the whole data under that
+distribution. We shall shortly illustrate this kind of calculation for the
+first data set.
 
 % For probabilities built with the maximum-entropy method, this means
 % comparing those constrained on the subset and on the full set. This
@@ -1549,12 +1550,15 @@ and perform this calculation for the first data set.
 
 \medskip
 
-An important fact must be taken into account, however: \emph{informational
-  sufficiency is not preserved under sampling}. If a probability
-distribution has some sufficient statistics, then its sample marginals
-\emph{cannot} have the same sufficient statistics, and vice versa
-\citep[\sect~3.1]{portamanaetal2015}; except for trivial cases such as
-uniform probability distributions. % This generally holds also among
+The theorem above makes it very natural to reinterpret studies about
+cooperativity, interaction, and similar, based on maximum-entropy, as
+studies about informational sufficiency. An important fact must then be
+taken into account: \emph{informational sufficiency is not preserved under
+  sampling}. If a probability distribution has some sufficient statistics,
+then its sample marginals \emph{cannot} have the same sufficient
+statistics, and vice versa \citep[\sect~3.1]{portamanaetal2015}; except for
+trivial cases such as uniform probability
+distributions. % This generally holds also among
 % different marginals: if a statistics is sufficient for some marginal, then
 % it will not be sufficient for another marginal.
 This impossibility is known in another guise in statistical mechanics: if a
@@ -1565,12 +1569,12 @@ therein]{maesetal1999}. % Mathematically this impossibility comes from the
 % impossibility of solving a system of independent equations with more
 % equations than unknowns .
 
-This fact is important for interpreting the results of our application. For
-example, if means and pairwise correlations seem informationally sufficient
-for a particular sample from a brain area, then they may well not be
-sufficient for the larger population of neurons constituting that area, and
-vice versa. So if we are interested in the \enquote{cooperativity} or
-\enquote{interaction} of the neurons in a brain area, it is unreliable to
+This fact affects the interpretation of the results obtained from
+maximum-entropy methods. For example, if means and pairwise correlations
+seem informationally sufficient for a particular sample from a brain area,
+then they are probably not sufficient for the larger population of neurons
+constituting that area, and vice versa. If we are interested in the
+cooperativity of the neurons in a brain area, it is therefore unreliable to
 use a maximum-entropy distribution constructed only for a sample
 thereof. % \citep[contrast this with some literature, \eg][]{martignonetal1995,bohteetal2000,schneidmanetal2006,shlensetal2006,barreiroetal2010,ganmoretal2011,granotatedgietal2013}
 The model presented here avoids this problem because the maximum-entropy
@@ -1739,22 +1743,27 @@ evidence are
 \\    \ydi_{n}(M_{5},M_{4}) &= 3.3\;\nat = 1.4\;\hart.
 \end{split}
 \end{equation}
-The data are 1\,220 orders of magnitude more probable conditional on four
-moments than conditional on two, and $10^{1.4}=25$ times more probable
-conditional on five moments than on four moments.
+So the application at the sample level says that the data are 1\,220 orders
+of magnitude more probable conditional on four moments than conditional on
+two, and $10^{1.4}=25$ times more probable conditional on five moments than
+on four moments. These results are different from the ones obtained from
+the larger population, and they would be hard to deduce visually from a
+look at the distributions of \fig~\ref{fig:comparisons_marginals}.
 
-The conclusions about \enquote{cooperativity} or \enquote{interaction} that
-we reach by applying the maximum-entropy method to the larger population,
-as proposed here, are therefore different from those applying it at the
-sample level -- and also visually clearer. The plot in 
-\fig~\ref{fig:plots_2_4mom_a}, showing the two clearly different
-distributions constrained by two and four moments, should be compared with
-the plot for the distributions obtained at the sample level under the same
-constraints, shown in \fig~\ref{fig:comparisons_marginals} as
-\textcolor{myred}{red circles} and \textcolor{myblue}{blue squares}. The
-measured frequencies (black triangles) are also shown. It is necessary to
-use a logarithmic scale to see the differences, which appear mainly in the
-tail.
+
+
+% The conclusions about \enquote{cooperativity} or \enquote{interaction} that
+% we reach by applying the maximum-entropy method to the larger population,
+% as proposed here, are therefore different from those applying it at the
+% sample level -- and also visually clearer. The plot in 
+% \fig~\ref{fig:plots_2_4mom_a}, showing the two clearly different
+% distributions constrained by two and four moments, should be compared with
+% the plot for the distributions obtained at the sample level under the same
+% constraints, shown in \fig~\ref{fig:comparisons_marginals} as
+% \textcolor{myred}{red circles} and \textcolor{myblue}{blue squares}. The
+% measured frequencies (black triangles) are also shown. It is necessary to
+% use a logarithmic scale to see the differences, which appear mainly in the
+% tail.
 \begin{figure}[!p]
 \centering
 % \includegraphics[width=\linewidth]{_scripts/comparison_full.pdf}%
@@ -1774,11 +1783,11 @@ tail.
 % 4 mom: 38.5632 nats = 167.478 dB, 5.59496*10^16
 % 5 mom: 35.2911 nats = 153.267 dB, 2.12185*10^15
 
-It is also possible to use the measure~\eqref{eq:measure_suffic} and its
-probabilistic interpretation~\eqref{eq:bayes_factor} to compare the probability of
-the data $\yf$ conditional on the hypothesis $(M_{4},N)$ of four-moment
-sufficiency at the larger-population level, $N=10\,000$, versus the
-hypothesis $(M_{4}, n)$ of four-moment sufficiency at the sample level,
+It is in fact possible to use the measure~\eqref{eq:measure_suffic} and its
+probabilistic interpretation~\eqref{eq:bayes_factor} to compare the
+probability of the data $\yf$ conditional on the hypothesis $(M_{4},N)$ of
+four-moment sufficiency at the larger-population level, $N=10\,000$, versus
+the hypothesis $(M_{4}, n)$ of four-moment sufficiency at the sample level,
 $N=n=65$. We obtain
 \begin{equation}
   \label{eq:diff_suff_n}

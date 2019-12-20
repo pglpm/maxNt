@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-21T00:40:05+0100
+%% Last-Updated: 2019-12-21T00:45:03+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -771,7 +771,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \setlength{\absrightindent}{0pt}
 \setlength{\abstitleskip}{-\absparindent}
 \begin{abstract}\labelsep 0pt%
-***
+\mynote{to be written}
 % \noindent \mynote{Abstract must be rewritten once paper is ready}This
 %   work shows how to build a maximum-entropy probabilistic model for the
 %   total activity of a population of neurons, given only some activity data or
@@ -1935,6 +1935,8 @@ discussed in the next section, even if the exact number $N$ were known, the
 maximum-entropy distribution ought to be interpreted qualitatively or
 semi-quantitatively.
 
+\medskip
+
 If our uncertainty about $N$ spans several orders of magnitude we can
 assign a probability to the possible values of $N$ based on our background
 information and the frequency data $\yf$, similarly to the procedure in
@@ -1988,14 +1990,15 @@ which gives a slightly higher probability to $N=10\,000$.
 
 \bigskip
 
-In this way we can make inferences -- for example about the sufficiency of
-a set of moments, or about the marginal sample distribution -- that take
-into account our uncertainty about $N$. We must make sure to avoid
-circularities, though: for example, we can't assume a set of moments $M$ to
-be sufficient and assess our uncertainty about $N$ conditional on it, and
-then use this uncertainty to assess the sufficiency of $M$. But we can
-approximately assess the sufficiency of a subset of moments $M' \subset M$
-taking into account the uncertainty of $N$ conditional on $M$.
+In this way we can make inferences % -- for example about the sufficiency of
+% a set of moments, or about the marginal sample distribution --
+that take into account our uncertainty about $N$. We must make sure to
+avoid circularities, though: for example, we cannot assume a set of moments
+$M$ to be sufficient and assess our uncertainty about $N$ conditional on
+it, and then use this uncertainty to assess the sufficiency of $M$. But we
+can approximately assess the sufficiency of a subset of moments
+$M' \subset M$ taking into account the uncertainty of $N$ conditional on
+$M$.
 
 A rigorous assessment would involve a more expensive, full Bayesian
 calculation; but such calculation would make the maximum-entropy

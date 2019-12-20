@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-20T20:13:38+0100
+%% Last-Updated: 2019-12-21T00:40:05+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -742,6 +742,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 
 \newcommand*{\sh}{\mathrm{\varEta}}
 \newcommand*{\nat}{\textrm{nat}}
+\newcommand*{\bit}{\textrm{bit}}
 \newcommand*{\hart}{\textrm{Hart}}
 
 \newsubfloat{figure}
@@ -1465,43 +1466,42 @@ hypotheses.
 \label{sec:marginalization}
 
 As mentioned in the Introduction, in the neurosciences the maximum-entropy
-method has also been used as a way of quantifying the
-\enquote{cooperativity} \citep[\eg][]{gersteinetal1985} or
-\enquote{interaction}
+method has also been used to quantify the \enquote{cooperativity}
+\citep[\eg][]{gersteinetal1985} or \enquote{interaction}
 \citep[\eg][]{martignonetal1995,schneidmanetal2006,shlensetal2006} or
 \enquote{synchrony} \citep[\eg]{bohteetal2000,amarietal2003} of neuronal
 activity. Most, if not all, such applications use the method \emph{at the
-  sample level}, aiming to find a distribution for the sample without
+  sample level}, that is, they find a distribution for the sample without
 considering that it comes from a larger population. In this section we
-discuss how our proposed application bears on this kind of quantification
-and compares with the application at the sample level. We also wish to
-highlight some methodological caveats.% For concreteness we use an
+discuss how our proposed application to a larger population bears on this
+kind of quantification and compares with the application at the sample
+level. %We also highlight some methodological caveats.% For concreteness we use an
 % example with specific statistics: first and second moments (equivalent to
 % mean and correlations), versus first-to-fourth moments. But our
 % discussion holds for any sets of statistics.
 
 \bigskip
 
-As a first step we need to translate vague terms like
-\enquote{cooperativity}, \enquote{interaction}, and similar into a more
-precise, operational \citep[\cf][\chap~I]{bridgman1927_r1958} notion. Here
-we propose the notion of \emph{informational sufficiency}, because
+As a first step, terms like \enquote{cooperativity}, \enquote{interaction},
+and similar need to be translated into a more precise, operational
+\citep[\cf][\chap~I]{bridgman1927_r1958} notion. Here we propose the notion
+of \emph{informational sufficiency}, because
 \begin{enumerate*}[label=(\roman*)]
 \item it seems closely related to those terms as used in the
   literature; \item it is mathematically connected with maximum-entropy
   distributions; \item it reveals important consequences of sampling.
 \end{enumerate*}
-Its meaning and the three points above will now be illustrated. For an
-extensive discussion of this notion, probably first suggested by Kullback
-\amp\ Leibler \parencite*{kullbacketal1951}, see Bernardo \etal\
+Its meaning will now be briefly explained. For an extensive discussion of
+this notion, which was probably first suggested by Kullback \amp\ Leibler
+\parencite*{kullbacketal1951}, see Bernardo \etal\
 \parencite*[\sect~4.5]{bernardoetal1994} and Jaynes \parencite*[\chap~8 and
 \sect~14.2]{jaynes1994_r2003}.
 
 Our belief distribution about the frequencies of the neuronal activities,
-or about the activity in a new time bin, is in principle conditional on all
-experimental data and statistics we have. This distribution, however, can
-be such that it remains unchanged if we discard part of the data or
-statistics -- for example, the third- and higher-order empirical moments. % --
+or about the activity in a new time bin, is conditional on all experimental
+data and statistics we have collected. This distribution, however, can be such that
+it remains unchanged if we discard part of the data or statistics -- for
+example, the third- and higher-order empirical moments. % --
 % but it does change if we discard more.
 This means that the discarded statistics are \emph{informationally
   irrelevant}: knowing them does not change our beliefs. The remaining
@@ -1511,13 +1511,12 @@ statistics -- in the example, first and second empirical moments -- are
 % This informational quasi-sufficiency is interesting because
 % it may give clues about population organization and dynamics.
 
-Now let us turn the informational sufficiency of a subset of statistics and
-the informational sufficiency of another subset into two hypotheses. We can
-then ask: which hypothesis is more probable, given the data? equivalently,
-what is the ratio of their probabilities? By translating our question about
-\enquote{cooperativity} into a hypothesis-testing problem about sufficiency,
-we can find a well-defined answer determined by the
-probability-calculus. % The ratio of
+Now let us turn the informational sufficiencies of two different subsets of
+statistics into two hypotheses. We can then ask: which hypothesis is more
+probable, given the data? equivalently, what is the ratio of their
+probabilities? By translating our question about \enquote{cooperativity}
+into a hypothesis-testing problem about sufficiency, we can find a
+well-defined answer determined by the probability-calculus. % The ratio of
 % the two probabilities gives us a natural measure of the
 % For example, do
 % the data say that the first two empirical moments are probably enough to
@@ -1536,12 +1535,12 @@ maximum-entropy distributions: \emph{if a probability distribution for a
 % Thus, maximum-entropy distributions automatically appear (as
 % approximations) from the probability-calculus when we test hypotheses
 % about informational sufficiency.
-Its most important consequence is that, by Bayes's formula, the probability
-that some statistics are informationally sufficient can be approximated by
-finding the maximum-entropy distribution constrained by those statistics
-and then calculating the probability for the whole data under that
-distribution. We shall shortly illustrate this kind of calculation for the
-first data set.
+The most important consequence of this theorem is that, by Bayes's formula,
+the probability that some statistics are informationally sufficient can
+approximately be found by first building the maximum-entropy distribution
+constrained by those statistics, and then calculating the probability for
+the whole data under that distribution. We shall shortly illustrate this
+procedure with the data sets of \sect~\ref{sec:application}.
 
 % For probabilities built with the maximum-entropy method, this means
 % comparing those constrained on the subset and on the full set. This
@@ -1552,15 +1551,14 @@ first data set.
 
 \medskip
 
-The theorem above makes it very natural to reinterpret studies about
-cooperativity, interaction, and similar, based on maximum-entropy, as
-studies about informational sufficiency. An important fact must then be
-taken into account: \emph{informational sufficiency is not preserved under
-  sampling}. If a probability distribution has some sufficient statistics,
-then its sample marginals \emph{cannot} have the same sufficient
-statistics, and vice versa \citep[\sect~3.1]{portamanaetal2015}; except for
-trivial cases such as uniform probability
-distributions. % This generally holds also among
+Owing to the theorem above, studies about cooperativity (and similar ideas)
+that use maximum-entropy can be naturally reinterpreted as studies about
+informational sufficiency. An important fact must then be taken into
+account: \emph{informational sufficiency is not preserved under sampling}.
+If a probability distribution has some sufficient statistics, then its
+sample marginals \emph{cannot} have the same sufficient statistics, and
+vice versa \citep[\sect~3.1]{portamanaetal2015}; except for trivial cases
+(\eg\ uniform probability distributions). % This generally holds also among
 % different marginals: if a statistics is sufficient for some marginal, then
 % it will not be sufficient for another marginal.
 This impossibility is known in another guise in statistical mechanics: if a
@@ -1572,29 +1570,28 @@ therein]{maesetal1999}. % Mathematically this impossibility comes from the
 % equations than unknowns .
 
 This fact affects the interpretation of the results obtained from
-maximum-entropy distributions. For example, if means and pairwise correlations
-seem informationally sufficient for a particular sample from a brain area,
-then they are probably not sufficient for the larger population of neurons
-constituting that area, and vice versa. If we are interested in the
+maximum-entropy distributions. For example, if means and pairwise
+correlations seem informationally sufficient for a sample from a brain
+area, then they are probably not sufficient for the larger population of
+neurons constituting that area, and vice versa. If we are interested in the
 cooperativity of the neurons in a brain area, it is therefore unreliable to
 use a maximum-entropy distribution constructed only for a sample
 thereof. % \citep[contrast this with some literature, \eg][]{martignonetal1995,bohteetal2000,schneidmanetal2006,shlensetal2006,barreiroetal2010,ganmoretal2011,granotatedgietal2013}
-The model presented here avoids this problem because the maximum-entropy
-method is applied directly to the larger population, not to the sample
-alone.
+The model presented here avoids this problem because it targets the larger
+population, not the sample alone.
 
 \bigskip
 
 
-We compare the informational sufficiency between of a set of moments, say
+We can compare the informational sufficiency between of a set of moments, say
 $M''\defd\set{1,\dotsc,m''}$, with respect to another, say
 $M'\defd \set{1,\dotsc,m'}$, by introducing the quantity $\ydi(M'',M')$
 defined as follows:
 \begin{enumerate}[label=(\roman*)]
 \item From each maximum-entropy distribution $\px(\yA \| M,N)$ for the
-  larger population, built from each set of constraints $M=M',M''$,
-  calculate the marginal distribution for the sample by
-  \eqn~\eqref{eq:conditional_hypergeometric_t}:
+  larger population, \eqn~\eqref{eq:app_maxent_pop_first}, built from each
+  set of constraints $M=M',M''$, calculate the marginal distribution for
+  the sample by \eqn~\eqref{eq:conditional_hypergeometric_t}:
 \begin{equation}
   \label{eq:sample_marginal}
   \pxx(\ya \| M, N) = \sum_{\yA}\yG_{\ya \yA}\px(\yA \| M,N),
@@ -1647,37 +1644,15 @@ on the sufficiency of $M'$. We can also combine this measure with pre-data
 probabilities for the two hypotheses to obtain the ratio of their
 probabilities conditional on the data \citep[\cf][]{bretthorst2013}.
 
-% NUMERICAL RESULTS
-%
-% relentropies of sample2mom, sample4mom, sample5mom, marg2mom, marg4mom, marg5mom
-% -322.72,-42.8005,-39.4917,-85.7626,-4.23725,-4.20059 nats =
-% -1401.56,-185.88,-171.51,-372.462,-18.4021,-18.2429 dB
-%
-% difference in relentropies between 4 mom and 2 mom:
-% sample level: 279.92 nats = 1215.68 dB
-% marg level: 81.525 nats =  354.06 dB
-% difference in relentropies between 5 mom and 4 mom:
-% sample level: 3.30882 nats = 14.37 dB
-% marg level: 0.0366623 nats = 0.159223 dB
-% correspond to prob ratios of
-% sample: 3.69524\times 10^{121}, 27.3529
-% marg: 2.5469\times 10^{35}, 1.03734
-% 
-% comparison N vs n:
-% 2 mom: 236.958 nats = 1029.09 dB, 8.11758\times 10^{102}
-% 4 mom: 38.5632 nats = 167.478 dB, 5.59496*10^16
-% 5 mom: 35.2911 nats = 153.267 dB, 2.12185*10^15
-%
-% comparison_ME_sample_full_levels.nb
-%
 
 \bigskip
 
-Let us illustrate the ideas, the remarks, and the quantity defined so far
-with our first data set. Consider for example three sets of constraints
-$M_{2}$, $M_{4}$, $M_{5}$, consisting of the first two, four, five moments;
-and a larger population of size $N=10\,000$. Figure~\ref{fig:plots_2_4mom}
-shows the resulting distributions for the two data sets.
+Let us illustrate the quantity just defined and the previous discussion
+about sufficiency and sampling by using our data sets. Consider for example
+three sets of constraints $M_{2}$, $M_{4}$, $M_{5}$, consisting of the
+first two, four, five moments; and a larger population of size $N=10\,000$.
+Figure~\ref{fig:plots_2_4mom} shows the resulting distributions for the two
+data sets.
 \begin{figure}[!p]
 \centering
 \subcaption[]{\label{fig:plots_2_4mom_a}}%  
@@ -1700,29 +1675,52 @@ modes. On the other hand there is barely any visual difference between the
 distributions based on four and on five (\textcolor{myyellow}{dotted
   yellow}) moments. From these visual differences we immediately conclude
 that two moments are less likely to be informationally sufficient than
-four; but four should almost as likely as five. We shall see that the
-measure~\eqref{eq:measure_suffic} reflects what we immediately see.
+four; but four should be almost as likely as five. We shall see that the
+measure~\eqref{eq:measure_suffic} reflects this swift visual judgement.
 
 Compare these plots with those obtained applying the model at the sample
-level (equivalent to $N=n$). With the $M_{2}$ and $M_{4}$ constraints we
-obtain the distributions partly shown in
-\fig~\ref{fig:comparisons_marginals} as \textcolor{myred}{red empty
-  circles} for two moments, and \textcolor{myblue}{blue empty squares} for
-four moments. The measured frequencies (black triangles) are also shown.
-The two distributions can only be distinguished on a logarithmic scale, and
-only in their tails. It would be difficult to visually assess which is more
-likely to be informationally sufficient.
+level (equivalent to $N=n$) to the first data set. With the $M_{2}$ and
+$M_{4}$ constraints we obtain the distributions partly shown in
+\fig~\ref{fig:comparisons_marginals} for two (\textcolor{myred}{red empty
+  circles}) and four (\textcolor{myblue}{blue empty squares}) moments. The
+measured frequencies (black triangles) are also shown. The two
+distributions can only be distinguished on a logarithmic scale, and only in
+their tails. It would be difficult to visually assess which is more likely
+to be informationally sufficient.
 
 \medskip
 
+% NUMERICAL RESULTS
+%
+% relentropies of sample2mom, sample4mom, sample5mom, marg2mom, marg4mom, marg5mom
+% -322.72,-42.8005,-39.4917,-85.7626,-4.23725,-4.20059 nats =
+% -1401.56,-185.88,-171.51,-372.462,-18.4021,-18.2429 dB
+%
+% difference in relentropies between 4 mom and 2 mom:
+%** sample level: 279.92 nats = 403.839 bit = 1215.68 dB
+%** marg level: 81.525 nats =  117.616 bit = 354.06 dB
+% difference in relentropies between 5 mom and 4 mom:
+%** sample level: 3.30882 nats = 4.77362 bit = 14.37 dB
+%** marg level: 0.0366623 nats = 0.0543836 bit = 0.159223 dB
+% correspond to prob ratios of
+% sample: 3.69524\times 10^{121}, 27.3529
+% marg: 2.5469\times 10^{35}, 1.03734
+% 
+% comparison N vs n:
+% 2 mom: 236.958 nats = 341.858 bit = 1029.09 dB, 8.11758\times 10^{102}
+% 4 mom: 38.5632 nats = 55.635 bit = 167.478 dB, 5.59496*10^16
+% 5 mom: 35.2911 nats = 50.9157 bit = 153.267 dB, 2.12185*10^15
+%
+% comparison_ME_sample_full_levels.nb
+%
 Calculation of the weight of evidence~\eqref{eq:measure_suffic} for the
 first data set and $N=10\,000$, corresponding to
 \fig~\ref{fig:plots_2_4mom_a}, leads to the following results:
 \begin{equation}
   \label{eq:diff_suff_N}
   \begin{split}
-  \ydi_{N}(M_{4},M_{2}) &= 81\;\nat = 35\;\hart,
-\\    \ydi_{N}(M_{5},M_{4}) &= 0.037\;\nat = 0.016\;\hart,
+  \ydi_{N}(M_{4},M_{2}) &= 118\;\bit \equiv 35\;\hart,
+\\    \ydi_{N}(M_{5},M_{4}) &= 0.054\;\bit \equiv 0.016\;\hart,
   \end{split}
 \end{equation}
 where the Hartley ($\hart$) denotes base-10 logarithms
@@ -1741,16 +1739,16 @@ evidence are
 \begin{equation}
   \label{eq:diff_suff_n}
   \begin{split}
-  \ydi_{n}(M_{4},M_{2}) &= 280\;\nat = 1\,220\;\hart,
-\\    \ydi_{n}(M_{5},M_{4}) &= 3.3\;\nat = 1.4\;\hart.
+  \ydi_{n}(M_{4},M_{2}) &= 400\;\bit = 120\;\hart,
+\\    \ydi_{n}(M_{5},M_{4}) &= 4.8\;\bit = 1.4\;\hart.
 \end{split}
 \end{equation}
-So the application at the sample level says that the data are 1\,220 orders
-of magnitude more probable conditional on four moments than conditional on
-two, and $10^{1.4}=25$ times more probable conditional on five moments than
-on four moments. These results are different from the ones obtained from
-the larger population, and they would be hard to deduce visually from a
-look at the distributions of \fig~\ref{fig:comparisons_marginals}.
+So the application at the sample level says that the data are 120 orders of
+magnitude more probable conditional on $M_{4}$ than on $M_{2}$, and
+$10^{1.4}=25$ times more probable conditional on $M_{5}$ than on $M_{4}$.
+These results are different from those of the application at the larger
+population, and they would be hard to deduce visually from the
+distributions of \fig~\ref{fig:comparisons_marginals}.
 
 
 
@@ -1785,7 +1783,7 @@ look at the distributions of \fig~\ref{fig:comparisons_marginals}.
 % 4 mom: 38.5632 nats = 167.478 dB, 5.59496*10^16
 % 5 mom: 35.2911 nats = 153.267 dB, 2.12185*10^15
 
-It is in fact possible to use the measure~\eqref{eq:measure_suffic} and its
+It is possible to use the measure~\eqref{eq:measure_suffic} and its
 probabilistic interpretation~\eqref{eq:bayes_factor} to compare the
 probability of the data $\yf$ conditional on the hypothesis $(M_{4},N)$ of
 four-moment sufficiency at the larger-population level, $N=10\,000$, versus
@@ -1793,7 +1791,7 @@ the hypothesis $(M_{4}, n)$ of four-moment sufficiency at the sample level,
 $N=n=65$. We obtain
 \begin{equation}
   \label{eq:diff_suff_n}
-  \ydi[(M_{4}, N), (M_{4}, n)] = 39\;\nat = 17\;\hart.
+  \ydi[(M_{4}, N), (M_{4}, n)] = 56\;\bit = 17\;\hart.
 \end{equation}
 % that is, the data are 17 orders of magnitude more probable under the first
 % hypothesis than under the second. 
@@ -1889,7 +1887,7 @@ sample-level distribution (\textcolor{myblue}{blue empty squares}).
 % maxent_solutions_different_moments_prior2_6moments.nb
 
 The calculations and conclusions presented in the preceding sections depend
-on the size $N$ of the larger population. The larger population can't be
+on the size $N$ of the larger population. The larger population cannot be
 the whole brain, of course. How large should or can $N$ be in our formulae?
 
 The crucial point is our belief distribution for the activity of the sample
@@ -1907,19 +1905,18 @@ moments~\eqref{eq:equal_m_factorialmoments}, on which our model rests. This
 conditional probability, characteristic of \enquote{drawing without
   replacement}
 \citep[\eg][\chap~3]{jaynes1994_r2003}, % [\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}
-ensues when our degree of belief that the $i$th unit (ball or neuron) will
-be drawn has the same value for all $i \in \set{1,\dotsc,N}$. Thus,
-consider the pool of all neurons which we believe -- with equal degree for
-each neuron -- could have been recorded. $N$ is the size of that pool. $N$
-therefore depends on factors such as: the shape, dimensions, and technical
-specifications of the recording probe; the inaccuracy in the insertion of
-the probe, leading for example to slightly different insertion points or
-angles; the density of neurons around the probe. But it also depends on the
-homogeneity of the brain region where the recording was made: if we believe
-that it doesn't matter whether the probe had been inserted in some other
-point of the same brain region, then
-formula~\eqref{eq:conditional_hypergeometric} is appropriate. $N$ can
-therefore only be assessed case by case.
+ensues when we believe, with the same degree, that any of the $N$ units
+(balls or neurons) could be drawn or sampled. Thus, consider the pool of
+all neurons which we believe -- with equal degree for each neuron -- could
+have been recorded. Then $N$ is the size of that pool. $N$ therefore depends on
+factors such as: the shape, dimensions, and technical specifications of the
+recording probe; the inaccuracy in the insertion of the probe, leading for
+example to slightly different insertion points or angles; the density of
+neurons around the probe. But it also depends on the homogeneity of the
+brain region where the recording was made: if we believe that it doesn't
+matter whether the probe had been inserted in some other point of the same
+brain region, then formula~\eqref{eq:conditional_hypergeometric} is
+appropriate. $N$ can therefore only be assessed case by case.
 
 Whether such equal beliefs are justified, or for which sampling procedures
 they can be justified, is the fundamental, deep question of sampling

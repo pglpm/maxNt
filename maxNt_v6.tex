@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-20T11:10:29+0100
+%% Last-Updated: 2019-12-20T20:13:38+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1484,19 +1484,18 @@ highlight some methodological caveats.% For concreteness we use an
 
 As a first step we need to translate vague terms like
 \enquote{cooperativity}, \enquote{interaction}, and similar into a more
-precise, operational \citep[\chap~I]{bridgman1927_r1958} notion. Here we
-propose the notion of \emph{informational sufficiency} (also called
-\enquote{predictive sufficiency})
-\citep{kullbacketal1951}[\sect~4.5]{bernardoetal1994}[\chap~8 and
-\sect~14.2]{jaynes1994_r2003}, because
+precise, operational \citep[\cf][\chap~I]{bridgman1927_r1958} notion. Here
+we propose the notion of \emph{informational sufficiency}, because
 \begin{enumerate*}[label=(\roman*)]
 \item it seems closely related to those terms as used in the
   literature; \item it is mathematically connected with maximum-entropy
   distributions; \item it reveals important consequences of sampling.
 \end{enumerate*}
-Its meaning and the three points above will now be illustrated; please see
-the end of this section for references to in-depth discussions and proofs
-of technical results.
+Its meaning and the three points above will now be illustrated. For an
+extensive discussion of this notion, probably first suggested by Kullback
+\amp\ Leibler \parencite*{kullbacketal1951}, see Bernardo \etal\
+\parencite*[\sect~4.5]{bernardoetal1994} and Jaynes \parencite*[\chap~8 and
+\sect~14.2]{jaynes1994_r2003}.
 
 Our belief distribution about the frequencies of the neuronal activities,
 or about the activity in a new time bin, is in principle conditional on all
@@ -1525,12 +1524,15 @@ probability-calculus. % The ratio of
 % determine our beliefs? or is it more probable that the first four are
 % needed instead?
 
-But such a translation does more: through a mathematical theorem, it leads
-to the automatic appearance of maximum-entropy distributions: \emph{if a
-  probability distribution for a repetitive phenomenon has some sufficient
-  statistics, then it is a mixture of distributions of maximum-entropy form
-  having those statistics as constraints, and vice versa}. See the end of
-this section for detailed references about this theorem.
+But such a translation does more: through a mathematical theorem \citep[and
+references therein]{andersen1970}[this theorem was first proved for
+continuous probability distributions
+by][]{koopman1936,pitman1936,darmois1935}[see][\sect~4.5.3 for further
+references]{bernardoetal1994}, it leads to the automatic appearance of
+maximum-entropy distributions: \emph{if a probability distribution for a
+  repetitive phenomenon has some sufficient statistics, then it is a
+  mixture of distributions of maximum-entropy form having those statistics
+  as constraints, and vice versa}. 
 % Thus, maximum-entropy distributions automatically appear (as
 % approximations) from the probability-calculus when we test hypotheses
 % about informational sufficiency.
@@ -1806,27 +1808,28 @@ sample-level distribution (\textcolor{myblue}{blue empty squares}).
 
 \bigskip
 
-We close this section with some references. The notion of informational or
-predictive sufficiency, probably first presented by Kullback \amp\ Leibler
-\parencite*{kullbacketal1951}, is discussed in Bernardo \etal\
-\parencite*[\sect~4.5]{bernardoetal1994}, who explain its connections with
-Fisher's\parencite*{fisher1922} parametric sufficiency. Jaynes
-\parencite*[\chap~8 and \sect~14.2] shows the connections with information
-theory. The mathematical relation between sufficiency and the exponential
-family comes from the Pitman-Koopman
-theorem \citep{koopman1936,pitman1936,darmois1935} for continuous variables.
+% We close this section with some references. The notion of informational or
+% predictive sufficiency, probably first presented by Kullback \amp\ Leibler
+% \parencite*{kullbacketal1951}, is discussed in Bernardo \etal\
+% \parencite*[\sect~4.5]{bernardoetal1994}, who explain its connections with
+% Fisher's\parencite*{fisher1922} parametric sufficiency. Jaynes
+% \parencite*[\chap~8 and \sect~14.2] shows the connections with information
+% theory. The mathematical relation between sufficiency and the exponential
+% family comes from the Pitman-Koopman
+% theorem \citep{koopman1936,pitman1936,darmois1935} for continuous variables.
 
 
-\mynote{Short reasoned bibliography about sufficient statistics and its
-  relation to maximum-entropy?} blah blah \footnote{For more technical results and
-  connections with the notion of symmetry see \eg\
-  \cite{darmois1935,neyman1935,koopman1936,pitman1936,halmosetal1949,bahadur1954,berk1972,lauritzen1974,lauritzen1982_r1988,lauritzen2007,cifarellietal1980,cifarellietal1981,diaconisetal1981,diaconis1992,furmanczyketal1998,fortinietal2000,nogalesetal2000,kallenberg2005,ayetal2015}.}
-This mathematical result comes from the Pitman-Koopman
-theorem\citep{cifarellietal1982,kullbacketal1951}[the
-notion goes back to][]{fisher1922} \citep{jaynes1982b}[\sect~4.5.4]{bernardoetal1994}
-\citep{koopman1936,pitman1936,darmois1935}[for later analyses and the
-discrete case
-see][]{hipp1974,andersen1970,denny1967,denny1972,fraser1963,barankinetal1963,barndorffnielsen1978_r2014}
+% \mynote{Short reasoned bibliography about sufficient statistics and its
+%   relation to maximum-entropy?} blah blah \footnote{For more technical results and
+%   connections with the notion of symmetry see \eg\
+%   \cite{darmois1935,neyman1935,koopman1936,pitman1936,halmosetal1949,bahadur1954,berk1972,lauritzen1974,lauritzen1982_r1988,lauritzen2007,cifarellietal1980,cifarellietal1981,diaconisetal1981,diaconis1992,furmanczyketal1998,fortinietal2000,nogalesetal2000,kallenberg2005,ayetal2015}.}
+% This mathematical result comes from the Pitman-Koopman
+% theorem\citep{kullbacketal1951}[the
+% notion goes back to][]{fisher1922} \citep{jaynes1982b}[\sect~4.5.4]{bernardoetal1994}
+% \citep{koopman1936,pitman1936,darmois1935}[for later analyses and the
+% discrete case
+% see][]{andersen1970,%discrete
+% denny1967,denny1972}
 
 
 
@@ -1903,7 +1906,7 @@ This distribution leads to the equality of factorial
 moments~\eqref{eq:equal_m_factorialmoments}, on which our model rests. This
 conditional probability, characteristic of \enquote{drawing without
   replacement}
-\citep[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968},
+\citep[\eg][\chap~3]{jaynes1994_r2003}, % [\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}
 ensues when our degree of belief that the $i$th unit (ball or neuron) will
 be drawn has the same value for all $i \in \set{1,\dotsc,N}$. Thus,
 consider the pool of all neurons which we believe -- with equal degree for
@@ -1920,14 +1923,14 @@ therefore only be assessed case by case.
 
 Whether such equal beliefs are justified, or for which sampling procedures
 they can be justified, is the fundamental, deep question of sampling
-theory, which we cannot discuss here \citep[see \eg\ the discussions,
-reviews, and references
-in][]{ericson1969,smith1976,kruskaletal1979c,kruskaletal1980}. It is of
-course possible to probabilistically assess, case by case, whether this
-equality assumption is appropriate. But we must also be aware that such
-assessment in turn rests on analogous assumptions at a higher level, and so
-on. The probability-calculus, just like the truth-calculus, cannot yield
-conclusions without premisses \citep[p.~182]{johnson1924}.
+theory, which we cannot discuss here \citep[see \eg\ the discussions and
+references
+in][]{ericson1969,smith1976}. % {kruskaletal1979c,kruskaletal1980}
+It is of course possible to probabilistically assess, case by case, whether
+this equality assumption is appropriate. But we must also be aware that
+such assessment in turn rests on analogous assumptions at a higher level,
+and so on. The probability-calculus, just like the truth-calculus, cannot
+yield conclusions without premisses \citep{hailperin2011}[p.~182]{johnson1924}.
 
 Luckily the plots of \fig~\ref{fig:plots_5mom} suggest that the order of
 magnitude of $N$ ought to be enough for qualitative inferences. As
@@ -2030,7 +2033,10 @@ in statistical physics is meant to be used not with this assumption, but
 with averages across \emph{repetitions} of the same experiment, because its
 constraints represent macroscopically \emph{reproducible} quantities and
 kinematics, even in non-equilibrium
-\citep{jaynes1957,guntonetal1983,tikochinskyetal1984,grandy1988,berryetal1988,deroecketal2005_r2006,touchette2009}.
+\citep{jaynes1985b_r1996,%jaynes1957,%tikochinskyetal1984,
+grandy1988,%berryetal1988,
+deroecketal2005_r2006%,touchette2009
+}[for experiments \eg][]{guntonetal1983}.
 
 The second assumption, typical of maximum-entropy in general, concerns the
 form of the probability distribution for the long-run frequencies ensuing
@@ -2285,11 +2291,10 @@ given by the hypergeometric distribution
 \equiv  \binom{n}{\ya}\binom{N-n}{\yA-\ya}\binom{N}{\yA}^{-1}
 \end{equation}
 typical of \enquote{drawing without replacement}
-\citep[\chap~3]{jaynes1994_r2003}[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}[\sects~2.1,
-3.2]{jeffreys1939_r1983}. In the following we leave $n$, $N$ implicit in
-the conditional. If we are uncertain about the number $\yA$, with belief
-$P(\yA)$, then by the theorem of total probability our belief about $\ya$
-is
+\citep[\eg][\chap~3]{jaynes1994_r2003}. %[\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}[\sects~2.1, 3.2]{jeffreys1939_r1983}.
+In the following we leave $n$, $N$ implicit in the conditional. If we are
+uncertain about the number $\yA$, with belief $P(\yA)$, then by the theorem
+of total probability our belief about $\ya$ is
 \begin{equation}
   \label{eq:belief_sample_unknown_A}
   p(\ya)= \sum_{\yA} \yG_{\ya\yA} \;P(\yA).
@@ -2300,20 +2305,20 @@ moment~\eqref{eq:def_factorial_moment_a}, the expression for the
 hypergeometric distribution~\eqref{eq:conditional_hypergeometric}, and the
 relation~\eqref{eq:belief_sample_unknown_A} between our beliefs about $\ya$
 and $\yA$, and using some combinatorial juggling
-\citep[\chaps~I--IV]{whitworth1867_r1965}[\chap~II]{feller1950_r1968}[appendix~A]{portamanaetal2015}{potts1953}, one
-can prove the equality~\eqref{eq:equal_m_factorialmoments} between the
-factorial moments of sample and larger population.
+\citep%[\chaps~I--IV]{whitworth1867_r1965}[\chap~II]{feller1950_r1968}
+[appendix~A and references therein]{portamanaetal2015}, one can prove the
+equality~\eqref{eq:equal_m_factorialmoments} between the factorial moments
+of sample and larger population.
 
 \bigskip
 
 For the construction of a maximum-entropy distribution from generic
 expectation constraints see Jaynes
-\citey{jaynes1963}[\chap~11]{jaynes1994_r2003}. More precisely we use the
-minimum relative-entropy method
-\citep{hobsonetal1973,csiszar1985}[\sect~5.2.2]{sivia1996_r2006} with
-respect to a reference distribution. For the solution of the extremization
-problem using Lagrangians and Lagrange multipliers see Mead \etal\
-\citey{meadetal1984} and the extensive texts by Fang \etal\
+\citey{jaynes1963}[\chap~11]{jaynes1994_r2003}, and Hobson \etal\
+\citey{hobsonetal1973} and Sivia \citey[\sect~5.2.2]{sivia1996_r2006} for
+the minimum-relative-entropy construction. For the solution of the
+extremization problem using Lagrangians and Lagrange multipliers see Mead
+\etal\ \citey{meadetal1984} and the extensive texts by Fang \etal\
 \citey{fangetal1997} and Boyd \etal\ \citey{boydetal2004_r2009}. For a
 geometric understanding of the extremization and of the relation between
 expectations and multipliers see Porta Mana \citey{portamana2017b}.
@@ -2436,10 +2441,10 @@ and approximations discussed in \sect~\ref{sec:assumptions}. We indicate
 them all collectively with $\yI$.
 
 The first assumption, of infinite exchangeability
-\citep[\chap~4]{bernardoetal1994_r2000}{dawid2013} of the probability
-distribution $\pf[(\yA_{1},\dotsc, \yA_{T}) \| \yI]$ for the sequence of
-activities, implies the following mixture form by de~Finetti's theorem
-\citep{definetti1930,hewittetal1955}:
+\citep[\chap~4]{bernardoetal1994_r2000}{dawid2013%cifarellietal1982
+} of the probability distribution $\pf[(\yA_{1},\dotsc, \yA_{T}) \| \yI]$
+for the sequence of activities, implies the following mixture form by
+de~Finetti's theorem \citep{definetti1930,hewittetal1955}:
 \begin{equation}
   \label{eq:mixture_from_definetti}
 %  \exp[-T\;\sh(\yF;\ynu)] \quad

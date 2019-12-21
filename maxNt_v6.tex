@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-21T11:22:03+0100
+%% Last-Updated: 2019-12-21T21:36:19+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1679,14 +1679,15 @@ four; but four should be almost as likely as five. We shall see that the
 measure~\eqref{eq:measure_suffic} reflects this swift visual judgement.
 
 Compare these plots with those obtained applying the model at the sample
-level (equivalent to $N=n$) to the first data set. With the $M_{2}$ and
-$M_{4}$ constraints we obtain the distributions partly shown in
-\fig~\ref{fig:comparisons_marginals} for two (\textcolor{myred}{red empty
-  circles}) and four (\textcolor{myblue}{blue empty squares}) moments. The
-measured frequencies (black triangles) are also shown. The two
-distributions can only be distinguished on a logarithmic scale, and only in
-their tails. It would be difficult to visually assess which is more likely
-to be informationally sufficient.
+level (equivalent to $N=n$) to the first data set, shown in
+\fig~\ref{fig:comparisons_marginals}. The distributions based on two
+(\textcolor{myred}{red circles}), four (\textcolor{myblue}{blue empty
+  squares}), and five (\textcolor{myyellow}{yellow lozenges}) moments can
+only be distinguished on a logarithmic scale, and only in their tails. The
+measured frequencies (black triangles) are also shown. Two moments seem
+slightly less likely to be sufficient than four; and four and five moment
+seem about equally likely. But it is difficult to visually make these
+comparisons.
 
 \medskip
 
@@ -1768,7 +1769,7 @@ distributions of \fig~\ref{fig:comparisons_marginals}.
 \centering
 % \includegraphics[width=\linewidth]{_scripts/comparison_full.pdf}%
 % \\[3em]%
-\includegraphics[width=0.95\linewidth]{_scripts/trunct_comparison_marginals.pdf}%
+\includegraphics[width=0.95\linewidth]{_scripts/trunct2_comparison_marginals.pdf}%
 \caption{Marginals for the normalized total activity of the sample,
   obtained from the maximum-entropy distributions with $N=10\,000$ from
   \fig~\ref{fig:plots_2_4mom_a}, and from maximum-entropy distributions
@@ -1785,15 +1786,15 @@ distributions of \fig~\ref{fig:comparisons_marginals}.
 
 It is possible to use the measure~\eqref{eq:measure_suffic} and its
 probabilistic interpretation~\eqref{eq:bayes_factor} to compare the
-probability of the data $\yf$ conditional on the hypothesis $(M_{4},N)$ of
+probability of the data $\yf$ conditional on the hypothesis $(M_{5},N)$ of
 four-moment sufficiency at the larger-population level, $N=10\,000$, versus
-the hypothesis $(M_{4}, n)$ of four-moment sufficiency at the sample level,
+the hypothesis $(M_{5}, n)$ of four-moment sufficiency at the sample level,
 $N=n=65$. We obtain
 \begin{equation}
   \label{eq:diff_suff_n}
-  \ydi[(M_{4}, N), (M_{4}, n)] = 56\;\bit \equiv 17\;\hart.
+  \ydi[(M_{5}, N), (M_{5}, n)] = 51\;\bit \equiv 15\;\hart.
 \end{equation}
-% that is, the data are 17 orders of magnitude more probable under the first
+% that is, the data are 15 orders of magnitude more probable under the first
 % hypothesis than under the second. 
 This result is also shown in
 \fig~\ref{fig:comparisons_marginals}. We see that the four-moment

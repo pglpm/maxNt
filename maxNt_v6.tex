@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-21T00:46:31+0100
+%% Last-Updated: 2019-12-21T11:22:03+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -480,7 +480,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \displaywidowpenalty=1602
 \raggedbottom
 
-%\paragraphfootnotes\setlength{\footmarkwidth}{0em}
+\paragraphfootnotes\setlength{\footmarkwidth}{1em}
 %\twocolumnfootnotes
 %\setlength{\footmarksep}{0em}
 \footmarkstyle{\textsuperscript{%\color{myred}
@@ -1739,8 +1739,8 @@ evidence are
 \begin{equation}
   \label{eq:diff_suff_n}
   \begin{split}
-  \ydi_{n}(M_{4},M_{2}) &= 400\;\bit = 120\;\hart,
-\\    \ydi_{n}(M_{5},M_{4}) &= 4.8\;\bit = 1.4\;\hart.
+  \ydi_{n}(M_{4},M_{2}) &= 400\;\bit \equiv 120\;\hart,
+\\    \ydi_{n}(M_{5},M_{4}) &= 4.8\;\bit \equiv 1.4\;\hart.
 \end{split}
 \end{equation}
 So the application at the sample level says that the data are 120 orders of
@@ -1791,7 +1791,7 @@ the hypothesis $(M_{4}, n)$ of four-moment sufficiency at the sample level,
 $N=n=65$. We obtain
 \begin{equation}
   \label{eq:diff_suff_n}
-  \ydi[(M_{4}, N), (M_{4}, n)] = 56\;\bit = 17\;\hart.
+  \ydi[(M_{4}, N), (M_{4}, n)] = 56\;\bit \equiv 17\;\hart.
 \end{equation}
 % that is, the data are 17 orders of magnitude more probable under the first
 % hypothesis than under the second. 
@@ -2015,7 +2015,7 @@ probabilistic approach. We summarize them here, leaving a more mathematical
 sketch to appendix~\ref{sec:inference_prob}.
 
 The first and most important assumption, typical of this kind of
-maximum-entropy application in neuroscience, can be expressed in two
+maximum-entropy application in the neurosciences, can be expressed in two
 equivalent ways:
 \begin{enumerate*}[(\roman*)]
   % \item the order of the time bins has no relevance;

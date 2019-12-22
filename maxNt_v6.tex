@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-22T00:23:26+0100
+%% Last-Updated: 2019-12-22T15:04:32+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1897,9 +1897,9 @@ sample-level distribution (\textcolor{myyellow}{yellow lozenges}).
 % 
 % maxent_solutions_different_moments_prior2_6moments.nb
 
-The calculations and conclusions presented in the preceding sections depend
-on the size $N$ of the larger population. The larger population cannot be
-the whole brain, of course. How large should or can $N$ be in our formulae?
+The calculations presented in the preceding sections depend on the size $N$
+of the larger population, which of course cannot be the whole brain. How
+large should or can $N$ be in our formulae?
 
 The crucial point is our belief distribution for the activity of the sample
 \emph{conditional} on the activity of the larger population. It is given by
@@ -1918,30 +1918,31 @@ conditional probability, characteristic of \enquote{drawing without
 \citep[\eg][\chap~3]{jaynes1994_r2003}, % [\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}
 ensues when we believe, with the same degree, that any of the $N$ units
 (balls or neurons) could be drawn or sampled. Thus, consider the pool of
-all neurons which we believe -- with equal degree for each neuron -- could
-have been recorded. Then $N$ is the size of that pool. $N$ therefore depends on
-factors such as: the shape, dimensions, and technical specifications of the
-recording probe; the inaccuracy in the insertion of the probe, leading for
-example to slightly different insertion points or angles; the density of
-neurons around the probe. But it also depends on the homogeneity of the
-brain region where the recording was made: if we believe that it doesn't
-matter whether the probe had been inserted in some other point of the same
-brain region, then formula~\eqref{eq:conditional_hypergeometric} is
-appropriate. $N$ can therefore only be assessed case by case.
+all neurons which we believe -- with equal degree of belief for each neuron
+-- could have been recorded. Then $N$ is the size of that pool. $N$
+therefore depends on factors such as: the shape, dimensions, and technical
+specifications of the recording probe; the inaccuracy in the insertion of
+the probe, leading for example to slightly different insertion points or
+angles; the density of neurons around the probe. But it also depends on the
+homogeneity of the brain region where the recording is made: if we believe
+that it does not matter whether the probe had been inserted in some other
+point of the same brain region, then
+formula~\eqref{eq:conditional_hypergeometric} is appropriate. $N$ can
+therefore only be assessed case by case.
 
-Whether such equal beliefs are justified, or for which sampling procedures
+Whether such symmetric beliefs are justified, or for which sampling procedures
 they can be justified, is the fundamental, deep question of sampling
 theory, which we cannot discuss here \citep[see \eg\ the discussions and
 references
 in][]{ericson1969,smith1976}. % {kruskaletal1979c,kruskaletal1980}
 It is of course possible to probabilistically assess, case by case, whether
-this equality assumption is appropriate. But we must also be aware that
-such assessment in turn rests on analogous assumptions at a higher level,
+this symmetry assumption is appropriate. But we must also be aware that
+such assessment in turn rests on analogous symmetry assumptions at a higher level,
 and so on. The probability-calculus, just like the truth-calculus, cannot
 yield conclusions without premisses \citep{hailperin2011}[p.~182]{johnson1924}.
 
-Luckily the plots of \fig~\ref{fig:plots_5mom} suggest that the order of
-magnitude of $N$ ought to be enough for qualitative inferences. As
+The plots of \fig~\ref{fig:plots_5mom} nevertheless suggest that the order
+of magnitude of $N$ ought to be enough for qualitative inferences. As
 discussed in the next section, even if the exact number $N$ were known, the
 maximum-entropy distribution ought to be interpreted qualitatively or
 semi-quantitatively.
@@ -1957,7 +1958,7 @@ size $N$ is the exponential of the negative relative
 entropy~\eqref{eq:relentropy_T}:
 \begin{equation}
   \label{eq:prob_data_from_N}
-  \pf(\yf \| M, N) = \binom{T}{T\yf}\;\prod_{a}\pxx(\ya \| M, N)^{T\,\yff_{a}}
+  \pf(\yf \| M, N) \approx \binom{T}{T\yf}\;\prod_{a}\pxx(\ya \| M, N)^{T\,\yff_{a}}
   \approx \exp\bigl\{  -T\,\sh[\yf; \pxx(\ya \| M, N)]\bigr\}.
 \end{equation}
 If our pre-data probability for $N$ is $p(N)$, then by Bayes's theorem
@@ -1968,7 +1969,7 @@ If our pre-data probability for $N$ is $p(N)$, then by Bayes's theorem
 \end{equation}
 
 Here is an illustrative example with our first data set. Suppose our
-uncertainty spans slightly more than an order of magnitude, from $N=1\,000$
+uncertainty spans slightly more than one order of magnitude, from $N=1\,000$
 to $N=20\,000$. Divide this range roughly into thirds of order of
 magnitude, considering the values
 $N\in \set{1\,000, 2\,000, 5\,000, 10\,000, 20\,000}$. Assuming the set $M$
@@ -2004,7 +2005,7 @@ which gives a slightly higher probability to $N=10\,000$.
 In this way we can make inferences % -- for example about the sufficiency of
 % a set of moments, or about the marginal sample distribution --
 that take into account our uncertainty about $N$. We must make sure to
-avoid circularities, though: for example, we cannot assume a set of moments
+avoid circularities: for example, we cannot assume a set of moments
 $M$ to be sufficient and assess our uncertainty about $N$ conditional on
 it, and then use this uncertainty to assess the sufficiency of $M$. But we
 can approximately assess the sufficiency of a subset of moments
@@ -2021,7 +2022,7 @@ method superfluous. We discuss this final point in the next section.
 
 The possible uses of the model here presented depend on the assumptions and
 approximations which define it: three main assumptions and two main
-approximation all in all. These become clear within a full-fledged
+approximations all in all. They become clear within a full-fledged
 probabilistic approach. We summarize them here, leaving a more mathematical
 sketch to appendix~\ref{sec:inference_prob}.
 
@@ -2037,32 +2038,36 @@ equivalent ways:
 \end{enumerate*}
 Equating time averages and expectations, \eqn~\eqref{eq:final_constraint},
 would not make sense without this assumption. Its mathematical consequence
-is to relate the probability for the frequency distribution $\yF$ during
-the recording to that of the \emph{long-run} frequency distribution for the
-activities of the larger population. Note that the maximum-entropy method
-in statistical physics is meant to be used not with this assumption, but
-with averages across \emph{repetitions} of the same experiment, because its
-constraints represent macroscopically \emph{reproducible} quantities and
-kinematics, even in non-equilibrium
+is to relate the probability for the frequency distribution $\yF$ for the
+activity of the larger population during the recording, to the probability
+for the \emph{long-run} frequency distribution. In statistical physics, as
+a comparison, the maximum-entropy method is instead used with the
+assumption of permutation-invariance across \emph{repetitions} of the same
+experiment, because its constraints represent macroscopically
+\emph{reproducible} quantities and kinematics, even in non-equilibrium
 \citep{jaynes1985b_r1996,%jaynes1957,%tikochinskyetal1984,
-grandy1988,%berryetal1988,
-deroecketal2005_r2006%,touchette2009
-}[for experiments \eg][]{guntonetal1983}.
+  grandy1988,%berryetal1988,
+  deroecketal2005_r2006%,touchette2009
+}[for experiments \eg][]{guntonetal1983}. The kinetic-Ising models
+mentioned in \sect~\ref{sec:intro} are closer to this latter approach.
 
 The second assumption, typical of maximum-entropy in general, concerns the
-form of the probability distribution for the long-run frequencies ensuing
-from the first assumption. It is taken to be either an \enquote{entropic
-  prior} \citep{skillingetal1984,rodriguez1991,neumann2007}, which takes
-into account the multiplicity of long-run frequencies, or a prior for a
-model with sufficient statistics, which expresses the sufficiency of the
-moments under study \citep{portamana2017}. This assumption is crucial for
-deriving the maximum-entropy based on the Shannon entropy. A different
-density leads to alternative maximum-entropy methods, for example based on
-the Burg entropy \citep{burg1975} if a Dirichlet density is used
+probability distribution for the long-run frequencies ensuing from the
+first assumption \citep[and references therein]{portamana2017}. It is taken
+to be either an \enquote{entropic prior}
+\citep{skillingetal1984,rodriguez1991,neumann2007}, which takes into
+account the multiplicity of long-run frequencies, or a prior for a model
+with sufficient statistics, which expresses the sufficiency of the moments
+under study, according to the theorem discussed in
+\sect~\ref{sec:marginalization}. This assumption is crucial for the
+maximum-entropy method based on the Shannon entropy. Different prior
+densities lead to alternative maximum-entropy methods; for example one
+based on the Burg entropy \citep{burg1975} if a Dirichlet density is used
 \citep{jaynes1986d_r1996}. The entropic prior depends on a reference
 distribution and on a coefficient $L$ which determines the sharpness of the
-prior's peak. The computations of the preceding sections were insensitive
-to the reference distribution in their significant digits. We used three
+prior's peak. The computations of \sects~\ref{sec:application}
+and~\ref{sec:marginalization} were insensitive to the choice of the
+reference distribution in their significant digits. We used three
 biologically reasonable alternatives: a flat distribution, one linearly
 decreasing with $\yA$, and a normal one with a broad peak at low
 activities.
@@ -2071,9 +2076,8 @@ The third assumption is specific to our application: all subsets of $\yA$
 neurons in the larger population are equally likely to give rise to total
 activity $\yA$, at every time bin. A mathematically equivalent assumption
 is that $n$ neurons are sampled anew at each time bin. This assumption
-allows us to factorize the joint probability of the two sequences of
-activities and apply the sampling
-relation~\eqref{eq:conditional_hypergeometric} of
+allows us to factorize the joint probability of the sequence of activities
+and apply the sampling relation~\eqref{eq:conditional_hypergeometric} of
 appendix~\ref{sec:derivation_maxent_fullnet} at each bin.
 
 Finally, the maximum-entropy method is typically equivalent to
@@ -2086,9 +2090,9 @@ at recorded and new time bins. In our application it also leads to the
 equality of the hypergeometric
 distribution~\eqref{eq:conditional_hypergeometric} and the conditional
 frequencies of the sample activity $\ya$ given $\yA$. The goodness of this
-approximation decreases as the ratio between the number of possible joint
-states and the number of bins -- roughly $nN/T$ -- increases, and also as
-observed quantities approach their mathematical bounds, such as some
+approximation decreases as the ratio -- roughly $nN/T$ -- between the
+number of possible joint states and the number of bins increases, and also
+as observed quantities approach their mathematical bounds, for example some
 frequencies $\yff_{\ya}=0$. Without these approximations it is still
 possible to interpret the maximum-entropy
 distribution~\eqref{eq:app_maxent_pop_first} as the mode of the probability
@@ -2100,13 +2104,14 @@ recorded frequency.
 
 The first and third assumptions above are the least realistic, but they
 make sense as reference hypotheses for judging the informational relevance
-of correlations of some order, as in \sect~\ref{sec:marginalization}, to be
-compared with hypotheses about more realistic time dependences and
+of correlations of some order, as discussed in
+\sect~\ref{sec:marginalization}, to be compared with hypotheses about more
+realistic time dependences and
 clustering. %They may turn out to approximate well more realistic assumptions.
 
 The $T= \infty$ approximation can break our model for specific
 distributions of sample frequencies, if too many moments are used. For
-example take $n=2$ with frequency distribution $\yf=(0.5,0,0.5)$ for the
+example, take $n=2$ with frequency distribution $\yf=(0.5,0,0.5)$ for the
 activities $\ya=0,1,2$; that is, the sample is silent half of the time and
 completely active half of the time. The first two normalized factorial
 moments have both value $0.5$, and together they uniquely determine $\yf$.
@@ -2114,41 +2119,38 @@ If we now take $N=3$, it can be proved that
 \eqn~\eqref{eq:app_maxent_pop_first}, constrained on those two moments, has
 no solution. The reason is clear from a sampling perspective: if there is
 zero probability of sampling one active neuron, then the larger population
-cannot have any active neurons, and there must be zero probability of
-sampling two active ones. But this reasoning holds only for each single
-time bin, not for the averages over time bins. The $T=\infty$ approximation
-identifies the two instead. Outside this approximation there are no
-contradictions because the conditional frequencies and conditional
-probabilities are kept distinct.
+cannot have any active neurons at all, and a fortiori there must be zero
+probability of sampling two active ones. But this reasoning holds only for
+each single time bin, not for the averages over time bins. The $T=\infty$
+approximation identifies the two instead. Outside of this approximation
+there are no contradictions because the conditional frequencies and
+conditional probabilities are kept distinct.
 
-The two infinity approximations are at the limit of their validity in our
-examples. For this reason we interpret the distributions as \emph{most
-  probable frequency distributions}, as mentioned at the end of
-\sect~\ref{sec:model}. The space of possible frequency distributions for
-the larger population has $N$ dimensions, however, and probability
-distributions in high dimensions have counter-intuitive properties. For
-example, the mode or mean can have \emph{atypical} features when compared
-with the majority of other probable points of the probability space. The
-question then is \emph{which features of the maximum-entropy frequency
-  distribution are typical of the majority of plausible frequency
-  distributions?} Preliminary studies using a full probability calculation
-(to be published separately) show that several semi-quantitative features
-of the maximum-entropy distribution are indeed typical. For the first data
-set, for example, most frequency distributions have two high-frequency
-regimes of activity, as in \fig~\ref{fig:plots_5mom_a}, with roughly the
-same heights and almost the same locations, within a few percentages of
-population-averaged activity. Each of high-frequency regimes, though, may
-consist of two or three very close modes rather than one. The same
-preliminary studies also indicate that these typical features remain with
-prior choices in the second assumption above, for example using a Dirichlet
-prior instead of an entropic one.
+The two infinity approximations are at the boundary of their validity in
+our examples. For this reason we interpret the maximum-entropy distribution
+as the \emph{most probable frequency distributions}, as mentioned at the
+end of \sect~\ref{sec:model}. An important question, then, is \emph{which
+  features of the maximum-entropy frequency distribution are typical of the
+  majority of plausible frequency distributions?} Especially for features
+such as number, position, height of modes, or tail behaviour. Preliminary
+studies using a full probability calculation (to be published separately)
+show that several semi-quantitative features of the maximum-entropy
+distribution are indeed typical. For the first data set, for example, most
+frequency distributions have two high-frequency regimes of activity, as in
+\fig~\ref{fig:plots_5mom_a}, with roughly the same heights and almost the
+same locations, within a few percentages of population-averaged activity.
+Each of the two high-frequency regimes, though, may consist of two or three
+very close modes rather than one. The same preliminary studies also
+indicate that these typical features are robust for different prior choices
+in the second assumption above, for example using a Dirichlet prior instead
+of an entropic one.
 
 This means that the maximum-entropy approximation presented here can be
 favourably used to get an idea of what a fully probabilistic calculation
-could yield, but with a far lower computational cost. For example, for
-$N=1\,000$ the maximum-entropy distribution can be calculated in ten
-minutes on a laptop, whereas the full probability calculation takes several
-days on a high-performance computing cluster.
+could yield -- but with a far lower computational cost than the latter. For
+example, for $N=1\,000$ the maximum-entropy distribution can be calculated
+in ten minutes on a laptop, whereas the full probability calculation takes
+several days on a high-performance computing cluster.
 
 
 

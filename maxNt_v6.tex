@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2019-12-27T12:18:07+0100
+%% Last-Updated: 2020-01-13T15:39:05+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -845,31 +845,32 @@ brain areas, and pre-data knowledge and hypotheses about biological
 conditions and mechanisms. When we translate such pre-data beliefs into an
 initial probability distribution we often simplify them in more or less
 realistic ways, to make the analysis mathematically tractable. This is why
-such initial probability distributions are called \enquote{models}; and
-that is how we intend this word in the present work.
+such initial probability distributions are called \enquote{(probabilistic)
+  models}; and that is how we intend this word in the present work.
 
 The best experimental measurements of instantaneous neuronal activity use
 remarkable technologies \citep{hongetal2019}, but can still only record a
 very small sample of neurons -- hundreds at most -- compared to the numbers
-that constitute a functionally distinguished brain region. Many
-probabilistic models focus on such samples only: they neglect that the
-recorded neurons are a sample from a larger population. Some probabilistic
-models try to take unrecorded neurons into account, but they do so by
-describing each neuron individually, thus becoming very complex
+that constitute a functionally distinct brain region. Many probabilistic
+models focus on such samples only: they neglect that the recorded neurons
+are a sample from a larger population. Some probabilistic models try to
+take unrecorded neurons into account, but they do so by describing each
+neuron individually, thus becoming very complex
 \citep{pillowetal2008,dunnetal2013,tyrchaetal2014,huang2015,battistinetal2017}.
 It would be useful to explore models that operate in between, addressing
 the activity of the larger brain area whence the sample comes, but
 \emph{collectively}, that is, without asking about individual neuronal
 details. Such intermediate models would be useful at least for preliminary
-investigations, to help us decide which hypotheses to consider or discard
-for more complex and costly models, or to suggest new hypotheses.
+investigations, to help us decide which hypotheses to discard, which to
+consider for a deeper analysis with more complex and costly models, or to
+suggest new hypotheses.
 
 % \mynote{[Yasser:] In the present work we aim to address the issue of
 %   building probability distributions over a large population using
 %   recording from subpopulations by considering the distribution of total
 %   population activity as an example. [} 
 In the present work we propose such an intermediate probabilistic model
-\citep[\cf][]{portamanaetal2015}. It answers this question: how much was
+\citep[\cf][\sect~3]{portamanaetal2015}. It answers this question: how much was
 the \emph{total} activity of a large neuronal population, given the
 observation of the activity of a very small sample thereof? This model
 addresses a larger brain area, avoiding the assumption of isolation of the
@@ -887,9 +888,10 @@ derivation]{hobsonetal1973}[for applications]{sivia1996_r2006}
 %[see also][for applications to irreversible statistical mechanics]{grandy1980}
 to build initial probability distributions has been used in the
 neurosciences for different kinds of investigations about the neuronal
-activity of various brain areas and about other phenomena of importance,
-for example gene and protein interaction
-\citep[]{martignonetal1995,bohteetal2000,shlensetal2006,schneidmanetal2006,tkaciketal2006,roudietal2009c,barreiroetal2010,shimazakietal2015,moraetal2015,lezonetal2006,weigtetal2009}[for
+activity of various brain areas and about other phenomena of importance % ,
+% for example gene and protein interaction
+\citep[]{martignonetal1995,bohteetal2000,shlensetal2006,schneidmanetal2006,tkaciketal2006,roudietal2009c,barreiroetal2010,shimazakietal2015,moraetal2015%,lezonetal2006,weigtetal2009
+}[for
 further references see][]{lathametal2013}. However, our model can also be
 viewed as an approximation of a more detailed model within Bayesian theory;
 we shall constantly keep this point of view in mind in our discussion.
@@ -1035,28 +1037,31 @@ Some context and mathematical notation first.
 The context we consider is as follows. During an experimental session we
 have recorded the spiking activities of $n$ neurons for a certain amount of
 time. These neurons are our \enquote{sample}. Their spikes are binned into
-$T$ time bins and binarized to $\set{0,1}$ values in each bin. Call
-$\ya_{t}$ the number of neurons that fire during time bin $t$: this is the
-\emph{total activity} of the sample, or just \enquote{activity} for short.
-Obviously $\ya_{t} \in\set{0,1,\dotsc,n}$; if $\ya_{t}=0$, no neuron spikes
-during bin $t$; if $\ya_{t}=n$, all spike at some point during bin $t$, and
-so on. For brevity we say \enquote{at $t$} for \enquote{during time bin
+$T$ time bins, and a binary value 1 is assigned to each bin containing at
+least one spike, 0 to the bins without spikes. Call $\ya_{t}$ the number of
+neurons that fire during time bin $t$: this is the \emph{total activity} of
+the sample, or just \enquote{activity} for short. Obviously
+$\ya_{t} \in\set{0,1,\dotsc,n}$; if $\ya_{t}=0$, no neuron spikes during
+bin $t$; if $\ya_{t}=n$, all spike (at least once) at some point during bin
+$t$, and so on. For brevity we say \enquote{at $t$} for \enquote{during
+  time bin
   $t$}. % If we divide the total activity by the population size we have the
 % \emph{normalized total activity} or population-averaged activity $\ya/n$,
 % ranging from $0$ to $1$ in $1/n$ steps.
-From the activities $\set{\ya_{t}}$
-we can count how often the activity levels $\ya=0$, $\ya=1$, and so on
-appeared during the recording, obtaining the distribution of measured
-relative frequencies $(\yff_{\ya}) \defs \yf$. We can also consider the
-(unknown) sample activity at time bins \emph{outside} of the recorded
-period.
+From the sequence of activities
+$(\ya_{t})\equiv (\ya_{1}, \dotso, \ya_{T})$ we can count how often the
+activity levels $\ya=0$, $\ya=1$, and so on appeared during the recording,
+obtaining the distribution of measured relative frequencies
+$(\yff_{\ya}) \equiv (\yff_{0},\dotso, \yff_{n}) \defs \yf$. We can also
+consider the (unknown) sample activity at time bins \emph{outside} of the
+recorded period.
 
 
 For many animal species, the neurons that are recorded within a brain area
 are not specifically chosen from among the rest, owing to several limiting
 factors; for example, limitations in how precisely electrodes are inserted.
 The sample of recorded neurons may even change slightly across experimental
-sessions that are very far apart in time. We assume that there's an area,
+sessions that are very far apart in time. We assume that there's a volume,
 comprising a population of $N$ neurons, for which we believe that any other
 sample of size $n$ could have equally plausibly been recorded instead of
 the sample of $n$ neurons that was actually recorded. This is what we will
@@ -1064,16 +1069,21 @@ mean with \enquote{larger population}. This population need not be a whole
 functionally or anatomically distinct region. Loosely speaking it is the
 area of which we believe our sample to be \enquote{representative}
 \citep[we intend this term in the Meaning~2 of][]{kruskaletal1979b}[or
-Meanings~8 and~9 of][]{kruskaletal1979c}[note that the standard][\sect~3.1.14 states \enquote{The notion of representative sample is fraught with controversy, with some survey practitioners rejecting the term altogether}]{iso2014}.
+Meanings~8 and~9 of][]{kruskaletal1979c}[note that the
+standard][\sect~3.1.14 states \enquote{The notion of representative sample
+  is fraught with controversy, with some survey practitioners rejecting the
+  term altogether}]{iso2014}.
 
-The total activity of the $N$ neurons at $t$ is $\yA_{t}$. The relative
-frequencies of the various activity levels during the recording were
-$(\yFF_{\yA}) \defs \yF$. The values $\yA_{t}$ at each $t$ and
-the frequency distribution $\yF$ are unknown to us. We only know for certain that
-$\yA_{t} \in \set{0, 1, \dotsc, N}$, that $\yA_{t} \ge \ya_{t}$, and that
-$N-\yA_{t} \ge n-\ya_{t}$ for obvious reasons. For the time being we assume
-that we know $N$; in \sect~\ref{sec:N} we discuss the consequences of our
-lack of precise knowledge about this number.
+The total activity of the larger population of $N$ neurons at $t$ is
+$\yA_{t}$. The relative frequencies of the various activity levels during
+the recording were
+$(\yFF_{\yA}) \equiv (\yFF_{0},\dotso,\yFF_{N}) \defs \yF$. The values
+$\yA_{t}$ at each $t$ and the frequency distribution $\yF$ are unknown to
+us. We only know for certain that $\yA_{t} \in \set{0, 1, \dotsc, N}$, that
+$\yA_{t} \ge \ya_{t}$, and that $N-\yA_{t} \ge n-\ya_{t}$ for obvious
+reasons. For the time being we assume that we know $N$; in
+\sect~\ref{sec:N} we discuss the consequences of our lack of precise
+knowledge about this number.
 
 Our questions concern general features of the total activity $\yA$ of the
 larger population during and after the recording, and across sessions under
@@ -1220,7 +1230,7 @@ averages. In formulae, the constraints on $\pxxx(\yA)$ are
   \equiv
    \sum_{\ya}
   \binom{\ya}{m}\bigg/  \binom{n}{m} \; \yff_{\ya}}_{\text{measured averages}}
-  \mathrel{\;\;=\;\;}
+  \mathrel{\;\;\underset{\mathclap{\overset{\Bigg\uparrow}{\text{our judgement}}}}{=}\;\;}
    \underbracket{\sum_{\yA}
      \binom{\yA}{m}\bigg/  \binom{N}{m} \; \pxxx(\yA)}_{\text{distribution moments}}
    \qquad m\in M.
@@ -1244,8 +1254,9 @@ The result is the distribution of the form
   \Biggr],
 \end{gathered}
 \end{equation}
-where the $m'$ parameters $\yll \defd (\yl_{m})$ are determined by the
-constraints~\eqref{eq:final_constraint} and can be found by convex
+where the $m'$ parameters
+$\yll \defd (\yl_{m}) \equiv(\yl_{1},\dotso,\yl_{m'})$ are determined by
+the constraints~\eqref{eq:final_constraint} and can be found by convex
 extremization, discussed further in
 appendix~\ref{sec:derivation_maxent_fullnet}. Note that for $N>n$ the
 constraint equation~\eqref{eq:final_constraint} may never be exactly
@@ -1345,7 +1356,7 @@ as the full frequency distribution of the sample, as discussed in
 resulting distributions for three example values of
 larger-population sizes: $N=1\,000$ (\textcolor{mygreen}{green diamonds}),
 $N=5\,000$ (\textcolor{myred}{red circles}), $N=10\,000$
-(\textcolor{myblue}{blue curve}). The frequency density of the sample
+(small \textcolor{myblue}{blue squares}). The frequency density of the sample
 activity is also shown (\textcolor{black}{black triangles}), and in the
 plot it would be indistinguishable from the maximum-entropy density for
 $N=n$, that is, applied at the sample level. We discuss the case of unknown
@@ -1359,7 +1370,7 @@ $N$ in \sect~\ref{sec:N}.
 \includegraphics[width=\linewidth]{_scripts/newpaper_riehle_5mom_distributionsN_priorc.pdf}%
 \\[1em]%\mbox{}\vfill\mbox{}%
 \caption{Maximum-entropy distributions for the total activity of the larger
-  population, using five moments and assuming several population sizes $N$.
+  population, using $M={}$five moments and assuming several population sizes $N$.
   In order to compare different $N$, the distributions are multiplied by
   $N$ (obtaining densities) and the activity divided by $N$ (obtaining a
   population average). The distributions for large $N$ have very different
@@ -1381,8 +1392,8 @@ peaked than the measured frequency distribution for the sample; their
 difference increases with $N$. Most remarkably, for the first data set,
 \fig~\ref{fig:plots_5mom_a}, the distribution for the larger population has
 two distinct low-activity modes. For the second data set,
-\fig~\ref{fig:plots_5mom_b}, the distribution presents a small shoulder on
-the right of its mode.
+\fig~\ref{fig:plots_5mom_b}, the distribution presents a small shoulder
+(barely visible) on the right of its mode.
 % , suggestive of two activity regimes. We frame no hypotheses about the
 % biological cause of these two modes (they could stem from the presence of
 % different kinds of cells or modules)
@@ -1399,7 +1410,7 @@ Finding a larger-population distribution with two peaks, as in
 \fig~\ref{fig:plots_5mom_a}, would provide some evidence for this
 hypothesis. We might have reasons for suspecting that a specific set of the
 sampled neurons is of the first type, and the remaining of the second type.
-In the case of the first data set, 27 of the 65 sampled cells were
+In the case of the first data set, indeed, 27 of the 65 sampled cells were
 identified as grid cells belonging to 3--4 functional modules, the
 remaining 38 \enquote{non-grid} cells being interneurons and unidentified
 cells \citep{stensolaetal2012}. Could the two peaks in the distribution of
@@ -1430,7 +1441,7 @@ to the first peak of the larger-population distribution. The distribution
 for the larger population of non-grid cells (\textcolor{myred}{red
   circles}) has two peaks instead, roughly at the same population-averaged
 activities as the peaks of the larger-population distribution
-(\textcolor{myblue}{blue curve}) but closer in height. It would thus seem
+(small \textcolor{myblue}{blue squares}) but closer in height. It would thus seem
 that the population of grid cells is contributing to the first mode of the
 larger population, but it is not its sole contributor. We can also assess
 if the distributions for the two sets of neurons are independent. If they
@@ -1445,7 +1456,7 @@ where the index $\yA'$ runs from $\max(0,\yA-\yNng)$ to $\min(\yA,\yNg)$.
 But this is not the case: 
 figure~\ref{fig:plots_cellsubsets_b} shows that such convolution
 (\textcolor{black}{black diamonds}) is quite different from the
-larger-population distribution (\textcolor{myblue}{blue curve}): the two
+larger-population distribution (small \textcolor{myblue}{blue squares}): the two
 peaks of the former are closer in position and height than those of the
 latter. The population distributions of grid and non-grid cells are
 therefore \emph{not} independent: knowledge of the activity of either set
@@ -1454,10 +1465,16 @@ gives us some information about the activity of the other.
 \medskip
 
 The toy analysis above should not be taken literally, but just as an
-illustration of the model's possible applications. The important point is
-that this model is computationally very cheap and yet it can provide
-useful insights, even if just qualitative ones, and even suggest new
-hypotheses.
+illustration of the model's possible applications. Instead of a grid cell
+\vs\ non-grid cell divisions we could for example have examined the modules
+of the cells. In the absence of such auxiliary information about the cells,
+one could in principle try all possible partitions of the recorded cells
+into two groups, and check whether some partition leads to independent
+distributions (computationally very expensive in practice); and so on.
+
+The important point is that this model is computationally very cheap and
+yet it can provide useful insights, even if just qualitative ones, and even
+suggest new hypotheses.
 
 
 
@@ -1485,7 +1502,8 @@ level. %We also highlight some methodological caveats.% For concreteness we use 
 
 As a first step, terms like \enquote{cooperativity}, \enquote{interaction},
 and similar need to be translated into a more precise, operational
-\citep[\cf][\chap~I]{bridgman1927_r1958} notion. Here we propose the notion
+\citep[\cf][\chap~I]{bridgman1927_r1958} notion. Here we propose to base
+this kind of analysis on the notion
 of \emph{informational sufficiency}, because
 \begin{enumerate*}[label=(\roman*)]
 \item it seems closely related to those terms as used in the
@@ -1500,9 +1518,10 @@ this notion, which was probably first suggested by Kullback \amp\ Leibler
 
 Our belief distribution about the frequencies of the neuronal activities,
 or about the activity in a new time bin, is conditional on all experimental
-data and statistics we have collected. This distribution, however, can be such that
-it remains unchanged if we discard part of the data or statistics -- for
-example, the third- and higher-order empirical moments. % --
+data and statistics we have collected. This belief distribution, however,
+can be such that it remains unchanged if we discard part of the data or
+statistics -- for example, the third- and higher-order empirical
+moments. % --
 % but it does change if we discard more.
 This means that the discarded statistics are \emph{informationally
   irrelevant}: knowing them does not change our beliefs. The remaining
@@ -1512,9 +1531,25 @@ statistics -- in the example, first and second empirical moments -- are
 % This informational quasi-sufficiency is interesting because
 % it may give clues about population organization and dynamics.
 
-Now let us turn the informational sufficiencies of two different subsets of
-statistics into two hypotheses. We can then ask: which hypothesis is more
-probable, given the data? equivalently, what is the ratio of their
+It seems to us that the informational sufficiency of a set of $m$ moments
+captures the idea of the \enquote{importance} of the almost-simultaneous
+activity of $m$ or fewer neurons: such simultaneous activity is
+\enquote{unimportant} if its knowledge does not alter our forecasts. We are
+thus speaking of informational importance, which may or may not imply or be
+implied by biophysical importance -- \enquote{correlation is no proof of
+  causation} \citep[\eg][]{simon1954,freedman2006}. But it lends itself to a
+precise probabilistic analysis, with consequences determined by
+mathematical theorems, as we shall now see.
+
+Our question is whether some amount of \enquote{cooperation} is more
+\enquote{important} than another amount or not. In terms of informational
+sufficiency, its definition might suggest to compare the belief
+distributions conditional on two different subsets of statistics. But which
+measure should be used for such a comparison? and how to motivate it? We
+prefer to take a different approach, leading to an automatic answer: let us
+thus turn the informational sufficiencies of two different subsets of
+statistics into two \emph{hypotheses}. We can then ask: which hypothesis is
+more probable, given the data? Equivalently, what is the ratio of their
 probabilities? By translating our question about \enquote{cooperativity}
 into a hypothesis-testing problem about sufficiency, we can find a
 well-defined answer determined by the probability-calculus. % The ratio of
@@ -1523,6 +1558,8 @@ well-defined answer determined by the probability-calculus. % The ratio of
 % the data say that the first two empirical moments are probably enough to
 % determine our beliefs? or is it more probable that the first four are
 % needed instead?
+We shall see that this approach is indeed more powerful than a simple
+comparison of distributions.
 
 But such a translation does more: through a mathematical theorem \citep[and
 references therein]{andersen1970}[this theorem was first proved for
@@ -1584,7 +1621,7 @@ population, not the sample alone.
 \bigskip
 
 
-We can compare the informational sufficiency between of a set of moments, say
+We can compare the informational sufficiency of a set of moments, say
 $M''\defd\set{1,\dotsc,m''}$, with respect to another, say
 $M'\defd \set{1,\dotsc,m'}$, by introducing the quantity $\ydi(M'',M')$
 defined as follows:
@@ -1649,11 +1686,11 @@ probabilities conditional on the data \citep[\cf][]{bretthorst2013}.
 \bigskip
 
 Let us illustrate the quantity just defined and the previous discussion
-about sufficiency and sampling by using our data sets. Consider for example
-three sets of constraints $M_{2}$, $M_{4}$, $M_{5}$, consisting of the
-first two, four, five moments; and a larger population of size $N=10\,000$.
-Figure~\ref{fig:plots_2_4mom} shows the resulting distributions for the two
-data sets.
+about sufficiency and sampling by using our data sets. We want to compare,
+for example, three sets of constraints $M_{2}$, $M_{4}$, $M_{5}$,
+consisting of the first two, four, five moments, for a larger population of
+size $N=10\,000$. Figure~\ref{fig:plots_2_4mom} shows the resulting
+distributions for the two data sets.
 \begin{figure}[!p]
 \centering
 \subcaption[]{\label{fig:plots_2_4mom_a}}%  
@@ -1901,10 +1938,10 @@ The calculations presented in the preceding sections depend on the size $N$
 of the larger population, which of course cannot be the whole brain. How
 large should or can $N$ be in our formulae?
 
-The crucial point is our belief distribution for the activity of the sample
-\emph{conditional} on the activity of the larger population. It is given by
-the hypergeometric distribution~\eqref{eq:conditional_hypergeometric},
-reprinted here:
+The answer comes by examining the origin of our belief distribution for the
+activity of the sample \emph{conditional} on the activity of the larger
+population. It is given by the hypergeometric
+distribution~\eqref{eq:conditional_hypergeometric}, reprinted here:
 \begin{equation}
   \labelbis{eq:conditional_hypergeometric}
   \yG_{\ya\yA} \defd \pf(\ya \|\yA, n,N)=
@@ -1930,16 +1967,17 @@ point of the same brain region, then
 formula~\eqref{eq:conditional_hypergeometric} is appropriate. $N$ can
 therefore only be assessed case by case.
 
-Whether such symmetric beliefs are justified, or for which sampling procedures
-they can be justified, is the fundamental, deep question of sampling
-theory, which we cannot discuss here \citep[see \eg\ the discussions and
-references
+Whether this symmetry in our beliefs is justified, or for which sampling
+procedures it can be justified, is the fundamental, deep question of
+sampling theory, which we cannot discuss here \citep[see \eg\ the
+discussions and references
 in][]{ericson1969,smith1976}. % {kruskaletal1979c,kruskaletal1980}
 It is of course possible to probabilistically assess, case by case, whether
 this symmetry assumption is appropriate. But we must also be aware that
-such assessment in turn rests on analogous symmetry assumptions at a higher level,
-and so on. The probability-calculus, just like the truth-calculus, cannot
-yield conclusions without premisses \citep{hailperin2011}[p.~182]{johnson1924}.
+such assessment in turn rests on analogous symmetry assumptions at a higher
+level, and so on. The probability-calculus, just like the truth-calculus,
+cannot yield conclusions without premisses
+\citep{hailperin2011}[p.~182]{johnson1924}.
 
 The plots of \fig~\ref{fig:plots_5mom} nevertheless suggest that the order
 of magnitude of $N$ ought to be enough for qualitative inferences. As
@@ -1972,7 +2010,8 @@ Here is an illustrative example with our first data set. Suppose our
 uncertainty spans slightly more than one order of magnitude, from $N=1\,000$
 to $N=20\,000$. Divide this range roughly into thirds of order of
 magnitude, considering the values
-$N\in \set{1\,000, 2\,000, 5\,000, 10\,000, 20\,000}$. Assuming the set $M$
+$N\in \set{10^{3}=1\,000, 10^{3+1/3}\approx 2\,000, 10^{3+2/3}\approx
+  5\,000, 10^{4}=10\,000, 10^{4+1/3}\approx 20\,000}$. Assuming the set $M$
 of first five moments to be sufficient, formula~\eqref{eq:prob_data_from_N}
 gives
 \begin{equation}
@@ -2082,13 +2121,13 @@ appendix~\ref{sec:derivation_maxent_fullnet} at each bin.
 
 Finally, the maximum-entropy method is typically equivalent to
 approximating the number $T$ of time bins, the prior coefficient $L$, and
-the ratio $T/L$ to infinity. These approximations lead to the
-identification of the four distributions listed at the end of
+the ratio $T/L$ to infinity (that is, $T\gg L \gg 1$). These approximations
+lead to the identification of the four distributions listed at the end of
 \sect~\ref{sec:model}: the recorded frequency distribution becomes equal to
 the long-run one, and also to the probability distribution for the activity
 at recorded and new time bins. In our application it also leads to the
 equality of the hypergeometric
-distribution~\eqref{eq:conditional_hypergeometric} and the conditional
+distribution~\eqref{eq:conditional_hypergeometric} and the \emph{conditional}
 frequencies of the sample activity $\ya$ given $\yA$. The goodness of this
 approximation decreases as the ratio -- roughly $nN/T$ -- between the
 number of possible joint states and the number of bins increases, and also
@@ -2096,7 +2135,7 @@ as observed quantities approach their mathematical bounds, for example some
 frequencies $\yff_{\ya}=0$. Without these approximations it is still
 possible to interpret the maximum-entropy
 distribution~\eqref{eq:app_maxent_pop_first} as the mode of the probability
-distribution for the recorded frequencies $\yF$, that is, the most probable
+distribution for the frequencies $\yF$, that is, the most probable
 recorded frequency.
 
 
@@ -2109,22 +2148,22 @@ of correlations of some order, as discussed in
 realistic time dependences and
 clustering. %They may turn out to approximate well more realistic assumptions.
 
-The $T= \infty$ approximation can break our model for specific
-distributions of sample frequencies, if too many moments are used. For
-example, take $n=2$ with frequency distribution $\yf=(0.5,0,0.5)$ for the
-activities $\ya=0,1,2$; that is, the sample is silent half of the time and
-completely active half of the time. The first two normalized factorial
-moments have both value $0.5$, and together they uniquely determine $\yf$.
-If we now take $N=3$, it can be proved that
-\eqn~\eqref{eq:app_maxent_pop_first}, constrained on those two moments, has
-no solution. The reason is clear from a sampling perspective: if there is
-zero probability of sampling one active neuron, then the larger population
-cannot have any active neurons at all, and a fortiori there must be zero
-probability of sampling two active ones. But this reasoning holds only for
-each single time bin, not for the averages over time bins. The $T=\infty$
-approximation identifies the two instead. Outside of this approximation
-there are no contradictions because the conditional frequencies and
-conditional probabilities are kept distinct.
+The $T= \infty$ approximation (together with the third assumption above)
+can break our model for specific distributions of sample frequencies, if
+too many moments are used. For example, take $n=2$ with frequency
+distribution $\yf=(0.5,0,0.5)$ for the activities $\ya=0,1,2$; that is, the
+sample is silent half of the time and completely active half of the time.
+The first two normalized factorial moments have both value $0.5$, and
+together they uniquely determine $\yf$. If we now take $N=3$, it can be
+proved that \eqn~\eqref{eq:app_maxent_pop_first}, constrained on those two
+moments, has no solution. The reason is clear from a sampling perspective:
+if there is zero probability of sampling one active neuron, then the larger
+population cannot have any active neurons at all, and a fortiori there must
+be zero probability of sampling two active ones. But this reasoning holds
+only for each single time bin, not for the averages over time bins. The
+$T=\infty$ approximation identifies the two instead. Outside of this
+approximation there are no contradictions because the conditional
+frequencies and conditional probabilities are kept distinct.
 
 The two infinity approximations are at the boundary of their validity in
 our examples. For this reason we interpret the maximum-entropy distribution
@@ -2145,12 +2184,13 @@ indicate that these typical features are robust for different prior choices
 in the second assumption above, for example using a Dirichlet prior instead
 of an entropic one.
 
-This means that the maximum-entropy approximation presented here can be
-favourably used to get an idea of what a fully probabilistic calculation
-could yield -- but with a far lower computational cost than the latter. For
-example, for $N=1\,000$ the maximum-entropy distribution can be calculated
-in ten minutes on a laptop, whereas the full probability calculation takes
-several days on a high-performance computing cluster.
+This suggests that the maximum-entropy approximation presented here can be
+favourably used to get a qualitative or semi-quantitative idea of what a
+fully probabilistic calculation could yield -- but with a far lower
+computational cost than the latter. For example, for $N=1\,000$ the
+maximum-entropy distribution can be calculated in ten minutes on a laptop,
+whereas the full probability calculation takes several days on a
+high-performance computing cluster.
 
 
 
@@ -2200,9 +2240,9 @@ We have presented a model that allows us to make direct inferences about a
 larger population from very small samples. Its inferences regard only the
 frequencies of the total activity of the larger population, but such
 limited inferential scope makes the model computationally very cheap and,
-and most important, it still leads to inferences that are not at all
-trivial and not easily discernible by looking at the sample. We showed this
-by applying the model to two real data sets.
+most important, it still leads to inferences that are not at all trivial
+and could not be made just by looking at the sample and its distributions.
+We showed this by applying the model to two real data sets.
 
 By \enquote{inference} we mean the quantification of a degree of belief
 about possible observations, based on specific assumptions; not the
@@ -2291,9 +2331,11 @@ larger population constrained by a set of factorial moments.%  For further detai
 
 \bigskip
 
-First of all the sampling relation. We have a population of $N$ units --
-neurons -- $\yA$ of which have some specific property -- being active in a
-specific time bin -- and we sample in an unknown way $n$ of the $N$ units.
+First of all the sampling relation. We have a population of $N$ units
+(neurons), $\yA$ of which have some specific property (being active in a
+specific time bin), and we sample $n$ of the $N$ units in such a way
+(partly uncontrollable experimental procedure) that we are led to believe,
+with the same degree, that any of the $N$ units could have been sampled.
 The probability that $\ya$ of the $n$ sampled neurons are active is then
 given by the hypergeometric distribution
 \begin{equation}
@@ -2401,10 +2443,10 @@ population, owing to the excheangeability assumption implicit in the
 maximum-entropy method:
 \begin{equation}
   \label{eq:sample_marginal}
-  \pxx(\ya_{t} \| M) = \sum_{\yA}\yG_{\ya_{t}\,\yA}\;\px(\yA \| M).
+  \pxx(\ya \| M) = \sum_{\yA}\yG_{\ya\,\yA}\;\px(\yA \| M).
 \end{equation}
-The probability of observing one sequence $(\ya_{t})$ with frequencies
-$\yf$ is therefore
+The probability of observing a specific sequence $(\ya_{t})$ with
+frequencies $\yf$ is therefore
 \begin{equation}
   \label{eq:prob_frequencies}
   \prod_{t=1}^{T} \pxx(\ya_{t} \| M) \equiv
@@ -2426,7 +2468,8 @@ Bayes's theorem,
 \begin{multline}
   \label{eq:prob_proportional_relentropy}
   \pf(M \| \yf) \propto
-  \pf(\yf \| M) \times\text{\small const} \propto
+  \pf(\yf \| M) % \times\text{\small const}
+  \propto
   \binom{T}{T\yf}\,  \prod_{\ya}\biggl[\sum_{\yA}\yG_{\ya\yA}\px(\yA \| M)\biggr]^{
     T\,\yff_{\ya}}
    \approx{}\\
@@ -2541,8 +2584,8 @@ and the long-run frequency distribution $\ynu$, conditional on $\yf$:
 \end{multline}
 where $\pf(\ynu\|\yI)$ is either of the
 distributions~\eqref{eq:maxent_prior}. Note the relative entropy in the
-exponential. If we want to conditionalize not on $\yf$ but on a set of
-measured averages $C(m) = \sum_{\ya}c_{\ya}(m) \yff_{\ya}$, $m\in M$, such
+exponential. If we want to condition not on $\yf$ but on a set of measured
+averages $C(m) = \sum_{\ya}c_{\ya}(m) \yff_{\ya}$, $m\in M$, such
 as~\eqref{eq:chain_prescription_moments}, we have to replace the
 integration constraint $\sum_{\yA}J_{\ya\yA}=\yff_{\ya}$ with
 $\sum_{\ya\yA}c_{\ya}(m)\,J_{\ya\yA}=C(m)$.

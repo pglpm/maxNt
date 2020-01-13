@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2020-01-13T15:39:05+0100
+%% Last-Updated: 2020-01-13T20:37:41+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1049,10 +1049,11 @@ $t$, and so on. For brevity we say \enquote{at $t$} for \enquote{during
 % \emph{normalized total activity} or population-averaged activity $\ya/n$,
 % ranging from $0$ to $1$ in $1/n$ steps.
 From the sequence of activities
-$(\ya_{t})\equiv (\ya_{1}, \dotso, \ya_{T})$ we can count how often the
-activity levels $\ya=0$, $\ya=1$, and so on appeared during the recording,
-obtaining the distribution of measured relative frequencies
-$(\yff_{\ya}) \equiv (\yff_{0},\dotso, \yff_{n}) \defs \yf$. We can also
+$(\ya_{t})\equiv (\ya_{1}, \dotso, \ya_{T})$ we can count in how many bins
+each activity level $\ya=0$, $\ya=1$, \ldots, $\ya=n$ appeared during the
+recording. Dividing each number of bins by the total number of bins $T$ we
+obtain the distribution of measured relative frequencies
+$(\yff_{0},\dotso, \yff_{n}) \equiv (\yff_{\ya}) \defs \yf$. We can also
 consider the (unknown) sample activity at time bins \emph{outside} of the
 recorded period.
 
@@ -1077,7 +1078,7 @@ standard][\sect~3.1.14 states \enquote{The notion of representative sample
 The total activity of the larger population of $N$ neurons at $t$ is
 $\yA_{t}$. The relative frequencies of the various activity levels during
 the recording were
-$(\yFF_{\yA}) \equiv (\yFF_{0},\dotso,\yFF_{N}) \defs \yF$. The values
+$(\yFF_{0},\dotso,\yFF_{N}) \equiv (\yFF_{\yA}) \defs \yF$. The values
 $\yA_{t}$ at each $t$ and the frequency distribution $\yF$ are unknown to
 us. We only know for certain that $\yA_{t} \in \set{0, 1, \dotsc, N}$, that
 $\yA_{t} \ge \ya_{t}$, and that $N-\yA_{t} \ge n-\ya_{t}$ for obvious
@@ -1541,15 +1542,15 @@ implied by biophysical importance -- \enquote{correlation is no proof of
 precise probabilistic analysis, with consequences determined by
 mathematical theorems, as we shall now see.
 
-Our question is whether some amount of \enquote{cooperation} is more
-\enquote{important} than another amount or not. In terms of informational
-sufficiency, its definition might suggest to compare the belief
-distributions conditional on two different subsets of statistics. But which
-measure should be used for such a comparison? and how to motivate it? We
-prefer to take a different approach, leading to an automatic answer: let us
-thus turn the informational sufficiencies of two different subsets of
-statistics into two \emph{hypotheses}. We can then ask: which hypothesis is
-more probable, given the data? Equivalently, what is the ratio of their
+Our question is whether some degree of \enquote{cooperation} is more
+\enquote{important} than some other degree, or not. In terms of
+informational sufficiency, its definition might suggest to compare the
+belief distributions conditional on two different subsets of statistics.
+But which measure should be used for such a comparison? and how to motivate
+it? We prefer to take a different approach, leading to an automatic answer:
+let us thus turn the informational sufficiencies of two different subsets
+of statistics into two \emph{hypotheses}. We can then ask: which hypothesis
+is more probable, given the data? Equivalently, what is the ratio of their
 probabilities? By translating our question about \enquote{cooperativity}
 into a hypothesis-testing problem about sufficiency, we can find a
 well-defined answer determined by the probability-calculus. % The ratio of
@@ -1955,21 +1956,21 @@ conditional probability, characteristic of \enquote{drawing without
 \citep[\eg][\chap~3]{jaynes1994_r2003}, % [\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}
 ensues when we believe, with the same degree, that any of the $N$ units
 (balls or neurons) could be drawn or sampled. Thus, consider the pool of
-all neurons which we believe -- with equal degree of belief for each neuron
--- could have been recorded. Then $N$ is the size of that pool. $N$
-therefore depends on factors such as: the shape, dimensions, and technical
-specifications of the recording probe; the inaccuracy in the insertion of
-the probe, leading for example to slightly different insertion points or
-angles; the density of neurons around the probe. But it also depends on the
-homogeneity of the brain region where the recording is made: if we believe
-that it does not matter whether the probe had been inserted in some other
-point of the same brain region, then
+all neurons which we believe -- with an \emph{equal} degree of belief for
+each neuron -- could have been recorded. Then $N$ is the size of that pool.
+$N$ therefore depends on factors such as: the shape, dimensions, and
+technical specifications of the recording probe; the inaccuracy in the
+insertion of the probe, leading for example to slightly different insertion
+points or angles; the density of neurons around the probe. But it also
+depends on the homogeneity of the brain region where the recording is made:
+if we believe that it does not matter whether the probe had been inserted
+in some other point of the same brain region, then
 formula~\eqref{eq:conditional_hypergeometric} is appropriate. $N$ can
 therefore only be assessed case by case.
 
-Whether this symmetry in our beliefs is justified, or for which sampling
-procedures it can be justified, is the fundamental, deep question of
-sampling theory, which we cannot discuss here \citep[see \eg\ the
+Whether this equality in our degrees of belief is justified, or for which
+sampling procedures it can be justified, is the fundamental, deep question
+of sampling theory, which we cannot discuss here \citep[see \eg\ the
 discussions and references
 in][]{ericson1969,smith1976}. % {kruskaletal1979c,kruskaletal1980}
 It is of course possible to probabilistically assess, case by case, whether
@@ -2303,12 +2304,13 @@ full probabilistic approach in a future publication.
 \begin{acknowledgements}
   This work is financially supported by the Kavli Foundation and the Centre
   of Excellence scheme of the  Research Council of Norway (Yasser Roudi group).\\
-  PGLPM thanks the staff of the NTNU library for their always prompt
-  support; Mari, Miri, \amp\ Emma for continuous encouragement and
-  affection; Buster Keaton and Saitama for filling life with awe and
-  inspiration; the developers and maintainers of \LaTeX, Emacs, AUC\TeX,
-  Open Science Framework, Python, Inkscape, Sci-Hub for making a free and
-  unfiltered scientific exchange possible.
+  We thank Iv\'an Davidovich for very insightful and helpful comments on a
+  previous draft of this manuscript. PGLPM thanks the staff of the NTNU
+  library for their always prompt support; Mari, Miri, \amp\ Emma for
+  continuous encouragement and affection; Buster Keaton and Saitama for
+  filling life with awe and inspiration; the developers and maintainers of
+  \LaTeX, Emacs, AUC\TeX, Open Science Framework, Python, Inkscape, Sci-Hub
+  for making a free and unfiltered scientific exchange possible.
 %\rotatebox{15}{P}\rotatebox{5}{I}\rotatebox{-10}{P}\rotatebox{10}{\reflectbox{P}}\rotatebox{-5}{O}.
 %\sourceatright{\autanet}
 \end{acknowledgements}

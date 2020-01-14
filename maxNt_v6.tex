@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2020-01-13T20:37:41+0100
+%% Last-Updated: 2020-01-14T13:49:20+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -18,7 +18,7 @@ british%
 ]{memoir}
 \newcommand*{\updated}{\today}
 \newcommand*{\firstdraft}{4 November 2015}
-\newcommand*{\firstpublished}{***}
+\newcommand*{\firstpublished}{4 November 2015}
 \newcommand*{\propertitle}{Inferring the total activity of a large neuronal population\\ from a small sample}
 \newcommand*{\pdftitle}{\propertitle}
 \newcommand*{\headtitle}{Inferences about large neuronal populations}
@@ -368,7 +368,9 @@ citestyle=authoryear-comp,bibstyle=pglpm-authoryear,autopunct=false,sorting=ny,s
 \fixpdflayout
 %%% End layout
 %% this fixes missing white spaces
-\pdfmapline{+dummy-space <dummy-space.pfb}\pdfinterwordspaceon%
+%\pdfmapline{+dummy-space <dummy-space.pfb}
+%%\pdfglyphtounicode{space}{0020}
+%\pdfinterwordspaceon%
 
 %%% Sectioning
 \newcommand*{\asudedication}[1]{%
@@ -772,27 +774,33 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \setlength{\abstitleskip}{-\absparindent}
 \begin{abstract}\labelsep 0pt%
 \mynote{Abstract to be written}
-% \noindent \mynote{Abstract must be rewritten once paper is ready}This
-%   work shows how to build a maximum-entropy probabilistic model for the
-%   total activity of a population of neurons, given only some activity data or
-%   statistics -- for example, empirical moments -- of a \emph{subpopulation}
-%   thereof. This kind of model is useful because neuronal recordings are
-%   always limited to a very small sample of a population of neurons.
-% %
-%   The model is applied to two sets of neuronal data available in the
-%   literature. In some cases it makes interesting forecasts about the larger
-%   population -- for example, two low-regime modes in the frequency
-%   distribution for the total activity -- that are not visible in the sample
-%   data or in maximum-entropy models applied only to the sample.
-% %
-%   For the two datasets, the maximum-entropy probability model applied only
-%   to the subpopulation is compared with the marginal probability
-%   distribution obtained from the maximum-entropy model applied to the full
-%   population. On a linear probability scale no large differences are
-%   visible, but on a logarithmic scale the two distributions show very
-%   different behaviours, especially in the tails.
-  \\\noindent\emph{\footnotesize Note: Dear Reader \amp\ Peer, this
-    manuscript is being peer-reviewed by you. Thank you.}
+\noindent This work shows how to build a maximum-entropy probabilistic
+model for the total activity of a large population of unrecorded neurons,
+given only some activity data or statistics recorded from a small sample
+thereof. The model addresses only the collective behaviour of the larger
+population, thus gaining in simplicity and computational effectiveness at
+the expense of more detailed inferential power.
+
+The model is applied to two sets of neuronal data from the literature. It
+makes interesting forecasts about the larger population, such as the
+probable presence of two low-regime modes in the total activity, which are
+not present in the sample data and could not be found with maximum-entropy
+models applied only to the sample.
+
+Using the same data sets it is shown how to use the model for questions
+about the \enquote{cooperativity}, \enquote{interaction}, or
+\enquote{synchrony} of neuronal activity. These questions are translated
+into a hypothesis-testing problem about informational sufficiency, and
+effectively answered with Bayes's theorem. The answers given by the present
+model can be at variance from those given by a maximum-entropy model at the
+sample level only. The reason is discussed: informational sufficiency is not
+preserved under sampling.
+
+The question of how large can the larger population addressed by
+model be, and the assumptions on which the model is based, from a Bayesian
+point of view, are also discussed.
+\\\noindent\emph{\footnotesize Note: Dear Reader
+  \amp\ Peer, this manuscript is being peer-reviewed by you. Thank you.}
 % \par%\\[\jot]
 % \noindent
 % {\footnotesize PACS: ***}\qquad%

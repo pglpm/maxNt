@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2020-01-16T10:11:59+0100
+%% Last-Updated: 2020-01-16T12:46:05+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -894,7 +894,7 @@ entropy method see:][\sect~4.b]{jaynes1963}[for a more rigorous
 derivation]{hobsonetal1973}[for applications]{sivia1996_r2006}
 %[see also][for applications to irreversible statistical mechanics]{grandy1980}
 to build initial probability distributions has been used in the
-neurosciences for different kinds of investigations about the neuronal
+neurosciences for several kinds of investigations about the neuronal
 activity of various brain areas and about other phenomena of importance % ,
 % for example gene and protein interaction
 \citep[]{martignonetal1995,bohteetal2000,shlensetal2006,schneidmanetal2006,tkaciketal2006,roudietal2009c,barreiroetal2010,shimazakietal2015,moraetal2015%,lezonetal2006,weigtetal2009
@@ -1326,7 +1326,7 @@ appendix~\ref{sec:inference_prob}. The
 distribution~\eqref{eq:app_maxent_pop_first} can therefore be interpreted
 in each of the four ways above, in this approximate sense. In the present
 case the validity of the approximation decreases as the ratio $nN/T$
-increases. The most robust interpretation is~\ref{item:prob_freq}, and that
+increases. The most accurate interpretation is~\ref{item:prob_freq}, and that
 is how we prefer to interpret the distribution $\px$: as \emph{the most
   probable relative-frequency distribution} of the activity $\yA$. See
 \sect~\ref{sec:assumptions} for further discussion about assumptions and
@@ -1555,9 +1555,9 @@ informational sufficiency, its definition might suggest to compare the
 belief distributions conditional on two different subsets of statistics.
 But which measure should be used for such a comparison? and how to motivate
 it? We prefer to take a different approach, leading to an automatic answer:
-let us thus turn the informational sufficiencies of two different subsets
-of statistics into two \emph{hypotheses}. We can then ask: which hypothesis
-is more probable, given the data? Equivalently, what is the ratio of their
+let us turn the informational sufficiencies of two different subsets of
+statistics into two \emph{hypotheses}. We can then ask: which hypothesis is
+more probable, given the data? Equivalently, what is the ratio of their
 probabilities? By translating our question about \enquote{cooperativity}
 into a hypothesis-testing problem about sufficiency, we can find a
 well-defined answer determined by the probability-calculus. % The ratio of
@@ -2107,7 +2107,7 @@ account the multiplicity of long-run frequencies, or a prior for a model
 with sufficient statistics, which expresses the sufficiency of the moments
 under study, according to the theorem discussed in
 \sect~\ref{sec:marginalization}. This assumption is crucial for the
-maximum-entropy method based on the Shannon entropy. Different prior
+maximum-entropy method based on the Shannon entropy. Alternative prior
 densities lead to alternative maximum-entropy methods; for example one
 based on the Burg entropy \citep{burg1975} if a Dirichlet density is used
 \citep{jaynes1986d_r1996}. The entropic prior depends on a reference
@@ -2188,7 +2188,7 @@ frequency distributions have two high-frequency regimes of activity, as in
 same locations, within a few percentages of population-averaged activity.
 Each of the two high-frequency regimes, though, may consist of two or three
 very close modes rather than one. The same preliminary studies also
-indicate that these typical features are robust for different prior choices
+indicate that these typical features are insensitive to alternative prior choices
 in the second assumption above, for example using a Dirichlet prior instead
 of an entropic one.
 

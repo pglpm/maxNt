@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2020-01-24T12:54:04+0100
+%% Last-Updated: 2020-02-03T11:24:40+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -499,12 +499,12 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \hspace*{\stretch{1}}%
 \parbox{0.5\linewidth}%\makebox[0pt][c]%
 {\protect\centering P.G.L.  Porta Mana\\%
-\footnotesize\epost{\email{pgl}{portamana.org}}}%
+\footnotesize\epost{\email{piero.mana}{ntnu.no}}}%
 \hspace*{\stretch{1}}%
 %% uncomment if additional authors present
 \parbox{0.5\linewidth}%\makebox[0pt][c]%
 {\protect\centering E. Torre\\%
-\footnotesize\epost{\email{torre}{ibk.baug.ethz.ch}}}%
+\footnotesize\epost{\email{emiliano.torre}{yahoo.com}}}%
 \hspace*{\stretch{1}}\\%
 \parbox{0.5\linewidth}%\makebox[0pt][c]%
 {\protect\centering V. Rostami\\%
@@ -797,9 +797,10 @@ preserved under sampling.
 
 The question of how large the larger population addressed by model should
 or can be, and the assumptions on which the model is based, from a Bayesian
-point of view, are also discussed. \\\noindent\emph{\footnotesize Note:
-  Dear Reader \amp\ Peer, this manuscript is being peer-reviewed by you.
-  Thank you.}
+point of view, are also discussed.
+% \\\noindent\emph{\footnotesize Note:
+%   Dear Reader \amp\ Peer, this manuscript is being peer-reviewed by you.
+%   Thank you.}
 % \par%\\[\jot]
 % \noindent
 % {\footnotesize PACS: ***}\qquad%
@@ -2173,24 +2174,27 @@ $T=\infty$ approximation identifies the two instead. Outside of this
 approximation there are no contradictions because the conditional
 frequencies and conditional probabilities are kept distinct.
 
-The two infinity approximations are at the boundary of their validity in
+The two infinity approximations are at the edge of their validity range, in
 our examples. For this reason we interpret the maximum-entropy distribution
-as the \emph{most probable frequency distributions}, as mentioned at the
-end of \sect~\ref{sec:model}. An important question, then, is \emph{which
+as \emph{the most probable frequency distributions}, as mentioned at the
+end of \sect~\ref{sec:model}. In high dimensions, however, the features of
+the most plausible distribution may not be \emph{typical} of the majority
+of plausible distributions. An important question, then, is \emph{which
   features of the maximum-entropy frequency distribution are typical of the
-  majority of plausible frequency distributions?} Especially for features
-such as number, position, height of modes, or tail behaviour. Preliminary
-studies using a full probability calculation (to be published separately)
-show that several semi-quantitative features of the maximum-entropy
-distribution are indeed typical. For the first data set, for example, most
-frequency distributions have two high-frequency regimes of activity, as in
-\fig~\ref{fig:plots_5mom_a}, with roughly the same heights and almost the
-same locations, within a few percentages of population-averaged activity.
-Each of the two high-frequency regimes, though, may consist of two or three
-very close modes rather than one. The same preliminary studies also
-indicate that these typical features are insensitive to alternative prior choices
-in the second assumption above, for example using a Dirichlet prior instead
-of an entropic one.
+  majority of plausible frequency distributions?} -- especially for
+features such as the number, position, and heights of modes; or tail
+behaviour. Preliminary studies using a full probability calculation (in
+preparation, to be published separately) indicate that several
+semi-quantitative features of the maximum-entropy distribution are indeed
+typical. For the first data set, for example, most frequency distributions
+have a high-frequency regime at a population-averaged activity of around
+0.075, as in \fig~\ref{fig:plots_5mom_a}, but their second high-frequency
+regime is typically lower and appears for $N>5\,000$. Most frequency
+distributions have two or three very close modes within each high-frequency
+regime, rather than one. The same preliminary studies also indicate that
+these typical features are insensitive to alternative prior choices in the
+second assumption above, for example using a Dirichlet prior instead of an
+entropic one.
 
 This suggests that the maximum-entropy approximation presented here can be
 favourably used to get a qualitative or semi-quantitative idea of what a
@@ -2269,9 +2273,10 @@ itself, discussed in \sect~\ref{sec:assumptions}, can either be under test
 or relied upon, depending on the case.
 
 Some approximations implicit in the model make its numerical results
-semi-quantitative with respect to an exact analysis. The results should not
-be off by more than a few percentages for the population-averaged activity and
-for the frequency density. This imprecision, however, is compensated by the
+semi-quantitative with respect to an exact analysis.%  The results should not
+% be off by more than a few percentages for the population-averaged
+% activity and for the frequency density.
+This imprecision, however, is compensated by the
 extreme computational cheapness of the model, far less costly than an exact
 analysis. The model is therefore very convenient at least for essaying
 hypotheses. We hope to present an exact quantitative comparison with the
@@ -2632,6 +2637,7 @@ The frequency distribution~\ref{item:prob_longrun} is the mode of $\pf(\ynu
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Bibliography
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\clearpage
 \defbibnote{prenote}{{\footnotesize (\enquote{de $X$} is listed under D,
     \enquote{van $X$} under V, and so on, regardless of national
     conventions.)\par}}

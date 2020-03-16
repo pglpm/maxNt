@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2020-03-16T20:21:43+0100
+%% Last-Updated: 2020-03-16T21:23:04+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -905,6 +905,11 @@ perspective, where a parametric model is just a delta-like nonparametric
 distribution, concentrated on a lower-dimensional manifold (the family
 above) of the full space of distributions \citep[p.~761]{draperetal1996}.
 The notion of nested models becomes unimportant, from this perspective.
+Some authors try to define some \enquote{standard} distribution associated
+to a family, but we agree with those
+\citep[\eg][]{copasetal1979,lindleyetal1982} who find such definitions
+ultimately arbitrary. Many such distributions lead, moreover, to
+mathematical singularities.
 
 Second, the \enquote{complexity} of a model cannot be judged from the
 dimensionality of its family. Models $M_{1}$ and $M_{2}$ can have the same
@@ -919,12 +924,12 @@ typical under that model. Most important, it may then happen that a model
 is more powerful than another even if it is based on a lower-dimensional
 family.
 
-Third, \emph{the evidence $\p(D \| M_{i})$ of a model automatically takes
+Third, \emph{the evidence $\p(D \| M_{i})$ for a model automatically takes
   care of its complexity}. This happens because the probability over the
 data space is normalized. If $M_{2}$ has a typical-data volume larger than
 $M_{1}$'s, then it must also assign lower probability to each volume
-element in that volume, to ensure normalization. As a result, if the
-observed data $D^{*}$ lie in the typical volumes of both models, then
+element therein, to ensure normalization. As a result, if the observed data
+$D^{*}$ lie in the typical volumes of both models, then
 $\pf(D^{*} \| M_{1}) > \pf(D^{*} \| M_{2})$: \emph{the evidence is
   automatically penalizing the larger model}. There is a continuous
 trade-off between how typical the observed data are for each model and each
@@ -938,13 +943,12 @@ In our calculations, however, we are using a zeroth-order Laplace
 approximation for calculating the evidence in \sect~4. A first-order
 approximation (containing the width of the distribution, influenced by the
 typical-set volume above) would correct for the model's power. We believe
-that the correction would nevertheless be the same in the calculation based
-on the larger population, \eqns~(11), and on the sample, \eqns~(12),
-because the data space is the same in both. Hence the difference in the two
-approaches -- our main message -- should persist. But it would be better to
-check this.
+that the correction would nevertheless be the same in the calculations
+based on the larger population, \eqns~(11), and on the sample, \eqns~(12).
+Hence the difference in the two approaches -- our main message -- should
+persist. But it would be better to check this.
 
-\smallskip
+\medskip
 
 \textbf{(B)} If by \enquote{model} we mean a specific distribution, \eg\
 \[ \exp\biggl[-\frac{(x-5)^{2}}{18}\biggr]\,\di x \;,\] then two models can
@@ -968,11 +972,11 @@ calculations of \sect~4 are correct.
 
 The question, in summary, is what exactly is being compared, whether
 families (and what their accompanying distributions are) or single
-distributions. The literature is not at all clear. But, in either case, our
-calculations show that the approaches based on a population and a sample
-thereof can lead to different conclusions -- in accordance with the
-non-preservation of sufficiency under sampling -- and they provide a way to
-bypass this problem.
+distributions. The literature is unclear and contradictory on this. But, in
+either case, our calculations show that the approaches based on a
+population and a sample thereof can lead to different conclusions -- in
+accordance with the non-preservation of sufficiency under sampling -- and
+they provide a way to bypass this problem.
 
 
 \bigskip
@@ -991,26 +995,29 @@ bypass this problem.
 \medskip
 
 As stated on p.~8, the interpretation is important because it leads to
-numerically different results in first- and higher-order approximations;
-Appendix~C explains where the differences appear. Also, it is important to
-know whether we are calculating the frequency of past results, or the
-probability for a new result, or the most probable frequency of future
-results. These three quantities are very different when the ratio
-$\frac{\text{\# samples}}{\text{data-space dimension}}$ is high, and they are
-to be used in different ways.
+numerically different results in first- and higher-order approximations.
+And such approximations may be necessary in the precise calculation of the
+evidence, as explained in the reply to the previous point. Appendix~C
+explains where and why the numerical differences appear. Also, it is
+important to know whether we are calculating the frequency of past results,
+or the probability for a new result, or the most probable frequency of
+future results. These three quantities can be numerically very different
+when the ratio $\frac{\text{\# samples}}{\text{data-space dimension}}$ is
+high, and they are to be used in different ways.
 
-So these are not philosophical matters, it's a matter of understanding what
-we are doing and stating it clearly in our work. % Unfortunately the
+These are therefore not philosophical matters. It's a matter of
+understanding what we are doing and stating it clearly in our
+work. % Unfortunately the
 % neuroscience literature is very unclear on such matters.
 There's also another important reason. We are generally concerned for
 master's and PhD students, who often learn concepts and methods through
 actual research, perusing works like the present one. Young researchers too
 often end up learning incorrect or confused ideas, gathered from unclear
-literature. They trust it because it's peer-reviewed. Sometimes the result,
-quoting Feynman \citey{feynman1985_r1989}, is that \enquote{they don't
-  learn by understanding; they learn by some other way -- by rote, or
-  something. Their knowledge is so fragile!}. We owe them clarity,
-precision, honesty, and at least a glimpse of the bigger picture.
+literature. % They trust it because it's peer-reviewed.
+Sometimes the result, quoting Feynman \citey{feynman1985_r1989}, is that
+\enquote{they don't learn by understanding; they learn by some other way --
+  by rote, or something. Their knowledge is so fragile!}. We owe them
+clarity, precision, honesty, and a glimpse of the bigger picture.
 
 
 

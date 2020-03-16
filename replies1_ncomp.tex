@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2020-03-16T16:48:19+0100
+%% Last-Updated: 2020-03-16T17:07:32+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -853,8 +853,8 @@ a family, or model as a specific distribution.
 
 \smallskip
 
-\textbullet\ If by \enquote{model} we mean only a family of probability
-distribution, \eg\
+\textbf{(A)} If by \enquote{model} we mean only a family of probability
+distributions, \eg\ (apart from normalization)
 \[\conds*{\exp\biggl[-\frac{(x-\mu)^{2}}{2\sigma^{2}}\biggr]\,\di x}{
     \mu\in\RR, \sigma \in\opop{0,\infty}}\;,\]
 then model comparison is undefined, because we cannot calculate
@@ -892,25 +892,41 @@ if it is defined on a lower-dimensional family.
 
 Third, \emph{the evidence $\p(D \| M_{i}, I)$ of a model automatically
   takes care of its complexity}. This happens because the probability over
-the data space is normalized. If $M_{1}$ has a typical data volume larger
-than $M_{2}$, then it must also assign lower probability to each data point
-in that volume, to ensure normalization. As a result, if the observed data
-$D^{*}$ lie in the typical volumes of both models, then
+the data space is normalized. If $M_{1}$ has a typical-data volume larger
+than $M_{2}$'s, then it must also assign lower probability to each data
+point in that volume, to ensure normalization. As a result, if the observed
+data $D^{*}$ lie in the typical volumes of both models, then
 $\pf(D^{*} \| M_{1},I)< \pf(D^{*} \| M_{2}, I)$: \emph{the evidence is
   automatically penalizing the larger model}. There is a continuous
 trade-off between how typical the data is for each model and each model's
 power. This is the so-called automatic Ockham razor of Bayes's theorem,
-extensively explained by MacKay \citey{mackay1992}. And this is the reason
-why we are personally satisfied with simply comparing the evidence for any
-two models.
+extensively explained by MacKay
+\citey{mackay1992}[also][\sect~28.1]{mackay1995_r2003}. And this is the
+reason why we are personally satisfied with simply comparing the evidence
+for any two models.
 
 \smallskip
 
-\textbullet\ 
+\textbf{(B)} If by \enquote{model} we mean a specific distribution, \eg\
+\[ \exp\biggl[-\frac{(x-5)^{2}}{18}\biggr]\,\di x \;,\] then two models can
+of course be directly compared; that is $\p(D \|M_{i}, I)$ is well-defined.
+In this case the \enquote{dimensionality} of the model is undefined,
+however. The distribution above could be considered to belong to the family
+$\set[\Big]{\exp\Bigl[-\frac{(x-\mu)^{2}}{18}\Bigr]}$, or
+$\set[\Big]{\exp\Bigl[-\frac{(x-5)^{2}}{2\sigma^{2}}\Bigr]}$, or
+$\set[\big]{\exp[f(x-5)]}$, and so on. A point in a manifold belongs to an
+infinity of submanifolds.
+
+Note that the property of having a minimal sufficient statistic is still
+well-defined for a model in this sense, in an exchangeable context. The
+model above has $\set{n, \widebar{x}, \widebar{x^{2}}}$ as minimal
+sufficient statistics, where the bar denotes sample average. This does not
+authorize us to see it as belonging to a sufficient-statistics family,
+however.
 
 
 
-
+\bigskip
 
 
 

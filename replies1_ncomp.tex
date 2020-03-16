@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2020-03-16T14:36:02+0100
+%% Last-Updated: 2020-03-16T16:48:19+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -565,7 +565,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 %\newcommand*{\lland}{\DOTSB\;\land\;}
 %\newcommand*{\llor}{\DOTSB\;\lor\;}
 %\newcommand*{\limplies}{\mathbin{\Rightarrow}}%implies
-%\newcommand*{\suchthat}{\mid}%{\mathpunct{|}}%such that (eg in sets)
+\newcommand*{\suchthat}{\mid}%{\mathpunct{|}}%such that (eg in sets)
 %\newcommand*{\with}{\colon}%with (list of indices)
 %\newcommand*{\mul}{\times}%multiplication
 %\newcommand*{\inn}{\cdot}%inner product
@@ -581,7 +581,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 %\DeclarePairedDelimiter\clcl{[}{]}
 %\DeclarePairedDelimiter\clop{[}{[}
 %\DeclarePairedDelimiter\opcl{]}{]}
-%\DeclarePairedDelimiter\opop{]}{[}
+\DeclarePairedDelimiter\opop{]}{[}
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
 %\DeclarePairedDelimiter\norm{\lVert}{\rVert}
 \DeclarePairedDelimiter\set{\{}{\}}
@@ -593,7 +593,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \renewcommand*{\|}[1][]{\nonscript\,#1\vert\nonscript\;\mathopen{}}
 %\DeclarePairedDelimiterX{\cond}[2]{(}{)}{#1\nonscript\,\delimsize\vert\nonscript\;\mathopen{}#2}
 %\DeclarePairedDelimiterX{\condt}[2]{[}{]}{#1\nonscript\,\delimsize\vert\nonscript\;\mathopen{}#2}
-%\DeclarePairedDelimiterX{\conds}[2]{\{}{\}}{#1\nonscript\,\delimsize\vert\nonscript\;\mathopen{}#2}
+\DeclarePairedDelimiterX{\conds}[2]{\{}{\}}{#1\nonscript\,\delimsize\vert\nonscript\;\mathopen{}#2}
 %\newcommand*{\+}{\lor}
 %\renewcommand{\*}{\land}
 \newcommand*{\sect}{\S}% Sect.~
@@ -807,10 +807,10 @@ conclusions based on the larger population can be very different. Our
 method can bypass that difficulty, if one wants to use it for such
 comparisons.
 
-There are many differing views on the questions of comparison, complexity,
-nesting, and \enquote{penalization} of models. Our view is close to that
-expressed in several works, studies, and commentaries
-\citep[\eg][]{good1985,jonesetal1986,chatfield1995,copasetal1995,draper1995,spiegelhalteretal1995,raftery1995,gelmanetal1995,draperetal1996,hoetingetal1999,clydeetal1999,browneetal2006},
+There are many differing, fragmented views on the questions of comparison,
+complexity, nesting, and \enquote{penalization} of models. Our view is
+close to that expressed in several works, studies, and commentaries
+\citep[\eg][]{good1950,good1985,kadaneetal1980b,jonesetal1986,chatfield1995,copasetal1995,draper1995,spiegelhalteretal1995,raftery1995,gelmanetal1995,mackay1995_r2003,draperetal1996,hoetingetal1999,clydeetal1999,browneetal2006},
 and well-explained in MacKay \citey{mackay1992}. We summarize this view
 below. According to it, the analysis in our \sect~4, based on the weight of
 evidence, is consistent and does not need any corrections.
@@ -832,14 +832,86 @@ necessary.
 
 If a \emph{choice} among two or more hypotheses has to be made for some
 purpose (say, hardware algorithm implementation in some automated device),
-such choice requires not only the probabilities $p(H_{i}\|D)$, but also the
-gain/loss matrix for the various choices conditional on the various
-hypotheses. The choice is then made by maximization of the expected gain.
-Some gain matrices can even lead to choosing the hypothesis having
+such choice requires not only the probabilities $\p(H_{i}\|D)$, but also
+the utility/loss matrix for the various choices conditional on the various
+hypotheses \citep{kadaneetal1980b}. The choice is then made by maximization
+of the expected utility, a procedure dictated by some simple rational
+desiderata
+\citep{fishburn1981,bernardoetal1994_r2000}[\chap~13]{jaynes1994_r2003}.
+Some utility matrices can even lead to choosing the hypothesis having
 \emph{lower} posterior probability \citep[this frequently happens in
 medical decision problems, see \eg][]{soxetal1988_r2013}.
 
 \medskip
+
+From our Bayesian point of view, the question of comparing (as opposed to
+choosing, see above) two models or hypotheses $M_{i}$ is nothing else than
+the calculation of their post-data probabilities $\p(M_{i} \| D, I)$, where
+$I$ denotes the context and prior information. Such calculation depends on
+what we mean by \enquote{model}. There are two main possibilities: model as
+a family, or model as a specific distribution.
+
+\smallskip
+
+\textbullet\ If by \enquote{model} we mean only a family of probability
+distribution, \eg\
+\[\conds*{\exp\biggl[-\frac{(x-\mu)^{2}}{2\sigma^{2}}\biggr]\,\di x}{
+    \mu\in\RR, \sigma \in\opop{0,\infty}}\;,\]
+then model comparison is undefined, because we cannot calculate
+$\p(D \| M_{i})$. Each distribution in the family assigns a different
+probability, and it is not clear which should be chosen or how they should
+be combined and why. A hypothesis is ill-defined, or at least useless, if
+it does not allow us to assign a probability to the data. We need a
+pre-data probability distribution for the model parameters, \eg\
+$\pf(\mu,\sigma \| I)\,\di\mu\,\di\sigma$. \enquote{Model} must therefore
+be redefined as a family of distributions \emph{and} a pre-data
+distribution over such family. This redefinition has several consequences:
+
+First, two models are different if they have the same family but different
+distributions over it. In fact they lead to different probabilities on the
+data space. Two such models are also mutually exclusive,
+$\p(M_{1} \land M_{2} \|I)=0$, because we cannot use the one family
+distribution \emph{and} the other family distribution at the same time.
+It's either-or. This indeed makes sense from a nonparametric perspective,
+where a parametric model (in the redefined sense) is just a singular
+nonparametric distribution, concentrated on a lower-dimensional manifold
+(the family above) of the full space of distributions
+\citep[p.~761]{draperetal1996}.
+
+Second, the \enquote{complexity} of a model cannot be simply judged from
+the dimensionality of its family. Model $M_{1}$ can have a family
+distribution concentrated on a very small region, with respect to model
+$M_{2}$ with the same family. $M_{1}$ is thus effectively using
+\enquote{fewer} parameters than $M_{2}$. Correspondingly the
+\enquote{typical set} of data to which $M_{1}$ assigns appreciable
+probability is smaller than the typical set of $M_{2}$: model $M_{1}$ is
+\enquote{less powerful}. The effective dimensionality or complexity of a
+model is thus best defined by the volume of data that is typical under that
+model. It may thus happen that a model is more powerful than another even
+if it is defined on a lower-dimensional family.
+
+Third, \emph{the evidence $\p(D \| M_{i}, I)$ of a model automatically
+  takes care of its complexity}. This happens because the probability over
+the data space is normalized. If $M_{1}$ has a typical data volume larger
+than $M_{2}$, then it must also assign lower probability to each data point
+in that volume, to ensure normalization. As a result, if the observed data
+$D^{*}$ lie in the typical volumes of both models, then
+$\pf(D^{*} \| M_{1},I)< \pf(D^{*} \| M_{2}, I)$: \emph{the evidence is
+  automatically penalizing the larger model}. There is a continuous
+trade-off between how typical the data is for each model and each model's
+power. This is the so-called automatic Ockham razor of Bayes's theorem,
+extensively explained by MacKay \citey{mackay1992}. And this is the reason
+why we are personally satisfied with simply comparing the evidence for any
+two models.
+
+\smallskip
+
+\textbullet\ 
+
+
+
+
+
 
 
 

@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2020-03-16T22:02:36+0100
+%% Last-Updated: 2020-03-16T22:12:34+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -907,7 +907,7 @@ It's either-or. This consequence makes sense from a nonparametric
 perspective, where a parametric model is just a delta-like nonparametric
 distribution, concentrated on a lower-dimensional manifold (the family
 above) of the full space of distributions \citep[p.~761]{draperetal1996}.
-The notion of nested models becomes unimportant, from this perspective.
+The notion of nested models becomes unimportant from this perspective.
 Some authors try to define some \enquote{standard} distribution associated
 to a family, but we agree with those \citep[\eg][]{copasetal1979}[DeGroot
 in][]{lindleyetal1982} who find such definitions ultimately arbitrary. Many
@@ -928,11 +928,11 @@ family.
 
 Third, \emph{the evidence $\p(D \| M_{i})$ for a model automatically takes
   care of its complexity}. This happens because the probability over the
-data space is normalized. If $M_{2}$ has a typical-data volume larger than
-$M_{1}$'s, then it must also assign lower probability to each volume
-element therein, to ensure normalization. As a result, if the observed data
-$D^{*}$ lie in the typical volumes of both models, then
-$\pf(D^{*} \| M_{1}) > \pf(D^{*} \| M_{2})$: \emph{the evidence is
+data space is normalized. If the more powerful $M_{2}$ has a typical-data
+volume larger than $M_{1}$'s, then it must also assign lower probability to
+each volume element therein, to ensure normalization. As a result, if the
+observed data $D^{*}$ lie in the typical volumes of both models, then
+$\pf(D^{*} \| M_{2}) < \pf(D^{*} \| M_{1})$: \emph{the evidence is
   automatically penalizing the larger model}. There is a continuous
 trade-off between how typical the observed data are for each model and each
 model's power. This is the so-called automatic Ockham razor of Bayes's
@@ -944,11 +944,12 @@ for any two models.
 In our calculations, however, we are using a zeroth-order Laplace
 approximation for calculating the evidence in \sect~4. A first-order
 approximation (containing the width of the distribution, influenced by the
-typical-set volume above) would correct for the model's power. We believe
-that the correction would nevertheless be the same in the calculations
-based on the larger population, \eqns~(11), and on the sample, \eqns~(12).
-Hence the difference in the two approaches -- our main message -- should
-persist. But it would be better to check this.
+typical-set volume above) would correct for the model's power
+\citep[\sect~2.2]{mackay1992}. We believe that the correction would
+nevertheless be the same in the calculations based on the larger
+population, \eqns~(11), and on the sample, \eqns~(12). Hence the difference
+in the two approaches -- our main message -- should persist. But it would
+be better to check this.
 
 \medskip
 

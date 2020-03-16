@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2020-03-16T19:55:02+0100
+%% Last-Updated: 2020-03-16T20:21:43+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -762,13 +762,13 @@ apply to the inference in our manuscript, for several reasons:
 \item As $N$ increases, the two peaks we infer do become more pronounced,
   as suggested by our Fig.~1. So our inference is not really in
   contradiction with Amari \etal. The results of that paper hold for the
-  $N\to\infty$, and no explicit form for the limit-remainder is given. It
-  is therefore unclear whether at $N=10\,000$ we should already observe a
-  delta. Our findings~\ref{item:maxmomentcheck}, above, suggest that we
-  should not. Limit-reminders such as \enquote{$\Ord(1/N^{k})$} as given in
+  $N\to\infty$ limit, and no explicit form for the limit-remainder is given
+  there. Limit-reminders such as \enquote{$\Ord(1/N^{k})$} as given in
   Amari \etal\ do not help unless we know their precise form. As an extreme
   example, $\frac{10^{10}}{N}$ is $\Ord(1/N)$, and in this case the $1/N$
-  term cannot really be neglected unless $N \gg 10^{10}$.
+  term cannot really be neglected unless $N \gg 10^{10}$. It is therefore
+  unclear whether at $N=10\,000$ we should already observe a delta. Our
+  findings~\ref{item:maxmomentcheck}, above, suggest that we should not.
 
 \item The results of Amari \etal\ assume that the probability of the
   neuronal activity factorizes over time. In our manuscript we assume, as
@@ -821,8 +821,8 @@ below.
 In any case, please note that we avoid speaking about
 \enquote{significance}, also as recommended by the American Statistical
 Association in their recent official statements \citep{asa2016}[see
-especially \sect~2]{asa2019}. When comparing hypotheses $M_{i}$ we simply
-want their post-data probabilities $\p(M_{i} \| D)$, with their continuum
+especially \sect~2]{asa2019}. When comparing hypotheses $M_{i}$ we want
+their full post-data probabilities $\p(M_{i} \| D)$, with their continuum
 of cases. Other researchers are of course free to make dichotomies if they
 like; but we personally agree with the American Statistical Association
 that any threshold is unnecessary and arbitrary. If a \emph{choice} among
@@ -834,8 +834,8 @@ various choices conditional on the various hypotheses
 expected utility, a procedure dictated by some simple rational desiderata
 \citep{fishburn1981,bernardoetal1994_r2000}[\chap~13]{jaynes1994_r2003}.
 Some utility matrices can even lead to choosing the hypothesis having
-\emph{lower} post-data probability; this frequently happens in
-medical decision problems, see \eg\ \textcite{soxetal1988_r2013}.
+\emph{lower} post-data probability; this frequently happens in medical
+decision problems, see \eg\ \textcite{soxetal1988_r2013}.
 
 
 % We want a continuous quantity, without any arbitrary thresholds. The
@@ -868,15 +868,16 @@ and well-explained in MacKay \citey{mackay1992}. According to this view,
 which we summarize below, the log-evidence automatically takes care of
 model complexity.
 
-The main question is what we mean by \enquote{model}. There are two main
-possibilities: model as a family, or model as a specific distribution.
+The main question, on the other hand, is what we mean by \enquote{model}.
+There are two main possibilities\ibid: model as a family, or model as a specific
+distribution.
 
 \smallskip
 
 \textbf{(A)} If by \enquote{model} we mean a family of probability
 distributions, \eg\ (apart from normalization)
 \[\conds*{\exp\biggl[-\frac{(x-\mu)^{2}}{2\sigma^{2}}\biggr]\,\di x}{
-    \mu\in\RR, \sigma \in\opop{0,\infty}}\;,\]
+    \mu\in\RR, \sigma \in \RR_{>0}}\;,\]
 then model comparison is ill-defined. % Each distribution in the family
 % assigns a different probability, and it is not clear which should be
 % chosen or how they should be combined and why.
@@ -897,37 +898,38 @@ several consequences:
 First, two models are different if they have the same family but different
 distributions over it. In fact they lead to different probabilities on the
 data space. Two such models are also mutually exclusive,
-$\p(M_{1} \land M_{2} \|I)=0$, because we cannot use the one family
-distribution \emph{and} the other family distribution at the same time.
+$\p(M_{1} \land M_{2} \|I)=0$, because we cannot use $M_{1}$'s family
+distribution \emph{and} $M_{2}$'s family distribution at the same time.
 It's either-or. This consequence makes sense from a nonparametric
-perspective, where a parametric model (in the redefined sense) is just a
-delta-like nonparametric distribution, concentrated on a lower-dimensional
-manifold (the family above) of the full space of distributions
-\citep[p.~761]{draperetal1996}.
+perspective, where a parametric model is just a delta-like nonparametric
+distribution, concentrated on a lower-dimensional manifold (the family
+above) of the full space of distributions \citep[p.~761]{draperetal1996}.
+The notion of nested models becomes unimportant, from this perspective.
 
 Second, the \enquote{complexity} of a model cannot be judged from the
-dimensionality of its family. Model $M_{1}$ can have a family distribution
-concentrated on a very small region, with respect to model $M_{2}$ having
-the same family. $M_{1}$ is thus effectively using fewer parameters than
-$M_{2}$. Correspondingly the \enquote{typical set} of data to which $M_{1}$
-assigns appreciable probability is smaller than the typical set of $M_{2}$:
-model $M_{1}$ is less \enquote{powerful}. The effective dimensionality or
-complexity of a model is thus best defined by the volume of data that is
+dimensionality of its family. Models $M_{1}$ and $M_{2}$ can have the same
+family, but $M_{1}$ can have a family distribution concentrated on a very
+small region, with respect to that of $M_{2}$. Model $M_{1}$ is thus
+effectively using fewer parameters than $M_{2}$. Correspondingly the
+\enquote{typical set} of data to which $M_{1}$ assigns appreciable
+probability is smaller than the typical set of $M_{2}$: model $M_{1}$ is
+less \enquote{powerful}. The effective dimensionality, complexity, or power
+of a model is thus best defined by the volume of \emph{data space} that is
 typical under that model. Most important, it may then happen that a model
-is more powerful than another even if it is defined on a lower-dimensional
+is more powerful than another even if it is based on a lower-dimensional
 family.
 
 Third, \emph{the evidence $\p(D \| M_{i})$ of a model automatically takes
   care of its complexity}. This happens because the probability over the
-data space is normalized. If $M_{1}$ has a typical-data volume larger than
-$M_{2}$'s, then it must also assign lower probability to each data point in
-that volume, to ensure normalization. As a result, if the observed data
-$D^{*}$ lie in the typical volumes of both models, then
-$\pf(D^{*} \| M_{1})< \pf(D^{*} \| M_{2})$: \emph{the evidence is
+data space is normalized. If $M_{2}$ has a typical-data volume larger than
+$M_{1}$'s, then it must also assign lower probability to each volume
+element in that volume, to ensure normalization. As a result, if the
+observed data $D^{*}$ lie in the typical volumes of both models, then
+$\pf(D^{*} \| M_{1}) > \pf(D^{*} \| M_{2})$: \emph{the evidence is
   automatically penalizing the larger model}. There is a continuous
-trade-off between how typical the data is for each model and each model's
-power. This is the so-called automatic Ockham razor of Bayes's theorem,
-extensively explained by MacKay
+trade-off between how typical the observed data are for each model and each
+model's power. This is the so-called automatic Ockham razor of Bayes's
+theorem, extensively explained by MacKay
 \citey{mackay1992}[also][\sect~28.1]{mackay1995_r2003}. And this is the
 reason why we are personally satisfied with simply comparing the evidence
 for any two models.
@@ -938,7 +940,7 @@ approximation (containing the width of the distribution, influenced by the
 typical-set volume above) would correct for the model's power. We believe
 that the correction would nevertheless be the same in the calculation based
 on the larger population, \eqns~(11), and on the sample, \eqns~(12),
-because the data space is the same. Hence the difference in the two
+because the data space is the same in both. Hence the difference in the two
 approaches -- our main message -- should persist. But it would be better to
 check this.
 
@@ -954,7 +956,7 @@ $\set[\Big]{\exp\Bigl[-\frac{(x-5)^{2}}{2\sigma^{2}}\Bigr]}$, or
 $\set[\big]{\exp[f(x-5)]}$, and so on. A point in a manifold belongs to an
 infinity of submanifolds.
 
-But the property of having a minimal sufficient statistic is still
+Yet, the property of having a minimal sufficient statistic is still
 well-defined for a model in this sense, in an exchangeable context. The
 model above has $\set[\big]{n, \widebar{x}, \widebar{x^{2}}}$ (or any
 equivalent set) as minimal sufficient statistics, where the bar denotes the
@@ -965,12 +967,12 @@ calculations of \sect~4 are correct.
 \medskip
 
 The question, in summary, is what exactly is being compared, whether
-families (with accompanying distribution) or single distributions. The
-literature is not at all clear. But, in either case, our calculations show
-that the approaches based on a population and a sample thereof can lead to
-different conclusions -- in accordance with the non-preservation of
-sufficiency under sampling -- and they provide a way to bypass this
-problem.
+families (and what their accompanying distributions are) or single
+distributions. The literature is not at all clear. But, in either case, our
+calculations show that the approaches based on a population and a sample
+thereof can lead to different conclusions -- in accordance with the
+non-preservation of sufficiency under sampling -- and they provide a way to
+bypass this problem.
 
 
 \bigskip

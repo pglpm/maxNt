@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2020-03-16T21:23:04+0100
+%% Last-Updated: 2020-03-16T22:02:36+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -892,12 +892,15 @@ a probability can be obtained if we specify a pre-data probability
 distribution over the distributions in the family, \eg\
 $\pf(\mu,\sigma \| I)\,\di\mu\,\di\sigma$ in the example above.
 \enquote{Model} must therefore be redefined as a family of distributions
-\emph{and} a pre-data distribution over such family. This redefinition has
-several consequences:
+\emph{and} a pre-data distribution over such family
+\citep{dawid1982,dawid1993}; under exchangeability, this is mathematically
+equivalent to the definition (B) below
+\citep[\chap~4]{bernardoetal1994_r2000}. This redefinition has several
+consequences:
 
 First, two models are different if they have the same family but different
-distributions over it. In fact they lead to different probabilities on the
-data space. Two such models are also mutually exclusive,
+distributions over it. In fact they clearly lead to different probabilities
+on the data space. Two such models are also mutually exclusive,
 $\p(M_{1} \land M_{2} \|I)=0$, because we cannot use $M_{1}$'s family
 distribution \emph{and} $M_{2}$'s family distribution at the same time.
 It's either-or. This consequence makes sense from a nonparametric
@@ -906,10 +909,9 @@ distribution, concentrated on a lower-dimensional manifold (the family
 above) of the full space of distributions \citep[p.~761]{draperetal1996}.
 The notion of nested models becomes unimportant, from this perspective.
 Some authors try to define some \enquote{standard} distribution associated
-to a family, but we agree with those
-\citep[\eg][]{copasetal1979,lindleyetal1982} who find such definitions
-ultimately arbitrary. Many such distributions lead, moreover, to
-mathematical singularities.
+to a family, but we agree with those \citep[\eg][]{copasetal1979}[DeGroot
+in][]{lindleyetal1982} who find such definitions ultimately arbitrary. Many
+such distributions lead, moreover, to mathematical singularities.
 
 Second, the \enquote{complexity} of a model cannot be judged from the
 dimensionality of its family. Models $M_{1}$ and $M_{2}$ can have the same

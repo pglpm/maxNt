@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2020-03-16T22:12:34+0100
+%% Last-Updated: 2020-03-17T00:35:35+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -319,7 +319,7 @@ Open Science Framework \texttt{doi:\urlalt{https://doi.org/10.17605/osf.io/#1}{1
 
 \usepackage{graphicx}
 
-%\usepackage{wrapfig}
+\usepackage{wrapfig}
 
 %\usepackage{tikz-cd}
 
@@ -1006,7 +1006,18 @@ important to know whether we are calculating the frequency of past results,
 or the probability for a new result, or the most probable frequency of
 future results. These three quantities can be numerically very different
 when the ratio $\frac{\text{\# samples}}{\text{data-space dimension}}$ is
-high, and they are to be used in different ways.
+high, and they are to be used in different ways. Preliminary calculations
+from the full Bayesian analysis show that%
+\setlength{\intextsep}{-1ex}% with wrapfigure
+\setlength{\columnsep}{0ex}% with wrapfigure
+\begin{wrapfigure}{r}{0pt} % with wrapfigure
+\centering\includegraphics[width=0.5\linewidth]{example_fullbayesian.pdf}
+%\caption{caption}\label{fig:comparison_a5}
+\end{wrapfigure}% exp_family_maxent.nb
+the most probable frequency distribution across recorded bins (item i on
+p.~8) and the belief distribution over the total activity at any recorded
+bin (item ii on p.~8) are visibly different. See figure on the right: the
+first is the red dashed red curve, the second the solid green line.
 
 These are therefore not philosophical matters. It's a matter of
 understanding what we are doing and stating it clearly in our

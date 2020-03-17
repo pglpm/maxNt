@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2020-03-17T00:35:35+0100
+%% Last-Updated: 2020-03-17T01:02:47+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -823,15 +823,16 @@ In any case, please note that we avoid speaking about
 Association in their recent official statements \citep{asa2016}[see
 especially \sect~2]{asa2019}. When comparing hypotheses $M_{i}$ we want
 their full post-data probabilities $\p(M_{i} \| D)$, with their continuum
-of cases. Other researchers are of course free to make dichotomies if they
-like; but we personally agree with the American Statistical Association
-that any threshold is unnecessary and arbitrary. If a \emph{choice} among
-the hypotheses has to be made for some purpose (say, hardware algorithm
-implementation in some automated device), such choice requires not only the
-probabilities $\p(M_{i}\|D)$, but also the utility/loss matrix for the
-various choices conditional on the various hypotheses
-\citep{kadaneetal1980b}. The choice is then made by maximization of the
-expected utility, a procedure dictated by some simple rational desiderata
+of cases. We respect the freedom of other researchers to make dichotomies,
+if they so prefer. But our personal point of view agrees with the American
+Statistical Association: any threshold is unnecessary and arbitrary. If a
+\emph{choice} among the hypotheses has to be made for some purpose (say,
+hardware algorithm implementation in some automated device), such choice
+requires not only the probabilities $\p(M_{i}\|D)$, but also the
+utility/loss matrix for the various choices conditional on the various
+hypotheses \citep{kadaneetal1980b}. The choice is then made by maximization
+of the expected utility, a procedure dictated by some simple rational
+desiderata
 \citep{fishburn1981,bernardoetal1994_r2000}[\chap~13]{jaynes1994_r2003}.
 Some utility matrices can even lead to choosing the hypothesis having
 \emph{lower} post-data probability; this frequently happens in medical
@@ -1038,9 +1039,23 @@ clarity, precision, honesty, and a glimpse of the bigger picture.
 \addsec{Reviewer 2}
 \label{sec:rev2}
 
-2. {\footnotesize\textsf{\footnotesize The method requires that the measurements on n neurons are 'representative' of the full population of N neurons. The authors show one example, where they divide a dataset into two subsets of neurons with different statistics.  They show that the extrapolations from these two subsets are significantly different. But this particular analysis is somewhat ad hoc. Are there any more systematic tests of procedures for understanding how sensitive this analysis is to choosing different subsets of neurons? Or different recoding periods?}\par}
+2. {\footnotesize\textsf{\footnotesize The method requires that the
+    measurements on n neurons are 'representative' of the full population
+    of N neurons. The authors show one example, where they divide a dataset
+    into two subsets of neurons with different statistics.  They show that
+    the extrapolations from these two subsets are significantly different.
+    But this particular analysis is somewhat ad hoc. Are there any more
+    systematic tests of procedures for understanding how sensitive this
+    analysis is to choosing different subsets of neurons? Or different
+    recoding periods?}\par}
+
+*** equiv to unsystematic sampling for extended recording arrays
+
+
 
 3. {\footnotesize\textsf{\footnotesize In particular, correlations tend to be stronger between nearby neurons than far-away neurons. This should be a consistent pattern that shows up in most experimental datasets and which should lead to systematic biases in inferring the properties of populations, N, which are large enough to result in lower average correlation (see Nonnenmacher et al., PLoS CB 2017). Is there any way to take this dependence into account?}\par}
+
+*** analogous to \enquote{design} in survey sampling
 
 
 %%%% examples use empheq

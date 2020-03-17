@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2020-03-17T02:34:29+0100
+%% Last-Updated: 2020-03-17T12:01:54+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -864,14 +864,14 @@ decision problems, see \eg\ \textcite{soxetal1988_r2013}.
 There are many differing, fragmented views on the questions of comparison,
 complexity, nesting, and \enquote{penalization} of models. Our view is
 close to that expressed in several works, studies, and commentaries
-\footcites[\eg][]{good1950,good1985,kadaneetal1980b,jonesetal1986,chatfield1995,copasetal1995,draper1995,spiegelhalteretal1995,raftery1995,gelmanetal1995,mackay1995_r2003,draperetal1996,hoetingetal1999,clydeetal1999,browneetal2006},
+\footcites[\eg][]{good1950,good1985,kadaneetal1980b,dawid1982,dawid1993,jonesetal1986,chatfield1995,copasetal1995,draper1995,spiegelhalteretal1995,raftery1995,gelmanetal1995,mackay1995_r2003,draperetal1996,hoetingetal1999,clydeetal1999,mccullagh2002,browneetal2006},
 and well-explained in MacKay \citey{mackay1992}. According to this view,
 which we summarize below, the log-evidence automatically takes care of
 model complexity. This view hinges on a clear definition of what a
 \enquote{model} is.
 
-If by \enquote{model} we mean a family of probability distributions, \eg\
-(apart from normalization)
+If by \enquote{model} we mean a family of probability distributions, for
+example (apart from normalization)
 \[\conds*{\exp\biggl[-\frac{(x-\mu)^{2}}{2\sigma^{2}}\biggr]\,\di x}{
     \mu\in\RR, \sigma \in \RR_{>0}}\;,\]
 then model comparison is ill-defined. % Each distribution in the family
@@ -892,7 +892,8 @@ $\pf(\mu,\sigma \| I)\,\di\mu\,\di\sigma$ in the example above.
 \citep{dawid1982,dawid1993}. This redefinition also turns out to be
 equivalent, under exchangeability, to the specification of a single
 predictive distribution, that is, a joint probability for any number of
-samples
+data samples. Such a predictive distribution automatically determines a
+family of parametric distributions and a distribution over such family
 \citep[\chap~4]{bernardoetal1994_r2000}{fortinietal2000,ressel1983_r1985,lauritzen1984}.
 This redefinition has several consequences:
 
@@ -1013,8 +1014,8 @@ from the full Bayesian analysis show that%
 \end{wrapfigure}% exp_family_maxent.nb
 the most probable frequency distribution across recorded bins (item i on
 p.~8) and the belief distribution over the total activity at any recorded
-bin (item ii on p.~8) are visibly different. See figure on the right: the
-first is the red dashed red curve, the second the solid green line.
+bin (item ii on p.~8) are visibly different. See figure on the right: item
+(i) is the red dashed red curve, item (ii) the solid green line.
 
 These are therefore not philosophical matters. It's a matter of
 understanding what we are doing and stating it clearly in our

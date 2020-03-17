@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2020-03-17T12:14:41+0100
+%% Last-Updated: 2020-03-17T16:56:56+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1000,31 +1000,38 @@ calculations based on the larger population, \eqns~(11), and on the sample,
 
 \medskip
 
-As stated on p.~8, the interpretation is important because it leads to
-numerically different results in first- and higher-order approximations.
-And such approximations may be necessary in the precise calculation of the
-evidence, as explained in the reply to the previous point. Appendix~C
-explains where and why the numerical differences appear. Also, it is
-important to know whether we are calculating the frequency of past results,
-or the probability for a new result, or the most probable frequency of
-future results. These three quantities can be numerically very different
-when the ratio $\frac{\text{\# samples}}{\text{data-space dimension}}$ is
-high, and they are to be used in different ways. Preliminary calculations
-from the full Bayesian analysis show that%
+Perhaps we chose the wrong term, speaking of \enquote{interpretation}. What
+we meant is that the formula we find is valid, as a first approximation,
+for four different quantities of interest. It is obviously important to
+specify for which quantities the formula can be used and, among those, for
+which it provides a better or worse approximation.
+
+On p.~8 we also state that first- and higher-order approximations will be
+different for each of those four quantities, so their numerical equality is
+only valid at zeroth-order. Preliminary calculations from the
+full Bayesian%
 \setlength{\intextsep}{-1ex}% with wrapfigure
 \setlength{\columnsep}{0ex}% with wrapfigure
 \begin{wrapfigure}{r}{0pt} % with wrapfigure
 \centering\includegraphics[width=0.5\linewidth]{example_fullbayesian.pdf}
 %\caption{caption}\label{fig:comparison_a5}
 \end{wrapfigure}% exp_family_maxent.nb
-the most probable frequency distribution across recorded bins (item i on
-p.~8) and the belief distribution over the total activity at any recorded
-bin (item ii on p.~8) are visibly different. See figure on the right: item
-(i) is the red dashed red curve, item (ii) the solid green line.
+ analysis show that the most probable frequency distribution across recorded
+bins (item i on p.~8) and the belief distribution over the total activity
+at any recorded bin (item ii on p.~8) are visibly different. See figure on
+the right: item (i) is the red dashed red curve, item (ii) the solid green
+line.
+
+Regarding the quantities mentioned on p.~8, it is important to know whether
+we are calculating the frequency of past results, or the probability for a
+new result, or the most probable frequency of future results. These
+quantities can be numerically very different when the ratio
+$\frac{\text{\# samples}}{\text{data-space dimension}}$ is high, and they
+are to be used in different ways.
 
 These are therefore not philosophical matters. It's a matter of
-understanding what we are doing and stating it clearly in our
-work. % Unfortunately the
+understanding and clearly stating what we are
+calculating. % Unfortunately the
 % neuroscience literature is very unclear on such matters.
 There's also another important reason. We are generally concerned for
 master's and PhD students, who often learn concepts and methods through

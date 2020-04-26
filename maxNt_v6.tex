@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2015-05-01T20:53:34+0200
-%% Last-Updated: 2020-02-03T11:24:40+0100
+%% Last-Updated: 2020-04-26T13:23:00+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -22,7 +22,7 @@ british%
 \newcommand*{\propertitle}{Inferring the total activity of a large neuronal population\\ from a small sample}
 \newcommand*{\pdftitle}{\propertitle}
 \newcommand*{\headtitle}{Inferences about large neuronal populations}
-\newcommand*{\pdfauthor}{P.G.L.  Porta Mana, Y. Roudi, E. Torre, V. Rostami}
+\newcommand*{\pdfauthor}{P.G.L.  Porta Mana, V. Rostami, E. Torre}
 \newcommand*{\headauthor}{Porta Mana \etal}
 \newcommand*{\reporthead}{}% Report number
 
@@ -497,23 +497,19 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \title{\propertitle}
 \author{%
 \hspace*{\stretch{1}}%
-\parbox{0.5\linewidth}%\makebox[0pt][c]%
+\parbox{0.3\linewidth}%\makebox[0pt][c]%
 {\protect\centering P.G.L.  Porta Mana\\%
 \footnotesize\epost{\email{piero.mana}{ntnu.no}}}%
 \hspace*{\stretch{1}}%
-%% uncomment if additional authors present
-\parbox{0.5\linewidth}%\makebox[0pt][c]%
-{\protect\centering E. Torre\\%
-\footnotesize\epost{\email{emiliano.torre}{yahoo.com}}}%
-\hspace*{\stretch{1}}\\%
-\parbox{0.5\linewidth}%\makebox[0pt][c]%
+\parbox{0.3\linewidth}%\makebox[0pt][c]%
 {\protect\centering V. Rostami\\%
 \footnotesize\epost{\email{vrostami}{uni-koeln.de}}}%
 \hspace*{\stretch{1}}%
-\parbox{0.5\linewidth}%\makebox[0pt][c]%
-{\protect\centering Y. Roudi\\%
-\footnotesize\epost{\email{yasser.roudi}{ntnu.no}}}%
-\hspace*{\stretch{1}}%
+%% uncomment if additional authors present
+\parbox{0.4\linewidth}%\makebox[0pt][c]%
+{\protect\centering E. Torre\\%
+\footnotesize\epost{\email{emiliano.torre}{yahoo.com}}}%
+\hspace*{\stretch{1}}\\%
 %\quad\href{https://orcid.org/0000-0002-6070-0784}{\protect\includegraphics[scale=0.16]{orcid_32x32.png}\textsc{orcid}:0000-0002-6070-0784}%
 }
 
@@ -2315,14 +2311,14 @@ full probabilistic approach in a future publication.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \begin{acknowledgements}
   This work is financially supported by the Kavli Foundation and the Centre
-  of Excellence scheme of the  Research Council of Norway.
+  of Excellence scheme, Yasser Roudi group, of the  Research Council of Norway.
   
-  We thank Iv\'an Davidovich for very insightful and valuable comments on a
-  previous draft of this manuscript. PGLPM thanks the staff of the NTNU
+  We thank Yasser Roudi and Iv\'an Davidovich for very insightful and valuable comments on 
+  previous drafts of this manuscript. PGLPM thanks the staff of the NTNU
   library for their always prompt support; Mari, Miri, Emma for
   continuous encouragement and affection; Buster Keaton and Saitama for
   filling life with awe and inspiration; the developers and maintainers of
-  \LaTeX, Emacs, AUC\TeX, Open Science Framework, Python, Inkscape, Sci-Hub
+  \LaTeX, Emacs, AUC\TeX, Open Science Framework, R, Python, Inkscape, Sci-Hub
   for making a free and unfiltered scientific exchange possible.
 %\rotatebox{15}{P}\rotatebox{5}{I}\rotatebox{-10}{P}\rotatebox{10}{\reflectbox{P}}\rotatebox{-5}{O}.
 %\sourceatright{\autanet}
@@ -2637,7 +2633,7 @@ The frequency distribution~\ref{item:prob_longrun} is the mode of $\pf(\ynu
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Bibliography
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\clearpage
+%\clearpage
 \defbibnote{prenote}{{\footnotesize (\enquote{de $X$} is listed under D,
     \enquote{van $X$} under V, and so on, regardless of national
     conventions.)\par}}
